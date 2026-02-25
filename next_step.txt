@@ -1,49 +1,28 @@
-
-Physics Shot (Wave Lab) - Phase 6: Education Layer
-This phase focuses on the "Education Layer" of the roadmap, adding tools that help users understand the underlying physics more deeply.
+Physics Shot (Wave Lab) - Phase 7: Experience & Monetization
+This phase focuses on the "Experience Layer" and "Monetization", adding polish, audio, and the IAP framework.
 
 Proposed Changes
-1. Comparison / Ghost Mode
-Goal: Allow users to see a "ghost" of the wave before they moved the sliders.
-Logic:
-Store a WaveState? ghostState in WaveProvider.
-Add a "Capture Ghost" button in the 
-ControlPanel
-.
-Update all painters to render the ghostState (if exists) with lower opacity (0.2).
-2. Vector Overlays
-Goal: Visualize the instantaneous velocity and acceleration of particles.
-Visuals:
-Small arrows (Vec2) at specific x-intervals.
-Green for Velocity ($v_y = A\omega \cos(kx-\omega t)$).
-Red for Acceleration ($a_y = -A\omega^2 \sin(kx-\omega t)$).
-Painter Update: Add showVectors toggle to 
-WaveState
- and draw these vectors in 
-WavePainter
-.
-3. Oscilloscope Graph (fl_chart)
-Goal: Show a time-based or position-based graph of a single point.
-Implementation:
-Create 
-OscilloscopePanel
- using fl_chart.
-Add to the 
-SimulationScreen
- (perhaps as a floating panel or a second tab).
-4. Maths Derivation Module
-Goal: Provide step-by-step explanations of the formulas.
-Implementation:
-Add a "Details" button in the 
-ResultsPanel
-.
-Open a DraggableScrollableSheet or a full-screen ModalBottomSheet displaying mathematical breakdowns.
-Content categories: "The Equation", "Step-by-Step Derivation", and "Key Variables".
-User Review Required
-IMPORTANT
+1. Audio Tone Generator (flutter_soloud)
+Goal: Generate a real-time sine wave tone matching the simulation frequency.
+Logic: Initialize SoLoud in Main, update frequency based on WaveState.
+2. Slow Motion Mode
+Goal: Allow users to see wave propagation in detail.
+Logic: Add timeScale to WaveState (default 1.0, slow mo 0.1). Multiply deltaTime by timeScale in WaveNotifier.
+3. Home Screen Animation
+Goal: A beautiful landing screen with a full-screen wave animation.
+Implementation: Create HomeScreen with a custom painter background. Use GoRouter for navigation.
+4. Challenge Mode (Preview)
+Goal: Introduction of the challenge system.
+Implementation: A simple screen where the user must match a target frequency.
+5. In-App Purchase (IAP) Service
+Goal: Framework for Pro features.
+Implementation: Create IapService using in_app_purchase. Setup shared_preferences for local status.
 
-Ghost Mode requires UI space for a "Lock/Clear Ghost" toggle. I recommend placing this in the top-right of the Simulation area.
+User Review Required
+- Should the audio tone be enabled by default? It can be jarring for some users.
+- Slow motion button placement: I suggest adding it next to the Play/Pause button in the ControlPanel.
 
 Verification Plan
-Toggle vectors and ensure they point in the correct directions (acceleration opposite to displacement).
-Verify Ghost wave stays fixed while primary wave changes.
+- Verify audio frequency matches visual frequency. 
+- Ensure slow motion correctly scales the animation speed.
+- Test IAP framework handles "pending" or "cancelled" states.

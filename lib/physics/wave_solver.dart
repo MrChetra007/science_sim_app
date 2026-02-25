@@ -10,6 +10,7 @@ class WaveSolver {
     required double x,
     required double t,
     double phi = 0,
+    bool isDampingEnabled = false,
   }) {
     // Wave number k = 2 * pi / wavelength
     // v = f * wavelength => wavelength = v / f
@@ -19,7 +20,14 @@ class WaveSolver {
     // Angular frequency omega = 2 * pi * f
     final double omega = 2 * pi * frequency;
 
-    return amplitude * sin(k * x - omega * t + phi);
+    double y = amplitude * sin(k * x - omega * t + phi);
+
+    if (isDampingEnabled) {
+      // Apply exponential decay over distance x
+      y *= exp(-0.15 * x);
+    }
+
+    return y;
   }
 
   /// Calculate particle velocity vy at position x and time t:

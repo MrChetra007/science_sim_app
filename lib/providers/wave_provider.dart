@@ -27,6 +27,8 @@ class WaveState {
   final bool showGhost;
   final bool showVectors;
   final bool showOscilloscope;
+  final double timeScale;
+  final bool isAudioEnabled;
 
   WaveState({
     this.amplitude = 1.0,
@@ -46,6 +48,8 @@ class WaveState {
     this.showGhost = false,
     this.showVectors = false,
     this.showOscilloscope = false,
+    this.timeScale = 1.0,
+    this.isAudioEnabled = false,
   });
 
   WaveState copyWith({
@@ -66,6 +70,8 @@ class WaveState {
     bool? showGhost,
     bool? showVectors,
     bool? showOscilloscope,
+    double? timeScale,
+    bool? isAudioEnabled,
   }) {
     return WaveState(
       amplitude: amplitude ?? this.amplitude,
@@ -85,6 +91,8 @@ class WaveState {
       showGhost: showGhost ?? this.showGhost,
       showVectors: showVectors ?? this.showVectors,
       showOscilloscope: showOscilloscope ?? this.showOscilloscope,
+      timeScale: timeScale ?? this.timeScale,
+      isAudioEnabled: isAudioEnabled ?? this.isAudioEnabled,
     );
   }
 
@@ -108,6 +116,8 @@ class WaveState {
       showGhost: false,
       showVectors: showVectors,
       showOscilloscope: showOscilloscope,
+      timeScale: timeScale,
+      isAudioEnabled: isAudioEnabled,
     );
   }
 }
@@ -123,7 +133,9 @@ class WaveNotifier extends StateNotifier<WaveState> {
     _timer?.cancel();
     _timer = Timer.periodic(const Duration(milliseconds: 16), (timer) {
       if (!state.isPaused) {
-        state = state.copyWith(currentTime: state.currentTime + 0.016);
+        state = state.copyWith(
+          currentTime: state.currentTime + (0.016 * state.timeScale),
+        );
       }
     });
   }
@@ -158,6 +170,11 @@ class WaveNotifier extends StateNotifier<WaveState> {
   void toggleShowGhost() => state = state.copyWith(showGhost: !state.showGhost);
   void toggleOscilloscope() =>
       state = state.copyWith(showOscilloscope: !state.showOscilloscope);
+
+  // Phase 5 actions
+  void setTimeScale(double value) => state = state.copyWith(timeScale: value);
+  void toggleAudio() =>
+      state = state.copyWith(isAudioEnabled: !state.isAudioEnabled);
 
   @override
   void dispose() {

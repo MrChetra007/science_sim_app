@@ -61,6 +61,7 @@ class WavePainter extends CustomPainter {
         waveSpeed: targetState.waveSpeed / 10,
         x: physicalX,
         t: targetState.currentTime,
+        isDampingEnabled: targetState.isDampingEnabled,
       );
 
       if (x == 0) {
@@ -97,6 +98,7 @@ class WavePainter extends CustomPainter {
         waveSpeed: targetState.waveSpeed / 10,
         x: physicalX,
         t: targetState.currentTime,
+        isDampingEnabled: targetState.isDampingEnabled,
       );
 
       final velocity = WaveSolver.calculateVelocity(

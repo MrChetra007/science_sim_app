@@ -64,6 +64,40 @@ class ControlPanel extends ConsumerWidget {
                     ),
                     const SizedBox(width: 8),
                     IconButton(
+                      onPressed: () => waveNotifier.setTimeScale(
+                        waveState.timeScale == 1.0 ? 0.1 : 1.0,
+                      ),
+                      constraints: const BoxConstraints(),
+                      padding: EdgeInsets.zero,
+                      icon: Icon(
+                        waveState.timeScale == 1.0
+                            ? Icons.speed
+                            : Icons.slow_motion_video,
+                        color: waveState.timeScale == 0.1
+                            ? const Color(0xFF00E5FF)
+                            : Colors.white70,
+                        size: 20,
+                      ),
+                      tooltip: 'Slow Motion',
+                    ),
+                    const SizedBox(width: 8),
+                    IconButton(
+                      onPressed: waveNotifier.toggleAudio,
+                      constraints: const BoxConstraints(),
+                      padding: EdgeInsets.zero,
+                      icon: Icon(
+                        waveState.isAudioEnabled
+                            ? Icons.volume_up
+                            : Icons.volume_off,
+                        color: waveState.isAudioEnabled
+                            ? const Color(0xFF00E5FF)
+                            : Colors.white70,
+                        size: 20,
+                      ),
+                      tooltip: 'Audio Tone',
+                    ),
+                    const SizedBox(width: 8),
+                    IconButton(
                       onPressed: waveNotifier.resetTime,
                       constraints: const BoxConstraints(),
                       padding: EdgeInsets.zero,
@@ -156,7 +190,7 @@ class ControlPanel extends ConsumerWidget {
 
                     if (waveState.mode == WaveMode.simulation ||
                         waveState.mode == WaveMode.interference ||
-                        waveState.mode == WaveMode.doppler)
+                        waveState.mode == WaveMode.doppler) ...[
                       _buildSlider(
                         label: 'Wave Speed (v)',
                         value: waveState.waveSpeed,
@@ -164,6 +198,18 @@ class ControlPanel extends ConsumerWidget {
                         max: 1500,
                         onChanged: waveNotifier.setWaveSpeed,
                       ),
+                      const SizedBox(height: 4),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            _presetChip('Vacuum', 300, waveState, waveNotifier),
+                            _presetChip('Air', 343, waveState, waveNotifier),
+                            _presetChip('Water', 1480, waveState, waveNotifier),
+                          ],
+                        ),
+                      ),
+                    ],
                     const Divider(color: Colors.white12, height: 24),
                     _buildEducationTools(waveState, waveNotifier),
                   ],
@@ -249,6 +295,18 @@ class ControlPanel extends ConsumerWidget {
                 fontSize: 11,
               ),
             ),
+            // Damping Toggle
+            FilterChip(
+              label: const Text('Damping'),
+              selected: state.isDampingEnabled,
+              onSelected: (_) =>
+                  notifier.toggleDamping(!state.isDampingEnabled),
+              selectedColor: const Color(0xFF00E5FF),
+              labelStyle: TextStyle(
+                color: state.isDampingEnabled ? Colors.black : Colors.white,
+                fontSize: 11,
+              ),
+            ),
           ],
         ),
       ],
@@ -307,6 +365,30 @@ class ControlPanel extends ConsumerWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _presetChip(
+    String label,
+    double speed,
+    WaveState state,
+    WaveNotifier notifier,
+  ) {
+    final isSelected = state.waveSpeed == speed;
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: ChoiceChip(
+        label: Text(label),
+        selected: isSelected,
+        onSelected: (_) => notifier.setWaveSpeed(speed),
+        selectedColor: const Color(0xFF00E5FF),
+        labelStyle: TextStyle(
+          color: isSelected ? Colors.black : Colors.white,
+          fontSize: 10,
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 4),
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
     );
   }
 

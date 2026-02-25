@@ -7,7 +7,9 @@ import '../painters/doppler_painter.dart';
 import '../widgets/control_panel.dart';
 import '../widgets/results_panel.dart';
 import '../widgets/oscilloscope_panel.dart';
+import '../widgets/pro_gate.dart';
 import '../providers/wave_provider.dart';
+import '../services/audio_service.dart';
 
 class SimulationScreen extends ConsumerStatefulWidget {
   const SimulationScreen({super.key});
@@ -20,7 +22,27 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
   bool _isExpanded = false;
 
   @override
+  void dispose() {
+    audioService.stopTone();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    ref.listen(waveProvider.select((s) => s.isAudioEnabled), (prev, next) {
+      if (next) {
+        audioService.startTone(ref.read(waveProvider).frequency);
+      } else {
+        audioService.stopTone();
+      }
+    });
+
+    ref.listen(waveProvider.select((s) => s.frequency), (prev, next) {
+      if (ref.read(waveProvider).isAudioEnabled) {
+        audioService.updateFrequency(next);
+      }
+    });
+
     final waveState = ref.watch(waveProvider);
 
     Widget waveWidget;
@@ -36,7 +58,12 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
         );
         break;
       case WaveMode.doppler:
-        waveWidget = CustomPaint(painter: DopplerPainter(state: waveState));
+        waveWidget = ProGate(
+          featureName: 'Doppler Effect',
+          child: CustomPaint(
+            painter: DopplerPainter(state: WaveState(mode: WaveMode.doppler)),
+          ),
+        );
         break;
       case WaveMode.simulation:
         waveWidget = CustomPaint(painter: WavePainter(state: waveState));
@@ -47,9 +74,9 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
       backgroundColor: const Color(0xFF040D17),
       body: Column(
         children: [
-          // 1. TOP HUB (15%)
+          // 1. TOP HUB (21%)
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.15,
+            height: MediaQuery.of(context).size.height * 0.21,
             child: const ResultsPanel(),
           ),
 

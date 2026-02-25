@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../providers/wave_provider.dart';
 import '../physics/wave_solver.dart';
 import 'maths_derivation_sheet.dart';
@@ -56,12 +58,26 @@ class ResultsPanel extends ConsumerWidget {
                       builder: (context) => const MathsDerivationSheet(),
                     );
                   },
+                  constraints: const BoxConstraints(),
+                  padding: const EdgeInsets.all(4),
                   icon: const Icon(
                     Icons.functions,
                     color: Color(0xFF00E5FF),
-                    size: 20,
+                    size: 18,
                   ),
                   tooltip: 'Math Derivations',
+                ),
+                const SizedBox(height: 4),
+                IconButton(
+                  onPressed: () => context.push('/formula-reference'),
+                  constraints: const BoxConstraints(),
+                  padding: const EdgeInsets.all(4),
+                  icon: const Icon(
+                    Icons.menu_book,
+                    color: Color(0xFF00E5FF),
+                    size: 18,
+                  ),
+                  tooltip: 'Formula Reference',
                 ),
               ],
             ),
@@ -73,19 +89,32 @@ class ResultsPanel extends ConsumerWidget {
 
   Widget _buildEquationHUD(WaveState state) {
     String eq = '';
+    final omega = (2 * pi * state.frequency).toStringAsFixed(1);
+    final k =
+        (2 *
+                pi /
+                WaveSolver.calculateWavelength(
+                  state.waveSpeed,
+                  state.frequency,
+                ))
+            .toStringAsFixed(2);
+
     switch (state.mode) {
       case WaveMode.simulation:
         eq =
-            'y(x,t) = ${state.amplitude.toStringAsFixed(1)} sin(kx - ${state.frequency.toStringAsFixed(1)}t)';
+            'y(x,t) = ${state.amplitude.toStringAsFixed(1)} sin(${k}x - ${omega}t)';
         break;
       case WaveMode.standing:
-        eq = 'y(x,t) = [2A sin(kx)] cos(ωt)';
+        eq =
+            'y(x,t) = [${(2 * state.amplitude).toStringAsFixed(1)} sin(${k}x)] cos(${omega}t)';
         break;
       case WaveMode.interference:
-        eq = 'y_total = y1 + y2';
+        eq =
+            'yt = ${state.amplitude.toStringAsFixed(1)}sin(…) + ${state.secondaryAmplitude.toStringAsFixed(1)}sin(…)';
         break;
       case WaveMode.doppler:
-        eq = "f' = f [v / (v - vs)]";
+        eq =
+            "f' = ${state.frequency.toStringAsFixed(1)} [${state.waveSpeed.toInt()} / (${state.waveSpeed.toInt()} - ${state.sourceVelocity.toInt()})]";
         break;
     }
 
