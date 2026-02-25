@@ -17,30 +17,38 @@ class ResultsPanel extends ConsumerWidget {
     final period = WaveSolver.calculatePeriod(state.frequency);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: const Color(0xFF040D17).withValues(alpha: 0.8),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: const Color(0xFF00E5FF).withValues(alpha: 0.2),
+        color: const Color(0xFF040D17).withValues(alpha: 0.9),
+        border: Border(
+          bottom: BorderSide(
+            color: const Color(0xFF00E5FF).withValues(alpha: 0.2),
+            width: 1,
+          ),
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildEquation(state),
-          const Divider(color: Colors.white12, height: 20),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(children: _buildMetrics(state, wavelength, period)),
-          ),
-        ],
+      child: SafeArea(
+        bottom: false,
+        child: Row(
+          children: [
+            Expanded(flex: 3, child: _buildEquationHUD(state)),
+            const VerticalDivider(color: Colors.white12, width: 24),
+            Expanded(
+              flex: 5,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: _buildMetricsHUD(state, wavelength, period),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildEquation(WaveState state) {
+  Widget _buildEquationHUD(WaveState state) {
     String eq = '';
     switch (state.mode) {
       case WaveMode.simulation:
@@ -48,7 +56,7 @@ class ResultsPanel extends ConsumerWidget {
             'y(x,t) = ${state.amplitude.toStringAsFixed(1)} sin(kx - ${state.frequency.toStringAsFixed(1)}t)';
         break;
       case WaveMode.standing:
-        eq = 'y(x,t) = [2A sin(kx)] cos(ωt) (n=${state.harmonic})';
+        eq = 'y(x,t) = [2A sin(kx)] cos(ωt)';
         break;
       case WaveMode.interference:
         eq = 'y_total = y1 + y2';
@@ -59,31 +67,34 @@ class ResultsPanel extends ConsumerWidget {
     }
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'PHYSICS ENGINE HUD',
+          'PHYSICS ENGINE HUB',
           style: TextStyle(
             color: Color(0xFF00E5FF),
-            fontSize: 10,
+            fontSize: 8,
             letterSpacing: 1.5,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 4),
-        Text(
-          eq,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontFamily: 'monospace',
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            eq,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontFamily: 'monospace',
+            ),
           ),
         ),
       ],
     );
   }
 
-  List<Widget> _buildMetrics(WaveState state, double wavelength, double T) {
+  List<Widget> _buildMetricsHUD(WaveState state, double lambda, double T) {
     final List<Widget> items = [];
 
     if (state.mode == WaveMode.doppler) {
@@ -92,46 +103,38 @@ class ResultsPanel extends ConsumerWidget {
         waveSpeed: state.waveSpeed,
         sourceVelocity: state.sourceVelocity,
       );
+      items.add(_metric('f\'', '${fPrime.toStringAsFixed(1)}Hz'));
       items.add(
-        _buildMetric('Observed f\'', '${fPrime.toStringAsFixed(1)} Hz'),
-      );
-      items.add(
-        _buildMetric(
-          'Shift Δf',
-          '${(fPrime - state.frequency).toStringAsFixed(1)} Hz',
-        ),
+        _metric('Δf', '${(fPrime - state.frequency).toStringAsFixed(1)}Hz'),
       );
     } else {
-      items.add(
-        _buildMetric('λ (Wavelength)', '${wavelength.toStringAsFixed(1)} m'),
-      );
-      items.add(_buildMetric('T (Period)', '${T.toStringAsFixed(2)} s'));
-      items.add(_buildMetric('v (Speed)', '${state.waveSpeed.toInt()} m/s'));
+      items.add(_metric('λ', '${lambda.toStringAsFixed(1)}m'));
+      items.add(_metric('T', '${T.toStringAsFixed(2)}s'));
+      items.add(_metric('v', '${state.waveSpeed.toInt()}m/s'));
     }
 
     if (state.mode == WaveMode.standing) {
-      items.add(_buildMetric('Nodes', '${state.harmonic + 1}'));
+      items.add(_metric('n', '${state.harmonic}'));
     }
 
     return items
         .map(
-          (m) => Padding(padding: const EdgeInsets.only(right: 20), child: m),
+          (m) => Padding(padding: const EdgeInsets.only(right: 16), child: m),
         )
         .toList();
   }
 
-  Widget _buildMetric(String label, String value) {
+  Widget _metric(String label, String value) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: const TextStyle(color: Colors.white38, fontSize: 10),
-        ),
+        Text(label, style: const TextStyle(color: Colors.white38, fontSize: 8)),
         Text(
           value,
           style: const TextStyle(
             color: Colors.white,
+            fontSize: 12,
             fontWeight: FontWeight.bold,
           ),
         ),

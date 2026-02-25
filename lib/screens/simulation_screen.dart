@@ -8,11 +8,18 @@ import '../widgets/control_panel.dart';
 import '../widgets/results_panel.dart';
 import '../providers/wave_provider.dart';
 
-class SimulationScreen extends ConsumerWidget {
+class SimulationScreen extends ConsumerStatefulWidget {
   const SimulationScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SimulationScreen> createState() => _SimulationScreenState();
+}
+
+class _SimulationScreenState extends ConsumerState<SimulationScreen> {
+  bool _isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
     final waveState = ref.watch(waveProvider);
 
     Widget waveWidget;
@@ -37,46 +44,57 @@ class SimulationScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFF040D17),
-      appBar: AppBar(
-        title: Text(_getTitle(waveState.mode)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: const Color(0xFF00E5FF),
-      ),
-      body: Stack(
+      body: Column(
         children: [
-          // Holographic Grid Background
-          Positioned.fill(child: CustomPaint(painter: GridPainter())),
+          // 1. TOP HUB (15%)
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.15,
+            child: const ResultsPanel(),
+          ),
 
-          // The Wave
-          Positioned.fill(child: waveWidget),
+          // 2. SIMULATION AREA (Flexible: Max 90% or Min 40%)
+          Expanded(
+            child: Stack(
+              children: [
+                Positioned.fill(child: CustomPaint(painter: GridPainter())),
+                Positioned.fill(child: waveWidget),
 
-          // Top Info Panel
-          const Positioned(top: 20, left: 20, right: 20, child: ResultsPanel()),
+                // Floating Action Button to toggle Dashboard
+                Positioned(
+                  bottom: 16,
+                  right: 16,
+                  child: FloatingActionButton.small(
+                    onPressed: () => setState(() => _isExpanded = !_isExpanded),
+                    backgroundColor: const Color(0xFF00E5FF),
+                    child: Icon(
+                      _isExpanded ? Icons.keyboard_arrow_down : Icons.settings,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
 
-          // Bottom Control Panel
-          const Positioned(
-            bottom: 30,
-            left: 20,
-            right: 20,
-            child: ControlPanel(),
+          // 3. COLLAPSIBLE CONTROL PANEL (50%)
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            height: _isExpanded ? MediaQuery.of(context).size.height * 0.5 : 0,
+            decoration: BoxDecoration(
+              color: const Color(0xFF040D17),
+              border: Border(
+                top: BorderSide(
+                  color: const Color(0xFF00E5FF).withValues(alpha: 0.2),
+                  width: 1,
+                ),
+              ),
+            ),
+            child: _isExpanded ? const ControlPanel() : null,
           ),
         ],
       ),
     );
-  }
-
-  String _getTitle(WaveMode mode) {
-    switch (mode) {
-      case WaveMode.simulation:
-        return 'Standard Waves';
-      case WaveMode.standing:
-        return 'Standing Waves (Harmonics)';
-      case WaveMode.interference:
-        return 'Wave Interference';
-      case WaveMode.doppler:
-        return 'Doppler Effect';
-    }
   }
 }
 

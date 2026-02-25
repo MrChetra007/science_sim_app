@@ -13,24 +13,24 @@ class InterferencePainter extends CustomPainter {
     final paint1 = Paint()
       ..color = const Color(0xFF00E5FF).withValues(alpha: 0.4)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.5;
+      ..strokeWidth = 3.0;
 
     final paint2 = Paint()
       ..color = const Color(0xFFFF5252)
           .withValues(alpha: 0.4) // Red for wave 2
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.5;
+      ..strokeWidth = 3.0;
 
     final resultantPaint = Paint()
       ..color = Colors.white
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 3.0;
+      ..strokeWidth = 5.0;
 
     final resGlowPaint = Paint()
       ..color = Colors.white.withValues(alpha: 0.3)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 8.0
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
+      ..strokeWidth = 12.0
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
 
     final path1 = Path();
     final path2 = Path();
@@ -38,7 +38,7 @@ class InterferencePainter extends CustomPainter {
 
     for (double x = 0; x <= size.width; x += 2) {
       final d1 = WaveSolver.calculateDisplacement(
-        amplitude: state.amplitude * 30,
+        amplitude: state.amplitude * 50,
         frequency: state.frequency,
         waveSpeed: state.waveSpeed,
         x: x / 20, // scale spatial
@@ -46,7 +46,7 @@ class InterferencePainter extends CustomPainter {
       );
 
       final d2 = WaveSolver.calculateDisplacement(
-        amplitude: state.secondaryAmplitude * 30,
+        amplitude: state.secondaryAmplitude * 50,
         frequency: state.secondaryFrequency,
         waveSpeed: state.waveSpeed,
         x: x / 20,

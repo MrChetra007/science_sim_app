@@ -30,7 +30,7 @@ class DopplerPainter extends CustomPainter {
     final pulsePaint = Paint()
       ..color = const Color(0xFF00E5FF).withValues(alpha: 0.5)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 4.0;
 
     // Emit pulses periodically
     const double pulseInterval = 0.5; // Emit every 0.5s
@@ -58,7 +58,7 @@ class DopplerPainter extends CustomPainter {
     }
 
     // Draw Source
-    canvas.drawCircle(Offset(sourceX, centerY), 10, sourcePaint);
+    canvas.drawCircle(Offset(sourceX, centerY), 15, sourcePaint);
 
     // Direction Indicator
     if (state.sourceVelocity.abs() > 0) {
