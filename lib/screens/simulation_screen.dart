@@ -61,9 +61,7 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
       case WaveMode.doppler:
         waveWidget = ProGate(
           featureName: 'Doppler Effect',
-          child: CustomPaint(
-            painter: DopplerPainter(state: WaveState(mode: WaveMode.doppler)),
-          ),
+          child: CustomPaint(painter: DopplerPainter(state: waveState)),
         );
         break;
       case WaveMode.simulation:

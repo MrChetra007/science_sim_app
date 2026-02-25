@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/wave_provider.dart';
 
@@ -132,7 +133,10 @@ class ControlPanel extends ConsumerWidget {
                       value: waveState.amplitude,
                       min: 0.1,
                       max: 5.0,
-                      onChanged: waveNotifier.setAmplitude,
+                      onChanged: (v) {
+                        waveNotifier.setAmplitude(v);
+                        HapticFeedback.selectionClick();
+                      },
                     ),
                     _buildSlider(
                       label: waveState.mode == WaveMode.interference
@@ -141,7 +145,10 @@ class ControlPanel extends ConsumerWidget {
                       value: waveState.frequency,
                       min: 0.1,
                       max: 20.0,
-                      onChanged: waveNotifier.setFrequency,
+                      onChanged: (v) {
+                        waveNotifier.setFrequency(v);
+                        HapticFeedback.selectionClick();
+                      },
                     ),
 
                     // Contextual Sliders

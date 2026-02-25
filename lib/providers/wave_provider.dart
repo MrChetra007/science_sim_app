@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:async';
+import '../services/audio_service.dart';
 
 enum WaveType { transverse, longitudinal }
 
@@ -27,6 +28,7 @@ class WaveState {
   final bool showGhost;
   final bool showVectors;
   final bool showOscilloscope;
+  final bool showLabels;
   final double timeScale;
   final bool isAudioEnabled;
 
@@ -48,6 +50,7 @@ class WaveState {
     this.showGhost = false,
     this.showVectors = false,
     this.showOscilloscope = false,
+    this.showLabels = false,
     this.timeScale = 1.0,
     this.isAudioEnabled = false,
   });
@@ -70,6 +73,7 @@ class WaveState {
     bool? showGhost,
     bool? showVectors,
     bool? showOscilloscope,
+    bool? showLabels,
     double? timeScale,
     bool? isAudioEnabled,
   }) {
@@ -91,6 +95,7 @@ class WaveState {
       showGhost: showGhost ?? this.showGhost,
       showVectors: showVectors ?? this.showVectors,
       showOscilloscope: showOscilloscope ?? this.showOscilloscope,
+      showLabels: showLabels ?? this.showLabels,
       timeScale: timeScale ?? this.timeScale,
       isAudioEnabled: isAudioEnabled ?? this.isAudioEnabled,
     );
@@ -116,6 +121,7 @@ class WaveState {
       showGhost: false,
       showVectors: showVectors,
       showOscilloscope: showOscilloscope,
+      showLabels: showLabels,
       timeScale: timeScale,
       isAudioEnabled: isAudioEnabled,
     );
@@ -170,6 +176,7 @@ class WaveNotifier extends StateNotifier<WaveState> {
   void toggleShowGhost() => state = state.copyWith(showGhost: !state.showGhost);
   void toggleOscilloscope() =>
       state = state.copyWith(showOscilloscope: !state.showOscilloscope);
+  void toggleLabels() => state = state.copyWith(showLabels: !state.showLabels);
 
   // Phase 5 actions
   void setTimeScale(double value) => state = state.copyWith(timeScale: value);
@@ -179,6 +186,7 @@ class WaveNotifier extends StateNotifier<WaveState> {
   @override
   void dispose() {
     _timer?.cancel();
+    audioService.stopTone();
     super.dispose();
   }
 }

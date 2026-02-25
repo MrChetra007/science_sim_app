@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:math';
+import '../providers/wave_provider.dart';
 
-class MathsDerivationSheet extends StatelessWidget {
+class MathsDerivationSheet extends ConsumerWidget {
   const MathsDerivationSheet({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(waveProvider);
+
+    // Live derived values
+    final omega = 2 * pi * state.frequency;
+    final wavelength = state.waveSpeed / state.frequency;
+    final k = 2 * pi / wavelength;
+
     return DraggableScrollableSheet(
       initialChildSize: 0.7,
       minChildSize: 0.5,
@@ -41,30 +51,48 @@ class MathsDerivationSheet extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Live simulation values injected below',
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.4),
+                        fontSize: 12,
+                      ),
+                    ),
                     const SizedBox(height: 24),
+
                     _section(
                       '1. The Wave Equation',
-                      'The general equation for a sinusoidal wave traveling in the positive x-direction is:',
-                      'y(x, t) = A sin(kx - ωt + φ)',
+                      'General equation for a sinusoidal wave:',
+                      'y(x, t) = ${state.amplitude.toStringAsFixed(2)} sin(${k.toStringAsFixed(2)}x - ${omega.toStringAsFixed(2)}t)',
+                      subtitle: 'y(x, t) = A sin(kx - ωt)',
                     ),
+
+                    if (state.mode == WaveMode.standing)
+                      _section(
+                        '2. Standing Wave Condition',
+                        'For a string of length L, the wavelength for harmonic n is λ = 2L/n.',
+                        'y(x, t) = [2(${state.amplitude.toStringAsFixed(2)}) sin(${k.toStringAsFixed(2)}x)] cos(${omega.toStringAsFixed(2)}t)',
+                        subtitle: 'y(x, t) = [2A sin(kx)] cos(ωt)',
+                      ),
+
                     _section(
-                      '2. Particle Velocity',
-                      'The velocity of a particle in the medium is the rate of change of its displacement with respect to time:',
-                      'v_y = ∂y/∂t = -Aω cos(kx - ωt + φ)',
+                      '3. Particle Velocity',
+                      'Rate of change of displacement (∂y/∂t):',
+                      'v_y = -${(state.amplitude * omega).toStringAsFixed(2)} cos(${k.toStringAsFixed(2)}x - ${omega.toStringAsFixed(2)}t)',
+                      subtitle: 'v_y = -Aω cos(kx - ωt)',
                     ),
+
                     _section(
-                      '3. Particle Acceleration',
-                      'The acceleration is the rate of change of velocity:',
-                      'a_y = ∂v_y/∂t = -Aω² sin(kx - ωt + φ)',
+                      '4. Wave Parameters',
+                      'Relationship between speed, frequency, and wavelength:',
+                      '${state.waveSpeed.toStringAsFixed(0)} = ${state.frequency.toStringAsFixed(1)} × ${wavelength.toStringAsFixed(2)}',
+                      subtitle: 'v = fλ',
                     ),
-                    _section(
-                      '4. Standing Waves',
-                      'Formed by the superposition of two waves of equal amplitude and frequency traveling in opposite directions:',
-                      'y(x, t) = [2A sin(kx)] cos(ωt)',
-                    ),
+
                     const Divider(color: Colors.white12, height: 40),
                     const Text(
-                      'Key Variables',
+                      'Current Values',
                       style: TextStyle(
                         color: Color(0xFF00E5FF),
                         fontSize: 18,
@@ -72,10 +100,30 @@ class MathsDerivationSheet extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    _variable('A', 'Amplitude (peak displacement)'),
-                    _variable('k', 'Wave Number (2π/λ)'),
-                    _variable('ω', 'Angular Frequency (2πf)'),
-                    _variable('φ', 'Phase Constant'),
+                    _variable(
+                      'A',
+                      '${state.amplitude.toStringAsFixed(2)} m (Amplitude)',
+                    ),
+                    _variable(
+                      'f',
+                      '${state.frequency.toStringAsFixed(1)} Hz (Frequency)',
+                    ),
+                    _variable(
+                      'v',
+                      '${state.waveSpeed.toStringAsFixed(0)} m/s (Speed)',
+                    ),
+                    _variable(
+                      'λ',
+                      '${wavelength.toStringAsFixed(2)} m (Wavelength)',
+                    ),
+                    _variable(
+                      'ω',
+                      '${omega.toStringAsFixed(2)} rad/s (Angular Freq)',
+                    ),
+                    _variable(
+                      'k',
+                      '${k.toStringAsFixed(2)} rad/m (Wave Number)',
+                    ),
                     const SizedBox(height: 40),
                   ],
                 ),
@@ -87,7 +135,12 @@ class MathsDerivationSheet extends StatelessWidget {
     );
   }
 
-  Widget _section(String title, String description, String formula) {
+  Widget _section(
+    String title,
+    String description,
+    String formula, {
+    String? subtitle,
+  }) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 32),
       child: Column(
@@ -101,11 +154,22 @@ class MathsDerivationSheet extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          if (subtitle != null) ...[
+            const SizedBox(height: 4),
+            Text(
+              subtitle,
+              style: const TextStyle(
+                color: Colors.white38,
+                fontSize: 12,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ],
           const SizedBox(height: 8),
           Text(
             description,
             style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.7),
+              color: Colors.white.withOpacity(0.7),
               fontSize: 14,
               height: 1.5,
             ),
@@ -115,7 +179,7 @@ class MathsDerivationSheet extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.05),
+              color: Colors.white.withOpacity(0.05),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: Colors.white10),
             ),
@@ -155,7 +219,7 @@ class MathsDerivationSheet extends StatelessWidget {
             child: Text(
               meaning,
               style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.7),
+                color: Colors.white.withOpacity(0.7),
                 fontSize: 14,
               ),
             ),
