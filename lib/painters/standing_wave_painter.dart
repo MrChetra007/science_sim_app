@@ -13,6 +13,17 @@ class StandingWavePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // 1. Paint GHOST wave if enabled
+    if (state.showGhost && state.ghostState != null) {
+      final ghostPaint = Paint()
+        ..color = waveColor.withValues(alpha: 0.2)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 3.0;
+
+      _paintStandingCurve(canvas, size, ghostPaint, state.ghostState!);
+    }
+
+    // 2. Paint PRIMARY wave
     final paint = Paint()
       ..color = waveColor
       ..style = PaintingStyle.stroke
@@ -24,21 +35,44 @@ class StandingWavePainter extends CustomPainter {
       ..strokeWidth = 9.0
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5);
 
-    final path = Path();
-    final glowPath = Path();
+    _paintStandingCurve(canvas, size, glowPaint, state);
+    _paintStandingCurve(canvas, size, paint, state);
 
+    // Draw nodes markers for PRIMARY wave
+    final nodePaint = Paint()
+      ..color = Colors.white.withValues(alpha: 0.5)
+      ..style = PaintingStyle.fill;
+
+    const double xPadding = 40.0;
+    final double simulationWidth = size.width - (2 * xPadding);
+    final wavelength = (2 * simulationWidth) / state.harmonic;
+    final centerY = size.height / 2;
+
+    for (int i = 0; i <= state.harmonic; i++) {
+      final nodeX = xPadding + (i * wavelength / 2);
+      canvas.drawCircle(Offset(nodeX, centerY), 4, nodePaint);
+    }
+  }
+
+  void _paintStandingCurve(
+    Canvas canvas,
+    Size size,
+    Paint paint,
+    WaveState targetState,
+  ) {
+    final path = Path();
     final centerY = size.height / 2;
     const double xPadding = 40.0;
     final double simulationWidth = size.width - (2 * xPadding);
 
-    for (double x = 0; x <= simulationWidth; x += 1) {
+    for (double x = 0; x <= simulationWidth; x += 2) {
       final displacement = WaveSolver.calculateStandingWaveDisplacement(
-        amplitude: state.amplitude * 70, // Bigger waves
-        frequency: state.frequency,
+        amplitude: targetState.amplitude * 70,
+        frequency: targetState.frequency,
         length: simulationWidth,
-        harmonic: state.harmonic,
+        harmonic: targetState.harmonic,
         x: x,
-        t: state.currentTime,
+        t: targetState.currentTime,
       );
 
       final screenX = x + xPadding;
@@ -46,25 +80,10 @@ class StandingWavePainter extends CustomPainter {
 
       if (x == 0) {
         path.moveTo(screenX, screenY);
-        glowPath.moveTo(screenX, screenY);
       } else {
         path.lineTo(screenX, screenY);
-        glowPath.lineTo(screenX, screenY);
       }
     }
-
-    // Draw nodes markers
-    final nodePaint = Paint()
-      ..color = Colors.white.withValues(alpha: 0.5)
-      ..style = PaintingStyle.fill;
-
-    final wavelength = (2 * simulationWidth) / state.harmonic;
-    for (int i = 0; i <= state.harmonic; i++) {
-      final nodeX = xPadding + (i * wavelength / 2);
-      canvas.drawCircle(Offset(nodeX, centerY), 4, nodePaint);
-    }
-
-    canvas.drawPath(glowPath, glowPaint);
     canvas.drawPath(path, paint);
   }
 
@@ -72,6 +91,7 @@ class StandingWavePainter extends CustomPainter {
   bool shouldRepaint(covariant StandingWavePainter oldDelegate) {
     return oldDelegate.state.currentTime != state.currentTime ||
         oldDelegate.state.harmonic != state.harmonic ||
-        oldDelegate.state.amplitude != state.amplitude;
+        oldDelegate.state.amplitude != state.amplitude ||
+        oldDelegate.state.showGhost != state.showGhost;
   }
 }

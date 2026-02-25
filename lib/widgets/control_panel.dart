@@ -164,6 +164,8 @@ class ControlPanel extends ConsumerWidget {
                         max: 1500,
                         onChanged: waveNotifier.setWaveSpeed,
                       ),
+                    const Divider(color: Colors.white12, height: 24),
+                    _buildEducationTools(waveState, waveNotifier),
                   ],
                 ),
               ),
@@ -171,6 +173,74 @@ class ControlPanel extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildEducationTools(WaveState state, WaveNotifier notifier) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'EDUCATION TOOLS',
+          style: TextStyle(
+            color: Colors.white38,
+            fontSize: 10,
+            letterSpacing: 1.2,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            // Ghost Mode Buttons
+            if (state.ghostState == null)
+              ElevatedButton.icon(
+                onPressed: notifier.captureGhost,
+                icon: const Icon(Icons.copy, size: 16),
+                label: const Text('Capture Ghost'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white10,
+                  foregroundColor: Colors.white,
+                  textStyle: const TextStyle(fontSize: 11),
+                ),
+              )
+            else ...[
+              ElevatedButton.icon(
+                onPressed: notifier.resetGhost,
+                icon: const Icon(Icons.clear, size: 16),
+                label: const Text('Clear Ghost'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.redAccent.withValues(alpha: 0.2),
+                  foregroundColor: Colors.white,
+                  textStyle: const TextStyle(fontSize: 11),
+                ),
+              ),
+              FilterChip(
+                label: const Text('Show Ghost'),
+                selected: state.showGhost,
+                onSelected: (_) => notifier.toggleShowGhost(),
+                selectedColor: const Color(0xFF00E5FF),
+                labelStyle: TextStyle(
+                  color: state.showGhost ? Colors.black : Colors.white,
+                  fontSize: 11,
+                ),
+              ),
+            ],
+            // Vector Toggles
+            FilterChip(
+              label: const Text('Show Vectors (v/a)'),
+              selected: state.showVectors,
+              onSelected: (_) => notifier.toggleVectors(),
+              selectedColor: const Color(0xFF00E5FF),
+              labelStyle: TextStyle(
+                color: state.showVectors ? Colors.black : Colors.white,
+                fontSize: 11,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 

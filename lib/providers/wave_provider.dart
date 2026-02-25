@@ -22,6 +22,11 @@ class WaveState {
   final double secondaryFrequency; // for interference
   final double sourceVelocity; // for doppler
 
+  // Phase 4/6 Education features
+  final WaveState? ghostState;
+  final bool showGhost;
+  final bool showVectors;
+
   WaveState({
     this.amplitude = 1.0,
     this.frequency = 1.0,
@@ -36,6 +41,9 @@ class WaveState {
     this.secondaryAmplitude = 1.0,
     this.secondaryFrequency = 1.0,
     this.sourceVelocity = 0.0,
+    this.ghostState,
+    this.showGhost = false,
+    this.showVectors = false,
   });
 
   WaveState copyWith({
@@ -52,6 +60,9 @@ class WaveState {
     double? secondaryAmplitude,
     double? secondaryFrequency,
     double? sourceVelocity,
+    WaveState? ghostState,
+    bool? showGhost,
+    bool? showVectors,
   }) {
     return WaveState(
       amplitude: amplitude ?? this.amplitude,
@@ -67,6 +78,31 @@ class WaveState {
       secondaryAmplitude: secondaryAmplitude ?? this.secondaryAmplitude,
       secondaryFrequency: secondaryFrequency ?? this.secondaryFrequency,
       sourceVelocity: sourceVelocity ?? this.sourceVelocity,
+      ghostState: ghostState ?? this.ghostState,
+      showGhost: showGhost ?? this.showGhost,
+      showVectors: showVectors ?? this.showVectors,
+    );
+  }
+
+  // Helper to null out ghostState
+  WaveState clearGhost() {
+    return WaveState(
+      amplitude: amplitude,
+      frequency: frequency,
+      waveSpeed: waveSpeed,
+      phaseDifference: phaseDifference,
+      isDampingEnabled: isDampingEnabled,
+      waveType: waveType,
+      currentTime: currentTime,
+      isPaused: isPaused,
+      mode: mode,
+      harmonic: harmonic,
+      secondaryAmplitude: secondaryAmplitude,
+      secondaryFrequency: secondaryFrequency,
+      sourceVelocity: sourceVelocity,
+      ghostState: null,
+      showGhost: false,
+      showVectors: showVectors,
     );
   }
 }
@@ -107,6 +143,14 @@ class WaveNotifier extends StateNotifier<WaveState> {
       state = state.copyWith(secondaryFrequency: value);
   void setSourceVelocity(double value) =>
       state = state.copyWith(sourceVelocity: value);
+
+  // Phase 4/6 actions
+  void captureGhost() =>
+      state = state.copyWith(ghostState: state, showGhost: true);
+  void resetGhost() => state = state.clearGhost();
+  void toggleVectors() =>
+      state = state.copyWith(showVectors: !state.showVectors);
+  void toggleShowGhost() => state = state.copyWith(showGhost: !state.showGhost);
 
   @override
   void dispose() {

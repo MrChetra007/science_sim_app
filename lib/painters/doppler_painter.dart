@@ -8,64 +8,70 @@ class DopplerPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // 1. Paint GHOST scene if enabled
+    if (state.showGhost && state.ghostState != null) {
+      _paintDopplerScene(canvas, size, state.ghostState!, isGhost: true);
+    }
+
+    // 2. Paint PRIMARY scene
+    _paintDopplerScene(canvas, size, state, isGhost: false);
+  }
+
+  void _paintDopplerScene(
+    Canvas canvas,
+    Size size,
+    WaveState targetState, {
+    required bool isGhost,
+  }) {
     final centerX = size.width / 2;
     final centerY = size.height / 2;
-
-    // Source position moves based on time and sourceVelocity
-    // Wrap around for continuous animation
     final double range = size.width * 0.6;
-    final double timeScale = state.currentTime % 5.0; // 5 second loop
-    double sourceX =
-        centerX - (range / 2) + (state.sourceVelocity * timeScale * 10);
 
-    // Bounds check/Wrap
+    // For Ghost, use its specific currentTime
+    final double timeScale = targetState.currentTime % 5.0;
+    double sourceX =
+        centerX - (range / 2) + (targetState.sourceVelocity * timeScale * 10);
     sourceX =
         ((sourceX - (centerX - range / 2)) % range) + (centerX - range / 2);
 
     final sourcePaint = Paint()
-      ..color =
-          const Color(0xFFFFEB3B) // Yellow for source
+      ..color = const Color(0xFFFFEB3B).withValues(alpha: isGhost ? 0.2 : 1.0)
       ..style = PaintingStyle.fill;
 
     final pulsePaint = Paint()
-      ..color = const Color(0xFF00E5FF).withValues(alpha: 0.5)
+      ..color = const Color(0xFF00E5FF).withValues(alpha: isGhost ? 0.1 : 0.5)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 4.0;
+      ..strokeWidth = isGhost ? 2.0 : 4.0;
 
-    // Emit pulses periodically
-    const double pulseInterval = 0.5; // Emit every 0.5s
+    // Pulse Emission logic
+    const double pulseInterval = 0.5;
     for (double t = 0; t < 5.0; t += pulseInterval) {
-      final double age = (state.currentTime - t) % 5.0;
+      final double age = (targetState.currentTime - t) % 5.0;
       if (age < 0) continue;
 
-      // Where was the source when this pulse was emitted?
-      double emitTime = state.currentTime - age;
+      double emitTime = targetState.currentTime - age;
       double emittedX =
           centerX -
           (range / 2) +
-          (state.sourceVelocity * (emitTime % 5.0) * 10);
+          (targetState.sourceVelocity * (emitTime % 5.0) * 10);
       emittedX =
           ((emittedX - (centerX - range / 2)) % range) + (centerX - range / 2);
 
-      // Pulse radius grows based on waveSpeed
-      final double radius = age * (state.waveSpeed / 10);
-
+      final double radius = age * (targetState.waveSpeed / 10);
       if (radius < size.width) {
-        // Draw the pulse (expanding circle)
-        // Correct Doppler effect: the circles represent wavefronts
         canvas.drawCircle(Offset(emittedX, centerY), radius, pulsePaint);
       }
     }
 
-    // Draw Source
-    canvas.drawCircle(Offset(sourceX, centerY), 15, sourcePaint);
+    // Source
+    canvas.drawCircle(Offset(sourceX, centerY), isGhost ? 10 : 15, sourcePaint);
 
-    // Direction Indicator
-    if (state.sourceVelocity.abs() > 0) {
+    // Direction Indicator (Primary only)
+    if (!isGhost && targetState.sourceVelocity.abs() > 0) {
       final arrowPaint = Paint()
         ..color = Colors.white
         ..strokeWidth = 2;
-      double dir = state.sourceVelocity > 0 ? 1 : -1;
+      double dir = targetState.sourceVelocity > 0 ? 1 : -1;
       canvas.drawLine(
         Offset(sourceX, centerY),
         Offset(sourceX + (20 * dir), centerY),
@@ -75,5 +81,10 @@ class DopplerPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant DopplerPainter oldDelegate) => true;
+  bool shouldRepaint(covariant DopplerPainter oldDelegate) {
+    return oldDelegate.state.currentTime != state.currentTime ||
+        oldDelegate.state.sourceVelocity != state.sourceVelocity ||
+        oldDelegate.state.waveSpeed != state.waveSpeed ||
+        oldDelegate.state.showGhost != state.showGhost;
+  }
 }

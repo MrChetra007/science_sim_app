@@ -22,6 +22,40 @@ class WaveSolver {
     return amplitude * sin(k * x - omega * t + phi);
   }
 
+  /// Calculate particle velocity vy at position x and time t:
+  /// vy = -A * omega * cos(k*x - omega*t + phi)
+  static double calculateVelocity({
+    required double amplitude,
+    required double frequency,
+    required double waveSpeed,
+    required double x,
+    required double t,
+    double phi = 0,
+  }) {
+    final double wavelength = waveSpeed / frequency;
+    final double k = 2 * pi / wavelength;
+    final double omega = 2 * pi * frequency;
+
+    return -amplitude * omega * cos(k * x - omega * t + phi);
+  }
+
+  /// Calculate particle acceleration ay at position x and time t:
+  /// ay = -A * omega^2 * sin(k*x - omega*t + phi)
+  static double calculateAcceleration({
+    required double amplitude,
+    required double frequency,
+    required double waveSpeed,
+    required double x,
+    required double t,
+    double phi = 0,
+  }) {
+    final double wavelength = waveSpeed / frequency;
+    final double k = 2 * pi / wavelength;
+    final double omega = 2 * pi * frequency;
+
+    return -amplitude * pow(omega, 2) * sin(k * x - omega * t + phi);
+  }
+
   /// Calculate wavelength from speed and frequency: lambda = v / f
   static double calculateWavelength(double waveSpeed, double frequency) {
     if (frequency == 0) {
