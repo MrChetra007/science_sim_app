@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'screens/simulation_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: PhysicsShotApp()));
@@ -72,27 +73,6 @@ class HomeScreen extends StatelessWidget {
               child: const Text('Start Simulation'),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class SimulationScreen extends ConsumerWidget {
-  const SimulationScreen({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Simulation'),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: const Center(
-        child: Text(
-          'Simulation Canvas Coming Soon',
-          style: TextStyle(color: Colors.white),
         ),
       ),
     );
