@@ -34,122 +34,9 @@ class WavePainter extends CustomPainter {
       if (state.showVectors) {
         _paintVectors(canvas, size, state);
       }
-      if (state.showLabels) {
-        _paintLabels(canvas, size, state);
-      }
     } else {
       _paintLongitudinal(canvas, size, paint);
     }
-  }
-
-  void _paintLabels(Canvas canvas, Size size, WaveState targetState) {
-    final centerY = size.height / 2;
-    final double visualAmplitude = targetState.amplitude * 80;
-    final wavelength = targetState.waveSpeed / targetState.frequency;
-    final visualWavelength = (wavelength / 10) * size.width;
-
-    final textStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 10,
-      fontWeight: FontWeight.bold,
-      backgroundColor: Colors.black45,
-    );
-
-    // 1. Draw Amplitude (A) Label
-    // Find a peak near the center
-    final peakX = size.width * 0.25;
-    final arrowPaint = Paint()
-      ..color = Colors.amberAccent
-      ..strokeWidth = 2.0;
-
-    canvas.drawLine(
-      Offset(peakX, centerY),
-      Offset(peakX, centerY - visualAmplitude),
-      arrowPaint,
-    );
-    _drawText(
-      canvas,
-      'A',
-      Offset(peakX + 5, centerY - visualAmplitude / 2),
-      textStyle,
-    );
-
-    // 2. Draw Wavelength (λ) Label
-    if (visualWavelength < size.width) {
-      final startX = size.width * 0.5;
-      final endX = startX + visualWavelength;
-      final lineY = centerY + visualAmplitude + 20;
-
-      canvas.drawLine(Offset(startX, lineY), Offset(endX, lineY), arrowPaint);
-      // Small ticks
-      canvas.drawLine(
-        Offset(startX, lineY - 5),
-        Offset(startX, lineY + 5),
-        arrowPaint,
-      );
-      canvas.drawLine(
-        Offset(endX, lineY - 5),
-        Offset(endX, lineY + 5),
-        arrowPaint,
-      );
-
-      _drawText(
-        canvas,
-        'λ = ${wavelength.toStringAsFixed(1)}m',
-        Offset(startX + visualWavelength / 2 - 20, lineY + 5),
-        textStyle,
-      );
-    }
-
-    // 3. Draw Velocity (v) and Frequency (f) Labels
-    final vX = size.width - 60;
-    final vY = 40.0;
-    _drawHorizontalArrow(
-      canvas,
-      Offset(vX - 20, vY),
-      40,
-      Colors.cyanAccent,
-      2.0,
-    );
-    _drawText(
-      canvas,
-      'v = ${targetState.waveSpeed.toInt()}m/s',
-      Offset(vX - 20, vY - 20),
-      textStyle,
-    );
-    _drawText(
-      canvas,
-      'f = ${targetState.frequency.toStringAsFixed(1)}Hz',
-      Offset(vX - 20, vY + 10),
-      textStyle,
-    );
-  }
-
-  void _drawText(Canvas canvas, String text, Offset position, TextStyle style) {
-    final tp = TextPainter(
-      text: TextSpan(text: text, style: style),
-      textDirection: TextDirection.ltr,
-    );
-    tp.layout();
-    tp.paint(canvas, position);
-  }
-
-  void _drawHorizontalArrow(
-    Canvas canvas,
-    Offset origin,
-    double length,
-    Color color,
-    double width,
-  ) {
-    final paint = Paint()
-      ..color = color
-      ..strokeWidth = width;
-    final end = Offset(origin.dx + length, origin.dy);
-    canvas.drawLine(origin, end, paint);
-
-    final headSize = 5.0;
-    canvas.drawLine(end, Offset(end.dx - headSize, end.dy - headSize), paint);
-    canvas.drawLine(end, Offset(end.dx - headSize, end.dy + headSize), paint);
   }
 
   void _paintTransverse(
@@ -307,7 +194,6 @@ class WavePainter extends CustomPainter {
         oldDelegate.state.waveSpeed != state.waveSpeed ||
         oldDelegate.state.waveType != state.waveType ||
         oldDelegate.state.showGhost != state.showGhost ||
-        oldDelegate.state.showVectors != state.showVectors ||
-        oldDelegate.state.showLabels != state.showLabels;
+        oldDelegate.state.showVectors != state.showVectors;
   }
 }

@@ -279,17 +279,6 @@ class ControlPanel extends ConsumerWidget {
                 ),
               ),
             ],
-            // Labels Toggle
-            FilterChip(
-              label: const Text('Labels'),
-              selected: state.showLabels,
-              onSelected: (_) => notifier.toggleLabels(),
-              selectedColor: const Color(0xFF00E5FF),
-              labelStyle: TextStyle(
-                color: state.showLabels ? Colors.black : Colors.white,
-                fontSize: 11,
-              ),
-            ),
             // Vector Toggles
             FilterChip(
               label: const Text('Show Vectors (v/a)'),
