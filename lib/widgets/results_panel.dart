@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/wave_provider.dart';
 import '../physics/wave_solver.dart';
+import 'maths_derivation_sheet.dart';
 
 class ResultsPanel extends ConsumerWidget {
   const ResultsPanel({super.key});
@@ -41,6 +42,28 @@ class ResultsPanel extends ConsumerWidget {
                   children: _buildMetricsHUD(state, wavelength, period),
                 ),
               ),
+            ),
+            const VerticalDivider(color: Colors.white12, width: 24),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (context) => const MathsDerivationSheet(),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.functions,
+                    color: Color(0xFF00E5FF),
+                    size: 20,
+                  ),
+                  tooltip: 'Math Derivations',
+                ),
+              ],
             ),
           ],
         ),

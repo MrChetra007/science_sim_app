@@ -6,6 +6,7 @@ import '../painters/interference_painter.dart';
 import '../painters/doppler_painter.dart';
 import '../widgets/control_panel.dart';
 import '../widgets/results_panel.dart';
+import '../widgets/oscilloscope_panel.dart';
 import '../providers/wave_provider.dart';
 
 class SimulationScreen extends ConsumerStatefulWidget {
@@ -58,6 +59,80 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
               children: [
                 Positioned.fill(child: CustomPaint(painter: GridPainter())),
                 Positioned.fill(child: waveWidget),
+
+                // Oscilloscope Overlay
+                if (waveState.showOscilloscope)
+                  Positioned(
+                    top: 16,
+                    left: 16,
+                    right: 16,
+                    height: 180,
+                    child: const OscilloscopePanel(),
+                  ),
+
+                // Ghost Mode Quick Controls
+                Positioned(
+                  top: 16,
+                  right: 16,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      if (waveState.ghostState != null) ...[
+                        Row(
+                          children: [
+                            Material(
+                              color: Colors.black45,
+                              borderRadius: BorderRadius.circular(8),
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(8),
+                                onTap: () => ref
+                                    .read(waveProvider.notifier)
+                                    .toggleShowGhost(),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 4,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        waveState.showGhost
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: const Color(0xFF00E5FF),
+                                        size: 16,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      const Text(
+                                        'GHOST',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            IconButton.filled(
+                              onPressed: () =>
+                                  ref.read(waveProvider.notifier).resetGhost(),
+                              style: IconButton.styleFrom(
+                                backgroundColor: Colors.redAccent.withValues(
+                                  alpha: 0.3,
+                                ),
+                              ),
+                              icon: const Icon(Icons.close, size: 16),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
 
                 // Floating Action Button to toggle Dashboard
                 Positioned(

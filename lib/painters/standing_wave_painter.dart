@@ -38,6 +38,11 @@ class StandingWavePainter extends CustomPainter {
     _paintStandingCurve(canvas, size, glowPaint, state);
     _paintStandingCurve(canvas, size, paint, state);
 
+    // 3. Paint VECTORS if enabled
+    if (state.showVectors) {
+      _paintVectors(canvas, size, state);
+    }
+
     // Draw nodes markers for PRIMARY wave
     final nodePaint = Paint()
       ..color = Colors.white.withValues(alpha: 0.5)
@@ -52,6 +57,83 @@ class StandingWavePainter extends CustomPainter {
       final nodeX = xPadding + (i * wavelength / 2);
       canvas.drawCircle(Offset(nodeX, centerY), 4, nodePaint);
     }
+  }
+
+  void _paintVectors(Canvas canvas, Size size, WaveState targetState) {
+    final centerY = size.height / 2;
+    const double xPadding = 40.0;
+    final double simulationWidth = size.width - (2 * xPadding);
+
+    // Draw vectors every N pixels along the simulation width
+    const double step = 60.0;
+    for (double x = 30; x < simulationWidth; x += step) {
+      final displacement = WaveSolver.calculateStandingWaveDisplacement(
+        amplitude: targetState.amplitude * 70,
+        frequency: targetState.frequency,
+        length: simulationWidth,
+        harmonic: targetState.harmonic,
+        x: x,
+        t: targetState.currentTime,
+      );
+
+      final velocity = WaveSolver.calculateStandingWaveVelocity(
+        amplitude: targetState.amplitude * 70,
+        frequency: targetState.frequency,
+        length: simulationWidth,
+        harmonic: targetState.harmonic,
+        x: x,
+        t: targetState.currentTime,
+      );
+
+      final acceleration = WaveSolver.calculateStandingWaveAcceleration(
+        amplitude: targetState.amplitude * 70,
+        frequency: targetState.frequency,
+        length: simulationWidth,
+        harmonic: targetState.harmonic,
+        x: x,
+        t: targetState.currentTime,
+      );
+
+      final origin = Offset(x + xPadding, centerY + displacement);
+
+      // Velocity Vector (Green) - scaled for visibility
+      _drawArrow(canvas, origin, -velocity * 0.1, Colors.greenAccent, 2.0);
+
+      // Acceleration Vector (Red) - scaled for visibility
+      _drawArrow(canvas, origin, -acceleration * 0.01, Colors.redAccent, 2.0);
+    }
+  }
+
+  void _drawArrow(
+    Canvas canvas,
+    Offset origin,
+    double lengthDisplacement,
+    Color color,
+    double width,
+  ) {
+    if (lengthDisplacement.abs() < 2) return; // Don't draw tiny arrows
+
+    final arrowPaint = Paint()
+      ..color = color
+      ..strokeWidth = width;
+
+    final end = Offset(origin.dx, origin.dy - lengthDisplacement);
+    canvas.drawLine(origin, end, arrowPaint);
+
+    // Arrow head
+    final double headSize = 5.0;
+    final double dir = lengthDisplacement > 0 ? 1 : -1;
+
+    canvas.drawLine(
+      end,
+      Offset(end.dx - headSize, end.dy + dir * headSize),
+      arrowPaint,
+    );
+    canvas.drawLine(
+      end,
+      Offset(end.dx + headSize, end.dy + dir * headSize),
+      arrowPaint,
+    );
   }
 
   void _paintStandingCurve(
@@ -92,6 +174,7 @@ class StandingWavePainter extends CustomPainter {
     return oldDelegate.state.currentTime != state.currentTime ||
         oldDelegate.state.harmonic != state.harmonic ||
         oldDelegate.state.amplitude != state.amplitude ||
-        oldDelegate.state.showGhost != state.showGhost;
+        oldDelegate.state.showGhost != state.showGhost ||
+        oldDelegate.state.showVectors != state.showVectors;
   }
 }

@@ -72,8 +72,6 @@ class WaveSolver {
     return 1 / frequency;
   }
 
-  /// Calculate standing wave displacement for the n-th harmonic
-  /// y(x, t) = 2 * A * sin(k*x) * cos(omega*t)
   static double calculateStandingWaveDisplacement({
     required double amplitude,
     required double frequency,
@@ -88,6 +86,40 @@ class WaveSolver {
     final double omega = 2 * pi * frequency;
 
     return 2 * amplitude * sin(k * x) * cos(omega * t);
+  }
+
+  /// Calculate standing wave velocity vy at position x and time t:
+  /// vy = -2 * A * omega * sin(k*x) * sin(omega*t)
+  static double calculateStandingWaveVelocity({
+    required double amplitude,
+    required double frequency,
+    required double length,
+    required int harmonic,
+    required double x,
+    required double t,
+  }) {
+    final double wavelength = (2 * length) / harmonic;
+    final double k = 2 * pi / wavelength;
+    final double omega = 2 * pi * frequency;
+
+    return -2 * amplitude * omega * sin(k * x) * sin(omega * t);
+  }
+
+  /// Calculate standing wave acceleration ay at position x and time t:
+  /// ay = -2 * A * omega^2 * sin(k*x) * cos(omega*t)
+  static double calculateStandingWaveAcceleration({
+    required double amplitude,
+    required double frequency,
+    required double length,
+    required int harmonic,
+    required double x,
+    required double t,
+  }) {
+    final double wavelength = (2 * length) / harmonic;
+    final double k = 2 * pi / wavelength;
+    final double omega = 2 * pi * frequency;
+
+    return -2 * amplitude * pow(omega, 2) * sin(k * x) * cos(omega * t);
   }
 
   /// Calculate Doppler frequency shift: f' = f * (v / (v - vs))

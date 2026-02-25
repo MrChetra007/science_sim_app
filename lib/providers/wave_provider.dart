@@ -26,6 +26,7 @@ class WaveState {
   final WaveState? ghostState;
   final bool showGhost;
   final bool showVectors;
+  final bool showOscilloscope;
 
   WaveState({
     this.amplitude = 1.0,
@@ -44,6 +45,7 @@ class WaveState {
     this.ghostState,
     this.showGhost = false,
     this.showVectors = false,
+    this.showOscilloscope = false,
   });
 
   WaveState copyWith({
@@ -63,6 +65,7 @@ class WaveState {
     WaveState? ghostState,
     bool? showGhost,
     bool? showVectors,
+    bool? showOscilloscope,
   }) {
     return WaveState(
       amplitude: amplitude ?? this.amplitude,
@@ -81,6 +84,7 @@ class WaveState {
       ghostState: ghostState ?? this.ghostState,
       showGhost: showGhost ?? this.showGhost,
       showVectors: showVectors ?? this.showVectors,
+      showOscilloscope: showOscilloscope ?? this.showOscilloscope,
     );
   }
 
@@ -103,6 +107,7 @@ class WaveState {
       ghostState: null,
       showGhost: false,
       showVectors: showVectors,
+      showOscilloscope: showOscilloscope,
     );
   }
 }
@@ -151,6 +156,8 @@ class WaveNotifier extends StateNotifier<WaveState> {
   void toggleVectors() =>
       state = state.copyWith(showVectors: !state.showVectors);
   void toggleShowGhost() => state = state.copyWith(showGhost: !state.showGhost);
+  void toggleOscilloscope() =>
+      state = state.copyWith(showOscilloscope: !state.showOscilloscope);
 
   @override
   void dispose() {

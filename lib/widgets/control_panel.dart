@@ -238,6 +238,17 @@ class ControlPanel extends ConsumerWidget {
                 fontSize: 11,
               ),
             ),
+            // Oscilloscope Toggle
+            FilterChip(
+              label: const Text('Oscilloscope'),
+              selected: state.showOscilloscope,
+              onSelected: (_) => notifier.toggleOscilloscope(),
+              selectedColor: const Color(0xFF00E5FF),
+              labelStyle: TextStyle(
+                color: state.showOscilloscope ? Colors.black : Colors.white,
+                fontSize: 11,
+              ),
+            ),
           ],
         ),
       ],
