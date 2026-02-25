@@ -13,37 +13,95 @@ class ControlPanel extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.5),
-        border: Border.all(color: const Color(0xFF00E5FF).withOpacity(0.3)),
+        color: Colors.black.withValues(alpha: 0.5),
+        border: Border.all(
+          color: const Color(0xFF00E5FF).withValues(alpha: 0.3),
+        ),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildWaveTypeToggle(waveState, waveNotifier),
+          _buildModeToggle(waveState, waveNotifier),
           const Divider(color: Colors.white24),
+          if (waveState.mode == WaveMode.simulation ||
+              waveState.mode == WaveMode.interference)
+            _buildWaveTypeToggle(waveState, waveNotifier),
+
           _buildSlider(
-            label: 'Amplitude (A)',
+            label: waveState.mode == WaveMode.interference
+                ? 'Wave 1 Amplitude'
+                : 'Amplitude (A)',
             value: waveState.amplitude,
             min: 0.1,
             max: 5.0,
             onChanged: waveNotifier.setAmplitude,
           ),
           _buildSlider(
-            label: 'Frequency (f)',
+            label: waveState.mode == WaveMode.interference
+                ? 'Wave 1 Frequency'
+                : 'Frequency (f)',
             value: waveState.frequency,
             min: 0.1,
             max: 20.0,
             onChanged: waveNotifier.setFrequency,
           ),
-          _buildSlider(
-            label: 'Wave Speed (v)',
-            value: waveState.waveSpeed,
-            min: 100,
-            max: 1500,
-            onChanged: waveNotifier.setWaveSpeed,
-          ),
+
+          // Contextual Sliders
+          if (waveState.mode == WaveMode.standing)
+            _buildSlider(
+              label: 'Harmonic (n)',
+              value: waveState.harmonic.toDouble(),
+              min: 1,
+              max: 6,
+              onChanged: (v) => waveNotifier.setHarmonic(v.toInt()),
+            ),
+
+          if (waveState.mode == WaveMode.interference) ...[
+            _buildSlider(
+              label: 'Wave 2 Amplitude',
+              value: waveState.secondaryAmplitude,
+              min: 0.1,
+              max: 5.0,
+              onChanged: waveNotifier.setSecondaryAmplitude,
+            ),
+            _buildSlider(
+              label: 'Wave 2 Frequency',
+              value: waveState.secondaryFrequency,
+              min: 0.1,
+              max: 20.0,
+              onChanged: waveNotifier.setSecondaryFrequency,
+            ),
+            _buildSlider(
+              label: 'Phase Diff (φ)',
+              value: waveState.phaseDifference,
+              min: 0,
+              max: 6.28,
+              onChanged: waveNotifier.setPhaseDifference,
+            ),
+          ],
+
+          if (waveState.mode == WaveMode.doppler)
+            _buildSlider(
+              label: 'Source Velocity (vs)',
+              value: waveState.sourceVelocity,
+              min: -50,
+              max: 50,
+              onChanged: waveNotifier.setSourceVelocity,
+            ),
+
+          if (waveState.mode == WaveMode.simulation ||
+              waveState.mode == WaveMode.interference ||
+              waveState.mode == WaveMode.doppler)
+            _buildSlider(
+              label: 'Wave Speed (v)',
+              value: waveState.waveSpeed,
+              min: 100,
+              max: 1500,
+              onChanged: waveNotifier.setWaveSpeed,
+            ),
+
           const SizedBox(height: 10),
           Row(
             children: [
@@ -61,6 +119,29 @@ class ControlPanel extends ConsumerWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildModeToggle(WaveState state, WaveNotifier notifier) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: WaveMode.values.map((mode) {
+          return Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: ChoiceChip(
+              label: Text(mode.name[0].toUpperCase() + mode.name.substring(1)),
+              selected: state.mode == mode,
+              onSelected: (_) => notifier.setMode(mode),
+              selectedColor: const Color(0xFF00E5FF),
+              labelStyle: TextStyle(
+                color: state.mode == mode ? Colors.black : Colors.white,
+                fontSize: 12,
+              ),
+            ),
+          );
+        }).toList(),
       ),
     );
   }

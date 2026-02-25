@@ -24,13 +24,17 @@ class WaveSolver {
 
   /// Calculate wavelength from speed and frequency: lambda = v / f
   static double calculateWavelength(double waveSpeed, double frequency) {
-    if (frequency == 0) return 0;
+    if (frequency == 0) {
+      return 0;
+    }
     return waveSpeed / frequency;
   }
 
   /// Calculate period: T = 1 / f
   static double calculatePeriod(double frequency) {
-    if (frequency == 0) return 0;
+    if (frequency == 0) {
+      return 0;
+    }
     return 1 / frequency;
   }
 
@@ -50,5 +54,18 @@ class WaveSolver {
     final double omega = 2 * pi * frequency;
 
     return 2 * amplitude * sin(k * x) * cos(omega * t);
+  }
+
+  /// Calculate Doppler frequency shift: f' = f * (v / (v - vs))
+  /// vs > 0 means source moving towards observer
+  static double calculateDopplerFrequency({
+    required double sourceFrequency,
+    required double waveSpeed,
+    required double sourceVelocity,
+  }) {
+    if (waveSpeed == sourceVelocity) {
+      return sourceFrequency * 10; // Avoid infinity
+    }
+    return sourceFrequency * (waveSpeed / (waveSpeed - sourceVelocity));
   }
 }

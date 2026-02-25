@@ -14,7 +14,7 @@ class WavePainter extends CustomPainter {
     final paint = Paint()
       ..color = waveColor
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 4.0;
 
     if (state.waveType == WaveType.transverse) {
       _paintTransverse(canvas, size, paint);
@@ -27,8 +27,8 @@ class WavePainter extends CustomPainter {
     final path = Path();
     final centerY = size.height / 2;
 
-    // Scale amplitude to fit screen (A=1.0 is ~50 pixels)
-    final double visualAmplitude = state.amplitude * 50;
+    // Scale amplitude to fit screen (A=1.0 is ~80 pixels)
+    final double visualAmplitude = state.amplitude * 80;
 
     for (double x = 0; x <= size.width; x++) {
       // In physics, x is distance. We need to map screen pixels to meters.
@@ -68,7 +68,7 @@ class WavePainter extends CustomPainter {
       final double physicalX = (x / size.width) * 10;
 
       final xDisplacement = WaveSolver.calculateDisplacement(
-        amplitude: state.amplitude * 20, // Smaller visual displacement for dots
+        amplitude: state.amplitude * 40, // Bigger displacement
         frequency: state.frequency,
         waveSpeed: state.waveSpeed / 10,
         x: physicalX,
@@ -78,9 +78,10 @@ class WavePainter extends CustomPainter {
       canvas.drawCircle(
         Offset(
           x + xDisplacement,
-          centerY + (Random(i).nextDouble() - 0.5) * 40,
+          centerY +
+              (Random(i).nextDouble() - 0.5) * 60, // Wider vertical spread
         ),
-        2.0,
+        3.0, // Bigger dot
         paint..style = PaintingStyle.fill,
       );
     }
