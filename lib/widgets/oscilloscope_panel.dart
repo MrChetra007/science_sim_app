@@ -96,15 +96,15 @@ class OscilloscopePanel extends ConsumerWidget {
           color: isResultant
               ? const Color(0xFF00E5FF)
               : (key == 'y1'
-                    ? Colors.cyan.withOpacity(0.3)
-                    : Colors.amber.withOpacity(0.3)),
+                    ? Colors.cyan.withValues(alpha: 0.3)
+                    : Colors.amber.withValues(alpha: 0.3)),
           barWidth: isResultant ? 2 : 1,
           dashArray: isResultant ? null : [5, 5],
           isStrokeCapRound: true,
           dotData: const FlDotData(show: false),
           belowBarData: BarAreaData(
             show: isResultant,
-            color: const Color(0xFF00E5FF).withOpacity(0.05),
+            color: const Color(0xFF00E5FF).withValues(alpha: 0.05),
           ),
         ),
       );

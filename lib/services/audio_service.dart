@@ -24,18 +24,14 @@ class AudioService {
     }
 
     try {
-      if (_oscillator == null) {
-        _oscillator = await SoLoud.instance.loadWaveform(
-          WaveForm.sin,
-          true,
-          0.25,
-          1.0,
-        );
-      }
+      _oscillator ??= await SoLoud.instance.loadWaveform(
+        WaveForm.sin,
+        true,
+        0.25,
+        1.0,
+      );
 
-      if (_handle == null) {
-        _handle = await SoLoud.instance.play(_oscillator!);
-      }
+      _handle ??= await SoLoud.instance.play(_oscillator!);
 
       // Update frequency
       // Map simulation frequency (0.1 - 20Hz) to audible range (e.g. 220 - 880Hz)

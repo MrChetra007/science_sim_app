@@ -104,7 +104,10 @@ class ChallengeHelpScreen extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           'Challenge mode tests your understanding of wave physics. There are three different types of puzzles you will encounter.',
-          style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 14),
+          style: TextStyle(
+            color: Colors.white.withValues(alpha: 0.7),
+            fontSize: 14,
+          ),
         ),
       ],
     );
@@ -120,9 +123,9 @@ class ChallengeHelpScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: color.withOpacity(0.2)),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -55,7 +55,7 @@ class MathsDerivationSheet extends ConsumerWidget {
                     Text(
                       'Live simulation values injected below',
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.4),
+                        color: Colors.white.withValues(alpha: 0.4),
                         fontSize: 12,
                       ),
                     ),
@@ -169,7 +169,7 @@ class MathsDerivationSheet extends ConsumerWidget {
           Text(
             description,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.7),
+              color: Colors.white.withValues(alpha: 0.7),
               fontSize: 14,
               height: 1.5,
             ),
@@ -179,7 +179,7 @@ class MathsDerivationSheet extends ConsumerWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.05),
+              color: Colors.white.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: Colors.white10),
             ),
@@ -219,7 +219,7 @@ class MathsDerivationSheet extends ConsumerWidget {
             child: Text(
               meaning,
               style: TextStyle(
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
                 fontSize: 14,
               ),
             ),

@@ -122,7 +122,9 @@ class _ChallengeScreenState extends ConsumerState<ChallengeScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
             decoration: BoxDecoration(
-              color: isMatched ? Colors.green.withOpacity(0.2) : Colors.white10,
+              color: isMatched
+                  ? Colors.green.withValues(alpha: 0.2)
+                  : Colors.white10,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: isMatched ? Colors.greenAccent : Colors.white24,
