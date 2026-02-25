@@ -114,7 +114,6 @@ class ControlPanel extends ConsumerWidget {
             const SizedBox(height: 8),
             _buildModeToggle(waveState, waveNotifier),
             const SizedBox(height: 8),
-            const SizedBox(height: 8),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -295,7 +294,15 @@ class ControlPanel extends ConsumerWidget {
                 fontSize: 11,
               ),
             ),
-            // Damping Toggle
+          ],
+        ),
+        const SizedBox(height: 16),
+        _buildWaveTypeToggle(state, notifier),
+        const SizedBox(height: 16),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
             FilterChip(
               label: const Text('Damping'),
               selected: state.isDampingEnabled,

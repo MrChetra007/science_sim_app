@@ -7,6 +7,7 @@ import 'services/iap_service.dart';
 import 'screens/simulation_screen.dart';
 import 'screens/formula_reference_screen.dart';
 import 'screens/challenge_screen.dart';
+import 'screens/challenge_help_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,10 @@ final _router = GoRouter(
     GoRoute(
       path: '/challenge',
       builder: (context, state) => const ChallengeScreen(),
+    ),
+    GoRoute(
+      path: '/challenge-help',
+      builder: (context, state) => const ChallengeHelpScreen(),
     ),
   ],
 );
@@ -251,10 +256,11 @@ class HomeScreenPainter extends CustomPainter {
             (x / size.width) * 4 * pi + (progress * 2 * pi * (wave + 1));
         final double y = centerY + sin(angle) * (40 + wave * 20);
 
-        if (x == 0)
+        if (x == 0) {
           path.moveTo(x, y);
-        else
+        } else {
           path.lineTo(x, y);
+        }
       }
       canvas.drawPath(path, paint);
     }

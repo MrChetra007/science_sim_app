@@ -4,6 +4,7 @@ import '../painters/wave_painter.dart';
 import '../painters/standing_wave_painter.dart';
 import '../painters/interference_painter.dart';
 import '../painters/doppler_painter.dart';
+import '../painters/longitudinal_painter.dart';
 import '../widgets/control_panel.dart';
 import '../widgets/results_panel.dart';
 import '../widgets/oscilloscope_panel.dart';
@@ -66,7 +67,13 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
         );
         break;
       case WaveMode.simulation:
-        waveWidget = CustomPaint(painter: WavePainter(state: waveState));
+        if (waveState.waveType == WaveType.longitudinal) {
+          waveWidget = CustomPaint(
+            painter: LongitudinalPainter(state: waveState),
+          );
+        } else {
+          waveWidget = CustomPaint(painter: WavePainter(state: waveState));
+        }
         break;
     }
 

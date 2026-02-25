@@ -69,20 +69,10 @@ class OscilloscopePanel extends ConsumerWidget {
                 maxX: state.currentTime,
                 minY: -5.0,
                 maxY: 5.0,
-                lineBarsData: [
-                  LineChartBarData(
-                    spots: _generateSpots(state),
-                    isCurved: true,
-                    color: const Color(0xFF00E5FF),
-                    barWidth: 2,
-                    isStrokeCapRound: true,
-                    dotData: const FlDotData(show: false),
-                    belowBarData: BarAreaData(
-                      show: true,
-                      color: const Color(0xFF00E5FF).withValues(alpha: 0.1),
-                    ),
-                  ),
-                ],
+                lineBarsData: _generateLineBarsData(
+                  state,
+                  _generateMultiSpots(state),
+                ),
               ),
             ),
           ),
@@ -91,11 +81,48 @@ class OscilloscopePanel extends ConsumerWidget {
     );
   }
 
-  List<FlSpot> _generateSpots(WaveState state) {
-    final List<FlSpot> spots = [];
-    final double x0 = 5.0; // Fixed observation point
+  List<LineChartBarData> _generateLineBarsData(
+    WaveState state,
+    Map<String, List<FlSpot>> allSpots,
+  ) {
+    final List<LineChartBarData> bars = [];
+
+    allSpots.forEach((key, spots) {
+      final isResultant = key == 'resultant';
+      bars.add(
+        LineChartBarData(
+          spots: spots,
+          isCurved: true,
+          color: isResultant
+              ? const Color(0xFF00E5FF)
+              : (key == 'y1'
+                    ? Colors.cyan.withOpacity(0.3)
+                    : Colors.amber.withOpacity(0.3)),
+          barWidth: isResultant ? 2 : 1,
+          dashArray: isResultant ? null : [5, 5],
+          isStrokeCapRound: true,
+          dotData: const FlDotData(show: false),
+          belowBarData: BarAreaData(
+            show: isResultant,
+            color: const Color(0xFF00E5FF).withOpacity(0.05),
+          ),
+        ),
+      );
+    });
+
+    return bars;
+  }
+
+  Map<String, List<FlSpot>> _generateMultiSpots(WaveState state) {
+    final Map<String, List<FlSpot>> multiSpots = {'resultant': []};
+    if (state.mode == WaveMode.interference) {
+      multiSpots['y1'] = [];
+      multiSpots['y2'] = [];
+    }
+
+    final double x0 = 5.0;
     const int numResolution = 40;
-    const double windowSize = 2.0; // Last 2 seconds
+    const double windowSize = 2.0;
 
     for (int i = 0; i <= numResolution; i++) {
       final double t =
@@ -110,14 +137,14 @@ class OscilloscopePanel extends ConsumerWidget {
             waveSpeed: state.waveSpeed / 10,
             x: x0,
             t: t,
+            isDampingEnabled: state.isDampingEnabled,
           );
           break;
         case WaveMode.standing:
-          // Standing wave displacement at fixed x
           y = WaveSolver.calculateStandingWaveDisplacement(
             amplitude: state.amplitude,
             frequency: state.frequency,
-            length: 10, // Fixed physical length for calculation
+            length: 10,
             harmonic: state.harmonic,
             x: x0,
             t: t,
@@ -139,11 +166,11 @@ class OscilloscopePanel extends ConsumerWidget {
             t: t,
             phi: state.phaseDifference,
           );
+          multiSpots['y1']!.add(FlSpot(t, d1));
+          multiSpots['y2']!.add(FlSpot(t, d2));
           y = d1 + d2;
           break;
         case WaveMode.doppler:
-          // For doppler, we'd need a more complex time-variant point analysis.
-          // Let's just show raw displacement for now.
           y = WaveSolver.calculateDisplacement(
             amplitude: state.amplitude,
             frequency: state.frequency,
@@ -153,8 +180,8 @@ class OscilloscopePanel extends ConsumerWidget {
           );
           break;
       }
-      spots.add(FlSpot(t, y));
+      multiSpots['resultant']!.add(FlSpot(t, y));
     }
-    return spots;
+    return multiSpots;
   }
 }

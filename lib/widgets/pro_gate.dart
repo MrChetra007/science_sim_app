@@ -65,7 +65,9 @@ class _ProGateState extends State<ProGate> {
                     setState(() {});
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF00E5FF).withOpacity(0.1),
+                    backgroundColor: const Color(
+                      0xFF00E5FF,
+                    ).withValues(alpha: 0.1),
                     foregroundColor: const Color(0xFF00E5FF),
                     side: const BorderSide(color: Color(0xFF00E5FF)),
                   ),
