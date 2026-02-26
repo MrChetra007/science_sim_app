@@ -51,7 +51,7 @@ class PhysicsShotApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Physics Shot',
+      title: 'WaveLab',
       theme: ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xFF040D17),
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen>
                   child: Column(
                     children: [
                       const Text(
-                        '〰️ WAVE LAB',
+                        '〰️ WAVE SIMULATOR',
                         style: TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.w900,
@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'PHYSICS SHOT',
+                        'WAVELAB',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.white.withValues(alpha: 0.6),
