@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,6 +17,11 @@ class IapService {
   Future<void> init() async {
     final prefs = await SharedPreferences.getInstance();
     _isPro = prefs.getBool('is_pro') ?? false;
+
+    // Debug override: Always start as a free user in debug mode
+    if (kDebugMode) {
+      _isPro = false;
+    }
 
     final Stream<List<PurchaseDetails>> purchaseUpdated = _iap.purchaseStream;
     _subscription = purchaseUpdated.listen(
