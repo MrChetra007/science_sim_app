@@ -51,43 +51,20 @@ class TechnicalBlueprintPainter extends CustomPainter {
   double _visualWavelength(double width) =>
       _wavelength() * _pixelsPerMeter(width);
 
-  /// Find first crest X using the SAME waveSpeed divisor as _drawWaveTrace.
-  /// Previously this was inconsistent — now both use waveSpeed / _waveSpeedDivisor.
-  double _findFirstCrestX(Size size) {
-    final ppm = _pixelsPerMeter(size.width);
-    final searchRange = (_visualWavelength(size.width) + 20).clamp(
-      0.0,
-      size.width,
-    );
-
-    double firstCrestX = 0;
-    double maxDisplacement = -double.infinity;
-
-    for (double x = 0; x <= searchRange; x++) {
-      final physicalX = x / ppm;
-      final y = WaveSolver.calculateDisplacement(
-        amplitude: 1.0,
-        frequency: state.frequency,
-        waveSpeed: state.waveSpeed / _waveSpeedDivisor, // ✅ consistent
-        x: physicalX,
-        t: state.currentTime,
-        isDampingEnabled: state.isDampingEnabled,
-      );
-      if (y > maxDisplacement) {
-        maxDisplacement = y;
-        firstCrestX = x;
-      }
-    }
-    return firstCrestX;
-  }
+  /// Fixed left anchor for the λ bracket.
+  /// Wavelength is a spatial property — it must NOT depend on currentTime.
+  /// Previously _findFirstCrestX scanned the wave peak at t=currentTime,
+  /// causing the bracket to slide across the screen on every frame.
+  double _lambdaAnchorX(double width) => width * 0.08;
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Pre-compute shared layout values once — avoids duplicate O(width) loops.
+    // Pre-compute shared layout values once.
     final double visualAmplitude = _visualAmplitude();
     final double pixelsPerMeter = _pixelsPerMeter(size.width);
     final double visualWavelength = _visualWavelength(size.width);
-    final double crestX = _findFirstCrestX(size);
+    // ✅ Fixed anchor — no longer depends on currentTime
+    final double lambdaStartX = _lambdaAnchorX(size.width);
 
     _drawGrid(canvas, size);
     _drawWaveTrace(canvas, size, pixelsPerMeter);
@@ -97,10 +74,10 @@ class TechnicalBlueprintPainter extends CustomPainter {
       size,
       visualAmplitude,
       visualWavelength,
-      crestX,
+      lambdaStartX,
     );
     _drawVelocityAnnotations(canvas, size);
-    _drawBadges(canvas, size, visualWavelength, crestX);
+    _drawBadges(canvas, size, visualWavelength, lambdaStartX);
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -266,10 +243,10 @@ class TechnicalBlueprintPainter extends CustomPainter {
     Size size,
     double visualAmplitude,
     double visualWavelength,
-    double crestX,
+    double lambdaStartX,
   ) {
     final centerY = size.height / 2;
-    final startX = crestX;
+    final startX = lambdaStartX;
     final endX = startX + visualWavelength;
     final lineY = centerY + visualAmplitude + 25;
 
@@ -355,7 +332,7 @@ class TechnicalBlueprintPainter extends CustomPainter {
     Canvas canvas,
     Size size,
     double visualWavelength,
-    double crestX,
+    double lambdaStartX,
   ) {
     // A — top-left
     _drawBadge(canvas, "A", const Offset(15, 15), Colors.greenAccent);
@@ -364,7 +341,7 @@ class TechnicalBlueprintPainter extends CustomPainter {
     _drawBadge(
       canvas,
       "λ",
-      Offset(crestX + visualWavelength / 2 - 10, size.height - 45),
+      Offset(lambdaStartX + visualWavelength / 2 - 10, size.height - 45),
       Colors.pinkAccent,
     );
 
