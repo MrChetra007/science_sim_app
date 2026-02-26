@@ -54,7 +54,7 @@ class WaveState {
     this.showLabels = false,
     this.timeScale = 1.0,
     this.isAudioEnabled = false,
-    this.showBlueprint = true,
+    this.showBlueprint = false,
   });
 
   WaveState copyWith({

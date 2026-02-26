@@ -50,13 +50,15 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
     Widget waveWidget;
     switch (waveState.mode) {
       case WaveMode.standing:
-        waveWidget = CustomPaint(
-          painter: StandingWavePainter(state: waveState),
+        waveWidget = ProGate(
+          featureName: 'Standing Waves',
+          child: CustomPaint(painter: StandingWavePainter(state: waveState)),
         );
         break;
       case WaveMode.interference:
-        waveWidget = CustomPaint(
-          painter: InterferencePainter(state: waveState),
+        waveWidget = ProGate(
+          featureName: 'Wave Interference',
+          child: CustomPaint(painter: InterferencePainter(state: waveState)),
         );
         break;
       case WaveMode.doppler:
@@ -65,8 +67,13 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
           child: CustomPaint(painter: DopplerPainter(state: waveState)),
         );
         break;
-      case WaveMode.simulation:
       case WaveMode.travelling:
+        waveWidget = ProGate(
+          featureName: 'Travelling Wave',
+          child: CustomPaint(painter: WavePainter(state: waveState)),
+        );
+        break;
+      case WaveMode.simulation:
         if (waveState.waveType == WaveType.longitudinal) {
           waveWidget = CustomPaint(
             painter: LongitudinalPainter(state: waveState),
@@ -100,8 +107,11 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
                     child: AnimatedOpacity(
                       duration: const Duration(milliseconds: 200),
                       opacity: waveState.showBlueprint ? 1.0 : 0.0,
-                      child: CustomPaint(
-                        painter: BlueprintPainter(state: waveState),
+                      child: ProGate(
+                        featureName: 'Scientific Blueprint HUD',
+                        child: CustomPaint(
+                          painter: BlueprintPainter(state: waveState),
+                        ),
                       ),
                     ),
                   ),
@@ -114,7 +124,10 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
                     left: 16,
                     right: 16,
                     height: 180,
-                    child: const OscilloscopePanel(),
+                    child: const ProGate(
+                      featureName: 'Advanced Oscilloscope',
+                      child: OscilloscopePanel(),
+                    ),
                   ),
 
                 // Ghost Mode Quick Controls

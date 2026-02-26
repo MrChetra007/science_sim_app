@@ -1,0 +1,30 @@
+# Physics Shot - Monetization Plan (Free vs Pro)
+
+## FREE USER ACCESS
+- **Transverse Simulation**: Basic wave motion controls (Amplitude, Frequency).
+- **Longitudinal Simulation**: Basic compression/rarefaction view.
+- **Classic UI**: Basic visual representation without technical overlays.
+- **Formula Reference**: Access to basic wave equations (v = fλ).
+
+## PRO USER ACCESS (UNLOCK ALL)
+- **Advanced Wave Modes**:
+    - [ ] Standing Waves (Harmonics, Nodes/Antinodes)
+    - [ ] Interference (Superposition, Phase Difference)
+    - [ ] Doppler Effect (Source Velocity, Frequency Shift)
+    - [ ] Travelling Wave (Pulse mode, Ghost trails)
+- **Scientific Blueprint HUD**:
+    - Real-time technical overlays for all modes.
+    - Dynamic wavelength anchoring and period derivations.
+    - Peak-to-peak amplitude brackets.
+- **Premium Tools (Phase 7)**:
+    - [ ] Audio Tone Generator: Link wave frequency to actual sound.
+    - [ ] Slow Motion: Precision analysis of wave motion.
+    - [ ] Advanced Oscilloscope: Detailed temporal analysis ($T$, $f = 1/T$).
+- **Experience**:
+    - Ad-free environment.
+    - Future experimental wave types (e.g., Circular, 2D Interference).
+
+---
+Let's discuss: 
+1. Are there any specific simulations you want to keep free to attract users? 
+2. Should the Blueprint HUD be partially available for free users to "tease" the Pro features?

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/wave_provider.dart';
 import '../theme/wave_colors.dart';
+import 'pro_gate.dart';
 
 class ControlPanel extends ConsumerWidget {
   const ControlPanel({super.key});
@@ -54,6 +55,7 @@ class ControlPanel extends ConsumerWidget {
                 ),
                 Row(
                   children: [
+                    // ✅ FREE — Play/Pause
                     IconButton(
                       onPressed: waveNotifier.togglePause,
                       constraints: const BoxConstraints(),
@@ -65,6 +67,7 @@ class ControlPanel extends ConsumerWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
+                    // ✅ FREE — Slow Motion
                     IconButton(
                       onPressed: () => waveNotifier.setTimeScale(
                         waveState.timeScale == 1.0 ? 0.1 : 1.0,
@@ -83,6 +86,7 @@ class ControlPanel extends ConsumerWidget {
                       tooltip: 'Slow Motion',
                     ),
                     const SizedBox(width: 8),
+                    // ✅ FREE — Audio Tone
                     IconButton(
                       onPressed: waveNotifier.toggleAudio,
                       constraints: const BoxConstraints(),
@@ -99,6 +103,7 @@ class ControlPanel extends ConsumerWidget {
                       tooltip: 'Audio Tone',
                     ),
                     const SizedBox(width: 8),
+                    // ✅ FREE — Reset
                     IconButton(
                       onPressed: waveNotifier.resetTime,
                       constraints: const BoxConstraints(),
@@ -154,7 +159,7 @@ class ControlPanel extends ConsumerWidget {
                       activeColor: WaveColors.frequency,
                     ),
 
-                    // Contextual Sliders
+                    // ✅ FREE — Standing Wave harmonic slider
                     if (waveState.mode == WaveMode.standing)
                       _buildSlider(
                         label: 'Harmonic (n)',
@@ -252,7 +257,7 @@ class ControlPanel extends ConsumerWidget {
           spacing: 8,
           runSpacing: 8,
           children: [
-            // Ghost Mode Buttons
+            // ✅ FREE — Ghost Mode
             if (state.ghostState == null)
               ElevatedButton.icon(
                 onPressed: notifier.captureGhost,
@@ -286,7 +291,8 @@ class ControlPanel extends ConsumerWidget {
                 ),
               ),
             ],
-            // Vector Toggles
+
+            // ✅ FREE — Vector Overlays
             FilterChip(
               label: const Text('Show Vectors (v/a)'),
               selected: state.showVectors,
@@ -297,7 +303,8 @@ class ControlPanel extends ConsumerWidget {
                 fontSize: 11,
               ),
             ),
-            // Oscilloscope Toggle
+
+            // ✅ FREE — Oscilloscope
             FilterChip(
               label: const Text('Oscilloscope'),
               selected: state.showOscilloscope,
@@ -308,7 +315,8 @@ class ControlPanel extends ConsumerWidget {
                 fontSize: 11,
               ),
             ),
-            // BLUEPRINT TOGGLE
+
+            // ✅ FREE — Blueprint HUD
             FilterChip(
               label: const Text('BLUEPRINT HUD'),
               selected: state.showBlueprint,
@@ -329,6 +337,7 @@ class ControlPanel extends ConsumerWidget {
           spacing: 8,
           runSpacing: 8,
           children: [
+            // ✅ FREE — Damping
             FilterChip(
               label: const Text('Damping'),
               selected: state.isDampingEnabled,
@@ -351,18 +360,31 @@ class ControlPanel extends ConsumerWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: WaveMode.values.map((mode) {
+          // ✅ FREE modes: Simulation + Standing Wave
+          // 🔒 PRO modes: Interference, Doppler, Travelling
+          final isFreeMode =
+              mode == WaveMode.simulation || mode == WaveMode.standing;
+
+          final chip = ChoiceChip(
+            label: Text(mode.name[0].toUpperCase() + mode.name.substring(1)),
+            selected: state.mode == mode,
+            onSelected: (_) => notifier.setMode(mode),
+            selectedColor: const Color(0xFF00E5FF),
+            labelStyle: TextStyle(
+              color: state.mode == mode ? Colors.black : Colors.white,
+              fontSize: 12,
+            ),
+          );
+
           return Padding(
             padding: const EdgeInsets.only(right: 8.0),
-            child: ChoiceChip(
-              label: Text(mode.name[0].toUpperCase() + mode.name.substring(1)),
-              selected: state.mode == mode,
-              onSelected: (_) => notifier.setMode(mode),
-              selectedColor: const Color(0xFF00E5FF),
-              labelStyle: TextStyle(
-                color: state.mode == mode ? Colors.black : Colors.white,
-                fontSize: 12,
-              ),
-            ),
+            child: isFreeMode
+                ? chip
+                : ProGate(
+                    featureName:
+                        '${mode.name[0].toUpperCase()}${mode.name.substring(1)} Mode',
+                    child: chip,
+                  ),
           );
         }).toList(),
       ),
