@@ -50,22 +50,17 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
     Widget waveWidget;
     switch (waveState.mode) {
       case WaveMode.standing:
-        waveWidget = ProGate(
-          featureName: 'Standing Waves',
-          child: CustomPaint(painter: StandingWavePainter(state: waveState)),
+        waveWidget = CustomPaint(
+          painter: StandingWavePainter(state: waveState),
         );
         break;
       case WaveMode.interference:
-        waveWidget = ProGate(
-          featureName: 'Wave Interference',
-          child: CustomPaint(painter: InterferencePainter(state: waveState)),
+        waveWidget = CustomPaint(
+          painter: InterferencePainter(state: waveState),
         );
         break;
       case WaveMode.doppler:
-        waveWidget = ProGate(
-          featureName: 'Doppler Effect',
-          child: CustomPaint(painter: DopplerPainter(state: waveState)),
-        );
+        waveWidget = CustomPaint(painter: DopplerPainter(state: waveState));
         break;
       case WaveMode.travelling:
         waveWidget = CustomPaint(painter: WavePainter(state: waveState));
@@ -118,10 +113,7 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
                     left: 16,
                     right: 16,
                     height: 180,
-                    child: const ProGate(
-                      featureName: 'Advanced Oscilloscope',
-                      child: OscilloscopePanel(),
-                    ),
+                    child: const OscilloscopePanel(),
                   ),
 
                 // Ghost Mode Quick Controls
