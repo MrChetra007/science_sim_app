@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/wave_provider.dart';
+import '../theme/wave_colors.dart';
 
 class ControlPanel extends ConsumerWidget {
   const ControlPanel({super.key});
@@ -137,6 +138,7 @@ class ControlPanel extends ConsumerWidget {
                         waveNotifier.setAmplitude(v);
                         HapticFeedback.selectionClick();
                       },
+                      activeColor: WaveColors.amplitude,
                     ),
                     _buildSlider(
                       label: waveState.mode == WaveMode.interference
@@ -149,6 +151,7 @@ class ControlPanel extends ConsumerWidget {
                         waveNotifier.setFrequency(v);
                         HapticFeedback.selectionClick();
                       },
+                      activeColor: WaveColors.frequency,
                     ),
 
                     // Contextual Sliders
@@ -159,6 +162,7 @@ class ControlPanel extends ConsumerWidget {
                         min: 1,
                         max: 6,
                         onChanged: (v) => waveNotifier.setHarmonic(v.toInt()),
+                        activeColor: WaveColors.harmonic,
                       ),
 
                     if (waveState.mode == WaveMode.interference) ...[
@@ -182,6 +186,7 @@ class ControlPanel extends ConsumerWidget {
                         min: 0,
                         max: 6.28,
                         onChanged: waveNotifier.setPhaseDifference,
+                        activeColor: WaveColors.phase,
                       ),
                     ],
 
@@ -192,6 +197,7 @@ class ControlPanel extends ConsumerWidget {
                         min: -50,
                         max: 50,
                         onChanged: waveNotifier.setSourceVelocity,
+                        activeColor: WaveColors.speed,
                       ),
 
                     if (waveState.mode == WaveMode.simulation ||
@@ -203,6 +209,7 @@ class ControlPanel extends ConsumerWidget {
                         min: 100,
                         max: 1500,
                         onChanged: waveNotifier.setWaveSpeed,
+                        activeColor: WaveColors.speed,
                       ),
                       const SizedBox(height: 4),
                       SingleChildScrollView(
@@ -263,7 +270,7 @@ class ControlPanel extends ConsumerWidget {
                 icon: const Icon(Icons.clear, size: 16),
                 label: const Text('Clear Ghost'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.redAccent.withValues(alpha: 0.2),
+                  backgroundColor: Colors.redAccent.withOpacity(0.2),
                   foregroundColor: Colors.white,
                   textStyle: const TextStyle(fontSize: 11),
                 ),
@@ -299,6 +306,18 @@ class ControlPanel extends ConsumerWidget {
               labelStyle: TextStyle(
                 color: state.showOscilloscope ? Colors.black : Colors.white,
                 fontSize: 11,
+              ),
+            ),
+            // BLUEPRINT TOGGLE
+            FilterChip(
+              label: const Text('BLUEPRINT HUD'),
+              selected: state.showBlueprint,
+              onSelected: (_) => notifier.toggleBlueprint(),
+              selectedColor: const Color(0xFF00E5FF),
+              labelStyle: TextStyle(
+                color: state.showBlueprint ? Colors.black : Colors.white,
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
@@ -412,6 +431,7 @@ class ControlPanel extends ConsumerWidget {
     required double min,
     required double max,
     required ValueChanged<double> onChanged,
+    Color? activeColor,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -437,7 +457,7 @@ class ControlPanel extends ConsumerWidget {
           min: min,
           max: max,
           onChanged: onChanged,
-          activeColor: const Color(0xFF00E5FF),
+          activeColor: activeColor ?? const Color(0xFF00E5FF),
           inactiveColor: Colors.white10,
         ),
       ],

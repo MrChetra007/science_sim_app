@@ -100,6 +100,7 @@ class ResultsPanel extends ConsumerWidget {
 
     switch (state.mode) {
       case WaveMode.simulation:
+      case WaveMode.travelling:
         eq =
             'y(x,t) = ${state.amplitude.toStringAsFixed(1)} sin(${k}x - ${omega}t)';
         break;
@@ -122,11 +123,11 @@ class ResultsPanel extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'PHYSICS ENGINE HUB',
+          'HOLOGRAPHIC OCEAN LAB',
           style: TextStyle(
             color: Color(0xFF00E5FF),
             fontSize: 8,
-            letterSpacing: 1.5,
+            letterSpacing: 2.5,
             fontWeight: FontWeight.bold,
           ),
         ),

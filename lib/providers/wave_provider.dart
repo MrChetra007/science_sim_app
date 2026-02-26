@@ -4,7 +4,7 @@ import '../services/audio_service.dart';
 
 enum WaveType { transverse, longitudinal }
 
-enum WaveMode { simulation, standing, interference, doppler }
+enum WaveMode { simulation, standing, interference, doppler, travelling }
 
 class WaveState {
   final double amplitude;
@@ -31,6 +31,7 @@ class WaveState {
   final bool showLabels;
   final double timeScale;
   final bool isAudioEnabled;
+  final bool showBlueprint; // Global toggle for HUD
 
   WaveState({
     this.amplitude = 1.0,
@@ -53,6 +54,7 @@ class WaveState {
     this.showLabels = false,
     this.timeScale = 1.0,
     this.isAudioEnabled = false,
+    this.showBlueprint = true,
   });
 
   WaveState copyWith({
@@ -76,6 +78,7 @@ class WaveState {
     bool? showLabels,
     double? timeScale,
     bool? isAudioEnabled,
+    bool? showBlueprint,
   }) {
     return WaveState(
       amplitude: amplitude ?? this.amplitude,
@@ -98,6 +101,7 @@ class WaveState {
       showLabels: showLabels ?? this.showLabels,
       timeScale: timeScale ?? this.timeScale,
       isAudioEnabled: isAudioEnabled ?? this.isAudioEnabled,
+      showBlueprint: showBlueprint ?? this.showBlueprint,
     );
   }
 
@@ -124,6 +128,7 @@ class WaveState {
       showLabels: showLabels,
       timeScale: timeScale,
       isAudioEnabled: isAudioEnabled,
+      showBlueprint: showBlueprint,
     );
   }
 }
@@ -182,6 +187,8 @@ class WaveNotifier extends StateNotifier<WaveState> {
   void setTimeScale(double value) => state = state.copyWith(timeScale: value);
   void toggleAudio() =>
       state = state.copyWith(isAudioEnabled: !state.isAudioEnabled);
+  void toggleBlueprint() =>
+      state = state.copyWith(showBlueprint: !state.showBlueprint);
 
   @override
   void dispose() {

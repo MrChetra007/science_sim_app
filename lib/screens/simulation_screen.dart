@@ -5,6 +5,7 @@ import '../painters/standing_wave_painter.dart';
 import '../painters/interference_painter.dart';
 import '../painters/doppler_painter.dart';
 import '../painters/longitudinal_painter.dart';
+import '../painters/blueprint_painter.dart';
 import '../widgets/control_panel.dart';
 import '../widgets/results_panel.dart';
 import '../widgets/oscilloscope_panel.dart';
@@ -65,6 +66,7 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
         );
         break;
       case WaveMode.simulation:
+      case WaveMode.travelling:
         if (waveState.waveType == WaveType.longitudinal) {
           waveWidget = CustomPaint(
             painter: LongitudinalPainter(state: waveState),
@@ -91,6 +93,19 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
               children: [
                 Positioned.fill(child: CustomPaint(painter: GridPainter())),
                 Positioned.fill(child: waveWidget),
+
+                // Blueprint HUD Overlay
+                Positioned.fill(
+                  child: IgnorePointer(
+                    child: AnimatedOpacity(
+                      duration: const Duration(milliseconds: 200),
+                      opacity: waveState.showBlueprint ? 1.0 : 0.0,
+                      child: CustomPaint(
+                        painter: BlueprintPainter(state: waveState),
+                      ),
+                    ),
+                  ),
+                ),
 
                 // Oscilloscope Overlay
                 if (waveState.showOscilloscope)
