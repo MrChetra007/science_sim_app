@@ -351,19 +351,31 @@ class ControlPanel extends ConsumerWidget {
             ),
           ],
         ),
+        const SizedBox(height: 20),
       ],
     );
   }
 
   Widget _buildModeToggle(WaveState state, WaveNotifier notifier) {
+    // ✅ Custom order: Travelling moved to 3rd place
+    final orderedModes = [
+      WaveMode.simulation,
+      WaveMode.standing,
+      WaveMode.travelling, // ✅ moved to 3rd
+      WaveMode.interference,
+      WaveMode.doppler,
+    ];
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: WaveMode.values.map((mode) {
-          // ✅ FREE modes: Simulation + Standing Wave
-          // 🔒 PRO modes: Interference, Doppler, Travelling
+        children: orderedModes.map((mode) {
+          // ✅ FREE modes: Simulation, Standing Wave, Travelling
+          // 🔒 PRO modes: Interference, Doppler
           final isFreeMode =
-              mode == WaveMode.simulation || mode == WaveMode.standing;
+              mode == WaveMode.simulation ||
+              mode == WaveMode.standing ||
+              mode == WaveMode.travelling; // ✅ now free
 
           final chip = ChoiceChip(
             label: Text(mode.name[0].toUpperCase() + mode.name.substring(1)),

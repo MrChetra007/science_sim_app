@@ -68,10 +68,7 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
         );
         break;
       case WaveMode.travelling:
-        waveWidget = ProGate(
-          featureName: 'Travelling Wave',
-          child: CustomPaint(painter: WavePainter(state: waveState)),
-        );
+        waveWidget = CustomPaint(painter: WavePainter(state: waveState));
         break;
       case WaveMode.simulation:
         if (waveState.waveType == WaveType.longitudinal) {
@@ -107,11 +104,8 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
                     child: AnimatedOpacity(
                       duration: const Duration(milliseconds: 200),
                       opacity: waveState.showBlueprint ? 1.0 : 0.0,
-                      child: ProGate(
-                        featureName: 'Scientific Blueprint HUD',
-                        child: CustomPaint(
-                          painter: BlueprintPainter(state: waveState),
-                        ),
+                      child: CustomPaint(
+                        painter: BlueprintPainter(state: waveState),
                       ),
                     ),
                   ),
@@ -196,7 +190,7 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
 
                 // Floating Action Button to toggle Dashboard
                 Positioned(
-                  bottom: 16,
+                  bottom: 50,
                   right: 16,
                   child: FloatingActionButton.small(
                     onPressed: () => setState(() => _isExpanded = !_isExpanded),

@@ -130,21 +130,12 @@ class _HomeScreenState extends State<HomeScreen>
                   child: Column(
                     children: [
                       const Text(
-                        '〰️ WAVE SIMULATOR',
+                        '〰️ WAVE LAB',
                         style: TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.w900,
                           color: Color(0xFF00E5FF),
                           letterSpacing: 4,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'WAVELAB',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white.withValues(alpha: 0.6),
-                          letterSpacing: 8,
                         ),
                       ),
                     ],
