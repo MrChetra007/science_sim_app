@@ -34,9 +34,7 @@ class OscilloscopePanel extends ConsumerWidget {
 class TechnicalBlueprintPainter extends CustomPainter {
   final WaveState state;
 
-  // ── Shared layout constants ──
   static const double _numCycles = 1.5;
-  static const double _bracketRightMargin = 20.0;
   static const double _waveSpeedDivisor = 10.0;
 
   TechnicalBlueprintPainter({required this.state});
@@ -46,38 +44,12 @@ class TechnicalBlueprintPainter extends CustomPainter {
 
   double _wavelength() => state.waveSpeed / state.frequency;
 
-  double _pixelsPerMeter(double width) => width / (_wavelength() * _numCycles);
-
-  double _visualWavelength(double width) =>
-      _wavelength() * _pixelsPerMeter(width);
-
-  /// Fixed left anchor for the λ bracket.
-  /// Wavelength is a spatial property — it must NOT depend on currentTime.
-  /// Previously _findFirstCrestX scanned the wave peak at t=currentTime,
-  /// causing the bracket to slide across the screen on every frame.
-  double _lambdaAnchorX(double width) => width * 0.08;
-
   @override
   void paint(Canvas canvas, Size size) {
-    // Pre-compute shared layout values once.
-    final double visualAmplitude = _visualAmplitude();
-    final double pixelsPerMeter = _pixelsPerMeter(size.width);
-    final double visualWavelength = _visualWavelength(size.width);
-    // ✅ Fixed anchor — no longer depends on currentTime
-    final double lambdaStartX = _lambdaAnchorX(size.width);
-
     _drawGrid(canvas, size);
-    _drawWaveTrace(canvas, size, pixelsPerMeter);
-    _drawAmplitudeAnnotations(canvas, size, visualAmplitude);
-    _drawWavelengthAnnotations(
-      canvas,
-      size,
-      visualAmplitude,
-      visualWavelength,
-      lambdaStartX,
-    );
-    _drawVelocityAnnotations(canvas, size);
-    _drawBadges(canvas, size, visualWavelength, lambdaStartX);
+    _drawWaveTrace(canvas, size);
+    _drawAmplitudeAnnotations(canvas, size);
+    _drawPeriodAnnotations(canvas, size);
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -109,27 +81,28 @@ class TechnicalBlueprintPainter extends CustomPainter {
   // ─────────────────────────────────────────────────────────────
   // WAVE TRACE
   // ─────────────────────────────────────────────────────────────
-  void _drawWaveTrace(Canvas canvas, Size size, double pixelsPerMeter) {
-    final path = Path();
+  void _drawWaveTrace(Canvas canvas, Size size) {
+    final Path path = Path();
     final centerY = size.height / 2;
     final double visualAmp = _visualAmplitude();
+    final double wavelength = _wavelength();
+    final double pixelsPerMeter = size.width / (wavelength * _numCycles);
 
     for (double x = 0; x <= size.width; x++) {
       final physicalX = x / pixelsPerMeter;
       final y = WaveSolver.calculateDisplacement(
         amplitude: visualAmp,
         frequency: state.frequency,
-        waveSpeed: state.waveSpeed / _waveSpeedDivisor, // consistent divisor
+        waveSpeed: state.waveSpeed / _waveSpeedDivisor,
         x: physicalX,
         t: state.currentTime,
         isDampingEnabled: state.isDampingEnabled,
       );
 
-      if (x == 0) {
+      if (x == 0)
         path.moveTo(x, centerY - y);
-      } else {
+      else
         path.lineTo(x, centerY - y);
-      }
     }
 
     // Glow pass
@@ -152,173 +125,71 @@ class TechnicalBlueprintPainter extends CustomPainter {
   }
 
   // ─────────────────────────────────────────────────────────────
-  // AMPLITUDE ANNOTATIONS  (+A / −A / 2A bracket)
+  // AMPLITUDE ANNOTATIONS (+A / −A / 2A)
   // ─────────────────────────────────────────────────────────────
-  void _drawAmplitudeAnnotations(
-    Canvas canvas,
-    Size size,
-    double visualAmplitude,
-  ) {
+  void _drawAmplitudeAnnotations(Canvas canvas, Size size) {
     final centerY = size.height / 2;
-    final double bracketX = size.width - _bracketRightMargin;
+    final visualAmp = _visualAmplitude();
+    final bracketX = size.width - 40;
 
-    // Dashed ±A reference lines — stop at bracket, not full width
     final dashPaint = Paint()
-      ..color = Colors.greenAccent.withValues(alpha: 0.4)
+      ..color = const Color(0xFF00E5FF).withValues(alpha: 0.2)
       ..strokeWidth = 1.0;
 
+    // +A / -A Dashed lines
     _drawDashedLine(
       canvas,
-      Offset(0, centerY - visualAmplitude),
-      Offset(bracketX, centerY - visualAmplitude), // ✅ ends at bracket
+      Offset(0, centerY - visualAmp),
+      Offset(bracketX, centerY - visualAmp),
       dashPaint,
     );
     _drawDashedLine(
       canvas,
-      Offset(0, centerY + visualAmplitude),
-      Offset(bracketX, centerY + visualAmplitude), // ✅ ends at bracket
+      Offset(0, centerY + visualAmp),
+      Offset(bracketX, centerY + visualAmp),
       dashPaint,
     );
 
-    // Right-side vertical bracket
-    final bracketPaint = Paint()
-      ..color = Colors.greenAccent
-      ..strokeWidth = 1.5;
-
-    canvas.drawLine(
-      Offset(bracketX, centerY - visualAmplitude),
-      Offset(bracketX, centerY + visualAmplitude),
-      bracketPaint,
-    );
-    _drawSmallArrowHead(
-      canvas,
-      Offset(bracketX, centerY - visualAmplitude),
-      true,
-      bracketPaint,
-    );
-    _drawSmallArrowHead(
-      canvas,
-      Offset(bracketX, centerY + visualAmplitude),
-      false,
-      bracketPaint,
-    );
-
-    // 2A label beside bracket midpoint
-    _drawText(
-      canvas,
-      "2A",
-      Offset(bracketX + 5, centerY - 8),
-      const TextStyle(
-        color: Colors.greenAccent,
-        fontSize: 10,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-
-    // ±A and 0 labels on the left
-    final labelStyle = TextStyle(
-      color: Colors.greenAccent.withValues(alpha: 0.6),
-      fontSize: 8,
-    );
+    final annotationColor = const Color(0xFF00E5FF);
     _drawText(
       canvas,
       "+A",
-      Offset(5, centerY - visualAmplitude - 12),
-      labelStyle,
+      Offset(5, centerY - visualAmp - 12),
+      TextStyle(color: annotationColor, fontSize: 8),
     );
-    _drawText(canvas, "0", Offset(5, centerY - 5), labelStyle);
     _drawText(
       canvas,
       "−A",
-      Offset(5, centerY + visualAmplitude + 2),
-      labelStyle,
-    );
-  }
-
-  // ─────────────────────────────────────────────────────────────
-  // WAVELENGTH ANNOTATIONS  (λ bracket below wave)
-  // ─────────────────────────────────────────────────────────────
-  void _drawWavelengthAnnotations(
-    Canvas canvas,
-    Size size,
-    double visualAmplitude,
-    double visualWavelength,
-    double lambdaStartX,
-  ) {
-    final centerY = size.height / 2;
-    final startX = lambdaStartX;
-    final endX = startX + visualWavelength;
-    final lineY = centerY + visualAmplitude + 25;
-
-    if (startX >= size.width || endX >= size.width) return;
-
-    // Vertical guide lines from crests down to bracket
-    final guidePaint = Paint()
-      ..color = Colors.pinkAccent.withValues(alpha: 0.3)
-      ..strokeWidth = 1.0;
-    _drawDashedLine(
-      canvas,
-      Offset(startX, centerY - visualAmplitude),
-      Offset(startX, lineY),
-      guidePaint,
-    );
-    _drawDashedLine(
-      canvas,
-      Offset(endX, centerY - visualAmplitude),
-      Offset(endX, lineY),
-      guidePaint,
+      Offset(5, centerY + visualAmp + 2),
+      TextStyle(color: annotationColor, fontSize: 8),
     );
 
-    // Horizontal bracket line — separate paint instance, no mutation
+    // 2A Vertical Bracket
     final bracketPaint = Paint()
-      ..color = Colors.pinkAccent
+      ..color = annotationColor
       ..strokeWidth = 1.5;
-    canvas.drawLine(Offset(startX, lineY), Offset(endX, lineY), bracketPaint);
-
-    _drawSmallHorizontalArrowHead(
-      canvas,
-      Offset(startX, lineY),
-      true,
-      bracketPaint,
-    );
-    _drawSmallHorizontalArrowHead(
-      canvas,
-      Offset(endX, lineY),
-      false,
-      bracketPaint,
-    );
-  }
-
-  // ─────────────────────────────────────────────────────────────
-  // VELOCITY ARROW
-  // ─────────────────────────────────────────────────────────────
-  void _drawVelocityAnnotations(Canvas canvas, Size size) {
-    final vPaint = Paint()
-      ..color = Colors.orangeAccent
-      ..strokeWidth = 2.0;
-
-    const double arrowY = 25.0;
-    const double arrowLen = 70.0;
-    final double startX = size.width * 0.45;
-
     canvas.drawLine(
-      Offset(startX, arrowY),
-      Offset(startX + arrowLen, arrowY),
-      vPaint,
+      Offset(bracketX, centerY - visualAmp),
+      Offset(bracketX, centerY + visualAmp),
+      bracketPaint,
     );
-    _drawSmallHorizontalArrowHead(
-      canvas,
-      Offset(startX + arrowLen, arrowY),
-      false,
-      vPaint,
+    canvas.drawLine(
+      Offset(bracketX - 5, centerY - visualAmp),
+      Offset(bracketX + 5, centerY - visualAmp),
+      bracketPaint,
+    );
+    canvas.drawLine(
+      Offset(bracketX - 5, centerY + visualAmp),
+      Offset(bracketX + 5, centerY + visualAmp),
+      bracketPaint,
     );
 
     _drawText(
       canvas,
-      "v",
-      Offset(startX - 15, arrowY - 8),
-      const TextStyle(
-        color: Colors.orangeAccent,
+      "2A",
+      Offset(bracketX + 8, centerY - 7),
+      TextStyle(
+        color: annotationColor,
         fontSize: 10,
         fontWeight: FontWeight.bold,
       ),
@@ -326,78 +197,95 @@ class TechnicalBlueprintPainter extends CustomPainter {
   }
 
   // ─────────────────────────────────────────────────────────────
-  // BADGES  (small labelled chips)
+  // PERIOD ANNOTATIONS (T and f)
   // ─────────────────────────────────────────────────────────────
-  void _drawBadges(
-    Canvas canvas,
-    Size size,
-    double visualWavelength,
-    double lambdaStartX,
-  ) {
-    // A — top-left
-    _drawBadge(canvas, "A", const Offset(15, 15), Colors.greenAccent);
+  void _drawPeriodAnnotations(Canvas canvas, Size size) {
+    final centerY = size.height / 2;
+    final visualAmp = _visualAmplitude();
+    final bracketY = centerY + visualAmp + 30;
 
-    // λ — centred above the bracket
-    _drawBadge(
-      canvas,
-      "λ",
-      Offset(lambdaStartX + visualWavelength / 2 - 10, size.height - 45),
-      Colors.pinkAccent,
+    // Period T on an oscilloscope is temporal, but visualized here as one cycle of the trace
+    final wavelength = _wavelength();
+    final pixelsPerMeter = size.width / (wavelength * _numCycles);
+    final periodInPixels = wavelength * pixelsPerMeter;
+
+    final double startX = size.width * 0.15;
+    final double endX = startX + periodInPixels;
+
+    if (endX > size.width - 20) return;
+
+    final tPaint = Paint()
+      ..color = const Color(0xFF00E5FF)
+      ..strokeWidth = 1.5
+      ..style = PaintingStyle.stroke;
+
+    // T Bracket
+    canvas.drawLine(
+      Offset(startX, bracketY - 5),
+      Offset(startX, bracketY + 5),
+      tPaint,
+    );
+    canvas.drawLine(Offset(startX, bracketY), Offset(endX, bracketY), tPaint);
+    canvas.drawLine(
+      Offset(endX, bracketY - 5),
+      Offset(endX, bracketY + 5),
+      tPaint,
     );
 
-    // v → — top-right
-    _drawBadge(canvas, "v →", Offset(size.width - 55, 15), Colors.orangeAccent);
-
-    // T = 1/f — bottom-right
-    _drawBadge(
+    // arrows inside bracket
+    _drawSmallHorizontalArrowHead(
       canvas,
-      "T = 1/f",
-      Offset(size.width - 75, size.height - 40),
-      Colors.amberAccent,
+      Offset(startX, bracketY),
+      true,
+      tPaint,
+    );
+    _drawSmallHorizontalArrowHead(
+      canvas,
+      Offset(endX, bracketY),
+      false,
+      tPaint,
+    );
+
+    final midX = startX + (endX - startX) / 2;
+    _drawText(
+      canvas,
+      "T",
+      Offset(midX - 5, bracketY - 18),
+      const TextStyle(
+        color: Color(0xFF00E5FF),
+        fontSize: 12,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+
+    // f = 1/T derivation
+    final fText = "f = 1/T = ${state.frequency.toStringAsFixed(1)} Hz";
+    _drawText(
+      canvas,
+      fText,
+      Offset(midX - 40, bracketY + 12),
+      const TextStyle(
+        color: Color(0xFF00E5FF),
+        fontSize: 9,
+        fontFamily: 'monospace',
+      ),
+    );
+
+    _drawText(
+      canvas,
+      "~~~ one cycle ~~~",
+      Offset(midX - 45, centerY - visualAmp - 20),
+      TextStyle(
+        color: Colors.white.withValues(alpha: 0.3),
+        fontSize: 8,
+        fontStyle: FontStyle.italic,
+      ),
     );
   }
 
   // ─────────────────────────────────────────────────────────────
   // HELPERS
   // ─────────────────────────────────────────────────────────────
-  void _drawBadge(Canvas canvas, String label, Offset position, Color color) {
-    final textStyle = TextStyle(
-      color: color,
-      fontSize: 9,
-      fontWeight: FontWeight.bold,
-    );
-    final tp = TextPainter(
-      text: TextSpan(text: label, style: textStyle),
-      textDirection: TextDirection.ltr,
-    )..layout();
-
-    const padding = EdgeInsets.symmetric(horizontal: 5, vertical: 2);
-    final rect = Rect.fromLTWH(
-      position.dx,
-      position.dy,
-      tp.width + padding.horizontal,
-      tp.height + padding.vertical,
-    );
-
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(rect, const Radius.circular(3)),
-      Paint()
-        ..color = color.withValues(alpha: 0.1)
-        ..style = PaintingStyle.fill,
-    );
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(rect, const Radius.circular(3)),
-      Paint()
-        ..color = color.withValues(alpha: 0.4)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1,
-    );
-    tp.paint(
-      canvas,
-      Offset(position.dx + padding.left, position.dy + padding.top),
-    );
-  }
-
   void _drawDashedLine(Canvas canvas, Offset p1, Offset p2, Paint paint) {
     const double dashWidth = 3.0;
     const double dashSpace = 3.0;
@@ -415,13 +303,6 @@ class TechnicalBlueprintPainter extends CustomPainter {
       );
       d += dashWidth + dashSpace;
     }
-  }
-
-  void _drawSmallArrowHead(Canvas canvas, Offset tip, bool isTop, Paint paint) {
-    const double s = 4.0;
-    final double dy = isTop ? s : -s;
-    canvas.drawLine(tip, Offset(tip.dx - s, tip.dy + dy), paint);
-    canvas.drawLine(tip, Offset(tip.dx + s, tip.dy + dy), paint);
   }
 
   void _drawSmallHorizontalArrowHead(

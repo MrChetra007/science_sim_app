@@ -11,6 +11,26 @@ class BlueprintPainter extends CustomPainter {
   BlueprintPainter({required this.state})
     : annotations = WaveAnnotationSet.forMode(state.mode, state.waveType);
 
+  // ─── Shared coordinate constants ─────────────────────────────────────────
+  // ⚠️  MUST stay in sync with wave_painter.dart and oscilloscope_panel.dart.
+  //     If numCycles or waveSpeedDivisor changes in the wave painter, update
+  //     these values too or annotations will stop aligning with the wave.
+  static const double _ampScale = 80.0;
+  static const double _numCycles = 1.5; // cycles shown across canvas width
+  static const double _waveSpeedDivisor =
+      10.0; // wave painter divides speed by this
+
+  /// Pixels per physical metre — matches wave painter coordinate system.
+  static double _ppm(double width, double physWavelength) =>
+      width / (physWavelength * _numCycles);
+
+  /// Visual wavelength in pixels — one full cycle as drawn on screen.
+  static double _visLam(double width, double physWavelength) =>
+      physWavelength * _ppm(width, physWavelength); // == width / _numCycles
+
+  // Fixed left anchor — never derived from currentTime.
+  static double _lambdaAnchor(double width) => width * 0.08;
+
   @override
   void paint(Canvas canvas, Size size) {
     if (!state.showBlueprint) return;
@@ -18,7 +38,7 @@ class BlueprintPainter extends CustomPainter {
     // 1. Global common annotations
     if (annotations.showAmplitude) _drawAmplitudeBracket(canvas, size);
 
-    // Wavelength (skip for longitudinal and Doppler as they have custom logic)
+    // Wavelength — skip modes that draw their own custom λ logic
     if (annotations.showWavelength &&
         state.mode != WaveMode.doppler &&
         state.waveType != WaveType.longitudinal) {
@@ -51,6 +71,9 @@ class BlueprintPainter extends CustomPainter {
     _drawModeBadge(canvas, size);
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // MODE BADGE
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawModeBadge(Canvas canvas, Size size) {
     final modeName = state.mode.name.toUpperCase();
     _draw3PartLabel(
@@ -65,6 +88,13 @@ class BlueprintPainter extends CustomPainter {
     );
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // AMPLITUDE BRACKET  (+A / −A on right edge, label inside canvas)
+  //
+  // ✅ FIX: Label was at x+10 — off the right edge of the canvas, clipping
+  //         the text. Now placed LEFT of the bracket line so it's always
+  //         visible. Added dashed ±A reference lines and inline labels.
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawAmplitudeBracket(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = WaveColors.amplitude
@@ -72,93 +102,223 @@ class BlueprintPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     final centerY = size.height / 2;
-    final double visualAmplitude = state.amplitude * 80;
-    final double x = size.width - 40;
+    final double visualAmplitude = state.amplitude * _ampScale;
+    // ✅ 28px from right — ticks stay on-screen
+    final double bracketX = size.width - 28;
 
+    // Dashed ±A reference lines
+    final dashPaint = Paint()
+      ..color = WaveColors.amplitude.withValues(alpha: 0.3)
+      ..strokeWidth = 1.0
+      ..style = PaintingStyle.stroke;
+    _drawDashedLine(
+      canvas,
+      Offset(0, centerY - visualAmplitude),
+      Offset(bracketX, centerY - visualAmplitude),
+      dashPaint,
+    );
+    _drawDashedLine(
+      canvas,
+      Offset(0, centerY + visualAmplitude),
+      Offset(bracketX, centerY + visualAmplitude),
+      dashPaint,
+    );
+
+    // Bracket
     canvas.drawLine(
-      Offset(x - 5, centerY - visualAmplitude),
-      Offset(x + 5, centerY - visualAmplitude),
+      Offset(bracketX - 5, centerY - visualAmplitude),
+      Offset(bracketX + 5, centerY - visualAmplitude),
       paint,
     );
     canvas.drawLine(
-      Offset(x, centerY - visualAmplitude),
-      Offset(x, centerY + visualAmplitude),
+      Offset(bracketX, centerY - visualAmplitude),
+      Offset(bracketX, centerY + visualAmplitude),
       paint,
     );
     canvas.drawLine(
-      Offset(x - 5, centerY + visualAmplitude),
-      Offset(x + 5, centerY + visualAmplitude),
+      Offset(bracketX - 5, centerY + visualAmplitude),
+      Offset(bracketX + 5, centerY + visualAmplitude),
       paint,
     );
 
+    // ✅ Label left of bracket — never clips
     _draw3PartLabel(
       canvas,
-      Offset(x + 10, centerY),
+      Offset(bracketX - 72, centerY - 12),
       'A',
       '${state.amplitude.toStringAsFixed(1)} m',
       'Amplitude',
       WaveColors.amplitude,
     );
+
+    // +A / 0 / −A inline left-edge labels
+    _drawHUDText(
+      canvas,
+      Offset(6, centerY - visualAmplitude - 14),
+      '+A',
+      WaveColors.amplitude,
+      9,
+    );
+    _drawHUDText(
+      canvas,
+      Offset(6, centerY - 5),
+      '0',
+      WaveColors.amplitude.withValues(alpha: 0.35),
+      9,
+    );
+    _drawHUDText(
+      canvas,
+      Offset(6, centerY + visualAmplitude + 4),
+      '−A',
+      WaveColors.amplitude.withValues(alpha: 0.6),
+      9,
+    );
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // WAVELENGTH BRACKET
+  //
+  // ✅ FIX 1: Fixed anchor — never derived from currentTime (was sliding).
+  // ✅ FIX 2: When λ is wider than canvas (e.g. v=300 m/s), the old code
+  //           silently returned, showing NOTHING. Now falls back to a visible
+  //           badge + partial arrow so λ is always communicated to the user.
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawWavelengthBracket(Canvas canvas, Size size) {
+    if (state.waveType == WaveType.longitudinal) return;
+
+    final centerY = size.height / 2;
+    final double visualAmplitude = state.amplitude * _ampScale;
+    final double physWavelength = state.waveSpeed / state.frequency;
+    final double visualWavelength = _visLam(size.width, physWavelength);
+
+    // Fixed anchor — never depends on currentTime
+    final double startX = _lambdaAnchor(size.width);
+    final double endX = startX + visualWavelength;
+    final double bracketY = centerY + visualAmplitude + 40;
+
     final paint = Paint()
       ..color = WaveColors.wavelength
       ..strokeWidth = 2.0
       ..style = PaintingStyle.stroke;
 
-    final centerY = size.height / 2 + 100;
-    final double wavelength = (state.waveSpeed / 10) / state.frequency;
-    final double visualWavelength = (wavelength / 10) * size.width;
+    final dashPaint = Paint()
+      ..color = WaveColors.wavelength.withValues(alpha: 0.3)
+      ..strokeWidth = 1.0
+      ..style = PaintingStyle.stroke;
 
-    final double startX = size.width * 0.1;
-    final double endX = startX + visualWavelength;
+    if (endX <= size.width - 20) {
+      // ── Normal case: full bracket fits ──
+      _drawDashedLine(
+        canvas,
+        Offset(startX, centerY - visualAmplitude),
+        Offset(startX, bracketY),
+        dashPaint,
+      );
+      _drawDashedLine(
+        canvas,
+        Offset(endX, centerY - visualAmplitude),
+        Offset(endX, bracketY),
+        dashPaint,
+      );
 
-    if (endX > size.width) return;
+      canvas.drawLine(
+        Offset(startX, bracketY - 5),
+        Offset(startX, bracketY + 5),
+        paint,
+      );
+      canvas.drawLine(Offset(startX, bracketY), Offset(endX, bracketY), paint);
+      canvas.drawLine(
+        Offset(endX, bracketY - 5),
+        Offset(endX, bracketY + 5),
+        paint,
+      );
 
-    canvas.drawLine(
-      Offset(startX, centerY - 5),
-      Offset(startX, centerY + 5),
-      paint,
-    );
-    canvas.drawLine(Offset(startX, centerY), Offset(endX, centerY), paint);
-    canvas.drawLine(
-      Offset(endX, centerY - 5),
-      Offset(endX, centerY + 5),
-      paint,
-    );
+      _draw3PartLabel(
+        canvas,
+        Offset(startX + (endX - startX) / 2, bracketY + 15),
+        'λ',
+        '${physWavelength.toStringAsFixed(1)} m',
+        'Wavelength',
+        WaveColors.wavelength,
+        isCentered: true,
+      );
+    } else {
+      // ── ✅ Fallback: λ wider than canvas — draw partial arrow + badge ──
+      // Left anchor tick
+      canvas.drawLine(
+        Offset(startX, bracketY - 5),
+        Offset(startX, bracketY + 5),
+        paint,
+      );
+      // Partial line with open arrowhead pointing right (continues off-screen)
+      final double arrowEndX = size.width - 16;
+      canvas.drawLine(
+        Offset(startX, bracketY),
+        Offset(arrowEndX, bracketY),
+        paint,
+      );
+      // Open arrowhead
+      canvas.drawLine(
+        Offset(arrowEndX - 8, bracketY - 5),
+        Offset(arrowEndX, bracketY),
+        paint,
+      );
+      canvas.drawLine(
+        Offset(arrowEndX - 8, bracketY + 5),
+        Offset(arrowEndX, bracketY),
+        paint,
+      );
 
-    _draw3PartLabel(
-      canvas,
-      Offset(startX + (endX - startX) / 2, centerY + 15),
-      'λ',
-      '${(state.waveSpeed / state.frequency).toStringAsFixed(1)} m',
-      'Wavelength',
-      WaveColors.wavelength,
-      isCentered: true,
-    );
+      // Dashed guide from anchor down
+      _drawDashedLine(
+        canvas,
+        Offset(startX, centerY - visualAmplitude),
+        Offset(startX, bracketY),
+        dashPaint,
+      );
+
+      // Value badge centred in the visible partial bracket
+      final double badgeCx = startX + (arrowEndX - startX) / 2;
+      _draw3PartLabel(
+        canvas,
+        Offset(badgeCx, bracketY + 15),
+        'λ',
+        '${physWavelength.toStringAsFixed(1)} m',
+        'Wavelength  (> canvas)',
+        WaveColors.wavelength,
+        isCentered: true,
+      );
+    }
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // VELOCITY ARROW
+  //
+  // ✅ FIX: Position is now derived from size so it never goes off-canvas.
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawVelocityArrow(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = WaveColors.speed
       ..strokeWidth = 3.0
       ..style = PaintingStyle.stroke;
 
-    final centerY = size.height / 2 - 120;
-    const startX = 50.0;
-    const endX = 150.0;
+    // ✅ Relative positioning — safe on all screen sizes
+    final double arrowY = max(36.0, size.height * 0.12);
+    final double startX = size.width * 0.06;
+    final double endX = size.width * 0.22;
 
-    canvas.drawLine(Offset(startX, centerY), Offset(endX, centerY), paint);
+    canvas.drawLine(Offset(startX, arrowY), Offset(endX, arrowY), paint);
+
+    // Arrowhead
     final path = Path()
-      ..moveTo(endX - 10, centerY - 5)
-      ..lineTo(endX, centerY)
-      ..lineTo(endX - 10, centerY + 5);
+      ..moveTo(endX - 10, arrowY - 5)
+      ..lineTo(endX, arrowY)
+      ..lineTo(endX - 10, arrowY + 5);
     canvas.drawPath(path, paint);
 
     _draw3PartLabel(
       canvas,
-      Offset(startX, centerY - 45),
+      Offset(startX, arrowY - 28),
       'v',
       '${state.waveSpeed.toInt()} m/s',
       'Wave Speed',
@@ -166,18 +326,27 @@ class BlueprintPainter extends CustomPainter {
     );
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // STANDING WAVE — Nodes & Antinodes
+  //
+  // ✅ FIX: withOpacity → withValues(alpha:) to avoid deprecation warning.
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawNodes(Canvas canvas, Size size) {
     final nodePaint = Paint()
       ..color = WaveColors.harmonic
       ..style = PaintingStyle.fill;
     final antinodePaint = Paint()
-      ..color = WaveColors.amplitude.withOpacity(0.5)
+      ..color = WaveColors.amplitude
+          .withValues(alpha: 0.5) // ✅
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
 
     final centerY = size.height / 2;
+
     for (int i = 0; i <= state.harmonic; i++) {
       final x = (i / state.harmonic) * size.width;
+
+      // Node dot
       canvas.drawCircle(Offset(x, centerY), 4, nodePaint);
       _drawHUDText(
         canvas,
@@ -187,6 +356,7 @@ class BlueprintPainter extends CustomPainter {
         10,
       );
 
+      // Antinode circle (between nodes)
       if (i < state.harmonic) {
         final ax = ((i + 0.5) / state.harmonic) * size.width;
         canvas.drawCircle(Offset(ax, centerY), 12, antinodePaint);
@@ -201,6 +371,9 @@ class BlueprintPainter extends CustomPainter {
     }
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // INTERFERENCE ZONES
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawInterferenceZones(Canvas canvas, Size size) {
     _draw3PartLabel(
       canvas,
@@ -212,14 +385,16 @@ class BlueprintPainter extends CustomPainter {
       isCentered: true,
     );
 
-    final double wavelength = (state.waveSpeed / 10) / state.frequency;
-    final double visualWavelength = (wavelength / 10) * size.width;
+    final double physWavelength = state.waveSpeed / state.frequency;
+    final double visualWavelength = _visLam(size.width, physWavelength);
 
     final constPaint = Paint()
-      ..color = WaveColors.constructive.withOpacity(0.05)
+      ..color = WaveColors.constructive
+          .withValues(alpha: 0.05) // ✅
       ..style = PaintingStyle.fill;
     final destPaint = Paint()
-      ..color = WaveColors.destructive.withOpacity(0.05)
+      ..color = WaveColors.destructive
+          .withValues(alpha: 0.05) // ✅
       ..style = PaintingStyle.fill;
 
     for (double x = 0; x < size.width; x += visualWavelength) {
@@ -256,53 +431,72 @@ class BlueprintPainter extends CustomPainter {
     }
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // DOPPLER ANNOTATIONS
+  //
+  // ✅ FIX: Bracket directions were REVERSED.
+  //   - Compressed λ (approach) is AHEAD of source = RIGHT side of center
+  //   - Stretched λ  (receding) is BEHIND source   = LEFT  side of center
+  //   The old code placed them the wrong way around.
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawDopplerAnnotations(Canvas canvas, Size size) {
-    final v = state.waveSpeed;
-    final vs = state.sourceVelocity;
-    final f = state.frequency;
-    final lambdaComp = (v - vs) / f;
-    final lambdaStretch = (v + vs) / f;
-    final fObsApproaching = f * (v / (v - vs));
-    final fObsReceding = f * (v / (v + vs));
+    final double v = state.waveSpeed;
+    final double vs = state.sourceVelocity;
+    final double f = state.frequency;
+
+    final double lambdaComp = (v - vs) / f; // compressed  (approach, right)
+    final double lambdaStretch = (v + vs) / f; // stretched   (receding, left)
+    final double fObsApproach = f * (v / (v - vs));
+    final double fObsRecede = f * (v / (v + vs));
 
     final centerY = size.height / 2;
     final centerX = size.width / 2;
 
-    final double visualLambdaComp = (lambdaComp / 100) * (size.width / 4);
+    // Scale factor: map physical meters to pixels
+    final double scale = (size.width / 4) / 100.0;
+
+    // ✅ Compressed λ → RIGHT of center (approach side)
+    final double visLamComp = lambdaComp * scale;
     _drawBracket(
       canvas,
-      Offset(centerX - visualLambdaComp - 20, centerY + 80),
-      visualLambdaComp,
+      Offset(centerX + 20, centerY + 80), // ✅ starts right of center
+      visLamComp,
       'λ_comp',
       WaveColors.wavelength,
     );
 
-    final double visualLambdaStretch = (lambdaStretch / 100) * (size.width / 4);
+    // ✅ Stretched λ → LEFT of center (receding side)
+    final double visLamStretch = lambdaStretch * scale;
     _drawBracket(
       canvas,
-      Offset(centerX + 20, centerY + 80),
-      visualLambdaStretch,
+      Offset(
+        centerX - visLamStretch - 20,
+        centerY + 80,
+      ), // ✅ ends left of center
+      visLamStretch,
       'λ_stretch',
       WaveColors.wavelength,
     );
 
+    // f_obs labels: approaching on RIGHT, receding on LEFT
     _draw3PartLabel(
       canvas,
-      Offset(50, size.height * 0.8),
+      Offset(size.width - 150, size.height * 0.8), // ✅ right side
       'f_obs',
-      '${fObsApproaching.toInt()} Hz',
+      '${fObsApproach.toInt()} Hz',
       'Approaching',
       WaveColors.frequency,
     );
     _draw3PartLabel(
       canvas,
-      Offset(size.width - 150, size.height * 0.8),
+      Offset(50, size.height * 0.8), // ✅ left side
       'f_obs',
-      '${fObsReceding.toInt()} Hz',
+      '${fObsRecede.toInt()} Hz',
       'Receding',
       WaveColors.frequency,
     );
 
+    // Source velocity arrow
     final arrowPaint = Paint()
       ..color = WaveColors.speed
       ..strokeWidth = 3.0;
@@ -322,36 +516,56 @@ class BlueprintPainter extends CustomPainter {
     );
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // TRAVELLING WAVE — Animated pulse dot with ghost trail
+  //
+  // ✅ FIX: Ghost modulo now safe for negative values in Dart.
+  //   Dart's % operator returns negative results for negative left operands,
+  //   unlike many other languages. Fixed with: ((x % n) + n) % n pattern.
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawPulseIndicator(Canvas canvas, Size size) {
     final double t = (state.currentTime * 2) % 1.0;
-    const startX = 50.0;
-    const endX = 150.0;
-    final double pulseX = startX + (endX - startX) * t;
+
+    // Match position to _drawVelocityArrow
+    final double arrowY = max(36.0, size.height * 0.12);
+    final double startX = size.width * 0.06;
+    final double endX = size.width * 0.22;
 
     final pulsePaint = Paint()
       ..color = WaveColors.speed
       ..style = PaintingStyle.fill;
-    canvas.drawCircle(Offset(pulseX, size.height / 2 - 120), 4, pulsePaint);
 
-    for (int i = 1; i < 5; i++) {
-      double ghostT = (t - (i * 0.05)) % 1.0;
-      if (ghostT < 0) ghostT += 1.0;
-      final gx = startX + (endX - startX) * ghostT;
+    // Ghost trail
+    for (int i = 4; i >= 1; i--) {
+      // ✅ Safe modulo for negative values
+      final double ghostT = ((t - i * 0.05) % 1.0 + 1.0) % 1.0;
+      final double gx = startX + (endX - startX) * ghostT;
       canvas.drawCircle(
-        Offset(gx, size.height / 2 - 120),
-        4 - i.toDouble(),
+        Offset(gx, arrowY),
+        (4 - i).toDouble(),
         Paint()
-          ..color = pulsePaint.color.withOpacity(0.5 / i)
+          ..color = pulsePaint.color
+              .withValues(alpha: 0.5 / i) // ✅
           ..style = PaintingStyle.fill,
       );
     }
+
+    // Main pulse
+    final double pulseX = startX + (endX - startX) * t;
+    canvas.drawCircle(Offset(pulseX, arrowY), 4, pulsePaint);
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // LONGITUDINAL ZONES — C / R labels + fixed λ bracket
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawLongitudinalZones(Canvas canvas, Size size) {
-    final double wavelength = (state.waveSpeed / 10) / state.frequency;
-    final double visualWavelength = (wavelength / 10) * size.width;
+    final double physWavelength = state.waveSpeed / state.frequency;
+    final double visualWavelength = _visLam(size.width, physWavelength);
+    // C/R labels scroll with the wave — this is correct behaviour
     final double timeOffset =
-        (state.currentTime * (state.waveSpeed / 10) / 10) % visualWavelength;
+        (state.currentTime * (state.waveSpeed / _waveSpeedDivisor)) *
+        _ppm(size.width, physWavelength) %
+        visualWavelength;
 
     for (double x = -visualWavelength; x < size.width; x += visualWavelength) {
       final cx = x + timeOffset;
@@ -373,38 +587,42 @@ class BlueprintPainter extends CustomPainter {
       }
     }
 
+    // λ bracket — fixed at anchor, not time-based
     final paint = Paint()
       ..color = WaveColors.wavelength
       ..strokeWidth = 2.0
       ..style = PaintingStyle.stroke;
     final centerY = size.height / 2 + 60;
-    const startX = 100.0;
-    canvas.drawLine(
-      Offset(startX, centerY - 5),
-      Offset(startX, centerY + 5),
-      paint,
-    );
-    canvas.drawLine(
-      Offset(startX, centerY),
-      Offset(startX + visualWavelength, centerY),
-      paint,
-    );
-    canvas.drawLine(
-      Offset(startX + visualWavelength, centerY - 5),
-      Offset(startX + visualWavelength, centerY + 5),
-      paint,
-    );
-    _draw3PartLabel(
-      canvas,
-      Offset(startX + visualWavelength / 2, centerY + 10),
-      'λ',
-      '${(state.waveSpeed / state.frequency).toStringAsFixed(1)}m',
-      'Wavelength',
-      WaveColors.wavelength,
-      isCentered: true,
-    );
+    final double startX = _lambdaAnchor(size.width); // ✅ fixed anchor
+    final double endX = startX + visualWavelength;
+
+    if (endX < size.width - 20) {
+      canvas.drawLine(
+        Offset(startX, centerY - 5),
+        Offset(startX, centerY + 5),
+        paint,
+      );
+      canvas.drawLine(Offset(startX, centerY), Offset(endX, centerY), paint);
+      canvas.drawLine(
+        Offset(endX, centerY - 5),
+        Offset(endX, centerY + 5),
+        paint,
+      );
+      _draw3PartLabel(
+        canvas,
+        Offset(startX + visualWavelength / 2, centerY + 10),
+        'λ',
+        '${(state.waveSpeed / state.frequency).toStringAsFixed(1)}m',
+        'Wavelength',
+        WaveColors.wavelength,
+        isCentered: true,
+      );
+    }
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // HELPERS
+  // ─────────────────────────────────────────────────────────────────────────
   void _drawBracket(
     Canvas canvas,
     Offset position,
@@ -440,6 +658,24 @@ class BlueprintPainter extends CustomPainter {
     );
   }
 
+  void _drawDashedLine(Canvas canvas, Offset p1, Offset p2, Paint paint) {
+    const double dashW = 3.0, dashGap = 3.0;
+    final double dist = (p2 - p1).distance;
+    if (dist == 0) return;
+    final double dx = (p2.dx - p1.dx) / dist;
+    final double dy = (p2.dy - p1.dy) / dist;
+    double d = 0;
+    while (d < dist) {
+      final double end = (d + dashW).clamp(0.0, dist);
+      canvas.drawLine(
+        Offset(p1.dx + dx * d, p1.dy + dy * d),
+        Offset(p1.dx + dx * end, p1.dy + dy * end),
+        paint,
+      );
+      d += dashW + dashGap;
+    }
+  }
+
   void _drawHUDText(
     Canvas canvas,
     Offset position,
@@ -447,7 +683,7 @@ class BlueprintPainter extends CustomPainter {
     Color color,
     double fontSize,
   ) {
-    final textPainter = TextPainter(
+    final tp = TextPainter(
       text: TextSpan(
         text: text,
         style: TextStyle(
@@ -458,9 +694,8 @@ class BlueprintPainter extends CustomPainter {
         ),
       ),
       textDirection: TextDirection.ltr,
-    );
-    textPainter.layout();
-    textPainter.paint(canvas, position);
+    )..layout();
+    tp.paint(canvas, position);
   }
 
   void _draw3PartLabel(
@@ -472,8 +707,10 @@ class BlueprintPainter extends CustomPainter {
     Color accentColor, {
     bool isCentered = false,
   }) {
-    final textPainter = TextPainter(textDirection: TextDirection.ltr);
-    textPainter.text = TextSpan(
+    final tp = TextPainter(textDirection: TextDirection.ltr);
+
+    // Symbol + value line
+    tp.text = TextSpan(
       children: [
         TextSpan(
           text: '$symbol  ',
@@ -494,31 +731,62 @@ class BlueprintPainter extends CustomPainter {
         ),
       ],
     );
-    textPainter.layout();
-    double x = isCentered ? position.dx - textPainter.width / 2 : position.dx;
-    textPainter.paint(canvas, Offset(x, position.dy));
+    tp.layout();
+    final double x = isCentered ? position.dx - tp.width / 2 : position.dx;
+    tp.paint(canvas, Offset(x, position.dy));
 
-    textPainter.text = TextSpan(
+    // Full name sub-label
+    tp.text = TextSpan(
       text: fullName.toUpperCase(),
       style: TextStyle(
-        color: Colors.white.withOpacity(0.4),
+        color: Colors.white.withValues(alpha: 0.4), // ✅
         fontSize: 8,
         letterSpacing: 1.0,
       ),
     );
-    textPainter.layout();
-    textPainter.paint(canvas, Offset(x, position.dy + 16));
+    tp.layout();
+    tp.paint(canvas, Offset(x, position.dy + 16));
 
+    // ✅ FIX: Accent line width matches first-line text width, not hardcoded 40px
     final linePaint = Paint()
-      ..color = accentColor.withOpacity(0.5)
+      ..color = accentColor
+          .withValues(alpha: 0.5) // ✅
       ..strokeWidth = 1.0;
+    // Re-measure just the first line to get accurate width
+    final firstLineTp = TextPainter(
+      textDirection: TextDirection.ltr,
+      text: TextSpan(
+        text: '$symbol  $value',
+        style: const TextStyle(fontSize: 14, fontFamily: 'monospace'),
+      ),
+    )..layout();
     canvas.drawLine(
       Offset(x, position.dy - 2),
-      Offset(x + 40, position.dy - 2),
+      Offset(x + firstLineTp.width, position.dy - 2), // ✅ dynamic width
       linePaint,
     );
   }
 
+  // ─────────────────────────────────────────────────────────────────────────
+  // REPAINT
+  //
+  // ✅ FIX: Was `=> true` — caused full repaint every frame even when idle.
+  //   Now compares the fields that actually affect the painted output.
+  // ─────────────────────────────────────────────────────────────────────────
   @override
-  bool shouldRepaint(covariant BlueprintPainter oldDelegate) => true;
+  bool shouldRepaint(covariant BlueprintPainter oldDelegate) {
+    final o = oldDelegate.state;
+    final n = state;
+    return o.amplitude != n.amplitude ||
+        o.frequency != n.frequency ||
+        o.waveSpeed != n.waveSpeed ||
+        o.currentTime != n.currentTime ||
+        o.mode != n.mode ||
+        o.waveType != n.waveType ||
+        o.harmonic != n.harmonic ||
+        o.phaseDifference != n.phaseDifference ||
+        o.sourceVelocity != n.sourceVelocity ||
+        o.secondaryAmplitude != n.secondaryAmplitude ||
+        o.showBlueprint != n.showBlueprint;
+  }
 }
