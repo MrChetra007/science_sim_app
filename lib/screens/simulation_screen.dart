@@ -12,6 +12,9 @@ import '../widgets/oscilloscope_panel.dart';
 import '../widgets/pro_gate.dart';
 import '../providers/wave_provider.dart';
 import '../services/audio_service.dart';
+import '../services/ad_service.dart';
+import '../services/iap_service.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class SimulationScreen extends ConsumerStatefulWidget {
   const SimulationScreen({super.key});
@@ -22,10 +25,23 @@ class SimulationScreen extends ConsumerStatefulWidget {
 
 class _SimulationScreenState extends ConsumerState<SimulationScreen> {
   bool _isExpanded = false;
+  BannerAd? _topBannerAd;
+  BannerAd? _bottomBannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    if (!iapService.isPro) {
+      _topBannerAd = adService.createBannerAd();
+      _bottomBannerAd = adService.createBannerAd();
+    }
+  }
 
   @override
   void dispose() {
     audioService.stopTone();
+    _topBannerAd?.dispose();
+    _bottomBannerAd?.dispose();
     super.dispose();
   }
 
@@ -80,6 +96,13 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
       backgroundColor: const Color(0xFF040D17),
       body: Column(
         children: [
+          if (!iapService.isPro && _topBannerAd != null)
+            Container(
+              alignment: Alignment.center,
+              width: _topBannerAd!.size.width.toDouble(),
+              height: _topBannerAd!.size.height.toDouble(),
+              child: AdWidget(ad: _topBannerAd!),
+            ),
           // 1. TOP HUB (21%)
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.21,
@@ -213,6 +236,13 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
             ),
             child: _isExpanded ? const ControlPanel() : null,
           ),
+          if (!iapService.isPro && _bottomBannerAd != null)
+            Container(
+              alignment: Alignment.center,
+              width: _bottomBannerAd!.size.width.toDouble(),
+              height: _bottomBannerAd!.size.height.toDouble(),
+              child: AdWidget(ad: _bottomBannerAd!),
+            ),
         ],
       ),
     );

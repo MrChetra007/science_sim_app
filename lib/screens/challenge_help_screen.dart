@@ -1,8 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import '../services/ad_service.dart';
+import '../services/iap_service.dart';
 
-class ChallengeHelpScreen extends StatelessWidget {
+class ChallengeHelpScreen extends StatefulWidget {
   const ChallengeHelpScreen({super.key});
+
+  @override
+  State<ChallengeHelpScreen> createState() => _ChallengeHelpScreenState();
+}
+
+class _ChallengeHelpScreenState extends State<ChallengeHelpScreen> {
+  BannerAd? _topBannerAd;
+  BannerAd? _bottomBannerAd;
+
+  @override
+  void initState() {
+    super.initState();
+    if (!iapService.isPro) {
+      _topBannerAd = adService.createBannerAd();
+      _bottomBannerAd = adService.createBannerAd();
+    }
+  }
+
+  @override
+  void dispose() {
+    _topBannerAd?.dispose();
+    _bottomBannerAd?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,74 +44,94 @@ class ChallengeHelpScreen extends StatelessWidget {
           onPressed: () => context.pop(),
         ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildIntroduction(),
-            const SizedBox(height: 32),
-            _buildSection(
-              icon: Icons.waves,
-              title: '1. Frequency Matching',
-              description:
-                  'The most basic challenge. Your goal is to match the raw frequency of the wave.',
-              instructions: [
-                'Look at the target frequency (e.g., 5.0 Hz).',
-                'Use the slider to adjust the wave frequency.',
-                'Match it within 0.2 Hz to score!',
-              ],
+      body: Column(
+        children: [
+          if (!iapService.isPro && _topBannerAd != null)
+            Container(
+              alignment: Alignment.center,
+              width: _topBannerAd!.size.width.toDouble(),
+              height: _topBannerAd!.size.height.toDouble(),
+              child: AdWidget(ad: _topBannerAd!),
             ),
-            const SizedBox(height: 24),
-            _buildSection(
-              icon: Icons.vibration,
-              title: '2. Harmonic Matching',
-              description:
-                  'A challenge using Standing Waves. You must create a specific resonating pattern.',
-              instructions: [
-                'The goal is defined by the harmonic number "n".',
-                'First, switch the wave mode to "Standing".',
-                'Select the "n" value that matches the target.',
-              ],
-              color: Colors.amberAccent,
-            ),
-            const SizedBox(height: 24),
-            _buildSection(
-              icon: Icons.compare_arrows,
-              title: '3. Phase Matching',
-              description:
-                  'A challenge using Interference. You must align two waves to create a specific result.',
-              instructions: [
-                'The goal is defined by the phase difference in terms of π.',
-                'First, switch the wave mode to "Interference".',
-                'Adjust the Phase Difference slider until you hit the target (e.g., 0.50 π).',
-              ],
-              color: Colors.lightGreenAccent,
-            ),
-            const SizedBox(height: 40),
-            Center(
-              child: ElevatedButton(
-                onPressed: () => context.pop(),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF00E5FF),
-                  foregroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48,
-                    vertical: 16,
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildIntroduction(),
+                  const SizedBox(height: 32),
+                  _buildSection(
+                    icon: Icons.waves,
+                    title: '1. Frequency Matching',
+                    description:
+                        'The most basic challenge. Your goal is to match the raw frequency of the wave.',
+                    instructions: [
+                      'Look at the target frequency (e.g., 5.0 Hz).',
+                      'Use the slider to adjust the wave frequency.',
+                      'Match it within 0.2 Hz to score!',
+                    ],
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                  const SizedBox(height: 24),
+                  _buildSection(
+                    icon: Icons.vibration,
+                    title: '2. Harmonic Matching',
+                    description:
+                        'A challenge using Standing Waves. You must create a specific resonating pattern.',
+                    instructions: [
+                      'The goal is defined by the harmonic number "n".',
+                      'First, switch the wave mode to "Standing".',
+                      'Select the "n" value that matches the target.',
+                    ],
+                    color: Colors.amberAccent,
                   ),
-                ),
-                child: const Text(
-                  'GOT IT!',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+                  const SizedBox(height: 24),
+                  _buildSection(
+                    icon: Icons.compare_arrows,
+                    title: '3. Phase Matching',
+                    description:
+                        'A challenge using Interference. You must align two waves to create a specific result.',
+                    instructions: [
+                      'The goal is defined by the phase difference in terms of π.',
+                      'First, switch the wave mode to "Interference".',
+                      'Adjust the Phase Difference slider until you hit the target (e.g., 0.50 π).',
+                    ],
+                    color: Colors.lightGreenAccent,
+                  ),
+                  const SizedBox(height: 40),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () => context.pop(),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF00E5FF),
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 48,
+                          vertical: 16,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text(
+                        'GOT IT!',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
-            const SizedBox(height: 20),
-          ],
-        ),
+          ),
+          if (!iapService.isPro && _bottomBannerAd != null)
+            Container(
+              alignment: Alignment.center,
+              width: _bottomBannerAd!.size.width.toDouble(),
+              height: _bottomBannerAd!.size.height.toDouble(),
+              child: AdWidget(ad: _bottomBannerAd!),
+            ),
+        ],
       ),
     );
   }

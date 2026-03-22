@@ -25,216 +25,210 @@ class ControlPanel extends ConsumerWidget {
           ),
         ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Drag Handle Decor
-            Center(
-              child: Container(
-                width: 40,
-                height: 4,
-                margin: const EdgeInsets.only(bottom: 16),
-                decoration: BoxDecoration(
-                  color: Colors.white24,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'CONTROLS',
-                  style: TextStyle(
-                    color: Colors.white38,
-                    fontSize: 10,
-                    letterSpacing: 1.2,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // Correctly shrinks when height is restricted
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Drag Handle Decor
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  margin: const EdgeInsets.only(bottom: 16),
+                  decoration: BoxDecoration(
+                    color: Colors.white24,
+                    borderRadius: BorderRadius.circular(2),
                   ),
                 ),
-                Row(
-                  children: [
-                    // ✅ FREE — Play/Pause
-                    IconButton(
-                      onPressed: waveNotifier.togglePause,
-                      constraints: const BoxConstraints(),
-                      padding: EdgeInsets.zero,
-                      icon: Icon(
-                        waveState.isPaused ? Icons.play_arrow : Icons.pause,
-                        color: const Color(0xFF00E5FF),
-                        size: 20,
-                      ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'CONTROLS',
+                    style: TextStyle(
+                      color: Colors.white38,
+                      fontSize: 10,
+                      letterSpacing: 1.2,
                     ),
-                    const SizedBox(width: 8),
-                    // ✅ FREE — Slow Motion
-                    IconButton(
-                      onPressed: () => waveNotifier.setTimeScale(
-                        waveState.timeScale == 1.0 ? 0.1 : 1.0,
+                  ),
+                  Row(
+                    children: [
+                      // ✅ FREE — Play/Pause
+                      IconButton(
+                        onPressed: waveNotifier.togglePause,
+                        constraints: const BoxConstraints(),
+                        padding: EdgeInsets.zero,
+                        icon: Icon(
+                          waveState.isPaused ? Icons.play_arrow : Icons.pause,
+                          color: const Color(0xFF00E5FF),
+                          size: 20,
+                        ),
                       ),
-                      constraints: const BoxConstraints(),
-                      padding: EdgeInsets.zero,
-                      icon: Icon(
-                        waveState.timeScale == 1.0
-                            ? Icons.speed
-                            : Icons.slow_motion_video,
-                        color: waveState.timeScale == 0.1
-                            ? const Color(0xFF00E5FF)
-                            : Colors.white70,
-                        size: 20,
+                      const SizedBox(width: 8),
+                      // ✅ FREE — Slow Motion
+                      IconButton(
+                        onPressed: () => waveNotifier.setTimeScale(
+                          waveState.timeScale == 1.0 ? 0.1 : 1.0,
+                        ),
+                        constraints: const BoxConstraints(),
+                        padding: EdgeInsets.zero,
+                        icon: Icon(
+                          waveState.timeScale == 1.0
+                              ? Icons.speed
+                              : Icons.slow_motion_video,
+                          color: waveState.timeScale == 0.1
+                              ? const Color(0xFF00E5FF)
+                              : Colors.white70,
+                          size: 20,
+                        ),
+                        tooltip: 'Slow Motion',
                       ),
-                      tooltip: 'Slow Motion',
-                    ),
-                    const SizedBox(width: 8),
-                    // ✅ FREE — Audio Tone
-                    IconButton(
-                      onPressed: waveNotifier.toggleAudio,
-                      constraints: const BoxConstraints(),
-                      padding: EdgeInsets.zero,
-                      icon: Icon(
-                        waveState.isAudioEnabled
-                            ? Icons.volume_up
-                            : Icons.volume_off,
-                        color: waveState.isAudioEnabled
-                            ? const Color(0xFF00E5FF)
-                            : Colors.white70,
-                        size: 20,
+                      const SizedBox(width: 8),
+                      // ✅ FREE — Audio Tone
+                      IconButton(
+                        onPressed: waveNotifier.toggleAudio,
+                        constraints: const BoxConstraints(),
+                        padding: EdgeInsets.zero,
+                        icon: Icon(
+                          waveState.isAudioEnabled
+                              ? Icons.volume_up
+                              : Icons.volume_off,
+                          color: waveState.isAudioEnabled
+                              ? const Color(0xFF00E5FF)
+                              : Colors.white70,
+                          size: 20,
+                        ),
+                        tooltip: 'Audio Tone',
                       ),
-                      tooltip: 'Audio Tone',
-                    ),
-                    const SizedBox(width: 8),
-                    // ✅ FREE — Reset
-                    IconButton(
-                      onPressed: waveNotifier.resetTime,
-                      constraints: const BoxConstraints(),
-                      padding: EdgeInsets.zero,
-                      icon: const Icon(
-                        Icons.refresh,
-                        color: Colors.white70,
-                        size: 20,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            _buildModeToggle(waveState, waveNotifier),
-            const SizedBox(height: 8),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (waveState.mode == WaveMode.simulation ||
-                        waveState.mode == WaveMode.interference) ...[
-                      _buildWaveTypeToggle(waveState, waveNotifier),
-                      const Divider(color: Colors.white12, height: 24),
-                    ],
-
-                    _buildSlider(
-                      label: waveState.mode == WaveMode.interference
-                          ? 'Wave 1 Amplitude'
-                          : 'Amplitude (A)',
-                      value: waveState.amplitude,
-                      min: 0.1,
-                      max: 5.0,
-                      onChanged: (v) {
-                        waveNotifier.setAmplitude(v);
-                        HapticFeedback.selectionClick();
-                      },
-                      activeColor: WaveColors.amplitude,
-                    ),
-                    _buildSlider(
-                      label: waveState.mode == WaveMode.interference
-                          ? 'Wave 1 Frequency'
-                          : 'Frequency (f)',
-                      value: waveState.frequency,
-                      min: 0.1,
-                      max: 20.0,
-                      onChanged: (v) {
-                        waveNotifier.setFrequency(v);
-                        HapticFeedback.selectionClick();
-                      },
-                      activeColor: WaveColors.frequency,
-                    ),
-
-                    // ✅ FREE — Standing Wave harmonic slider
-                    if (waveState.mode == WaveMode.standing)
-                      _buildSlider(
-                        label: 'Harmonic (n)',
-                        value: waveState.harmonic.toDouble(),
-                        min: 1,
-                        max: 6,
-                        onChanged: (v) => waveNotifier.setHarmonic(v.toInt()),
-                        activeColor: WaveColors.harmonic,
-                      ),
-
-                    if (waveState.mode == WaveMode.interference) ...[
-                      _buildSlider(
-                        label: 'Wave 2 Amplitude',
-                        value: waveState.secondaryAmplitude,
-                        min: 0.1,
-                        max: 5.0,
-                        onChanged: waveNotifier.setSecondaryAmplitude,
-                      ),
-                      _buildSlider(
-                        label: 'Wave 2 Frequency',
-                        value: waveState.secondaryFrequency,
-                        min: 0.1,
-                        max: 20.0,
-                        onChanged: waveNotifier.setSecondaryFrequency,
-                      ),
-                      _buildSlider(
-                        label: 'Phase Diff (φ)',
-                        value: waveState.phaseDifference,
-                        min: 0,
-                        max: 6.28,
-                        onChanged: waveNotifier.setPhaseDifference,
-                        activeColor: WaveColors.phase,
-                      ),
-                    ],
-
-                    if (waveState.mode == WaveMode.doppler)
-                      _buildSlider(
-                        label: 'Source Velocity (vs)',
-                        value: waveState.sourceVelocity,
-                        min: -50,
-                        max: 50,
-                        onChanged: waveNotifier.setSourceVelocity,
-                        activeColor: WaveColors.speed,
-                      ),
-
-                    if (waveState.mode == WaveMode.simulation ||
-                        waveState.mode == WaveMode.interference ||
-                        waveState.mode == WaveMode.doppler) ...[
-                      _buildSlider(
-                        label: 'Wave Speed (v)',
-                        value: waveState.waveSpeed,
-                        min: 100,
-                        max: 1500,
-                        onChanged: waveNotifier.setWaveSpeed,
-                        activeColor: WaveColors.speed,
-                      ),
-                      const SizedBox(height: 4),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            _presetChip('Vacuum', 300, waveState, waveNotifier),
-                            _presetChip('Air', 343, waveState, waveNotifier),
-                            _presetChip('Water', 1480, waveState, waveNotifier),
-                          ],
+                      const SizedBox(width: 8),
+                      // ✅ FREE — Reset
+                      IconButton(
+                        onPressed: waveNotifier.resetTime,
+                        constraints: const BoxConstraints(),
+                        padding: EdgeInsets.zero,
+                        icon: const Icon(
+                          Icons.refresh,
+                          color: Colors.white70,
+                          size: 20,
                         ),
                       ),
                     ],
-                    const Divider(color: Colors.white12, height: 24),
-                    _buildEducationTools(waveState, waveNotifier),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-          ],
+              const SizedBox(height: 8),
+              _buildModeToggle(waveState, waveNotifier),
+              const SizedBox(height: 8),
+              if (waveState.mode == WaveMode.simulation ||
+                  waveState.mode == WaveMode.interference) ...[
+                _buildWaveTypeToggle(waveState, waveNotifier),
+                const Divider(color: Colors.white12, height: 24),
+              ],
+
+              _buildSlider(
+                label: waveState.mode == WaveMode.interference
+                    ? 'Wave 1 Amplitude'
+                    : 'Amplitude (A)',
+                value: waveState.amplitude,
+                min: 0.1,
+                max: 5.0,
+                onChanged: (v) {
+                  waveNotifier.setAmplitude(v);
+                  HapticFeedback.selectionClick();
+                },
+                activeColor: WaveColors.amplitude,
+              ),
+              _buildSlider(
+                label: waveState.mode == WaveMode.interference
+                    ? 'Wave 1 Frequency'
+                    : 'Frequency (f)',
+                value: waveState.frequency,
+                min: 0.1,
+                max: 20.0,
+                onChanged: (v) {
+                  waveNotifier.setFrequency(v);
+                  HapticFeedback.selectionClick();
+                },
+                activeColor: WaveColors.frequency,
+              ),
+
+              // ✅ FREE — Standing Wave harmonic slider
+              if (waveState.mode == WaveMode.standing)
+                _buildSlider(
+                  label: 'Harmonic (n)',
+                  value: waveState.harmonic.toDouble(),
+                  min: 1,
+                  max: 6,
+                  onChanged: (v) => waveNotifier.setHarmonic(v.toInt()),
+                  activeColor: WaveColors.harmonic,
+                ),
+
+              if (waveState.mode == WaveMode.interference) ...[
+                _buildSlider(
+                  label: 'Wave 2 Amplitude',
+                  value: waveState.secondaryAmplitude,
+                  min: 0.1,
+                  max: 5.0,
+                  onChanged: waveNotifier.setSecondaryAmplitude,
+                ),
+                _buildSlider(
+                  label: 'Wave 2 Frequency',
+                  value: waveState.secondaryFrequency,
+                  min: 0.1,
+                  max: 20.0,
+                  onChanged: waveNotifier.setSecondaryFrequency,
+                ),
+                _buildSlider(
+                  label: 'Phase Diff (φ)',
+                  value: waveState.phaseDifference,
+                  min: 0,
+                  max: 6.28,
+                  onChanged: waveNotifier.setPhaseDifference,
+                  activeColor: WaveColors.phase,
+                ),
+              ],
+
+              if (waveState.mode == WaveMode.doppler)
+                _buildSlider(
+                  label: 'Source Velocity (vs)',
+                  value: waveState.sourceVelocity,
+                  min: -50,
+                  max: 50,
+                  onChanged: waveNotifier.setSourceVelocity,
+                  activeColor: WaveColors.speed,
+                ),
+
+              if (waveState.mode == WaveMode.simulation ||
+                  waveState.mode == WaveMode.interference ||
+                  waveState.mode == WaveMode.doppler) ...[
+                _buildSlider(
+                  label: 'Wave Speed (v)',
+                  value: waveState.waveSpeed,
+                  min: 100,
+                  max: 1500,
+                  onChanged: waveNotifier.setWaveSpeed,
+                  activeColor: WaveColors.speed,
+                ),
+                const SizedBox(height: 4),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      _presetChip('Vacuum', 300, waveState, waveNotifier),
+                      _presetChip('Air', 343, waveState, waveNotifier),
+                      _presetChip('Water', 1480, waveState, waveNotifier),
+                    ],
+                  ),
+                ),
+              ],
+              const Divider(color: Colors.white12, height: 24),
+              _buildEducationTools(waveState, waveNotifier),
+            ],
+          ),
         ),
       ),
     );

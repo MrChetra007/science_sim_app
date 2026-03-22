@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_soloud/flutter_soloud.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'services/iap_service.dart';
+import 'services/ad_service.dart';
 import 'screens/simulation_screen.dart';
 import 'screens/formula_reference_screen.dart';
 import 'screens/challenge_screen.dart';
@@ -15,6 +18,7 @@ void main() async {
   try {
     await SoLoud.instance.init();
     await iapService.init();
+    await adService.init();
   } catch (e) {
     debugPrint('Service initialization failed: $e');
   }
@@ -62,6 +66,7 @@ class PhysicsShotApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       routerConfig: _router,
     );
   }
@@ -77,6 +82,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  BannerAd? _topBannerAd;
+  BannerAd? _bottomBannerAd;
 
   @override
   void initState() {
@@ -85,11 +92,25 @@ class _HomeScreenState extends State<HomeScreen>
       vsync: this,
       duration: const Duration(seconds: 10),
     )..repeat();
+
+    // Show interstitial ad every 2 minutes for free users
+    Timer.periodic(const Duration(minutes: 2), (timer) {
+      if (!iapService.isPro) {
+        adService.showInterstitialAd();
+      }
+    });
+
+    if (!iapService.isPro) {
+      _topBannerAd = adService.createBannerAd();
+      _bottomBannerAd = adService.createBannerAd();
+    }
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _topBannerAd?.dispose();
+    _bottomBannerAd?.dispose();
     super.dispose();
   }
 
@@ -111,72 +132,100 @@ class _HomeScreenState extends State<HomeScreen>
           ),
 
           // Content
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+          Column(
+            children: [
+              if (!iapService.isPro && _topBannerAd != null)
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 12,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.black38,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      color: const Color(0xFF00E5FF).withValues(alpha: 0.3),
-                    ),
-                  ),
+                  alignment: Alignment.center,
+                  width: _topBannerAd!.size.width.toDouble(),
+                  height: _topBannerAd!.size.height.toDouble(),
+                  child: AdWidget(ad: _topBannerAd!),
+                ),
+              Expanded(
+                child: Center(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        '〰️ WAVE LAB',
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.w900,
-                          color: Color(0xFF00E5FF),
-                          letterSpacing: 4,
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 12,
                         ),
+                        decoration: BoxDecoration(
+                          color: Colors.black38,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color:
+                                const Color(0xFF00E5FF).withValues(alpha: 0.3),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            const Text(
+                              '〰️ WAVE LAB',
+                              style: TextStyle(
+                                fontSize: 40,
+                                fontWeight: FontWeight.w900,
+                                color: Color(0xFF00E5FF),
+                                letterSpacing: 4,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 60),
+                      _mainButton(
+                        onPressed: () => context.push('/simulate'),
+                        label: 'ENTER LAB',
+                        icon: Icons.science_outlined,
+                      ),
+                      const SizedBox(height: 16),
+                      _mainButton(
+                        onPressed: () => context.push('/formula-reference'),
+                        label: 'FORMULA REFERENCE',
+                        icon: Icons.menu_book,
+                        isSecondary: true,
+                      ),
+                      const SizedBox(height: 16),
+                      _mainButton(
+                        onPressed: () => context.push('/challenge'),
+                        label: 'CHALLENGE MODE',
+                        icon: Icons.emoji_events_outlined,
+                        isSecondary: true,
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 60),
-                _mainButton(
-                  onPressed: () => context.push('/simulate'),
-                  label: 'ENTER LAB',
-                  icon: Icons.science_outlined,
+              ),
+              if (!iapService.isPro && _bottomBannerAd != null)
+                Container(
+                  alignment: Alignment.center,
+                  width: _bottomBannerAd!.size.width.toDouble(),
+                  height: _bottomBannerAd!.size.height.toDouble(),
+                  child: AdWidget(ad: _bottomBannerAd!),
                 ),
-                const SizedBox(height: 16),
-                _mainButton(
-                  onPressed: () => context.push('/formula-reference'),
-                  label: 'FORMULA REFERENCE',
-                  icon: Icons.menu_book,
-                  isSecondary: true,
-                ),
-                const SizedBox(height: 16),
-                _mainButton(
-                  onPressed: () => context.push('/challenge'),
-                  label: 'CHALLENGE MODE',
-                  icon: Icons.emoji_events_outlined,
-                  isSecondary: true,
-                ),
-              ],
-            ),
+              const SizedBox(height: 60), // Space for version info
+            ],
           ),
 
           // Bottom Version Info
-          const Positioned(
+          Positioned(
             bottom: 24,
             left: 0,
             right: 0,
             child: Center(
-              child: Text(
-                'v1.0.0 PRO ENABLED',
-                style: TextStyle(
-                  color: Colors.white24,
-                  fontSize: 10,
-                  letterSpacing: 2,
+              child: GestureDetector(
+                onLongPress: () async {
+                  await iapService.toggleProStatus();
+                  setState(() {});
+                },
+                child: Text(
+                  'v1.0.0 ${iapService.isPro ? 'PRO ENABLED' : 'FREE'}',
+                  style: const TextStyle(
+                    color: Colors.white24,
+                    fontSize: 10,
+                    letterSpacing: 2,
+                  ),
                 ),
               ),
             ),

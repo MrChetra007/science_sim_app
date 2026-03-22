@@ -4,6 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'dart:math';
 import '../providers/wave_provider.dart';
 import '../painters/wave_painter.dart';
+import '../services/ad_service.dart';
+import '../services/iap_service.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class ChallengeScreen extends ConsumerStatefulWidget {
   const ChallengeScreen({super.key});
@@ -23,11 +26,24 @@ class _ChallengeScreenState extends ConsumerState<ChallengeScreen> {
   int score = 0;
   int streak = 0;
   bool isMatched = false;
+  BannerAd? _topBannerAd;
+  BannerAd? _bottomBannerAd;
 
   @override
   void initState() {
     super.initState();
     _generateNewTarget();
+    if (!iapService.isPro) {
+      _topBannerAd = adService.createBannerAd();
+      _bottomBannerAd = adService.createBannerAd();
+    }
+  }
+
+  @override
+  void dispose() {
+    _topBannerAd?.dispose();
+    _bottomBannerAd?.dispose();
+    super.dispose();
   }
 
   void _generateNewTarget() {
@@ -107,6 +123,13 @@ class _ChallengeScreenState extends ConsumerState<ChallengeScreen> {
       ),
       body: Column(
         children: [
+          if (!iapService.isPro && _topBannerAd != null)
+            Container(
+              alignment: Alignment.center,
+              width: _topBannerAd!.size.width.toDouble(),
+              height: _topBannerAd!.size.height.toDouble(),
+              child: AdWidget(ad: _topBannerAd!),
+            ),
           // Header Readout
           Padding(
             padding: const EdgeInsets.all(20),
@@ -188,6 +211,13 @@ class _ChallengeScreenState extends ConsumerState<ChallengeScreen> {
               ],
             ),
           ),
+          if (!iapService.isPro && _bottomBannerAd != null)
+            Container(
+              alignment: Alignment.center,
+              width: _bottomBannerAd!.size.width.toDouble(),
+              height: _bottomBannerAd!.size.height.toDouble(),
+              child: AdWidget(ad: _bottomBannerAd!),
+            ),
         ],
       ),
     );

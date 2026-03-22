@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,10 +17,7 @@ class IapService {
     final prefs = await SharedPreferences.getInstance();
     _isPro = prefs.getBool('is_pro') ?? false;
 
-    // Debug override: Always start as a free user in debug mode
-    if (kDebugMode) {
-      _isPro = false;
-    }
+    // Persisted Pro status is now respected in both debug and release
 
     final Stream<List<PurchaseDetails>> purchaseUpdated = _iap.purchaseStream;
     _subscription = purchaseUpdated.listen(
@@ -46,6 +42,10 @@ class IapService {
 
     // For this lab, let's allow "unlocking" easily
     await _setProStatus(true);
+  }
+
+  Future<void> toggleProStatus() async {
+    await _setProStatus(!_isPro);
   }
 
   Future<void> _setProStatus(bool status) async {
