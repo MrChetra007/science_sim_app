@@ -1,312 +1,290 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:math';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' as rp;
+import 'package:provider/provider.dart' as p;
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_soloud/flutter_soloud.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'services/iap_service.dart';
-import 'services/ad_service.dart';
-import 'screens/simulation_screen.dart';
-import 'screens/formula_reference_screen.dart';
-import 'screens/challenge_screen.dart';
-import 'screens/challenge_help_screen.dart';
+
+// Import Global Services
+import 'core/services/subscription_service.dart';
+import 'core/services/ad_service.dart';
+import 'core/widgets/plan_picker.dart';
+
+// Import Newton Lab
+import 'newton_lab/app.dart';
+
+// Import Ohm Lab
+import 'ohm_lab/screens/home_screen.dart' as ohm_home;
+import 'ohm_lab/providers/circuit_provider.dart';
+import 'ohm_lab/core/theme.dart' as ohm_theme;
+
+// Import Projectile Motion Lab
+import 'projectile_motion/app.dart' as projectile_app;
+
+// Import AC Lab
+import 'ac_lab/main_standalone.dart' as ac_main;
+import 'ac_lab/providers/ac_provider.dart';
+
+// Import Wave Lab
+import 'wave_lab/main_standalone.dart' as wave_main;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize Global Services
+  final subscriptionService = SubscriptionService();
+  await subscriptionService.init();
+  await globalAdService.init();
+
+  // Initialize Lab Specific dependencies
+  final acProvider = ACProvider();
+  await acProvider.loadPrefs();
 
   try {
     await SoLoud.instance.init();
-    await iapService.init();
-    await adService.init();
   } catch (e) {
-    debugPrint('Service initialization failed: $e');
+    debugPrint('SoLoud initialization failed: $e');
   }
-
-  runApp(const ProviderScope(child: PhysicsShotApp()));
+  
+  runApp(
+    rp.ProviderScope(
+      child: p.MultiProvider(
+        providers: [
+          p.ChangeNotifierProvider.value(value: subscriptionService),
+          p.ChangeNotifierProvider(create: (_) => CircuitProvider()),
+          p.ChangeNotifierProvider.value(value: acProvider),
+        ],
+        child: const MainApp(),
+      ),
+    ),
+  );
 }
 
-final _router = GoRouter(
-  initialLocation: '/',
-  routes: [
-    GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
-    GoRoute(
-      path: '/simulate',
-      builder: (context, state) => const SimulationScreen(),
-    ),
-    GoRoute(
-      path: '/formula-reference',
-      builder: (context, state) => const FormulaReferenceScreen(),
-    ),
-    GoRoute(
-      path: '/challenge',
-      builder: (context, state) => const ChallengeScreen(),
-    ),
-    GoRoute(
-      path: '/challenge-help',
-      builder: (context, state) => const ChallengeHelpScreen(),
-    ),
-  ],
-);
-
-class PhysicsShotApp extends StatelessWidget {
-  const PhysicsShotApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'WaveLab',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF040D17),
-        primaryColor: const Color(0xFF00E5FF),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF00E5FF),
-          brightness: Brightness.dark,
-        ),
-        useMaterial3: true,
-      ),
+    return MaterialApp(
+      title: 'Physics Simulation Lab',
       debugShowCheckedModeBanner: false,
-      routerConfig: _router,
+      theme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        textTheme: GoogleFonts.orbitronTextTheme(ThemeData.dark().textTheme),
+      ),
+      home: const DashboardScreen(),
     );
   }
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  BannerAd? _topBannerAd;
-  BannerAd? _bottomBannerAd;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 10),
-    )..repeat();
-
-    // Show interstitial ad every 2 minutes for free users
-    Timer.periodic(const Duration(minutes: 2), (timer) {
-      if (!iapService.isPro) {
-        adService.showInterstitialAd();
-      }
-    });
-
-    if (!iapService.isPro) {
-      _topBannerAd = adService.createBannerAd();
-      _bottomBannerAd = adService.createBannerAd();
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    _topBannerAd?.dispose();
-    _bottomBannerAd?.dispose();
-    super.dispose();
-  }
+class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final sub = p.Provider.of<SubscriptionService>(context);
+    
     return Scaffold(
-      backgroundColor: const Color(0xFF040D17),
-      body: Stack(
-        children: [
-          // Background Animation
-          AnimatedBuilder(
-            animation: _controller,
-            builder: (context, child) {
-              return CustomPaint(
-                painter: HomeScreenPainter(progress: _controller.value),
-                size: Size.infinite,
-              );
-            },
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          TextButton.icon(
+            onPressed: () => _showPlanDialog(context),
+            icon: Icon(Icons.stars, color: sub.isPro ? Colors.amber : Colors.cyan),
+            label: Text(sub.currentPlan.name.toUpperCase()),
           ),
-
-          // Content
-          Column(
-            children: [
-              if (!iapService.isPro && _topBannerAd != null)
-                Container(
-                  alignment: Alignment.center,
-                  width: _topBannerAd!.size.width.toDouble(),
-                  height: _topBannerAd!.size.height.toDouble(),
-                  child: AdWidget(ad: _topBannerAd!),
+        ],
+      ),
+      extendBodyBehindAppBar: true,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.blueGrey.shade900,
+              Colors.black,
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 10),
+                Text(
+                  'PHYSICS LAB',
+                  style: GoogleFonts.orbitron(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.cyanAccent,
+                    letterSpacing: 4,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-              Expanded(
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                Text(
+                  'Virtual Experiment Suite',
+                  style: GoogleFonts.orbitron(
+                    fontSize: 14,
+                    color: Colors.white70,
+                    letterSpacing: 2,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 30),
+                Expanded(
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 0.95,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 24,
-                          vertical: 12,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.black38,
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                            color:
-                                const Color(0xFF00E5FF).withValues(alpha: 0.3),
-                          ),
-                        ),
-                        child: Column(
-                          children: [
-                            const Text(
-                              '〰️ WAVE LAB',
-                              style: TextStyle(
-                                fontSize: 40,
-                                fontWeight: FontWeight.w900,
-                                color: Color(0xFF00E5FF),
-                                letterSpacing: 4,
+                      _buildLabCard(
+                        context,
+                        title: "NEWTON",
+                        subtitle: "Laws of Motion",
+                        icon: Icons.architecture,
+                        color: Colors.cyanAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const NewtonsLabApp()),
+                          );
+                        },
+                      ),
+                      _buildLabCard(
+                        context,
+                        title: "OHM",
+                        subtitle: "Electricity",
+                        icon: Icons.bolt,
+                        color: Colors.amberAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Theme(
+                                data: ohm_theme.AppTheme.darkTheme,
+                                child: const ohm_home.HomeScreen(),
                               ),
                             ),
-                          ],
-                        ),
+                          );
+                        },
                       ),
-                      const SizedBox(height: 60),
-                      _mainButton(
-                        onPressed: () => context.push('/simulate'),
-                        label: 'ENTER LAB',
-                        icon: Icons.science_outlined,
+                      _buildLabCard(
+                        context,
+                        title: "PROJECTILE",
+                        subtitle: "Kinematics",
+                        icon: Icons.rocket_launch,
+                        color: Colors.deepPurpleAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const projectile_app.App()),
+                          );
+                        },
                       ),
-                      const SizedBox(height: 16),
-                      _mainButton(
-                        onPressed: () => context.push('/formula-reference'),
-                        label: 'FORMULA REFERENCE',
-                        icon: Icons.menu_book,
-                        isSecondary: true,
+                      _buildLabCard(
+                        context,
+                        title: "AC LAB",
+                        subtitle: "Alternating Current",
+                        icon: Icons.vibration,
+                        color: Colors.orangeAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ac_main.ACLabScreen(),
+                            ),
+                          );
+                        },
                       ),
-                      const SizedBox(height: 16),
-                      _mainButton(
-                        onPressed: () => context.push('/challenge'),
-                        label: 'CHALLENGE MODE',
-                        icon: Icons.emoji_events_outlined,
-                        isSecondary: true,
+                      _buildLabCard(
+                        context,
+                        title: "WAVE LAB",
+                        subtitle: "Wave Mechanics",
+                        icon: Icons.waves,
+                        color: Colors.lightBlueAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const wave_main.HomeScreen(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
                 ),
-              ),
-              if (!iapService.isPro && _bottomBannerAd != null)
-                Container(
-                  alignment: Alignment.center,
-                  width: _bottomBannerAd!.size.width.toDouble(),
-                  height: _bottomBannerAd!.size.height.toDouble(),
-                  child: AdWidget(ad: _bottomBannerAd!),
-                ),
-              const SizedBox(height: 60), // Space for version info
-            ],
-          ),
-
-          // Bottom Version Info
-          Positioned(
-            bottom: 24,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: GestureDetector(
-                onLongPress: () async {
-                  await iapService.toggleProStatus();
-                  setState(() {});
-                },
-                child: Text(
-                  'v1.0.0 ${iapService.isPro ? 'PRO ENABLED' : 'FREE'}',
-                  style: const TextStyle(
-                    color: Colors.white24,
-                    fontSize: 10,
-                    letterSpacing: 2,
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    'Select a module to begin simulation',
+                    style: TextStyle(color: Colors.white30, fontSize: 11),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
 
-  Widget _mainButton({
-    required VoidCallback onPressed,
-    required String label,
+  void _showPlanDialog(BuildContext context) {
+    showGlobalPlanDialog(context);
+  }
+
+  Widget _buildLabCard(BuildContext context, {
+    required String title,
+    required String subtitle,
     required IconData icon,
-    bool isSecondary = false,
+    required Color color,
+    required VoidCallback onTap,
   }) {
-    final color = isSecondary ? Colors.white70 : const Color(0xFF00E5FF);
-    return SizedBox(
-      width: 260,
-      height: 54,
-      child: OutlinedButton.icon(
-        onPressed: onPressed,
-        icon: Icon(icon, color: color, size: 20),
-        label: Text(
-          label,
-          style: TextStyle(
-            color: color,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1.2,
+    return Card(
+      elevation: 6,
+      shadowColor: color.withOpacity(0.2),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      color: Colors.white.withOpacity(0.05),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: color.withOpacity(0.25), width: 1),
           ),
-        ),
-        style: OutlinedButton.styleFrom(
-          side: BorderSide(color: color.withValues(alpha: 0.5), width: 1.5),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 36, color: color),
+              const SizedBox(height: 8),
+              Text(
+                title,
+                style: GoogleFonts.orbitron(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: const TextStyle(color: Colors.white70, fontSize: 10),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
           ),
-          backgroundColor: isSecondary
-              ? Colors.transparent
-              : color.withValues(alpha: 0.05),
         ),
       ),
     );
   }
-}
-
-class HomeScreenPainter extends CustomPainter {
-  final double progress;
-  HomeScreenPainter({required this.progress});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = const Color(0xFF00E5FF).withValues(alpha: 0.1)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.0;
-
-    final centerY = size.height * 0.7;
-    final path = Path();
-
-    // Draw 3 layered waves
-    for (int wave = 0; wave < 3; wave++) {
-      paint.color = const Color(
-        0xFF00E5FF,
-      ).withValues(alpha: 0.05 + (wave * 0.05));
-      path.reset();
-
-      for (double x = 0; x <= size.width; x += 5) {
-        final double angle =
-            (x / size.width) * 4 * pi + (progress * 2 * pi * (wave + 1));
-        final double y = centerY + sin(angle) * (40 + wave * 20);
-
-        if (x == 0) {
-          path.moveTo(x, y);
-        } else {
-          path.lineTo(x, y);
-        }
-      }
-      canvas.drawPath(path, paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(HomeScreenPainter oldDelegate) =>
-      oldDelegate.progress != progress;
 }
