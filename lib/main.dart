@@ -8,6 +8,7 @@ import 'package:flutter_soloud/flutter_soloud.dart';
 import 'core/services/subscription_service.dart';
 import 'core/services/ad_service.dart';
 import 'core/widgets/plan_picker.dart';
+import 'core/widgets/ad_widgets.dart';
 
 // Import Physics Labs
 import 'physics/newton_lab/app.dart';
@@ -19,7 +20,7 @@ import 'physics/ac_lab/main_standalone.dart' as ac_main;
 import 'physics/ac_lab/providers/ac_provider.dart';
 import 'physics/wave_lab/main_standalone.dart' as wave_main;
 
-// Import Acid Base Lab
+// Import Chemistry Labs
 import 'chemistry/acide_base_ph/main.dart' as ph_main;
 
 void main() async {
@@ -60,20 +61,20 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Physics Simulation Lab',
+      title: 'Science Lab',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
         textTheme: GoogleFonts.orbitronTextTheme(ThemeData.dark().textTheme),
       ),
-      home: const DashboardScreen(),
+      home: const MainDashboard(),
     );
   }
 }
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+class MainDashboard extends StatelessWidget {
+  const MainDashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,7 @@ class DashboardScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           TextButton.icon(
-            onPressed: () => _showPlanDialog(context),
+            onPressed: () => showGlobalPlanDialog(context),
             icon: Icon(Icons.stars, color: sub.isPro ? Colors.amber : Colors.cyan),
             label: Text(sub.currentPlan.name.toUpperCase()),
           ),
@@ -111,7 +112,7 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 10),
                 Text(
-                  'PHYSICS LAB',
+                  'SCIENCE LAB',
                   style: GoogleFonts.orbitron(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -129,7 +130,150 @@ class DashboardScreen extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 50),
+                _buildCategoryCard(
+                  context,
+                  title: "PHYSICS",
+                  subtitle: "Mechanics, Waves & Electricity",
+                  icon: Icons.speed,
+                  color: Colors.cyanAccent,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const PhysicsDashboard()),
+                    );
+                  },
+                ),
+                const SizedBox(height: 24),
+                _buildCategoryCard(
+                  context,
+                  title: "CHEMISTRY",
+                  subtitle: "Acids, Bases & Reactions",
+                  icon: Icons.science,
+                  color: Colors.greenAccent,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ChemistryDashboard()),
+                    );
+                  },
+                ),
+                const Spacer(),
+                const GlobalBannerAdWidget(),
+                const SizedBox(height: 10),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCategoryCard(BuildContext context, {
+    required String title,
+    required String subtitle,
+    required IconData icon,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return Card(
+      elevation: 8,
+      shadowColor: color.withOpacity(0.3),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: Colors.white.withOpacity(0.05),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: color.withOpacity(0.3), width: 2),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 28),
+          child: Row(
+            children: [
+              Container(
+                width: 72,
+                height: 72,
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.15),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Icon(icon, size: 40, color: color),
+              ),
+              const SizedBox(width: 24),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: GoogleFonts.orbitron(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      style: const TextStyle(color: Colors.white60, fontSize: 13),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.arrow_forward_ios, color: color, size: 24),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PhysicsDashboard extends StatelessWidget {
+  const PhysicsDashboard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final sub = p.Provider.of<SubscriptionService>(context);
+    
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text('PHYSICS', style: GoogleFonts.orbitron(color: Colors.cyanAccent)),
+        actions: [
+          TextButton.icon(
+            onPressed: () => showGlobalPlanDialog(context),
+            icon: Icon(Icons.stars, color: sub.isPro ? Colors.amber : Colors.cyan),
+            label: Text(sub.currentPlan.name.toUpperCase()),
+          ),
+        ],
+      ),
+      extendBodyBehindAppBar: true,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.blueGrey.shade900,
+              Colors.black,
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 10),
                 Expanded(
                   child: GridView.count(
                     crossAxisCount: 2,
@@ -211,6 +355,126 @@ class DashboardScreen extends StatelessWidget {
                           );
                         },
                       ),
+                    ],
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    'Select a module to begin simulation',
+                    style: TextStyle(color: Colors.white30, fontSize: 11),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLabCard(BuildContext context, {
+    required String title,
+    required String subtitle,
+    required IconData icon,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return Card(
+      elevation: 6,
+      shadowColor: color.withOpacity(0.2),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      color: Colors.white.withOpacity(0.05),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: color.withOpacity(0.25), width: 1),
+          ),
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 36, color: color),
+              const SizedBox(height: 8),
+              Text(
+                title,
+                style: GoogleFonts.orbitron(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: const TextStyle(color: Colors.white70, fontSize: 10),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ChemistryDashboard extends StatelessWidget {
+  const ChemistryDashboard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final sub = p.Provider.of<SubscriptionService>(context);
+    
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text('CHEMISTRY', style: GoogleFonts.orbitron(color: Colors.greenAccent)),
+        actions: [
+          TextButton.icon(
+            onPressed: () => showGlobalPlanDialog(context),
+            icon: Icon(Icons.stars, color: sub.isPro ? Colors.amber : Colors.cyan),
+            label: Text(sub.currentPlan.name.toUpperCase()),
+          ),
+        ],
+      ),
+      extendBodyBehindAppBar: true,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.green.shade900.withOpacity(0.3),
+              Colors.blueGrey.shade900,
+              Colors.black,
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 10),
+                Expanded(
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 0.95,
+                    children: [
                       _buildLabCard(
                         context,
                         title: "pH LAB",
@@ -243,10 +507,6 @@ class DashboardScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _showPlanDialog(BuildContext context) {
-    showGlobalPlanDialog(context);
   }
 
   Widget _buildLabCard(BuildContext context, {
