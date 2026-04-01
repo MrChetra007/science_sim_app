@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/ph_colors.dart';
+import '../../../../core/widgets/ad_widgets.dart';
 import 'providers/ph_provider.dart';
 import 'widgets/beaker_widget.dart';
 import 'widgets/ph_slider_widget.dart';
@@ -110,6 +111,8 @@ class PHExplorerScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
+              const SizedBox(height: AppSpacing.lg),
+              const GlobalBannerAdWidget(),
             ],
           ),
         ),

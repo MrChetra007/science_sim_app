@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
+import '../../../../core/services/subscription_service.dart';
+import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../core/widgets/plan_picker.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final sub = context.watch<SubscriptionService>();
+    
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -47,7 +53,8 @@ class HomeScreen extends StatelessWidget {
                 title: 'Titration Lab',
                 subtitle: 'Mix acids and bases — watch neutralization',
                 color: AppColors.accentGreen,
-                onTap: () => context.go('/titration'),
+                onTap: sub.isPremium ? () => context.go('/titration') : null,
+                isLocked: !sub.isPremium,
               ),
               const SizedBox(height: AppSpacing.md),
               _LabCard(
@@ -57,6 +64,9 @@ class HomeScreen extends StatelessWidget {
                 color: AppColors.accentPurple,
                 onTap: () => context.go('/quiz'),
               ),
+              const Spacer(),
+              const GlobalBannerAdWidget(),
+              const SizedBox(height: AppSpacing.sm),
             ],
           ),
         ),
@@ -70,14 +80,16 @@ class _LabCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final Color color;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+  final bool isLocked;
 
   const _LabCard({
     required this.icon,
     required this.title,
     required this.subtitle,
     required this.color,
-    required this.onTap,
+    this.onTap,
+    this.isLocked = false,
   });
 
   @override
@@ -85,7 +97,13 @@ class _LabCard extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: onTap,
+        onTap: () {
+          if (isLocked) {
+            showGlobalPlanDialog(context);
+          } else {
+            onTap?.call();
+          }
+        },
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.lg),
           child: Row(
@@ -122,11 +140,14 @@ class _LabCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-                color: AppColors.textHint,
-              ),
+              if (isLocked)
+                const Icon(Icons.lock, size: 20, color: AppColors.textHint)
+              else
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 16,
+                  color: AppColors.textHint,
+                ),
             ],
           ),
         ),

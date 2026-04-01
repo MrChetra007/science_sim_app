@@ -3,9 +3,13 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart' as p;
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/ph_colors.dart';
+import '../../../../core/services/subscription_service.dart';
+import '../../../../core/services/ad_service.dart';
+import '../../../../core/widgets/ad_widgets.dart';
 import 'flame/titration_game.dart';
 import 'providers/titration_provider.dart';
 import 'widgets/ph_curve_chart.dart';
@@ -29,6 +33,12 @@ class _TitrationScreenState extends ConsumerState<TitrationScreen> {
         ref.read(titrationProvider.notifier).addAcidDrop(vol);
       },
     );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final sub = p.Provider.of<SubscriptionService>(context, listen: false);
+      if (sub.showInterstitialAds) {
+        globalAdService.showInterstitialAd();
+      }
+    });
   }
 
   @override
@@ -143,7 +153,9 @@ class _TitrationScreenState extends ConsumerState<TitrationScreen> {
               ),
               const SizedBox(height: AppSpacing.sm),
               PHCurveChart(spots: state.titrationCurve),
-              const SizedBox(height: AppSpacing.xl),
+              const SizedBox(height: AppSpacing.lg),
+              const GlobalBannerAdWidget(),
+              const SizedBox(height: AppSpacing.lg),
             ],
           ),
         ),

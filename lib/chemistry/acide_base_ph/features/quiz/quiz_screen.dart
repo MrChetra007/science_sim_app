@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
+import '../../../../core/widgets/ad_widgets.dart';
 import 'providers/quiz_provider.dart';
 import 'quiz_questions.dart';
 
@@ -85,62 +86,9 @@ class _QuestionView extends StatelessWidget {
             style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: AppSpacing.xl),
-          ...List.generate(question.options.length, (index) {
-            final isCorrect = question.correctIndex == index;
-            final isSelected = selectedIndex == index;
-            
-            Color itemColor = AppColors.bgSurface;
-            if (selectedIndex != null) {
-              if (isSelected) {
-                itemColor = isCorrect ? AppColors.accentGreen.withOpacity(0.2) : Colors.redAccent.withOpacity(0.2);
-              } else if (isCorrect) {
-                itemColor = AppColors.accentGreen.withOpacity(0.1);
-              }
-            }
-
-            return Padding(
-              padding: const EdgeInsets.only(bottom: AppSpacing.md),
-              child: InkWell(
-                onTap: () => onAnswer(index),
-                borderRadius: BorderRadius.circular(AppRadius.md),
-                child: Container(
-                  padding: const EdgeInsets.all(AppSpacing.md),
-                  decoration: BoxDecoration(
-                    color: itemColor,
-                    borderRadius: BorderRadius.circular(AppRadius.md),
-                    border: Border.all(
-                      color: selectedIndex != null && isCorrect 
-                        ? AppColors.accentGreen 
-                        : (isSelected ? Colors.redAccent : AppColors.borderDefault),
-                      width: isSelected || (selectedIndex != null && isCorrect) ? 1.5 : 0.5,
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Text(
-                        String.fromCharCode(65 + index), // A, B, C, D
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: isSelected || (selectedIndex != null && isCorrect) ? null : AppColors.textHint,
-                        ),
-                      ),
-                      const SizedBox(width: AppSpacing.md),
-                      Expanded(
-                        child: Text(
-                          question.options[index],
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                      ),
-                      if (selectedIndex != null && isCorrect)
-                        const Icon(Icons.check_circle, color: AppColors.accentGreen)
-                      else if (isSelected && !isCorrect)
-                        const Icon(Icons.cancel, color: Colors.redAccent),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          }),
+          ..._buildOptions(context),
+          const SizedBox(height: AppSpacing.md),
+          const GlobalBannerAdWidget(),
           const Spacer(),
           if (selectedIndex != null) ...[
             Container(
@@ -175,6 +123,65 @@ class _QuestionView extends StatelessWidget {
       ),
     );
   }
+
+  List<Widget> _buildOptions(BuildContext context) {
+    return List.generate(question.options.length, (index) {
+      final isCorrect = question.correctIndex == index;
+      final isSelected = selectedIndex == index;
+
+      Color itemColor = AppColors.bgSurface;
+      if (selectedIndex != null) {
+        if (isSelected) {
+          itemColor = isCorrect ? AppColors.accentGreen.withOpacity(0.2) : Colors.redAccent.withOpacity(0.2);
+        } else if (isCorrect) {
+          itemColor = AppColors.accentGreen.withOpacity(0.1);
+        }
+      }
+
+      return Padding(
+        padding: const EdgeInsets.only(bottom: AppSpacing.md),
+        child: InkWell(
+          onTap: () => onAnswer(index),
+          borderRadius: BorderRadius.circular(AppRadius.md),
+          child: Container(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            decoration: BoxDecoration(
+              color: itemColor,
+              borderRadius: BorderRadius.circular(AppRadius.md),
+              border: Border.all(
+                color: selectedIndex != null && isCorrect
+                    ? AppColors.accentGreen
+                    : (isSelected ? Colors.redAccent : AppColors.borderDefault),
+                width: isSelected || (selectedIndex != null && isCorrect) ? 1.5 : 0.5,
+              ),
+            ),
+            child: Row(
+              children: [
+                Text(
+                  String.fromCharCode(65 + index),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: isSelected || (selectedIndex != null && isCorrect) ? null : AppColors.textHint,
+                  ),
+                ),
+                const SizedBox(width: AppSpacing.md),
+                Expanded(
+                  child: Text(
+                    question.options[index],
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ),
+                if (selectedIndex != null && isCorrect)
+                  const Icon(Icons.check_circle, color: AppColors.accentGreen)
+                else if (isSelected && !isCorrect)
+                  const Icon(Icons.cancel, color: Colors.redAccent),
+              ],
+            ),
+          ),
+        ),
+      );
+    });
+  }
 }
 
 class _ResultsView extends StatelessWidget {
@@ -191,13 +198,13 @@ class _ResultsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final percentage = (score / total * 100).toInt();
-    
+
     return Padding(
       padding: const EdgeInsets.all(AppSpacing.xxl),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('🧪', style: TextStyle(fontSize: 64)),
+          const Text('Q', style: TextStyle(fontSize: 64)),
           const SizedBox(height: AppSpacing.md),
           Text(
             'Quiz Complete!',
