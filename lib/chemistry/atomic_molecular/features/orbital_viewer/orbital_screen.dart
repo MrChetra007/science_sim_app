@@ -109,12 +109,10 @@ class _OrbitalInfoPanel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                orbital.label,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const Spacer(),
+              Flexible(child: Text(orbital.label, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis)),
+              const SizedBox(width: 8),
               _OrbTypeLabel(type: orbital.type),
             ],
           ),

@@ -109,12 +109,10 @@ class _MoleculeInfoPanel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                molecule.name,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const Spacer(),
+              Flexible(child: Text(molecule.name, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis)),
+              const SizedBox(width: 8),
               _Badge(text: molecule.formula),
             ],
           ),

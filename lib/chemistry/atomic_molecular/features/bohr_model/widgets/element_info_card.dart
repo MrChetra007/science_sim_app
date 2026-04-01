@@ -21,12 +21,13 @@ class ElementInfoCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 element.name,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              const Spacer(),
+              const SizedBox(width: 8),
               Text(
                 'Mass: ${element.atomicMass}',
                 style: Theme.of(context).textTheme.bodyMedium,
@@ -50,12 +51,12 @@ class ElementInfoCard extends StatelessWidget {
                 ),
           ),
           const SizedBox(height: 12),
-          Row(
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
             children: [
               _InfoBadge(label: 'Period', value: element.period),
-              const SizedBox(width: 8),
               _InfoBadge(label: 'Group', value: element.group),
-              const SizedBox(width: 8),
               _InfoBadge(label: 'Valence', value: '${element.valenceElectrons}e⁻'),
             ],
           ),

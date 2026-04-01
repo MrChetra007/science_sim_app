@@ -114,27 +114,28 @@ class _ShapeInfoPanel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Text(shape.name, style: Theme.of(context).textTheme.titleLarge),
-              const Spacer(),
+              Flexible(child: Text(shape.name, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis)),
+              const SizedBox(width: 8),
               _InfoBadge(label: 'Angle', value: shape.bondAngle),
             ],
           ),
           const SizedBox(height: 8),
-          Row(
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
             children: [
               _StatChip(
                 label: 'Steric #',
                 value: '${shape.stericNumber}',
                 color: AppColors.orbitalS,
               ),
-              const SizedBox(width: 8),
               _StatChip(
                 label: 'Bonds',
                 value: '${shape.bondingPairs}',
                 color: AppColors.orbitalD,
               ),
-              const SizedBox(width: 8),
               _StatChip(
                 label: 'Lone Pairs',
                 value: '${shape.lonePairs}',
@@ -261,6 +262,7 @@ class _StatChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           width: 8,

@@ -1,8 +1,12 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/provider.dart' as p;
 import '../../core/constants/elements_data.dart';
 import '../../core/theme/app_colors.dart';
+import '../../../../core/services/subscription_service.dart';
+import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../core/widgets/plan_picker.dart';
 import 'flame/bohr_game.dart';
 import 'providers/bohr_provider.dart';
 import 'widgets/element_info_card.dart';
@@ -21,7 +25,6 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
   @override
   void initState() {
     super.initState();
-    // Read the current element from the provider at initialization
     final initialElement = ref.read(bohrProvider);
     _game = BohrGame(initialElement: initialElement);
   }
@@ -29,18 +32,31 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
   @override
   Widget build(BuildContext context) {
     final selectedEl = ref.watch(bohrProvider);
+    final sub = p.Provider.of<SubscriptionService>(context);
+    
+    final isPro = sub.isPro;
+    final freeElementsCount = isPro ? kElements.length : 10;
+    final availableElements = kElements.sublist(0, freeElementsCount);
 
-    // Sync the game state when the provider element changes
     ref.listen(bohrProvider, (_, el) {
       _game.switchElement(el);
     });
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Bohr Model Simulator')),
+      appBar: AppBar(
+        title: Text(isPro ? 'Bohr Model Simulator ⭐' : 'Bohr Model Simulator'),
+        actions: [
+          if (!isPro)
+            IconButton(
+              icon: const Icon(Icons.star, color: Colors.amber),
+              onPressed: () => showGlobalPlanDialog(context),
+              tooltip: 'Upgrade to Pro',
+            ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Simulation Area
             Container(
               height: 380,
               width: double.infinity,
@@ -58,7 +74,6 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
 
             const SizedBox(height: AppSpacing.md),
 
-            // Interaction Controls
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
               child: Row(
@@ -88,10 +103,37 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
 
             const SizedBox(height: AppSpacing.lg),
 
-            // Element Selector Label
+            if (!isPro)
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                padding: const EdgeInsets.all(AppSpacing.sm),
+                decoration: BoxDecoration(
+                  color: Colors.amber.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(AppRadius.md),
+                  border: Border.all(color: Colors.amber.withOpacity(0.3)),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.lock_outline, color: Colors.amber, size: 20),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'Upgrade to PRO to unlock all 36 elements!',
+                        style: TextStyle(color: Colors.amber.shade200, fontSize: 12),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () => showGlobalPlanDialog(context),
+                      child: const Text('UPGRADE', style: TextStyle(fontSize: 12)),
+                    ),
+                  ],
+                ),
+              ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               child: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   const Icon(
                     Icons.science_outlined,
@@ -100,7 +142,7 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    'Select Element (1-36)',
+                    isPro ? 'Select Element (1-36)' : 'Select Element (1-10)',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.textSecondary,
                       fontWeight: FontWeight.w600,
@@ -111,18 +153,18 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
               ),
             ),
 
-            // Horizontal Element Selector
             ElementSelector(
-              elements: kElements,
+              elements: availableElements,
               selected: selectedEl,
               onSelect: (el) => ref.read(bohrProvider.notifier).select(el),
             ),
 
             const SizedBox(height: AppSpacing.sm),
 
-            // Element Details card
             ElementInfoCard(element: selectedEl),
 
+            const SizedBox(height: AppSpacing.md),
+            const GlobalBannerAdWidget(),
             const SizedBox(height: AppSpacing.xl),
           ],
         ),

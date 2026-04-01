@@ -9,7 +9,20 @@ final bohrProvider = StateNotifierProvider<BohrNotifier, ChemElement>((ref) {
 class BohrNotifier extends StateNotifier<ChemElement> {
   BohrNotifier() : super(kElements.first);
 
+  int _maxIndex = kElements.length;
+
+  int get maxIndex => _maxIndex;
+
+  void setMaxIndex(int max) {
+    _maxIndex = max;
+    if (state.atomicNumber > max) {
+      state = kElements.first;
+    }
+  }
+
   void select(ChemElement element) {
-    state = element;
+    if (element.atomicNumber <= _maxIndex) {
+      state = element;
+    }
   }
 }

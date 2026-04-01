@@ -22,16 +22,16 @@ import 'physics/wave_lab/main_standalone.dart' as wave_main;
 
 // Import Chemistry Labs
 import 'chemistry/acide_base_ph/main.dart' as ph_main;
+import 'chemistry/atomic_molecular/features/home/home_screen.dart'
+    as atomic_home;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
-  // Initialize Global Services
+
   final subscriptionService = SubscriptionService();
   await subscriptionService.init();
   await globalAdService.init();
 
-  // Initialize Lab Specific dependencies
   final acProvider = ACProvider();
   await acProvider.loadPrefs();
 
@@ -40,7 +40,7 @@ void main() async {
   } catch (e) {
     debugPrint('SoLoud initialization failed: $e');
   }
-  
+
   runApp(
     rp.ProviderScope(
       child: p.MultiProvider(
@@ -73,13 +73,21 @@ class MainApp extends StatelessWidget {
   }
 }
 
+class _AtomicLabWrapper extends StatelessWidget {
+  // ignore: prefer_const_constructors
+  @override
+  Widget build(BuildContext context) {
+    return rp.ProviderScope(child: atomic_home.HomeScreen());
+  }
+}
+
 class MainDashboard extends StatelessWidget {
   const MainDashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
     final sub = p.Provider.of<SubscriptionService>(context);
-    
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -87,7 +95,10 @@ class MainDashboard extends StatelessWidget {
         actions: [
           TextButton.icon(
             onPressed: () => showGlobalPlanDialog(context),
-            icon: Icon(Icons.stars, color: sub.isPro ? Colors.amber : Colors.cyan),
+            icon: Icon(
+              Icons.stars,
+              color: sub.isPro ? Colors.amber : Colors.cyan,
+            ),
             label: Text(sub.currentPlan.name.toUpperCase()),
           ),
         ],
@@ -98,10 +109,7 @@ class MainDashboard extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Colors.blueGrey.shade900,
-              Colors.black,
-            ],
+            colors: [Colors.blueGrey.shade900, Colors.black],
           ),
         ),
         child: SafeArea(
@@ -140,7 +148,9 @@ class MainDashboard extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const PhysicsDashboard()),
+                      MaterialPageRoute(
+                        builder: (context) => const PhysicsDashboard(),
+                      ),
                     );
                   },
                 ),
@@ -154,7 +164,9 @@ class MainDashboard extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ChemistryDashboard()),
+                      MaterialPageRoute(
+                        builder: (context) => const ChemistryDashboard(),
+                      ),
                     );
                   },
                 ),
@@ -169,7 +181,8 @@ class MainDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildCategoryCard(BuildContext context, {
+  Widget _buildCategoryCard(
+    BuildContext context, {
     required String title,
     required String subtitle,
     required IconData icon,
@@ -217,7 +230,10 @@ class MainDashboard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       subtitle,
-                      style: const TextStyle(color: Colors.white60, fontSize: 13),
+                      style: const TextStyle(
+                        color: Colors.white60,
+                        fontSize: 13,
+                      ),
                     ),
                   ],
                 ),
@@ -237,7 +253,7 @@ class PhysicsDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sub = p.Provider.of<SubscriptionService>(context);
-    
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -246,11 +262,17 @@ class PhysicsDashboard extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text('PHYSICS', style: GoogleFonts.orbitron(color: Colors.cyanAccent)),
+        title: Text(
+          'PHYSICS',
+          style: GoogleFonts.orbitron(color: Colors.cyanAccent),
+        ),
         actions: [
           TextButton.icon(
             onPressed: () => showGlobalPlanDialog(context),
-            icon: Icon(Icons.stars, color: sub.isPro ? Colors.amber : Colors.cyan),
+            icon: Icon(
+              Icons.stars,
+              color: sub.isPro ? Colors.amber : Colors.cyan,
+            ),
             label: Text(sub.currentPlan.name.toUpperCase()),
           ),
         ],
@@ -261,10 +283,7 @@ class PhysicsDashboard extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Colors.blueGrey.shade900,
-              Colors.black,
-            ],
+            colors: [Colors.blueGrey.shade900, Colors.black],
           ),
         ),
         child: SafeArea(
@@ -290,7 +309,9 @@ class PhysicsDashboard extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const NewtonsLabApp()),
+                            MaterialPageRoute(
+                              builder: (context) => const NewtonsLabApp(),
+                            ),
                           );
                         },
                       ),
@@ -321,7 +342,9 @@ class PhysicsDashboard extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const projectile_app.App()),
+                            MaterialPageRoute(
+                              builder: (context) => const projectile_app.App(),
+                            ),
                           );
                         },
                       ),
@@ -350,7 +373,8 @@ class PhysicsDashboard extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const wave_main.HomeScreen(),
+                              builder: (context) =>
+                                  const wave_main.HomeScreen(),
                             ),
                           );
                         },
@@ -374,7 +398,8 @@ class PhysicsDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildLabCard(BuildContext context, {
+  Widget _buildLabCard(
+    BuildContext context, {
     required String title,
     required String subtitle,
     required IconData icon,
@@ -430,7 +455,7 @@ class ChemistryDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sub = p.Provider.of<SubscriptionService>(context);
-    
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -439,11 +464,17 @@ class ChemistryDashboard extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text('CHEMISTRY', style: GoogleFonts.orbitron(color: Colors.greenAccent)),
+        title: Text(
+          'CHEMISTRY',
+          style: GoogleFonts.orbitron(color: Colors.greenAccent),
+        ),
         actions: [
           TextButton.icon(
             onPressed: () => showGlobalPlanDialog(context),
-            icon: Icon(Icons.stars, color: sub.isPro ? Colors.amber : Colors.cyan),
+            icon: Icon(
+              Icons.stars,
+              color: sub.isPro ? Colors.amber : Colors.cyan,
+            ),
             label: Text(sub.currentPlan.name.toUpperCase()),
           ),
         ],
@@ -475,6 +506,21 @@ class ChemistryDashboard extends StatelessWidget {
                     crossAxisSpacing: 16,
                     childAspectRatio: 0.95,
                     children: [
+                      _buildLabCard(
+                        context,
+                        title: "ATOMIC & MOLECULAR",
+                        subtitle: "Atoms & Molecules",
+                        icon: Icons.blur_circular,
+                        color: Colors.purpleAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => _AtomicLabWrapper(),
+                            ),
+                          );
+                        },
+                      ),
                       _buildLabCard(
                         context,
                         title: "pH LAB",
@@ -509,7 +555,8 @@ class ChemistryDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildLabCard(BuildContext context, {
+  Widget _buildLabCard(
+    BuildContext context, {
     required String title,
     required String subtitle,
     required IconData icon,
