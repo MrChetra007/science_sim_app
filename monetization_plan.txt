@@ -30,3 +30,9 @@
 Let's discuss: 
 1. Are there any specific simulations you want to keep free to attract users? 
 2. Should the Blueprint HUD be partially available for free users to "tease" the Pro features?
+
+
+run opencode: 
+export PATH=/c/Users/NaNa/.opencode/bin:$PATH
+
+opencode

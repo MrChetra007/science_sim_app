@@ -27,6 +27,9 @@ import 'ac_lab/providers/ac_provider.dart';
 // Import Wave Lab
 import 'wave_lab/main_standalone.dart' as wave_main;
 
+// Import Acid Base Lab
+import 'chemistry/acide_base_ph/main.dart' as ph_main;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -212,6 +215,21 @@ class DashboardScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => const wave_main.HomeScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      _buildLabCard(
+                        context,
+                        title: "pH LAB",
+                        subtitle: "Acids & Bases",
+                        icon: Icons.science,
+                        color: Colors.greenAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ph_main.PhSimApp(),
                             ),
                           );
                         },
