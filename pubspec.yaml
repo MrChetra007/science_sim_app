@@ -59,6 +59,9 @@ dependencies:
   # Animations
   flutter_animate: ^4.5.0
 
+  # Audio
+  audioplayers: ^6.1.0
+
   # Audio (Wave Lab)
   flutter_soloud: ^2.0.0
   rename: ^3.1.0

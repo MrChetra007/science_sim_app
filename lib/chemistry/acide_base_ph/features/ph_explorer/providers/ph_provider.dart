@@ -19,7 +19,7 @@ class PHNotifier extends StateNotifier<PHState> {
 
   void setPH(double value) {
     if ((state.ph - value).abs() > 0.5) {
-      AudioService.playNeutralize();
+      AudioService.playBubble();
     }
     state = state.copyWith(
       ph: value.clamp(0.0, 14.0),
@@ -28,7 +28,7 @@ class PHNotifier extends StateNotifier<PHState> {
   }
 
   void selectSubstance(Substance substance) {
-    AudioService.playNeutralize();
+    AudioService.playBubble();
     state = PHState(ph: substance.ph, selectedSubstance: substance);
   }
 }
