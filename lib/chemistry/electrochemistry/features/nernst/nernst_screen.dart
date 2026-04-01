@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'providers/nernst_provider.dart';
 import 'widgets/nernst_chart.dart';
 import 'widgets/equation_display.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
-import '../../../core/theme/voltage_colors.dart';
-import '../../../core/widgets/explanation_panel.dart';
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_typography.dart';
+import '../../core/theme/voltage_colors.dart';
+import '../../core/widgets/explanation_panel.dart';
 
 class NernstScreen extends ConsumerWidget {
   const NernstScreen({super.key});
@@ -32,7 +32,8 @@ class NernstScreen extends ConsumerWidget {
               sections: [
                 ExplanationSection(
                   title: 'Non-Standard Conditions',
-                  content: 'Standard cell potentials (E°) are measured at 25°C and 1.0M concentration. The Nernst Equation calculates the actual potential under any other conditions.',
+                  content:
+                      'Standard cell potentials (E°) are measured at 25°C and 1.0M concentration. The Nernst Equation calculates the actual potential under any other conditions.',
                 ),
                 ExplanationSection(
                   title: 'The Equation',
@@ -41,7 +42,8 @@ class NernstScreen extends ConsumerWidget {
                 ),
                 ExplanationSection(
                   title: 'Reaction Quotient (Q)',
-                  content: 'Q is the ratio of product concentration to reactant concentration. If [Red] increases, Q increases and the cell potential (E) decreases.',
+                  content:
+                      'Q is the ratio of product concentration to reactant concentration. If [Red] increases, Q increases and the cell potential (E) decreases.',
                 ),
               ],
             ),
@@ -74,7 +76,8 @@ class NernstScreen extends ConsumerWidget {
               min: 273.15,
               max: 373.15,
               onChanged: (v) => notifier.setTemperature(v),
-              displayValue: '${(state.temperatureK - 273.15).toStringAsFixed(1)}°C',
+              displayValue:
+                  '${(state.temperatureK - 273.15).toStringAsFixed(1)}°C',
             ),
             const SizedBox(height: AppSpacing.md),
             _SliderSection(
@@ -129,7 +132,11 @@ class _ResultBanner extends StatelessWidget {
           children: [
             const Text(
               'ACTUAL CELL POTENTIAL (E)',
-              style: TextStyle(color: AppColors.textSecondary, fontSize: 10, letterSpacing: 1.0),
+              style: TextStyle(
+                color: AppColors.textSecondary,
+                fontSize: 10,
+                letterSpacing: 1.0,
+              ),
             ),
             const SizedBox(height: AppSpacing.xs),
             Text(
@@ -173,8 +180,20 @@ class _SliderSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title, style: const TextStyle(color: AppColors.textPrimary, fontSize: 14)),
-            Text(displayValue, style: const TextStyle(color: AppColors.accentPurple, fontWeight: FontWeight.bold)),
+            Text(
+              title,
+              style: const TextStyle(
+                color: AppColors.textPrimary,
+                fontSize: 14,
+              ),
+            ),
+            Text(
+              displayValue,
+              style: const TextStyle(
+                color: AppColors.accentPurple,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
         Slider(

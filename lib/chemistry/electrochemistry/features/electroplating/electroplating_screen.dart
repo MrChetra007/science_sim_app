@@ -4,17 +4,18 @@ import 'package:flame/game.dart';
 import 'providers/electroplating_provider.dart';
 import 'providers/electroplating_state.dart';
 import 'flame/electroplating_game.dart';
-import '../../../core/constants/electrodes.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
-import '../../../core/theme/electrode_colors.dart';
-import '../../../core/widgets/explanation_panel.dart';
+import '../../core/constants/electrodes.dart';
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_typography.dart';
+import '../../core/theme/electrode_colors.dart';
+import '../../core/widgets/explanation_panel.dart';
 
 class ElectroplatingScreen extends ConsumerStatefulWidget {
   const ElectroplatingScreen({super.key});
 
   @override
-  ConsumerState<ElectroplatingScreen> createState() => _ElectroplatingScreenState();
+  ConsumerState<ElectroplatingScreen> createState() =>
+      _ElectroplatingScreenState();
 }
 
 class _ElectroplatingScreenState extends ConsumerState<ElectroplatingScreen> {
@@ -46,16 +47,19 @@ class _ElectroplatingScreenState extends ConsumerState<ElectroplatingScreen> {
               sections: [
                 ExplanationSection(
                   title: 'What is Electroplating?',
-                  content: 'A process of coating a base metal (like iron or brass) with a layer of a more precious metal (like gold or silver) via an electrolytic reaction.',
+                  content:
+                      'A process of coating a base metal (like iron or brass) with a layer of a more precious metal (like gold or silver) via an electrolytic reaction.',
                 ),
                 ExplanationSection(
                   title: 'Faraday\'s Law',
-                  content: 'The mass of the metal deposited is directly proportional to the amount of electric charge passed through the solution.',
+                  content:
+                      'The mass of the metal deposited is directly proportional to the amount of electric charge passed through the solution.',
                   formula: 'm = (I * t * M) / (n * F)',
                 ),
                 ExplanationSection(
                   title: 'Molar Mass & Valence',
-                  content: 'Heavier metals with higher molar masses plate more mass per hour, while higher valence (n) values slow down the process because more electrons are needed per atom.',
+                  content:
+                      'Heavier metals with higher molar masses plate more mass per hour, while higher valence (n) values slow down the process because more electrons are needed per atom.',
                 ),
               ],
             ),
@@ -82,32 +86,45 @@ class _ElectroplatingScreenState extends ConsumerState<ElectroplatingScreen> {
           ),
 
           // 2. Mass Readout
-          _MassReadout(mass: state.depositedMassMg, time: state.durationSeconds),
+          _MassReadout(
+            mass: state.depositedMassMg,
+            time: state.durationSeconds,
+          ),
 
           // 3. Control Panel
           Container(
             padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
               color: AppColors.bgSurface,
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(AppRadius.xl)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(AppRadius.xl),
+              ),
             ),
             child: Column(
               children: [
                 _CurrentControl(
                   amps: state.currentAmps,
                   isPlating: state.isPlating,
-                  onChanged: (v) => ref.read(electroplatingNotifierProvider.notifier).setCurrent(v),
-                  onToggle: (on) => ref.read(electroplatingNotifierProvider.notifier).setIsPlating(on),
+                  onChanged: (v) => ref
+                      .read(electroplatingNotifierProvider.notifier)
+                      .setCurrent(v),
+                  onToggle: (on) => ref
+                      .read(electroplatingNotifierProvider.notifier)
+                      .setIsPlating(on),
                 ),
                 const SizedBox(height: AppSpacing.lg),
                 _ObjectSelector(
                   selected: state.target,
-                  onSelected: (obj) => ref.read(electroplatingNotifierProvider.notifier).setTarget(obj),
+                  onSelected: (obj) => ref
+                      .read(electroplatingNotifierProvider.notifier)
+                      .setTarget(obj),
                 ),
                 const SizedBox(height: AppSpacing.md),
                 _MetalSelector(
                   selected: state.metal,
-                  onSelected: (m) => ref.read(electroplatingNotifierProvider.notifier).setMetal(m),
+                  onSelected: (m) => ref
+                      .read(electroplatingNotifierProvider.notifier)
+                      .setMetal(m),
                 ),
               ],
             ),
@@ -127,12 +144,23 @@ class _MassReadout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+        vertical: AppSpacing.md,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _DataColumn('DEPOSITED MASS', '${mass.toStringAsFixed(2)} mg', AppColors.accentElectric),
-          _DataColumn('ELAPSED TIME', '${time.toInt()} s', AppColors.textSecondary),
+          _DataColumn(
+            'DEPOSITED MASS',
+            '${mass.toStringAsFixed(2)} mg',
+            AppColors.accentElectric,
+          ),
+          _DataColumn(
+            'ELAPSED TIME',
+            '${time.toInt()} s',
+            AppColors.textSecondary,
+          ),
         ],
       ),
     );
@@ -142,8 +170,23 @@ class _MassReadout extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(color: AppColors.textSecondary, fontSize: 10, letterSpacing: 1)),
-        Text(value, style: TextStyle(color: color, fontSize: 24, fontWeight: FontWeight.bold, fontFamily: 'JetBrains Mono')),
+        Text(
+          label,
+          style: const TextStyle(
+            color: AppColors.textSecondary,
+            fontSize: 10,
+            letterSpacing: 1,
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            color: color,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'JetBrains Mono',
+          ),
+        ),
       ],
     );
   }
@@ -172,10 +215,24 @@ class _CurrentControl extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('D.C. CURRENT SOURCE', style: TextStyle(color: AppColors.textSecondary, fontSize: 10, letterSpacing: 1.0)),
+                const Text(
+                  'D.C. CURRENT SOURCE',
+                  style: TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 10,
+                    letterSpacing: 1.0,
+                  ),
+                ),
                 Text(
                   '${amps.toStringAsFixed(1)} A',
-                  style: TextStyle(color: isPlating ? AppColors.accentElectric : AppColors.textHint, fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'JetBrains Mono'),
+                  style: TextStyle(
+                    color: isPlating
+                        ? AppColors.accentElectric
+                        : AppColors.textHint,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'JetBrains Mono',
+                  ),
                 ),
               ],
             ),
@@ -231,8 +288,10 @@ class _MetalSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final platingMetals = kElectrodes.where((e) => ['Ag', 'Cu', 'Au'].contains(e.symbol)).toList();
-    
+    final platingMetals = kElectrodes
+        .where((e) => ['Ag', 'Cu', 'Au'].contains(e.symbol))
+        .toList();
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -242,9 +301,16 @@ class _MetalSelector extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 8),
             child: ActionChip(
-              backgroundColor: isSelected ? color.withValues(alpha: 0.3) : AppColors.bgElevated,
+              backgroundColor: isSelected
+                  ? color.withValues(alpha: 0.3)
+                  : AppColors.bgElevated,
               avatar: CircleAvatar(backgroundColor: color, radius: 8),
-              label: Text(m.name, style: TextStyle(color: isSelected ? Colors.white : AppColors.textSecondary)),
+              label: Text(
+                m.name,
+                style: TextStyle(
+                  color: isSelected ? Colors.white : AppColors.textSecondary,
+                ),
+              ),
               onPressed: () => onSelected(m),
               side: isSelected ? BorderSide(color: color, width: 1) : null,
             ),

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flame/game.dart';
+import 'package:provider/provider.dart' as p;
 import 'providers/electrolysis_provider.dart';
 import 'flame/electrolysis_game.dart';
 import 'widgets/gas_readout.dart';
-import '../../../core/constants/electrolytes.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
-import '../../../core/widgets/explanation_panel.dart';
+import '../../core/constants/electrolytes.dart';
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_typography.dart';
+import '../../core/widgets/explanation_panel.dart';
+import '../../../../core/services/subscription_service.dart';
+import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../core/widgets/plan_picker.dart';
 
 class ElectrolysisScreen extends ConsumerStatefulWidget {
   const ElectrolysisScreen({super.key});
@@ -29,16 +33,26 @@ class _ElectrolysisScreenState extends ConsumerState<ElectrolysisScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(electrolysisNotifierProvider);
-    
-    // Update game state
+    final sub = p.Provider.of<SubscriptionService>(context);
+    final isPro = sub.isPro;
+
     _game.updateState(state);
+
+    final freeElectrolytes = isPro ? kElectrolytes : kElectrolytes.sublist(0, 1);
+    final canSelectElectrolyte = isPro || state.electrolyte == kElectrolytes.first;
 
     return Scaffold(
       backgroundColor: AppColors.bgDeep,
       appBar: AppBar(
-        title: const Text('Electrolysis Lab'),
+        title: Text(isPro ? 'Electrolysis Lab ⭐' : 'Electrolysis Lab'),
         backgroundColor: AppColors.bgDeep,
         actions: [
+          if (!isPro)
+            IconButton(
+              icon: const Icon(Icons.star, color: Colors.amber),
+              onPressed: () => showGlobalPlanDialog(context),
+              tooltip: 'Upgrade to Pro',
+            ),
           IconButton(
             icon: const Icon(Icons.help_outline),
             onPressed: () => ExplanationPanel.show(
@@ -47,15 +61,18 @@ class _ElectrolysisScreenState extends ConsumerState<ElectrolysisScreen> {
               sections: [
                 ExplanationSection(
                   title: 'Non-Spontaneous Reactions',
-                  content: 'Electrolysis uses electrical energy to drive a chemical reaction that would not otherwise occur. It is the opposite of a galvanic cell.',
+                  content:
+                      'Electrolysis uses electrical energy to drive a chemical reaction that would not otherwise occur. It is the opposite of a galvanic cell.',
                 ),
                 ExplanationSection(
                   title: 'Decomposition of NaCl',
-                  content: 'In aqueous NaCl, chloride ions are oxidized at the anode (forming Cl2 gas) and water is reduced at the cathode (forming H2 gas).',
+                  content:
+                      'In aqueous NaCl, chloride ions are oxidized at the anode (forming Cl2 gas) and water is reduced at the cathode (forming H2 gas).',
                 ),
                 ExplanationSection(
                   title: 'Threshold Voltage',
-                  content: 'Each electrolyte has a specific decomposition voltage (Vmin). If the applied voltage is lower than Vmin, no reaction occurs.',
+                  content:
+                      'Each electrolyte has a specific decomposition voltage (Vmin). If the applied voltage is lower than Vmin, no reaction occurs.',
                 ),
               ],
             ),
@@ -64,7 +81,6 @@ class _ElectrolysisScreenState extends ConsumerState<ElectrolysisScreen> {
       ),
       body: Column(
         children: [
-          // 1. Simulation Canvas
           Expanded(
             flex: 3,
             child: Container(
@@ -81,7 +97,6 @@ class _ElectrolysisScreenState extends ConsumerState<ElectrolysisScreen> {
             ),
           ),
 
-          // 2. Gas Volume Readouts
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
             child: GasReadout(state: state),
@@ -89,12 +104,13 @@ class _ElectrolysisScreenState extends ConsumerState<ElectrolysisScreen> {
 
           const SizedBox(height: AppSpacing.lg),
 
-          // 3. Controls Area
           Container(
             padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
               color: AppColors.bgSurface,
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(AppRadius.xl)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(AppRadius.xl),
+              ),
             ),
             child: Column(
               children: [
@@ -102,18 +118,77 @@ class _ElectrolysisScreenState extends ConsumerState<ElectrolysisScreen> {
                   voltage: state.appliedVoltage,
                   threshold: state.electrolyte.thresholdVoltage,
                   isPowerOn: state.isPowerOn,
-                  onChanged: (v) => ref.read(electrolysisNotifierProvider.notifier).setVoltage(v),
-                  onToggle: (on) => ref.read(electrolysisNotifierProvider.notifier).togglePower(on),
+                  onChanged: (v) => ref
+                      .read(electrolysisNotifierProvider.notifier)
+                      .setVoltage(v),
+                  onToggle: (on) => ref
+                      .read(electrolysisNotifierProvider.notifier)
+                      .togglePower(on),
                 ),
                 const SizedBox(height: AppSpacing.xl),
+
+                if (!isPro)
+                  Container(
+                    margin: const EdgeInsets.only(bottom: AppSpacing.md),
+                    padding: const EdgeInsets.all(AppSpacing.sm),
+                    decoration: BoxDecoration(
+                      color: Colors.amber.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
+                      border: Border.all(color: Colors.amber.withOpacity(0.3)),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.lock_outline, color: Colors.amber, size: 20),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            'Upgrade to PRO to unlock all electrolytes!',
+                            style: TextStyle(color: Colors.amber.shade200, fontSize: 12),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () => showGlobalPlanDialog(context),
+                          child: const Text('UPGRADE', style: TextStyle(fontSize: 12)),
+                        ),
+                      ],
+                    ),
+                  ),
+
                 _ElectrolytePicker(
                   selected: state.electrolyte,
-                  onSelected: (e) => ref.read(electrolysisNotifierProvider.notifier).setElectrolyte(e),
+                  availableElectrolytes: freeElectrolytes,
+                  onSelected: (e) {
+                    if (canSelectElectrolyte) {
+                      ref.read(electrolysisNotifierProvider.notifier).setElectrolyte(e);
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          title: const Text('Premium Feature'),
+                          content: const Text('Upgrade to Premium to unlock all electrolytes!'),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(ctx),
+                              child: const Text('Maybe Later'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(ctx);
+                                showGlobalPlanDialog(context);
+                              },
+                              child: const Text('Upgrade'),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  },
                 ),
                 const SizedBox(height: AppSpacing.lg),
               ],
             ),
           ),
+          if (!isPro) const GlobalBannerAdWidget(),
         ],
       ),
     );
@@ -138,7 +213,9 @@ class _VoltageControl extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isGlowing = isPowerOn && voltage >= threshold;
-    final accentColor = isGlowing ? AppColors.accentElectric : AppColors.textHint;
+    final accentColor = isGlowing
+        ? AppColors.accentElectric
+        : AppColors.textHint;
 
     return Column(
       children: [
@@ -148,10 +225,22 @@ class _VoltageControl extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('EXTERNAL POWER SUPPLY', style: TextStyle(color: AppColors.textSecondary, fontSize: 10, letterSpacing: 1.0)),
+                const Text(
+                  'EXTERNAL POWER SUPPLY',
+                  style: TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 10,
+                    letterSpacing: 1.0,
+                  ),
+                ),
                 Text(
                   '${voltage.toStringAsFixed(1)}V',
-                  style: TextStyle(color: accentColor, fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'JetBrains Mono'),
+                  style: TextStyle(
+                    color: accentColor,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'JetBrains Mono',
+                  ),
                 ),
               ],
             ),
@@ -181,26 +270,45 @@ class _VoltageControl extends StatelessWidget {
 
 class _ElectrolytePicker extends StatelessWidget {
   final Electrolyte selected;
+  final List<Electrolyte> availableElectrolytes;
   final ValueChanged<Electrolyte> onSelected;
 
-  const _ElectrolytePicker({required this.selected, required this.onSelected});
+  const _ElectrolytePicker({
+    required this.selected,
+    required this.availableElectrolytes,
+    required this.onSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('ELECTROLYTE SOLUTION', style: TextStyle(color: AppColors.textSecondary, fontSize: 10, letterSpacing: 1.0)),
+        const Text(
+          'ELECTROLYTE SOLUTION',
+          style: TextStyle(
+            color: AppColors.textSecondary,
+            fontSize: 10,
+            letterSpacing: 1.0,
+          ),
+        ),
         const SizedBox(height: AppSpacing.md),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: kElectrolytes.map((e) {
+            children: availableElectrolytes.map((e) {
               final isSelected = e.formula == selected.formula;
               return Padding(
                 padding: const EdgeInsets.only(right: AppSpacing.sm),
                 child: ChoiceChip(
-                  label: Text(e.formula, style: TextStyle(color: isSelected ? Colors.white : AppColors.textSecondary)),
+                  label: Text(
+                    e.formula,
+                    style: TextStyle(
+                      color: isSelected
+                          ? Colors.white
+                          : AppColors.textSecondary,
+                    ),
+                  ),
                   selected: isSelected,
                   onSelected: (val) => onSelected(e),
                   selectedColor: AppColors.accentPurple,

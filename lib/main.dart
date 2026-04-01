@@ -24,6 +24,8 @@ import 'physics/wave_lab/main_standalone.dart' as wave_main;
 import 'chemistry/acide_base_ph/main.dart' as ph_main;
 import 'chemistry/atomic_molecular/features/home/home_screen.dart'
     as atomic_home;
+import 'chemistry/electrochemistry/features/home/home_screen.dart'
+    as electro_home;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -78,6 +80,15 @@ class _AtomicLabWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return rp.ProviderScope(child: atomic_home.HomeScreen());
+  }
+}
+
+class _ElectrochemWrapper extends StatelessWidget {
+  const _ElectrochemWrapper();
+
+  @override
+  Widget build(BuildContext context) {
+    return rp.ProviderScope(child: electro_home.HomeScreen());
   }
 }
 
@@ -532,6 +543,21 @@ class ChemistryDashboard extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => const ph_main.PhSimApp(),
+                            ),
+                          );
+                        },
+                      ),
+                      _buildLabCard(
+                        context,
+                        title: "ELECTROCHEM",
+                        subtitle: "Batteries & Electrolysis",
+                        icon: Icons.bolt,
+                        color: Colors.orangeAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const _ElectrochemWrapper(),
                             ),
                           );
                         },
