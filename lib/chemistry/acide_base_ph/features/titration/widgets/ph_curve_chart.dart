@@ -35,7 +35,10 @@ class PHCurveChart extends StatelessWidget {
                 reservedSize: 30,
                 getTitlesWidget: (v, meta) => Text(
                   v.toInt().toString(),
-                  style: const TextStyle(fontSize: 10, color: AppColors.textHint),
+                  style: const TextStyle(
+                    fontSize: 10,
+                    color: AppColors.textHint,
+                  ),
                 ),
               ),
             ),
@@ -45,23 +48,32 @@ class PHCurveChart extends StatelessWidget {
                 reservedSize: 20,
                 getTitlesWidget: (v, meta) => Text(
                   '${v.toInt()}mL',
-                  style: const TextStyle(fontSize: 10, color: AppColors.textHint),
+                  style: const TextStyle(
+                    fontSize: 10,
+                    color: AppColors.textHint,
+                  ),
                 ),
               ),
             ),
-            rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-            topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            rightTitles: const AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
+            topTitles: const AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
           ),
           borderData: FlBorderData(show: false),
           lineBarsData: [
             LineChartBarData(
               spots: spots,
               isCurved: true,
-              gradient: const LinearGradient(colors: [
-                Color(0xFFE03030),
-                Color(0xFF209090),
-                Color(0xFF2060CC),
-              ]),
+              gradient: const LinearGradient(
+                colors: [
+                  Color(0xFFE03030),
+                  Color(0xFF209090),
+                  Color(0xFF2060CC),
+                ],
+              ),
               barWidth: 3,
               isStrokeCapRound: true,
               dotData: const FlDotData(show: false),

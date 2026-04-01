@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sub = context.watch<SubscriptionService>();
-    
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -26,18 +26,22 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.arrow_back),
-                    onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
+                    onPressed: () =>
+                        Navigator.of(context, rootNavigator: true).pop(),
                   ),
                   const SizedBox(width: AppSpacing.sm),
-                  Text('⚗️ pH Lab', style: Theme.of(context).textTheme.displayLarge),
+                  Text(
+                    '⚗️ pH Lab',
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
                 ],
               ),
               const SizedBox(height: AppSpacing.xs),
               Text(
                 'Interactive Chemistry Simulation',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(color: AppColors.textSecondary),
               ),
               const SizedBox(height: AppSpacing.xl),
               _LabCard(
@@ -116,20 +120,14 @@ class _LabCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppRadius.md),
                 ),
                 alignment: Alignment.center,
-                child: Text(
-                  icon,
-                  style: const TextStyle(fontSize: 28),
-                ),
+                child: Text(icon, style: const TextStyle(fontSize: 28)),
               ),
               const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
+                    Text(title, style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 2),
                     Text(
                       subtitle,

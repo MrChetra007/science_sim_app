@@ -18,16 +18,16 @@ class PHSliderWidget extends ConsumerWidget {
           children: [
             Text(
               'pH Level',
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: AppColors.textSecondary,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.labelSmall?.copyWith(color: AppColors.textSecondary),
             ),
             const Spacer(),
             Text(
               ph.toStringAsFixed(1),
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: PHColors.forPH(ph),
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(color: PHColors.forPH(ph)),
             ),
           ],
         ),
@@ -57,9 +57,9 @@ class PHSliderWidget extends ConsumerWidget {
               .map(
                 (n) => Text(
                   n,
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: AppColors.textHint,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelSmall?.copyWith(color: AppColors.textHint),
                 ),
               )
               .toList(),

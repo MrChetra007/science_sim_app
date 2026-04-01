@@ -18,7 +18,7 @@ class LiquidComponent extends PositionComponent {
   void render(Canvas canvas) {
     // Draw the liquid rectangle inside beaker bounds
     final paint = Paint()..color = _currentColor.withOpacity(0.8);
-    
+
     // Draw main liquid body
     canvas.drawRRect(
       RRect.fromRectAndCorners(
@@ -36,7 +36,7 @@ class LiquidComponent extends PositionComponent {
       ..color = const Color(0xFFFFFFFF).withOpacity(0.3)
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
-    
+
     canvas.drawLine(
       Offset(8, size.y * 0.2),
       Offset(size.x - 8, size.y * 0.2),

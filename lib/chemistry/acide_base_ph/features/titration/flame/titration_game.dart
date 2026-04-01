@@ -22,40 +22,44 @@ class TitrationGame extends FlameGame with TapCallbacks {
   Future<void> onLoad() async {
     // Beaker body placeholder
     _surfaceY = size.y * 0.6;
-    
+
     _beakerLiquid = LiquidComponent()
       ..size = Vector2(size.x * 0.6, size.y * 0.4)
       ..position = Vector2(size.x * 0.2, _surfaceY);
-    
+
     add(_beakerLiquid);
-    
+
     // Add a simple "Burette" visual
-    add(RectangleComponent()
-      ..size = Vector2(10, 80)
-      ..position = Vector2(size.x / 2 - 5, 0)
-      ..paint.color = Colors.white.withOpacity(0.3));
+    add(
+      RectangleComponent()
+        ..size = Vector2(10, 80)
+        ..position = Vector2(size.x / 2 - 5, 0)
+        ..paint.color = Colors.white.withOpacity(0.3),
+    );
 
     _isInitialized = true;
   }
 
   void spawnDrop() {
-    add(DropComponent(
-      startY: 80,
-      targetY: _surfaceY + 5,
-      x: size.x / 2,
-      onLand: () {
-        onDropLanded(1.0); // 1.0 mL per drop for simplicity
-        AudioService.playDrop();
-        add(SplashParticles(position: Vector2(size.x / 2, _surfaceY + 5)));
-      },
-    ));
+    add(
+      DropComponent(
+        startY: 80,
+        targetY: _surfaceY + 5,
+        x: size.x / 2,
+        onLand: () {
+          onDropLanded(1.0); // 1.0 mL per drop for simplicity
+          AudioService.playDrop();
+          add(SplashParticles(position: Vector2(size.x / 2, _surfaceY + 5)));
+        },
+      ),
+    );
   }
 
   void updateColor(Color color) {
     _beakerLiquid.updatePH(7.0); // This is a hack because updatePH uses ph
     // Let's modify LiquidComponent or just use a direct color update
   }
-  
+
   // Actually, let's just use the pH value directly
   void updatePH(double ph) {
     if (!_isInitialized) return;

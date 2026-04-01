@@ -26,7 +26,9 @@ class SubstanceGrid extends ConsumerWidget {
             duration: const Duration(milliseconds: 200),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: isSelected ? color.withOpacity(0.15) : AppColors.bgElevated,
+              color: isSelected
+                  ? color.withOpacity(0.15)
+                  : AppColors.bgElevated,
               borderRadius: BorderRadius.circular(AppRadius.pill),
               border: Border.all(
                 color: isSelected ? color : AppColors.borderDefault,
@@ -36,9 +38,11 @@ class SubstanceGrid extends ConsumerWidget {
             child: Text(
               '${substance.emoji} ${substance.name}',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: isSelected ? AppColors.textPrimary : AppColors.textSecondary,
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                  ),
+                color: isSelected
+                    ? AppColors.textPrimary
+                    : AppColors.textSecondary,
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+              ),
             ),
           ),
         );

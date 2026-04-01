@@ -36,12 +36,7 @@ class PHExplorerScreen extends ConsumerWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Expanded(
-                    flex: 2,
-                    child: Center(
-                      child: BeakerWidget(),
-                    ),
-                  ),
+                  const Expanded(flex: 2, child: Center(child: BeakerWidget())),
                   const SizedBox(width: AppSpacing.md),
                   Expanded(
                     flex: 3,
@@ -50,16 +45,16 @@ class PHExplorerScreen extends ConsumerWidget {
                       children: [
                         Text(
                           'Current pH',
-                          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            color: AppColors.textSecondary,
-                          ),
+                          style: Theme.of(context).textTheme.labelSmall
+                              ?.copyWith(color: AppColors.textSecondary),
                         ),
                         Text(
                           state.ph.toStringAsFixed(1),
-                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                            color: PHColors.forPH(state.ph),
-                            fontSize: 48,
-                          ),
+                          style: Theme.of(context).textTheme.displayLarge
+                              ?.copyWith(
+                                color: PHColors.forPH(state.ph),
+                                fontSize: 48,
+                              ),
                         ),
                         const SizedBox(height: AppSpacing.md),
                         const PHSliderWidget(),
@@ -69,7 +64,7 @@ class PHExplorerScreen extends ConsumerWidget {
                 ],
               ),
               const SizedBox(height: AppSpacing.xl),
-              
+
               // Substances Section
               Text(
                 'Substances',
@@ -78,7 +73,7 @@ class PHExplorerScreen extends ConsumerWidget {
               const SizedBox(height: AppSpacing.sm),
               const SubstanceGrid(),
               const SizedBox(height: AppSpacing.xl),
-              
+
               // Indicators Section
               Text(
                 'Chemical Indicators',
@@ -87,7 +82,7 @@ class PHExplorerScreen extends ConsumerWidget {
               const SizedBox(height: AppSpacing.sm),
               const IndicatorPanel(),
               const SizedBox(height: AppSpacing.xl),
-              
+
               // Info Card
               if (state.selectedSubstance != null)
                 Card(
@@ -98,9 +93,12 @@ class PHExplorerScreen extends ConsumerWidget {
                       children: [
                         Text(
                           state.selectedSubstance!.name,
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: PHColors.forPH(state.selectedSubstance!.ph),
-                          ),
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
+                                color: PHColors.forPH(
+                                  state.selectedSubstance!.ph,
+                                ),
+                              ),
                         ),
                         const SizedBox(height: 8),
                         Text(

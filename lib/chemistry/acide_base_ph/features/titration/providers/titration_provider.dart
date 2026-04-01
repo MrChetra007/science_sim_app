@@ -23,24 +23,25 @@ class TitrationState {
     double? baseVolumeMl,
     List<FlSpot>? titrationCurve,
     bool? isRunning,
-  }) =>
-      TitrationState(
-        currentPH: currentPH ?? this.currentPH,
-        acidAddedMl: acidAddedMl ?? this.acidAddedMl,
-        baseVolumeMl: baseVolumeMl ?? this.baseVolumeMl,
-        titrationCurve: titrationCurve ?? this.titrationCurve,
-        isRunning: isRunning ?? this.isRunning,
-      );
+  }) => TitrationState(
+    currentPH: currentPH ?? this.currentPH,
+    acidAddedMl: acidAddedMl ?? this.acidAddedMl,
+    baseVolumeMl: baseVolumeMl ?? this.baseVolumeMl,
+    titrationCurve: titrationCurve ?? this.titrationCurve,
+    isRunning: isRunning ?? this.isRunning,
+  );
 }
 
 class TitrationNotifier extends StateNotifier<TitrationState> {
   TitrationNotifier()
-      : super(const TitrationState(
+    : super(
+        const TitrationState(
           currentPH: 13.0, // Starting with a strong base NaOH
           acidAddedMl: 0.0,
           baseVolumeMl: 50.0,
           titrationCurve: [FlSpot(0, 13.0)],
-        ));
+        ),
+      );
 
   void addAcidDrop(double volumeMl) {
     if (state.acidAddedMl > 100) return; // limit simulation
@@ -74,6 +75,7 @@ class TitrationNotifier extends StateNotifier<TitrationState> {
   }
 }
 
-final titrationProvider = StateNotifierProvider<TitrationNotifier, TitrationState>(
-  (ref) => TitrationNotifier(),
-);
+final titrationProvider =
+    StateNotifierProvider<TitrationNotifier, TitrationState>(
+      (ref) => TitrationNotifier(),
+    );

@@ -43,23 +43,23 @@ class IndicatorPanel extends ConsumerWidget {
                   Text(
                     indicator.name,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   Text(
                     _colorLabel(indicator, ph),
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: AppColors.textSecondary,
-                        ),
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 ],
               ),
               const Spacer(),
               Text(
                 'Indicator color',
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: AppColors.textHint,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.labelSmall?.copyWith(color: AppColors.textHint),
               ),
             ],
           ),

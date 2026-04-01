@@ -78,7 +78,9 @@ class _QuestionView extends StatelessWidget {
           const SizedBox(height: AppSpacing.lg),
           Text(
             'Question $questionNumber of $total',
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.textSecondary),
+            style: Theme.of(
+              context,
+            ).textTheme.labelSmall?.copyWith(color: AppColors.textSecondary),
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
@@ -101,22 +103,33 @@ class _QuestionView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    selectedIndex == question.correctIndex ? 'Correct!' : 'Incorrect',
+                    selectedIndex == question.correctIndex
+                        ? 'Correct!'
+                        : 'Incorrect',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: selectedIndex == question.correctIndex ? AppColors.accentGreen : Colors.redAccent,
+                      color: selectedIndex == question.correctIndex
+                          ? AppColors.accentGreen
+                          : Colors.redAccent,
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(question.explanation, style: Theme.of(context).textTheme.bodyMedium),
+                  Text(
+                    question.explanation,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: AppSpacing.md),
             ElevatedButton(
               onPressed: onNext,
-              style: ElevatedButton.styleFrom(backgroundColor: AppColors.accentPurple),
-              child: Text(questionNumber == total ? 'View Results' : 'Next Question'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.accentPurple,
+              ),
+              child: Text(
+                questionNumber == total ? 'View Results' : 'Next Question',
+              ),
             ),
           ],
         ],
@@ -132,7 +145,9 @@ class _QuestionView extends StatelessWidget {
       Color itemColor = AppColors.bgSurface;
       if (selectedIndex != null) {
         if (isSelected) {
-          itemColor = isCorrect ? AppColors.accentGreen.withOpacity(0.2) : Colors.redAccent.withOpacity(0.2);
+          itemColor = isCorrect
+              ? AppColors.accentGreen.withOpacity(0.2)
+              : Colors.redAccent.withOpacity(0.2);
         } else if (isCorrect) {
           itemColor = AppColors.accentGreen.withOpacity(0.1);
         }
@@ -152,7 +167,9 @@ class _QuestionView extends StatelessWidget {
                 color: selectedIndex != null && isCorrect
                     ? AppColors.accentGreen
                     : (isSelected ? Colors.redAccent : AppColors.borderDefault),
-                width: isSelected || (selectedIndex != null && isCorrect) ? 1.5 : 0.5,
+                width: isSelected || (selectedIndex != null && isCorrect)
+                    ? 1.5
+                    : 0.5,
               ),
             ),
             child: Row(
@@ -161,7 +178,9 @@ class _QuestionView extends StatelessWidget {
                   String.fromCharCode(65 + index),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: isSelected || (selectedIndex != null && isCorrect) ? null : AppColors.textHint,
+                    color: isSelected || (selectedIndex != null && isCorrect)
+                        ? null
+                        : AppColors.textHint,
                   ),
                 ),
                 const SizedBox(width: AppSpacing.md),
@@ -214,24 +233,22 @@ class _ResultsView extends StatelessWidget {
           const SizedBox(height: AppSpacing.xl),
           Text(
             'Your Score',
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.textSecondary),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(color: AppColors.textSecondary),
           ),
           Text(
             '$score / $total',
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
-              color: percentage >= 70 ? AppColors.accentGreen : AppColors.accentOrange,
+              color: percentage >= 70
+                  ? AppColors.accentGreen
+                  : AppColors.accentOrange,
               fontSize: 64,
             ),
           ),
-          Text(
-            '$percentage%',
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
+          Text('$percentage%', style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: AppSpacing.xxl),
-          ElevatedButton(
-            onPressed: onRestart,
-            child: const Text('Try Again'),
-          ),
+          ElevatedButton(onPressed: onRestart, child: const Text('Try Again')),
           TextButton(
             onPressed: () => context.go('/'),
             child: const Text('Back to Home'),

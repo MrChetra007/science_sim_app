@@ -3,11 +3,9 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart' as p;
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/ph_colors.dart';
-import '../../../../core/services/subscription_service.dart';
 import '../../../../core/services/ad_service.dart';
 import '../../../../core/widgets/ad_widgets.dart';
 import 'flame/titration_game.dart';
@@ -34,10 +32,7 @@ class _TitrationScreenState extends ConsumerState<TitrationScreen> {
       },
     );
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final sub = p.Provider.of<SubscriptionService>(context, listen: false);
-      if (sub.showInterstitialAds) {
-        globalAdService.showInterstitialAd();
-      }
+      globalAdService.showInterstitialAd();
     });
   }
 
@@ -89,7 +84,10 @@ class _TitrationScreenState extends ConsumerState<TitrationScreen> {
                 decoration: BoxDecoration(
                   color: AppColors.bgSurface,
                   borderRadius: BorderRadius.circular(AppRadius.lg),
-                  border: Border.all(color: AppColors.borderDefault, width: 0.5),
+                  border: Border.all(
+                    color: AppColors.borderDefault,
+                    width: 0.5,
+                  ),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -119,18 +117,26 @@ class _TitrationScreenState extends ConsumerState<TitrationScreen> {
                 ),
               ),
               const SizedBox(height: AppSpacing.md),
-              
+
               // Controls
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton.icon(
-                    onPressed: state.isRunning ? _stopTitration : _startTitration,
-                    icon: Icon(state.isRunning ? Icons.pause : Icons.play_arrow),
+                    onPressed: state.isRunning
+                        ? _stopTitration
+                        : _startTitration,
+                    icon: Icon(
+                      state.isRunning ? Icons.pause : Icons.play_arrow,
+                    ),
                     label: Text(state.isRunning ? 'Stop' : 'Start Drip'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: state.isRunning ? Colors.redAccent.withOpacity(0.2) : AppColors.accentGreen.withOpacity(0.2),
-                      foregroundColor: state.isRunning ? Colors.redAccent : AppColors.accentGreen,
+                      backgroundColor: state.isRunning
+                          ? Colors.redAccent.withOpacity(0.2)
+                          : AppColors.accentGreen.withOpacity(0.2),
+                      foregroundColor: state.isRunning
+                          ? Colors.redAccent
+                          : AppColors.accentGreen,
                     ),
                   ),
                   const SizedBox(width: AppSpacing.md),
@@ -145,7 +151,7 @@ class _TitrationScreenState extends ConsumerState<TitrationScreen> {
                 ],
               ),
               const SizedBox(height: AppSpacing.lg),
-              
+
               // Titration Curve Chart
               Text(
                 'Titration Curve',
@@ -187,8 +193,21 @@ class _StatChip extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text(label, style: const TextStyle(fontSize: 10, color: AppColors.textSecondary)),
-          Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: color)),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 10,
+              color: AppColors.textSecondary,
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
         ],
       ),
     );

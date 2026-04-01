@@ -9,9 +9,9 @@ class PHState {
   const PHState({required this.ph, this.selectedSubstance});
 
   PHState copyWith({double? ph, Substance? selectedSubstance}) => PHState(
-        ph: ph ?? this.ph,
-        selectedSubstance: selectedSubstance ?? this.selectedSubstance,
-      );
+    ph: ph ?? this.ph,
+    selectedSubstance: selectedSubstance ?? this.selectedSubstance,
+  );
 }
 
 class PHNotifier extends StateNotifier<PHState> {

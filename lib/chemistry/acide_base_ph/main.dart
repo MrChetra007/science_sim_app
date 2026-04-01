@@ -10,12 +10,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     p.MultiProvider(
-      providers: [
-        p.ChangeNotifierProvider.value(value: SubscriptionService()),
-      ],
-      child: const ProviderScope(
-        child: PhSimApp(),
-      ),
+      providers: [p.ChangeNotifierProvider.value(value: SubscriptionService())],
+      child: const ProviderScope(child: PhSimApp()),
     ),
   );
 }

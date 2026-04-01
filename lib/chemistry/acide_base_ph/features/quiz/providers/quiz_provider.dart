@@ -20,13 +20,12 @@ class QuizState {
     int? score,
     int? selectedAnswer,
     bool? isComplete,
-  }) =>
-      QuizState(
-        currentIndex: currentIndex ?? this.currentIndex,
-        score: score ?? this.score,
-        selectedAnswer: selectedAnswer, // Can be null
-        isComplete: isComplete ?? this.isComplete,
-      );
+  }) => QuizState(
+    currentIndex: currentIndex ?? this.currentIndex,
+    score: score ?? this.score,
+    selectedAnswer: selectedAnswer, // Can be null
+    isComplete: isComplete ?? this.isComplete,
+  );
 }
 
 class QuizNotifier extends StateNotifier<QuizState> {

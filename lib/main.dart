@@ -9,23 +9,15 @@ import 'core/services/subscription_service.dart';
 import 'core/services/ad_service.dart';
 import 'core/widgets/plan_picker.dart';
 
-// Import Newton Lab
-import 'newton_lab/app.dart';
-
-// Import Ohm Lab
-import 'ohm_lab/screens/home_screen.dart' as ohm_home;
-import 'ohm_lab/providers/circuit_provider.dart';
-import 'ohm_lab/core/theme.dart' as ohm_theme;
-
-// Import Projectile Motion Lab
-import 'projectile_motion/app.dart' as projectile_app;
-
-// Import AC Lab
-import 'ac_lab/main_standalone.dart' as ac_main;
-import 'ac_lab/providers/ac_provider.dart';
-
-// Import Wave Lab
-import 'wave_lab/main_standalone.dart' as wave_main;
+// Import Physics Labs
+import 'physics/newton_lab/app.dart';
+import 'physics/ohm_lab/screens/home_screen.dart' as ohm_home;
+import 'physics/ohm_lab/providers/circuit_provider.dart';
+import 'physics/ohm_lab/core/theme.dart' as ohm_theme;
+import 'physics/projectile_motion/app.dart' as projectile_app;
+import 'physics/ac_lab/main_standalone.dart' as ac_main;
+import 'physics/ac_lab/providers/ac_provider.dart';
+import 'physics/wave_lab/main_standalone.dart' as wave_main;
 
 // Import Acid Base Lab
 import 'chemistry/acide_base_ph/main.dart' as ph_main;
