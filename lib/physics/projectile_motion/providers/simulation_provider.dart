@@ -24,18 +24,39 @@ final simulationProvider =
 
 class SimulationNotifier extends StateNotifier<SimulationState> {
   final Ref _ref;
+  SubscriptionService? _subService;
   SimulationNotifier(this._ref) : super(SimulationState.initial()) {
-    SubscriptionService().addListener(_onSubscriptionChange);
-    
     // Connect the game's completion callback
     final game = _ref.read(projectileGameProvider);
     game.onSimulationComplete = _onGameComplete;
+    
+    // Initialize subscription service reference and listener
+    _initSubscription();
     _initSettings();
+    
+    // Retry subscription init after frame renders (in case context wasn't ready)
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initSubscription();
+    });
+  }
+
+  void _initSubscription() {
+    if (_subService != null) return;
+    
+    // Use the singleton SubscriptionService instance
+    _subService = SubscriptionService();
+    _subService!.addListener(_onSubscriptionChange);
+    
+    // Set initial pro status
+    if (state.isPro != _subService!.isPro) {
+      state = state.copyWith(isPro: _subService!.isPro);
+    }
   }
 
   void _onSubscriptionChange() {
-    if (state.isPro != SubscriptionService().isPro) {
-      state = state.copyWith(isPro: SubscriptionService().isPro);
+    final service = _subService ?? SubscriptionService();
+    if (state.isPro != service.isPro) {
+      state = state.copyWith(isPro: service.isPro);
     }
   }
 
@@ -58,7 +79,7 @@ class SimulationNotifier extends StateNotifier<SimulationState> {
       );
 
       // Initialize Pro status
-      final isPro = SubscriptionService().isPro;
+      final isPro = _subService?.isPro ?? SubscriptionService().isPro;
       state = state.copyWith(isPro: isPro);
 
       _syncAppearanceToGame();
@@ -72,7 +93,7 @@ class SimulationNotifier extends StateNotifier<SimulationState> {
 
   @override
   void dispose() {
-    SubscriptionService().removeListener(_onSubscriptionChange);
+    _subService?.removeListener(_onSubscriptionChange);
     super.dispose();
   }
 
