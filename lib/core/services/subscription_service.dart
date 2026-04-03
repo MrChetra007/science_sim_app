@@ -3,7 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 enum SubscriptionPlan {
   free(0.0),
-  premium(2.99);
+  monthly(0.99),
+  lifetime(4.99);
 
   final double price;
   const SubscriptionPlan(this.price);
@@ -27,15 +28,15 @@ class SubscriptionService extends ChangeNotifier {
   int get rewardedAdsWatched => _rewardedAdsWatched;
 
   bool get isPro {
-    if (_currentPlan == SubscriptionPlan.premium) return true;
+    if (_currentPlan == SubscriptionPlan.monthly || _currentPlan == SubscriptionPlan.lifetime) return true;
     if (_temporaryPremiumEndTime != null && DateTime.now().isBefore(_temporaryPremiumEndTime!)) {
       return true;
     }
     return false;
   }
 
-  // New helper getters to distinguish between permanent and temporary
-  bool get isPremium => _currentPlan == SubscriptionPlan.premium;
+  bool get isPremium => _currentPlan == SubscriptionPlan.monthly || _currentPlan == SubscriptionPlan.lifetime;
+  bool get isLifetime => _currentPlan == SubscriptionPlan.lifetime;
   bool get isTrial => _temporaryPremiumEndTime != null && DateTime.now().isBefore(_temporaryPremiumEndTime!);
   bool get isAdsRemoved => isPremium;
 
@@ -43,13 +44,6 @@ class SubscriptionService extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     int planIndex = prefs.getInt('user_subscription_plan') ?? 0;
     
-    // Safety check for changed indices:
-    if (planIndex == 2) {
-      planIndex = 1; // Map old premium to new premium
-    } else if (planIndex == 1) {
-      planIndex = 0; // Map old basic to free
-    }
-
     if (planIndex >= SubscriptionPlan.values.length) {
       planIndex = 0;
     }
@@ -60,7 +54,6 @@ class SubscriptionService extends ChangeNotifier {
     final tempTimeStr = prefs.getString('temp_premium_end_time');
     if (tempTimeStr != null) {
       _temporaryPremiumEndTime = DateTime.tryParse(tempTimeStr);
-      // Clean it up if expired
       if (_temporaryPremiumEndTime != null && DateTime.now().isAfter(_temporaryPremiumEndTime!)) {
         _temporaryPremiumEndTime = null;
         await prefs.remove('temp_premium_end_time');
@@ -90,8 +83,6 @@ class SubscriptionService extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Helper for labs to check ad status
-  // Trial (temporary unlock) still shows ads. Only Premium (permanent purchase) hides them.
   bool get showBannerAds => !isPremium;
   bool get showInterstitialAds => !isPremium;
 }

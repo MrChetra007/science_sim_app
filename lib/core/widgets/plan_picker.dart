@@ -78,6 +78,36 @@ class _PlanPickerView extends StatelessWidget {
 
             const SizedBox(height: 16),
 
+            // MONTHLY Plan Card
+            _PlanCard(
+              borderColor: const Color(0xFF00BCD4),
+              backgroundColor: const Color(0xFF0A1A24),
+              iconData: Icons.calendar_month,
+              iconBgColor: const Color(0xFF0D3B4D),
+              iconColor: const Color(0xFF00BCD4),
+              titleText: 'MONTHLY',
+              titleColor: const Color(0xFF00E5FF),
+              priceMain: '\$0.99',
+              priceSub: 'per month',
+              priceMainColor: const Color(0xFF00E5FF),
+              badge: null,
+              bullets: const [
+                'All 5 labs – fully unlocked',
+                'No ads – while subscribed',
+                'Cancel anytime',
+              ],
+              bulletsColor: const Color(0xFF4DD0E1),
+              buttonText: '⚡ GET MONTHLY – \$0.99/mo',
+              buttonBgColor: const Color(0xFF00BCD4),
+              buttonTextColor: Colors.black,
+              onTapButton: () {
+                sub.setPlan(SubscriptionPlan.monthly);
+                Navigator.pop(context);
+              },
+            ),
+
+            const SizedBox(height: 16),
+
             // LIFETIME Plan Card
             _PlanCard(
               borderColor: const Color(0xFFD68A1B),
@@ -87,7 +117,7 @@ class _PlanPickerView extends StatelessWidget {
               iconColor: const Color(0xFFE8982D),
               titleText: 'LIFETIME',
               titleColor: const Color(0xFFD38B21),
-              priceMain: '\$2.99',
+              priceMain: '\$4.99',
               priceSub: 'one time · own forever',
               priceMainColor: const Color(0xFFF1B743),
               badge: Container(
@@ -119,11 +149,11 @@ class _PlanPickerView extends StatelessWidget {
                 'All future labs included free',
               ],
               bulletsColor: const Color(0xFFC0832C),
-              buttonText: '⚡ GET LIFETIME – \$2.99',
+              buttonText: '⚡ GET LIFETIME – \$4.99',
               buttonBgColor: const Color(0xFFF39C12),
               buttonTextColor: Colors.black,
               onTapButton: () {
-                sub.setPlan(SubscriptionPlan.premium);
+                sub.setPlan(SubscriptionPlan.lifetime);
                 Navigator.pop(context);
               },
             ),

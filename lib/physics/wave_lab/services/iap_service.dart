@@ -15,14 +15,14 @@ class IapService {
   }
 
   Future<void> buyPro() async {
-    await _subscription.setPlan(SubscriptionPlan.premium);
+    await _subscription.setPlan(SubscriptionPlan.lifetime);
   }
 
   Future<void> toggleProStatus() async {
     if (isPro) {
       await _subscription.setPlan(SubscriptionPlan.free);
     } else {
-      await _subscription.setPlan(SubscriptionPlan.premium);
+      await _subscription.setPlan(SubscriptionPlan.lifetime);
     }
   }
 
