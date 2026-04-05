@@ -11,17 +11,20 @@ class GlobalAdService {
   RewardedAd? _rewardedAd;
   final SubscriptionService _subscription = SubscriptionService();
 
-  static const String androidBannerTestId = 'ca-app-pub-3940256099942544/6300978111';
-  static const String androidInterstitialTestId = 'ca-app-pub-3940256099942544/1033173712';
-  static const String androidRewardedTestId = 'ca-app-pub-3940256099942544/5224354917';
+  static const String androidAppId = 'ca-app-pub-2040811472235687~8797097896';
+  static const String androidBannerId = 'ca-app-pub-2040811472235687/3889655063';
+  static const String androidInterstitialId = 'ca-app-pub-2040811472235687/5067005366';
+  static const String androidRewardedId = 'ca-app-pub-2040811472235687/8615368138';
   
-  static const String iosBannerTestId = 'ca-app-pub-3940256099942544/2934735716';
-  static const String iosInterstitialTestId = 'ca-app-pub-3940256099942544/4411468910';
-  static const String iosRewardedTestId = 'ca-app-pub-3940256099942544/1712485313';
+  static const String iosAppId = 'ca-app-pub-3940256099942544/6300978111';
+  static const String iosBannerId = 'ca-app-pub-3940256099942544/2934735716';
+  static const String iosInterstitialId = 'ca-app-pub-2040811472235687/5067005366';
+  static const String iosRewardedId = 'ca-app-pub-2040811472235687/8615368138';
 
-  String get bannerAdUnitId => Platform.isAndroid ? androidBannerTestId : iosBannerTestId;
-  String get interstitialAdUnitId => Platform.isAndroid ? androidInterstitialTestId : iosInterstitialTestId;
-  String get rewardedAdUnitId => Platform.isAndroid ? androidRewardedTestId : iosRewardedTestId;
+  String get appId => Platform.isAndroid ? androidAppId : iosAppId;
+  String get bannerAdUnitId => Platform.isAndroid ? androidBannerId : iosBannerId;
+  String get interstitialAdUnitId => Platform.isAndroid ? androidInterstitialId : iosInterstitialId;
+  String get rewardedAdUnitId => Platform.isAndroid ? androidRewardedId : iosRewardedId;
 
   Future<void> init() async {
     await MobileAds.instance.initialize();

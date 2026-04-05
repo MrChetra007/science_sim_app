@@ -7,6 +7,7 @@ import 'package:flutter_soloud/flutter_soloud.dart';
 // Import Global Services
 import 'core/services/subscription_service.dart';
 import 'core/services/ad_service.dart';
+import 'core/services/iap_service.dart';
 import 'core/widgets/plan_picker.dart';
 import 'core/widgets/ad_widgets.dart';
 
@@ -33,6 +34,7 @@ void main() async {
   final subscriptionService = SubscriptionService();
   await subscriptionService.init();
   await globalAdService.init();
+  await IAPService().init();
 
   final acProvider = ACProvider();
   await acProvider.loadPrefs();

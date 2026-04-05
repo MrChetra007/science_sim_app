@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- IAP/Billing permission -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+    
     <application
-        android:label="Physic Lab"
+        android:label="Science Lab"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -32,7 +35,7 @@
             android:value="2" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5353583157869480~4536771375"/>
+            android:value="ca-app-pub-2040811472235687~8797097896"/>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

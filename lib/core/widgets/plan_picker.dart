@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/subscription_service.dart';
 import '../services/ad_service.dart';
+import '../services/iap_service.dart';
 
 void showGlobalPlanDialog(BuildContext context) {
   showDialog(
@@ -16,8 +17,36 @@ void showGlobalPlanDialog(BuildContext context) {
   );
 }
 
-class _PlanPickerView extends StatelessWidget {
+class _PlanPickerView extends StatefulWidget {
   const _PlanPickerView();
+
+  @override
+  State<_PlanPickerView> createState() => _PlanPickerViewState();
+}
+
+class _PlanPickerViewState extends State<_PlanPickerView> {
+  void _showCancelDialog(BuildContext ctx) {
+    showDialog(
+      context: ctx,
+      builder: (dialogContext) => AlertDialog(
+        backgroundColor: const Color(0xFF1E2D3D),
+        title: const Text(
+          'Cancel Subscription?',
+          style: TextStyle(color: Colors.white),
+        ),
+        content: const Text(
+          'To cancel your subscription, please go to the Google Play Store app > Subscriptions and tap Cancel there.\n\nYour subscription will remain active until the end of the current billing period.',
+          style: TextStyle(color: Colors.white70),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,9 +129,9 @@ class _PlanPickerView extends StatelessWidget {
               buttonText: '⚡ GET MONTHLY – \$0.99/mo',
               buttonBgColor: const Color(0xFF00BCD4),
               buttonTextColor: Colors.black,
-              onTapButton: () {
-                sub.setPlan(SubscriptionPlan.monthly);
-                Navigator.pop(context);
+              onTapButton: () async {
+                final iap = IAPService();
+                await iap.buyMonthly();
               },
             ),
 
@@ -152,9 +181,9 @@ class _PlanPickerView extends StatelessWidget {
               buttonText: '⚡ GET LIFETIME – \$4.99',
               buttonBgColor: const Color(0xFFF39C12),
               buttonTextColor: Colors.black,
-              onTapButton: () {
-                sub.setPlan(SubscriptionPlan.lifetime);
-                Navigator.pop(context);
+              onTapButton: () async {
+                final iap = IAPService();
+                await iap.buyLifetime();
               },
             ),
             const SizedBox(height: 16),
@@ -215,6 +244,55 @@ class _PlanPickerView extends StatelessWidget {
                       onClosed: () {},
                     );
                   },
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            // Restore Purchases Button
+            TextButton.icon(
+              onPressed: () async {
+                // Show loading
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                          ),
+                          SizedBox(width: 16),
+                          Text('Checking for previous purchases...'),
+                        ],
+                      ),
+                      duration: Duration(seconds: 3),
+                    ),
+                  );
+                }
+
+                await IAPService().restorePurchases();
+              },
+              icon: const Icon(Icons.restore, color: Colors.white54, size: 18),
+              label: const Text(
+                'Restore Purchases',
+                style: TextStyle(color: Colors.white54, fontSize: 12),
+              ),
+            ),
+            const SizedBox(height: 8),
+            // Manage Subscription Button
+            Consumer<SubscriptionService>(
+              builder: (context, subService, child) {
+                if (!subService.isPro) return const SizedBox.shrink();
+                return TextButton.icon(
+                  onPressed: () {
+                    _showCancelDialog(context);
+                  },
+                  icon: const Icon(Icons.cancel_outlined, color: Colors.orange, size: 18),
+                  label: const Text(
+                    'Cancel Subscription',
+                    style: TextStyle(color: Colors.orange, fontSize: 12),
+                  ),
                 );
               },
             ),

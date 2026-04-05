@@ -1,4 +1,5 @@
 import 'dart:async';
+import '../../../core/services/iap_service.dart';
 import '../../../core/services/subscription_service.dart';
 
 class IapService {
@@ -6,23 +7,21 @@ class IapService {
   factory IapService() => _instance;
   IapService._internal();
 
-  final SubscriptionService _subscription = SubscriptionService();
-  bool get isPro => _subscription.isPro;
-  bool get isAdsRemoved => _subscription.isAdsRemoved;
+  final IAPService _iapService = IAPService();
+  bool get isPro => _iapService.isPro;
+  bool get isAdsRemoved => _iapService.isAdsRemoved;
 
-  Future<void> init() async {
-    // All persistence is now handled by GlobalSubscriptionService
-  }
+  Future<void> init() async {}
 
   Future<void> buyPro() async {
-    await _subscription.setPlan(SubscriptionPlan.lifetime);
+    await _iapService.buyLifetime();
   }
 
   Future<void> toggleProStatus() async {
     if (isPro) {
-      await _subscription.setPlan(SubscriptionPlan.free);
+      await SubscriptionService().setPlan(SubscriptionPlan.free);
     } else {
-      await _subscription.setPlan(SubscriptionPlan.lifetime);
+      await _iapService.buyLifetime();
     }
   }
 

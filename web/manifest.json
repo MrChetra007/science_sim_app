@@ -1,11 +1,11 @@
 {
-    "name": "wave_simulation",
-    "short_name": "wave_simulation",
+    "name": "Science Lab",
+    "short_name": "Science Lab",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Science Lab - Virtual Experiment Suite",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
