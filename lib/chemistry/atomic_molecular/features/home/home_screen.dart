@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' as p;
 import '../../core/theme/app_colors.dart';
 import '../../../../core/services/subscription_service.dart';
+import '../../../../core/services/walkthrough_service.dart';
 import '../../../../core/widgets/ad_widgets.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../bohr_model/bohr_screen.dart';
@@ -9,9 +10,45 @@ import '../electron_config/config_screen.dart';
 import '../molecule_viewer/molecule_screen.dart';
 import '../vsepr/vsepr_screen.dart';
 import '../orbital_viewer/orbital_screen.dart';
+import 'walkthrough/atomic_molecular_walkthrough.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _showWalkthrough = false;
+
+  final GlobalKey _bohrKey = GlobalKey();
+  final GlobalKey _electronConfigKey = GlobalKey();
+  final GlobalKey _moleculeKey = GlobalKey();
+  final GlobalKey _vseprKey = GlobalKey();
+  final GlobalKey _orbitalKey = GlobalKey();
+  final GlobalKey _proKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkWalkthrough();
+  }
+
+  Future<void> _checkWalkthrough() async {
+    final shown = await WalkthroughService.isLabOnboardingShown(
+      WalkthroughService.keyAtomicMolecular,
+    );
+    if (mounted && !shown) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) setState(() => _showWalkthrough = true);
+      });
+    }
+  }
+
+  void _completeWalkthrough() {
+    setState(() => _showWalkthrough = false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +97,7 @@ class HomeScreen extends StatelessWidget {
       ),
     ];
 
-    return Scaffold(
+    Widget content = Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.md),
@@ -96,19 +133,41 @@ class HomeScreen extends StatelessWidget {
                     childAspectRatio: 0.95,
                   ),
                   itemCount: modules.length,
-                  itemBuilder: (context, index) => _ModuleCard(module: modules[index]),
+                  itemBuilder: (context, index) {
+                    final keys = [_bohrKey, _electronConfigKey, _moleculeKey, _vseprKey, _orbitalKey];
+                    return _ModuleCard(module: modules[index], walkthroughKey: keys[index]);
+                  },
                 ),
               ),
               const GlobalBannerAdWidget(),
               Center(
                   child: Padding(
                       padding: const EdgeInsets.all(12),
-                      child: Text('Built for Chemistry Students', style: TextStyle(fontSize: 10, color: AppColors.textHint, letterSpacing: 1.0))))
+                      child: GestureDetector(
+                        key: _proKey,
+                        onTap: () => showGlobalPlanDialog(context),
+                        child: Text('Built for Chemistry Students', style: TextStyle(fontSize: 10, color: AppColors.textHint, letterSpacing: 1.0)),
+                      )))
             ],
           ),
         ),
       ),
     );
+
+    if (_showWalkthrough) {
+      return AtomicMolecularWalkthrough(
+        onComplete: _completeWalkthrough,
+        bohrKey: _bohrKey,
+        electronConfigKey: _electronConfigKey,
+        moleculeKey: _moleculeKey,
+        vseprKey: _vseprKey,
+        orbitalKey: _orbitalKey,
+        proKey: _proKey,
+        child: content,
+      );
+    }
+
+    return content;
   }
 }
 
@@ -125,11 +184,14 @@ class _Module {
 
 class _ModuleCard extends StatelessWidget {
   final _Module module;
-  const _ModuleCard({required this.module});
+  final GlobalKey? walkthroughKey;
+
+  const _ModuleCard({required this.module, this.walkthroughKey});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      key: walkthroughKey,
       onTap: () {
         if (module.isLocked) {
           showDialog(

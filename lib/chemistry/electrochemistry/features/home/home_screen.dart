@@ -3,15 +3,51 @@ import 'package:provider/provider.dart' as p;
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import '../../../../core/services/subscription_service.dart';
+import '../../../../core/services/walkthrough_service.dart';
 import '../../../../core/widgets/ad_widgets.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../galvanic_cell/galvanic_screen.dart';
 import '../electrolysis/electrolysis_screen.dart';
 import '../nernst/nernst_screen.dart';
 import '../electroplating/electroplating_screen.dart';
+import 'walkthrough/electrochemistry_walkthrough.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _showWalkthrough = false;
+
+  final GlobalKey _galvanicKey = GlobalKey();
+  final GlobalKey _electrolysisKey = GlobalKey();
+  final GlobalKey _nernstKey = GlobalKey();
+  final GlobalKey _electroplatingKey = GlobalKey();
+  final GlobalKey _proKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkWalkthrough();
+  }
+
+  Future<void> _checkWalkthrough() async {
+    final shown = await WalkthroughService.isLabOnboardingShown(
+      WalkthroughService.keyElectrochemistry,
+    );
+    if (mounted && !shown) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) setState(() => _showWalkthrough = true);
+      });
+    }
+  }
+
+  void _completeWalkthrough() {
+    setState(() => _showWalkthrough = false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +89,9 @@ class HomeScreen extends StatelessWidget {
       ),
     ];
 
-    return Scaffold(
+    final keys = [_galvanicKey, _electrolysisKey, _nernstKey, _electroplatingKey];
+
+    Widget content = Scaffold(
       backgroundColor: AppColors.bgDeep,
       body: SafeArea(
         child: Padding(
@@ -61,11 +99,27 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Electrochemistry',
-                style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  color: AppColors.textPrimary,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Text(
+                      'Electrochemistry',
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                        color: AppColors.textPrimary,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  IconButton(
+                    key: _proKey,
+                    icon: Icon(
+                      Icons.stars,
+                      color: sub.isPro ? Colors.amber : Colors.white24,
+                    ),
+                    onPressed: () => showGlobalPlanDialog(context),
+                  ),
+                ],
               ),
               const SizedBox(height: AppSpacing.sm),
               Text(
@@ -85,7 +139,7 @@ class HomeScreen extends StatelessWidget {
                     childAspectRatio: 0.85,
                   ),
                   itemCount: modules.length,
-                  itemBuilder: (ctx, i) => _ModuleCard(module: modules[i]),
+                  itemBuilder: (ctx, i) => _ModuleCard(module: modules[i], walkthroughKey: keys[i]),
                 ),
               ),
               const GlobalBannerAdWidget(),
@@ -94,6 +148,20 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+
+    if (_showWalkthrough) {
+      return ElectrochemistryWalkthrough(
+        onComplete: _completeWalkthrough,
+        galvanicKey: _galvanicKey,
+        electrolysisKey: _electrolysisKey,
+        nernstKey: _nernstKey,
+        electroplatingKey: _electroplatingKey,
+        proKey: _proKey,
+        child: content,
+      );
+    }
+
+    return content;
   }
 }
 
@@ -110,12 +178,14 @@ class _Module {
 
 class _ModuleCard extends StatelessWidget {
   final _Module module;
+  final GlobalKey? walkthroughKey;
 
-  const _ModuleCard({required this.module});
+  const _ModuleCard({required this.module, this.walkthroughKey});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      key: walkthroughKey,
       onTap: () {
         if (module.isLocked) {
           showDialog(

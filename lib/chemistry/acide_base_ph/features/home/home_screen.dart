@@ -4,17 +4,52 @@ import 'package:provider/provider.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../../../core/services/subscription_service.dart';
+import '../../../../core/services/walkthrough_service.dart';
 import '../../../../core/widgets/ad_widgets.dart';
 import '../../../../core/widgets/plan_picker.dart';
+import 'walkthrough/ph_lab_walkthrough.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _showWalkthrough = false;
+
+  final GlobalKey _explorerKey = GlobalKey();
+  final GlobalKey _titrationKey = GlobalKey();
+  final GlobalKey _quizKey = GlobalKey();
+  final GlobalKey _proKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkWalkthrough();
+  }
+
+  Future<void> _checkWalkthrough() async {
+    final shown = await WalkthroughService.isLabOnboardingShown(
+      WalkthroughService.keyPhLab,
+    );
+    if (mounted && !shown) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) setState(() => _showWalkthrough = true);
+      });
+    }
+  }
+
+  void _completeWalkthrough() {
+    setState(() => _showWalkthrough = false);
+  }
 
   @override
   Widget build(BuildContext context) {
     final sub = context.watch<SubscriptionService>();
 
-    return Scaffold(
+    Widget content = Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.md),
@@ -45,6 +80,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.xl),
               _LabCard(
+                walkthroughKey: _explorerKey,
                 icon: '🧪',
                 title: 'pH Explorer',
                 subtitle: 'Explore the full pH scale interactively',
@@ -53,6 +89,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.md),
               _LabCard(
+                walkthroughKey: _titrationKey,
                 icon: '💧',
                 title: 'Titration Lab',
                 subtitle: 'Mix acids and bases — watch neutralization',
@@ -62,6 +99,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.md),
               _LabCard(
+                walkthroughKey: _quizKey,
                 icon: '📝',
                 title: 'Quiz Mode',
                 subtitle: 'Test your knowledge of pH',
@@ -76,6 +114,19 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+
+    if (_showWalkthrough) {
+      return PhLabWalkthrough(
+        onComplete: _completeWalkthrough,
+        explorerKey: _explorerKey,
+        titrationKey: _titrationKey,
+        quizKey: _quizKey,
+        proKey: _proKey,
+        child: content,
+      );
+    }
+
+    return content;
   }
 }
 
@@ -86,6 +137,7 @@ class _LabCard extends StatelessWidget {
   final Color color;
   final VoidCallback? onTap;
   final bool isLocked;
+  final GlobalKey? walkthroughKey;
 
   const _LabCard({
     required this.icon,
@@ -94,11 +146,13 @@ class _LabCard extends StatelessWidget {
     required this.color,
     this.onTap,
     this.isLocked = false,
+    this.walkthroughKey,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      key: walkthroughKey,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () {
