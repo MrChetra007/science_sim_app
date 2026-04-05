@@ -29,6 +29,39 @@ import 'chemistry/atomic_molecular/features/home/home_screen.dart'
 import 'chemistry/electrochemistry/features/home/home_screen.dart'
     as electro_home;
 
+class _WalkthroughOption extends StatelessWidget {
+  final String label;
+  final VoidCallback onTap;
+
+  const _WalkthroughOption({
+    required this.label,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            const Icon(Icons.play_circle_outline, color: Colors.cyan, size: 20),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                label,
+                style: const TextStyle(color: Colors.white70, fontSize: 14),
+              ),
+            ),
+            const Icon(Icons.chevron_right, color: Colors.white24, size: 20),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -109,6 +142,11 @@ class MainDashboard extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
+          IconButton(
+            onPressed: () => _showWalkthroughHelpDialog(context),
+            icon: const Icon(Icons.help_outline, color: Colors.white54),
+            tooltip: 'Help & Tutorials',
+          ),
           TextButton.icon(
             onPressed: () => showGlobalPlanDialog(context),
             icon: Icon(
@@ -258,6 +296,143 @@ class MainDashboard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void _showWalkthroughHelpDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: const Color(0xFF1E2D3D),
+        title: const Row(
+          children: [
+            Icon(Icons.help_outline, color: Colors.cyan),
+            SizedBox(width: 12),
+            Text('Help & Tutorials', style: TextStyle(color: Colors.white)),
+          ],
+        ),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Replay walkthrough tutorials for any lab:',
+                style: TextStyle(color: Colors.white70),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'PHYSICS LABS',
+                style: TextStyle(
+                  color: Colors.cyan,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  letterSpacing: 1,
+                ),
+              ),
+              const SizedBox(height: 8),
+              _WalkthroughOption(
+                label: 'NewtonLab - Laws of Motion',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyNewtonLab);
+                  if (ctx.mounted) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const NewtonsLabApp()));
+                  }
+                },
+              ),
+              _WalkthroughOption(
+                label: 'OhmLab - Circuit Simulation',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyOhmLab);
+                  if (ctx.mounted) {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => Theme(data: ohm_theme.AppTheme.darkTheme, child: const ohm_home.HomeScreen())));
+                  }
+                },
+              ),
+              _WalkthroughOption(
+                label: 'Projectile Motion',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyProjectileMotion);
+                  if (ctx.mounted) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const projectile_app.App()));
+                  }
+                },
+              ),
+              _WalkthroughOption(
+                label: 'AC Lab - Electricity',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyAcLab);
+                  if (ctx.mounted) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ac_main.ACElectricityApp()));
+                  }
+                },
+              ),
+              _WalkthroughOption(
+                label: 'Wave Lab',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyWaveLab);
+                  if (ctx.mounted) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const wave_main.HomeScreen()));
+                  }
+                },
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'CHEMISTRY LABS',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  letterSpacing: 1,
+                ),
+              ),
+              const SizedBox(height: 8),
+              _WalkthroughOption(
+                label: 'pH Lab',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyPhLab);
+                  if (ctx.mounted) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ph_main.PhSimApp()));
+                  }
+                },
+              ),
+              _WalkthroughOption(
+                label: 'Atomic & Molecular',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyAtomicMolecular);
+                  if (ctx.mounted) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => _AtomicLabWrapper()));
+                  }
+                },
+              ),
+              _WalkthroughOption(
+                label: 'Electrochemistry',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyElectrochemistry);
+                  if (ctx.mounted) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => _ElectrochemWrapper()));
+                  }
+                },
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancel', style: TextStyle(color: Colors.white54)),
+          ),
+        ],
       ),
     );
   }

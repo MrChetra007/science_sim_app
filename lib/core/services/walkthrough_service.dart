@@ -31,6 +31,11 @@ class WalkthroughService {
     await prefs.setBool(labKey, true);
   }
 
+  static Future<void> resetLabWalkthrough(String labKey) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(labKey);
+  }
+
   static Future<void> resetAllWalkthroughs() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_keyGlobalOnboarding);
