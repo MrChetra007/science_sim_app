@@ -1,21 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' as p;
 import '../../../core/services/subscription_service.dart';
+import '../../../core/services/walkthrough_service.dart';
 import '../../../core/widgets/ad_widgets.dart';
 import '../../../core/widgets/plan_picker.dart';
 import '../core/constants.dart';
+import '../walkthrough/newton_lab_walkthrough.dart';
 import 'widgets/scene_card.dart';
 import '../scenes/law1/law1_screen.dart';
 import '../scenes/law2/law2_screen.dart';
 import '../scenes/law3/law3_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _showWalkthrough = false;
+  final GlobalKey _law1Key = GlobalKey();
+  final GlobalKey _law2Key = GlobalKey();
+  final GlobalKey _law3Key = GlobalKey();
+  final GlobalKey _proKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkWalkthrough();
+  }
+
+  Future<void> _checkWalkthrough() async {
+    final shown = await WalkthroughService.isLabOnboardingShown(
+      WalkthroughService.keyNewtonLab,
+    );
+    if (mounted && !shown) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) setState(() => _showWalkthrough = true);
+      });
+    }
+  }
+
+  void _completeWalkthrough() {
+    setState(() => _showWalkthrough = false);
+  }
 
   @override
   Widget build(BuildContext context) {
     final sub = p.Provider.of<SubscriptionService>(context);
-    return Scaffold(
+
+    Widget content = Scaffold(
       body: Stack(
         children: [
           // Background
@@ -61,6 +96,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
                     SceneCard(
+                      walkthroughKey: _law1Key,
                       title: "Law 1: Inertia",
                       tagline: "Explore Friction and Motion",
                       onTap: () {
@@ -73,6 +109,7 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                     SceneCard(
+                      walkthroughKey: _law2Key,
                       title: "Law 2: F = ma",
                       tagline: "Force, Mass, and Acceleration",
                       onTap: () {
@@ -85,6 +122,7 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                     SceneCard(
+                      walkthroughKey: _law3Key,
                       title: "Law 3: Action & Reaction",
                       tagline: "Collisions and Rocket Propulsion",
                       onTap: () {
@@ -106,6 +144,19 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+
+    if (_showWalkthrough) {
+      return NewtonLabWalkthrough(
+        onComplete: _completeWalkthrough,
+        law1Key: _law1Key,
+        law2Key: _law2Key,
+        law3Key: _law3Key,
+        proKey: _proKey,
+        child: content,
+      );
+    }
+
+    return content;
   }
 }
 

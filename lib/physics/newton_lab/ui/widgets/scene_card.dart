@@ -5,17 +5,20 @@ class SceneCard extends StatelessWidget {
   final String title;
   final String tagline;
   final VoidCallback onTap;
+  final GlobalKey? walkthroughKey;
 
   const SceneCard({
     super.key,
     required this.title,
     required this.tagline,
     required this.onTap,
+    this.walkthroughKey,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      key: walkthroughKey,
       margin: const EdgeInsets.symmetric(vertical: 8),
       elevation: 4,
       shape: RoundedRectangleBorder(

@@ -8,8 +8,10 @@ import 'package:flutter_soloud/flutter_soloud.dart';
 import 'core/services/subscription_service.dart';
 import 'core/services/ad_service.dart';
 import 'core/services/iap_service.dart';
+import 'core/services/walkthrough_service.dart';
 import 'core/widgets/plan_picker.dart';
 import 'core/widgets/ad_widgets.dart';
+import 'core/screens/global_onboarding_screen.dart';
 
 // Import Physics Labs
 import 'physics/newton_lab/app.dart';
@@ -59,8 +61,32 @@ void main() async {
   );
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  bool _showOnboarding = true;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkOnboarding();
+  }
+
+  Future<void> _checkOnboarding() async {
+    final shown = await WalkthroughService.isGlobalOnboardingShown();
+    if (mounted) {
+      setState(() {
+        _showOnboarding = !shown;
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +98,17 @@ class MainApp extends StatelessWidget {
         brightness: Brightness.dark,
         textTheme: GoogleFonts.orbitronTextTheme(ThemeData.dark().textTheme),
       ),
-      home: const MainDashboard(),
+      home: _isLoading
+          ? const Scaffold(
+              body: Center(child: CircularProgressIndicator()),
+            )
+          : _showOnboarding
+              ? GlobalOnboardingScreen(
+                  onComplete: () {
+                    setState(() => _showOnboarding = false);
+                  },
+                )
+              : const MainDashboard(),
     );
   }
 }
