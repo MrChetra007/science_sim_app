@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart' as rp;
 import 'package:provider/provider.dart' as p;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_soloud/flutter_soloud.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // Import Global Services
 import 'core/services/subscription_service.dart';
@@ -148,6 +149,16 @@ class MainDashboard extends StatelessWidget {
             onPressed: () => _showWalkthroughHelpDialog(context),
             icon: const Icon(Icons.help_outline, color: Colors.white54),
             tooltip: 'Help & Tutorials',
+          ),
+          IconButton(
+            onPressed: () async {
+              final url = Uri.parse('https://mrchetra007.github.io/privacy_policy/wave_lab');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url, mode: LaunchMode.externalApplication);
+              }
+            },
+            icon: const Icon(Icons.privacy_tip_outlined, color: Colors.white54),
+            tooltip: 'Privacy Policy',
           ),
           TextButton.icon(
             onPressed: () => showGlobalPlanDialog(context),
