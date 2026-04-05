@@ -11,6 +11,7 @@ import 'core/services/iap_service.dart';
 import 'core/services/walkthrough_service.dart';
 import 'core/widgets/plan_picker.dart';
 import 'core/widgets/ad_widgets.dart';
+import 'core/widgets/feedback_dialog.dart';
 
 // Import Physics Labs
 import 'physics/newton_lab/app.dart';
@@ -424,13 +425,38 @@ class MainDashboard extends StatelessWidget {
                   }
                 },
               ),
+              const SizedBox(height: 16),
+              const Divider(color: Colors.white12),
+              const SizedBox(height: 8),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(ctx);
+                  FeedbackDialog.show(context);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8),
+                  child: Row(
+                    children: [
+                      Icon(Icons.feedback, color: Colors.orange, size: 20),
+                      SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'Send Feedback',
+                          style: TextStyle(color: Colors.orange, fontSize: 14),
+                        ),
+                      ),
+                      Icon(Icons.chevron_right, color: Colors.white24, size: 20),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel', style: TextStyle(color: Colors.white54)),
+            child: const Text('Close', style: TextStyle(color: Colors.white54)),
           ),
         ],
       ),
