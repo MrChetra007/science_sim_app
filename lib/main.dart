@@ -37,6 +37,8 @@ void main() async {
   await subscriptionService.init();
   await globalAdService.init();
   await IAPService().init();
+  
+  await IAPService().verifySubscriptionStatus();
 
   final acProvider = ACProvider();
   await acProvider.loadPrefs();

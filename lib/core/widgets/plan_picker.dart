@@ -25,6 +25,92 @@ class _PlanPickerView extends StatefulWidget {
 }
 
 class _PlanPickerViewState extends State<_PlanPickerView> {
+  final IAPService _iapService = IAPService();
+
+  @override
+  void initState() {
+    super.initState();
+    _iapService.onPurchaseSuccess = _showSuccessDialog;
+  }
+
+  @override
+  void dispose() {
+    _iapService.onPurchaseSuccess = null;
+    super.dispose();
+  }
+
+  void _showSuccessDialog() {
+    if (!mounted) return;
+    final plan = _iapService.lastPurchasedPlan;
+    final isLifetime = plan == SubscriptionPlan.lifetime;
+    
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (dialogContext) => AlertDialog(
+        backgroundColor: const Color(0xFF1E2D3D),
+        title: Row(
+          children: [
+            Icon(
+              isLifetime ? Icons.emoji_events : Icons.check_circle,
+              color: Colors.amber,
+              size: 28,
+            ),
+            const SizedBox(width: 12),
+            const Expanded(
+              child: Text(
+                'Welcome to Premium!',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              isLifetime
+                  ? 'You now have lifetime access to all labs!'
+                  : 'Your monthly subscription is now active!',
+              style: const TextStyle(color: Colors.white70, fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              '✅ All labs unlocked',
+              style: TextStyle(color: Colors.greenAccent),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              isLifetime
+                  ? '✅ Zero ads forever'
+                  : '✅ No ads while subscribed',
+              style: const TextStyle(color: Colors.greenAccent),
+            ),
+            const SizedBox(height: 4),
+            const Text(
+              '✅ Future labs included free',
+              style: TextStyle(color: Colors.greenAccent),
+            ),
+          ],
+        ),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(dialogContext);
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.amber,
+              foregroundColor: Colors.black,
+            ),
+            child: const Text('START EXPLORING'),
+          ),
+        ],
+      ),
+    );
+  }
+
   void _showCancelDialog(BuildContext ctx) {
     showDialog(
       context: ctx,

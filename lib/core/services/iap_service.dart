@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import '../services/subscription_service.dart';
 
@@ -17,6 +18,11 @@ class IAPService {
   static const String lifetimeId = 'sozin.wave';
 
   final Set<String> _productIds = {monthlyId, lifetimeId};
+
+  // Callback when purchase succeeds
+  VoidCallback? onPurchaseSuccess;
+  SubscriptionPlan? _lastPurchasedPlan;
+  SubscriptionPlan? get lastPurchasedPlan => _lastPurchasedPlan;
 
   bool get isPro => _subscriptionService.isPro;
   bool get isAdsRemoved => _subscriptionService.isAdsRemoved;
@@ -39,7 +45,6 @@ class IAPService {
       final bool available = await _iap.isAvailable();
       if (!available) return;
 
-      // Query previous purchases
       await _iap.queryProductDetails(_productIds);
       await _iap.restorePurchases();
     } catch (e) {
@@ -69,10 +74,20 @@ class IAPService {
   }
 
   void _handleSuccessfulPurchase(String productId) {
+    SubscriptionPlan? plan;
     if (productId == lifetimeId) {
+      plan = SubscriptionPlan.lifetime;
       _subscriptionService.setPlan(SubscriptionPlan.lifetime);
     } else if (productId == monthlyId) {
+      plan = SubscriptionPlan.monthly;
       _subscriptionService.setPlan(SubscriptionPlan.monthly);
+    }
+    
+    if (plan != null) {
+      _lastPurchasedPlan = plan;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        onPurchaseSuccess?.call();
+      });
     }
   }
 
@@ -117,10 +132,25 @@ class IAPService {
 
   Future<void> restorePurchases() async {
     try {
-      await _iap.restorePurchases();
+      await _checkExistingPurchases();
       debugPrint('Restore purchases completed');
     } catch (e) {
       debugPrint('Restore purchases error: $e');
+    }
+  }
+
+  Future<bool> verifySubscriptionStatus() async {
+    try {
+      final bool available = await _iap.isAvailable();
+      if (!available) return _subscriptionService.isPro;
+
+      await _iap.queryProductDetails(_productIds);
+      await _iap.restorePurchases();
+      
+      return _subscriptionService.isPro;
+    } catch (e) {
+      debugPrint('Verify subscription error: $e');
+      return _subscriptionService.isPro;
     }
   }
 
