@@ -9,10 +9,12 @@ import '../widgets/readout_panel.dart';
 import '../widgets/power_bar.dart';
 import '../widgets/warning_banner.dart';
 import '../core/theme.dart';
+import '../walkthrough/ohm_lab_walkthrough.dart';
 import 'learn_screen.dart';
 import '../../../core/widgets/ad_widgets.dart';
 import '../../../core/widgets/plan_picker.dart';
 import '../../../core/services/subscription_service.dart';
+import '../../../core/services/walkthrough_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,11 +26,34 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late CircuitGame _circuitGame;
   int _selectedIndex = 0;
+  bool _showWalkthrough = false;
+
+  final GlobalKey _simulatorKey = GlobalKey();
+  final GlobalKey _voltageSliderKey = GlobalKey();
+  final GlobalKey _resistanceSliderKey = GlobalKey();
+  final GlobalKey _learnTabKey = GlobalKey();
+  final GlobalKey _proKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
     _circuitGame = CircuitGame();
+    _checkWalkthrough();
+  }
+
+  Future<void> _checkWalkthrough() async {
+    final shown = await WalkthroughService.isLabOnboardingShown(
+      WalkthroughService.keyOhmLab,
+    );
+    if (mounted && !shown) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) setState(() => _showWalkthrough = true);
+      });
+    }
+  }
+
+  void _completeWalkthrough() {
+    setState(() => _showWalkthrough = false);
   }
 
   @override
@@ -36,8 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildContent(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
@@ -52,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       bottomNavigationBar: Container(
+        key: _learnTabKey,
         decoration: const BoxDecoration(
           border: Border(top: BorderSide(color: Colors.white10)),
         ),
@@ -131,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildHeader(BuildContext context) {
     final sub = Provider.of<SubscriptionService>(context);
     return Container(
+      key: _proKey,
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,6 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildGameContainer() {
     return Container(
+      key: _simulatorKey,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white10),
@@ -199,6 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 24),
           SliderControl(
+            walkthroughKey: _voltageSliderKey,
             label: "VOLTAGE",
             unit: "V",
             min: 1.0,
@@ -209,6 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 16),
           SliderControl(
+            walkthroughKey: _resistanceSliderKey,
             label: "RESISTANCE",
             unit: "Ω",
             min: 1.0,
@@ -223,5 +252,24 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget content = _buildContent(context);
+
+    if (_showWalkthrough) {
+      return OhmLabWalkthrough(
+        onComplete: _completeWalkthrough,
+        simulatorKey: _simulatorKey,
+        voltageSliderKey: _voltageSliderKey,
+        resistanceSliderKey: _resistanceSliderKey,
+        learnTabKey: _learnTabKey,
+        proKey: _proKey,
+        child: content,
+      );
+    }
+
+    return content;
   }
 }

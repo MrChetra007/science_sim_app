@@ -8,6 +8,7 @@ class SliderControl extends StatelessWidget {
   final Color color;
   final double value;
   final ValueChanged<double> onChanged;
+  final GlobalKey? walkthroughKey;
 
   const SliderControl({
     super.key,
@@ -18,11 +19,13 @@ class SliderControl extends StatelessWidget {
     required this.color,
     required this.value,
     required this.onChanged,
+    this.walkthroughKey,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: walkthroughKey,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
