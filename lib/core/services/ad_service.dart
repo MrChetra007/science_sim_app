@@ -59,8 +59,11 @@ class GlobalAdService {
     }
   }
 
+  bool _rewardedAdFailedToLoad = false;
+  DateTime? _lastRewardedAdFailure;
+
   void loadRewardedAd() {
-    if (_subscription.isPro) return; // Don't explicitly need to cache if they are pro, but useful if they are trying to extend. Let's optimize.
+    if (_subscription.isPro) return;
 
     RewardedAd.load(
       adUnitId: rewardedAdUnitId,
@@ -68,12 +71,28 @@ class GlobalAdService {
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (ad) {
           _rewardedAd = ad;
+          _rewardedAdFailedToLoad = false;
         },
         onAdFailedToLoad: (error) {
           _rewardedAd = null;
+          _rewardedAdFailedToLoad = true;
+          _lastRewardedAdFailure = DateTime.now();
         },
       ),
     );
+  }
+
+  bool get canGrantFallbackReward {
+    if (!_rewardedAdFailedToLoad) return false;
+    if (_lastRewardedAdFailure == null) return false;
+    final now = DateTime.now();
+    if (now.difference(_lastRewardedAdFailure!).inMinutes < 30) return false;
+    return true;
+  }
+
+  void grantFallbackReward() {
+    _rewardedAdFailedToLoad = false;
+    _lastRewardedAdFailure = null;
   }
 
   void showRewardedAd({required Function onEarnedReward, required Function onClosed}) {
@@ -98,8 +117,11 @@ class GlobalAdService {
           onEarnedReward();
         },
       );
+    } else if (canGrantFallbackReward) {
+      grantFallbackReward();
+      onEarnedReward();
+      onClosed();
     } else {
-      // Ad not ready, try loading again
       loadRewardedAd();
       onClosed();
     }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../services/subscription_service.dart';
 import '../services/ad_service.dart';
 import '../services/iap_service.dart';
@@ -111,7 +112,10 @@ class _PlanPickerViewState extends State<_PlanPickerView> {
     );
   }
 
-  void _showCancelDialog(BuildContext ctx) {
+  static const String _cancelSubscriptionUrl = 
+      'https://play.google.com/store/account/subscriptions?package=com.sozin.wave';
+
+  void _showCancelDialog(BuildContext ctx) async {
     showDialog(
       context: ctx,
       builder: (dialogContext) => AlertDialog(
@@ -120,14 +124,35 @@ class _PlanPickerViewState extends State<_PlanPickerView> {
           'Cancel Subscription?',
           style: TextStyle(color: Colors.white),
         ),
-        content: const Text(
-          'To cancel your subscription, please go to the Google Play Store app > Subscriptions and tap Cancel there.\n\nYour subscription will remain active until the end of the current billing period.',
-          style: TextStyle(color: Colors.white70),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Your subscription will remain active until the end of the current billing period.',
+              style: TextStyle(color: Colors.white70),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton.icon(
+              onPressed: () async {
+                final uri = Uri.parse(_cancelSubscriptionUrl);
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri, mode: LaunchMode.externalApplication);
+                }
+              },
+              icon: const Icon(Icons.open_in_new, size: 18),
+              label: const Text('Manage Subscription'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.orange,
+                foregroundColor: Colors.white,
+              ),
+            ),
+          ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('OK'),
+            child: const Text('Close'),
           ),
         ],
       ),
