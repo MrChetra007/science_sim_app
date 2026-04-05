@@ -4,6 +4,8 @@ import 'package:provider/provider.dart' as p;
 import '../../core/widgets/ad_widgets.dart';
 import '../../core/widgets/plan_picker.dart';
 import '../../core/services/subscription_service.dart';
+import '../../core/services/walkthrough_service.dart';
+import 'walkthrough/wave_lab_walkthrough.dart';
 
 import 'screens/simulation_screen.dart';
 import 'screens/formula_reference_screen.dart';
@@ -11,7 +13,6 @@ import 'screens/challenge_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Services are initialized in global main.dart
   runApp(
     p.MultiProvider(
       providers: [],
@@ -30,6 +31,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  bool _showWalkthrough = false;
+
+  final GlobalKey _enterLabKey = GlobalKey();
+  final GlobalKey _formulaKey = GlobalKey();
+  final GlobalKey _challengeKey = GlobalKey();
+  final GlobalKey _proKey = GlobalKey();
 
   @override
   void initState() {
@@ -38,6 +45,22 @@ class _HomeScreenState extends State<HomeScreen>
       vsync: this,
       duration: const Duration(seconds: 10),
     )..repeat();
+    _checkWalkthrough();
+  }
+
+  Future<void> _checkWalkthrough() async {
+    final shown = await WalkthroughService.isLabOnboardingShown(
+      WalkthroughService.keyWaveLab,
+    );
+    if (mounted && !shown) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) setState(() => _showWalkthrough = true);
+      });
+    }
+  }
+
+  void _completeWalkthrough() {
+    setState(() => _showWalkthrough = false);
   }
 
   @override
@@ -48,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    Widget content = Scaffold(
       backgroundColor: const Color(0xFF040D17),
       body: Stack(
         children: [
@@ -102,6 +125,7 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       const SizedBox(height: 60),
                       _mainButton(
+                        key: _enterLabKey,
                         onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -113,6 +137,7 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       const SizedBox(height: 16),
                       _mainButton(
+                        key: _formulaKey,
                         onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -126,6 +151,7 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       const SizedBox(height: 16),
                       _mainButton(
+                        key: _challengeKey,
                         onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -153,6 +179,7 @@ class _HomeScreenState extends State<HomeScreen>
             child: Center(
               child: p.Consumer<SubscriptionService>(
                 builder: (context, sub, child) => GestureDetector(
+                  key: _proKey,
                   onTap: () => showGlobalPlanDialog(context),
                   child: Text(
                     'v1.0.1 ${sub.isPro ? 'SCIENTIFIC PRO' : 'STARTER LAB'}',
@@ -169,9 +196,23 @@ class _HomeScreenState extends State<HomeScreen>
         ],
       ),
     );
+
+    if (_showWalkthrough) {
+      return WaveLabWalkthrough(
+        onComplete: _completeWalkthrough,
+        enterLabKey: _enterLabKey,
+        formulaKey: _formulaKey,
+        challengeKey: _challengeKey,
+        proKey: _proKey,
+        child: content,
+      );
+    }
+
+    return content;
   }
 
   Widget _mainButton({
+    Key? key,
     required VoidCallback onPressed,
     required String label,
     required IconData icon,
@@ -179,6 +220,7 @@ class _HomeScreenState extends State<HomeScreen>
   }) {
     final color = isSecondary ? Colors.white70 : const Color(0xFF00E5FF);
     return SizedBox(
+      key: key,
       width: 260,
       height: 54,
       child: OutlinedButton.icon(

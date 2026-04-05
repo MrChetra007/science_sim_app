@@ -3,8 +3,10 @@ import 'dart:math' as math;
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart' as p;
 import '../../../core/services/subscription_service.dart';
+import '../../../core/services/walkthrough_service.dart';
 import '../../../core/widgets/plan_picker.dart';
 import '../../../core/widgets/ad_widgets.dart';
+import '../walkthrough/projectile_motion_walkthrough.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +23,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late final Animation<double> _arcAnimation;
   late final Animation<double> _pulseAnimation;
   final List<_Particle> _particles = [];
+  bool _showWalkthrough = false;
+
+  final GlobalKey _launchButtonKey = GlobalKey();
+  final GlobalKey _proKey = GlobalKey();
 
   @override
   void initState() {
@@ -53,6 +59,22 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         phase: rng.nextDouble(),
       ));
     }
+    _checkWalkthrough();
+  }
+
+  Future<void> _checkWalkthrough() async {
+    final shown = await WalkthroughService.isLabOnboardingShown(
+      WalkthroughService.keyProjectileMotion,
+    );
+    if (mounted && !shown) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) setState(() => _showWalkthrough = true);
+      });
+    }
+  }
+
+  void _completeWalkthrough() {
+    setState(() => _showWalkthrough = false);
   }
 
   @override
@@ -67,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
+    Widget content = Scaffold(
       backgroundColor: const Color(0xFF040D17),
       body: Stack(
         children: [
@@ -128,6 +150,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       const Spacer(),
                       p.Consumer<SubscriptionService>(
                         builder: (context, sub, _) => IconButton(
+                          key: _proKey,
                           icon: Icon(Icons.stars, color: sub.isPro ? Colors.amber : Colors.white24),
                           onPressed: () => showGlobalPlanDialog(context),
                         ),
@@ -248,6 +271,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     builder: (_, __) {
                       final glow = 0.25 + _pulseAnimation.value * 0.35;
                       return GestureDetector(
+                        key: _launchButtonKey,
                         onTap: () => context.go('/simulation'),
                         child: Stack(
                           alignment: Alignment.center,
@@ -331,6 +355,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ],
       ),
     );
+
+    if (_showWalkthrough) {
+      return ProjectileMotionWalkthrough(
+        onComplete: _completeWalkthrough,
+        launchButtonKey: _launchButtonKey,
+        proKey: _proKey,
+        child: content,
+      );
+    }
+
+    return content;
   }
 }
 

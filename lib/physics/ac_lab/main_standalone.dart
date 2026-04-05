@@ -14,6 +14,8 @@ import '../../../core/widgets/plan_picker.dart';
 import 'widgets/rewarded_timer_chip.dart';
 import '../../../core/widgets/ad_widgets.dart';
 import '../../../core/services/subscription_service.dart';
+import '../../../core/services/walkthrough_service.dart';
+import 'walkthrough/ac_lab_walkthrough.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,16 +61,40 @@ class ACLabScreen extends StatefulWidget {
 
 class _ACLabScreenState extends State<ACLabScreen> {
   late ACGame _acGame;
+  bool _showWalkthrough = false;
+
+  final GlobalKey _oscilloscopeKey = GlobalKey();
+  final GlobalKey _transformerKey = GlobalKey();
+  final GlobalKey _rlcKey = GlobalKey();
+  final GlobalKey _controlPanelKey = GlobalKey();
+  final GlobalKey _gameViewKey = GlobalKey();
+  final GlobalKey _proKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
     _acGame = ACGame(provider: context.read<ACProvider>());
+    _checkWalkthrough();
+  }
+
+  Future<void> _checkWalkthrough() async {
+    final shown = await WalkthroughService.isLabOnboardingShown(
+      WalkthroughService.keyAcLab,
+    );
+    if (mounted && !shown) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) setState(() => _showWalkthrough = true);
+      });
+    }
+  }
+
+  void _completeWalkthrough() {
+    setState(() => _showWalkthrough = false);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    Widget content = Scaffold(
       appBar: AppBar(
         title: const Text('AC ELECTRICITY LAB', 
           style: TextStyle(letterSpacing: 2, fontWeight: FontWeight.bold, fontSize: 16)),
@@ -77,6 +103,7 @@ class _ACLabScreenState extends State<ACLabScreen> {
         centerTitle: true,
         actions: [
           IconButton(
+            key: _oscilloscopeKey,
             icon: const Icon(Icons.show_chart),
             tooltip: 'Oscilloscope Mode',
             onPressed: () {
@@ -87,6 +114,7 @@ class _ACLabScreenState extends State<ACLabScreen> {
             },
           ),
           IconButton(
+            key: _transformerKey,
             icon: const Icon(Icons.sync_alt),
             tooltip: 'Transformer Lab',
             onPressed: () {
@@ -97,6 +125,7 @@ class _ACLabScreenState extends State<ACLabScreen> {
             },
           ),
           IconButton(
+            key: _rlcKey,
             icon: const Icon(Icons.bolt),
             tooltip: 'RLC Reactive Lab',
             onPressed: () {
@@ -115,6 +144,7 @@ class _ACLabScreenState extends State<ACLabScreen> {
             ),
           ),
           IconButton(
+            key: _proKey,
             icon: Icon(Icons.workspace_premium, color: p.Provider.of<SubscriptionService>(context).isPro ? Colors.amber : Colors.white24),
             tooltip: 'Upgrade Lab',
             onPressed: () => showGlobalPlanDialog(context),
@@ -126,15 +156,16 @@ class _ACLabScreenState extends State<ACLabScreen> {
           children: [
             Expanded(
               flex: 5,
-              child: GameWidget(game: _acGame)
+              child: GameWidget(key: _gameViewKey, game: _acGame)
                   .animate()
                   .fadeIn(delay: 200.ms)
                   .slideY(begin: 0.1, end: 0),
             ),
             const InfoChipRow().animate().fadeIn(delay: 400.ms),
             Expanded(
-              flex: 4, // Adjusted to make room for banner
+              flex: 4,
               child: SingleChildScrollView(
+                key: _controlPanelKey,
                 padding: const EdgeInsets.all(12.0),
                 child: Column(
                   children: [
@@ -150,6 +181,21 @@ class _ACLabScreenState extends State<ACLabScreen> {
         ),
       ),
     );
+
+    if (_showWalkthrough) {
+      return ACLabWalkthrough(
+        onComplete: _completeWalkthrough,
+        oscilloscopeKey: _oscilloscopeKey,
+        transformerKey: _transformerKey,
+        rlcKey: _rlcKey,
+        controlPanelKey: _controlPanelKey,
+        gameViewKey: _gameViewKey,
+        proKey: _proKey,
+        child: content,
+      );
+    }
+
+    return content;
   }
 }
 
