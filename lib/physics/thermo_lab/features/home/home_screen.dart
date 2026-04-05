@@ -4,108 +4,167 @@ import 'package:provider/provider.dart' as p;
 import '../../../../core/services/subscription_service.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../core/services/walkthrough_service.dart';
+import '../../walkthrough/thermo_lab_walkthrough.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _showWalkthrough = false;
+  
+  final GlobalKey _heatTransferKey = GlobalKey();
+  final GlobalKey _gasLawsKey = GlobalKey();
+  final GlobalKey _carnotKey = GlobalKey();
+  final GlobalKey _phaseChangeKey = GlobalKey();
+  final GlobalKey _entropyKey = GlobalKey();
+  final GlobalKey _lawsKey = GlobalKey();
+  final GlobalKey _proKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkWalkthrough();
+  }
+
+  Future<void> _checkWalkthrough() async {
+    final shown = await WalkthroughService.isLabOnboardingShown(
+      WalkthroughService.keyThermoLab,
+    );
+    if (mounted && !shown) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) setState(() => _showWalkthrough = true);
+      });
+    }
+  }
+
+  void _completeWalkthrough() async {
+    await WalkthroughService.markLabOnboardingShown(
+      WalkthroughService.keyThermoLab,
+    );
+    setState(() => _showWalkthrough = false);
+  }
 
   @override
   Widget build(BuildContext context) {
     final sub = p.Provider.of<SubscriptionService>(context);
     final isPro = sub.isPro;
 
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.md),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: AppSpacing.xl),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('🔥 Thermo Lab', style: Theme.of(context).textTheme.displayLarge),
-                        if (!isPro)
-                          IconButton(
-                            icon: const Icon(Icons.star, color: Colors.amber),
-                            onPressed: () => showGlobalPlanDialog(context),
-                            tooltip: 'Upgrade to Pro',
-                          ),
-                      ],
-                    ),
-                    const SizedBox(height: AppSpacing.xs),
-                    Text(
-                      'Thermodynamics Simulation',
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppColors.textSecondary,
-                          ),
-                    ),
-                    const SizedBox(height: AppSpacing.xl),
+    return ThermoLabWalkthrough(
+      showWalkthrough: _showWalkthrough,
+      heatTransferKey: _heatTransferKey,
+      gasLawsKey: _gasLawsKey,
+      carnotKey: _carnotKey,
+      phaseChangeKey: _phaseChangeKey,
+      entropyKey: _entropyKey,
+      lawsKey: _lawsKey,
+      proKey: _proKey,
+      onComplete: _completeWalkthrough,
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
               Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: AppSpacing.md,
-                mainAxisSpacing: AppSpacing.md,
-                childAspectRatio: 0.95,
-                children: [
-                  _ModuleCard(
-                    icon: '🌡️',
-                    title: 'Heat Transfer',
-                    subtitle: 'Conduction, Convection, Radiation',
-                    color: AppColors.accentHeat,
-                    route: '/heat',
-                    isLocked: !isPro,
-                  ),
-                  _ModuleCard(
-                    icon: '💨',
-                    title: 'Gas Laws',
-                    subtitle: "Boyle's, Charles's, Gay-Lussac's",
-                    color: AppColors.accentGas,
-                    route: '/gas',
-                    isLocked: !isPro,
-                  ),
-                          _ModuleCard(
-                            icon: '⚙️',
-                            title: 'Carnot Engine',
-                            subtitle: 'Efficiency & Heat engines',
-                            color: AppColors.accentCarnot,
-                            route: '/carnot',
-                          ),
-                          _ModuleCard(
-                            icon: '🧊',
-                            title: 'Phase Change',
-                            subtitle: 'Heating curve & States of matter',
-                            color: AppColors.accentPhase,
-                            route: '/phase',
-                          ),
-                          _ModuleCard(
-                            icon: '🌀',
-                            title: 'Entropy',
-                            subtitle: 'Disorder & 2nd Law',
-                            color: AppColors.accentEntropy,
-                            route: '/entropy',
-                          ),
-                          _ModuleCard(
-                            icon: '📖',
-                            title: 'Laws of Thermo',
-                            subtitle: '0th, 1st, 2nd, 3rd Laws',
-                            color: AppColors.accentLaws,
-                            route: '/laws',
-                          ),
+                child: Padding(
+                  padding: const EdgeInsets.all(AppSpacing.md),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: AppSpacing.xl),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('🔥 Thermo Lab', style: Theme.of(context).textTheme.displayLarge),
+                          if (!isPro)
+                            IconButton(
+                              key: _proKey,
+                              icon: const Icon(Icons.star, color: Colors.amber),
+                              onPressed: () => showGlobalPlanDialog(context),
+                              tooltip: 'Upgrade to Pro',
+                            ),
                         ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: AppSpacing.xs),
+                      Text(
+                        'Thermodynamics Simulation',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: AppColors.textSecondary,
+                            ),
+                      ),
+                      const SizedBox(height: AppSpacing.xl),
+                      Expanded(
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: AppSpacing.md,
+                          mainAxisSpacing: AppSpacing.md,
+                          childAspectRatio: 0.95,
+                          children: [
+                            _ModuleCard(
+                              key: _heatTransferKey,
+                              icon: '🌡️',
+                              title: 'Heat Transfer',
+                              subtitle: 'Conduction, Convection, Radiation',
+                              color: AppColors.accentHeat,
+                              route: '/heat',
+                              isLocked: !isPro,
+                            ),
+                            _ModuleCard(
+                              key: _gasLawsKey,
+                              icon: '💨',
+                              title: 'Gas Laws',
+                              subtitle: "Boyle's, Charles's, Gay-Lussac's",
+                              color: AppColors.accentGas,
+                              route: '/gas',
+                              isLocked: !isPro,
+                            ),
+                            _ModuleCard(
+                              key: _carnotKey,
+                              icon: '⚙️',
+                              title: 'Carnot Engine',
+                              subtitle: 'Efficiency & Heat engines',
+                              color: AppColors.accentCarnot,
+                              route: '/carnot',
+                            ),
+                            _ModuleCard(
+                              key: _phaseChangeKey,
+                              icon: '🧊',
+                              title: 'Phase Change',
+                              subtitle: 'Heating curve & States of matter',
+                              color: AppColors.accentPhase,
+                              route: '/phase',
+                            ),
+                            _ModuleCard(
+                              key: _entropyKey,
+                              icon: '🌀',
+                              title: 'Entropy',
+                              subtitle: 'Disorder & 2nd Law',
+                              color: AppColors.accentEntropy,
+                              route: '/entropy',
+                            ),
+                            _ModuleCard(
+                              key: _lawsKey,
+                              icon: '📖',
+                              title: 'Laws of Thermo',
+                              subtitle: '0th, 1st, 2nd, 3rd Laws',
+                              color: AppColors.accentLaws,
+                              route: '/laws',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            if (!isPro) const GlobalBannerAdWidget(),
-          ],
+              if (!isPro) const GlobalBannerAdWidget(),
+            ],
+          ),
         ),
       ),
     );
@@ -121,6 +180,7 @@ class _ModuleCard extends StatelessWidget {
   final bool isLocked;
 
   const _ModuleCard({
+    super.key,
     required this.icon,
     required this.title,
     required this.subtitle,
