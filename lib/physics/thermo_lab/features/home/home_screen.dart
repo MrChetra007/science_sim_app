@@ -1,0 +1,195 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart' as p;
+import '../../../../core/services/subscription_service.dart';
+import '../../../../core/widgets/plan_picker.dart';
+import '../../../../core/widgets/ad_widgets.dart';
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_spacing.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final sub = p.Provider.of<SubscriptionService>(context);
+    final isPro = sub.isPro;
+
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(AppSpacing.md),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: AppSpacing.xl),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('🔥 Thermo Lab', style: Theme.of(context).textTheme.displayLarge),
+                        if (!isPro)
+                          IconButton(
+                            icon: const Icon(Icons.star, color: Colors.amber),
+                            onPressed: () => showGlobalPlanDialog(context),
+                            tooltip: 'Upgrade to Pro',
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: AppSpacing.xs),
+                    Text(
+                      'Thermodynamics Simulation',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: AppColors.textSecondary,
+                          ),
+                    ),
+                    const SizedBox(height: AppSpacing.xl),
+              Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: AppSpacing.md,
+                mainAxisSpacing: AppSpacing.md,
+                childAspectRatio: 0.95,
+                children: [
+                  _ModuleCard(
+                    icon: '🌡️',
+                    title: 'Heat Transfer',
+                    subtitle: 'Conduction, Convection, Radiation',
+                    color: AppColors.accentHeat,
+                    route: '/heat',
+                    isLocked: !isPro,
+                  ),
+                  _ModuleCard(
+                    icon: '💨',
+                    title: 'Gas Laws',
+                    subtitle: "Boyle's, Charles's, Gay-Lussac's",
+                    color: AppColors.accentGas,
+                    route: '/gas',
+                    isLocked: !isPro,
+                  ),
+                          _ModuleCard(
+                            icon: '⚙️',
+                            title: 'Carnot Engine',
+                            subtitle: 'Efficiency & Heat engines',
+                            color: AppColors.accentCarnot,
+                            route: '/carnot',
+                          ),
+                          _ModuleCard(
+                            icon: '🧊',
+                            title: 'Phase Change',
+                            subtitle: 'Heating curve & States of matter',
+                            color: AppColors.accentPhase,
+                            route: '/phase',
+                          ),
+                          _ModuleCard(
+                            icon: '🌀',
+                            title: 'Entropy',
+                            subtitle: 'Disorder & 2nd Law',
+                            color: AppColors.accentEntropy,
+                            route: '/entropy',
+                          ),
+                          _ModuleCard(
+                            icon: '📖',
+                            title: 'Laws of Thermo',
+                            subtitle: '0th, 1st, 2nd, 3rd Laws',
+                            color: AppColors.accentLaws,
+                            route: '/laws',
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if (!isPro) const GlobalBannerAdWidget(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ModuleCard extends StatelessWidget {
+  final String icon;
+  final String title;
+  final String subtitle;
+  final Color color;
+  final String route;
+  final bool isLocked;
+
+  const _ModuleCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.color,
+    required this.route,
+    this.isLocked = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 0,
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: isLocked
+            ? () => showGlobalPlanDialog(context)
+            : () => context.push(route),
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpacing.sm),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(AppSpacing.sm),
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Stack(
+                  children: [
+                    Text(
+                      icon,
+                      style: TextStyle(fontSize: 20, color: isLocked ? Colors.grey : null),
+                    ),
+                    if (isLocked)
+                      Positioned(
+                        right: -4,
+                        top: -4,
+                        child: Icon(Icons.lock, size: 12, color: Colors.amber.shade700),
+                      ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: AppSpacing.xs),
+              Text(
+                isLocked ? '$title ⭐' : title,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: isLocked ? Colors.amber : color,
+                      fontWeight: FontWeight.bold,
+                    ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 2),
+              Flexible(
+                child: Text(
+                  isLocked ? 'PRO - Unlock for unlimited access' : subtitle,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: isLocked ? Colors.amber.shade200 : AppColors.textSecondary,
+                      ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

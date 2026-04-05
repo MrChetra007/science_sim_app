@@ -18,6 +18,7 @@ import 'physics/newton_lab/app.dart';
 import 'physics/ohm_lab/screens/home_screen.dart' as ohm_home;
 import 'physics/ohm_lab/providers/circuit_provider.dart';
 import 'physics/ohm_lab/core/theme.dart' as ohm_theme;
+import 'physics/thermo_lab/main.dart' as thermo_main;
 import 'physics/projectile_motion/app.dart' as projectile_app;
 import 'physics/ac_lab/main_standalone.dart' as ac_main;
 import 'physics/ac_lab/providers/ac_provider.dart';
@@ -384,6 +385,16 @@ class MainDashboard extends StatelessWidget {
                   }
                 },
               ),
+              _WalkthroughOption(
+                label: 'Thermo Lab - Thermodynamics',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyThermoLab);
+                  if (ctx.mounted) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const thermo_main.ThermoSimApp()));
+                  }
+                },
+              ),
               const SizedBox(height: 16),
               const Text(
                 'CHEMISTRY LABS',
@@ -592,6 +603,21 @@ class PhysicsDashboard extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) =>
                                   const wave_main.HomeScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      _buildLabCard(
+                        context,
+                        title: "THERMO",
+                        subtitle: "Thermodynamics",
+                        icon: Icons.thermostat,
+                        color: Colors.redAccent,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const thermo_main.ThermoSimApp(),
                             ),
                           );
                         },

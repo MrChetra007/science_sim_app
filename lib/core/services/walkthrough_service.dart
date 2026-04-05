@@ -7,6 +7,7 @@ class WalkthroughService {
   static const String _keyProjectileMotion = 'walkthrough_projectile_motion_done';
   static const String _keyAcLab = 'walkthrough_ac_lab_done';
   static const String _keyWaveLab = 'walkthrough_wave_lab_done';
+  static const String _keyThermoLab = 'walkthrough_thermo_lab_done';
   static const String _keyPhLab = 'walkthrough_ph_lab_done';
   static const String _keyAtomicMolecular = 'walkthrough_atomic_molecular_done';
   static const String _keyElectrochemistry = 'walkthrough_electrochemistry_done';
@@ -44,6 +45,7 @@ class WalkthroughService {
     await prefs.remove(_keyProjectileMotion);
     await prefs.remove(_keyAcLab);
     await prefs.remove(_keyWaveLab);
+    await prefs.remove(_keyThermoLab);
     await prefs.remove(_keyPhLab);
     await prefs.remove(_keyAtomicMolecular);
     await prefs.remove(_keyElectrochemistry);
@@ -56,6 +58,7 @@ class WalkthroughService {
   static const String keyProjectileMotion = _keyProjectileMotion;
   static const String keyAcLab = _keyAcLab;
   static const String keyWaveLab = _keyWaveLab;
+  static const String keyThermoLab = _keyThermoLab;
   static const String keyPhLab = _keyPhLab;
   static const String keyAtomicMolecular = _keyAtomicMolecular;
   static const String keyElectrochemistry = _keyElectrochemistry;
