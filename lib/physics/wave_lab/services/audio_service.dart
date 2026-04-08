@@ -31,7 +31,7 @@ class AudioService {
         1.0,
       );
 
-      _handle ??= await SoLoud.instance.play(_oscillator!);
+      _handle ??= SoLoud.instance.play(_oscillator!);
 
       // Update frequency
       // Map simulation frequency (0.1 - 20Hz) to audible range (e.g. 220 - 880Hz)
