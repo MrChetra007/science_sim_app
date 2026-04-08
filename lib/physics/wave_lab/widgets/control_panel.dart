@@ -29,7 +29,8 @@ class ControlPanel extends ConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisSize: MainAxisSize.min, // Correctly shrinks when height is restricted
+            mainAxisSize:
+                MainAxisSize.min, // Correctly shrinks when height is restricted
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Drag Handle Decor
@@ -86,23 +87,6 @@ class ControlPanel extends ConsumerWidget {
                           size: 20,
                         ),
                         tooltip: 'Slow Motion',
-                      ),
-                      const SizedBox(width: 8),
-                      // ✅ FREE — Audio Tone
-                      IconButton(
-                        onPressed: waveNotifier.toggleAudio,
-                        constraints: const BoxConstraints(),
-                        padding: EdgeInsets.zero,
-                        icon: Icon(
-                          waveState.isAudioEnabled
-                              ? Icons.volume_up
-                              : Icons.volume_off,
-                          color: waveState.isAudioEnabled
-                              ? const Color(0xFF00E5FF)
-                              : Colors.white70,
-                          size: 20,
-                        ),
-                        tooltip: 'Audio Tone',
                       ),
                       const SizedBox(width: 8),
                       // ✅ FREE — Reset

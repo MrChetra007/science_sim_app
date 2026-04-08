@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:async';
-import '../services/audio_service.dart';
 
 enum WaveType { transverse, longitudinal }
 
@@ -30,7 +29,6 @@ class WaveState {
   final bool showOscilloscope;
   final bool showLabels;
   final double timeScale;
-  final bool isAudioEnabled;
   final bool showBlueprint; // Global toggle for HUD
 
   WaveState({
@@ -53,7 +51,6 @@ class WaveState {
     this.showOscilloscope = false,
     this.showLabels = false,
     this.timeScale = 1.0,
-    this.isAudioEnabled = false,
     this.showBlueprint = false,
   });
 
@@ -77,7 +74,6 @@ class WaveState {
     bool? showOscilloscope,
     bool? showLabels,
     double? timeScale,
-    bool? isAudioEnabled,
     bool? showBlueprint,
   }) {
     return WaveState(
@@ -100,7 +96,6 @@ class WaveState {
       showOscilloscope: showOscilloscope ?? this.showOscilloscope,
       showLabels: showLabels ?? this.showLabels,
       timeScale: timeScale ?? this.timeScale,
-      isAudioEnabled: isAudioEnabled ?? this.isAudioEnabled,
       showBlueprint: showBlueprint ?? this.showBlueprint,
     );
   }
@@ -127,7 +122,6 @@ class WaveState {
       showOscilloscope: showOscilloscope,
       showLabels: showLabels,
       timeScale: timeScale,
-      isAudioEnabled: isAudioEnabled,
       showBlueprint: showBlueprint,
     );
   }
@@ -185,15 +179,12 @@ class WaveNotifier extends StateNotifier<WaveState> {
 
   // Phase 5 actions
   void setTimeScale(double value) => state = state.copyWith(timeScale: value);
-  void toggleAudio() =>
-      state = state.copyWith(isAudioEnabled: !state.isAudioEnabled);
   void toggleBlueprint() =>
       state = state.copyWith(showBlueprint: !state.showBlueprint);
 
   @override
   void dispose() {
     _timer?.cancel();
-    audioService.stopTone();
     super.dispose();
   }
 }

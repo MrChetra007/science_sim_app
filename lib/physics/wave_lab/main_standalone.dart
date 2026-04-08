@@ -13,6 +13,7 @@ import 'screens/challenge_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     p.MultiProvider(
       providers: [],

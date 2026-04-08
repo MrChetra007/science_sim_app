@@ -11,7 +11,6 @@ import '../widgets/results_panel.dart';
 import '../widgets/oscilloscope_panel.dart';
 import '../widgets/pro_gate.dart';
 import '../providers/wave_provider.dart';
-import '../services/audio_service.dart';
 import '../services/ad_service.dart';
 import '../services/iap_service.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -39,7 +38,6 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
 
   @override
   void dispose() {
-    audioService.stopTone();
     _topBannerAd?.dispose();
     _bottomBannerAd?.dispose();
     super.dispose();
@@ -47,20 +45,6 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(waveProvider.select((s) => s.isAudioEnabled), (prev, next) {
-      if (next) {
-        audioService.startTone(ref.read(waveProvider).frequency);
-      } else {
-        audioService.stopTone();
-      }
-    });
-
-    ref.listen(waveProvider.select((s) => s.frequency), (prev, next) {
-      if (ref.read(waveProvider).isAudioEnabled) {
-        audioService.updateFrequency(next);
-      }
-    });
-
     final waveState = ref.watch(waveProvider);
 
     Widget waveWidget;

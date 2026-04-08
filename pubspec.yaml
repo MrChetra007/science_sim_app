@@ -48,7 +48,6 @@ dependencies:
   audioplayers: ^6.1.0
 
   # Audio (Wave Lab)
-  flutter_soloud: ^4.0.0
   rename: ^3.1.0
   riverpod_annotation: ^2.6.1
   connectivity_plus: ^7.1.0

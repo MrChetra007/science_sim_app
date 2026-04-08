@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' as rp;
 import 'package:provider/provider.dart' as p;
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Import Global Services
@@ -36,10 +35,7 @@ class _WalkthroughOption extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
-  const _WalkthroughOption({
-    required this.label,
-    required this.onTap,
-  });
+  const _WalkthroughOption({required this.label, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -72,17 +68,11 @@ void main() async {
   await subscriptionService.init();
   await globalAdService.init();
   await IAPService().init();
-  
+
   await IAPService().verifySubscriptionStatus();
 
   final acProvider = ACProvider();
   await acProvider.loadPrefs();
-
-  try {
-    await SoLoud.instance.init();
-  } catch (e) {
-    debugPrint('SoLoud initialization failed: $e');
-  }
 
   runApp(
     rp.ProviderScope(
@@ -152,7 +142,9 @@ class MainDashboard extends StatelessWidget {
           ),
           IconButton(
             onPressed: () async {
-              final url = Uri.parse('https://mrchetra007.github.io/privacy_policy/wave_lab');
+              final url = Uri.parse(
+                'https://mrchetra007.github.io/privacy_policy/wave_lab',
+              );
               if (await canLaunchUrl(url)) {
                 await launchUrl(url, mode: LaunchMode.externalApplication);
               }
@@ -349,9 +341,16 @@ class MainDashboard extends StatelessWidget {
                 label: 'NewtonLab - Laws of Motion',
                 onTap: () async {
                   Navigator.pop(ctx);
-                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyNewtonLab);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyNewtonLab,
+                  );
                   if (ctx.mounted) {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const NewtonsLabApp()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NewtonsLabApp(),
+                      ),
+                    );
                   }
                 },
               ),
@@ -359,10 +358,19 @@ class MainDashboard extends StatelessWidget {
                 label: 'OhmLab - Circuit Simulation',
                 onTap: () async {
                   Navigator.pop(ctx);
-                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyOhmLab);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyOhmLab,
+                  );
                   if (ctx.mounted) {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => Theme(data: ohm_theme.AppTheme.darkTheme, child: const ohm_home.HomeScreen())));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Theme(
+                          data: ohm_theme.AppTheme.darkTheme,
+                          child: const ohm_home.HomeScreen(),
+                        ),
+                      ),
+                    );
                   }
                 },
               ),
@@ -370,9 +378,16 @@ class MainDashboard extends StatelessWidget {
                 label: 'Projectile Motion',
                 onTap: () async {
                   Navigator.pop(ctx);
-                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyProjectileMotion);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyProjectileMotion,
+                  );
                   if (ctx.mounted) {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const projectile_app.App()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const projectile_app.App(),
+                      ),
+                    );
                   }
                 },
               ),
@@ -380,9 +395,16 @@ class MainDashboard extends StatelessWidget {
                 label: 'AC Lab - Electricity',
                 onTap: () async {
                   Navigator.pop(ctx);
-                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyAcLab);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyAcLab,
+                  );
                   if (ctx.mounted) {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ac_main.ACElectricityApp()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ac_main.ACElectricityApp(),
+                      ),
+                    );
                   }
                 },
               ),
@@ -390,9 +412,16 @@ class MainDashboard extends StatelessWidget {
                 label: 'Wave Lab',
                 onTap: () async {
                   Navigator.pop(ctx);
-                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyWaveLab);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyWaveLab,
+                  );
                   if (ctx.mounted) {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const wave_main.HomeScreen()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const wave_main.HomeScreen(),
+                      ),
+                    );
                   }
                 },
               ),
@@ -400,9 +429,16 @@ class MainDashboard extends StatelessWidget {
                 label: 'Thermo Lab - Thermodynamics',
                 onTap: () async {
                   Navigator.pop(ctx);
-                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyThermoLab);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyThermoLab,
+                  );
                   if (ctx.mounted) {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const thermo_main.ThermoSimApp()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const thermo_main.ThermoSimApp(),
+                      ),
+                    );
                   }
                 },
               ),
@@ -421,9 +457,16 @@ class MainDashboard extends StatelessWidget {
                 label: 'pH Lab',
                 onTap: () async {
                   Navigator.pop(ctx);
-                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyPhLab);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyPhLab,
+                  );
                   if (ctx.mounted) {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ph_main.PhSimApp()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ph_main.PhSimApp(),
+                      ),
+                    );
                   }
                 },
               ),
@@ -431,9 +474,16 @@ class MainDashboard extends StatelessWidget {
                 label: 'Atomic & Molecular',
                 onTap: () async {
                   Navigator.pop(ctx);
-                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyAtomicMolecular);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyAtomicMolecular,
+                  );
                   if (ctx.mounted) {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => _AtomicLabWrapper()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => _AtomicLabWrapper(),
+                      ),
+                    );
                   }
                 },
               ),
@@ -441,9 +491,16 @@ class MainDashboard extends StatelessWidget {
                 label: 'Electrochemistry',
                 onTap: () async {
                   Navigator.pop(ctx);
-                  await WalkthroughService.resetLabWalkthrough(WalkthroughService.keyElectrochemistry);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyElectrochemistry,
+                  );
                   if (ctx.mounted) {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => _ElectrochemWrapper()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => _ElectrochemWrapper(),
+                      ),
+                    );
                   }
                 },
               ),
@@ -467,7 +524,11 @@ class MainDashboard extends StatelessWidget {
                           style: TextStyle(color: Colors.orange, fontSize: 14),
                         ),
                       ),
-                      Icon(Icons.chevron_right, color: Colors.white24, size: 20),
+                      Icon(
+                        Icons.chevron_right,
+                        color: Colors.white24,
+                        size: 20,
+                      ),
                     ],
                   ),
                 ),
@@ -628,7 +689,8 @@ class PhysicsDashboard extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const thermo_main.ThermoSimApp(),
+                              builder: (context) =>
+                                  const thermo_main.ThermoSimApp(),
                             ),
                           );
                         },
