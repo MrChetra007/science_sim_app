@@ -169,6 +169,7 @@
   "resistance": "RESISTANCE",
   "current": "CURRENT",
   "power": "POWER",
+  "powerDissipation": "POWER DISSIPATION",
   "ohmsLawWarning": "Warning: High voltage detected!",
   "addComponent": "Add Component",
   "removeComponent": "Remove Component",

@@ -435,6 +435,9 @@ class AppLocalizationsKm extends AppLocalizations {
   String get findResistance => 'រកតម្លៃរេស៊ីស្តង់';
 
   @override
+  String get powerDissipation => 'ថាម​ពល​បាច​ចុល';
+
+  @override
   String get ohmsLawWarning => 'ព្រមាន! តង់ស្យុងខ្ពស់!';
 
   @override

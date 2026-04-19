@@ -437,6 +437,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get findResistance => 'To find Resistance';
 
   @override
+  String get powerDissipation => 'POWER DISSIPATION';
+
+  @override
   String get ohmsLawWarning => 'Warning: High voltage detected!';
 
   @override

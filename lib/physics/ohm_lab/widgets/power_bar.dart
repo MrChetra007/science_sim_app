@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class PowerBar extends StatelessWidget {
   final double power;
@@ -8,6 +9,7 @@ class PowerBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -15,7 +17,7 @@ class PowerBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "POWER DISSIPATION",
+              l10n.powerDissipation,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Colors.white54,
                     letterSpacing: 1.1,

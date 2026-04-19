@@ -938,6 +938,12 @@ abstract class AppLocalizations {
   /// **'To find Resistance'**
   String get findResistance;
 
+  /// No description provided for @powerDissipation.
+  ///
+  /// In en, this message translates to:
+  /// **'POWER DISSIPATION'**
+  String get powerDissipation;
+
   /// No description provided for @ohmsLawWarning.
   ///
   /// In en, this message translates to:
