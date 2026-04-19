@@ -395,19 +395,19 @@ abstract class AppLocalizations {
   /// No description provided for @reset.
   ///
   /// In en, this message translates to:
-  /// **'Reset'**
+  /// **'RESET'**
   String get reset;
 
   /// No description provided for @pause.
   ///
   /// In en, this message translates to:
-  /// **'Pause'**
+  /// **'PAUSE'**
   String get pause;
 
   /// No description provided for @play.
   ///
   /// In en, this message translates to:
-  /// **'Play'**
+  /// **'PLAY'**
   String get play;
 
   /// No description provided for @settings.
@@ -743,7 +743,7 @@ abstract class AppLocalizations {
   /// No description provided for @voltage.
   ///
   /// In en, this message translates to:
-  /// **'VOLTAGE'**
+  /// **'Voltage'**
   String get voltage;
 
   /// No description provided for @current.
@@ -755,7 +755,7 @@ abstract class AppLocalizations {
   /// No description provided for @resistance.
   ///
   /// In en, this message translates to:
-  /// **'RESISTANCE'**
+  /// **'Resistance (Ω)'**
   String get resistance;
 
   /// No description provided for @power.
@@ -905,7 +905,7 @@ abstract class AppLocalizations {
   /// No description provided for @resistanceDesc.
   ///
   /// In en, this message translates to:
-  /// **'A measure of the difficulty to pass an electric current through a conductor.'**
+  /// **'Resistor (R) opposes current flow and converts electrical energy to heat.'**
   String get resistanceDesc;
 
   /// No description provided for @resistanceUnit.
@@ -1718,6 +1718,396 @@ abstract class AppLocalizations {
   /// **'Target'**
   String get target;
 
+  /// No description provided for @acElectricityLab.
+  ///
+  /// In en, this message translates to:
+  /// **'AC ELECTRICITY LAB'**
+  String get acElectricityLab;
+
+  /// No description provided for @oscilloscopeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Oscilloscope Mode'**
+  String get oscilloscopeMode;
+
+  /// No description provided for @transformerLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Transformer Lab'**
+  String get transformerLab;
+
+  /// No description provided for @rlcReactiveLab.
+  ///
+  /// In en, this message translates to:
+  /// **'REACTIVE (RLC) LAB'**
+  String get rlcReactiveLab;
+
+  /// No description provided for @upgradeLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade Lab'**
+  String get upgradeLab;
+
+  /// No description provided for @advancedOscilloscope.
+  ///
+  /// In en, this message translates to:
+  /// **'ADVANCED OSCILLOSCOPE'**
+  String get advancedOscilloscope;
+
+  /// No description provided for @oscilloscopeGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Oscilloscope Guide'**
+  String get oscilloscopeGuide;
+
+  /// No description provided for @voltsPerDiv.
+  ///
+  /// In en, this message translates to:
+  /// **'Volts / Div'**
+  String get voltsPerDiv;
+
+  /// No description provided for @timePerDiv.
+  ///
+  /// In en, this message translates to:
+  /// **'Time / Div'**
+  String get timePerDiv;
+
+  /// No description provided for @oscilloscopeDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'An oscilloscope is a diagnostic instrument that visualizes electrical voltage signals as waveforms over time.'**
+  String get oscilloscopeDesc;
+
+  /// No description provided for @voltsDivDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Volts/Div adjusts the vertical scale (amplitude). Higher values make the wave look smaller.'**
+  String get voltsDivDesc;
+
+  /// No description provided for @timeDivDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Time/Div adjusts the horizontal scale (time). It changes how many cycles you see on screen.'**
+  String get timeDivDesc;
+
+  /// No description provided for @gridDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The grid helps you measure peak voltage (Vp) and the period of the wave.'**
+  String get gridDesc;
+
+  /// No description provided for @transformerTheory.
+  ///
+  /// In en, this message translates to:
+  /// **'TRANSFORMER THEORY'**
+  String get transformerTheory;
+
+  /// No description provided for @whatIsTransformer.
+  ///
+  /// In en, this message translates to:
+  /// **'What is a Transformer?'**
+  String get whatIsTransformer;
+
+  /// No description provided for @transformerDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A transformer is a device that transfers electrical energy between two or more circuits through electromagnetic induction.'**
+  String get transformerDesc;
+
+  /// No description provided for @stepUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Step-Up'**
+  String get stepUp;
+
+  /// No description provided for @stepDown.
+  ///
+  /// In en, this message translates to:
+  /// **'Step-Down'**
+  String get stepDown;
+
+  /// No description provided for @primaryCoil.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary Coil'**
+  String get primaryCoil;
+
+  /// No description provided for @secondaryCoil.
+  ///
+  /// In en, this message translates to:
+  /// **'Secondary Coil'**
+  String get secondaryCoil;
+
+  /// No description provided for @turnsRatio.
+  ///
+  /// In en, this message translates to:
+  /// **'Turns Ratio'**
+  String get turnsRatio;
+
+  /// No description provided for @voltageIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Voltage In'**
+  String get voltageIn;
+
+  /// No description provided for @voltageOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Voltage Out'**
+  String get voltageOut;
+
+  /// No description provided for @impedanceZ.
+  ///
+  /// In en, this message translates to:
+  /// **'Impedance (Z)'**
+  String get impedanceZ;
+
+  /// No description provided for @phase.
+  ///
+  /// In en, this message translates to:
+  /// **'Phase'**
+  String get phase;
+
+  /// No description provided for @inductanceL.
+  ///
+  /// In en, this message translates to:
+  /// **'Inductance (L)'**
+  String get inductanceL;
+
+  /// No description provided for @capacitanceC.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacitance (C)'**
+  String get capacitanceC;
+
+  /// No description provided for @rlcTheory.
+  ///
+  /// In en, this message translates to:
+  /// **'RLC THEORY'**
+  String get rlcTheory;
+
+  /// No description provided for @whatIsRlc.
+  ///
+  /// In en, this message translates to:
+  /// **'What is RLC?'**
+  String get whatIsRlc;
+
+  /// No description provided for @impedance.
+  ///
+  /// In en, this message translates to:
+  /// **'Impedance'**
+  String get impedance;
+
+  /// No description provided for @resonance.
+  ///
+  /// In en, this message translates to:
+  /// **'Resonance'**
+  String get resonance;
+
+  /// No description provided for @transformerGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Transformer Guide'**
+  String get transformerGuide;
+
+  /// No description provided for @primaryCoilDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The Primary turns (Np) determine the number of wire loops on the input side.'**
+  String get primaryCoilDesc;
+
+  /// No description provided for @secondaryCoilDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The Secondary turns (Ns) determine the loops on the output side.'**
+  String get secondaryCoilDesc;
+
+  /// No description provided for @turnsRatioDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Turns Ratio (Ns/Np) defines the voltage transformation. If Ns > Np, it steps up voltage.'**
+  String get turnsRatioDesc;
+
+  /// No description provided for @simulationDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The simulation shows the real-time conversion from Primary Vp to Secondary Vp based on your settings.'**
+  String get simulationDesc;
+
+  /// No description provided for @rlcGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'RLC Reactive Guide'**
+  String get rlcGuide;
+
+  /// No description provided for @rlcDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The RLC lab explores how resistance (R), inductance (L), and capacitance (C) affect AC current.'**
+  String get rlcDesc;
+
+  /// No description provided for @inductanceDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Inductor (L) opposes changes in current and stores energy in a magnetic field.'**
+  String get inductanceDesc;
+
+  /// No description provided for @capacitanceDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacitor (C) stores energy in an electric field and blocks DC while allowing AC to pass.'**
+  String get capacitanceDesc;
+
+  /// No description provided for @impedanceDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Impedance (Z) is the total opposition to AC current, combining resistance and reactance.'**
+  String get impedanceDesc;
+
+  /// No description provided for @whatIsIt.
+  ///
+  /// In en, this message translates to:
+  /// **'What is it?'**
+  String get whatIsIt;
+
+  /// No description provided for @howItWorks.
+  ///
+  /// In en, this message translates to:
+  /// **'How it works here?'**
+  String get howItWorks;
+
+  /// No description provided for @gotIt.
+  ///
+  /// In en, this message translates to:
+  /// **'GOT IT'**
+  String get gotIt;
+
+  /// No description provided for @acElectricityLabTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'AC ELECTRICITY LAB'**
+  String get acElectricityLabTitle;
+
+  /// No description provided for @acTheory.
+  ///
+  /// In en, this message translates to:
+  /// **'AC THEORY'**
+  String get acTheory;
+
+  /// No description provided for @whatIsAc.
+  ///
+  /// In en, this message translates to:
+  /// **'What is AC?'**
+  String get whatIsAc;
+
+  /// No description provided for @keyConcepts.
+  ///
+  /// In en, this message translates to:
+  /// **'Key Concepts:'**
+  String get keyConcepts;
+
+  /// No description provided for @mainsHum.
+  ///
+  /// In en, this message translates to:
+  /// **'Mains Hum (Haptic)'**
+  String get mainsHum;
+
+  /// No description provided for @upgradeToUnlock.
+  ///
+  /// In en, this message translates to:
+  /// **'UPGRADE TO UNLOCK PERMANENTLY'**
+  String get upgradeToUnlock;
+
+  /// No description provided for @backToMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'BACK TO MENU'**
+  String get backToMenu;
+
+  /// No description provided for @oscilloscope.
+  ///
+  /// In en, this message translates to:
+  /// **'Oscilloscope'**
+  String get oscilloscope;
+
+  /// No description provided for @rlcLab.
+  ///
+  /// In en, this message translates to:
+  /// **'RLC Lab'**
+  String get rlcLab;
+
+  /// No description provided for @upgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade'**
+  String get upgrade;
+
+  /// No description provided for @peakVoltageVp.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak Voltage (Vp)'**
+  String get peakVoltageVp;
+
+  /// No description provided for @frequencyHz.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequency (Hz)'**
+  String get frequencyHz;
+
+  /// No description provided for @voltsDiv.
+  ///
+  /// In en, this message translates to:
+  /// **'Volts / Div'**
+  String get voltsDiv;
+
+  /// No description provided for @timeDiv.
+  ///
+  /// In en, this message translates to:
+  /// **'Time / Div'**
+  String get timeDiv;
+
+  /// No description provided for @primaryVp.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary Vp'**
+  String get primaryVp;
+
+  /// No description provided for @secondaryVp.
+  ///
+  /// In en, this message translates to:
+  /// **'Secondary Vp'**
+  String get secondaryVp;
+
+  /// No description provided for @ratio.
+  ///
+  /// In en, this message translates to:
+  /// **'Ratio'**
+  String get ratio;
+
+  /// No description provided for @inductance.
+  ///
+  /// In en, this message translates to:
+  /// **'Inductance'**
+  String get inductance;
+
+  /// No description provided for @capacitance.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacitance'**
+  String get capacitance;
+
+  /// No description provided for @avgPower.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg Power'**
+  String get avgPower;
+
+  /// No description provided for @rmsVoltage.
+  ///
+  /// In en, this message translates to:
+  /// **'RMS Voltage'**
+  String get rmsVoltage;
+
   /// No description provided for @frequency.
   ///
   /// In en, this message translates to:
@@ -1742,29 +2132,11 @@ abstract class AppLocalizations {
   /// **'Wavelength'**
   String get wavelength;
 
-  /// No description provided for @phase.
-  ///
-  /// In en, this message translates to:
-  /// **'Phase'**
-  String get phase;
-
   /// No description provided for @peakVoltage.
   ///
   /// In en, this message translates to:
   /// **'Peak Voltage'**
   String get peakVoltage;
-
-  /// No description provided for @rmsVoltage.
-  ///
-  /// In en, this message translates to:
-  /// **'RMS Voltage'**
-  String get rmsVoltage;
-
-  /// No description provided for @oscilloscope.
-  ///
-  /// In en, this message translates to:
-  /// **'Oscilloscope'**
-  String get oscilloscope;
 
   /// No description provided for @waveform.
   ///
@@ -1795,6 +2167,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Display'**
   String get display;
+
+  /// No description provided for @waveType.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave Type'**
+  String get waveType;
+
+  /// No description provided for @alternatingCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Alternating Current (AC) is a type of electrical current in which the direction of the flow of electrons switches back and forth at regular intervals or cycles.'**
+  String get alternatingCurrent;
+
+  /// No description provided for @peakVoltageDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Vp (Peak Voltage): The maximum voltage reached in a cycle.'**
+  String get peakVoltageDesc;
+
+  /// No description provided for @frequencyDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequency (Hz): How many cycles occur per second.'**
+  String get frequencyDesc;
+
+  /// No description provided for @vrmsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Vrms: The effective voltage (heating power) equivalent to DC.'**
+  String get vrmsDesc;
+
+  /// No description provided for @phasorDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Phasor: A rotating vector that visualizes the sine wave phase.'**
+  String get phasorDesc;
 
   /// No description provided for @waveSpeed.
   ///

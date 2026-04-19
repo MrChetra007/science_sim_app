@@ -333,7 +333,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get thrust => 'កម្លាំងរុញ';
 
   @override
-  String get voltage => 'វ៉ុល';
+  String get voltage => ' ត​ ង​ ន';
 
   @override
   String get current => 'ចរន្ត';
@@ -827,28 +827,228 @@ class AppLocalizationsKm extends AppLocalizations {
   String get target => 'គោលដៅ';
 
   @override
-  String get frequency => 'ប្រេកង់';
+  String get acElectricityLab =>
+      'ម​ ន​ ទ​ ី​ រ​ ព​ ិ​ ស​ ង​ ធ​ ន​ ច​ រ​ ន​ ធ​ ល​ ា​ ស';
 
   @override
-  String get amplitude => 'អំព្លីទូដ';
+  String get oscilloscopeMode => ' រ​ ប​ ើ​ ន​ អ​ ូ​ ស​ ដ​ ី​ ឡ​ ូ​ ស​ ក';
 
   @override
-  String get period => 'ខួប';
+  String get transformerLab => 'មន្ទីរពិសោធន៍ត្រង់ស្វរម៉ាទ័រ';
 
   @override
-  String get wavelength => 'ប្រវែងរលក';
+  String get rlcReactiveLab => ' RLC';
 
   @override
-  String get phase => 'ហ្វាស';
+  String get upgradeLab => ' ជ​ ម​ ន​ ុ​ ត';
 
   @override
-  String get peakVoltage => 'តង់ស្យុងកំពូល';
+  String get advancedOscilloscope => 'ADVANCED OSCILLOSCOPE';
 
   @override
-  String get rmsVoltage => 'RMS';
+  String get oscilloscopeGuide => 'Oscilloscope Guide';
+
+  @override
+  String get voltsPerDiv => 'Volts / Div';
+
+  @override
+  String get timePerDiv => 'Time / Div';
+
+  @override
+  String get oscilloscopeDesc =>
+      'An oscilloscope is a diagnostic instrument that visualizes electrical voltage signals as waveforms over time.';
+
+  @override
+  String get voltsDivDesc =>
+      'Volts/Div adjusts the vertical scale (amplitude). Higher values make the wave look smaller.';
+
+  @override
+  String get timeDivDesc =>
+      'Time/Div adjusts the horizontal scale (time). It changes how many cycles you see on screen.';
+
+  @override
+  String get gridDesc =>
+      'The grid helps you measure peak voltage (Vp) and the period of the wave.';
+
+  @override
+  String get transformerTheory => 'TRANSFORMER THEORY';
+
+  @override
+  String get whatIsTransformer => 'What is a Transformer?';
+
+  @override
+  String get transformerDesc =>
+      'A transformer is a device that transfers electrical energy between two or more circuits through electromagnetic induction.';
+
+  @override
+  String get stepUp => 'Step-Up';
+
+  @override
+  String get stepDown => 'Step-Down';
+
+  @override
+  String get primaryCoil => 'Primary Coil';
+
+  @override
+  String get secondaryCoil => 'Secondary Coil';
+
+  @override
+  String get turnsRatio => 'Turns Ratio';
+
+  @override
+  String get voltageIn => 'តង់ស្យុងចូល';
+
+  @override
+  String get voltageOut => 'តង់ស្យុងចេញ';
+
+  @override
+  String get impedanceZ => ' អ';
+
+  @override
+  String get phase => ' ហ';
+
+  @override
+  String get inductanceL => 'អាំងឌុចតង់ (L)';
+
+  @override
+  String get capacitanceC => 'កាប៉ាស៊ីតង់ (C)';
+
+  @override
+  String get rlcTheory => 'RLC THEORY';
+
+  @override
+  String get whatIsRlc => 'What is RLC?';
+
+  @override
+  String get impedance => 'Impedance';
+
+  @override
+  String get resonance => 'Resonance';
+
+  @override
+  String get transformerGuide => 'Transformer Guide';
+
+  @override
+  String get primaryCoilDesc =>
+      'The Primary turns (Np) determine the number of wire loops on the input side.';
+
+  @override
+  String get secondaryCoilDesc =>
+      'The Secondary turns (Ns) determine the loops on the output side.';
+
+  @override
+  String get turnsRatioDesc =>
+      'Turns Ratio (Ns/Np) defines the voltage transformation. If Ns > Np, it steps up voltage.';
+
+  @override
+  String get simulationDesc =>
+      'The simulation shows the real-time conversion from Primary Vp to Secondary Vp based on your settings.';
+
+  @override
+  String get rlcGuide => 'RLC Reactive Guide';
+
+  @override
+  String get rlcDesc =>
+      'The RLC lab explores how resistance (R), inductance (L), and capacitance (C) affect AC current.';
+
+  @override
+  String get inductanceDesc =>
+      'Inductor (L) opposes changes in current and stores energy in a magnetic field.';
+
+  @override
+  String get capacitanceDesc =>
+      'Capacitor (C) stores energy in an electric field and blocks DC while allowing AC to pass.';
+
+  @override
+  String get impedanceDesc =>
+      'Impedance (Z) is the total opposition to AC current, combining resistance and reactance.';
+
+  @override
+  String get whatIsIt => 'What is it?';
+
+  @override
+  String get howItWorks => 'How it works here?';
+
+  @override
+  String get gotIt => 'យល់ព្រម';
+
+  @override
+  String get acElectricityLabTitle => 'មន្ទីរពិសោធន៍អគ្គិសនីចរន្តឆ្លាស់';
+
+  @override
+  String get acTheory => 'ទ្រឹស្តីចរន្តឆ្លាស់';
+
+  @override
+  String get whatIsAc => 'តើអ្វីទៅជាចរន្តឆ្លាស់?';
+
+  @override
+  String get keyConcepts => 'គោលគំនិតសំខាន់';
+
+  @override
+  String get mainsHum => 'សំឡេងរំញ័រពីបណ្តាញអគ្គិសនី';
+
+  @override
+  String get upgradeToUnlock => 'ដំឡើងកំណែដើម្បីដោះសោ';
+
+  @override
+  String get backToMenu => 'ត្រឡប់ទៅម៉ឺនុយដើម';
 
   @override
   String get oscilloscope => 'អូស៊ីឡូស្កូប';
+
+  @override
+  String get rlcLab => 'មន្ទីរពិសោធន៍ RLC';
+
+  @override
+  String get upgrade => 'ដំឡើងកំណែ';
+
+  @override
+  String get peakVoltageVp => 'តង់ស្យុងកំពូល (Vp)';
+
+  @override
+  String get frequencyHz => 'ប្រេកង់ (Hz)';
+
+  @override
+  String get voltsDiv => 'វ៉ុល/ផ្នែក (Volts/Div)';
+
+  @override
+  String get timeDiv => 'ពេលវេលា/ផ្នែក (Time/Div)';
+
+  @override
+  String get primaryVp => 'តង់ស្យុងចម្បង (Primary Vp)';
+
+  @override
+  String get secondaryVp => 'តង់ស្យុងបន្ទាប់ (Secondary Vp)';
+
+  @override
+  String get ratio => 'សមាមាត្រ';
+
+  @override
+  String get inductance => 'អាំងឌុចតង់';
+
+  @override
+  String get capacitance => 'កាប៉ាស៊ីតង់';
+
+  @override
+  String get avgPower => 'ថាមពលមធ្យម';
+
+  @override
+  String get rmsVoltage => 'តង់ស្យុង RMS';
+
+  @override
+  String get frequency => ' ';
+
+  @override
+  String get amplitude => ' អំព្លី';
+
+  @override
+  String get period => ' ខួ';
+
+  @override
+  String get wavelength => ' ';
+
+  @override
+  String get peakVoltage => 'តង់ស្យុងកំពូល';
 
   @override
   String get waveform => 'រលក';
@@ -864,6 +1064,24 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get display => 'បង្ហាញ';
+
+  @override
+  String get waveType => ' ប្​ រ​ ូ​ ប​ រ​ ល​ ក';
+
+  @override
+  String get alternatingCurrent => 'ចរន្តឆ្លាស់';
+
+  @override
+  String get peakVoltageDesc => 'តង់ស្យុងកំពូល';
+
+  @override
+  String get frequencyDesc => 'ប្រេកង់';
+
+  @override
+  String get vrmsDesc => ' ប្​ រ​ ូ​ ប';
+
+  @override
+  String get phasorDesc => ' ហ​ វ​ ា​ ស';
 
   @override
   String get waveSpeed => 'Wave Speed';

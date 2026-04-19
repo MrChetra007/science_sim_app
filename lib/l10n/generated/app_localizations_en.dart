@@ -156,13 +156,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stop => 'Stop';
 
   @override
-  String get reset => 'Reset';
+  String get reset => 'RESET';
 
   @override
-  String get pause => 'Pause';
+  String get pause => 'PAUSE';
 
   @override
-  String get play => 'Play';
+  String get play => 'PLAY';
 
   @override
   String get settings => 'Settings';
@@ -334,13 +334,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get thrust => 'Thrust';
 
   @override
-  String get voltage => 'VOLTAGE';
+  String get voltage => 'Voltage';
 
   @override
   String get current => 'CURRENT';
 
   @override
-  String get resistance => 'RESISTANCE';
+  String get resistance => 'Resistance (Ω)';
 
   @override
   String get power => 'POWER';
@@ -419,7 +419,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resistanceDesc =>
-      'A measure of the difficulty to pass an electric current through a conductor.';
+      'Resistor (R) opposes current flow and converts electrical energy to heat.';
 
   @override
   String get resistanceUnit => 'Measured in Ohms (Ω)';
@@ -852,6 +852,214 @@ class AppLocalizationsEn extends AppLocalizations {
   String get target => 'Target';
 
   @override
+  String get acElectricityLab => 'AC ELECTRICITY LAB';
+
+  @override
+  String get oscilloscopeMode => 'Oscilloscope Mode';
+
+  @override
+  String get transformerLab => 'Transformer Lab';
+
+  @override
+  String get rlcReactiveLab => 'REACTIVE (RLC) LAB';
+
+  @override
+  String get upgradeLab => 'Upgrade Lab';
+
+  @override
+  String get advancedOscilloscope => 'ADVANCED OSCILLOSCOPE';
+
+  @override
+  String get oscilloscopeGuide => 'Oscilloscope Guide';
+
+  @override
+  String get voltsPerDiv => 'Volts / Div';
+
+  @override
+  String get timePerDiv => 'Time / Div';
+
+  @override
+  String get oscilloscopeDesc =>
+      'An oscilloscope is a diagnostic instrument that visualizes electrical voltage signals as waveforms over time.';
+
+  @override
+  String get voltsDivDesc =>
+      'Volts/Div adjusts the vertical scale (amplitude). Higher values make the wave look smaller.';
+
+  @override
+  String get timeDivDesc =>
+      'Time/Div adjusts the horizontal scale (time). It changes how many cycles you see on screen.';
+
+  @override
+  String get gridDesc =>
+      'The grid helps you measure peak voltage (Vp) and the period of the wave.';
+
+  @override
+  String get transformerTheory => 'TRANSFORMER THEORY';
+
+  @override
+  String get whatIsTransformer => 'What is a Transformer?';
+
+  @override
+  String get transformerDesc =>
+      'A transformer is a device that transfers electrical energy between two or more circuits through electromagnetic induction.';
+
+  @override
+  String get stepUp => 'Step-Up';
+
+  @override
+  String get stepDown => 'Step-Down';
+
+  @override
+  String get primaryCoil => 'Primary Coil';
+
+  @override
+  String get secondaryCoil => 'Secondary Coil';
+
+  @override
+  String get turnsRatio => 'Turns Ratio';
+
+  @override
+  String get voltageIn => 'Voltage In';
+
+  @override
+  String get voltageOut => 'Voltage Out';
+
+  @override
+  String get impedanceZ => 'Impedance (Z)';
+
+  @override
+  String get phase => 'Phase';
+
+  @override
+  String get inductanceL => 'Inductance (L)';
+
+  @override
+  String get capacitanceC => 'Capacitance (C)';
+
+  @override
+  String get rlcTheory => 'RLC THEORY';
+
+  @override
+  String get whatIsRlc => 'What is RLC?';
+
+  @override
+  String get impedance => 'Impedance';
+
+  @override
+  String get resonance => 'Resonance';
+
+  @override
+  String get transformerGuide => 'Transformer Guide';
+
+  @override
+  String get primaryCoilDesc =>
+      'The Primary turns (Np) determine the number of wire loops on the input side.';
+
+  @override
+  String get secondaryCoilDesc =>
+      'The Secondary turns (Ns) determine the loops on the output side.';
+
+  @override
+  String get turnsRatioDesc =>
+      'Turns Ratio (Ns/Np) defines the voltage transformation. If Ns > Np, it steps up voltage.';
+
+  @override
+  String get simulationDesc =>
+      'The simulation shows the real-time conversion from Primary Vp to Secondary Vp based on your settings.';
+
+  @override
+  String get rlcGuide => 'RLC Reactive Guide';
+
+  @override
+  String get rlcDesc =>
+      'The RLC lab explores how resistance (R), inductance (L), and capacitance (C) affect AC current.';
+
+  @override
+  String get inductanceDesc =>
+      'Inductor (L) opposes changes in current and stores energy in a magnetic field.';
+
+  @override
+  String get capacitanceDesc =>
+      'Capacitor (C) stores energy in an electric field and blocks DC while allowing AC to pass.';
+
+  @override
+  String get impedanceDesc =>
+      'Impedance (Z) is the total opposition to AC current, combining resistance and reactance.';
+
+  @override
+  String get whatIsIt => 'What is it?';
+
+  @override
+  String get howItWorks => 'How it works here?';
+
+  @override
+  String get gotIt => 'GOT IT';
+
+  @override
+  String get acElectricityLabTitle => 'AC ELECTRICITY LAB';
+
+  @override
+  String get acTheory => 'AC THEORY';
+
+  @override
+  String get whatIsAc => 'What is AC?';
+
+  @override
+  String get keyConcepts => 'Key Concepts:';
+
+  @override
+  String get mainsHum => 'Mains Hum (Haptic)';
+
+  @override
+  String get upgradeToUnlock => 'UPGRADE TO UNLOCK PERMANENTLY';
+
+  @override
+  String get backToMenu => 'BACK TO MENU';
+
+  @override
+  String get oscilloscope => 'Oscilloscope';
+
+  @override
+  String get rlcLab => 'RLC Lab';
+
+  @override
+  String get upgrade => 'Upgrade';
+
+  @override
+  String get peakVoltageVp => 'Peak Voltage (Vp)';
+
+  @override
+  String get frequencyHz => 'Frequency (Hz)';
+
+  @override
+  String get voltsDiv => 'Volts / Div';
+
+  @override
+  String get timeDiv => 'Time / Div';
+
+  @override
+  String get primaryVp => 'Primary Vp';
+
+  @override
+  String get secondaryVp => 'Secondary Vp';
+
+  @override
+  String get ratio => 'Ratio';
+
+  @override
+  String get inductance => 'Inductance';
+
+  @override
+  String get capacitance => 'Capacitance';
+
+  @override
+  String get avgPower => 'Avg Power';
+
+  @override
+  String get rmsVoltage => 'RMS Voltage';
+
+  @override
   String get frequency => 'Frequency';
 
   @override
@@ -864,16 +1072,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wavelength => 'Wavelength';
 
   @override
-  String get phase => 'Phase';
-
-  @override
   String get peakVoltage => 'Peak Voltage';
-
-  @override
-  String get rmsVoltage => 'RMS Voltage';
-
-  @override
-  String get oscilloscope => 'Oscilloscope';
 
   @override
   String get waveform => 'Waveform';
@@ -889,6 +1088,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get display => 'Display';
+
+  @override
+  String get waveType => 'Wave Type';
+
+  @override
+  String get alternatingCurrent =>
+      'Alternating Current (AC) is a type of electrical current in which the direction of the flow of electrons switches back and forth at regular intervals or cycles.';
+
+  @override
+  String get peakVoltageDesc =>
+      'Vp (Peak Voltage): The maximum voltage reached in a cycle.';
+
+  @override
+  String get frequencyDesc =>
+      'Frequency (Hz): How many cycles occur per second.';
+
+  @override
+  String get vrmsDesc =>
+      'Vrms: The effective voltage (heating power) equivalent to DC.';
+
+  @override
+  String get phasorDesc =>
+      'Phasor: A rotating vector that visualizes the sine wave phase.';
 
   @override
   String get waveSpeed => 'Wave Speed';

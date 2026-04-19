@@ -8,6 +8,7 @@ import 'explanation_screen.dart';
 import '../widgets/rewarded_timer_chip.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../core/widgets/plan_picker.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class TransformerScreen extends StatefulWidget {
   const TransformerScreen({super.key});
@@ -28,13 +29,14 @@ class _TransformerScreenState extends State<TransformerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final provider = context.watch<ACProvider>();
 
     final isLocked = !provider.isTransformerLabUnlocked;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('TRANSFORMER LAB'),
+        title: Text(l10n.transformerLab),
         backgroundColor: const Color(0xFF0D1117),
         actions: [
           const RewardedTimerChip(),
@@ -43,16 +45,15 @@ class _TransformerScreenState extends State<TransformerScreen> {
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ModuleExplanationScreen(
-                  title: 'Transformer Guide',
+                builder: (context) => ModuleExplanationScreen(
+                  title: l10n.transformerGuide,
                   accentColor: Colors.blueAccent,
-                  whatIsIt:
-                      'A transformer uses electromagnetic induction to transfer electrical energy between two or more circuits. It can increase (step-up) or decrease (step-down) voltage levels.',
+                  whatIsIt: l10n.transformerDesc,
                   howItWorks: [
-                    'The Primary turns (Np) determine the number of wire loops on the input side.',
-                    'The Secondary turns (Ns) determine the loops on the output side.',
-                    'Turns Ratio (Ns/Np) defines the voltage transformation. If Ns > Np, it steps up voltage.',
-                    'The simulation shows the real-time conversion from Primary Vp to Secondary Vp based on your settings.',
+                    l10n.primaryCoilDesc,
+                    l10n.secondaryCoilDesc,
+                    l10n.turnsRatioDesc,
+                    l10n.simulationDesc,
                   ],
                 ),
               ),
@@ -72,7 +73,7 @@ class _TransformerScreenState extends State<TransformerScreen> {
                   padding: const EdgeInsets.all(16),
                   child: Column(
                     children: [
-                      _buildStats(provider),
+                      _buildStats(provider, l10n),
                       const Divider(color: Colors.white10),
                       _buildSlider(
                         'Primary turns (Np)',
@@ -179,24 +180,24 @@ class _TransformerScreenState extends State<TransformerScreen> {
     ).animate().fadeIn();
   }
 
-  Widget _buildStats(ACProvider p) {
+  Widget _buildStats(ACProvider p, AppLocalizations l10n) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         _statColumn(
-          'Primary Vp',
+          l10n.primaryVp,
           '${p.state.vp.toStringAsFixed(0)}V',
           Colors.amber,
         ),
-        Icon(Icons.arrow_forward, color: Colors.white24),
+        const Icon(Icons.arrow_forward, color: Colors.white24),
         _statColumn(
-          'Ratio',
+          l10n.ratio,
           '${p.turnsRatio.toStringAsFixed(2)}x',
           Colors.white70,
         ),
-        Icon(Icons.arrow_forward, color: Colors.white24),
+        const Icon(Icons.arrow_forward, color: Colors.white24),
         _statColumn(
-          'Secondary Vp',
+          l10n.secondaryVp,
           '${p.secondaryVp.toStringAsFixed(0)}V',
           Colors.cyan,
         ),

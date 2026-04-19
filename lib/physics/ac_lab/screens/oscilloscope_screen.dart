@@ -5,6 +5,7 @@ import '../providers/ac_provider.dart';
 import '../flame/ac_game.dart';
 import 'explanation_screen.dart';
 import '../../../core/widgets/plan_picker.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class OscilloscopeScreen extends StatefulWidget {
   const OscilloscopeScreen({super.key});
@@ -19,15 +20,15 @@ class _OscilloscopeScreenState extends State<OscilloscopeScreen> {
   @override
   void initState() {
     super.initState();
-    // We can reuse ACGame but maybe with a flag for full-screen mode
     _oscGame = ACGame(provider: context.read<ACProvider>());
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ADVANCED OSCILLOSCOPE'),
+        title: Text(l10n.advancedOscilloscope),
         backgroundColor: const Color(0xFF0D1117),
         actions: [
           IconButton(
@@ -35,14 +36,14 @@ class _OscilloscopeScreenState extends State<OscilloscopeScreen> {
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ModuleExplanationScreen(
-                  title: 'Oscilloscope Guide',
+                builder: (context) => ModuleExplanationScreen(
+                  title: l10n.oscilloscopeGuide,
                   accentColor: Colors.cyan,
-                  whatIsIt: 'An oscilloscope is a diagnostic instrument that visualizes electrical voltage signals as waveforms over time. In this lab, it helps you see the AC sine wave in real-time.',
+                  whatIsIt: l10n.oscilloscopeDesc,
                   howItWorks: [
-                    'Volts/Div adjusts the vertical scale (amplitude). Higher values make the wave look smaller.',
-                    'Time/Div adjusts the horizontal scale (time). It changes how many cycles you see on screen.',
-                    'The grid helps you measure peak voltage (Vp) and the period of the wave.',
+                    l10n.voltsDivDesc,
+                    l10n.timeDivDesc,
+                    l10n.gridDesc,
                   ],
                 ),
               ),
@@ -69,6 +70,7 @@ class _OscilloscopeScreenState extends State<OscilloscopeScreen> {
   }
 
   Widget _buildControls(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final provider = context.watch<ACProvider>();
     return Container(
       padding: const EdgeInsets.all(16),
@@ -76,7 +78,7 @@ class _OscilloscopeScreenState extends State<OscilloscopeScreen> {
       child: Column(
         children: [
           _buildDivSlider(
-            label: 'Volts / Div',
+            label: l10n.voltsPerDiv,
             value: provider.voltsPerDiv,
             min: 10,
             max: 100,
@@ -85,7 +87,7 @@ class _OscilloscopeScreenState extends State<OscilloscopeScreen> {
           ),
           const SizedBox(height: 10),
           _buildDivSlider(
-            label: 'Time / Div',
+            label: l10n.timePerDiv,
             value: provider.timePerDiv,
             min: 1,
             max: 10,

@@ -9,6 +9,7 @@ import '../widgets/rewarded_timer_chip.dart';
 import 'explanation_screen.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../core/widgets/plan_picker.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class ReactiveScreen extends StatefulWidget {
   const ReactiveScreen({super.key});
@@ -28,12 +29,13 @@ class _ReactiveScreenState extends State<ReactiveScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final provider = context.watch<ACProvider>();
     final isLocked = !provider.isReactiveLabUnlocked;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('REACTIVE (RLC) LAB'),
+        title: Text(l10n.rlcReactiveLab),
         backgroundColor: const Color(0xFF0D1117),
         actions: [
           const RewardedTimerChip(),
@@ -42,11 +44,10 @@ class _ReactiveScreenState extends State<ReactiveScreen> {
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ModuleExplanationScreen(
-                  title: 'RLC Reactive Guide',
+                builder: (context) => ModuleExplanationScreen(
+                  title: l10n.rlcGuide,
                   accentColor: Colors.purpleAccent,
-                  whatIsIt:
-                      'The RLC lab explores how resistance (R), inductance (L), and capacitance (C) affect AC current. It demonstrates the concept of impedance and phase shift.',
+                  whatIsIt: l10n.rlcDesc,
                   howItWorks: [
                     'Impedance (Z) is the total opposition to AC flow, combining resistance and reactance.',
                     'Inductors (L) cause the current to lag behind the voltage.',
@@ -72,7 +73,7 @@ class _ReactiveScreenState extends State<ReactiveScreen> {
                   padding: const EdgeInsets.all(16),
                   child: Column(
                     children: [
-                      _buildStats(provider),
+                      _buildStats(provider, l10n),
                       const Divider(color: Colors.white10),
                       _buildSlider(
                         'Resistance (R)',
@@ -189,24 +190,24 @@ class _ReactiveScreenState extends State<ReactiveScreen> {
     ).animate().fadeIn();
   }
 
-  Widget _buildStats(ACProvider p) {
+  Widget _buildStats(ACProvider p, AppLocalizations l10n) {
     final s = p.state;
     final phiDeg = s.phi * 180 / math.pi;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         _statColumn(
-          'Impedance (Z)',
+          l10n.impedanceZ,
           '${s.impedance.toStringAsFixed(1)}Ω',
           Colors.amber,
         ),
         _statColumn(
-          'Phase (φ)',
+          l10n.phase,
           '${phiDeg.toStringAsFixed(1)}°',
           Colors.purpleAccent,
         ),
         _statColumn(
-          'Avg Power',
+          l10n.avgPower,
           '${s.avgPower.toStringAsFixed(1)}W',
           Colors.redAccent,
         ),

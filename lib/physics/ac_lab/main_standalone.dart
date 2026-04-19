@@ -4,6 +4,8 @@ import 'package:flame/game.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../l10n/generated/app_localizations.dart';
+import '../../../core/services/subscription_service.dart';
+import '../../../core/widgets/plan_picker.dart';
 import 'providers/ac_provider.dart';
 import 'flame/ac_game.dart';
 import 'widgets/control_panel.dart';
@@ -120,9 +122,10 @@ class _ACLabScreenState extends State<ACLabScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     Widget content = Scaffold(
       appBar: AppBar(
-        title: const Text('AC ELECTRICITY LAB', 
+        title: Text(l10n.acElectricityLabTitle, 
           style: TextStyle(letterSpacing: 2, fontWeight: FontWeight.bold, fontSize: 16)),
         backgroundColor: const Color(0xFF0D1117),
         elevation: 0,
@@ -131,7 +134,7 @@ class _ACLabScreenState extends State<ACLabScreen> {
           IconButton(
             key: _oscilloscopeKey,
             icon: const Icon(Icons.show_chart),
-            tooltip: 'Oscilloscope Mode',
+            tooltip: l10n.oscilloscope,
             onPressed: () {
               Navigator.push(
                 context,
@@ -142,7 +145,7 @@ class _ACLabScreenState extends State<ACLabScreen> {
           IconButton(
             key: _transformerKey,
             icon: const Icon(Icons.sync_alt),
-            tooltip: 'Transformer Lab',
+            tooltip: l10n.transformerLab,
             onPressed: () {
               Navigator.push(
                 context,
@@ -153,7 +156,7 @@ class _ACLabScreenState extends State<ACLabScreen> {
           IconButton(
             key: _rlcKey,
             icon: const Icon(Icons.bolt),
-            tooltip: 'RLC Reactive Lab',
+            tooltip: l10n.rlcLab,
             onPressed: () {
               Navigator.push(
                 context,
@@ -172,7 +175,7 @@ class _ACLabScreenState extends State<ACLabScreen> {
           IconButton(
             key: _proKey,
             icon: Icon(Icons.workspace_premium, color: p.Provider.of<SubscriptionService>(context).isPro ? Colors.amber : Colors.white24),
-            tooltip: 'Upgrade Lab',
+            tooltip: l10n.upgrade,
             onPressed: () => showGlobalPlanDialog(context),
           ),
         ],
@@ -193,11 +196,11 @@ class _ACLabScreenState extends State<ACLabScreen> {
               child: SingleChildScrollView(
                 key: _controlPanelKey,
                 padding: const EdgeInsets.all(12.0),
-                child: Column(
+                child: const Column(
                   children: [
-                    const ControlPanel(),
-                    const SizedBox(height: 12),
-                    const FactCards(),
+                    ControlPanel(),
+                    SizedBox(height: 12),
+                    FactCards(),
                   ],
                 ).animate().fadeIn(delay: 600.ms).slideY(begin: 0.05, end: 0),
               ),
@@ -230,21 +233,20 @@ class LearnScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text('AC THEORY')),
-      body: ListView(
+      appBar: AppBar(title: Text(l10n.acTheory)),
+body: ListView(
         padding: const EdgeInsets.all(16),
-        children: const [
-          Text('What is AC?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.amber)),
-          SizedBox(height: 8),
-          Text('Alternating Current (AC) is a type of electrical current in which the direction of the flow of electrons switches back and forth at regular intervals or cycles.', style: TextStyle(color: Colors.white70)),
-          SizedBox(height: 16),
-          Text('Key Concepts:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.cyan)),
-          SizedBox(height: 8),
-          BulletItem(text: 'Vp (Peak Voltage): The maximum voltage reached in a cycle.'),
-          BulletItem(text: 'Frequency (Hz): How many cycles occur per second.'),
-          BulletItem(text: 'Vrms: The effective voltage (heating power) equivalent to DC.'),
-          BulletItem(text: 'Phasor: A rotating vector that visualizes the sine wave phase.'),
+        children: [
+          Text(l10n.whatIsAc, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.amber)),
+          const SizedBox(height: 8),
+          Text(l10n.alternatingCurrent, style: const TextStyle(color: Colors.white70)),
+          const SizedBox(height: 16),
+          Text(l10n.keyConcepts, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.cyan)),
+          const SizedBox(height: 8),
+          BulletItem(text: l10n.peakVoltageDesc),
+          BulletItem(text: l10n.frequencyDesc),
         ],
       ),
     );

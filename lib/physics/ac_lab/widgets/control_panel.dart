@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/ac_provider.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class ControlPanel extends StatelessWidget {
   const ControlPanel({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final provider = context.watch<ACProvider>();
     final state = provider.state;
 
@@ -20,7 +22,7 @@ class ControlPanel extends StatelessWidget {
       child: Column(
         children: [
           _buildSlider(
-            label: 'Peak Voltage (Vp)',
+            label: l10n.peakVoltageVp,
             value: state.vp,
             min: 10,
             max: 340,
@@ -28,7 +30,7 @@ class ControlPanel extends StatelessWidget {
             color: Colors.amber,
           ),
           _buildSlider(
-            label: 'Frequency (Hz)',
+            label: l10n.frequencyHz,
             value: state.frequency,
             min: 1,
             max: 100,
@@ -36,7 +38,7 @@ class ControlPanel extends StatelessWidget {
             color: Colors.green,
           ),
           _buildSlider(
-            label: 'Resistance (Ω)',
+            label: l10n.resistance,
             value: state.resistance,
             min: 10,
             max: 500,
@@ -50,9 +52,9 @@ class ControlPanel extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: () => provider.togglePlay(),
                 icon: Icon(provider.isRunning ? Icons.pause : Icons.play_arrow),
-                label: Text(provider.isRunning ? 'PAUSE' : 'PLAY'),
+                label: Text(provider.isRunning ? l10n.pause : l10n.play),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.amber.withOpacity(0.1),
+                  backgroundColor: Colors.amber.withValues(alpha: 0.1),
                   foregroundColor: Colors.amber,
                 ),
               ),
@@ -60,20 +62,20 @@ class ControlPanel extends StatelessWidget {
               OutlinedButton.icon(
                 onPressed: () => provider.reset(),
                 icon: const Icon(Icons.replay),
-                label: const Text('RESET'),
+                label: Text(l10n.reset),
                 style: OutlinedButton.styleFrom(foregroundColor: Colors.cyan),
               ),
             ],
           ),
           const Divider(color: Colors.white10),
-          SwitchListTile(
-            title: const Text('Mains Hum (Haptic)', style: TextStyle(color: Colors.white70, fontSize: 12)),
-            value: provider.humEnabled,
-            onChanged: (v) => provider.toggleHum(),
-            activeThumbColor: Colors.amber,
-            contentPadding: EdgeInsets.zero,
-            dense: true,
-          ),
+          // SwitchListTile(
+          //   title: Text(l10n.mainsHum, style: const TextStyle(color: Colors.white70, fontSize: 12)),
+          //   value: provider.humEnabled,
+          //   onChanged: (v) => provider.toggleHum(),
+          //   activeThumbColor: Colors.amber,
+          //   contentPadding: EdgeInsets.zero,
+          //   dense: true,
+          // ),
         ],
       ),
     );
@@ -93,7 +95,13 @@ class ControlPanel extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(label, style: TextStyle(color: color, fontSize: 12)),
-            Text(value.toStringAsFixed(0), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            Text(
+              value.toStringAsFixed(0),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
         Slider(

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/ac_provider.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class FactCards extends StatelessWidget {
   const FactCards({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final provider = context.watch<ACProvider>();
     final s = provider.state;
 
     return Row(
       children: [
         _buildFactCard(
-          title: 'RMS Voltage',
+          title: l10n.rmsVoltage,
           value: '${s.valVrms.toStringAsFixed(1)} V',
           formula: 'Vp / √2',
           color: Colors.amber,
@@ -21,7 +23,7 @@ class FactCards extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         _buildFactCard(
-          title: 'Avg Power',
+          title: l10n.avgPower,
           value: '${s.avgPower.toStringAsFixed(1)} W',
           formula: 'Vrms * Irms',
           color: Colors.redAccent,
@@ -44,7 +46,7 @@ class FactCards extends StatelessWidget {
         decoration: BoxDecoration(
           color: const Color(0xFF161B22),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: color.withOpacity(0.2)),
+          border: Border.all(color: color.withValues(alpha: 0.2)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,13 +55,13 @@ class FactCards extends StatelessWidget {
               children: [
                 Icon(icon, color: color, size: 16),
                 const SizedBox(width: 4),
-                Text(title, style: TextStyle(color: color.withOpacity(0.7), fontSize: 10)),
+                Text(title, style: TextStyle(color: color.withValues(alpha: 0.7), fontSize: 10)),
               ],
             ),
             const SizedBox(height: 4),
             Text(value, style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 2),
-            Text(formula, style: TextStyle(color: Colors.white24, fontSize: 9, fontStyle: FontStyle.italic)),
+            Text(formula, style: const TextStyle(color: Colors.white24, fontSize: 9, fontStyle: FontStyle.italic)),
           ],
         ),
       ),

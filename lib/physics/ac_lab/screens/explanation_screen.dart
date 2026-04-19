@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class ModuleExplanationScreen extends StatelessWidget {
   final String title;
@@ -17,6 +18,7 @@ class ModuleExplanationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         title: Text(title.toUpperCase(), 
@@ -31,7 +33,7 @@ class ModuleExplanationScreen extends StatelessWidget {
           children: [
             _buildSection(
               context,
-              'What is it?',
+              l10n.whatIsIt,
               whatIsIt,
               Icons.info_outline,
             ).animate().fadeIn(duration: 400.ms).slideX(begin: -0.1, end: 0),
@@ -40,8 +42,8 @@ class ModuleExplanationScreen extends StatelessWidget {
             
             _buildSection(
               context,
-              'How it works here?',
-              '', // Content handled by the list below
+              l10n.howItWorks,
+              '', 
               Icons.settings_suggest,
               child: Column(
                 children: howItWorks.map((point) => _buildPoint(point)).toList(),
@@ -54,7 +56,7 @@ class ModuleExplanationScreen extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: () => Navigator.pop(context),
                 icon: const Icon(Icons.arrow_back),
-                label: const Text('GOT IT'),
+                label: Text(l10n.gotIt),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: accentColor.withOpacity(0.2),
                   foregroundColor: accentColor,
