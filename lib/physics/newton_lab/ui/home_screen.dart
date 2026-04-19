@@ -4,6 +4,7 @@ import '../../../core/services/subscription_service.dart';
 import '../../../core/services/walkthrough_service.dart';
 import '../../../core/widgets/ad_widgets.dart';
 import '../../../core/widgets/plan_picker.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import '../core/constants.dart';
 import '../walkthrough/newton_lab_walkthrough.dart';
 import 'widgets/scene_card.dart';
@@ -82,55 +83,79 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     const SizedBox(height: 12),
-                    Text(
-                      "NewtonLab",
-                      style: Theme.of(context).textTheme.displayMedium
-                          ?.copyWith(color: AppColors.primaryAccent),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      "Interactive Physics Simulator",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      textAlign: TextAlign.center,
+                    Builder(
+                      builder: (context) {
+                        final l10n = AppLocalizations.of(context)!;
+                        return Column(
+                          children: [
+                            Text(
+                              l10n.newtonLabTitle,
+                              style: Theme.of(context).textTheme.displayMedium
+                                  ?.copyWith(color: AppColors.primaryAccent),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              l10n.newtonLabSubtitle,
+                              style: Theme.of(context).textTheme.bodyLarge,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        );
+                      },
                     ),
                     const SizedBox(height: 24),
-                    SceneCard(
-                      walkthroughKey: _law1Key,
-                      title: "Law 1: Inertia",
-                      tagline: "Explore Friction and Motion",
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Law1Screen(),
-                          ),
+                    Builder(
+                      builder: (context) {
+                        final l10n = AppLocalizations.of(context)!;
+                        return SceneCard(
+                          walkthroughKey: _law1Key,
+                          title: l10n.law1Title,
+                          tagline: l10n.law1Tagline,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Law1Screen(),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),
-                    SceneCard(
-                      walkthroughKey: _law2Key,
-                      title: "Law 2: F = ma",
-                      tagline: "Force, Mass, and Acceleration",
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Law2Screen(),
-                          ),
+                    Builder(
+                      builder: (context) {
+                        final l10n = AppLocalizations.of(context)!;
+                        return SceneCard(
+                          walkthroughKey: _law2Key,
+                          title: l10n.law2Title,
+                          tagline: l10n.law2Tagline,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Law2Screen(),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),
-                    SceneCard(
-                      walkthroughKey: _law3Key,
-                      title: "Law 3: Action & Reaction",
-                      tagline: "Collisions and Rocket Propulsion",
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Law3Screen(),
-                          ),
+                    Builder(
+                      builder: (context) {
+                        final l10n = AppLocalizations.of(context)!;
+                        return SceneCard(
+                          walkthroughKey: _law3Key,
+                          title: l10n.law3Title,
+                          tagline: l10n.law3Tagline,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Law3Screen(),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),

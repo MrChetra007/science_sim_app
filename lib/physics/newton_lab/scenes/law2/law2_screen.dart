@@ -5,6 +5,7 @@ import '../../core/constants.dart';
 import '../../ui/widgets/neon_slider.dart';
 import '../../ui/widgets/info_panel.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class Law2Screen extends StatefulWidget {
   const Law2Screen({super.key});
@@ -54,7 +55,12 @@ class _Law2ScreenState extends State<Law2Screen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Law 2: F = ma'),
+        title: Builder(
+          builder: (context) {
+            final l10n = AppLocalizations.of(context)!;
+            return Text(l10n.law2ScreenTitle);
+          },
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -66,16 +72,20 @@ class _Law2ScreenState extends State<Law2Screen>
 
           SafeArea(child: GameWidget(game: game)),
 
-          const Positioned(
-            top: 80,
-            right: 20,
-            width: 320,
-            child: InfoPanel(
-              title: "Newton's Second Law",
-              description:
-                  "The acceleration of an object depends on the mass of the object and the amount of force applied.",
-              formula: "F = m × a",
-            ),
+          Builder(
+            builder: (context) {
+              final l10n = AppLocalizations.of(context)!;
+              return Positioned(
+                top: 80,
+                right: 20,
+                width: 320,
+                child: InfoPanel(
+                  title: l10n.newtonSecondLawFullTitle,
+                  description: l10n.newtonSecondLawDesc,
+                  formula: l10n.newtonSecondLawFormula,
+                ),
+              );
+            },
           ),
 
           Positioned(
@@ -91,21 +101,26 @@ class _Law2ScreenState extends State<Law2Screen>
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Row(
+Row(
                         children: [
                           Expanded(
-                            child: NeonSlider(
-                              label:
-                                  'Applied Force: ${_appliedForce.toStringAsFixed(1)} N',
-                              value: _appliedForce,
-                              min: 1,
-                              max: 100,
-                              onChanged: (val) {
-                                setState(() => _appliedForce = val);
-                                game.updateParameters(
-                                  _appliedForce,
-                                  massA,
-                                  massB,
+                            child: Builder(
+                              builder: (context) {
+                                final l10n = AppLocalizations.of(context)!;
+                                return NeonSlider(
+                                  label:
+                                      '${l10n.appliedForce}: ${_appliedForce.toStringAsFixed(1)} N',
+                                  value: _appliedForce,
+                                  min: 1,
+                                  max: 100,
+                                  onChanged: (val) {
+                                    setState(() => _appliedForce = val);
+                                    game.updateParameters(
+                                      _appliedForce,
+                                      massA,
+                                      massB,
+                                    );
+                                  },
                                 );
                               },
                             ),
@@ -113,86 +128,66 @@ class _Law2ScreenState extends State<Law2Screen>
                         ],
                       ),
                       const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: NeonSlider(
-                              label: 'Mass A: ${massA.toStringAsFixed(0)} kg',
-                              value: massA,
-                              min: 1,
-                              max: 50,
-                              onChanged: (val) {
-                                setState(() => massA = val);
-                                game.updateParameters(
-                                  _appliedForce,
-                                  massA,
-                                  massB,
-                                );
-                              },
-                            ),
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: NeonSlider(
-                              label: 'Mass B: ${massB.toStringAsFixed(0)} kg',
-                              value: massB,
-                              min: 1,
-                              max: 50,
-                              onChanged: (val) {
-                                setState(() => massB = val);
-                                game.updateParameters(
-                                  _appliedForce,
-                                  massA,
-                                  massB,
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.background,
-                              side: const BorderSide(
-                                color: AppColors.textSecondary,
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: NeonSlider(
+                                      label: '${l10n.massA}: ${massA.toStringAsFixed(0)} kg',
+                                      value: massA,
+                                      min: 1,
+                                      max: 50,
+                                      onChanged: (val) {
+                                        setState(() => massA = val);
+                                        game.updateParameters(_appliedForce, massA, massB);
+                                      },
+                                    ),
+                                  ),
+                                  const SizedBox(width: 16),
+                                  Expanded(
+                                    child: NeonSlider(
+                                      label: '${l10n.massB}: ${massB.toStringAsFixed(0)} kg',
+                                      value: massB,
+                                      min: 1,
+                                      max: 50,
+                                      onChanged: (val) {
+                                        setState(() => massB = val);
+                                        game.updateParameters(_appliedForce, massA, massB);
+                                      },
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            onPressed: () {
-                              game.resetSimulation();
-                            },
-                            child: const Text(
-                              'RESET',
-                              style: TextStyle(color: AppColors.textPrimary),
-                            ),
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.primaryAccent
-                                  .withOpacity(0.2),
-                              side: const BorderSide(
-                                color: AppColors.primaryAccent,
+                              const SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors.background,
+                                      side: const BorderSide(color: AppColors.textSecondary),
+                                    ),
+                                    onPressed: () => game.resetSimulation(),
+                                    child: Text(l10n.reset, style: const TextStyle(color: AppColors.textPrimary)),
+                                  ),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors.primaryAccent.withOpacity(0.2),
+                                      side: const BorderSide(color: AppColors.primaryAccent),
+                                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                                    ),
+                                    onPressed: () => game.applyForce(_appliedForce),
+                                    child: Text(l10n.applyForce, style: const TextStyle(color: AppColors.primaryAccent, fontWeight: FontWeight.bold)),
+                                  ),
+                                ],
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 32,
-                                vertical: 12,
-                              ),
-                            ),
-                            onPressed: () {
-                              game.applyForce(_appliedForce);
-                            },
-                            child: const Text(
-                              'APPLY FORCE',
-                              style: TextStyle(
-                                color: AppColors.primaryAccent,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
+                            ],
+                          );
+                        },
                       ),
                     ],
                   ),

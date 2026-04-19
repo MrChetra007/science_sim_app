@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' as p;
 import 'package:flame/game.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import 'providers/ac_provider.dart';
 import 'flame/ac_game.dart';
 import 'widgets/control_panel.dart';
@@ -31,8 +33,29 @@ void main() async {
   );
 }
 
-class ACElectricityApp extends StatelessWidget {
+class ACElectricityApp extends StatefulWidget {
   const ACElectricityApp({super.key});
+
+  @override
+  State<ACElectricityApp> createState() => _ACElectricityAppState();
+}
+
+class _ACElectricityAppState extends State<ACElectricityApp> {
+  Locale _locale = const Locale('en');
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLocale();
+  }
+
+  Future<void> _loadLocale() async {
+    final prefs = await SharedPreferences.getInstance();
+    final code = prefs.getString('app_locale');
+    if (code != null && mounted) {
+      setState(() => _locale = Locale(code));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +71,9 @@ class ACElectricityApp extends StatelessWidget {
         ),
       ),
       home: const ACLabScreen(),
+      locale: _locale,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
 }

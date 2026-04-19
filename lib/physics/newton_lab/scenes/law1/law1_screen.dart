@@ -6,6 +6,7 @@ import '../../physics/friction_model.dart';
 import '../../ui/widgets/neon_slider.dart';
 import '../../ui/widgets/info_panel.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class Law1Screen extends StatefulWidget {
   const Law1Screen({super.key});
@@ -58,7 +59,12 @@ class _Law1ScreenState extends State<Law1Screen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Law 1: Inertia & Friction'),
+        title: Builder(
+          builder: (context) {
+            final l10n = AppLocalizations.of(context)!;
+            return Text(l10n.law1ScreenTitle);
+          },
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -73,15 +79,19 @@ class _Law1ScreenState extends State<Law1Screen>
           SafeArea(child: GameWidget(game: game)),
 
           // Info Panel overlay
-          const Positioned(
+          Positioned(
             top: 100,
             right: 20,
             width: 300,
-            child: InfoPanel(
-              title: "Newton's First Law",
-              description:
-                  "An object remains at rest or in uniform motion unless acted upon by a net force.",
-              formula: "ΣF = 0 → a = 0",
+            child: Builder(
+              builder: (context) {
+                final l10n = AppLocalizations.of(context)!;
+                return InfoPanel(
+                  title: l10n.firstLawFullTitle,
+                  description: l10n.newtonFirstLawDesc,
+                  formula: l10n.firstLawFormula,
+                );
+              },
             ),
           ),
 
@@ -107,7 +117,12 @@ class _Law1ScreenState extends State<Law1Screen>
                         children: [
                           const Text('🧊', style: TextStyle(fontSize: 18)),
                           const SizedBox(width: 8),
-                          const Text('Surface'),
+                          Builder(
+                            builder: (context) {
+                              final l10n = AppLocalizations.of(context)!;
+                              return Text(l10n.surface);
+                            },
+                          ),
                           const Spacer(),
                           Container(
                             padding: const EdgeInsets.symmetric(
@@ -158,7 +173,12 @@ class _Law1ScreenState extends State<Law1Screen>
                         children: [
                           const Text('🌍', style: TextStyle(fontSize: 18)),
                           const SizedBox(width: 8),
-                          const Text('Gravity'),
+                          Builder(
+                            builder: (context) {
+                              final l10n = AppLocalizations.of(context)!;
+                              return Text(l10n.gravity);
+                            },
+                          ),
                           const Spacer(),
                           Switch(
                             value: isGravityOn,
@@ -177,7 +197,12 @@ class _Law1ScreenState extends State<Law1Screen>
                       // Speed + Launch Row
                       Row(
                         children: [
-                          const Text('Speed', style: TextStyle(fontSize: 13)),
+                          Builder(
+                            builder: (context) {
+                              final l10n = AppLocalizations.of(context)!;
+                              return Text(l10n.speed, style: const TextStyle(fontSize: 13));
+                            },
+                          ),
                           const SizedBox(width: 8),
                           Expanded(
                             child: NeonSlider(
@@ -238,13 +263,18 @@ class _Law1ScreenState extends State<Law1Screen>
                               isGravityOn,
                             );
                           },
-                          child: const Text(
-                            'LAUNCH',
-                            style: TextStyle(
-                              color: AppColors.primaryAccent,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 2,
-                            ),
+                          child: Builder(
+                            builder: (context) {
+                              final l10n = AppLocalizations.of(context)!;
+                              return Text(
+                                l10n.launch,
+                                style: const TextStyle(
+                                  color: AppColors.primaryAccent,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),

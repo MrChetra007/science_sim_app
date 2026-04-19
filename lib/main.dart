@@ -4,11 +4,14 @@ import 'package:provider/provider.dart' as p;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'l10n/generated/app_localizations.dart';
+
 // Import Global Services
 import 'core/services/subscription_service.dart';
 import 'core/services/ad_service.dart';
 import 'core/services/iap_service.dart';
 import 'core/services/walkthrough_service.dart';
+import 'core/services/locale_provider.dart';
 import 'core/widgets/plan_picker.dart';
 import 'core/widgets/ad_widgets.dart';
 import 'core/widgets/feedback_dialog.dart';
@@ -74,6 +77,9 @@ void main() async {
   final acProvider = ACProvider();
   await acProvider.loadPrefs();
 
+  final localeProvider = LocaleProvider();
+  await localeProvider.init();
+
   runApp(
     rp.ProviderScope(
       child: p.MultiProvider(
@@ -81,6 +87,7 @@ void main() async {
           p.ChangeNotifierProvider.value(value: subscriptionService),
           p.ChangeNotifierProvider(create: (_) => CircuitProvider()),
           p.ChangeNotifierProvider.value(value: acProvider),
+          p.ChangeNotifierProvider.value(value: localeProvider),
         ],
         child: const MainApp(),
       ),
@@ -88,20 +95,35 @@ void main() async {
   );
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
 
   @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Science Lab',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        textTheme: GoogleFonts.orbitronTextTheme(ThemeData.dark().textTheme),
-      ),
-      home: const MainDashboard(),
+    final localeProvider = p.Provider.of<LocaleProvider>(context);
+    
+    return ListenableBuilder(
+      listenable: localeProvider,
+      builder: (context, _) {
+        return MaterialApp(
+          title: 'Science Lab',
+          debugShowCheckedModeBanner: false,
+          locale: localeProvider.locale,
+          supportedLocales: LocaleProvider.supportedLocales,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          theme: ThemeData(
+            useMaterial3: true,
+            brightness: Brightness.dark,
+            textTheme: GoogleFonts.orbitronTextTheme(ThemeData.dark().textTheme),
+          ),
+          home: const MainDashboard(),
+        );
+      },
     );
   }
 }
@@ -135,6 +157,11 @@ class MainDashboard extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
+          IconButton(
+            onPressed: () => _showLanguageDialog(context),
+            icon: const Icon(Icons.language, color: Colors.cyan),
+            tooltip: 'Language',
+          ),
           IconButton(
             onPressed: () => _showWalkthroughHelpDialog(context),
             icon: const Icon(Icons.help_outline, color: Colors.white54),
@@ -178,54 +205,73 @@ class MainDashboard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 10),
-                Text(
-                  'SCIENCE LAB',
-                  style: GoogleFonts.orbitron(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.cyanAccent,
-                    letterSpacing: 4,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  'Virtual Experiment Suite',
-                  style: GoogleFonts.orbitron(
-                    fontSize: 14,
-                    color: Colors.white70,
-                    letterSpacing: 2,
-                  ),
-                  textAlign: TextAlign.center,
+                Builder(
+                  builder: (context) {
+                    final l10n = AppLocalizations.of(context)!;
+                    return Column(
+                      children: [
+                        Text(
+                          l10n.appTitle,
+                          style: GoogleFonts.orbitron(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.cyanAccent,
+                            letterSpacing: 4,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          l10n.virtualExperimentSuite,
+                          style: GoogleFonts.orbitron(
+                            fontSize: 14,
+                            color: Colors.white70,
+                            letterSpacing: 2,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 const SizedBox(height: 50),
-                _buildCategoryCard(
-                  context,
-                  title: "PHYSICS",
-                  subtitle: "Mechanics, Waves & Electricity",
-                  icon: Icons.speed,
-                  color: Colors.cyanAccent,
-                  onTap: () {
-                    Navigator.push(
+                Builder(
+                  builder: (context) {
+                    final l10n = AppLocalizations.of(context)!;
+                    return _buildCategoryCard(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const PhysicsDashboard(),
-                      ),
+                      title: l10n.physics,
+                      subtitle: l10n.physicsSubtitle,
+                      icon: Icons.speed,
+                      color: Colors.cyanAccent,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PhysicsDashboard(),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
                 const SizedBox(height: 24),
-                _buildCategoryCard(
-                  context,
-                  title: "CHEMISTRY",
-                  subtitle: "Acids, Bases & Reactions",
-                  icon: Icons.science,
-                  color: Colors.greenAccent,
-                  onTap: () {
-                    Navigator.push(
+                Builder(
+                  builder: (context) {
+                    final l10n = AppLocalizations.of(context)!;
+                    return _buildCategoryCard(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const ChemistryDashboard(),
-                      ),
+                      title: l10n.chemistry,
+                      subtitle: l10n.chemistrySubtitle,
+                      icon: Icons.science,
+                      color: Colors.greenAccent,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ChemistryDashboard(),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
@@ -301,6 +347,60 @@ class MainDashboard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void _showLanguageDialog(BuildContext context) {
+    final localeProvider = p.Provider.of<LocaleProvider>(context, listen: false);
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: const Color(0xFF1E2D3D),
+        title: const Row(
+          children: [
+            Icon(Icons.language, color: Colors.cyan),
+            SizedBox(width: 12),
+            Text('Language', style: TextStyle(color: Colors.white)),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: Icon(
+                localeProvider.locale.languageCode == 'en'
+                    ? Icons.radio_button_checked
+                    : Icons.radio_button_unchecked,
+                color: Colors.cyan,
+              ),
+              title: const Text('English', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                localeProvider.setLocale(const Locale('en'));
+                Navigator.pop(ctx);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                localeProvider.locale.languageCode == 'km'
+                    ? Icons.radio_button_checked
+                    : Icons.radio_button_unchecked,
+                color: Colors.cyan,
+              ),
+              title: const Text('Khmer', style: TextStyle(color: Colors.white)),
+              onTap: () {
+                localeProvider.setLocale(const Locale('km'));
+                Navigator.pop(ctx);
+              },
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Close', style: TextStyle(color: Colors.white54)),
+          ),
+        ],
       ),
     );
   }
@@ -600,98 +700,121 @@ class PhysicsDashboard extends StatelessWidget {
                     crossAxisSpacing: 16,
                     childAspectRatio: 0.95,
                     children: [
-                      _buildLabCard(
-                        context,
-                        title: "NEWTON",
-                        subtitle: "Laws of Motion",
-                        icon: Icons.architecture,
-                        color: Colors.cyanAccent,
-                        onTap: () {
-                          Navigator.push(
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => const NewtonsLabApp(),
-                            ),
+                            title: l10n.newtonLab,
+                            subtitle: l10n.newtonLabSubtitle,
+                            icon: Icons.architecture,
+                            color: Colors.cyanAccent,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const NewtonsLabApp(),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),
-                      _buildLabCard(
-                        context,
-                        title: "OHM",
-                        subtitle: "Electricity",
-                        icon: Icons.bolt,
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
+                            context,
+                            title: l10n.ohmLab,
+                            subtitle: l10n.ohmLabSubtitle,
+                            icon: Icons.bolt,
                         color: Colors.amberAccent,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Theme(
-                                data: ohm_theme.AppTheme.darkTheme,
-                                child: const ohm_home.HomeScreen(),
-                              ),
-                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Theme(
+                                    data: ohm_theme.AppTheme.darkTheme,
+                                    child: const ohm_home.HomeScreen(),
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),
-                      _buildLabCard(
-                        context,
-                        title: "PROJECTILE",
-                        subtitle: "Kinematics",
-                        icon: Icons.rocket_launch,
-                        color: Colors.deepPurpleAccent,
-                        onTap: () {
-                          Navigator.push(
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => const projectile_app.App(),
-                            ),
+                            title: l10n.projectileLab,
+                            subtitle: l10n.projectileLabSubtitle,
+                            icon: Icons.rocket_launch,
+                            color: Colors.deepPurpleAccent,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const projectile_app.App(),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),
-                      _buildLabCard(
-                        context,
-                        title: "AC LAB",
-                        subtitle: "Alternating Current",
-                        icon: Icons.vibration,
-                        color: Colors.orangeAccent,
-                        onTap: () {
-                          Navigator.push(
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => const ac_main.ACLabScreen(),
-                            ),
+                            title: l10n.acLab,
+                            subtitle: l10n.acLabSubtitle,
+                            icon: Icons.vibration,
+                            color: Colors.orangeAccent,
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ac_main.ACLabScreen())),
                           );
                         },
                       ),
-                      _buildLabCard(
-                        context,
-                        title: "WAVE LAB",
-                        subtitle: "Wave Mechanics",
-                        icon: Icons.waves,
-                        color: Colors.lightBlueAccent,
-                        onTap: () {
-                          Navigator.push(
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const wave_main.HomeScreen(),
-                            ),
+                            title: l10n.waveLab,
+                            subtitle: l10n.waveLabSubtitle,
+                            icon: Icons.waves,
+                            color: Colors.lightBlueAccent,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const wave_main.HomeScreen(),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),
-                      _buildLabCard(
-                        context,
-                        title: "THERMO",
-                        subtitle: "Thermodynamics",
-                        icon: Icons.thermostat,
-                        color: Colors.redAccent,
-                        onTap: () {
-                          Navigator.push(
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const thermo_main.ThermoSimApp(),
-                            ),
+                            title: l10n.thermoLab,
+                            subtitle: l10n.thermoLabSubtitle,
+                            icon: Icons.thermostat,
+                            color: Colors.redAccent,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const thermo_main.ThermoSimApp(),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),
@@ -822,48 +945,49 @@ class ChemistryDashboard extends StatelessWidget {
                     crossAxisSpacing: 16,
                     childAspectRatio: 0.95,
                     children: [
-                      _buildLabCard(
-                        context,
-                        title: "ATOMIC & MOLECULAR",
-                        subtitle: "Atoms & Molecules",
-                        icon: Icons.blur_circular,
-                        color: Colors.purpleAccent,
-                        onTap: () {
-                          Navigator.push(
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
                             context,
-                            MaterialPageRoute(
-                              builder: (_) => _AtomicLabWrapper(),
-                            ),
+                            title: l10n.atomicMolecular,
+                            subtitle: l10n.atomicMolecularSubtitle,
+                            icon: Icons.blur_circular,
+                            color: Colors.purpleAccent,
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => _AtomicLabWrapper())),
                           );
                         },
                       ),
-                      _buildLabCard(
-                        context,
-                        title: "pH LAB",
-                        subtitle: "Acids & Bases",
-                        icon: Icons.science,
-                        color: Colors.greenAccent,
-                        onTap: () {
-                          Navigator.push(
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => const ph_main.PhSimApp(),
-                            ),
+                            title: l10n.phLab,
+                            subtitle: l10n.phLabSubtitle,
+                            icon: Icons.science,
+                            color: Colors.greenAccent,
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ph_main.PhSimApp())),
                           );
                         },
                       ),
-                      _buildLabCard(
-                        context,
-                        title: "ELECTROCHEM",
-                        subtitle: "Batteries & Electrolysis",
-                        icon: Icons.bolt,
-                        color: Colors.orangeAccent,
-                        onTap: () {
-                          Navigator.push(
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
                             context,
-                            MaterialPageRoute(
-                              builder: (_) => const _ElectrochemWrapper(),
-                            ),
+                            title: l10n.electrochem,
+                            subtitle: l10n.electrochemSubtitle,
+                            icon: Icons.bolt,
+                            color: Colors.orangeAccent,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const _ElectrochemWrapper(),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),

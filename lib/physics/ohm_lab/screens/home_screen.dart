@@ -15,6 +15,7 @@ import '../../../core/widgets/ad_widgets.dart';
 import '../../../core/widgets/plan_picker.dart';
 import '../../../core/services/subscription_service.dart';
 import '../../../core/services/walkthrough_service.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -94,9 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
             fontFamily: 'Orbitron',
             fontSize: 10,
           ),
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.bolt), label: 'SIMULATOR'),
-            BottomNavigationBarItem(icon: Icon(Icons.school), label: 'LEARN'),
+          items: [
+            BottomNavigationBarItem(icon: const Icon(Icons.bolt), label: 'SIMULATOR'),
+            BottomNavigationBarItem(icon: const Icon(Icons.school), label: 'LEARN'),
           ],
         ),
       ),

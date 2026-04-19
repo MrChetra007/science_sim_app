@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:provider/provider.dart' as p;
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../l10n/generated/app_localizations.dart';
 import '../../core/widgets/ad_widgets.dart';
 import '../../core/widgets/plan_picker.dart';
 import '../../core/services/subscription_service.dart';
@@ -14,16 +16,25 @@ import 'screens/challenge_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  final prefs = await SharedPreferences.getInstance();
+  final code = prefs.getString('app_locale') ?? 'en';
+
   runApp(
     p.MultiProvider(
       providers: [],
-      child: MaterialApp(home: HomeScreen()),
+      child: MaterialApp(
+        home: HomeScreen(locale: Locale(code)),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: Locale(code),
+      ),
     ),
   );
 }
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final Locale? locale;
+  const HomeScreen({super.key, this.locale});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

@@ -5,6 +5,7 @@ import '../../core/constants.dart';
 import '../../ui/widgets/neon_slider.dart';
 import '../../ui/widgets/info_panel.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class Law3Screen extends StatefulWidget {
   const Law3Screen({super.key});
@@ -13,14 +14,12 @@ class Law3Screen extends StatefulWidget {
   State<Law3Screen> createState() => _Law3ScreenState();
 }
 
-class _Law3ScreenState extends State<Law3Screen>
-    with SingleTickerProviderStateMixin {
+class _Law3ScreenState extends State<Law3Screen> with SingleTickerProviderStateMixin {
   late Law3Game game;
   late AnimationController _animationController;
   late Animation<Offset> _slideAnimation;
 
   Law3SceneType selectedScene = Law3SceneType.collision;
-
   double massA = 10.0;
   double massB = 10.0;
   double bounciness = 1.0;
@@ -35,13 +34,13 @@ class _Law3ScreenState extends State<Law3Screen>
       duration: const Duration(milliseconds: 600),
     );
 
-    _slideAnimation = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
-        .animate(
-          CurvedAnimation(
-            parent: _animationController,
-            curve: Curves.easeOutCubic,
-          ),
-        );
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, 1),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeOutCubic,
+    ));
 
     _animationController.forward();
   }
@@ -56,7 +55,12 @@ class _Law3ScreenState extends State<Law3Screen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Law 3: Action & Reaction'),
+        title: Builder(
+          builder: (context) {
+            final l10n = AppLocalizations.of(context)!;
+            return Text(l10n.law3ScreenTitle);
+          },
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -65,24 +69,22 @@ class _Law3ScreenState extends State<Law3Screen>
         children: [
           Container(color: AppColors.background),
           CustomPaint(painter: GridPainter(), child: Container()),
-
           SafeArea(child: GameWidget(game: game)),
-
           Positioned(
             top: 80,
             right: 20,
             width: 320,
-            child: InfoPanel(
-              title: selectedScene == Law3SceneType.collision
-                  ? "Collisions"
-                  : "Rocket Propulsion",
-              description: selectedScene == Law3SceneType.collision
-                  ? "When objects collide, they exert equal and opposite forces on each other (Impulse)."
-                  : "A rocket expels particles downward (Action), which pushes the rocket upward (Reaction).",
-              formula: "F_AB = -F_BA",
+            child: Builder(
+              builder: (context) {
+                final l10n = AppLocalizations.of(context)!;
+                return InfoPanel(
+                  title: selectedScene == Law3SceneType.collision ? l10n.collisions : l10n.rocketPropulsion,
+                  description: selectedScene == Law3SceneType.collision ? l10n.newtonThirdLawDesc : l10n.rocketDescription,
+                  formula: selectedScene == Law3SceneType.collision ? "F_AB = -F_BA" : "F_action = -F_reaction",
+                );
+              },
             ),
           ),
-
           Positioned(
             bottom: 80,
             left: 20,
@@ -93,153 +95,122 @@ class _Law3ScreenState extends State<Law3Screen>
                 color: AppColors.surface.withValues(alpha: 0.9),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
+                  child: Builder(
+                    builder: (context) {
+                      final l10n = AppLocalizations.of(context)!;
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Text('Demo: '),
-                          const SizedBox(width: 8),
-                          DropdownButton<Law3SceneType>(
-                            value: selectedScene,
-                            dropdownColor: AppColors.background,
-                            underline: const SizedBox(),
-                            items: const [
-                              DropdownMenuItem(
-                                value: Law3SceneType.collision,
-                                child: Text('Elastic Collisions'),
-                              ),
-                              DropdownMenuItem(
-                                value: Law3SceneType.rocket,
-                                child: Text('Rocket Propulsion'),
+                          Row(
+                            children: [
+                              Text(l10n.demo),
+                              const SizedBox(width: 8),
+                              DropdownButton<Law3SceneType>(
+                                value: selectedScene,
+                                dropdownColor: AppColors.background,
+                                underline: const SizedBox(),
+                                items: [
+                                  DropdownMenuItem(
+                                    value: Law3SceneType.collision,
+                                    child: Text(l10n.elasticCollisions),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: Law3SceneType.rocket,
+                                    child: Text(l10n.rocketPropulsion),
+                                  ),
+                                ],
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    setState(() => selectedScene = value);
+                                    game.switchScene(value);
+                                  }
+                                },
                               ),
                             ],
-                            onChanged: (value) {
-                              if (value != null) {
-                                setState(() {
-                                  selectedScene = value;
-                                });
-                                game.switchScene(value);
-                              }
-                            },
                           ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      if (selectedScene == Law3SceneType.collision) ...[
-                        Row(
-                          children: [
-                            Expanded(
-                              child: NeonSlider(
-                                label: 'Mass A: ${massA.toStringAsFixed(0)} kg',
-                                value: massA,
-                                min: 1,
-                                max: 50,
-                                onChanged: (val) {
-                                  setState(() => massA = val);
-                                  game.updateParameters(
-                                    massA,
-                                    massB,
-                                    bounciness,
-                                  );
-                                },
-                              ),
+                          const SizedBox(height: 8),
+                          if (selectedScene == Law3SceneType.collision) ...[
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: NeonSlider(
+                                    label: '${l10n.massA}: ${massA.toStringAsFixed(0)} kg',
+                                    value: massA,
+                                    min: 1,
+                                    max: 50,
+                                    onChanged: (val) {
+                                      setState(() => massA = val);
+                                      game.updateParameters(massA, massB, bounciness);
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: NeonSlider(
+                                    label: '${l10n.massB}: ${massB.toStringAsFixed(0)} kg',
+                                    value: massB,
+                                    min: 1,
+                                    max: 50,
+                                    onChanged: (val) {
+                                      setState(() => massB = val);
+                                      game.updateParameters(massA, massB, bounciness);
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: NeonSlider(
-                                label: 'Mass B: ${massB.toStringAsFixed(0)} kg',
-                                value: massB,
-                                min: 1,
-                                max: 50,
-                                onChanged: (val) {
-                                  setState(() => massB = val);
-                                  game.updateParameters(
-                                    massA,
-                                    massB,
-                                    bounciness,
-                                  );
-                                },
-                              ),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: NeonSlider(
+                                    label: '${l10n.bounciness}: ${bounciness.toStringAsFixed(2)}',
+                                    value: bounciness,
+                                    min: 0,
+                                    max: 1,
+                                    onChanged: (val) {
+                                      setState(() => bounciness = val);
+                                      game.updateParameters(massA, massB, bounciness);
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
-                        ),
-                        const SizedBox(height: 8),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: NeonSlider(
-                                label:
-                                    'Bounciness (e): ${bounciness.toStringAsFixed(2)}',
-                                value: bounciness,
-                                min: 0,
-                                max: 1,
-                                onChanged: (val) {
-                                  setState(() => bounciness = val);
-                                  game.updateParameters(
-                                    massA,
-                                    massB,
-                                    bounciness,
-                                  );
-                                },
+                          const SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.background,
+                                  side: const BorderSide(color: AppColors.textSecondary),
+                                ),
+                                onPressed: () => game.resetSimulation(),
+                                child: Text(l10n.reset, style: const TextStyle(color: AppColors.textPrimary)),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.background,
-                              side: const BorderSide(
-                                color: AppColors.textSecondary,
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.primaryAccent.withOpacity(0.2),
+                                  side: const BorderSide(color: AppColors.primaryAccent),
+                                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                                ),
+                                onPressed: () => game.launch(),
+                                child: Text(
+                                  selectedScene == Law3SceneType.collision ? l10n.simulate : l10n.launch,
+                                  style: const TextStyle(color: AppColors.primaryAccent, fontWeight: FontWeight.bold),
+                                ),
                               ),
-                            ),
-                            onPressed: () {
-                              game.resetSimulation();
-                            },
-                            child: const Text(
-                              'RESET',
-                              style: TextStyle(color: AppColors.textPrimary),
-                            ),
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.primaryAccent
-                                  .withOpacity(0.2),
-                              side: const BorderSide(
-                                color: AppColors.primaryAccent,
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 32,
-                                vertical: 12,
-                              ),
-                            ),
-                            onPressed: () {
-                              game.launch();
-                            },
-                            child: Text(
-                              selectedScene == Law3SceneType.collision
-                                  ? 'SIMULATE'
-                                  : 'LAUNCH',
-                              style: const TextStyle(
-                                color: AppColors.primaryAccent,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            ],
                           ),
                         ],
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
               ),
             ),
           ),
-
           const Align(
             alignment: Alignment.bottomCenter,
             child: SafeArea(child: GlobalBannerAdWidget()),
