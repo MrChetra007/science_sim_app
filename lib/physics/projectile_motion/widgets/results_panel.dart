@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/simulation_provider.dart';
 import '../../../core/widgets/plan_picker.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import 'math_solver_overlay.dart';
 
 class ResultsPanel extends ConsumerWidget {
@@ -9,6 +10,7 @@ class ResultsPanel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(simulationProvider);
     final traj = state.trajectory;
 
@@ -25,26 +27,26 @@ class ResultsPanel extends ConsumerWidget {
       child: Row(
         children: [
           _ResultTile(
-            label: 'Range',
+            label: l10n.pRange,
             value: isActive ? '${range.toStringAsFixed(1)} m' : '— m',
             icon: Icons.swap_horiz_rounded,
             color: const Color(0xFF00E5FF),
           ),
           _ResultTile(
-            label: 'Height',
+            label: l10n.pMaxHeight,
             value: isActive ? '${maxH.toStringAsFixed(1)} m' : '— m',
             icon: Icons.arrow_upward_rounded,
             color: const Color(0xFF69FF47),
           ),
           _ResultTile(
-            label: 'Time',
+            label: l10n.pTime,
             value: isActive ? '${hang.toStringAsFixed(2)} s' : '— s',
             icon: Icons.timer_rounded,
             color: const Color(0xFFFFD740),
           ),
           if (isActive) ...[
             _Divider(),
-            _MathButton(isPro: isPro),
+            _MathButton(isPro: isPro, l10n: l10n),
           ],
         ],
       ),
@@ -54,7 +56,8 @@ class ResultsPanel extends ConsumerWidget {
 
 class _MathButton extends StatelessWidget {
   final bool isPro;
-  const _MathButton({required this.isPro});
+  final AppLocalizations l10n;
+  const _MathButton({required this.isPro, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +79,7 @@ class _MathButton extends StatelessWidget {
                       ? const Color(0xFF00E5FF)
                       : const Color(0xFF00E5FF).withValues(alpha: 0.3),
                 ),
-                tooltip: isPro ? 'View Math' : 'Pro Feature',
+                tooltip: isPro ? l10n.pViewMath : l10n.pProFeature,
               ),
               if (!isPro)
                 Positioned(
@@ -98,7 +101,7 @@ class _MathButton extends StatelessWidget {
             ],
           ),
           Text(
-            'MATH',
+            l10n.pMath,
             style: TextStyle(
               color: isPro
                   ? const Color(0xFF00E5FF)
@@ -112,9 +115,6 @@ class _MathButton extends StatelessWidget {
     );
   }
 }
-
-// Ensure ProUpgradeOverlay is imported
-// Ignoring the need to import since it's likely handled if I add it to the top.
 
 class _Divider extends StatelessWidget {
   @override

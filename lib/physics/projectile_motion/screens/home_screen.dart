@@ -6,6 +6,7 @@ import '../../../core/services/subscription_service.dart';
 import '../../../core/services/walkthrough_service.dart';
 import '../../../core/widgets/plan_picker.dart';
 import '../../../core/widgets/ad_widgets.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import '../walkthrough/projectile_motion_walkthrough.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -88,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final size = MediaQuery.of(context).size;
     Widget content = Scaffold(
       backgroundColor: const Color(0xFF040D17),
@@ -139,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         ),
                       ),
                       const SizedBox(width: 6),
-                      Text('READY',
+                      Text(l10n.ready,
                           style: TextStyle(
                             fontFamily: 'monospace',
                             fontSize: 11,
@@ -188,10 +190,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       Color(0xFF64FFDA)
                     ],
                   ).createShader(bounds),
-                  child: const Text(
-                    'Physics\nShot',
+                  child: Text(
+                    l10n.projectileTitle,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
@@ -210,13 +212,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         height: 1,
                         color: const Color(0xFF00E5FF).withValues(alpha: 0.4)),
                     const SizedBox(width: 8),
-                    Text('PHYSICS AT YOUR FINGERTIPS',
-                        style: TextStyle(
+                    Text(l10n.physicsAtYourFingertips,
+                        style: const TextStyle(
                           fontSize: 10,
                           letterSpacing: 3,
                           fontWeight: FontWeight.w500,
                           color:
-                              const Color(0xFF80DEEA).withValues(alpha: 0.65),
+                              Color(0xFF80DEEA),
                         )),
                     const SizedBox(width: 8),
                     Container(
@@ -233,13 +235,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     alignment: WrapAlignment.center,
                     spacing: 8,
                     runSpacing: 8,
-                    children: const [
-                      _HoloChip(icon: '🎯', label: '8 Projectiles'),
-                      _HoloChip(icon: '🪐', label: '4 Planets'),
-                      _HoloChip(icon: '💨', label: 'Air Resistance'),
-                      _HoloChip(icon: '📊', label: 'Live Graphs'),
-                      _HoloChip(icon: '🐢', label: 'Slow Motion'),
-                      _HoloChip(icon: '✏️', label: 'Challenge Mode'),
+                    children: [
+                      _HoloChip(icon: '🎯', label: l10n.eightProjectiles),
+                      _HoloChip(icon: '🪐', label: l10n.fourPlanets),
+                      _HoloChip(icon: '💨', label: l10n.airResistance),
+                      _HoloChip(icon: '📊', label: l10n.liveGraphs),
+                      _HoloChip(icon: '🐢', label: l10n.slowMotion),
+                      _HoloChip(icon: '✏️', label: l10n.challengeMode),
                     ],
                   ),
                 ),
@@ -253,11 +255,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const _StatReadout(label: 'GRAVITY', value: '9.8 m/s²'),
+                        _StatReadout(label: l10n.gravity, value: '9.8 m/s²'),
                         _VertDivider(),
-                        const _StatReadout(label: 'DRAG', value: '0.47 Cd'),
+                        _StatReadout(label: l10n.drag, value: '0.47 Cd'),
                         _VertDivider(),
-                        const _StatReadout(label: 'ENV', value: 'EARTH'),
+                        _StatReadout(label: l10n.env, value: l10n.earth),
                       ],
                     ),
                   ),
@@ -314,15 +316,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   )
                                 ],
                               ),
-                              child: const Center(
+                              child: Center(
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Icon(Icons.rocket_launch_rounded,
+                                    const Icon(Icons.rocket_launch_rounded,
                                         color: Color(0xFFE0F7FA), size: 22),
-                                    SizedBox(width: 10),
-                                    Text('LAUNCH SIMULATOR',
-                                        style: TextStyle(
+                                    const SizedBox(width: 10),
+                                    Text(l10n.launchSimulator,
+                                        style: const TextStyle(
                                           color: Color(0xFFE0F7FA),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w800,

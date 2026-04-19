@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/simulation_provider.dart';
 import '../physics/math_solver.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class MathSolverOverlay extends ConsumerWidget {
   const MathSolverOverlay({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(simulationProvider);
 
-    final solver = MathSolver(
+    final raw = generateFullDerivation(
       v0: state.initialSpeed,
       angleDeg: state.angle,
       h0: state.initialHeight,
       g: state.gravity,
       airResistance: state.airResistance,
+      l10n: l10n,
     );
-
-    final raw = solver.generateFullDerivation();
     final sections = _parseSections(raw);
 
     return Container(

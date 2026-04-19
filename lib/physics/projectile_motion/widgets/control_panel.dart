@@ -5,12 +5,14 @@ import '../physics/gravity_presets.dart';
 import '../physics/projectile_objects.dart';
 import '../providers/simulation_provider.dart';
 import '../../../core/widgets/plan_picker.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class ControlPanel extends ConsumerWidget {
   const ControlPanel({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(simulationProvider);
     final notifier = ref.read(simulationProvider.notifier);
 
@@ -26,7 +28,7 @@ class ControlPanel extends ConsumerWidget {
               children: [
                 _ActionButton(
                   icon: Icons.rocket_launch_rounded,
-                  label: 'Launch',
+                  label: l10n.pLaunch,
                   color: const Color(0xFF00BCD4),
                   onTap: (state.isIdle || state.isCompleted || state.isPaused)
                       ? notifier.launch
@@ -37,7 +39,7 @@ class ControlPanel extends ConsumerWidget {
                   icon: state.isRunning
                       ? Icons.pause_rounded
                       : Icons.play_arrow_rounded,
-                  label: state.isRunning ? 'Pause' : 'Resume',
+                  label: state.isRunning ? l10n.pPause : l10n.pResume,
                   color: const Color(0xFFFFD740),
                   onTap: state.isRunning
                       ? notifier.pause
@@ -48,7 +50,7 @@ class ControlPanel extends ConsumerWidget {
                 const SizedBox(width: 8),
                 _ActionButton(
                   icon: Icons.refresh_rounded,
-                  label: 'Reset',
+                  label: l10n.pReset,
                   color: const Color(0xFFFF5252),
                   onTap: notifier.reset,
                 ),
@@ -57,7 +59,7 @@ class ControlPanel extends ConsumerWidget {
                   icon: state.slowMotion
                       ? Icons.speed_rounded
                       : Icons.slow_motion_video_rounded,
-                  label: state.slowMotion ? 'Normal' : 'Slow Mo',
+                  label: state.slowMotion ? l10n.pNormal : l10n.pSlowMo,
                   color: const Color(0xFF69FF47),
                   onTap: notifier.toggleSlowMotion,
                   active: state.slowMotion,
@@ -69,7 +71,7 @@ class ControlPanel extends ConsumerWidget {
 
             // ── SLIDERS ──────────────────────────────────────────────────
             _SliderRow(
-              label: 'Angle',
+              label: l10n.pAngle,
               value: state.angle,
               min: 0,
               max: 90,
@@ -78,7 +80,7 @@ class ControlPanel extends ConsumerWidget {
               onChanged: notifier.updateAngle,
             ),
             _SliderRow(
-              label: 'Speed',
+              label: l10n.pSpeed,
               value: state.initialSpeed,
               min: 1,
               max: 50,
@@ -87,7 +89,7 @@ class ControlPanel extends ConsumerWidget {
               onChanged: notifier.updateSpeed,
             ),
             _SliderRow(
-              label: 'Height',
+              label: l10n.pHeight,
               value: state.initialHeight,
               min: 0,
               max: 30,
@@ -98,7 +100,7 @@ class ControlPanel extends ConsumerWidget {
             const _Divider(),
 
             // ── GRAVITY PRESETS ──────────────────────────────────────────
-            const _SectionLabel('Gravity'),
+            _SectionLabel(l10n.pGravity),
             const SizedBox(height: 6),
             Wrap(
               spacing: 6,
@@ -177,7 +179,7 @@ class ControlPanel extends ConsumerWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          '⚙️ Custom',
+                          '⚙️ ${l10n.pCustom}',
                           style: TextStyle(
                             color: state.selectedGravityId == 'custom'
                                 ? const Color(0xFF00E5FF)
@@ -202,7 +204,7 @@ class ControlPanel extends ConsumerWidget {
             if (state.selectedGravityId == 'custom') ...[
               const SizedBox(height: 8),
               _SliderRow(
-                label: 'Value',
+                label: l10n.pGravity,
                 value: state.gravity,
                 min: 0,
                 max: 30,
@@ -215,7 +217,7 @@ class ControlPanel extends ConsumerWidget {
             const _Divider(),
 
             // ── PROJECTILE SELECTOR ──────────────────────────────────────
-            const _SectionLabel('Projectile'),
+            _SectionLabel(l10n.pProjectile),
             const SizedBox(height: 6),
             Wrap(
               spacing: 6,
@@ -288,7 +290,7 @@ class ControlPanel extends ConsumerWidget {
             // ── CHALLENGE MODE TOGGLE ───────────────────────────────────
             Row(
               children: [
-                const _SectionLabel('Challenge Mode'),
+                _SectionLabel(l10n.challengeMode),
                 const Spacer(),
                 Switch(
                   value: state.isChallengeMode,
@@ -321,8 +323,8 @@ class ControlPanel extends ConsumerWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'TARGET DISTANCE',
+                        Text(
+                          l10n.pTargetDistance,
                           style: TextStyle(
                             color: Color(0xFF546E7A),
                             fontSize: 8,
@@ -343,8 +345,8 @@ class ControlPanel extends ConsumerWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const Text(
-                          'CURRENT SCORE',
+                        Text(
+                          l10n.pCurrentScore,
                           style: TextStyle(
                             color: Color(0xFF546E7A),
                             fontSize: 8,
@@ -370,7 +372,7 @@ class ControlPanel extends ConsumerWidget {
             // ── AIR RESISTANCE TOGGLE ────────────────────────────────────
             Row(
               children: [
-                const _SectionLabel('Air Resistance'),
+                _SectionLabel(l10n.pAirResistance),
                 const Spacer(),
                 Switch(
                   value: state.airResistance,
@@ -391,7 +393,7 @@ class ControlPanel extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 4, bottom: 4),
                 child: Text(
-                  'Using realistic drag for: ${objectById(state.selectedObjectId).name}',
+                  '${l10n.pUsingDrag} ${objectById(state.selectedObjectId).name}',
                   style: TextStyle(
                     color: const Color(0xFF80DEEA).withValues(alpha: 0.7),
                     fontSize: 11,
@@ -403,7 +405,7 @@ class ControlPanel extends ConsumerWidget {
             // ── VECTOR VISUALIZATION TOGGLES ────────────────────────────
             Row(
               children: [
-                const _SectionLabel('Show Forces'),
+                _SectionLabel(l10n.pShowForces),
                 const Spacer(),
                 Switch(
                   value: state.showForces,
@@ -420,7 +422,7 @@ class ControlPanel extends ConsumerWidget {
             ),
             Row(
               children: [
-                const _SectionLabel('Show Velocity'),
+                _SectionLabel(l10n.pShowVelocity),
                 const Spacer(),
                 Switch(
                   value: state.showVelocity,
@@ -628,6 +630,7 @@ class _ObjectSpecs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
@@ -639,19 +642,19 @@ class _ObjectSpecs extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _SpecItem(
-            label: 'Mass',
+            label: l10n.pMass,
             value: '${object.mass.toStringAsFixed(2)} kg',
             color: const Color(0xFF80DEEA),
           ),
           Container(width: 1, height: 20, color: const Color(0xFF1E3A4A)),
           _SpecItem(
-            label: 'Radius',
+            label: l10n.pRadius,
             value: '${object.radius.toStringAsFixed(2)} m',
             color: const Color(0xFF80DEEA),
           ),
           Container(width: 1, height: 20, color: const Color(0xFF1E3A4A)),
           _SpecItem(
-            label: 'Drag Coeff',
+            label: l10n.pDragCoeff,
             value: object.dragCoefficient.toStringAsFixed(2),
             color: const Color(0xFF80DEEA),
           ),

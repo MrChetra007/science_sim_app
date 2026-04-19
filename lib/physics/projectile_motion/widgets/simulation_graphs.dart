@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/simulation_provider.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class SimulationGraphs extends ConsumerStatefulWidget {
   const SimulationGraphs({super.key});
@@ -35,11 +36,12 @@ class _SimulationGraphsState extends ConsumerState<SimulationGraphs>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(simulationProvider);
     final traj = state.trajectory;
 
     if (traj == null || traj.points.isEmpty) {
-      return _EmptyState(pulseAnimation: _pulseAnimation);
+      return _EmptyState(pulseAnimation: _pulseAnimation, l10n: l10n);
     }
 
     final isAltitude = _selectedTab == 0;
@@ -56,14 +58,14 @@ class _SimulationGraphsState extends ConsumerState<SimulationGraphs>
             child: Row(
               children: [
                 _TabButton(
-                  label: 'ALTITUDE vs DIST',
+                  label: l10n.pAltitudeVsDist,
                   icon: Icons.show_chart_rounded,
                   color: const Color(0xFF00E5FF),
                   isSelected: _selectedTab == 0,
                   onTap: () => setState(() => _selectedTab = 0),
                 ),
                 _TabButton(
-                  label: 'VELOCITY vs TIME',
+                  label: l10n.pVelocityVsTime,
                   icon: Icons.speed_rounded,
                   color: const Color(0xFFFFD740),
                   isSelected: _selectedTab == 1,
@@ -87,13 +89,13 @@ class _SimulationGraphsState extends ConsumerState<SimulationGraphs>
                   // HUD tag header
                   _ChartHeader(
                     label: isAltitude
-                        ? 'ALTITUDE vs DISTANCE'
-                        : 'VELOCITY vs TIME',
+                        ? l10n.pAltitudeVsDistance
+                        : l10n.pVelocityVsTime,
                     color: isAltitude
                         ? const Color(0xFF00E5FF)
                         : const Color(0xFFFFD740),
-                    xLabel: isAltitude ? 'DISTANCE (m)' : 'TIME (s)',
-                    yLabel: isAltitude ? 'HEIGHT (m)' : 'SPEED (m/s)',
+                    xLabel: isAltitude ? l10n.pDistanceM : l10n.pTimeS,
+                    yLabel: isAltitude ? l10n.pHeightM : l10n.pSpeedMs,
                   ),
 
                   // Chart
@@ -511,7 +513,8 @@ class _TabButton extends StatelessWidget {
 
 class _EmptyState extends StatelessWidget {
   final Animation<double> pulseAnimation;
-  const _EmptyState({required this.pulseAnimation});
+  final AppLocalizations l10n;
+  const _EmptyState({required this.pulseAnimation, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -552,8 +555,8 @@ class _EmptyState extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 14),
-            const Text(
-              '[ NO DATA ]',
+            Text(
+              l10n.pLaunchSimulation,
               style: TextStyle(
                 fontFamily: 'monospace',
                 fontSize: 11,
@@ -564,7 +567,7 @@ class _EmptyState extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              'Launch a simulation to\ngenerate trajectory graphs.',
+              l10n.pLaunchSimulation,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'monospace',

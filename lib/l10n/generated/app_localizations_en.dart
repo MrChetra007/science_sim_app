@@ -225,7 +225,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get force => 'Force';
 
   @override
-  String get gravity => 'Gravity';
+  String get gravity => 'GRAVITY';
 
   @override
   String get friction => 'Friction';
@@ -455,7 +455,368 @@ class AppLocalizationsEn extends AppLocalizations {
   String get disconnect => 'Disconnect';
 
   @override
-  String get angle => 'Angle';
+  String get physicsAtYourFingertips => 'PHYSICS AT YOUR FINGERTIPS';
+
+  @override
+  String get projectileTitle => 'Physics\nShot';
+
+  @override
+  String get launchSimulator => 'LAUNCH SIMULATOR';
+
+  @override
+  String get ready => 'READY';
+
+  @override
+  String get drag => 'DRAG';
+
+  @override
+  String get env => 'ENV';
+
+  @override
+  String get earth => 'EARTH';
+
+  @override
+  String get eightProjectiles => '8 Projectiles';
+
+  @override
+  String get fourPlanets => '4 Planets';
+
+  @override
+  String get airResistance => 'Air Resistance';
+
+  @override
+  String get liveGraphs => 'Live Graphs';
+
+  @override
+  String get slowMotion => 'Slow Motion';
+
+  @override
+  String get challengeMode => 'Challenge Mode';
+
+  @override
+  String get resume => 'Resume';
+
+  @override
+  String get pSlowMo => 'Slow Mo';
+
+  @override
+  String get pNormal => 'Normal';
+
+  @override
+  String get pLaunch => 'Launch';
+
+  @override
+  String get pPause => 'Pause';
+
+  @override
+  String get pResume => 'Resume';
+
+  @override
+  String get pReset => 'Reset';
+
+  @override
+  String get pAngle => 'Angle';
+
+  @override
+  String get pSpeed => 'Speed';
+
+  @override
+  String get pHeight => 'Height';
+
+  @override
+  String get pGravity => 'Gravity';
+
+  @override
+  String get pCustom => 'Custom';
+
+  @override
+  String get pProjectile => 'Projectile';
+
+  @override
+  String get pMass => 'Mass';
+
+  @override
+  String get pRadius => 'Radius';
+
+  @override
+  String get pDragCoeff => 'Drag Coeff';
+
+  @override
+  String get pTargetDistance => 'TARGET DISTANCE';
+
+  @override
+  String get pCurrentScore => 'CURRENT SCORE';
+
+  @override
+  String get pBullseye => 'BULLSEYE! +100 POINTS';
+
+  @override
+  String get pAirResistance => 'Air Resistance (Drag)';
+
+  @override
+  String get pChallengeMode => 'Challenge Mode';
+
+  @override
+  String get pShowForces => 'Show Forces';
+
+  @override
+  String get pShowVelocity => 'Show Velocity';
+
+  @override
+  String get pUsingDrag => 'Using realistic drag for:';
+
+  @override
+  String get pRange => 'RANGE';
+
+  @override
+  String get pMaxHeight => 'Max Height';
+
+  @override
+  String get pTime => 'TIME';
+
+  @override
+  String get pMath => 'MATH';
+
+  @override
+  String get pViewMath => 'View Math';
+
+  @override
+  String get pProFeature => 'Pro Feature';
+
+  @override
+  String get pAltitudeVsDist => 'ALTITUDE vs DIST';
+
+  @override
+  String get pVelocityVsTime => 'VELOCITY vs TIME';
+
+  @override
+  String get pAltitudeVsDistance => 'ALTITUDE vs DISTANCE';
+
+  @override
+  String get pDistanceM => 'DISTANCE (m)';
+
+  @override
+  String get pTimeS => 'TIME (s)';
+
+  @override
+  String get pHeightM => 'HEIGHT (m)';
+
+  @override
+  String get pSpeedMs => 'SPEED (m/s)';
+
+  @override
+  String get pFormulaGuide => 'Formula Guide';
+
+  @override
+  String get pLaunchSimulation =>
+      'Launch a simulation to generate trajectory graphs.';
+
+  @override
+  String get pKinematicEquations => 'Kinematic Equations';
+
+  @override
+  String get pKeyResults => 'Key Results';
+
+  @override
+  String get pHorizontalPosition => 'Horizontal Position';
+
+  @override
+  String get pVerticalPosition => 'Vertical Position';
+
+  @override
+  String get pHorizontalVelocity => 'Horizontal Velocity';
+
+  @override
+  String get pVerticalVelocity => 'Vertical Velocity';
+
+  @override
+  String get pHangTime => 'Hang Time';
+
+  @override
+  String get pRangeNoAir => 'Range (no air resistance)';
+
+  @override
+  String get pSpeedAtAnyTime => 'Speed at Any Time';
+
+  @override
+  String get pDragForce => 'Drag Force';
+
+  @override
+  String get pAirResistanceDrag => 'Air Resistance (Drag)';
+
+  @override
+  String get pConstants => '⚙️ CONSTANTS';
+
+  @override
+  String get pRangeNoAirRes => 'Range (no air resistance)';
+
+  @override
+  String get pNetAcceleration => 'Net Acceleration (with drag)';
+
+  @override
+  String get pHorizDistAtTime =>
+      'Horizontal distance at time t. Constant velocity — no forces act horizontally (without air resistance).';
+
+  @override
+  String get pHeightAtTime =>
+      'Height at time t. The −½g·t² term is the effect of gravity pulling the projectile down.';
+
+  @override
+  String get pConstantThroughout =>
+      'Constant throughout flight (no horizontal forces without drag).';
+
+  @override
+  String get pDecreasesLinearly =>
+      'Decreases linearly due to gravity. Zero at peak height.';
+
+  @override
+  String get pTotalFlightTime =>
+      'Total flight time from launch to landing. Derived from setting y(t) = 0.';
+
+  @override
+  String get pMaxHorizDist =>
+      'Maximum horizontal distance. For h₀ = 0 and θ = 45°: R = v₀² / g (optimal range).';
+
+  @override
+  String get pPeakHeight =>
+      'Peak height above ground. Reached when vᵧ = 0, i.e., at t = v₀·sin(θ) / g.';
+
+  @override
+  String get pPythagoras =>
+      'Pythagoras on the velocity components. Minimum at peak (= vₓ), maximum at launch.';
+
+  @override
+  String get pDragForceDesc =>
+      'ρ = air density (1.225 kg/m³), Cₐ = drag coefficient, A = cross-sectional area, v = speed. Opposes velocity.';
+
+  @override
+  String get pEulerIntegration =>
+      'We use Euler Integration to solve the motion numerically';
+
+  @override
+  String get pGEarth => 'g (Earth)';
+
+  @override
+  String get pGMoon => 'g (Moon)';
+
+  @override
+  String get pGMars => 'g (Mars)';
+
+  @override
+  String get pGJupiter => 'g (Jupiter)';
+
+  @override
+  String get pAirDensity => 'ρ (air, sea level)';
+
+  @override
+  String get pDerivationModule => 'Derivation Module';
+
+  @override
+  String get pStepByStepDerivation => 'Step-by-Step Derivation';
+
+  @override
+  String get pIdealCase => 'Ideal Case';
+
+  @override
+  String get pAirResistanceBreakdown => 'Air Resistance Breakdown';
+
+  @override
+  String get pDoesMassMatter => 'Does Mass Matter?';
+
+  @override
+  String get pHigherMass =>
+      'Higher Mass: The air has a harder time slowing the object down → Further range.';
+
+  @override
+  String get pLowerMass =>
+      'Lower Mass: The air easily decelerates the object → Shorter range.';
+
+  @override
+  String get pHowItsCalculated => 'How it\'s Calculated';
+
+  @override
+  String get pAtEachTimeStep => 'At each time step (dt):';
+
+  @override
+  String get pCalculateDragForce => 'Calculate Drag Force: F_d = ½ ρ v² C_d A';
+
+  @override
+  String get pUpdateAcceleration =>
+      'Update Acceleration: a = F_net / m (Note how mass m is the divisor!)';
+
+  @override
+  String get pUpdateVelocity => 'Update Velocity and Position.';
+
+  @override
+  String get pBowlingBall =>
+      'This is why a bowling ball travels much further than a golf ball in the air, even if they start with the same velocity!';
+
+  @override
+  String get pGalileoPrinciple => 'The Galileo Principle (Mass Independence)';
+
+  @override
+  String get pInVacuum =>
+      'In a vacuum (Air Resistance OFF), mass does not affect the trajectory.';
+
+  @override
+  String get pVelocityComponents => '1. Velocity Components';
+
+  @override
+  String pBreakInitialVelocity(Object v0) {
+    return 'Break initial velocity (v_0 = $v0 m/s) into Horizontal (v_x) and Vertical (v_y) components using trigonometry:';
+  }
+
+  @override
+  String get pTimeToPeakHeight => '2. Time to Peak Height';
+
+  @override
+  String get pAtThePeak =>
+      'At the peak, vertical velocity v_y is 0. Solving v_y = v_y0 - g t:';
+
+  @override
+  String get pMaximumHeight => '3. Maximum Height';
+
+  @override
+  String get pUsingDisplacement =>
+      'Using the displacement formula y = y0 + v_y0 t - ½ g t²:';
+
+  @override
+  String get pTotalHangTime => '4. Total Hang Time';
+
+  @override
+  String get pSolveQuadratic =>
+      'Solve the quadratic equation for when height y = 0:';
+
+  @override
+  String get pUsingQuadraticFormula => 'Using the quadratic formula:';
+
+  @override
+  String get pHorizontalRange => '5. Horizontal Range';
+
+  @override
+  String get pInIdealCase =>
+      'In the ideal case, horizontal velocity v_x is constant.';
+
+  @override
+  String get pYes => 'Yes';
+
+  @override
+  String get pInTheRealWorld => 'In the real world';
+
+  @override
+  String get pFurtherRange =>
+      'The air has a harder time slowing the object down. Further range.';
+
+  @override
+  String get pShorterRange =>
+      'The air easily decelerates the object. Shorter range.';
+
+  @override
+  String get pWeUseEuler =>
+      'We use Euler Integration to solve the motion numerically:';
+
+  @override
+  String get simulation => 'Simulation';
 
   @override
   String get time => 'Time';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 
 class FormulaScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class FormulaScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: const Color(0xFF0D1B2A),
       appBar: AppBar(
@@ -14,8 +16,8 @@ class FormulaScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_ios_rounded, color: Colors.white),
           onPressed: () => context.go('/simulation'),
         ),
-        title: const Text(
-          'Formula Guide',
+        title: Text(
+          l10n.pFormulaGuide,
           style: TextStyle(
             color: Color(0xFF00E5FF),
             fontSize: 16,
@@ -25,103 +27,98 @@ class FormulaScreen extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: const [
-          _Section(
-            title: 'Kinematic Equations',
-            icon: '📐',
-            cards: [
-              _FormulaCard(
-                name: 'Horizontal Position',
-                formula: 'x(t) = v₀ · cos(θ) · t',
-                description:
-                    'Horizontal distance at time t. Constant velocity — no forces act horizontally (without air resistance).',
-                color: Color(0xFF00E5FF),
+      body: Builder(
+        builder: (ctx) {
+          final l = AppLocalizations.of(ctx)!;
+          return ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              _Section(
+                title: l.pKinematicEquations,
+                icon: '📐',
+                cards: [
+                  _FormulaCard(
+                    name: l.pHorizontalPosition,
+                    formula: 'x(t) = v₀ · cos(θ) · t',
+                    description: l.pHorizDistAtTime,
+                    color: Color(0xFF00E5FF),
+                  ),
+                  _FormulaCard(
+                    name: l.pVerticalPosition,
+                    formula: 'y(t) = h₀ + v₀·sin(θ)·t − ½g·t²',
+                    description: l.pHeightAtTime,
+                    color: Color(0xFF69FF47),
+                  ),
+                  _FormulaCard(
+                    name: l.pHorizontalVelocity,
+                    formula: 'vₓ = v₀ · cos(θ)',
+                    description: l.pConstantThroughout,
+                    color: Color(0xFF00E5FF),
+                  ),
+                  _FormulaCard(
+                    name: l.pVerticalVelocity,
+                    formula: 'vᵧ(t) = v₀·sin(θ) − g·t',
+                    description: l.pDecreasesLinearly,
+                    color: Color(0xFF69FF47),
+                  ),
+                ],
               ),
-              _FormulaCard(
-                name: 'Vertical Position',
-                formula: 'y(t) = h₀ + v₀·sin(θ)·t − ½g·t²',
-                description:
-                    'Height at time t. The −½g·t² term is the effect of gravity pulling the projectile down.',
-                color: Color(0xFF69FF47),
+              SizedBox(height: 12),
+              _Section(
+                title: l.pKeyResults,
+                icon: '🎯',
+                cards: [
+                  _FormulaCard(
+                    name: l.pHangTime,
+                    formula: 't = (v₀·sin(θ) + √(v₀²sin²(θ) + 2gh₀)) / g',
+                    description: l.pTotalFlightTime,
+                    color: Color(0xFFFFD740),
+                  ),
+                  _FormulaCard(
+                    name: l.pRangeNoAirRes,
+                    formula: 'R = vₓ · t_hang',
+                    description: l.pMaxHorizDist,
+                    color: Color(0xFFFFD740),
+                  ),
+                  _FormulaCard(
+                    name: l.pMaxHeight,
+                    formula: 'H = h₀ + v₀²·sin²(θ) / (2g)',
+                    description: l.pPeakHeight,
+                    color: Color(0xFFFF80AB),
+                  ),
+                  _FormulaCard(
+                    name: l.pSpeedAtAnyTime,
+                    formula: '|v| = √(vₓ² + vᵧ²)',
+                    description: l.pPythagoras,
+                    color: Color(0xFFFF80AB),
+                  ),
+                ],
               ),
-              _FormulaCard(
-                name: 'Horizontal Velocity',
-                formula: 'vₓ = v₀ · cos(θ)',
-                description:
-                    'Constant throughout flight (no horizontal forces without drag).',
-                color: Color(0xFF00E5FF),
+              SizedBox(height: 12),
+              _Section(
+                title: l.pAirResistanceDrag,
+                icon: '💨',
+                cards: [
+                  _FormulaCard(
+                    name: l.pDragForce,
+                    formula: 'F_d = ½ · ρ · Cₐ · A · v²',
+                    description: l.pDragForceDesc,
+                    color: Color(0xFF80DEEA),
+                  ),
+                  _FormulaCard(
+                    name: l.pNetAcceleration,
+                    formula: 'aₓ = −Fd·vₓ/(|v|·m)   aᵧ = −g − Fd·vᵧ/(|v|·m)',
+                    description: l.pEulerIntegration,
+                    color: Color(0xFF80DEEA),
+                  ),
+                ],
               ),
-              _FormulaCard(
-                name: 'Vertical Velocity',
-                formula: 'vᵧ(t) = v₀·sin(θ) − g·t',
-                description:
-                    'Decreases linearly due to gravity. Zero at peak height.',
-                color: Color(0xFF69FF47),
-              ),
+              SizedBox(height: 12),
+              _ConstantsCard(l10n: l),
+              SizedBox(height: 24),
             ],
-          ),
-          SizedBox(height: 12),
-          _Section(
-            title: 'Key Results',
-            icon: '🎯',
-            cards: [
-              _FormulaCard(
-                name: 'Hang Time',
-                formula: 't = (v₀·sin(θ) + √(v₀²sin²(θ) + 2gh₀)) / g',
-                description:
-                    'Total flight time from launch to landing. Derived from setting y(t) = 0.',
-                color: Color(0xFFFFD740),
-              ),
-              _FormulaCard(
-                name: 'Range (no air resistance)',
-                formula: 'R = vₓ · t_hang',
-                description:
-                    'Maximum horizontal distance. For h₀ = 0 and θ = 45°: R = v₀² / g (optimal range).',
-                color: Color(0xFFFFD740),
-              ),
-              _FormulaCard(
-                name: 'Max Height',
-                formula: 'H = h₀ + v₀²·sin²(θ) / (2g)',
-                description:
-                    'Peak height above ground. Reached when vᵧ = 0, i.e., at t = v₀·sin(θ) / g.',
-                color: Color(0xFFFF80AB),
-              ),
-              _FormulaCard(
-                name: 'Speed at Any Time',
-                formula: '|v| = √(vₓ² + vᵧ²)',
-                description:
-                    'Pythagoras on the velocity components. Minimum at peak (= vₓ), maximum at launch.',
-                color: Color(0xFFFF80AB),
-              ),
-            ],
-          ),
-          SizedBox(height: 12),
-          _Section(
-            title: 'Air Resistance (Drag)',
-            icon: '💨',
-            cards: [
-              _FormulaCard(
-                name: 'Drag Force',
-                formula: 'F_d = ½ · ρ · Cₐ · A · v²',
-                description:
-                    'ρ = air density (1.225 kg/m³), Cₐ = drag coefficient, A = cross-sectional area, v = speed. Opposes velocity.',
-                color: Color(0xFF80DEEA),
-              ),
-              _FormulaCard(
-                name: 'Net Acceleration (with drag)',
-                formula: 'aₓ = −Fd·vₓ/(|v|·m)   aᵧ = −g − Fd·vᵧ/(|v|·m)',
-                description:
-                    'Euler integration: v += a·dt, x += v·dt. Step size dt = 0.02 s.',
-                color: Color(0xFF80DEEA),
-              ),
-            ],
-          ),
-          SizedBox(height: 12),
-          _ConstantsCard(),
-          SizedBox(height: 24),
-        ],
+          );
+        },
       ),
     );
   }
@@ -242,16 +239,17 @@ class _FormulaCard extends StatelessWidget {
 }
 
 class _ConstantsCard extends StatelessWidget {
-  const _ConstantsCard();
+  final AppLocalizations l10n;
+  const _ConstantsCard({required this.l10n});
 
   @override
   Widget build(BuildContext context) {
-    const rows = [
-      ('g (Earth)', '9.81 m/s²', '🌍'),
-      ('g (Moon)', '1.62 m/s²', '🌙'),
-      ('g (Mars)', '3.72 m/s²', '🔴'),
-      ('g (Jupiter)', '24.79 m/s²', '🪐'),
-      ('ρ (air, sea level)', '1.225 kg/m³', '💨'),
+    final rows = [
+      (l10n.pGEarth, '9.81 m/s²', '🌍'),
+      (l10n.pGMoon, '1.62 m/s²', '🌙'),
+      (l10n.pGMars, '3.72 m/s²', '🔴'),
+      (l10n.pGJupiter, '24.79 m/s²', '🪐'),
+      (l10n.pAirDensity, '1.225 kg/m³', '💨'),
     ];
 
     return Container(
@@ -264,11 +262,11 @@ class _ConstantsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(14, 12, 14, 6),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(14, 12, 14, 6),
             child: Text(
-              '⚙️  CONSTANTS',
-              style: TextStyle(
+              l10n.pConstants,
+              style: const TextStyle(
                 color: Color(0xFF546E7A),
                 fontSize: 11,
                 fontWeight: FontWeight.w800,

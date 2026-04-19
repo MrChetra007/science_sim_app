@@ -8,6 +8,7 @@ import '../widgets/results_panel.dart';
 import '../services/audio_service.dart';
 import '../widgets/simulation_graphs.dart';
 import '../../../core/widgets/ad_widgets.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class SimulationScreen extends ConsumerStatefulWidget {
   const SimulationScreen({super.key});
@@ -57,6 +58,7 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     // Access the game instance from the provider
     final game = ref.read(projectileGameProvider);
 
@@ -70,7 +72,7 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
                 const Icon(Icons.stars_rounded, color: Color(0xFFFFD740)),
                 const SizedBox(width: 12),
                 Text(
-                  'BULLSEYE! +100 POINTS',
+                  l10n.pBullseye,
                   style: TextStyle(
                     color: const Color(0xFFFFD740),
                     fontWeight: FontWeight.w900,

@@ -527,7 +527,7 @@ abstract class AppLocalizations {
   /// No description provided for @gravity.
   ///
   /// In en, this message translates to:
-  /// **'Gravity'**
+  /// **'GRAVITY'**
   String get gravity;
 
   /// No description provided for @friction.
@@ -974,11 +974,683 @@ abstract class AppLocalizations {
   /// **'Disconnect'**
   String get disconnect;
 
-  /// No description provided for @angle.
+  /// No description provided for @physicsAtYourFingertips.
+  ///
+  /// In en, this message translates to:
+  /// **'PHYSICS AT YOUR FINGERTIPS'**
+  String get physicsAtYourFingertips;
+
+  /// No description provided for @projectileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Physics\nShot'**
+  String get projectileTitle;
+
+  /// No description provided for @launchSimulator.
+  ///
+  /// In en, this message translates to:
+  /// **'LAUNCH SIMULATOR'**
+  String get launchSimulator;
+
+  /// No description provided for @ready.
+  ///
+  /// In en, this message translates to:
+  /// **'READY'**
+  String get ready;
+
+  /// No description provided for @drag.
+  ///
+  /// In en, this message translates to:
+  /// **'DRAG'**
+  String get drag;
+
+  /// No description provided for @env.
+  ///
+  /// In en, this message translates to:
+  /// **'ENV'**
+  String get env;
+
+  /// No description provided for @earth.
+  ///
+  /// In en, this message translates to:
+  /// **'EARTH'**
+  String get earth;
+
+  /// No description provided for @eightProjectiles.
+  ///
+  /// In en, this message translates to:
+  /// **'8 Projectiles'**
+  String get eightProjectiles;
+
+  /// No description provided for @fourPlanets.
+  ///
+  /// In en, this message translates to:
+  /// **'4 Planets'**
+  String get fourPlanets;
+
+  /// No description provided for @airResistance.
+  ///
+  /// In en, this message translates to:
+  /// **'Air Resistance'**
+  String get airResistance;
+
+  /// No description provided for @liveGraphs.
+  ///
+  /// In en, this message translates to:
+  /// **'Live Graphs'**
+  String get liveGraphs;
+
+  /// No description provided for @slowMotion.
+  ///
+  /// In en, this message translates to:
+  /// **'Slow Motion'**
+  String get slowMotion;
+
+  /// No description provided for @challengeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge Mode'**
+  String get challengeMode;
+
+  /// No description provided for @resume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get resume;
+
+  /// No description provided for @pSlowMo.
+  ///
+  /// In en, this message translates to:
+  /// **'Slow Mo'**
+  String get pSlowMo;
+
+  /// No description provided for @pNormal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get pNormal;
+
+  /// No description provided for @pLaunch.
+  ///
+  /// In en, this message translates to:
+  /// **'Launch'**
+  String get pLaunch;
+
+  /// No description provided for @pPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get pPause;
+
+  /// No description provided for @pResume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get pResume;
+
+  /// No description provided for @pReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get pReset;
+
+  /// No description provided for @pAngle.
   ///
   /// In en, this message translates to:
   /// **'Angle'**
-  String get angle;
+  String get pAngle;
+
+  /// No description provided for @pSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Speed'**
+  String get pSpeed;
+
+  /// No description provided for @pHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Height'**
+  String get pHeight;
+
+  /// No description provided for @pGravity.
+  ///
+  /// In en, this message translates to:
+  /// **'Gravity'**
+  String get pGravity;
+
+  /// No description provided for @pCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get pCustom;
+
+  /// No description provided for @pProjectile.
+  ///
+  /// In en, this message translates to:
+  /// **'Projectile'**
+  String get pProjectile;
+
+  /// No description provided for @pMass.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass'**
+  String get pMass;
+
+  /// No description provided for @pRadius.
+  ///
+  /// In en, this message translates to:
+  /// **'Radius'**
+  String get pRadius;
+
+  /// No description provided for @pDragCoeff.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag Coeff'**
+  String get pDragCoeff;
+
+  /// No description provided for @pTargetDistance.
+  ///
+  /// In en, this message translates to:
+  /// **'TARGET DISTANCE'**
+  String get pTargetDistance;
+
+  /// No description provided for @pCurrentScore.
+  ///
+  /// In en, this message translates to:
+  /// **'CURRENT SCORE'**
+  String get pCurrentScore;
+
+  /// No description provided for @pBullseye.
+  ///
+  /// In en, this message translates to:
+  /// **'BULLSEYE! +100 POINTS'**
+  String get pBullseye;
+
+  /// No description provided for @pAirResistance.
+  ///
+  /// In en, this message translates to:
+  /// **'Air Resistance (Drag)'**
+  String get pAirResistance;
+
+  /// No description provided for @pChallengeMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge Mode'**
+  String get pChallengeMode;
+
+  /// No description provided for @pShowForces.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Forces'**
+  String get pShowForces;
+
+  /// No description provided for @pShowVelocity.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Velocity'**
+  String get pShowVelocity;
+
+  /// No description provided for @pUsingDrag.
+  ///
+  /// In en, this message translates to:
+  /// **'Using realistic drag for:'**
+  String get pUsingDrag;
+
+  /// No description provided for @pRange.
+  ///
+  /// In en, this message translates to:
+  /// **'RANGE'**
+  String get pRange;
+
+  /// No description provided for @pMaxHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Max Height'**
+  String get pMaxHeight;
+
+  /// No description provided for @pTime.
+  ///
+  /// In en, this message translates to:
+  /// **'TIME'**
+  String get pTime;
+
+  /// No description provided for @pMath.
+  ///
+  /// In en, this message translates to:
+  /// **'MATH'**
+  String get pMath;
+
+  /// No description provided for @pViewMath.
+  ///
+  /// In en, this message translates to:
+  /// **'View Math'**
+  String get pViewMath;
+
+  /// No description provided for @pProFeature.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro Feature'**
+  String get pProFeature;
+
+  /// No description provided for @pAltitudeVsDist.
+  ///
+  /// In en, this message translates to:
+  /// **'ALTITUDE vs DIST'**
+  String get pAltitudeVsDist;
+
+  /// No description provided for @pVelocityVsTime.
+  ///
+  /// In en, this message translates to:
+  /// **'VELOCITY vs TIME'**
+  String get pVelocityVsTime;
+
+  /// No description provided for @pAltitudeVsDistance.
+  ///
+  /// In en, this message translates to:
+  /// **'ALTITUDE vs DISTANCE'**
+  String get pAltitudeVsDistance;
+
+  /// No description provided for @pDistanceM.
+  ///
+  /// In en, this message translates to:
+  /// **'DISTANCE (m)'**
+  String get pDistanceM;
+
+  /// No description provided for @pTimeS.
+  ///
+  /// In en, this message translates to:
+  /// **'TIME (s)'**
+  String get pTimeS;
+
+  /// No description provided for @pHeightM.
+  ///
+  /// In en, this message translates to:
+  /// **'HEIGHT (m)'**
+  String get pHeightM;
+
+  /// No description provided for @pSpeedMs.
+  ///
+  /// In en, this message translates to:
+  /// **'SPEED (m/s)'**
+  String get pSpeedMs;
+
+  /// No description provided for @pFormulaGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Formula Guide'**
+  String get pFormulaGuide;
+
+  /// No description provided for @pLaunchSimulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Launch a simulation to generate trajectory graphs.'**
+  String get pLaunchSimulation;
+
+  /// No description provided for @pKinematicEquations.
+  ///
+  /// In en, this message translates to:
+  /// **'Kinematic Equations'**
+  String get pKinematicEquations;
+
+  /// No description provided for @pKeyResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Key Results'**
+  String get pKeyResults;
+
+  /// No description provided for @pHorizontalPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Horizontal Position'**
+  String get pHorizontalPosition;
+
+  /// No description provided for @pVerticalPosition.
+  ///
+  /// In en, this message translates to:
+  /// **'Vertical Position'**
+  String get pVerticalPosition;
+
+  /// No description provided for @pHorizontalVelocity.
+  ///
+  /// In en, this message translates to:
+  /// **'Horizontal Velocity'**
+  String get pHorizontalVelocity;
+
+  /// No description provided for @pVerticalVelocity.
+  ///
+  /// In en, this message translates to:
+  /// **'Vertical Velocity'**
+  String get pVerticalVelocity;
+
+  /// No description provided for @pHangTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Hang Time'**
+  String get pHangTime;
+
+  /// No description provided for @pRangeNoAir.
+  ///
+  /// In en, this message translates to:
+  /// **'Range (no air resistance)'**
+  String get pRangeNoAir;
+
+  /// No description provided for @pSpeedAtAnyTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Speed at Any Time'**
+  String get pSpeedAtAnyTime;
+
+  /// No description provided for @pDragForce.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag Force'**
+  String get pDragForce;
+
+  /// No description provided for @pAirResistanceDrag.
+  ///
+  /// In en, this message translates to:
+  /// **'Air Resistance (Drag)'**
+  String get pAirResistanceDrag;
+
+  /// No description provided for @pConstants.
+  ///
+  /// In en, this message translates to:
+  /// **'⚙️ CONSTANTS'**
+  String get pConstants;
+
+  /// No description provided for @pRangeNoAirRes.
+  ///
+  /// In en, this message translates to:
+  /// **'Range (no air resistance)'**
+  String get pRangeNoAirRes;
+
+  /// No description provided for @pNetAcceleration.
+  ///
+  /// In en, this message translates to:
+  /// **'Net Acceleration (with drag)'**
+  String get pNetAcceleration;
+
+  /// No description provided for @pHorizDistAtTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Horizontal distance at time t. Constant velocity — no forces act horizontally (without air resistance).'**
+  String get pHorizDistAtTime;
+
+  /// No description provided for @pHeightAtTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Height at time t. The −½g·t² term is the effect of gravity pulling the projectile down.'**
+  String get pHeightAtTime;
+
+  /// No description provided for @pConstantThroughout.
+  ///
+  /// In en, this message translates to:
+  /// **'Constant throughout flight (no horizontal forces without drag).'**
+  String get pConstantThroughout;
+
+  /// No description provided for @pDecreasesLinearly.
+  ///
+  /// In en, this message translates to:
+  /// **'Decreases linearly due to gravity. Zero at peak height.'**
+  String get pDecreasesLinearly;
+
+  /// No description provided for @pTotalFlightTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Total flight time from launch to landing. Derived from setting y(t) = 0.'**
+  String get pTotalFlightTime;
+
+  /// No description provided for @pMaxHorizDist.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum horizontal distance. For h₀ = 0 and θ = 45°: R = v₀² / g (optimal range).'**
+  String get pMaxHorizDist;
+
+  /// No description provided for @pPeakHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak height above ground. Reached when vᵧ = 0, i.e., at t = v₀·sin(θ) / g.'**
+  String get pPeakHeight;
+
+  /// No description provided for @pPythagoras.
+  ///
+  /// In en, this message translates to:
+  /// **'Pythagoras on the velocity components. Minimum at peak (= vₓ), maximum at launch.'**
+  String get pPythagoras;
+
+  /// No description provided for @pDragForceDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'ρ = air density (1.225 kg/m³), Cₐ = drag coefficient, A = cross-sectional area, v = speed. Opposes velocity.'**
+  String get pDragForceDesc;
+
+  /// No description provided for @pEulerIntegration.
+  ///
+  /// In en, this message translates to:
+  /// **'We use Euler Integration to solve the motion numerically'**
+  String get pEulerIntegration;
+
+  /// No description provided for @pGEarth.
+  ///
+  /// In en, this message translates to:
+  /// **'g (Earth)'**
+  String get pGEarth;
+
+  /// No description provided for @pGMoon.
+  ///
+  /// In en, this message translates to:
+  /// **'g (Moon)'**
+  String get pGMoon;
+
+  /// No description provided for @pGMars.
+  ///
+  /// In en, this message translates to:
+  /// **'g (Mars)'**
+  String get pGMars;
+
+  /// No description provided for @pGJupiter.
+  ///
+  /// In en, this message translates to:
+  /// **'g (Jupiter)'**
+  String get pGJupiter;
+
+  /// No description provided for @pAirDensity.
+  ///
+  /// In en, this message translates to:
+  /// **'ρ (air, sea level)'**
+  String get pAirDensity;
+
+  /// No description provided for @pDerivationModule.
+  ///
+  /// In en, this message translates to:
+  /// **'Derivation Module'**
+  String get pDerivationModule;
+
+  /// No description provided for @pStepByStepDerivation.
+  ///
+  /// In en, this message translates to:
+  /// **'Step-by-Step Derivation'**
+  String get pStepByStepDerivation;
+
+  /// No description provided for @pIdealCase.
+  ///
+  /// In en, this message translates to:
+  /// **'Ideal Case'**
+  String get pIdealCase;
+
+  /// No description provided for @pAirResistanceBreakdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Air Resistance Breakdown'**
+  String get pAirResistanceBreakdown;
+
+  /// No description provided for @pDoesMassMatter.
+  ///
+  /// In en, this message translates to:
+  /// **'Does Mass Matter?'**
+  String get pDoesMassMatter;
+
+  /// No description provided for @pHigherMass.
+  ///
+  /// In en, this message translates to:
+  /// **'Higher Mass: The air has a harder time slowing the object down → Further range.'**
+  String get pHigherMass;
+
+  /// No description provided for @pLowerMass.
+  ///
+  /// In en, this message translates to:
+  /// **'Lower Mass: The air easily decelerates the object → Shorter range.'**
+  String get pLowerMass;
+
+  /// No description provided for @pHowItsCalculated.
+  ///
+  /// In en, this message translates to:
+  /// **'How it\'s Calculated'**
+  String get pHowItsCalculated;
+
+  /// No description provided for @pAtEachTimeStep.
+  ///
+  /// In en, this message translates to:
+  /// **'At each time step (dt):'**
+  String get pAtEachTimeStep;
+
+  /// No description provided for @pCalculateDragForce.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate Drag Force: F_d = ½ ρ v² C_d A'**
+  String get pCalculateDragForce;
+
+  /// No description provided for @pUpdateAcceleration.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Acceleration: a = F_net / m (Note how mass m is the divisor!)'**
+  String get pUpdateAcceleration;
+
+  /// No description provided for @pUpdateVelocity.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Velocity and Position.'**
+  String get pUpdateVelocity;
+
+  /// No description provided for @pBowlingBall.
+  ///
+  /// In en, this message translates to:
+  /// **'This is why a bowling ball travels much further than a golf ball in the air, even if they start with the same velocity!'**
+  String get pBowlingBall;
+
+  /// No description provided for @pGalileoPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The Galileo Principle (Mass Independence)'**
+  String get pGalileoPrinciple;
+
+  /// No description provided for @pInVacuum.
+  ///
+  /// In en, this message translates to:
+  /// **'In a vacuum (Air Resistance OFF), mass does not affect the trajectory.'**
+  String get pInVacuum;
+
+  /// No description provided for @pVelocityComponents.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Velocity Components'**
+  String get pVelocityComponents;
+
+  /// No description provided for @pBreakInitialVelocity.
+  ///
+  /// In en, this message translates to:
+  /// **'Break initial velocity (v_0 = {v0} m/s) into Horizontal (v_x) and Vertical (v_y) components using trigonometry:'**
+  String pBreakInitialVelocity(Object v0);
+
+  /// No description provided for @pTimeToPeakHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Time to Peak Height'**
+  String get pTimeToPeakHeight;
+
+  /// No description provided for @pAtThePeak.
+  ///
+  /// In en, this message translates to:
+  /// **'At the peak, vertical velocity v_y is 0. Solving v_y = v_y0 - g t:'**
+  String get pAtThePeak;
+
+  /// No description provided for @pMaximumHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'3. Maximum Height'**
+  String get pMaximumHeight;
+
+  /// No description provided for @pUsingDisplacement.
+  ///
+  /// In en, this message translates to:
+  /// **'Using the displacement formula y = y0 + v_y0 t - ½ g t²:'**
+  String get pUsingDisplacement;
+
+  /// No description provided for @pTotalHangTime.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Total Hang Time'**
+  String get pTotalHangTime;
+
+  /// No description provided for @pSolveQuadratic.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve the quadratic equation for when height y = 0:'**
+  String get pSolveQuadratic;
+
+  /// No description provided for @pUsingQuadraticFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'Using the quadratic formula:'**
+  String get pUsingQuadraticFormula;
+
+  /// No description provided for @pHorizontalRange.
+  ///
+  /// In en, this message translates to:
+  /// **'5. Horizontal Range'**
+  String get pHorizontalRange;
+
+  /// No description provided for @pInIdealCase.
+  ///
+  /// In en, this message translates to:
+  /// **'In the ideal case, horizontal velocity v_x is constant.'**
+  String get pInIdealCase;
+
+  /// No description provided for @pYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get pYes;
+
+  /// No description provided for @pInTheRealWorld.
+  ///
+  /// In en, this message translates to:
+  /// **'In the real world'**
+  String get pInTheRealWorld;
+
+  /// No description provided for @pFurtherRange.
+  ///
+  /// In en, this message translates to:
+  /// **'The air has a harder time slowing the object down. Further range.'**
+  String get pFurtherRange;
+
+  /// No description provided for @pShorterRange.
+  ///
+  /// In en, this message translates to:
+  /// **'The air easily decelerates the object. Shorter range.'**
+  String get pShorterRange;
+
+  /// No description provided for @pWeUseEuler.
+  ///
+  /// In en, this message translates to:
+  /// **'We use Euler Integration to solve the motion numerically:'**
+  String get pWeUseEuler;
+
+  /// No description provided for @simulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulation'**
+  String get simulation;
 
   /// No description provided for @time.
   ///

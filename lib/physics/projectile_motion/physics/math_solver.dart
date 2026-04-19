@@ -1,92 +1,79 @@
 import 'dart:math' as math;
+import '../../../l10n/generated/app_localizations.dart';
 
-/// Utility to generate step-by-step mathematical derivations for the simulation.
-class MathSolver {
-  final double v0;
-  final double angleDeg;
-  final double h0;
-  final double g;
-  final bool airResistance;
+String generateFullDerivation({
+  required double v0,
+  required double angleDeg,
+  required double h0,
+  required double g,
+  required bool airResistance,
+  required AppLocalizations l10n,
+}) {
+  if (airResistance) {
+    return r'''
+# ''' + l10n.pAirResistanceBreakdown + r'''
+''' + l10n.pDoesMassMatter + r'''
+**''' + l10n.pYes + r'''!** ''' + l10n.pInTheRealWorld + r''', mass determines how much an object "resists" being slowed down by the air (Inertia). 
+- **''' + l10n.pHigherMass + r''': ''' + l10n.pFurtherRange + r'''
+- **''' + l10n.pLowerMass + r''': ''' + l10n.pShorterRange + r'''
 
-  MathSolver({
-    required this.v0,
-    required this.angleDeg,
-    required this.h0,
-    required this.g,
-    required this.airResistance,
-  });
+### ''' + l10n.pHowItsCalculated + r'''
+''' + l10n.pWeUseEuler + r''':
+1. ''' + l10n.pAtEachTimeStep + r'''
+2. ''' + l10n.pCalculateDragForce + r'''
+3. ''' + l10n.pUpdateAcceleration + r'''
+4. ''' + l10n.pUpdateVelocity + r'''
 
-  /// Generates a step-by-step breakdown for the analytical case.
-  String generateFullDerivation() {
-    if (airResistance) {
-      return r'''
-# Air Resistance Breakdown
-When Air Resistance is **ON**, the trajectory is no longer a simple parabola. 
-
-### Does Mass Matter?
-**Yes!** In the real world, mass determines how much an object "resists" being slowed down by the air (Inertia). 
-- **Higher Mass**: The air has a harder time slowing the object down $\rightarrow$ Further range.
-- **Lower Mass**: The air easily decelerates the object $\rightarrow$ Shorter range.
-
-### How it's Calculated
-We use **Euler Integration** to solve the motion numerically:
-1. At each time step ($dt$):
-2. Calculate Drag Force: $F_d = \frac{1}{2} \rho v^2 C_d A$
-3. Update Acceleration: $a = \frac{F_{net}}{m}$ (Note how mass $m$ is the divisor!)
-4. Update Velocity and Position.
-
-This is why a bowling ball travels much further than a golf ball in the air, even if they start with the same velocity!
-''';
-    }
-
-    final angleRad = angleDeg * math.pi / 180.0;
-    final vx = v0 * math.cos(angleRad);
-    final vy = v0 * math.sin(angleRad);
-    final tPeak = vy / g;
-    final peakH = h0 + (vy * vy) / (2 * g);
-
-    // quadratic: h0 + vy*t - 0.5*g*t^2 = 0
-    // t = (vy + sqrt(vy^2 + 2*g*h0)) / g
-    final disc = vy * vy + 2 * g * h0;
-    final hangTime = (vy + math.sqrt(disc)) / g;
-    final range = vx * hangTime;
-
-    return '''
-# Step-by-Step Derivation (Ideal Case)
-
-> [!NOTE]
-> **The Galileo Principle (Mass Independence)**
-> In a vacuum (Air Resistance OFF), mass does **not** affect the trajectory. Whether you launch a golf ball or a bowling ball, gravity accelerates them at the same rate (\$g = ${g.toStringAsFixed(2)} \\text{ m/s}^2\$).
-
-### 1. Velocity Components
-Break initial velocity (\$v_0 = ${v0.toStringAsFixed(1)} \\text{ m/s}\$) into Horizontal (\$v_x\$) and Vertical (\$v_y\$) components using trigonometry:
-- \$v_x = v_0 \\cdot \\cos(${angleDeg.toStringAsFixed(0)}^\\circ) = ${vx.toStringAsFixed(2)} \\text{ m/s}\$
-- \$v_y = v_0 \\cdot \\sin(${angleDeg.toStringAsFixed(0)}^\\circ) = ${vy.toStringAsFixed(2)} \\text{ m/s}\$
-
-### 2. Time to Peak Height
-At the peak, vertical velocity \$v_y\$ is \$0\$. Solving \$v_y = v_{y0} - gt\$:
-- \$0 = ${vy.toStringAsFixed(2)} - ${g.toStringAsFixed(2)} \\cdot t_{peak}\$
-- \$t_{peak} = \\frac{${vy.toStringAsFixed(2)}}{${g.toStringAsFixed(2)}} = ${tPeak.toStringAsFixed(3)} \\text{ s}\$
-
-### 3. Maximum Height
-Using the displacement formula \$y = y_0 + v_{y0}t - \\frac{1}{2}gt^2\$:
-- \$y_{max} = ${h0.toStringAsFixed(1)} + (${vy.toStringAsFixed(2)} \\cdot ${tPeak.toStringAsFixed(3)}) - (0.5 \\cdot ${g.toStringAsFixed(2)} \\cdot ${tPeak.toStringAsFixed(3)}^2)\$
-- \$y_{max} = ${peakH.toStringAsFixed(2)} \\text{ m}\$
-
-### 4. Total Hang Time
-Solve the quadratic equation for when height \$y = 0\$:
-\$\$\$0 = h_0 + v_{y}t - \\frac{1}{2}gt^2\$\$\$
-\$\$\$0 = ${h0.toStringAsFixed(1)} + ${vy.toStringAsFixed(2)}t - ${(g / 2).toStringAsFixed(2)}t^2\$\$\$
-
-Using the quadratic formula:
-- \$t = \\frac{${vy.toStringAsFixed(2)} + \\sqrt{(${vy.toStringAsFixed(2)})^2 + 2 \\cdot ${g.toStringAsFixed(2)} \\cdot ${h0.toStringAsFixed(1)}}}{${g.toStringAsFixed(2)}}\$
-- \$t_{total} = ${hangTime.toStringAsFixed(3)} \\text{ s}\$
-
-### 5. Horizontal Range
-In the ideal case, horizontal velocity \$v_x\$ is constant.
-- \$R = v_x \\cdot t_{total}\$
-- \$R = ${vx.toStringAsFixed(2)} \\cdot ${hangTime.toStringAsFixed(3)}\$
-- \$R = ${range.toStringAsFixed(2)} \\text{ m}\$
+''' + l10n.pBowlingBall + r'''
 ''';
   }
+
+  final angleRad = angleDeg * math.pi / 180.0;
+  final vx = v0 * math.cos(angleRad);
+  final vy = v0 * math.sin(angleRad);
+  final tPeak = vy / g;
+  final peakH = h0 + (vy * vy) / (2 * g);
+
+  final disc = vy * vy + 2 * g * h0;
+  final hangTime = (vy + math.sqrt(disc)) / g;
+  final range = vx * hangTime;
+
+  final v0Str = v0.toStringAsFixed(1);
+  return r'''
+# ''' + l10n.pStepByStepDerivation + r''' (''' + l10n.pIdealCase + r''')
+
+> [!NOTE]
+> **''' + l10n.pGalileoPrinciple + r'''**
+> ''' + l10n.pInVacuum + r''', mass does **not** affect the trajectory. Whether you launch a golf ball or a bowling ball, gravity accelerates them at the same rate (g = ''' + g.toStringAsFixed(2) + r''' m/s²).
+
+### ''' + l10n.pVelocityComponents + r'''
+Break initial velocity (v_0 = ''' + v0Str + r''' m/s) into Horizontal (v_x) and Vertical (v_y) components using trigonometry:
+- v_x = v_0 · cos(''' + angleDeg.toStringAsFixed(0) + r'''°) = ''' + vx.toStringAsFixed(2) + r''' m/s
+- v_y = v_0 · sin(''' + angleDeg.toStringAsFixed(0) + r'''°) = ''' + vy.toStringAsFixed(2) + r''' m/s
+
+### ''' + l10n.pTimeToPeakHeight + r'''
+''' + l10n.pAtThePeak + r''', vertical velocity v_y is 0. Solving v_y = v_y0 - g t:
+- 0 = ''' + vy.toStringAsFixed(2) + r''' - ''' + g.toStringAsFixed(2) + r''' · t_peak
+- t_peak = ''' + vy.toStringAsFixed(2) + r''' / ''' + g.toStringAsFixed(2) + r''' = ''' + tPeak.toStringAsFixed(3) + r''' s
+
+### ''' + l10n.pMaximumHeight + r'''
+''' + l10n.pUsingDisplacement + r''':
+- y_max = ''' + h0.toStringAsFixed(1) + r''' + (''' + vy.toStringAsFixed(2) + r''' · ''' + tPeak.toStringAsFixed(3) + r''') - (0.5 · ''' + g.toStringAsFixed(2) + r''' · ''' + tPeak.toStringAsFixed(3) + r'''²)
+- y_max = ''' + peakH.toStringAsFixed(2) + r''' m
+
+### ''' + l10n.pTotalHangTime + r'''
+''' + l10n.pSolveQuadratic + r''':
+$$0 = h_0 + v_y t - ½ g t^2$$
+$$0 = ''' + h0.toStringAsFixed(1) + r''' + ''' + vy.toStringAsFixed(2) + r''' t - ''' + (g / 2).toStringAsFixed(2) + r''' t^2$$
+
+''' + l10n.pUsingQuadraticFormula + r''':
+- t = (''' + vy.toStringAsFixed(2) + r''' + √(''' + vy.toStringAsFixed(2) + r''')² + 2 · ''' + g.toStringAsFixed(2) + r''' · ''' + h0.toStringAsFixed(1) + r''')) / ''' + g.toStringAsFixed(2) + r'''
+- t_total = ''' + hangTime.toStringAsFixed(3) + r''' s
+
+### ''' + l10n.pHorizontalRange + r'''
+''' + l10n.pInIdealCase + r''', horizontal velocity v_x is constant.
+- R = v_x · t_total
+- R = ''' + vx.toStringAsFixed(2) + r''' · ''' + hangTime.toStringAsFixed(3) + r'''
+- R = ''' + range.toStringAsFixed(2) + r''' m
+''';
 }

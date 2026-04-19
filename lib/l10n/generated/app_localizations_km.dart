@@ -209,7 +209,7 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get newtonThirdLawDesc =>
-      'សម្រាប់សកម្មនីយមួយ មានប្រតិកម្មតប និង មាន ទិសដៅ ផ្ទ ុ យ';
+      'សម្រាប់រាល់សកម្មភាព មានប្រតិកម្មតបស្មើគ្នានិងផ្ទុយទិស';
 
   @override
   String get mass => 'ម៉ាស';
@@ -281,7 +281,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get launch => 'បាញ់';
 
   @override
-  String get simulate => 'ធ្វើតាម';
+  String get simulate => 'ធ្វើត្រាប់តាម';
 
   @override
   String get law2ScreenTitle => 'ច្បាប់ទី២';
@@ -327,10 +327,10 @@ class AppLocalizationsKm extends AppLocalizations {
       'រ៉ុក្កែតបញ្ចេញឧស្ម័នទៅខាងក្រោម (កម្លាំងសកម្ម) ដែលធ្វើឱ្យរ៉ុក្កែតហោះឡើងទៅខាងលើ (កម្លាំងប្រតិកម្ម)។';
 
   @override
-  String get exhaust => 'បាត';
+  String get exhaust => 'ផ្សែង';
 
   @override
-  String get thrust => 'កំលាំងទាញ';
+  String get thrust => 'កម្លាំងរុញ';
 
   @override
   String get voltage => 'វ៉ុល';
@@ -342,7 +342,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get resistance => 'រេស៊ីស្តង់';
 
   @override
-  String get power => 'ថាម​ពល';
+  String get power => 'អនុភាព';
 
   @override
   String get resistor => 'រេស៊ីស្ត័រ';
@@ -378,16 +378,16 @@ class AppLocalizationsKm extends AppLocalizations {
   String get ohmsLawDesc => 'V = IR';
 
   @override
-  String get simulator => 'កម្មវិធីបោះបង់';
+  String get simulator => 'កម្មវិធីពិសោធន៍';
 
   @override
   String get learn => 'សិក្សា';
 
   @override
-  String get learnOhmsLaw => 'សិក្សា​ច្បាប់​អូម';
+  String get learnOhmsLaw => 'សិក្សាច្បាប់អូម';
 
   @override
-  String get fundamentalLaw => 'ច្បាប់​មូលដ្ឋាន';
+  String get fundamentalLaw => 'ច្បាប់មូលដ្ឋាន';
 
   @override
   String get fundamentalLawDesc =>
@@ -435,7 +435,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get findResistance => 'រកតម្លៃរេស៊ីស្តង់';
 
   @override
-  String get powerDissipation => 'ថាម​ពល​បាច​ចុល';
+  String get powerDissipation => 'ថាមពលបាចចុល';
 
   @override
   String get ohmsLawWarning => 'ព្រមាន! តង់ស្យុងខ្ពស់!';
@@ -453,7 +453,345 @@ class AppLocalizationsKm extends AppLocalizations {
   String get disconnect => 'ផ្តាច់';
 
   @override
-  String get angle => 'មុំ';
+  String get physicsAtYourFingertips => 'រូបវិទ្យានៅចុងម្រាមដៃ';
+
+  @override
+  String get projectileTitle => 'គ្រាប់ផ្លោង';
+
+  @override
+  String get launchSimulator => 'កម្មវិធីពិសោធន៍';
+
+  @override
+  String get ready => 'រួចរាល់';
+
+  @override
+  String get drag => 'កម្លាំងទប់';
+
+  @override
+  String get env => 'បរិស្ថាន';
+
+  @override
+  String get earth => 'ផែនដី';
+
+  @override
+  String get eightProjectiles => '៨ គ្រាប់';
+
+  @override
+  String get fourPlanets => '៤ ភព';
+
+  @override
+  String get airResistance => 'ភាពធន់នៃខ្យល់';
+
+  @override
+  String get liveGraphs => 'ក្រាហ្វផ្ទាល់';
+
+  @override
+  String get slowMotion => 'ចលនាយឺត';
+
+  @override
+  String get challengeMode => 'របៀបប្រកួតប្រជែង';
+
+  @override
+  String get resume => 'Resume';
+
+  @override
+  String get pSlowMo => 'យឺត';
+
+  @override
+  String get pNormal => 'ធម្មតា';
+
+  @override
+  String get pLaunch => 'បាញ់';
+
+  @override
+  String get pPause => 'ផ្អាក';
+
+  @override
+  String get pResume => 'បន្ត';
+
+  @override
+  String get pReset => 'កំណត់ឡើងវិញ';
+
+  @override
+  String get pAngle => 'មុំ';
+
+  @override
+  String get pSpeed => 'ល្បឿន';
+
+  @override
+  String get pHeight => 'កម្ពស់';
+
+  @override
+  String get pGravity => 'ទំនាញ';
+
+  @override
+  String get pCustom => 'ផ្ទាល់';
+
+  @override
+  String get pProjectile => 'គ្រាប់';
+
+  @override
+  String get pMass => 'ម៉ាស';
+
+  @override
+  String get pRadius => 'កាំ';
+
+  @override
+  String get pDragCoeff => 'មេគុណកម្លាំងទប់';
+
+  @override
+  String get pTargetDistance => 'ចម្ងាយគោលដៅ';
+
+  @override
+  String get pCurrentScore => 'ពិន្ទុបច្ចុប្បន្ន';
+
+  @override
+  String get pBullseye => 'ចំគោលដៅ! +100 ពិន្ទុ';
+
+  @override
+  String get pAirResistance => 'ភាពធន់នៃខ្យល់';
+
+  @override
+  String get pChallengeMode => 'Challenge Mode';
+
+  @override
+  String get pShowForces => 'បង្ហាញកម្លាំង';
+
+  @override
+  String get pShowVelocity => 'បង្ហាញល្បឿន';
+
+  @override
+  String get pUsingDrag => 'ប្រើកម្លាំងទប់ខ្យល់';
+
+  @override
+  String get pRange => 'ចម្ងាយ';
+
+  @override
+  String get pMaxHeight => 'កម្ពស់អតិបរមា';
+
+  @override
+  String get pTime => 'ពេល';
+
+  @override
+  String get pMath => 'គណនា';
+
+  @override
+  String get pViewMath => 'មើលការគណនា';
+
+  @override
+  String get pProFeature => 'PRO';
+
+  @override
+  String get pAltitudeVsDist => 'កម្ពស់/ចម្ងាយ';
+
+  @override
+  String get pVelocityVsTime => 'ល្បឿន/ពេល';
+
+  @override
+  String get pAltitudeVsDistance => 'កម្ពស់/ចម្ងាយ';
+
+  @override
+  String get pDistanceM => 'ចម្ងាយ(m)';
+
+  @override
+  String get pTimeS => 'ពេល(s)';
+
+  @override
+  String get pHeightM => 'កម្ពស់(m)';
+
+  @override
+  String get pSpeedMs => 'ល្បឿន(m/s)';
+
+  @override
+  String get pFormulaGuide => 'រូបមន្ត';
+
+  @override
+  String get pLaunchSimulation => 'បាញ់';
+
+  @override
+  String get pKinematicEquations => 'សមីការចលនា';
+
+  @override
+  String get pKeyResults => 'លទ្ធផលសំខាន់';
+
+  @override
+  String get pHorizontalPosition => 'ទីតាំងផ្តេក';
+
+  @override
+  String get pVerticalPosition => 'ទីតាំងបញ្ឈរ';
+
+  @override
+  String get pHorizontalVelocity => 'ល្បឿនផ្តេក';
+
+  @override
+  String get pVerticalVelocity => 'ល្បឿនបញ្ឈរ';
+
+  @override
+  String get pHangTime => 'ពេលវេលាហោះហើរ';
+
+  @override
+  String get pRangeNoAir => 'Range (no air resistance)';
+
+  @override
+  String get pSpeedAtAnyTime => 'ល្បឿននៅពេលណាមួយ';
+
+  @override
+  String get pDragForce => 'កម្លាំងទប់';
+
+  @override
+  String get pAirResistanceDrag => 'Air Resistance (Drag)';
+
+  @override
+  String get pConstants => '⚙️ ថេររូបវិទ្យា';
+
+  @override
+  String get pRangeNoAirRes => 'ចម្ងាយ (គ្មានកម្លាំងទប់)';
+
+  @override
+  String get pNetAcceleration => 'សំទុះសរុប';
+
+  @override
+  String get pHorizDistAtTime => 'ចម្ងាយផ្តេកនៅពេល t';
+
+  @override
+  String get pHeightAtTime => 'កម្ពស់នៅពេល t';
+
+  @override
+  String get pConstantThroughout => 'ថេរពេញមួយចលនា';
+
+  @override
+  String get pDecreasesLinearly => 'ថយចុះជាលំដាប់ដោយសារទំនាញ';
+
+  @override
+  String get pTotalFlightTime => 'រយៈពេលហោះហរុប';
+
+  @override
+  String get pMaxHorizDist => 'ចម្ងាយផ្តេកអតិបរមា';
+
+  @override
+  String get pPeakHeight => 'កម្ពស់ខ្ពស់បំផុតពីដី';
+
+  @override
+  String get pPythagoras => 'ទ្រឹស្តីបទពីតាករលើសមាសភាគល្បឿន';
+
+  @override
+  String get pDragForceDesc => 'ρ = ដង់ស៊ីតេខ្យល់, Cₐ = មេគុណកម្លាំងទប់';
+
+  @override
+  String get pEulerIntegration => 'អាំងតេក្រាលអឺលែរ';
+
+  @override
+  String get pGEarth => 'g (ផែនដី)';
+
+  @override
+  String get pGMoon => 'g (ព្រះច័ន្ទ)';
+
+  @override
+  String get pGMars => 'g (ភពអង្គារ)';
+
+  @override
+  String get pGJupiter => 'g (ភពព្រហស្បតិ៍)';
+
+  @override
+  String get pAirDensity => 'ρ (ដង់ស៊ីតេខ្យល់)';
+
+  @override
+  String get pDerivationModule => 'ម៉ូឌុលដេរីវេស៊ីយ៉ុង';
+
+  @override
+  String get pStepByStepDerivation => 'ការបង្ហាញពីមួយជំហានទៅមួយជំហាន';
+
+  @override
+  String get pIdealCase => 'ករណីឧត្តមគតិ';
+
+  @override
+  String get pAirResistanceBreakdown => 'ការវិភាគភាពធន់នៃខ្យល់';
+
+  @override
+  String get pDoesMassMatter => 'តើម៉ាសមានឥទ្ធិពលទេ?';
+
+  @override
+  String get pHigherMass => 'ម៉ាសធំ, ខ្យល់ហូរមិនសូវរំខាន';
+
+  @override
+  String get pLowerMass => 'ម៉ាសតូច, ខ្យល់ហូររំខានខ្លាំង';
+
+  @override
+  String get pHowItsCalculated => 'វិធីគណនា';
+
+  @override
+  String get pAtEachTimeStep => 'នៅរាល់ជំហាននៃពេលវេលា';
+
+  @override
+  String get pCalculateDragForce => 'គណនាកម្លាំងទប់: F_d = ½ ρ v² C_d A';
+
+  @override
+  String get pUpdateAcceleration => 'ធ្វើបច្ចុប្បន្នភាពសំទុះ: a = F_net / m';
+
+  @override
+  String get pUpdateVelocity => 'ធ្វើបច្ចុប្បន្នភាពល្បឿននៅរាល់ជំហាន';
+
+  @override
+  String get pBowlingBall => 'ករណីគ្រាប់បាល់';
+
+  @override
+  String get pGalileoPrinciple => 'គោលការណ៍កាលីឡេ';
+
+  @override
+  String get pInVacuum => 'ក្នុងសុញ្ញកាស';
+
+  @override
+  String get pVelocityComponents => '១. គណនាសមាសភាគល្បឿន';
+
+  @override
+  String pBreakInitialVelocity(Object v0) {
+    return 'បំបែកល្បឿនដើម';
+  }
+
+  @override
+  String get pTimeToPeakHeight => '២. ពេលវេលាដល់កំពស់ខ្ពស់បំផុត';
+
+  @override
+  String get pAtThePeak => 'នៅកំពូលនៃការហោះហើរ';
+
+  @override
+  String get pMaximumHeight => '៣. កម្ពស់អតិបរមា';
+
+  @override
+  String get pUsingDisplacement => 'ដោយប្រើសមីការចម្ងាយ';
+
+  @override
+  String get pTotalHangTime => '៤. ពេលវេលាហោះហរុប';
+
+  @override
+  String get pSolveQuadratic => 'ដោះស្រាយសមីការដឺក្រេទី២';
+
+  @override
+  String get pUsingQuadraticFormula => 'ដោយប្រើរូបមន្តដឺក្រេទី២';
+
+  @override
+  String get pHorizontalRange => '៥. ចម្ងាយផ្តេក';
+
+  @override
+  String get pInIdealCase => 'ក្នុងករណីឧត្តមគតិ';
+
+  @override
+  String get pYes => 'បាទ/ចាស';
+
+  @override
+  String get pInTheRealWorld => 'ក្នុងជីវិតពិត';
+
+  @override
+  String get pFurtherRange => 'ចម្ងាយឆ្ងាយជាង';
+
+  @override
+  String get pShorterRange => 'ចម្ងាយជិតជាង';
+
+  @override
+  String get pWeUseEuler => 'យើងប្រើវិធីអឺលែរ';
+
+  @override
+  String get simulation => 'កម្មវិធីពិសោធន៍';
 
   @override
   String get time => 'ពេលវេលា';
