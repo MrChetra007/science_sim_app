@@ -188,6 +188,12 @@ abstract class AppLocalizations {
   /// **'WAVE LAB'**
   String get waveLab;
 
+  /// No description provided for @waveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'WAVE LAB'**
+  String get waveTitle;
+
   /// No description provided for @waveLabSubtitle.
   ///
   /// In en, this message translates to:
@@ -545,7 +551,7 @@ abstract class AppLocalizations {
   /// No description provided for @showVectors.
   ///
   /// In en, this message translates to:
-  /// **'Show Vectors'**
+  /// **'Show Vectors (v/a)'**
   String get showVectors;
 
   /// No description provided for @showTrail.
@@ -1051,6 +1057,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Challenge Mode'**
   String get challengeMode;
+
+  /// No description provided for @score.
+  ///
+  /// In en, this message translates to:
+  /// **'SCORE'**
+  String get score;
+
+  /// No description provided for @streak.
+  ///
+  /// In en, this message translates to:
+  /// **'STREAK'**
+  String get streak;
+
+  /// No description provided for @targetFrequency.
+  ///
+  /// In en, this message translates to:
+  /// **'TARGET FREQUENCY'**
+  String get targetFrequency;
+
+  /// No description provided for @targetHarmonic.
+  ///
+  /// In en, this message translates to:
+  /// **'TARGET HARMONIC'**
+  String get targetHarmonic;
+
+  /// No description provided for @targetPhase.
+  ///
+  /// In en, this message translates to:
+  /// **'TARGET PHASE'**
+  String get targetPhase;
+
+  /// No description provided for @matched.
+  ///
+  /// In en, this message translates to:
+  /// **'MATCHED!'**
+  String get matched;
 
   /// No description provided for @resume.
   ///
@@ -1892,6 +1934,12 @@ abstract class AppLocalizations {
   /// **'This expert lab is available in the Scientific Pro tier.'**
   String get expertLabProTier;
 
+  /// No description provided for @scientificPro.
+  ///
+  /// In en, this message translates to:
+  /// **'SCIENTIFIC PRO'**
+  String get scientificPro;
+
   /// No description provided for @backToMenu.
   ///
   /// In en, this message translates to:
@@ -2195,7 +2243,7 @@ abstract class AppLocalizations {
   /// No description provided for @waveType.
   ///
   /// In en, this message translates to:
-  /// **'Wave Type'**
+  /// **'Type:'**
   String get waveType;
 
   /// No description provided for @alternatingCurrent.
@@ -2293,6 +2341,336 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Damping'**
   String get damping;
+
+  /// No description provided for @enterLab.
+  ///
+  /// In en, this message translates to:
+  /// **'ENTER LAB'**
+  String get enterLab;
+
+  /// No description provided for @formulaReference.
+  ///
+  /// In en, this message translates to:
+  /// **'FORMULA REFERENCE'**
+  String get formulaReference;
+
+  /// No description provided for @controls.
+  ///
+  /// In en, this message translates to:
+  /// **'CONTROLS'**
+  String get controls;
+
+  /// No description provided for @educationTools.
+  ///
+  /// In en, this message translates to:
+  /// **'EDUCATION TOOLS'**
+  String get educationTools;
+
+  /// No description provided for @blueprintHud.
+  ///
+  /// In en, this message translates to:
+  /// **'BLUEPRINT HUD'**
+  String get blueprintHud;
+
+  /// No description provided for @wave1Amplitude.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave 1 Amplitude'**
+  String get wave1Amplitude;
+
+  /// No description provided for @wave2Amplitude.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave 2 Amplitude'**
+  String get wave2Amplitude;
+
+  /// No description provided for @wave1Frequency.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave 1 Frequency'**
+  String get wave1Frequency;
+
+  /// No description provided for @wave2Frequency.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave 2 Frequency'**
+  String get wave2Frequency;
+
+  /// No description provided for @harmonicN.
+  ///
+  /// In en, this message translates to:
+  /// **'Harmonic (n)'**
+  String get harmonicN;
+
+  /// No description provided for @phaseDiff.
+  ///
+  /// In en, this message translates to:
+  /// **'Phase Diff (φ)'**
+  String get phaseDiff;
+
+  /// No description provided for @sourceVelocity.
+  ///
+  /// In en, this message translates to:
+  /// **'Source Velocity (vs)'**
+  String get sourceVelocity;
+
+  /// No description provided for @waveMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave Mode'**
+  String get waveMode;
+
+  /// No description provided for @presetSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Preset Speed'**
+  String get presetSpeed;
+
+  /// No description provided for @captureGhost.
+  ///
+  /// In en, this message translates to:
+  /// **'Capture Ghost'**
+  String get captureGhost;
+
+  /// No description provided for @clearGhost.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Ghost'**
+  String get clearGhost;
+
+  /// No description provided for @showGhost.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Ghost'**
+  String get showGhost;
+
+  /// No description provided for @dopplerEffect.
+  ///
+  /// In en, this message translates to:
+  /// **'Doppler Effect'**
+  String get dopplerEffect;
+
+  /// No description provided for @approaching.
+  ///
+  /// In en, this message translates to:
+  /// **'Approaching'**
+  String get approaching;
+
+  /// No description provided for @receding.
+  ///
+  /// In en, this message translates to:
+  /// **'Receding'**
+  String get receding;
+
+  /// No description provided for @wavelengthGreater.
+  ///
+  /// In en, this message translates to:
+  /// **'Wavelength (> canvas)'**
+  String get wavelengthGreater;
+
+  /// No description provided for @resultantAmplitude.
+  ///
+  /// In en, this message translates to:
+  /// **'Resultant Amplitude'**
+  String get resultantAmplitude;
+
+  /// No description provided for @mathDerivations.
+  ///
+  /// In en, this message translates to:
+  /// **'Math Derivations'**
+  String get mathDerivations;
+
+  /// No description provided for @formulaReferenceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Formula Reference'**
+  String get formulaReferenceTitle;
+
+  /// No description provided for @fundamentalEquations.
+  ///
+  /// In en, this message translates to:
+  /// **'Fundamental Equations'**
+  String get fundamentalEquations;
+
+  /// No description provided for @waveEquation.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave Speed'**
+  String get waveEquation;
+
+  /// No description provided for @periodEquation.
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get periodEquation;
+
+  /// No description provided for @angularFrequency.
+  ///
+  /// In en, this message translates to:
+  /// **'Angular Frequency'**
+  String get angularFrequency;
+
+  /// No description provided for @waveNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave Number'**
+  String get waveNumber;
+
+  /// No description provided for @wavePropagation.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave Propagation'**
+  String get wavePropagation;
+
+  /// No description provided for @travelingWave.
+  ///
+  /// In en, this message translates to:
+  /// **'Traveling Wave'**
+  String get travelingWave;
+
+  /// No description provided for @standingWaveEquation.
+  ///
+  /// In en, this message translates to:
+  /// **'Standing Wave'**
+  String get standingWaveEquation;
+
+  /// No description provided for @advancedPhysics.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced Physics'**
+  String get advancedPhysics;
+
+  /// No description provided for @dampedWave.
+  ///
+  /// In en, this message translates to:
+  /// **'Damped Wave'**
+  String get dampedWave;
+
+  /// No description provided for @presetsVacuum.
+  ///
+  /// In en, this message translates to:
+  /// **'Vacuum'**
+  String get presetsVacuum;
+
+  /// No description provided for @presetsAir.
+  ///
+  /// In en, this message translates to:
+  /// **'Air'**
+  String get presetsAir;
+
+  /// No description provided for @presetsWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Water'**
+  String get presetsWater;
+
+  /// No description provided for @challengeGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge Guide'**
+  String get challengeGuide;
+
+  /// No description provided for @challengeHelp1.
+  ///
+  /// In en, this message translates to:
+  /// **'The most basic challenge. Your goal is to match the raw frequency of the wave.'**
+  String get challengeHelp1;
+
+  /// No description provided for @challengeHelp2.
+  ///
+  /// In en, this message translates to:
+  /// **'The goal is defined by the harmonic number \'n\'.'**
+  String get challengeHelp2;
+
+  /// No description provided for @challengeHelp3.
+  ///
+  /// In en, this message translates to:
+  /// **'The goal is defined by the phase difference in terms of π.'**
+  String get challengeHelp3;
+
+  /// No description provided for @challengeGoal1.
+  ///
+  /// In en, this message translates to:
+  /// **'Match the frequency within 0.2 Hz'**
+  String get challengeGoal1;
+
+  /// No description provided for @challengeGoal2.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Standing Wave and set the correct Harmonic'**
+  String get challengeGoal2;
+
+  /// No description provided for @challengeGoal3.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Interference and adjust Phase Difference'**
+  String get challengeGoal3;
+
+  /// No description provided for @masterTheWaves.
+  ///
+  /// In en, this message translates to:
+  /// **'Master the Waves'**
+  String get masterTheWaves;
+
+  /// No description provided for @challengeModeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Challenge mode tests your understanding of wave physics. There are three different types of puzzles you will encounter.'**
+  String get challengeModeDescription;
+
+  /// No description provided for @howToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'How to Play'**
+  String get howToPlay;
+
+  /// No description provided for @matchFreqTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Look at the target frequency (e.g., 5.0 Hz).'**
+  String get matchFreqTarget;
+
+  /// No description provided for @useSliderAdjust.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the slider to adjust the wave frequency.'**
+  String get useSliderAdjust;
+
+  /// No description provided for @matchWithin.
+  ///
+  /// In en, this message translates to:
+  /// **'Match it within 0.2 Hz to score!'**
+  String get matchWithin;
+
+  /// No description provided for @switchStanding.
+  ///
+  /// In en, this message translates to:
+  /// **'First, switch the wave mode to \'Standing\'.'**
+  String get switchStanding;
+
+  /// No description provided for @selectNValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the \'n\' value that matches the target.'**
+  String get selectNValue;
+
+  /// No description provided for @switchInterference.
+  ///
+  /// In en, this message translates to:
+  /// **'First, switch the wave mode to \'Interference\'.'**
+  String get switchInterference;
+
+  /// No description provided for @adjustPhase.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust the Phase Difference slider until you hit the target (e.g., 0.50 π).'**
+  String get adjustPhase;
+
+  /// No description provided for @starterLab.
+  ///
+  /// In en, this message translates to:
+  /// **'STARTER LAB'**
+  String get starterLab;
 
   /// No description provided for @temperature.
   ///

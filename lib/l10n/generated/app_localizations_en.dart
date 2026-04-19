@@ -54,6 +54,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get waveLab => 'WAVE LAB';
 
   @override
+  String get waveTitle => 'WAVE LAB';
+
+  @override
   String get waveLabSubtitle => 'Wave Mechanics';
 
   @override
@@ -234,7 +237,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get applyForce => 'Apply Force';
 
   @override
-  String get showVectors => 'Show Vectors';
+  String get showVectors => 'Show Vectors (v/a)';
 
   @override
   String get showTrail => 'Show Trail';
@@ -492,6 +495,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get challengeMode => 'Challenge Mode';
+
+  @override
+  String get score => 'SCORE';
+
+  @override
+  String get streak => 'STREAK';
+
+  @override
+  String get targetFrequency => 'TARGET FREQUENCY';
+
+  @override
+  String get targetHarmonic => 'TARGET HARMONIC';
+
+  @override
+  String get targetPhase => 'TARGET PHASE';
+
+  @override
+  String get matched => 'MATCHED!';
 
   @override
   String get resume => 'Resume';
@@ -946,6 +967,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'This expert lab is available in the Scientific Pro tier.';
 
   @override
+  String get scientificPro => 'SCIENTIFIC PRO';
+
+  @override
   String get backToMenu => 'BACK TO MENU';
 
   @override
@@ -1104,7 +1128,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get display => 'Display';
 
   @override
-  String get waveType => 'Wave Type';
+  String get waveType => 'Type:';
 
   @override
   String get alternatingCurrent =>
@@ -1158,6 +1182,179 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get damping => 'Damping';
+
+  @override
+  String get enterLab => 'ENTER LAB';
+
+  @override
+  String get formulaReference => 'FORMULA REFERENCE';
+
+  @override
+  String get controls => 'CONTROLS';
+
+  @override
+  String get educationTools => 'EDUCATION TOOLS';
+
+  @override
+  String get blueprintHud => 'BLUEPRINT HUD';
+
+  @override
+  String get wave1Amplitude => 'Wave 1 Amplitude';
+
+  @override
+  String get wave2Amplitude => 'Wave 2 Amplitude';
+
+  @override
+  String get wave1Frequency => 'Wave 1 Frequency';
+
+  @override
+  String get wave2Frequency => 'Wave 2 Frequency';
+
+  @override
+  String get harmonicN => 'Harmonic (n)';
+
+  @override
+  String get phaseDiff => 'Phase Diff (φ)';
+
+  @override
+  String get sourceVelocity => 'Source Velocity (vs)';
+
+  @override
+  String get waveMode => 'Wave Mode';
+
+  @override
+  String get presetSpeed => 'Preset Speed';
+
+  @override
+  String get captureGhost => 'Capture Ghost';
+
+  @override
+  String get clearGhost => 'Clear Ghost';
+
+  @override
+  String get showGhost => 'Show Ghost';
+
+  @override
+  String get dopplerEffect => 'Doppler Effect';
+
+  @override
+  String get approaching => 'Approaching';
+
+  @override
+  String get receding => 'Receding';
+
+  @override
+  String get wavelengthGreater => 'Wavelength (> canvas)';
+
+  @override
+  String get resultantAmplitude => 'Resultant Amplitude';
+
+  @override
+  String get mathDerivations => 'Math Derivations';
+
+  @override
+  String get formulaReferenceTitle => 'Formula Reference';
+
+  @override
+  String get fundamentalEquations => 'Fundamental Equations';
+
+  @override
+  String get waveEquation => 'Wave Speed';
+
+  @override
+  String get periodEquation => 'Period';
+
+  @override
+  String get angularFrequency => 'Angular Frequency';
+
+  @override
+  String get waveNumber => 'Wave Number';
+
+  @override
+  String get wavePropagation => 'Wave Propagation';
+
+  @override
+  String get travelingWave => 'Traveling Wave';
+
+  @override
+  String get standingWaveEquation => 'Standing Wave';
+
+  @override
+  String get advancedPhysics => 'Advanced Physics';
+
+  @override
+  String get dampedWave => 'Damped Wave';
+
+  @override
+  String get presetsVacuum => 'Vacuum';
+
+  @override
+  String get presetsAir => 'Air';
+
+  @override
+  String get presetsWater => 'Water';
+
+  @override
+  String get challengeGuide => 'Challenge Guide';
+
+  @override
+  String get challengeHelp1 =>
+      'The most basic challenge. Your goal is to match the raw frequency of the wave.';
+
+  @override
+  String get challengeHelp2 =>
+      'The goal is defined by the harmonic number \'n\'.';
+
+  @override
+  String get challengeHelp3 =>
+      'The goal is defined by the phase difference in terms of π.';
+
+  @override
+  String get challengeGoal1 => 'Match the frequency within 0.2 Hz';
+
+  @override
+  String get challengeGoal2 =>
+      'Switch to Standing Wave and set the correct Harmonic';
+
+  @override
+  String get challengeGoal3 =>
+      'Switch to Interference and adjust Phase Difference';
+
+  @override
+  String get masterTheWaves => 'Master the Waves';
+
+  @override
+  String get challengeModeDescription =>
+      'Challenge mode tests your understanding of wave physics. There are three different types of puzzles you will encounter.';
+
+  @override
+  String get howToPlay => 'How to Play';
+
+  @override
+  String get matchFreqTarget => 'Look at the target frequency (e.g., 5.0 Hz).';
+
+  @override
+  String get useSliderAdjust => 'Use the slider to adjust the wave frequency.';
+
+  @override
+  String get matchWithin => 'Match it within 0.2 Hz to score!';
+
+  @override
+  String get switchStanding => 'First, switch the wave mode to \'Standing\'.';
+
+  @override
+  String get selectNValue => 'Select the \'n\' value that matches the target.';
+
+  @override
+  String get switchInterference =>
+      'First, switch the wave mode to \'Interference\'.';
+
+  @override
+  String get adjustPhase =>
+      'Adjust the Phase Difference slider until you hit the target (e.g., 0.50 π).';
+
+  @override
+  String get starterLab => 'STARTER LAB';
 
   @override
   String get temperature => 'Temperature';

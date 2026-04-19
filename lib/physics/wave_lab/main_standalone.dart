@@ -83,6 +83,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     Widget content = Scaffold(
       backgroundColor: const Color(0xFF040D17),
       body: Stack(
@@ -123,9 +124,9 @@ class _HomeScreenState extends State<HomeScreen>
                         ),
                         child: Column(
                           children: [
-                            const Text(
-                              '〰️ WAVE LAB',
-                              style: TextStyle(
+                            Text(
+                              '〰️ ${l10n.waveTitle}',
+                              style: const TextStyle(
                                 fontSize: 40,
                                 fontWeight: FontWeight.w900,
                                 color: Color(0xFF00E5FF),
@@ -144,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen>
                             builder: (context) => const SimulationScreen(),
                           ),
                         ),
-                        label: 'ENTER LAB',
+                        label: l10n.enterLab,
                         icon: Icons.science_outlined,
                       ),
                       const SizedBox(height: 16),
@@ -157,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen>
                                 const FormulaReferenceScreen(),
                           ),
                         ),
-                        label: 'FORMULA REFERENCE',
+                        label: l10n.formulaReference,
                         icon: Icons.menu_book,
                         isSecondary: true,
                       ),
@@ -170,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen>
                             builder: (context) => const ChallengeScreen(),
                           ),
                         ),
-                        label: 'CHALLENGE MODE',
+                        label: l10n.challengeMode,
                         icon: Icons.emoji_events_outlined,
                         isSecondary: true,
                       ),
@@ -190,18 +191,21 @@ class _HomeScreenState extends State<HomeScreen>
             right: 0,
             child: Center(
               child: p.Consumer<SubscriptionService>(
-                builder: (context, sub, child) => GestureDetector(
-                  key: _proKey,
-                  onTap: () => showGlobalPlanDialog(context),
-                  child: Text(
-                    'v1.0.1 ${sub.isPro ? 'SCIENTIFIC PRO' : 'STARTER LAB'}',
-                    style: const TextStyle(
-                      color: Colors.white24,
-                      fontSize: 10,
-                      letterSpacing: 2,
+                builder: (context, sub, child) {
+                  final tier = sub.isPro ? l10n.scientificPro : l10n.starterLab;
+                  return GestureDetector(
+                    key: _proKey,
+                    onTap: () => showGlobalPlanDialog(context),
+                    child: Text(
+                      'v1.0.1 $tier',
+                      style: const TextStyle(
+                        color: Colors.white24,
+                        fontSize: 10,
+                        letterSpacing: 2,
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ),
           ),

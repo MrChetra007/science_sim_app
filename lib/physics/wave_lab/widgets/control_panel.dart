@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import '../providers/wave_provider.dart';
 import '../theme/wave_colors.dart';
 import 'pro_gate.dart';
@@ -10,6 +11,7 @@ class ControlPanel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final waveState = ref.watch(waveProvider);
     final waveNotifier = ref.read(waveProvider.notifier);
 
@@ -48,9 +50,9 @@ class ControlPanel extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'CONTROLS',
-                    style: TextStyle(
+                  Text(
+                    l10n.controls,
+                    style: const TextStyle(
                       color: Colors.white38,
                       fontSize: 10,
                       letterSpacing: 1.2,
@@ -86,7 +88,7 @@ class ControlPanel extends ConsumerWidget {
                               : Colors.white70,
                           size: 20,
                         ),
-                        tooltip: 'Slow Motion',
+                        tooltip: l10n.slowMotion,
                       ),
                       const SizedBox(width: 8),
                       // ✅ FREE — Reset
@@ -109,14 +111,14 @@ class ControlPanel extends ConsumerWidget {
               const SizedBox(height: 8),
               if (waveState.mode == WaveMode.simulation ||
                   waveState.mode == WaveMode.interference) ...[
-                _buildWaveTypeToggle(waveState, waveNotifier),
+                _buildWaveTypeToggle(waveState, waveNotifier, l10n),
                 const Divider(color: Colors.white12, height: 24),
               ],
 
               _buildSlider(
                 label: waveState.mode == WaveMode.interference
-                    ? 'Wave 1 Amplitude'
-                    : 'Amplitude (A)',
+                    ? l10n.wave1Amplitude
+                    : l10n.amplitude,
                 value: waveState.amplitude,
                 min: 0.1,
                 max: 5.0,
@@ -128,8 +130,8 @@ class ControlPanel extends ConsumerWidget {
               ),
               _buildSlider(
                 label: waveState.mode == WaveMode.interference
-                    ? 'Wave 1 Frequency'
-                    : 'Frequency (f)',
+                    ? l10n.wave1Frequency
+                    : l10n.frequency,
                 value: waveState.frequency,
                 min: 0.1,
                 max: 20.0,
@@ -143,7 +145,7 @@ class ControlPanel extends ConsumerWidget {
               // ✅ FREE — Standing Wave harmonic slider
               if (waveState.mode == WaveMode.standing)
                 _buildSlider(
-                  label: 'Harmonic (n)',
+                  label: l10n.harmonicN,
                   value: waveState.harmonic.toDouble(),
                   min: 1,
                   max: 6,
@@ -153,21 +155,21 @@ class ControlPanel extends ConsumerWidget {
 
               if (waveState.mode == WaveMode.interference) ...[
                 _buildSlider(
-                  label: 'Wave 2 Amplitude',
+                  label: l10n.wave2Amplitude,
                   value: waveState.secondaryAmplitude,
                   min: 0.1,
                   max: 5.0,
                   onChanged: waveNotifier.setSecondaryAmplitude,
                 ),
                 _buildSlider(
-                  label: 'Wave 2 Frequency',
+                  label: l10n.wave2Frequency,
                   value: waveState.secondaryFrequency,
                   min: 0.1,
                   max: 20.0,
                   onChanged: waveNotifier.setSecondaryFrequency,
                 ),
                 _buildSlider(
-                  label: 'Phase Diff (φ)',
+                  label: l10n.phaseDiff,
                   value: waveState.phaseDifference,
                   min: 0,
                   max: 6.28,
@@ -178,7 +180,7 @@ class ControlPanel extends ConsumerWidget {
 
               if (waveState.mode == WaveMode.doppler)
                 _buildSlider(
-                  label: 'Source Velocity (vs)',
+                  label: l10n.sourceVelocity,
                   value: waveState.sourceVelocity,
                   min: -50,
                   max: 50,
@@ -190,7 +192,7 @@ class ControlPanel extends ConsumerWidget {
                   waveState.mode == WaveMode.interference ||
                   waveState.mode == WaveMode.doppler) ...[
                 _buildSlider(
-                  label: 'Wave Speed (v)',
+                  label: l10n.waveSpeed,
                   value: waveState.waveSpeed,
                   min: 100,
                   max: 1500,
@@ -202,15 +204,15 @@ class ControlPanel extends ConsumerWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      _presetChip('Vacuum', 300, waveState, waveNotifier),
-                      _presetChip('Air', 343, waveState, waveNotifier),
-                      _presetChip('Water', 1480, waveState, waveNotifier),
+                      _presetChip(l10n.presetsVacuum, 300, waveState, waveNotifier),
+                      _presetChip(l10n.presetsAir, 343, waveState, waveNotifier),
+                      _presetChip(l10n.presetsWater, 1480, waveState, waveNotifier),
                     ],
                   ),
                 ),
               ],
               const Divider(color: Colors.white12, height: 24),
-              _buildEducationTools(waveState, waveNotifier),
+              _buildEducationTools(waveState, waveNotifier, l10n),
             ],
           ),
         ),
@@ -218,13 +220,13 @@ class ControlPanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildEducationTools(WaveState state, WaveNotifier notifier) {
+  Widget _buildEducationTools(WaveState state, WaveNotifier notifier, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'EDUCATION TOOLS',
-          style: TextStyle(
+        Text(
+          l10n.educationTools,
+          style: const TextStyle(
             color: Colors.white38,
             fontSize: 10,
             letterSpacing: 1.2,
@@ -240,7 +242,7 @@ class ControlPanel extends ConsumerWidget {
               ElevatedButton.icon(
                 onPressed: notifier.captureGhost,
                 icon: const Icon(Icons.copy, size: 16),
-                label: const Text('Capture Ghost'),
+                label: Text(l10n.captureGhost),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white10,
                   foregroundColor: Colors.white,
@@ -251,7 +253,7 @@ class ControlPanel extends ConsumerWidget {
               ElevatedButton.icon(
                 onPressed: notifier.resetGhost,
                 icon: const Icon(Icons.clear, size: 16),
-                label: const Text('Clear Ghost'),
+                label: Text(l10n.clearGhost),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.redAccent.withOpacity(0.2),
                   foregroundColor: Colors.white,
@@ -259,7 +261,7 @@ class ControlPanel extends ConsumerWidget {
                 ),
               ),
               FilterChip(
-                label: const Text('Show Ghost'),
+                label: Text(l10n.showGhost),
                 selected: state.showGhost,
                 onSelected: (_) => notifier.toggleShowGhost(),
                 selectedColor: const Color(0xFF00E5FF),
@@ -272,7 +274,7 @@ class ControlPanel extends ConsumerWidget {
 
             // ✅ FREE — Vector Overlays
             FilterChip(
-              label: const Text('Show Vectors (v/a)'),
+              label: Text(l10n.showVectors),
               selected: state.showVectors,
               onSelected: (_) => notifier.toggleVectors(),
               selectedColor: const Color(0xFF00E5FF),
@@ -284,7 +286,7 @@ class ControlPanel extends ConsumerWidget {
 
             // ✅ FREE — Oscilloscope
             FilterChip(
-              label: const Text('Oscilloscope'),
+              label: Text(l10n.oscilloscope),
               selected: state.showOscilloscope,
               onSelected: (_) => notifier.toggleOscilloscope(),
               selectedColor: const Color(0xFF00E5FF),
@@ -296,7 +298,7 @@ class ControlPanel extends ConsumerWidget {
 
             // ✅ FREE — Blueprint HUD
             FilterChip(
-              label: const Text('BLUEPRINT HUD'),
+              label: Text(l10n.blueprintHud),
               selected: state.showBlueprint,
               onSelected: (_) => notifier.toggleBlueprint(),
               selectedColor: const Color(0xFF00E5FF),
@@ -309,7 +311,7 @@ class ControlPanel extends ConsumerWidget {
           ],
         ),
         const SizedBox(height: 16),
-        _buildWaveTypeToggle(state, notifier),
+        _buildWaveTypeToggle(state, notifier, l10n),
         const SizedBox(height: 16),
         Wrap(
           spacing: 8,
@@ -317,7 +319,7 @@ class ControlPanel extends ConsumerWidget {
           children: [
             // ✅ FREE — Damping
             FilterChip(
-              label: const Text('Damping'),
+              label: Text(l10n.damping),
               selected: state.isDampingEnabled,
               onSelected: (_) =>
                   notifier.toggleDamping(!state.isDampingEnabled),
@@ -381,13 +383,13 @@ class ControlPanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildWaveTypeToggle(WaveState state, WaveNotifier notifier) {
+  Widget _buildWaveTypeToggle(WaveState state, WaveNotifier notifier, AppLocalizations l10n) {
     return Row(
       children: [
-        const Text('Type:', style: TextStyle(color: Colors.white70)),
+        Text(l10n.waveType, style: const TextStyle(color: Colors.white70)),
         const SizedBox(width: 10),
         ChoiceChip(
-          label: const Text('Transverse'),
+          label: Text(l10n.transverse),
           selected: state.waveType == WaveType.transverse,
           onSelected: (_) => notifier.setWaveType(WaveType.transverse),
           selectedColor: const Color(0xFF00E5FF),
@@ -399,7 +401,7 @@ class ControlPanel extends ConsumerWidget {
         ),
         const SizedBox(width: 10),
         ChoiceChip(
-          label: const Text('Longitudinal'),
+          label: Text(l10n.longitudinal),
           selected: state.waveType == WaveType.longitudinal,
           onSelected: (_) => notifier.setWaveType(WaveType.longitudinal),
           selectedColor: const Color(0xFF00E5FF),

@@ -54,6 +54,9 @@ class AppLocalizationsKm extends AppLocalizations {
   String get waveLab => 'មន្ទីរពិសោធន៍រលក';
 
   @override
+  String get waveTitle => 'មន្ទីរពិសោធន៍រលក';
+
+  @override
   String get waveLabSubtitle => 'មេកានិករលក';
 
   @override
@@ -233,7 +236,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get applyForce => 'ដាក់កម្លាំង';
 
   @override
-  String get showVectors => 'បង្ហាញវ៉ិចទ័រ';
+  String get showVectors => 'បង្ហាញ វែកទ័រ (v/a)';
 
   @override
   String get showTrail => 'បង្ហាញគន្លង';
@@ -490,6 +493,24 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get challengeMode => 'របៀបប្រកួតប្រជែង';
+
+  @override
+  String get score => 'ពិន្ទុ';
+
+  @override
+  String get streak => 'STREAK';
+
+  @override
+  String get targetFrequency => 'ប្រេកង់ គោលដៅ';
+
+  @override
+  String get targetHarmonic => 'ហាម៉ូនិក គោលដៅ';
+
+  @override
+  String get targetPhase => 'ផ្លាក គោលដៅ';
+
+  @override
+  String get matched => 'ផ្គូរ!';
 
   @override
   String get resume => 'Resume';
@@ -921,6 +942,9 @@ class AppLocalizationsKm extends AppLocalizations {
       'បណ្តាក់ស្យុងជំនាញនេះមាននៅក្នុងកំណែ Scientific Pro ។';
 
   @override
+  String get scientificPro => 'SCIENCE PRO';
+
+  @override
   String get backToMenu => 'ត្រឡប់ទៅម៉ឺនុយដើម';
 
   @override
@@ -1131,6 +1155,176 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get damping => 'ការស្រកចុះ';
+
+  @override
+  String get enterLab => 'ចូលមន្ទីរ';
+
+  @override
+  String get formulaReference => 'ឯកសាររូបមន្ត';
+
+  @override
+  String get controls => 'បញ្ជា';
+
+  @override
+  String get educationTools => 'ឧបករណ៍ អប់ប្រាស';
+
+  @override
+  String get blueprintHud => 'BLUEPRINT HUD';
+
+  @override
+  String get wave1Amplitude => 'អំព្លីទុត រលក​ ១';
+
+  @override
+  String get wave2Amplitude => 'អំព្លីទុត រលក ២';
+
+  @override
+  String get wave1Frequency => 'ប្រេកង់ រលក​ ១';
+
+  @override
+  String get wave2Frequency => 'ប្រេកង់ រលក ២';
+
+  @override
+  String get harmonicN => 'ហាម៉ូនិក (n)';
+
+  @override
+  String get phaseDiff => 'ផ្លាក ផ (φ)';
+
+  @override
+  String get sourceVelocity => 'ល្បឿង ប្រភក់ (vs)';
+
+  @override
+  String get waveMode => 'របៀបរលក';
+
+  @override
+  String get presetSpeed => 'ល្បឿង កំណត់';
+
+  @override
+  String get captureGhost => 'ចាប់ខ្លូស';
+
+  @override
+  String get clearGhost => 'លប់ខ្លូស';
+
+  @override
+  String get showGhost => 'បង្ហាញ ខ្លូស';
+
+  @override
+  String get dopplerEffect => 'ប៉ះពាល់ ឌូប្លេ';
+
+  @override
+  String get approaching => 'កំពុងចូល';
+
+  @override
+  String get receding => 'កំពុងចេញ';
+
+  @override
+  String get wavelengthGreater => 'ប្រវែង រលក (> canvas)';
+
+  @override
+  String get resultantAmplitude => 'អំព្លីទុត សរុប';
+
+  @override
+  String get mathDerivations => 'ការស្រាយ គណិត';
+
+  @override
+  String get formulaReferenceTitle => 'ឯកសាររូបមន្ត';
+
+  @override
+  String get fundamentalEquations => 'សមីកម្ម មូលដ្ឋាន';
+
+  @override
+  String get waveEquation => 'ល្បឿង រលក';
+
+  @override
+  String get periodEquation => 'រយៈពេល';
+
+  @override
+  String get angularFrequency => 'ប្រេកង់ មុំ';
+
+  @override
+  String get waveNumber => 'ចំនួន រលក';
+
+  @override
+  String get wavePropagation => 'ការ រីករាយ រលក';
+
+  @override
+  String get travelingWave => 'រលក ធ្វើដំណើរ';
+
+  @override
+  String get standingWaveEquation => 'រលក ឈរ';
+
+  @override
+  String get advancedPhysics => 'រូបវែង កម្រិតខ្ពស់';
+
+  @override
+  String get dampedWave => 'រលក ស្រកចុះ';
+
+  @override
+  String get presetsVacuum => 'សុទ្ទ';
+
+  @override
+  String get presetsAir => 'ខ្យល់';
+
+  @override
+  String get presetsWater => 'ទឹក';
+
+  @override
+  String get challengeGuide => 'មគ្គុទ្ទេស ប្រកួត';
+
+  @override
+  String get challengeHelp1 =>
+      'បញ���ហា មូលដ្ឋាន បំផុត ។ គេបានគោលដៅអ្នកឱ្យផ្គូរ ប្រេកង់ រលក ។';
+
+  @override
+  String get challengeHelp2 => 'គេកំណត់ គោលដៅ តាម ចំនួន ហាម៉ូនិក \'n\' ។';
+
+  @override
+  String get challengeHelp3 => 'គេកំណត់ គោលដៅ តាម ផ្លាក ផ ជា ឯក ផេយ ។';
+
+  @override
+  String get challengeGoal1 => 'ផ្គូរ ប្រេកង់ ក្នុង 0.2 Hz';
+
+  @override
+  String get challengeGoal2 => 'ប្តូរ ទៅ រលក ឈរ និង កំណត់ Harmonic ត្រឹមត្រូវ';
+
+  @override
+  String get challengeGoal3 =>
+      'ប្តូរ ទៅ Interference និង កំណត់ Phase Difference';
+
+  @override
+  String get masterTheWaves => 'ជ្វិត រលក';
+
+  @override
+  String get challengeModeDescription =>
+      'របៀប ប្រកួត សាក បទច់សាម របស់ រូបវេទ រលក ។ មាន ប្រភេទ បញ្ហា បី ខុស ។';
+
+  @override
+  String get howToPlay => 'របៀប លេង';
+
+  @override
+  String get matchFreqTarget => 'មើល ប្រេកង់ គោលដៅ (ឧ. 5.0 Hz) ។';
+
+  @override
+  String get useSliderAdjust => 'ប្រើ Sl ដ ដ ើយ ឱ្យ កំណត់ ប្រេកង់ រលក ។';
+
+  @override
+  String get matchWithin => 'ផ្គូរ ក្នុង 0.2 Hz ដើម្បី ទទួល បាន ពិន្ទុ!';
+
+  @override
+  String get switchStanding => 'ដំ បា យ ត ទ ទេ ស ង ន ត ាម \'Standing\' ។';
+
+  @override
+  String get selectNValue => 'រើស n ត ន មេ យ អ ីង ៗ មេ ដ ត ដ ែ យ ។';
+
+  @override
+  String get switchInterference =>
+      'ដំ បា យ ត ទ ទេ ស ង ន ត ាម \'Interference\' ។';
+
+  @override
+  String get adjustPhase =>
+      'កំ ណ ត រ ល ា ក ស Slider Phase Difference រហូ ត ដល់ គោ ល ដ ៅ (ឧ. 0.50 π) ។';
+
+  @override
+  String get starterLab => 'កំ ណ ដ ់ STARTER';
 
   @override
   String get temperature => 'សីតុណ្ហភាព';

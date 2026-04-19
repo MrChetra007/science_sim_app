@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import '../providers/wave_provider.dart';
 import '../physics/wave_solver.dart';
 import '../screens/formula_reference_screen.dart';
@@ -11,6 +12,7 @@ class ResultsPanel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(waveProvider);
 
     final wavelength = WaveSolver.calculateWavelength(
@@ -34,7 +36,7 @@ class ResultsPanel extends ConsumerWidget {
         bottom: false,
         child: Row(
           children: [
-            Expanded(flex: 3, child: _buildEquationHUD(state)),
+            Expanded(flex: 3, child: _buildEquationHUD(state, l10n)),
             const VerticalDivider(color: Colors.white12, width: 24),
             Expanded(
               flex: 5,
@@ -65,7 +67,7 @@ class ResultsPanel extends ConsumerWidget {
                     color: Color(0xFF00E5FF),
                     size: 18,
                   ),
-                  tooltip: 'Math Derivations',
+                  tooltip: l10n.mathDerivations,
                 ),
                 IconButton(
                   onPressed: () => Navigator.push(
@@ -81,7 +83,7 @@ class ResultsPanel extends ConsumerWidget {
                     color: Color(0xFF00E5FF),
                     size: 18,
                   ),
-                  tooltip: 'Formula Reference',
+                  tooltip: l10n.formulaReferenceTitle,
                 ),
               ],
             ),
@@ -91,7 +93,7 @@ class ResultsPanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildEquationHUD(WaveState state) {
+  Widget _buildEquationHUD(WaveState state, AppLocalizations l10n) {
     String eq = '';
     final omega = (2 * pi * state.frequency).toStringAsFixed(1);
     final k =
@@ -127,9 +129,9 @@ class ResultsPanel extends ConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'HOLOGRAPHIC OCEAN LAB',
-          style: TextStyle(
+        Text(
+          l10n.waveLab,
+          style: const TextStyle(
             color: Color(0xFF00E5FF),
             fontSize: 8,
             letterSpacing: 2.5,

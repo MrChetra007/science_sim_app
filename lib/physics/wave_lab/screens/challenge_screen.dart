@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:math';
+import '../../../l10n/generated/app_localizations.dart';
 import '../providers/wave_provider.dart';
 import '../painters/wave_painter.dart';
 import '../services/ad_service.dart';
@@ -101,6 +102,7 @@ class _ChallengeScreenState extends ConsumerState<ChallengeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(waveProvider);
 
     // Auto-check on every state change
@@ -109,7 +111,7 @@ class _ChallengeScreenState extends ConsumerState<ChallengeScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFF040D17),
       appBar: AppBar(
-        title: const Text('Challenge Mode'),
+        title: Text(l10n.challengeMode),
         backgroundColor: Colors.transparent,
         foregroundColor: const Color(0xFF00E5FF),
         actions: [
@@ -121,7 +123,7 @@ class _ChallengeScreenState extends ConsumerState<ChallengeScreen> {
                 builder: (context) => const ChallengeHelpScreen(),
               ),
             ),
-            tooltip: 'How to Play',
+            tooltip: l10n.howToPlay,
           ),
           const SizedBox(width: 8),
         ],
