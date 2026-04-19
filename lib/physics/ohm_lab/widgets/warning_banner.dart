@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class WarningBanner extends StatefulWidget {
   final bool isDangerous;
@@ -42,22 +43,27 @@ class _WarningBannerState extends State<WarningBanner> with SingleTickerProvider
                   border: Border.all(color: const Color(0xFFFF4455)),
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(Icons.warning_amber_rounded, color: Color(0xFFFF4455), size: 20),
-                    SizedBox(width: 8),
-                    Text(
-                      "HIGH CURRENT — REDUCE VOLTAGE OR INCREASE RESISTANCE",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFFFF4455),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
-                        fontFamily: 'Orbitron',
-                      ),
-                    ),
-                  ],
+                child: Builder(
+                  builder: (context) {
+                    final l10n = AppLocalizations.of(context)!;
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.warning_amber_rounded, color: Color(0xFFFF4455), size: 20),
+                        const SizedBox(width: 8),
+                        Text(
+                          l10n.ohmsLawWarning,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Color(0xFFFF4455),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10,
+                            fontFamily: 'Orbitron',
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
             )

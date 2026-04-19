@@ -3,15 +3,17 @@ import '../widgets/formula_triangle.dart';
 import 'package:provider/provider.dart';
 import '../providers/circuit_provider.dart';
 import '../core/theme.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class LearnScreen extends StatelessWidget {
   const LearnScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("LEARN OHM'S LAW"),
+        title: Text(l10n.learnOhmsLaw),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -20,13 +22,13 @@ class LearnScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "The Fundamental Law",
+              l10n.fundamentalLaw,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: AppTheme.blue),
             ),
             const SizedBox(height: 16),
-            const Text(
-              "Ohm's Law states that the current through a conductor between two points is directly proportional to the voltage across the two points.",
-              style: TextStyle(fontSize: 16, height: 1.5, color: Colors.white70),
+            Text(
+              l10n.fundamentalLawDesc,
+              style: const TextStyle(fontSize: 16, height: 1.5, color: Colors.white70),
             ),
             const SizedBox(height: 32),
             Center(
@@ -46,30 +48,30 @@ class LearnScreen extends StatelessWidget {
             const SizedBox(height: 32),
             _buildTheoryCard(
               context,
-              "VOLTAGE (V)",
-              "The electrical potential difference between two points. Think of it as electrical pressure.",
+              l10n.voltageV,
+              l10n.voltageDesc,
               AppTheme.amber,
-              "Measured in Volts (V)",
+              l10n.voltageUnit,
             ),
             const SizedBox(height: 16),
             _buildTheoryCard(
               context,
-              "CURRENT (I)",
-              "The flow of electric charge. Think of it as the volume of water flowing through a pipe.",
+              l10n.currentI,
+              l10n.currentDesc,
               AppTheme.blue,
-              "Measured in Amperes (A)",
+              l10n.currentUnit,
             ),
             const SizedBox(height: 16),
             _buildTheoryCard(
               context,
-              "RESISTANCE (R)",
-              "A measure of the difficulty to pass an electric current through a conductor.",
+              l10n.resistanceR,
+              l10n.resistanceDesc,
               AppTheme.green,
-              "Measured in Ohms (Ω)",
+              l10n.resistanceUnit,
             ),
             const SizedBox(height: 40),
             Text(
-              "The Formula",
+              l10n.theFormula,
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.white),
             ),
             const SizedBox(height: 16),
@@ -83,11 +85,11 @@ class LearnScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  _buildFormulaItem("V = I × R", "To find Voltage"),
+                  _buildFormulaItem("V = I × R", l10n.findVoltage),
                   const Divider(color: Colors.white10, height: 24),
-                  _buildFormulaItem("I = V / R", "To find Current"),
+                  _buildFormulaItem("I = V / R", l10n.findCurrent),
                   const Divider(color: Colors.white10, height: 24),
-                  _buildFormulaItem("R = V / I", "To find Resistance"),
+                  _buildFormulaItem("R = V / I", l10n.findResistance),
                 ],
               ),
             ),

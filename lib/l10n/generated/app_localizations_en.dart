@@ -334,16 +334,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get thrust => 'Thrust';
 
   @override
-  String get voltage => 'Voltage';
+  String get voltage => 'VOLTAGE';
 
   @override
-  String get current => 'Current';
+  String get current => 'CURRENT';
 
   @override
-  String get resistance => 'Resistance';
+  String get resistance => 'RESISTANCE';
 
   @override
-  String get power => 'Power';
+  String get power => 'POWER';
 
   @override
   String get resistor => 'Resistor';
@@ -377,6 +377,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ohmsLawDesc => 'V = IR';
+
+  @override
+  String get simulator => 'SIMULATOR';
+
+  @override
+  String get learn => 'LEARN';
+
+  @override
+  String get learnOhmsLaw => 'Learn Ohm\'s Law';
+
+  @override
+  String get fundamentalLaw => 'The Fundamental Law';
+
+  @override
+  String get fundamentalLawDesc =>
+      'Ohm\'s Law states that the current through a conductor between two points is directly proportional to the voltage across the two points.';
+
+  @override
+  String get voltageV => 'VOLTAGE (V)';
+
+  @override
+  String get voltageDesc =>
+      'The electrical potential difference between two points. Think of it as electrical pressure.';
+
+  @override
+  String get voltageUnit => 'Measured in Volts (V)';
+
+  @override
+  String get currentI => 'CURRENT (I)';
+
+  @override
+  String get currentDesc =>
+      'The flow of electric charge. Think of it as the volume of water flowing through a pipe.';
+
+  @override
+  String get currentUnit => 'Measured in Amperes (A)';
+
+  @override
+  String get resistanceR => 'RESISTANCE (R)';
+
+  @override
+  String get resistanceDesc =>
+      'A measure of the difficulty to pass an electric current through a conductor.';
+
+  @override
+  String get resistanceUnit => 'Measured in Ohms (Ω)';
+
+  @override
+  String get theFormula => 'The Formula';
+
+  @override
+  String get findVoltage => 'To find Voltage';
+
+  @override
+  String get findCurrent => 'To find Current';
+
+  @override
+  String get findResistance => 'To find Resistance';
+
+  @override
+  String get ohmsLawWarning => 'Warning: High voltage detected!';
 
   @override
   String get addComponent => 'Add Component';

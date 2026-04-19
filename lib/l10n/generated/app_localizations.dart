@@ -743,25 +743,25 @@ abstract class AppLocalizations {
   /// No description provided for @voltage.
   ///
   /// In en, this message translates to:
-  /// **'Voltage'**
+  /// **'VOLTAGE'**
   String get voltage;
 
   /// No description provided for @current.
   ///
   /// In en, this message translates to:
-  /// **'Current'**
+  /// **'CURRENT'**
   String get current;
 
   /// No description provided for @resistance.
   ///
   /// In en, this message translates to:
-  /// **'Resistance'**
+  /// **'RESISTANCE'**
   String get resistance;
 
   /// No description provided for @power.
   ///
   /// In en, this message translates to:
-  /// **'Power'**
+  /// **'POWER'**
   String get power;
 
   /// No description provided for @resistor.
@@ -829,6 +829,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'V = IR'**
   String get ohmsLawDesc;
+
+  /// No description provided for @simulator.
+  ///
+  /// In en, this message translates to:
+  /// **'SIMULATOR'**
+  String get simulator;
+
+  /// No description provided for @learn.
+  ///
+  /// In en, this message translates to:
+  /// **'LEARN'**
+  String get learn;
+
+  /// No description provided for @learnOhmsLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn Ohm\'s Law'**
+  String get learnOhmsLaw;
+
+  /// No description provided for @fundamentalLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'The Fundamental Law'**
+  String get fundamentalLaw;
+
+  /// No description provided for @fundamentalLawDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Ohm\'s Law states that the current through a conductor between two points is directly proportional to the voltage across the two points.'**
+  String get fundamentalLawDesc;
+
+  /// No description provided for @voltageV.
+  ///
+  /// In en, this message translates to:
+  /// **'VOLTAGE (V)'**
+  String get voltageV;
+
+  /// No description provided for @voltageDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The electrical potential difference between two points. Think of it as electrical pressure.'**
+  String get voltageDesc;
+
+  /// No description provided for @voltageUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured in Volts (V)'**
+  String get voltageUnit;
+
+  /// No description provided for @currentI.
+  ///
+  /// In en, this message translates to:
+  /// **'CURRENT (I)'**
+  String get currentI;
+
+  /// No description provided for @currentDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The flow of electric charge. Think of it as the volume of water flowing through a pipe.'**
+  String get currentDesc;
+
+  /// No description provided for @currentUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured in Amperes (A)'**
+  String get currentUnit;
+
+  /// No description provided for @resistanceR.
+  ///
+  /// In en, this message translates to:
+  /// **'RESISTANCE (R)'**
+  String get resistanceR;
+
+  /// No description provided for @resistanceDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A measure of the difficulty to pass an electric current through a conductor.'**
+  String get resistanceDesc;
+
+  /// No description provided for @resistanceUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured in Ohms (Ω)'**
+  String get resistanceUnit;
+
+  /// No description provided for @theFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'The Formula'**
+  String get theFormula;
+
+  /// No description provided for @findVoltage.
+  ///
+  /// In en, this message translates to:
+  /// **'To find Voltage'**
+  String get findVoltage;
+
+  /// No description provided for @findCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'To find Current'**
+  String get findCurrent;
+
+  /// No description provided for @findResistance.
+  ///
+  /// In en, this message translates to:
+  /// **'To find Resistance'**
+  String get findResistance;
+
+  /// No description provided for @ohmsLawWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Warning: High voltage detected!'**
+  String get ohmsLawWarning;
 
   /// No description provided for @addComponent.
   ///

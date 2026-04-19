@@ -342,7 +342,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get resistance => 'រេស៊ីស្តង់';
 
   @override
-  String get power => 'អនុភាព';
+  String get power => 'ថាម​ពល';
 
   @override
   String get resistor => 'រេស៊ីស្ត័រ';
@@ -376,6 +376,66 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get ohmsLawDesc => 'V = IR';
+
+  @override
+  String get simulator => 'កម្មវិធីបោះបង់';
+
+  @override
+  String get learn => 'សិក្សា';
+
+  @override
+  String get learnOhmsLaw => 'សិក្សា​ច្បាប់​អូម';
+
+  @override
+  String get fundamentalLaw => 'ច្បាប់​មូលដ្ឋាន';
+
+  @override
+  String get fundamentalLawDesc =>
+      'ច្បាប់អូមចែងថា ចរន្តអគ្គិសនីដែលហូរតាមអង្គធាតុចម្លងរវាងចំណុចពីរ មានទំនាក់ទំនងសមាមាត្រដោយផ្ទាល់ទៅនឹងតង់ស្យុងរវាងចំណុចទាំងពីរនោះ។';
+
+  @override
+  String get voltageV => 'វ៉ុល (V)';
+
+  @override
+  String get voltageDesc => 'ភាពខុសគ្នានៃសក្តានុពលអគ្គិសនីរវាងចំណុចពីរ។';
+
+  @override
+  String get voltageUnit => 'វ៉ុល (V)';
+
+  @override
+  String get currentI => 'ចរន្ត (I)';
+
+  @override
+  String get currentDesc =>
+      'អត្រានៃលំហូរនៃបន្ទុកអគ្គិសនី ដែលប្រៀបដូចជាលំហូរទឹកក្នុងបំពង់។';
+
+  @override
+  String get currentUnit => 'អំពែរ (A)';
+
+  @override
+  String get resistanceR => 'រេស៊ីស្តង់ (R)';
+
+  @override
+  String get resistanceDesc =>
+      'កម្រិតនៃការទប់ស្កាត់លំហូរនៃចរន្តអគ្គិសនីដែលឆ្លងកាត់សៀគ្វី។';
+
+  @override
+  String get resistanceUnit => 'អូម (Ω)';
+
+  @override
+  String get theFormula => 'រូបមន្ត';
+
+  @override
+  String get findVoltage => 'រកតង់ស្យុង';
+
+  @override
+  String get findCurrent => 'រកចរន្ត';
+
+  @override
+  String get findResistance => 'រកតម្លៃរេស៊ីស្តង់';
+
+  @override
+  String get ohmsLawWarning => 'ព្រមាន! តង់ស្យុងខ្ពស់!';
 
   @override
   String get addComponent => 'បន្ថែមគ្រឿងបន្លាស់';

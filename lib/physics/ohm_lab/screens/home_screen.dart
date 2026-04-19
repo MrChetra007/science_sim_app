@@ -81,24 +81,29 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: const BoxDecoration(
           border: Border(top: BorderSide(color: Colors.white10)),
         ),
-        child: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: (index) => setState(() => _selectedIndex = index),
-          backgroundColor: AppTheme.background,
-          selectedItemColor: AppTheme.blue,
-          unselectedItemColor: Colors.white24,
-          selectedLabelStyle: const TextStyle(
-            fontFamily: 'Orbitron',
-            fontSize: 10,
-          ),
-          unselectedLabelStyle: const TextStyle(
-            fontFamily: 'Orbitron',
-            fontSize: 10,
-          ),
-          items: [
-            BottomNavigationBarItem(icon: const Icon(Icons.bolt), label: 'SIMULATOR'),
-            BottomNavigationBarItem(icon: const Icon(Icons.school), label: 'LEARN'),
-          ],
+        child: Builder(
+          builder: (context) {
+            final l10n = AppLocalizations.of(context)!;
+            return BottomNavigationBar(
+              currentIndex: _selectedIndex,
+              onTap: (index) => setState(() => _selectedIndex = index),
+              backgroundColor: AppTheme.background,
+              selectedItemColor: AppTheme.blue,
+              unselectedItemColor: Colors.white24,
+              selectedLabelStyle: const TextStyle(
+                fontFamily: 'Orbitron',
+                fontSize: 10,
+              ),
+              unselectedLabelStyle: const TextStyle(
+                fontFamily: 'Orbitron',
+                fontSize: 10,
+              ),
+              items: [
+                BottomNavigationBarItem(icon: const Icon(Icons.bolt), label: l10n.simulator),
+                BottomNavigationBarItem(icon: const Icon(Icons.school), label: l10n.learn),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -156,6 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildHeader(BuildContext context) {
     final sub = Provider.of<SubscriptionService>(context);
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       key: _proKey,
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -168,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Expanded(
             child: Text(
-              "OHM'S LAW",
+              l10n.ohmsLaw,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 color: AppTheme.blue,
@@ -214,6 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildControls(CircuitProvider provider) {
     final isCompact = MediaQuery.of(context).size.width < 350;
+    final l10n = AppLocalizations.of(context)!;
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: isCompact ? 12 : 20),
       child: Column(
@@ -228,7 +235,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 24),
           SliderControl(
             walkthroughKey: _voltageSliderKey,
-            label: "VOLTAGE",
+            label: l10n.voltage,
             unit: "V",
             min: 1.0,
             max: 120.0,
@@ -239,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 16),
           SliderControl(
             walkthroughKey: _resistanceSliderKey,
-            label: "RESISTANCE",
+            label: l10n.resistance,
             unit: "Ω",
             min: 1.0,
             max: 1000.0,
