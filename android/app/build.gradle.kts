@@ -15,10 +15,8 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.sozin.wave"
-    
-    compileSdk = 36 
-    
-    ndkVersion = "28.2.13676358" 
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -29,15 +27,7 @@ android {
         jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
-    signingConfigs {
-        create("release") {
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = keystoreProperties["storeFile"]?.let { file(it) }
-            storePassword = keystoreProperties["storePassword"] as String
-        }
-    }
-
+    // 🔥 ADD THIS PART
     defaultConfig {
         applicationId = "com.sozin.wave"
         minSdk = flutter.minSdkVersion
@@ -74,14 +64,10 @@ android {
 
     buildTypes {
         release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = false
-            isShrinkResources = false
         }
-    }
-    
-    buildFeatures {
-        buildConfig = true
     }
 }
 
