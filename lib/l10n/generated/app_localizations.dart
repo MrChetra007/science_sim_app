@@ -1868,6 +1868,42 @@ abstract class AppLocalizations {
   /// **'Phase'**
   String get phase;
 
+  /// No description provided for @upgradeToUnlock.
+  ///
+  /// In en, this message translates to:
+  /// **'UPGRADE TO UNLOCK PERMANENTLY'**
+  String get upgradeToUnlock;
+
+  /// No description provided for @watchAdToUnlock.
+  ///
+  /// In en, this message translates to:
+  /// **'WATCH AD TO UNLOCK (10 MINS)'**
+  String get watchAdToUnlock;
+
+  /// No description provided for @scientificProTier.
+  ///
+  /// In en, this message translates to:
+  /// **'This lab is available in the Scientific Pro tier. You can also unlock it temporarily by watching a short ad.'**
+  String get scientificProTier;
+
+  /// No description provided for @expertLabProTier.
+  ///
+  /// In en, this message translates to:
+  /// **'This expert lab is available in the Scientific Pro tier.'**
+  String get expertLabProTier;
+
+  /// No description provided for @backToMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'BACK TO MENU'**
+  String get backToMenu;
+
+  /// No description provided for @proFeatures.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro Features'**
+  String get proFeatures;
+
   /// No description provided for @inductanceL.
   ///
   /// In en, this message translates to:
@@ -2011,18 +2047,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mains Hum (Haptic)'**
   String get mainsHum;
-
-  /// No description provided for @upgradeToUnlock.
-  ///
-  /// In en, this message translates to:
-  /// **'UPGRADE TO UNLOCK PERMANENTLY'**
-  String get upgradeToUnlock;
-
-  /// No description provided for @backToMenu.
-  ///
-  /// In en, this message translates to:
-  /// **'BACK TO MENU'**
-  String get backToMenu;
 
   /// No description provided for @oscilloscope.
   ///

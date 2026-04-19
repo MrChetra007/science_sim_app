@@ -9,7 +9,7 @@ class AppLocalizationsKm extends AppLocalizations {
   AppLocalizationsKm([String locale = 'km']) : super(locale);
 
   @override
-  String get appTitle => 'កម្មវិធីពិសោធន៍និម្មិត';
+  String get appTitle => 'កម្មវិធីពិសោធន៍វិទ្យាសាស្ត្រ';
 
   @override
   String get virtualExperimentSuite => 'ឈុតពិសោធន៍និម្មិត';
@@ -108,7 +108,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get newtonLabTutorial => 'ញូតុន - ច្បាប់ចលនា';
 
   @override
-  String get ohmLabTutorial => 'អូម - ការពិសោធន៍';
+  String get ohmLabTutorial => 'អូម - ការពិសោធន៍សៀគ្វី';
 
   @override
   String get projectileLabTutorial => 'គ្រាប់ផ្លោង';
@@ -333,7 +333,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get thrust => 'កម្លាំងរុញ';
 
   @override
-  String get voltage => ' ត​ ង​ ន';
+  String get voltage => 'តង់ស្យុង';
 
   @override
   String get current => 'ចរន្ត';
@@ -827,20 +827,19 @@ class AppLocalizationsKm extends AppLocalizations {
   String get target => 'គោលដៅ';
 
   @override
-  String get acElectricityLab =>
-      'ម​ ន​ ទ​ ី​ រ​ ព​ ិ​ ស​ ង​ ធ​ ន​ ច​ រ​ ន​ ធ​ ល​ ា​ ស';
+  String get acElectricityLab => 'មន្ទីរពិសោធន៍ចរន្តឆ្លាស់';
 
   @override
-  String get oscilloscopeMode => ' រ​ ប​ ើ​ ន​ អ​ ូ​ ស​ ដ​ ី​ ឡ​ ូ​ ស​ ក';
+  String get oscilloscopeMode => 'របៀបអូស៊ីឡូស្កូប';
 
   @override
   String get transformerLab => 'មន្ទីរពិសោធន៍ត្រង់ស្វរម៉ាទ័រ';
 
   @override
-  String get rlcReactiveLab => ' RLC';
+  String get rlcReactiveLab => 'មន្ទីរពិសោធន៍ RLC';
 
   @override
-  String get upgradeLab => ' ជ​ ម​ ន​ ុ​ ត';
+  String get upgradeLab => 'ដំឡើងកំណែ';
 
   @override
   String get advancedOscilloscope => 'ADVANCED OSCILLOSCOPE';
@@ -902,10 +901,30 @@ class AppLocalizationsKm extends AppLocalizations {
   String get voltageOut => 'តង់ស្យុងចេញ';
 
   @override
-  String get impedanceZ => ' អ';
+  String get impedanceZ => 'អាំងប៉េដង់ (Z)';
 
   @override
-  String get phase => ' ហ';
+  String get phase => 'ហ្វាស';
+
+  @override
+  String get upgradeToUnlock => 'ដំឡើងកំណែដើម្បីដោះសោ';
+
+  @override
+  String get watchAdToUnlock => 'មើលផ្សាយពាណិជ្ជកម្មដើម្បីដោះសោ';
+
+  @override
+  String get scientificProTier =>
+      'បណ្តាក់ស្យុងនេះមាននៅក្នុងកំណែ Scientific Pro ។ អ្នកក៏អាចដោះសោបណ្តោះពេលខ្លីដោយមើលផ្សាយខ្លីមួយ ។';
+
+  @override
+  String get expertLabProTier =>
+      'បណ្តាក់ស្យុងជំនាញនេះមាននៅក្នុងកំណែ Scientific Pro ។';
+
+  @override
+  String get backToMenu => 'ត្រឡប់ទៅម៉ឺនុយដើម';
+
+  @override
+  String get proFeatures => 'មុខងារ Pro';
 
   @override
   String get inductanceL => 'អាំងឌុចតង់ (L)';
@@ -988,12 +1007,6 @@ class AppLocalizationsKm extends AppLocalizations {
   String get mainsHum => 'សំឡេងរំញ័រពីបណ្តាញអគ្គិសនី';
 
   @override
-  String get upgradeToUnlock => 'ដំឡើងកំណែដើម្បីដោះសោ';
-
-  @override
-  String get backToMenu => 'ត្រឡប់ទៅម៉ឺនុយដើម';
-
-  @override
   String get oscilloscope => 'អូស៊ីឡូស្កូប';
 
   @override
@@ -1036,16 +1049,16 @@ class AppLocalizationsKm extends AppLocalizations {
   String get rmsVoltage => 'តង់ស្យុង RMS';
 
   @override
-  String get frequency => ' ';
+  String get frequency => 'ប្រេកង់';
 
   @override
-  String get amplitude => ' អំព្លី';
+  String get amplitude => 'អំព្លីទុត';
 
   @override
-  String get period => ' ខួ';
+  String get period => 'ខួប';
 
   @override
-  String get wavelength => ' ';
+  String get wavelength => 'ប្រវែងរលក';
 
   @override
   String get peakVoltage => 'តង់ស្យុងកំពូល';
@@ -1066,22 +1079,25 @@ class AppLocalizationsKm extends AppLocalizations {
   String get display => 'បង្ហាញ';
 
   @override
-  String get waveType => ' ប្​ រ​ ូ​ ប​ រ​ ល​ ក';
+  String get waveType => 'ប្រភេទរលក';
 
   @override
-  String get alternatingCurrent => 'ចរន្តឆ្លាស់';
+  String get alternatingCurrent =>
+      'ចរន្តឆ្លាស់ (AC) គឺជាចរន្តអគ្គិសនីដែលផ្លាស់ប្តូរទិសដៅ និងទំហំរបស់វាជាខួបតាមពេលវេលា។';
 
   @override
-  String get peakVoltageDesc => 'តង់ស្យុងកំពូល';
+  String get peakVoltageDesc =>
+      'តង់ស្យុងកំពូល (Vp) គឺជាតម្លៃតង់ស្យុងអតិបរមាដែលរលកអគ្គិសនីទទួលបានក្នុងមួយខួប។';
 
   @override
-  String get frequencyDesc => 'ប្រេកង់';
+  String get frequencyDesc =>
+      'ប្រេកង់ (Hz) គឺជាចំនួនខួបពេញលេញនៃរលកអគ្គិសនីដែលកើតឡើងក្នុងមួយវិនាទី។';
 
   @override
-  String get vrmsDesc => ' ប្​ រ​ ូ​ ប';
+  String get vrmsDesc => 'តង់ស្យុង RMS';
 
   @override
-  String get phasorDesc => ' ហ​ វ​ ា​ ស';
+  String get phasorDesc => 'ហ្វាស័រ';
 
   @override
   String get waveSpeed => 'Wave Speed';

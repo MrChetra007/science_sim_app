@@ -932,6 +932,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get phase => 'Phase';
 
   @override
+  String get upgradeToUnlock => 'UPGRADE TO UNLOCK PERMANENTLY';
+
+  @override
+  String get watchAdToUnlock => 'WATCH AD TO UNLOCK (10 MINS)';
+
+  @override
+  String get scientificProTier =>
+      'This lab is available in the Scientific Pro tier. You can also unlock it temporarily by watching a short ad.';
+
+  @override
+  String get expertLabProTier =>
+      'This expert lab is available in the Scientific Pro tier.';
+
+  @override
+  String get backToMenu => 'BACK TO MENU';
+
+  @override
+  String get proFeatures => 'Pro Features';
+
+  @override
   String get inductanceL => 'Inductance (L)';
 
   @override
@@ -1010,12 +1030,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mainsHum => 'Mains Hum (Haptic)';
-
-  @override
-  String get upgradeToUnlock => 'UPGRADE TO UNLOCK PERMANENTLY';
-
-  @override
-  String get backToMenu => 'BACK TO MENU';
 
   @override
   String get oscilloscope => 'Oscilloscope';

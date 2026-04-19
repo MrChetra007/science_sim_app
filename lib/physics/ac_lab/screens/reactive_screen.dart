@@ -106,7 +106,7 @@ class _ReactiveScreenState extends State<ReactiveScreen> {
             ],
           ),
           if (isLocked)
-            _buildLockedOverlay(context, provider, 'Reactive (RLC) Lab'),
+            _buildLockedOverlay(context, provider, l10n),
         ],
       ),
     );
@@ -115,7 +115,7 @@ class _ReactiveScreenState extends State<ReactiveScreen> {
   Widget _buildLockedOverlay(
     BuildContext context,
     ACProvider provider,
-    String title,
+    AppLocalizations l10n,
   ) {
     return Container(
       color: Colors.black,
@@ -127,7 +127,7 @@ class _ReactiveScreenState extends State<ReactiveScreen> {
           const Icon(Icons.lock_outline, color: Colors.purpleAccent, size: 80),
           const SizedBox(height: 20),
           Text(
-            '$title Locked',
+            l10n.rlcLab,
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -135,19 +135,19 @@ class _ReactiveScreenState extends State<ReactiveScreen> {
             ),
           ),
           const SizedBox(height: 10),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Text(
-              'This expert lab is available in the Scientific Pro tier. You can also unlock it temporarily by watching a short ad.',
+              l10n.expertLabProTier,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white70),
+              style: const TextStyle(color: Colors.white70),
             ),
           ),
           const SizedBox(height: 30),
           ElevatedButton.icon(
             onPressed: () => showGlobalPlanDialog(context),
             icon: const Icon(Icons.star_rounded),
-            label: const Text('UPGRADE TO UNLOCK PERMANENTLY'),
+            label: Text(l10n.upgradeToUnlock),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.cyanAccent,
               foregroundColor: Colors.black,
@@ -180,9 +180,9 @@ class _ReactiveScreenState extends State<ReactiveScreen> {
           // const SizedBox(height: 15),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text(
-              'BACK TO MENU',
-              style: TextStyle(color: Colors.cyan),
+            child: Text(
+              l10n.backToMenu,
+              style: const TextStyle(color: Colors.cyan),
             ),
           ),
         ],
