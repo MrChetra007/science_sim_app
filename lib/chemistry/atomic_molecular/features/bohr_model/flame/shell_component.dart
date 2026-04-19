@@ -6,6 +6,7 @@ class ShellComponent extends PositionComponent {
   final int shellIndex;
   final int electronCount;
   final double radius;
+  @override
   final Vector2 center;
   final Color color;
 

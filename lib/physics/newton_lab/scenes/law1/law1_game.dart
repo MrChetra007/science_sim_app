@@ -6,7 +6,6 @@ import '../../components/force_arrow.dart';
 import '../../components/data_hud.dart';
 import '../../core/constants.dart';
 import '../../physics/friction_model.dart';
-import 'package:flame/components.dart';
 
 class Law1Game extends FlameGame {
   late PhysicsBody puck;

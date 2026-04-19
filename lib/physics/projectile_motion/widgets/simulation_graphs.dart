@@ -523,7 +523,7 @@ class _EmptyState extends StatelessWidget {
           children: [
             AnimatedBuilder(
               animation: pulseAnimation,
-              builder: (_, __) => Container(
+              builder: (_, _) => Container(
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(

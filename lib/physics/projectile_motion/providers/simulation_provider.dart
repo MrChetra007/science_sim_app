@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 import 'dart:async';
-import 'package:flutter/painting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../game/projectile_game.dart';

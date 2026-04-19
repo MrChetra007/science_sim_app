@@ -67,8 +67,9 @@ class GalvanicScreen extends ConsumerWidget {
                     label: 'Anode (−)',
                     selected: state.anode,
                     onChanged: (e) {
-                      if (e != null)
+                      if (e != null) {
                         ref.read(galvanicNotifierProvider.notifier).setAnode(e);
+                      }
                     },
                   ),
                 ),
@@ -78,10 +79,11 @@ class GalvanicScreen extends ConsumerWidget {
                     label: 'Cathode (+)',
                     selected: state.cathode,
                     onChanged: (e) {
-                      if (e != null)
+                      if (e != null) {
                         ref
                             .read(galvanicNotifierProvider.notifier)
                             .setCathode(e);
+                      }
                     },
                   ),
                 ),

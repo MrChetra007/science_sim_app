@@ -70,7 +70,7 @@ class ControlPanel extends StatelessWidget {
             title: const Text('Mains Hum (Haptic)', style: TextStyle(color: Colors.white70, fontSize: 12)),
             value: provider.humEnabled,
             onChanged: (v) => provider.toggleHum(),
-            activeColor: Colors.amber,
+            activeThumbColor: Colors.amber,
             contentPadding: EdgeInsets.zero,
             dense: true,
           ),
@@ -93,7 +93,7 @@ class ControlPanel extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(label, style: TextStyle(color: color, fontSize: 12)),
-            Text('${value.toStringAsFixed(0)}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            Text(value.toStringAsFixed(0), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
           ],
         ),
         Slider(

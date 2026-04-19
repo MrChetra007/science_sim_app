@@ -8,15 +8,15 @@ final _router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (_, __) => const HomeScreen(),
+      builder: (_, _) => const HomeScreen(),
     ),
     GoRoute(
       path: '/simulation',
-      builder: (_, __) => const SimulationScreen(),
+      builder: (_, _) => const SimulationScreen(),
     ),
     GoRoute(
       path: '/formula',
-      builder: (_, __) => const FormulaScreen(),
+      builder: (_, _) => const FormulaScreen(),
     ),
   ],
 );

@@ -1,5 +1,4 @@
 import 'package:flame/game.dart';
-import 'package:flame/components.dart';
 import 'components/wire_component.dart';
 import 'components/battery_component.dart';
 import 'components/resistor_component.dart';

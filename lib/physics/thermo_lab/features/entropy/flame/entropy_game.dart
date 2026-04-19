@@ -23,8 +23,12 @@ class EntropyGame extends FlameGame {
   }
 
   void _initExperiment() {
-    _redParticles.forEach((p) => p.removeFromParent());
-    _blueParticles.forEach((p) => p.removeFromParent());
+    for (var p in _redParticles) {
+      p.removeFromParent();
+    }
+    for (var p in _blueParticles) {
+      p.removeFromParent();
+    }
     _redParticles.clear();
     _blueParticles.clear();
     

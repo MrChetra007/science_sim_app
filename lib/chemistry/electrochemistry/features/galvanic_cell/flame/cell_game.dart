@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flame/game.dart';
-import 'package:flame/components.dart';
 import '../providers/galvanic_state.dart';
 import 'electrode_components.dart';
 import 'electron_flow_component.dart';

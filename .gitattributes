@@ -1,0 +1,6 @@
+*.dart text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.sh text eol=lf
+check_elf_alignment.sh
+nul

@@ -9,7 +9,6 @@ import '../painters/blueprint_painter.dart';
 import '../widgets/control_panel.dart';
 import '../widgets/results_panel.dart';
 import '../widgets/oscilloscope_panel.dart';
-import '../widgets/pro_gate.dart';
 import '../providers/wave_provider.dart';
 import '../services/ad_service.dart';
 import '../services/iap_service.dart';

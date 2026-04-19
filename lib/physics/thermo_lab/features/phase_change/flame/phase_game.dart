@@ -30,7 +30,9 @@ class PhaseGame extends FlameGame {
   }
 
   void _initSubstance() {
-    _particles.forEach((p) => p.removeFromParent());
+    for (var p in _particles) {
+      p.removeFromParent();
+    }
     _particles.clear();
     
     final settings = ref.read(phaseProvider);

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../core/services/walkthrough_service.dart';
 import '../../../core/widgets/walkthrough_tooltip.dart';
 
 class ThermoLabWalkthrough extends StatefulWidget {

@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flame/game.dart';
-import 'package:flame/components.dart';
 import 'package:flutter/material.dart' show Colors;
 import '../providers/electroplating_state.dart';
 import 'deposition_component.dart';

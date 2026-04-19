@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
-import 'package:flame/components.dart';
 import '../providers/electrolysis_state.dart';
 import 'bubble_component.dart';
 import '../../../core/theme/app_colors.dart';

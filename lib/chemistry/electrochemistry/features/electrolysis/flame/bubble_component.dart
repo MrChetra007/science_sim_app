@@ -5,7 +5,7 @@ class BubbleComponent extends Component {
   Vector2 position;
   final Color color;
   final double speed;
-  double _lifetime;
+  final double _lifetime;
   double _elapsed = 0.0;
   double _radius;
 

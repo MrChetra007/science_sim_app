@@ -162,7 +162,7 @@ class _Law1ScreenState extends State<Law1Screen>
                           const Spacer(),
                           Switch(
                             value: isGravityOn,
-                            activeColor: AppColors.primaryAccent,
+                            activeThumbColor: AppColors.primaryAccent,
                             onChanged: (val) =>
                                 setState(() => isGravityOn = val),
                           ),

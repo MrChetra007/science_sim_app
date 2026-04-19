@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' hide Colors;
 import '../../../core/models/vsepr_shape.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../molecule_viewer/flame/rotation_controller.dart';
 
 class GeometryPainter extends CustomPainter {
   final VseprShape shape;

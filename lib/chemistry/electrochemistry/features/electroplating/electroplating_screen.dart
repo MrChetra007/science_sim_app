@@ -239,7 +239,7 @@ class _CurrentControl extends StatelessWidget {
             Switch(
               value: isPlating,
               onChanged: onToggle,
-              activeColor: AppColors.accentElectric,
+              activeThumbColor: AppColors.accentElectric,
             ),
           ],
         ),

@@ -152,10 +152,6 @@ class SineWaveComponent extends Component with HasGameReference<ACGame>, TapCall
     cursorPosition = event.localStartPosition;
   }
 
-  @override
-  void onDragEnd(DragEndEvent event) {
-    super.onDragEnd(event);
-  }
 
   @override
   void onTapDown(TapDownEvent event) {

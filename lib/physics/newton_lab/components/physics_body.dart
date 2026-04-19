@@ -18,12 +18,11 @@ class PhysicsBody extends PositionComponent {
   PhysicsBody({
     required this.mass,
     this.color = const Color(0xFFE0E0FF),
-    Vector2? position,
-    Vector2? size,
+    super.position,
+    super.size,
   })  : velocity = Vector2.zero(),
         acceleration = Vector2.zero(),
-        netForce = Vector2.zero(),
-        super(position: position, size: size);
+        netForce = Vector2.zero();
 
   void applyForce(Vector2 force) {
     netForce.add(force);

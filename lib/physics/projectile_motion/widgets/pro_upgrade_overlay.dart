@@ -105,7 +105,7 @@ class _ProUpgradeOverlayState extends ConsumerState<ProUpgradeOverlay>
             // ── Particles ─────────────────────────────────────────────
             AnimatedBuilder(
               animation: _particleController,
-              builder: (_, __) => CustomPaint(
+              builder: (_, _) => CustomPaint(
                 painter: _ParticlePainter(_particles, _particleController.value,
                     color: const Color(0xFFFFD740)),
                 size: Size(size.width, size.height * 0.85),
@@ -119,7 +119,7 @@ class _ProUpgradeOverlayState extends ConsumerState<ProUpgradeOverlay>
               right: size.width * 0.2,
               child: AnimatedBuilder(
                 animation: _pulseAnimation,
-                builder: (_, __) => Container(
+                builder: (_, _) => Container(
                   height: 120,
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
@@ -146,7 +146,7 @@ class _ProUpgradeOverlayState extends ConsumerState<ProUpgradeOverlay>
                   // Drag handle
                   AnimatedBuilder(
                     animation: _pulseAnimation,
-                    builder: (_, __) => Container(
+                    builder: (_, _) => Container(
                       width: 44,
                       height: 4,
                       margin: const EdgeInsets.only(top: 14, bottom: 24),
@@ -169,7 +169,7 @@ class _ProUpgradeOverlayState extends ConsumerState<ProUpgradeOverlay>
                   // ── PRO badge ─────────────────────────────────────
                   AnimatedBuilder(
                     animation: _shimmerController,
-                    builder: (_, __) => Container(
+                    builder: (_, _) => Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 5),
                       decoration: BoxDecoration(
@@ -376,7 +376,7 @@ class _ProUpgradeOverlayState extends ConsumerState<ProUpgradeOverlay>
                         // CTA Button
                         AnimatedBuilder(
                           animation: _pulseAnimation,
-                          builder: (_, __) => GestureDetector(
+                          builder: (_, _) => GestureDetector(
                             onTap: () async {
                               await ref
                                   .read(simulationProvider.notifier)

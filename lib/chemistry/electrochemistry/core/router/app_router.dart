@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/galvanic_cell/galvanic_screen.dart';

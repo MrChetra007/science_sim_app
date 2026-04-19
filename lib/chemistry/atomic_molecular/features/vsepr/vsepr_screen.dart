@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:vector_math/vector_math_64.dart' hide Colors;
 import '../../core/models/vsepr_shape.dart';
 import '../../core/constants/vsepr_data.dart';
 import '../../core/theme/app_colors.dart';

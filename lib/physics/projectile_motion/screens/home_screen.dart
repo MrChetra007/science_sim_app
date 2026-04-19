@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           // ── Full-screen animated particle field ──────────────────────
           AnimatedBuilder(
             animation: _particleController,
-            builder: (_, __) => CustomPaint(
+            builder: (_, _) => CustomPaint(
               painter: _ParticlePainter(_particles, _particleController.value),
               size: size,
             ),
@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       const SizedBox(width: 8),
                       AnimatedBuilder(
                         animation: _pulseAnimation,
-                        builder: (_, __) => Container(
+                        builder: (_, _) => Container(
                           width: 8,
                           height: 8,
                           decoration: BoxDecoration(
@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     child: AnimatedBuilder(
                       animation:
                           Listenable.merge([_arcAnimation, _radarController]),
-                      builder: (_, __) => CustomPaint(
+                      builder: (_, _) => CustomPaint(
                         painter: _HoloArcPainter(
                             _arcAnimation.value, _radarController.value),
                         size: const Size(double.infinity, 190),
@@ -268,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: AnimatedBuilder(
                     animation: _pulseAnimation,
-                    builder: (_, __) {
+                    builder: (_, _) {
                       final glow = 0.25 + _pulseAnimation.value * 0.35;
                       return GestureDetector(
                         key: _launchButtonKey,

@@ -247,7 +247,7 @@ class _VoltageControl extends StatelessWidget {
             Switch(
               value: isPowerOn,
               onChanged: onToggle,
-              activeColor: AppColors.accentElectric,
+              activeThumbColor: AppColors.accentElectric,
             ),
           ],
         ),

@@ -349,7 +349,7 @@ class _Section {
 class _SectionCard extends StatelessWidget {
   final _Section section;
   final int index;
-  const _SectionCard({required this.section, required this.index, super.key});
+  const _SectionCard({required this.section, required this.index});
 
   @override
   Widget build(BuildContext context) {

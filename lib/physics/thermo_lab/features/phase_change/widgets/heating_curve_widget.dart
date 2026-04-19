@@ -47,7 +47,7 @@ class HeatingCurveChart extends StatelessWidget {
                     label: HorizontalLineLabel(
                       show: true,
                       alignment: Alignment.topRight,
-                      labelResolver: (_) => 'Melting Pt: ${meltingPoint}°C',
+                      labelResolver: (_) => 'Melting Pt: $meltingPoint°C',
                       style: const TextStyle(color: Colors.grey, fontSize: 10),
                     ),
                   ),
@@ -59,7 +59,7 @@ class HeatingCurveChart extends StatelessWidget {
                     label: HorizontalLineLabel(
                       show: true,
                       alignment: Alignment.topRight,
-                      labelResolver: (_) => 'Boiling Pt: ${boilingPoint}°C',
+                      labelResolver: (_) => 'Boiling Pt: $boilingPoint°C',
                       style: const TextStyle(color: Colors.grey, fontSize: 10),
                     ),
                   ),

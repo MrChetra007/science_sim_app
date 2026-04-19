@@ -99,10 +99,11 @@ class TechnicalBlueprintPainter extends CustomPainter {
         isDampingEnabled: state.isDampingEnabled,
       );
 
-      if (x == 0)
+      if (x == 0) {
         path.moveTo(x, centerY - y);
-      else
+      } else {
         path.lineTo(x, centerY - y);
+      }
     }
 
     // Glow pass
