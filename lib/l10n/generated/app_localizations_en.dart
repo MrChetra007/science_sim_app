@@ -1988,4 +1988,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mathematicalFormula => 'Mathematical Formula';
+
+  @override
+  String get entropyExplanation =>
+      'Nature always tends toward disorder. Once the wall is removed, the red and blue particles will spread until they are uniformly mixed. They will never spontaneously un-mix!';
+
+  @override
+  String get removePartition => 'REMOVE PARTITION';
 }

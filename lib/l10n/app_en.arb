@@ -425,7 +425,7 @@
   "keyConcepts": "Key Concepts:",
   "play": "PLAY",
   "pause": "PAUSE",
-  "reset": "RESET", 
+  "reset": "RESET",
   "mainsHum": "Mains Hum (Haptic)",
   "upgradeToUnlock": "UPGRADE TO UNLOCK PERMANENTLY",
   "backToMenu": "BACK TO MENU",
@@ -742,5 +742,7 @@
   "thirdLawFormula": "S → 0 as T → 0 K",
   "thirdLawExplanation": "At absolute zero, all motion stops and perfect order exists. You can never actually reach absolute zero.",
   "thirdLawRealWorld": "Scientists cool atoms to within billionths of a degree of absolute zero — but can never fully reach it.",
-  "mathematicalFormula": "Mathematical Formula"
+  "mathematicalFormula": "Mathematical Formula",
+  "entropyExplanation": "Nature always tends toward disorder. Once the wall is removed, the red and blue particles will spread until they are uniformly mixed. They will never spontaneously un-mix!",
+  "removePartition": "REMOVE PARTITION"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../providers/entropy_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
@@ -10,6 +11,7 @@ class EntropyControls extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(entropyProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Column(
       children: [
@@ -22,7 +24,7 @@ class EntropyControls extends ConsumerWidget {
               ? null 
               : () => ref.read(entropyProvider.notifier).removeWall(),
             icon: const Icon(Icons.layers_clear),
-            label: const Text('REMOVE PARTITION'),
+            label: Text(l10n.removePartition),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.accentEntropy,
               foregroundColor: Colors.white,

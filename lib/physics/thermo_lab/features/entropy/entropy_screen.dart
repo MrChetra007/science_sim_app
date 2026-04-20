@@ -133,10 +133,10 @@ class _EntropyExplanation extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Nature always tends toward disorder. Once the wall is removed, the red and blue particles will spread until they are uniformly mixed. They will never spontaneously un-mix!',
-            style: TextStyle(color: Colors.grey, fontSize: 13, height: 1.5),
-          ),
+          Text(
+                l10n.entropyExplanation,
+                style: const TextStyle(color: Colors.grey, fontSize: 13, height: 1.5),
+              ),
         ],
       ),
     );

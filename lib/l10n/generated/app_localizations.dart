@@ -3859,6 +3859,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mathematical Formula'**
   String get mathematicalFormula;
+
+  /// No description provided for @entropyExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Nature always tends toward disorder. Once the wall is removed, the red and blue particles will spread until they are uniformly mixed. They will never spontaneously un-mix!'**
+  String get entropyExplanation;
+
+  /// No description provided for @removePartition.
+  ///
+  /// In en, this message translates to:
+  /// **'REMOVE PARTITION'**
+  String get removePartition;
 }
 
 class _AppLocalizationsDelegate
