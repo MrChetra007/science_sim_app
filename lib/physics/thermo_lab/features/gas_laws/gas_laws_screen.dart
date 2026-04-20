@@ -15,6 +15,7 @@ import '../../core/constants/real_world_examples.dart';
 import '../../../../core/services/subscription_service.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class GasLawsScreen extends ConsumerStatefulWidget {
   const GasLawsScreen({super.key});
@@ -46,13 +47,14 @@ class _GasLawsScreenState extends ConsumerState<GasLawsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(gasProvider);
     final sub = p.Provider.of<SubscriptionService>(context);
     final isPro = sub.isPro;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isPro ? 'Gas Laws Explorer ⭐' : 'Gas Laws Explorer'),
+        title: Text(isPro ? '${l10n.gasLawsExplorer} ⭐' : l10n.gasLawsExplorer),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -62,7 +64,7 @@ class _GasLawsScreenState extends ConsumerState<GasLawsScreen> {
             IconButton(
               icon: const Icon(Icons.star, color: Colors.amber),
               onPressed: () => showGlobalPlanDialog(context),
-              tooltip: 'Upgrade to Pro',
+              tooltip: l10n.upgradeToPro,
             ),
         ],
       ),

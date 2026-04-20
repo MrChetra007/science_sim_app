@@ -5,6 +5,7 @@ import '../../../../core/services/subscription_service.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../../../../core/widgets/ad_widgets.dart';
 import '../../../../core/services/walkthrough_service.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 import '../../walkthrough/thermo_lab_walkthrough.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
@@ -51,8 +52,9 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() => _showWalkthrough = false);
   }
 
-  @override
+@override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final sub = p.Provider.of<SubscriptionService>(context);
     final isPro = sub.isPro;
 
@@ -80,19 +82,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('🔥 Thermo Lab', style: Theme.of(context).textTheme.displayLarge),
+                          Text(l10n.thermoHomeTitle, style: Theme.of(context).textTheme.displayLarge),
                           if (!isPro)
                             IconButton(
                               key: _proKey,
                               icon: const Icon(Icons.star, color: Colors.amber),
                               onPressed: () => showGlobalPlanDialog(context),
-                              tooltip: 'Upgrade to Pro',
+                              tooltip: l10n.upgradeToPro,
                             ),
                         ],
                       ),
                       const SizedBox(height: AppSpacing.xs),
                       Text(
-                        'Thermodynamics Simulation',
+                        l10n.thermoHomeSubtitle,
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               color: AppColors.textSecondary,
                             ),
@@ -108,8 +110,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             _ModuleCard(
                               key: _heatTransferKey,
                               icon: '🌡️',
-                              title: 'Heat Transfer',
-                              subtitle: 'Conduction, Convection, Radiation',
+                              title: l10n.heatTransfer,
+                              subtitle: l10n.heatTransferSubtitle,
                               color: AppColors.accentHeat,
                               route: '/heat',
                               isLocked: !isPro,
@@ -117,8 +119,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             _ModuleCard(
                               key: _gasLawsKey,
                               icon: '💨',
-                              title: 'Gas Laws',
-                              subtitle: "Boyle's, Charles's, Gay-Lussac's",
+                              title: l10n.gasLaws,
+                              subtitle: l10n.gasLawsSubtitle,
                               color: AppColors.accentGas,
                               route: '/gas',
                               isLocked: !isPro,
@@ -126,32 +128,32 @@ class _HomeScreenState extends State<HomeScreen> {
                             _ModuleCard(
                               key: _carnotKey,
                               icon: '⚙️',
-                              title: 'Carnot Engine',
-                              subtitle: 'Efficiency & Heat engines',
+                              title: l10n.carnotEngine,
+                              subtitle: l10n.carnotEngineSubtitle,
                               color: AppColors.accentCarnot,
                               route: '/carnot',
                             ),
                             _ModuleCard(
                               key: _phaseChangeKey,
                               icon: '🧊',
-                              title: 'Phase Change',
-                              subtitle: 'Heating curve & States of matter',
+                              title: l10n.phaseChange,
+                              subtitle: l10n.phaseChangeSubtitle,
                               color: AppColors.accentPhase,
                               route: '/phase',
                             ),
                             _ModuleCard(
                               key: _entropyKey,
                               icon: '🌀',
-                              title: 'Entropy',
-                              subtitle: 'Disorder & 2nd Law',
+                              title: l10n.entropy,
+                              subtitle: l10n.entropySubtitle,
                               color: AppColors.accentEntropy,
                               route: '/entropy',
                             ),
                             _ModuleCard(
                               key: _lawsKey,
                               icon: '📖',
-                              title: 'Laws of Thermo',
-                              subtitle: '0th, 1st, 2nd, 3rd Laws',
+                              title: l10n.lawsOfThermo,
+                              subtitle: l10n.lawsOfThermoSubtitle,
                               color: AppColors.accentLaws,
                               route: '/laws',
                             ),

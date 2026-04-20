@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 import '../constants/real_world_examples.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
@@ -34,7 +35,7 @@ class RealWorldCard extends StatelessWidget {
               const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: Text(
-                  'Real World: ${example.title}',
+                  '${AppLocalizations.of(context)!.realWorld}: ${example.title(context)}',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: accentColor,
                       ),
@@ -45,7 +46,7 @@ class RealWorldCard extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
-            example.description,
+            example.description(context),
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.textSecondary,
                 ),

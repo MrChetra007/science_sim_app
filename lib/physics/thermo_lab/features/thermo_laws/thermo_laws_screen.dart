@@ -8,12 +8,14 @@ import '../../core/theme/app_spacing.dart';
 import '../../../../core/services/subscription_service.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class ThermoLawsScreen extends StatelessWidget {
   const ThermoLawsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final sub = p.Provider.of<SubscriptionService>(context);
     final isPro = sub.isPro;
 
@@ -35,12 +37,12 @@ class ThermoLawsScreen extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.star, color: Colors.amber),
                   onPressed: () => showGlobalPlanDialog(context),
-                  tooltip: 'Upgrade to Pro',
+                  tooltip: l10n.upgradeToPro,
                 ),
             ],
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                isPro ? 'Laws of Thermodynamics ⭐' : 'Laws of Thermodynamics',
+                isPro ? '${l10n.lawsOfThermodynamics} ⭐' : l10n.lawsOfThermodynamics,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,

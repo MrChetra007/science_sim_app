@@ -7,9 +7,12 @@ import '../physics/wave_models.dart';
 class BlueprintPainter extends CustomPainter {
   final WaveState state;
   final WaveAnnotationSet annotations;
+  final String waveSpeedLabel;
 
-  BlueprintPainter({required this.state})
-    : annotations = WaveAnnotationSet.forMode(state.mode, state.waveType);
+  BlueprintPainter({
+    required this.state,
+    this.waveSpeedLabel = 'Wave Speed',
+  })  : annotations = WaveAnnotationSet.forMode(state.mode, state.waveType);
 
   // ─── Shared coordinate constants ─────────────────────────────────────────
   // ⚠️  MUST stay in sync with wave_painter.dart and oscilloscope_panel.dart.
@@ -321,7 +324,7 @@ class BlueprintPainter extends CustomPainter {
       Offset(startX, arrowY - 28),
       'v',
       '${state.waveSpeed.toInt()} m/s',
-      'Wave Speed',
+      waveSpeedLabel,
       WaveColors.speed,
     );
   }

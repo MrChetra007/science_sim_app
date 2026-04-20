@@ -212,6 +212,174 @@ abstract class AppLocalizations {
   /// **'Thermodynamics'**
   String get thermoLabSubtitle;
 
+  /// No description provided for @thermoHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermo Lab'**
+  String get thermoHomeTitle;
+
+  /// No description provided for @thermoHomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermodynamics Simulation'**
+  String get thermoHomeSubtitle;
+
+  /// No description provided for @heatTransfer.
+  ///
+  /// In en, this message translates to:
+  /// **'Heat Transfer'**
+  String get heatTransfer;
+
+  /// No description provided for @heatTransferSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Conduction, Convection, Radiation'**
+  String get heatTransferSubtitle;
+
+  /// No description provided for @gasLaws.
+  ///
+  /// In en, this message translates to:
+  /// **'Gas Laws'**
+  String get gasLaws;
+
+  /// No description provided for @gasLawsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Boyle\'s, Charles\'s, Gay-Lussac\'s'**
+  String get gasLawsSubtitle;
+
+  /// No description provided for @gasLawsExplorer.
+  ///
+  /// In en, this message translates to:
+  /// **'Gas Laws Explorer'**
+  String get gasLawsExplorer;
+
+  /// No description provided for @boylesLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'Boyle\'s Law'**
+  String get boylesLaw;
+
+  /// No description provided for @boylesLawDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Pressure is inversely proportional to volume at constant temperature (PV = k).'**
+  String get boylesLawDesc;
+
+  /// No description provided for @charlesLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'Charles\'s Law'**
+  String get charlesLaw;
+
+  /// No description provided for @charlesLawDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Volume is directly proportional to temperature at constant pressure (V/T = k).'**
+  String get charlesLawDesc;
+
+  /// No description provided for @gayLussacLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'Gay-Lussac\'s Law'**
+  String get gayLussacLaw;
+
+  /// No description provided for @gayLussacLawDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Pressure is directly proportional to temperature at constant volume (P/T = k).'**
+  String get gayLussacLawDesc;
+
+  /// No description provided for @heatTransferLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Heat Transfer Lab'**
+  String get heatTransferLab;
+
+  /// No description provided for @carnotEngineSimulator.
+  ///
+  /// In en, this message translates to:
+  /// **'Carnot Engine Simulator'**
+  String get carnotEngineSimulator;
+
+  /// No description provided for @phaseChangeSimulator.
+  ///
+  /// In en, this message translates to:
+  /// **'Phase Change Simulator'**
+  String get phaseChangeSimulator;
+
+  /// No description provided for @lawsOfThermodynamics.
+  ///
+  /// In en, this message translates to:
+  /// **'Laws of Thermodynamics'**
+  String get lawsOfThermodynamics;
+
+  /// No description provided for @entropyExplorer.
+  ///
+  /// In en, this message translates to:
+  /// **'Entropy Explorer'**
+  String get entropyExplorer;
+
+  /// No description provided for @carnotEngine.
+  ///
+  /// In en, this message translates to:
+  /// **'Carnot Engine'**
+  String get carnotEngine;
+
+  /// No description provided for @carnotEngineSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Efficiency & Heat engines'**
+  String get carnotEngineSubtitle;
+
+  /// No description provided for @phaseChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Phase Change'**
+  String get phaseChange;
+
+  /// No description provided for @phaseChangeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Heating curve & States of matter'**
+  String get phaseChangeSubtitle;
+
+  /// No description provided for @entropy.
+  ///
+  /// In en, this message translates to:
+  /// **'Entropy'**
+  String get entropy;
+
+  /// No description provided for @entropySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Disorder & 2nd Law'**
+  String get entropySubtitle;
+
+  /// No description provided for @lawsOfThermo.
+  ///
+  /// In en, this message translates to:
+  /// **'Laws of Thermo'**
+  String get lawsOfThermo;
+
+  /// No description provided for @lawsOfThermoSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'0th, 1st, 2nd, 3rd Laws'**
+  String get lawsOfThermoSubtitle;
+
+  /// No description provided for @upgradeToPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade to Pro'**
+  String get upgradeToPro;
+
+  /// No description provided for @proUnlockMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'PRO - Unlock for unlimited access'**
+  String get proUnlockMessage;
+
   /// No description provided for @atomicMolecular.
   ///
   /// In en, this message translates to:
@@ -2840,12 +3008,6 @@ abstract class AppLocalizations {
   /// **'Thermal Energy'**
   String get thermalEnergy;
 
-  /// No description provided for @entropy.
-  ///
-  /// In en, this message translates to:
-  /// **'Entropy'**
-  String get entropy;
-
   /// No description provided for @internalEnergy.
   ///
   /// In en, this message translates to:
@@ -2923,6 +3085,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Second Law'**
   String get secondLaw;
+
+  /// No description provided for @thirdLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'Third Law'**
+  String get thirdLaw;
+
+  /// No description provided for @zerothLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'Zeroth Law'**
+  String get zerothLaw;
+
+  /// No description provided for @theSecondLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'The Second Law'**
+  String get theSecondLaw;
 
   /// No description provided for @absoluteZero.
   ///
@@ -3361,6 +3541,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fuel Cell'**
   String get fuelCell;
+
+  /// No description provided for @cookingPan.
+  ///
+  /// In en, this message translates to:
+  /// **'Cooking pan'**
+  String get cookingPan;
+
+  /// No description provided for @cookingPanDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Metal pan conducts heat from the stove burner directly to your food.'**
+  String get cookingPanDesc;
+
+  /// No description provided for @oceanCurrents.
+  ///
+  /// In en, this message translates to:
+  /// **'Ocean currents'**
+  String get oceanCurrents;
+
+  /// No description provided for @oceanCurrentsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Warm water rises, cold water sinks — global convection that drives climate.'**
+  String get oceanCurrentsDesc;
+
+  /// No description provided for @solarRadiation.
+  ///
+  /// In en, this message translates to:
+  /// **'Solar radiation'**
+  String get solarRadiation;
+
+  /// No description provided for @solarRadiationDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The Sun heats Earth through radiation — no medium needed across space.'**
+  String get solarRadiationDesc;
+
+  /// No description provided for @bicyclePump.
+  ///
+  /// In en, this message translates to:
+  /// **'Bicycle pump'**
+  String get bicyclePump;
+
+  /// No description provided for @bicyclePumpDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Compressing air (Boyle\'s Law) increases pressure to inflate the tyre.'**
+  String get bicyclePumpDesc;
+
+  /// No description provided for @hotAirBalloon.
+  ///
+  /// In en, this message translates to:
+  /// **'Hot air balloon'**
+  String get hotAirBalloon;
+
+  /// No description provided for @hotAirBalloonDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Heating air (Charles\'s Law) increases volume, reducing density so it floats.'**
+  String get hotAirBalloonDesc;
+
+  /// No description provided for @pressureCooker.
+  ///
+  /// In en, this message translates to:
+  /// **'Pressure cooker'**
+  String get pressureCooker;
+
+  /// No description provided for @pressureCookerDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Increased temperature at fixed volume (Gay-Lussac\'s Law) leads to higher pressure for faster cooking.'**
+  String get pressureCookerDesc;
+
+  /// No description provided for @carEngine.
+  ///
+  /// In en, this message translates to:
+  /// **'Car engine'**
+  String get carEngine;
+
+  /// No description provided for @carEngineDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Combustion engines are heat engines — fuel burns (hot reservoir), exhaust cools (cold reservoir).'**
+  String get carEngineDesc;
+
+  /// No description provided for @refrigerator.
+  ///
+  /// In en, this message translates to:
+  /// **'Refrigerator'**
+  String get refrigerator;
+
+  /// No description provided for @refrigeratorDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A heat pump running in reverse — moves heat from cold (inside) to hot (room).'**
+  String get refrigeratorDesc;
+
+  /// No description provided for @powerPlant.
+  ///
+  /// In en, this message translates to:
+  /// **'Power plant'**
+  String get powerPlant;
+
+  /// No description provided for @powerPlantDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Steam turbines are large Carnot-like engines. Higher steam temperature = better efficiency.'**
+  String get powerPlantDesc;
+
+  /// No description provided for @sweating.
+  ///
+  /// In en, this message translates to:
+  /// **'Sweating'**
+  String get sweating;
+
+  /// No description provided for @sweatingDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Sweat evaporates from skin. Evaporation absorbs body heat — that\'s how you cool down.'**
+  String get sweatingDesc;
+
+  /// No description provided for @icePacks.
+  ///
+  /// In en, this message translates to:
+  /// **'Ice packs'**
+  String get icePacks;
+
+  /// No description provided for @icePacksDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Melting ice absorbs latent heat from injuries to reduce swelling.'**
+  String get icePacksDesc;
+
+  /// No description provided for @cloudsForming.
+  ///
+  /// In en, this message translates to:
+  /// **'Clouds forming'**
+  String get cloudsForming;
+
+  /// No description provided for @cloudsFormingDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Water vapor condenses (releases latent heat) to form clouds and rain.'**
+  String get cloudsFormingDesc;
+
+  /// No description provided for @iceMelting.
+  ///
+  /// In en, this message translates to:
+  /// **'Ice melting'**
+  String get iceMelting;
+
+  /// No description provided for @iceMeltingDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Ordered ice crystals become disordered liquid water — entropy increases spontaneously.'**
+  String get iceMeltingDesc;
+
+  /// No description provided for @perfumeSpreading.
+  ///
+  /// In en, this message translates to:
+  /// **'Perfume spreading'**
+  String get perfumeSpreading;
+
+  /// No description provided for @perfumeSpreadingDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Molecules spread from high to low concentration — nature always increases disorder.'**
+  String get perfumeSpreadingDesc;
+
+  /// No description provided for @rustingDecay.
+  ///
+  /// In en, this message translates to:
+  /// **'Rusting & decay'**
+  String get rustingDecay;
+
+  /// No description provided for @rustingDecayDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Ordered matter spontaneously breaks down into disorder. You need energy to reverse it.'**
+  String get rustingDecayDesc;
+
+  /// No description provided for @realWorld.
+  ///
+  /// In en, this message translates to:
+  /// **'Real World'**
+  String get realWorld;
 }
 
 class _AppLocalizationsDelegate

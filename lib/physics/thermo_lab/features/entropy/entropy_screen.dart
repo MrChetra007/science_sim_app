@@ -13,6 +13,7 @@ import '../../core/constants/real_world_examples.dart';
 import '../../../../core/services/subscription_service.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class EntropyScreen extends ConsumerStatefulWidget {
   const EntropyScreen({super.key});
@@ -32,12 +33,13 @@ class _EntropyScreenState extends ConsumerState<EntropyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final sub = p.Provider.of<SubscriptionService>(context);
     final isPro = sub.isPro;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isPro ? 'Entropy Explorer ⭐' : 'Entropy Explorer'),
+        title: Text(isPro ? '${l10n.entropyExplorer} ⭐' : l10n.entropyExplorer),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -47,7 +49,7 @@ class _EntropyScreenState extends ConsumerState<EntropyScreen> {
             IconButton(
               icon: const Icon(Icons.star, color: Colors.amber),
               onPressed: () => showGlobalPlanDialog(context),
-              tooltip: 'Upgrade to Pro',
+              tooltip: l10n.upgradeToPro,
             ),
         ],
       ),
@@ -109,6 +111,7 @@ class _EntropyExplanation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
@@ -124,7 +127,7 @@ class _EntropyExplanation extends StatelessWidget {
               const Icon(Icons.info_outline, color: AppColors.accentLaws, size: 20),
               const SizedBox(width: 8),
               Text(
-                'The Second Law',
+                l10n.theSecondLaw,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(color: AppColors.accentLaws),
               ),
             ],

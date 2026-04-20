@@ -15,6 +15,7 @@ import '../../core/constants/real_world_examples.dart';
 import '../../../../core/services/subscription_service.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class CarnotScreen extends ConsumerStatefulWidget {
   const CarnotScreen({super.key});
@@ -34,13 +35,14 @@ class _CarnotScreenState extends ConsumerState<CarnotScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(carnotProvider);
     final sub = p.Provider.of<SubscriptionService>(context);
     final isPro = sub.isPro;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isPro ? 'Carnot Engine Simulator ⭐' : 'Carnot Engine Simulator'),
+        title: Text(isPro ? '${l10n.carnotEngineSimulator} ⭐' : l10n.carnotEngineSimulator),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -50,7 +52,7 @@ class _CarnotScreenState extends ConsumerState<CarnotScreen> {
             IconButton(
               icon: const Icon(Icons.star, color: Colors.amber),
               onPressed: () => showGlobalPlanDialog(context),
-              tooltip: 'Upgrade to Pro',
+              tooltip: l10n.upgradeToPro,
             ),
         ],
       ),

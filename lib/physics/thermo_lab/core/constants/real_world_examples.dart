@@ -1,101 +1,146 @@
+import 'package:flutter/material.dart';
+import '../../../../l10n/generated/app_localizations.dart';
+
 class RealWorldExample {
   final String module;
-  final String title;
-  final String description;
+  final String titleKey;
+  final String descKey;
   final String emoji;
 
   const RealWorldExample({
     required this.module,
-    required this.title,
-    required this.description,
+    required this.titleKey,
+    required this.descKey,
     required this.emoji,
   });
+
+  String title(BuildContext context) {
+    switch (titleKey) {
+      case 'cookingPan': return AppLocalizations.of(context)!.cookingPan;
+      case 'oceanCurrents': return AppLocalizations.of(context)!.oceanCurrents;
+      case 'solarRadiation': return AppLocalizations.of(context)!.solarRadiation;
+      case 'bicyclePump': return AppLocalizations.of(context)!.bicyclePump;
+      case 'hotAirBalloon': return AppLocalizations.of(context)!.hotAirBalloon;
+      case 'pressureCooker': return AppLocalizations.of(context)!.pressureCooker;
+      case 'carEngine': return AppLocalizations.of(context)!.carEngine;
+      case 'refrigerator': return AppLocalizations.of(context)!.refrigerator;
+      case 'powerPlant': return AppLocalizations.of(context)!.powerPlant;
+      case 'sweating': return AppLocalizations.of(context)!.sweating;
+      case 'icePacks': return AppLocalizations.of(context)!.icePacks;
+      case 'cloudsForming': return AppLocalizations.of(context)!.cloudsForming;
+      case 'iceMelting': return AppLocalizations.of(context)!.iceMelting;
+      case 'perfumeSpreading': return AppLocalizations.of(context)!.perfumeSpreading;
+      case 'rustingDecay': return AppLocalizations.of(context)!.rustingDecay;
+      default: return titleKey;
+    }
+  }
+
+  String description(BuildContext context) {
+    switch (descKey) {
+      case 'cookingPanDesc': return AppLocalizations.of(context)!.cookingPanDesc;
+      case 'oceanCurrentsDesc': return AppLocalizations.of(context)!.oceanCurrentsDesc;
+      case 'solarRadiationDesc': return AppLocalizations.of(context)!.solarRadiationDesc;
+      case 'bicyclePumpDesc': return AppLocalizations.of(context)!.bicyclePumpDesc;
+      case 'hotAirBalloonDesc': return AppLocalizations.of(context)!.hotAirBalloonDesc;
+      case 'pressureCookerDesc': return AppLocalizations.of(context)!.pressureCookerDesc;
+      case 'carEngineDesc': return AppLocalizations.of(context)!.carEngineDesc;
+      case 'refrigeratorDesc': return AppLocalizations.of(context)!.refrigeratorDesc;
+      case 'powerPlantDesc': return AppLocalizations.of(context)!.powerPlantDesc;
+      case 'sweatingDesc': return AppLocalizations.of(context)!.sweatingDesc;
+      case 'icePacksDesc': return AppLocalizations.of(context)!.icePacksDesc;
+      case 'cloudsFormingDesc': return AppLocalizations.of(context)!.cloudsFormingDesc;
+      case 'iceMeltingDesc': return AppLocalizations.of(context)!.iceMeltingDesc;
+      case 'perfumeSpreadingDesc': return AppLocalizations.of(context)!.perfumeSpreadingDesc;
+      case 'rustingDecayDesc': return AppLocalizations.of(context)!.rustingDecayDesc;
+      default: return descKey;
+    }
+  }
 }
 
 const Map<String, List<RealWorldExample>> kRealWorldExamples = {
   'heat_transfer': [
     RealWorldExample(
       module: 'heat_transfer', emoji: '🍳',
-      title: 'Cooking pan',
-      description: 'Metal pan conducts heat from the stove burner directly to your food.',
+      titleKey: 'cookingPan',
+      descKey: 'cookingPanDesc',
     ),
     RealWorldExample(
-      module: 'heat_transfer', emoji: 'Waves',
-      title: 'Ocean currents',
-      description: 'Warm water rises, cold water sinks — global convection that drives climate.',
+      module: 'heat_transfer', emoji: '🌊',
+      titleKey: 'oceanCurrents',
+      descKey: 'oceanCurrentsDesc',
     ),
     RealWorldExample(
       module: 'heat_transfer', emoji: '☀️',
-      title: 'Solar radiation',
-      description: 'The Sun heats Earth through radiation — no medium needed across space.',
+      titleKey: 'solarRadiation',
+      descKey: 'solarRadiationDesc',
     ),
   ],
   'gas_laws': [
     RealWorldExample(
       module: 'gas_laws', emoji: '🚴',
-      title: 'Bicycle pump',
-      description: 'Compressing air (Boyle\'s Law) increases pressure to inflate the tyre.',
+      titleKey: 'bicyclePump',
+      descKey: 'bicyclePumpDesc',
     ),
     RealWorldExample(
       module: 'gas_laws', emoji: '🎈',
-      title: 'Hot air balloon',
-      description: 'Heating air (Charles\'s Law) increases volume, reducing density so it floats.',
+      titleKey: 'hotAirBalloon',
+      descKey: 'hotAirBalloonDesc',
     ),
     RealWorldExample(
       module: 'gas_laws', emoji: '🌋',
-      title: 'Pressure cooker',
-      description: 'Increased temperature at fixed volume (Gay-Lussac\'s Law) leads to higher pressure for faster cooking.',
+      titleKey: 'pressureCooker',
+      descKey: 'pressureCookerDesc',
     ),
   ],
   'carnot': [
     RealWorldExample(
       module: 'carnot', emoji: '🚗',
-      title: 'Car engine',
-      description: 'Combustion engines are heat engines — fuel burns (hot reservoir), exhaust cools (cold reservoir).',
+      titleKey: 'carEngine',
+      descKey: 'carEngineDesc',
     ),
     RealWorldExample(
       module: 'carnot', emoji: '🧊',
-      title: 'Refrigerator',
-      description: 'A heat pump running in reverse — moves heat from cold (inside) to hot (room).',
+      titleKey: 'refrigerator',
+      descKey: 'refrigeratorDesc',
     ),
     RealWorldExample(
       module: 'carnot', emoji: '⚡',
-      title: 'Power plant',
-      description: 'Steam turbines are large Carnot-like engines. Higher steam temperature = better efficiency.',
+      titleKey: 'powerPlant',
+      descKey: 'powerPlantDesc',
     ),
   ],
   'phase_change': [
     RealWorldExample(
       module: 'phase_change', emoji: '💦',
-      title: 'Sweating',
-      description: 'Sweat evaporates from skin. Evaporation absorbs body heat — that\'s how you cool down.',
+      titleKey: 'sweating',
+      descKey: 'sweatingDesc',
     ),
     RealWorldExample(
       module: 'phase_change', emoji: '🧊',
-      title: 'Ice packs',
-      description: 'Melting ice absorbs latent heat from injuries to reduce swelling.',
+      titleKey: 'icePacks',
+      descKey: 'icePacksDesc',
     ),
     RealWorldExample(
       module: 'phase_change', emoji: '🌫️',
-      title: 'Clouds forming',
-      description: 'Water vapor condenses (releases latent heat) to form clouds and rain.',
+      titleKey: 'cloudsForming',
+      descKey: 'cloudsFormingDesc',
     ),
   ],
   'entropy': [
     RealWorldExample(
       module: 'entropy', emoji: '🧊',
-      title: 'Ice melting',
-      description: 'Ordered ice crystals become disordered liquid water — entropy increases spontaneously.',
+      titleKey: 'iceMelting',
+      descKey: 'iceMeltingDesc',
     ),
     RealWorldExample(
       module: 'entropy', emoji: '🌹',
-      title: 'Perfume spreading',
-      description: 'Molecules spread from high to low concentration — nature always increases disorder.',
+      titleKey: 'perfumeSpreading',
+      descKey: 'perfumeSpreadingDesc',
     ),
     RealWorldExample(
       module: 'entropy', emoji: '🏚️',
-      title: 'Rusting & decay',
-      description: 'Ordered matter spontaneously breaks down into disorder. You need energy to reverse it.',
+      titleKey: 'rustingDecay',
+      descKey: 'rustingDecayDesc',
     ),
   ],
 };

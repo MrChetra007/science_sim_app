@@ -13,6 +13,7 @@ import '../../core/theme/app_spacing.dart';
 import '../../../../core/services/subscription_service.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class HeatTransferScreen extends ConsumerStatefulWidget {
   const HeatTransferScreen({super.key});
@@ -32,13 +33,14 @@ class _HeatTransferScreenState extends ConsumerState<HeatTransferScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(heatProvider);
     final sub = p.Provider.of<SubscriptionService>(context);
     final isPro = sub.isPro;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isPro ? 'Heat Transfer Lab ⭐' : 'Heat Transfer Lab'),
+        title: Text(isPro ? '${l10n.heatTransferLab} ⭐' : l10n.heatTransferLab),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -48,7 +50,7 @@ class _HeatTransferScreenState extends ConsumerState<HeatTransferScreen> {
             IconButton(
               icon: const Icon(Icons.star, color: Colors.amber),
               onPressed: () => showGlobalPlanDialog(context),
-              tooltip: 'Upgrade to Pro',
+              tooltip: l10n.upgradeToPro,
             ),
         ],
       ),

@@ -66,6 +66,93 @@ class AppLocalizationsEn extends AppLocalizations {
   String get thermoLabSubtitle => 'Thermodynamics';
 
   @override
+  String get thermoHomeTitle => 'Thermo Lab';
+
+  @override
+  String get thermoHomeSubtitle => 'Thermodynamics Simulation';
+
+  @override
+  String get heatTransfer => 'Heat Transfer';
+
+  @override
+  String get heatTransferSubtitle => 'Conduction, Convection, Radiation';
+
+  @override
+  String get gasLaws => 'Gas Laws';
+
+  @override
+  String get gasLawsSubtitle => 'Boyle\'s, Charles\'s, Gay-Lussac\'s';
+
+  @override
+  String get gasLawsExplorer => 'Gas Laws Explorer';
+
+  @override
+  String get boylesLaw => 'Boyle\'s Law';
+
+  @override
+  String get boylesLawDesc =>
+      'Pressure is inversely proportional to volume at constant temperature (PV = k).';
+
+  @override
+  String get charlesLaw => 'Charles\'s Law';
+
+  @override
+  String get charlesLawDesc =>
+      'Volume is directly proportional to temperature at constant pressure (V/T = k).';
+
+  @override
+  String get gayLussacLaw => 'Gay-Lussac\'s Law';
+
+  @override
+  String get gayLussacLawDesc =>
+      'Pressure is directly proportional to temperature at constant volume (P/T = k).';
+
+  @override
+  String get heatTransferLab => 'Heat Transfer Lab';
+
+  @override
+  String get carnotEngineSimulator => 'Carnot Engine Simulator';
+
+  @override
+  String get phaseChangeSimulator => 'Phase Change Simulator';
+
+  @override
+  String get lawsOfThermodynamics => 'Laws of Thermodynamics';
+
+  @override
+  String get entropyExplorer => 'Entropy Explorer';
+
+  @override
+  String get carnotEngine => 'Carnot Engine';
+
+  @override
+  String get carnotEngineSubtitle => 'Efficiency & Heat engines';
+
+  @override
+  String get phaseChange => 'Phase Change';
+
+  @override
+  String get phaseChangeSubtitle => 'Heating curve & States of matter';
+
+  @override
+  String get entropy => 'Entropy';
+
+  @override
+  String get entropySubtitle => 'Disorder & 2nd Law';
+
+  @override
+  String get lawsOfThermo => 'Laws of Thermo';
+
+  @override
+  String get lawsOfThermoSubtitle => '0th, 1st, 2nd, 3rd Laws';
+
+  @override
+  String get upgradeToPro => 'Upgrade to Pro';
+
+  @override
+  String get proUnlockMessage => 'PRO - Unlock for unlimited access';
+
+  @override
   String get atomicMolecular => 'ATOMIC & MOLECULAR';
 
   @override
@@ -1448,9 +1535,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get thermalEnergy => 'Thermal Energy';
 
   @override
-  String get entropy => 'Entropy';
-
-  @override
   String get internalEnergy => 'Internal Energy';
 
   @override
@@ -1488,6 +1572,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get secondLaw => 'Second Law';
+
+  @override
+  String get thirdLaw => 'Third Law';
+
+  @override
+  String get zerothLaw => 'Zeroth Law';
+
+  @override
+  String get theSecondLaw => 'The Second Law';
 
   @override
   String get absoluteZero => 'Absolute Zero';
@@ -1707,4 +1800,112 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fuelCell => 'Fuel Cell';
+
+  @override
+  String get cookingPan => 'Cooking pan';
+
+  @override
+  String get cookingPanDesc =>
+      'Metal pan conducts heat from the stove burner directly to your food.';
+
+  @override
+  String get oceanCurrents => 'Ocean currents';
+
+  @override
+  String get oceanCurrentsDesc =>
+      'Warm water rises, cold water sinks — global convection that drives climate.';
+
+  @override
+  String get solarRadiation => 'Solar radiation';
+
+  @override
+  String get solarRadiationDesc =>
+      'The Sun heats Earth through radiation — no medium needed across space.';
+
+  @override
+  String get bicyclePump => 'Bicycle pump';
+
+  @override
+  String get bicyclePumpDesc =>
+      'Compressing air (Boyle\'s Law) increases pressure to inflate the tyre.';
+
+  @override
+  String get hotAirBalloon => 'Hot air balloon';
+
+  @override
+  String get hotAirBalloonDesc =>
+      'Heating air (Charles\'s Law) increases volume, reducing density so it floats.';
+
+  @override
+  String get pressureCooker => 'Pressure cooker';
+
+  @override
+  String get pressureCookerDesc =>
+      'Increased temperature at fixed volume (Gay-Lussac\'s Law) leads to higher pressure for faster cooking.';
+
+  @override
+  String get carEngine => 'Car engine';
+
+  @override
+  String get carEngineDesc =>
+      'Combustion engines are heat engines — fuel burns (hot reservoir), exhaust cools (cold reservoir).';
+
+  @override
+  String get refrigerator => 'Refrigerator';
+
+  @override
+  String get refrigeratorDesc =>
+      'A heat pump running in reverse — moves heat from cold (inside) to hot (room).';
+
+  @override
+  String get powerPlant => 'Power plant';
+
+  @override
+  String get powerPlantDesc =>
+      'Steam turbines are large Carnot-like engines. Higher steam temperature = better efficiency.';
+
+  @override
+  String get sweating => 'Sweating';
+
+  @override
+  String get sweatingDesc =>
+      'Sweat evaporates from skin. Evaporation absorbs body heat — that\'s how you cool down.';
+
+  @override
+  String get icePacks => 'Ice packs';
+
+  @override
+  String get icePacksDesc =>
+      'Melting ice absorbs latent heat from injuries to reduce swelling.';
+
+  @override
+  String get cloudsForming => 'Clouds forming';
+
+  @override
+  String get cloudsFormingDesc =>
+      'Water vapor condenses (releases latent heat) to form clouds and rain.';
+
+  @override
+  String get iceMelting => 'Ice melting';
+
+  @override
+  String get iceMeltingDesc =>
+      'Ordered ice crystals become disordered liquid water — entropy increases spontaneously.';
+
+  @override
+  String get perfumeSpreading => 'Perfume spreading';
+
+  @override
+  String get perfumeSpreadingDesc =>
+      'Molecules spread from high to low concentration — nature always increases disorder.';
+
+  @override
+  String get rustingDecay => 'Rusting & decay';
+
+  @override
+  String get rustingDecayDesc =>
+      'Ordered matter spontaneously breaks down into disorder. You need energy to reverse it.';
+
+  @override
+  String get realWorld => 'Real World';
 }

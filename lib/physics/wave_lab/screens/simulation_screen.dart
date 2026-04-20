@@ -12,6 +12,7 @@ import '../widgets/oscilloscope_panel.dart';
 import '../providers/wave_provider.dart';
 import '../services/ad_service.dart';
 import '../services/iap_service.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class SimulationScreen extends ConsumerStatefulWidget {
@@ -44,6 +45,7 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final waveState = ref.watch(waveProvider);
 
     Widget waveWidget;
@@ -106,7 +108,10 @@ class _SimulationScreenState extends ConsumerState<SimulationScreen> {
                       duration: const Duration(milliseconds: 200),
                       opacity: waveState.showBlueprint ? 1.0 : 0.0,
                       child: CustomPaint(
-                        painter: BlueprintPainter(state: waveState),
+                        painter: BlueprintPainter(
+                          state: waveState,
+                          waveSpeedLabel: l10n.waveSpeed,
+                        ),
                       ),
                     ),
                   ),

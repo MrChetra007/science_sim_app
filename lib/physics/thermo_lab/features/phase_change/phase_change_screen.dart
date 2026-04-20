@@ -15,6 +15,7 @@ import '../../core/constants/real_world_examples.dart';
 import '../../../../core/services/subscription_service.dart';
 import '../../../../core/widgets/plan_picker.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class PhaseChangeScreen extends ConsumerStatefulWidget {
   const PhaseChangeScreen({super.key});
@@ -34,13 +35,14 @@ class _PhaseChangeScreenState extends ConsumerState<PhaseChangeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final settings = ref.watch(phaseProvider);
     final sub = p.Provider.of<SubscriptionService>(context);
     final isPro = sub.isPro;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isPro ? 'Phase Change Simulator ⭐' : 'Phase Change Simulator'),
+        title: Text(isPro ? '${l10n.phaseChangeSimulator} ⭐' : l10n.phaseChangeSimulator),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -50,7 +52,7 @@ class _PhaseChangeScreenState extends ConsumerState<PhaseChangeScreen> {
             IconButton(
               icon: const Icon(Icons.star, color: Colors.amber),
               onPressed: () => showGlobalPlanDialog(context),
-              tooltip: 'Upgrade to Pro',
+              tooltip: l10n.upgradeToPro,
             ),
         ],
       ),
