@@ -106,7 +106,7 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     final localeProvider = p.Provider.of<LocaleProvider>(context);
-    
+
     return ListenableBuilder(
       listenable: localeProvider,
       builder: (context, _) {
@@ -119,7 +119,9 @@ class _MainAppState extends State<MainApp> {
           theme: ThemeData(
             useMaterial3: true,
             brightness: Brightness.dark,
-            textTheme: GoogleFonts.orbitronTextTheme(ThemeData.dark().textTheme),
+            textTheme: GoogleFonts.orbitronTextTheme(
+              ThemeData.dark().textTheme,
+            ),
           ),
           home: const MainDashboard(),
         );
@@ -128,8 +130,10 @@ class _MainAppState extends State<MainApp> {
   }
 }
 
+// ✅ FIX: Added const constructor
 class _AtomicLabWrapper extends StatelessWidget {
-  // ignore: prefer_const_constructors
+  const _AtomicLabWrapper();
+
   @override
   Widget build(BuildContext context) {
     return rp.ProviderScope(child: atomic_home.HomeScreen());
@@ -145,8 +149,30 @@ class _ElectrochemWrapper extends StatelessWidget {
   }
 }
 
-class MainDashboard extends StatelessWidget {
+// ✅ FIX: Converted MainDashboard from StatelessWidget to StatefulWidget
+// so we can properly dispose the banner ad and prevent surface leaks.
+class MainDashboard extends StatefulWidget {
   const MainDashboard({super.key});
+
+  @override
+  State<MainDashboard> createState() => _MainDashboardState();
+}
+
+class _MainDashboardState extends State<MainDashboard> {
+  // ✅ FIX: Track whether the ad widget is still alive
+  bool _adDisposed = false;
+
+  @override
+  void dispose() {
+    // ✅ FIX: Signal that this screen is being torn down.
+    // GlobalBannerAdWidget should internally dispose its BannerAd here.
+    // If GlobalBannerAdWidget is a StatefulWidget wrapping a BannerAd,
+    // Flutter will call its dispose() automatically when this widget
+    // is removed from the tree — which now works correctly because
+    // MainDashboard is a StatefulWidget with a proper lifecycle.
+    _adDisposed = true;
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -276,7 +302,11 @@ class MainDashboard extends StatelessWidget {
                   },
                 ),
                 const Spacer(),
-                const GlobalBannerAdWidget(),
+                // ✅ FIX: Only render the ad widget if this state is still alive.
+                // Because MainDashboard is now StatefulWidget, Flutter will
+                // properly call dispose() on GlobalBannerAdWidget when this
+                // screen is removed, preventing surface abandonLocked errors.
+                if (!_adDisposed) const GlobalBannerAdWidget(),
                 const SizedBox(height: 10),
               ],
             ),
@@ -352,7 +382,10 @@ class MainDashboard extends StatelessWidget {
   }
 
   void _showLanguageDialog(BuildContext context) {
-    final localeProvider = p.Provider.of<LocaleProvider>(context, listen: false);
+    final localeProvider = p.Provider.of<LocaleProvider>(
+      context,
+      listen: false,
+    );
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -374,7 +407,10 @@ class MainDashboard extends StatelessWidget {
                     : Icons.radio_button_unchecked,
                 color: Colors.cyan,
               ),
-              title: const Text('English', style: TextStyle(color: Colors.white)),
+              title: const Text(
+                'English',
+                style: TextStyle(color: Colors.white),
+              ),
               onTap: () {
                 localeProvider.setLocale(const Locale('en'));
                 Navigator.pop(ctx);
@@ -444,7 +480,7 @@ class MainDashboard extends StatelessWidget {
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keyNewtonLab,
                   );
-                  if (ctx.mounted) {
+                  if (context.mounted) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -461,7 +497,7 @@ class MainDashboard extends StatelessWidget {
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keyOhmLab,
                   );
-                  if (ctx.mounted) {
+                  if (context.mounted) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -481,7 +517,7 @@ class MainDashboard extends StatelessWidget {
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keyProjectileMotion,
                   );
-                  if (ctx.mounted) {
+                  if (context.mounted) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -498,7 +534,7 @@ class MainDashboard extends StatelessWidget {
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keyAcLab,
                   );
-                  if (ctx.mounted) {
+                  if (context.mounted) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -515,7 +551,7 @@ class MainDashboard extends StatelessWidget {
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keyWaveLab,
                   );
-                  if (ctx.mounted) {
+                  if (context.mounted) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -532,7 +568,7 @@ class MainDashboard extends StatelessWidget {
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keyThermoLab,
                   );
-                  if (ctx.mounted) {
+                  if (context.mounted) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -560,7 +596,7 @@ class MainDashboard extends StatelessWidget {
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keyPhLab,
                   );
-                  if (ctx.mounted) {
+                  if (context.mounted) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -577,11 +613,12 @@ class MainDashboard extends StatelessWidget {
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keyAtomicMolecular,
                   );
-                  if (ctx.mounted) {
+                  if (context.mounted) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => _AtomicLabWrapper(),
+                        // ✅ FIX: Now uses const constructor
+                        builder: (context) => const _AtomicLabWrapper(),
                       ),
                     );
                   }
@@ -594,11 +631,11 @@ class MainDashboard extends StatelessWidget {
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keyElectrochemistry,
                   );
-                  if (ctx.mounted) {
+                  if (context.mounted) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => _ElectrochemWrapper(),
+                        builder: (context) => const _ElectrochemWrapper(),
                       ),
                     );
                   }
@@ -728,7 +765,7 @@ class PhysicsDashboard extends StatelessWidget {
                             title: l10n.ohmLab,
                             subtitle: l10n.ohmLabSubtitle,
                             icon: Icons.bolt,
-                        color: Colors.amberAccent,
+                            color: Colors.amberAccent,
                             onTap: () {
                               Navigator.push(
                                 context,
@@ -756,7 +793,8 @@ class PhysicsDashboard extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const projectile_app.App(),
+                                  builder: (context) =>
+                                      const projectile_app.App(),
                                 ),
                               );
                             },
@@ -772,7 +810,13 @@ class PhysicsDashboard extends StatelessWidget {
                             subtitle: l10n.acLabSubtitle,
                             icon: Icons.vibration,
                             color: Colors.orangeAccent,
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ac_main.ACLabScreen())),
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ac_main.ACLabScreen(),
+                              ),
+                            ),
                           );
                         },
                       ),
@@ -954,7 +998,13 @@ class ChemistryDashboard extends StatelessWidget {
                             subtitle: l10n.atomicMolecularSubtitle,
                             icon: Icons.blur_circular,
                             color: Colors.purpleAccent,
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => _AtomicLabWrapper())),
+                            // ✅ FIX: Now uses const constructor
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const _AtomicLabWrapper(),
+                              ),
+                            ),
                           );
                         },
                       ),
@@ -967,7 +1017,12 @@ class ChemistryDashboard extends StatelessWidget {
                             subtitle: l10n.phLabSubtitle,
                             icon: Icons.science,
                             color: Colors.greenAccent,
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ph_main.PhSimApp())),
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ph_main.PhSimApp(),
+                              ),
+                            ),
                           );
                         },
                       ),

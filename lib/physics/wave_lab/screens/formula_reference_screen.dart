@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import '../services/ad_service.dart';
 import '../services/iap_service.dart';
 
@@ -32,10 +33,11 @@ class _FormulaReferenceScreenState extends State<FormulaReferenceScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: const Color(0xFF040D17),
       appBar: AppBar(
-        title: const Text('Formula Reference'),
+        title: Text(l10n.formulaReferenceTitle),
         backgroundColor: Colors.transparent,
         foregroundColor: const Color(0xFF00E5FF),
         elevation: 0,
@@ -53,50 +55,50 @@ class _FormulaReferenceScreenState extends State<FormulaReferenceScreen> {
             child: ListView(
               padding: const EdgeInsets.all(20),
               children: [
-                _category('Fundamental Equations'),
+                _category(l10n.fundamentalEquations),
                 _formula(
-                  'Wave Speed',
+                  l10n.waveSpeed,
                   'v = fλ',
-                  'v: Velocity (m/s), f: Frequency (Hz), λ: Wavelength (m)',
+                  l10n.waveSpeedVars,
                 ),
                 _formula(
-                  'Period',
+                  l10n.period,
                   'T = 1/f',
-                  'T: Period (s), f: Frequency (Hz)',
+                  l10n.periodVars,
                 ),
                 _formula(
-                  'Angular Frequency',
+                  l10n.angularFrequency,
                   'ω = 2πf',
-                  'ω: Angular Frequency (rad/s), f: Frequency (Hz)',
+                  l10n.angularFrequencyVars,
                 ),
                 _formula(
-                  'Wave Number',
+                  l10n.waveNumber,
                   'k = 2π / λ',
-                  'k: Wave Number (rad/m), λ: Wavelength (m)',
+                  l10n.waveNumberVars,
                 ),
                 const SizedBox(height: 20),
-                _category('Wave Propagation'),
+                _category(l10n.wavePropagation),
                 _formula(
-                  'Traveling Wave',
+                  l10n.travelingWave,
                   'y(x, t) = A sin(kx - ωt + φ)',
-                  'y: Displacement, A: Amplitude, x: Position, t: Time',
+                  l10n.travelingWaveVars,
                 ),
                 _formula(
-                  'Standing Wave',
+                  l10n.standingWave,
                   'y(x, t) = [2A sin(kx)] cos(ωt)',
-                  'λ_n = 2L / n (for n-th harmonic)',
+                  l10n.standingWaveVars,
                 ),
                 const SizedBox(height: 20),
-                _category('Advanced Physics'),
+                _category(l10n.advancedPhysics),
                 _formula(
-                  'Doppler Effect',
+                  l10n.dopplerEffect,
                   "f' = f [v / (v - v_s)]",
-                  "f': Observed Frequency, v_s: Source Velocity",
+                  l10n.dopplerEffectVars,
                 ),
                 _formula(
-                  'Damped Wave',
+                  l10n.dampedWave,
                   'y(x, t) = A e^{-γx} sin(kx - ωt)',
-                  'γ: Damping coefficient',
+                  l10n.dampedWaveVars,
                 ),
                 const SizedBox(height: 40),
               ],

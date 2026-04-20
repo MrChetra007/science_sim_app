@@ -1259,6 +1259,84 @@ class AppLocalizationsKm extends AppLocalizations {
   String get dampedWave => 'រលក ស្រកចុះ';
 
   @override
+  String get waveSpeedVars =>
+      'v: ល្បឿន (m/s), f: ប្រេកង់ (Hz), λ: ប្រវែងរលក (m)';
+
+  @override
+  String get periodVars => 'T: រយៈពេល (s), f: ប្រេកង់ (Hz)';
+
+  @override
+  String get angularFrequencyVars => 'ω: ប្រេកង់មុំ (rad/s), f: ប្រេកង់ (Hz)';
+
+  @override
+  String get waveNumberVars => 'k: ចំនួនរលក (rad/m), λ: ប្រវែងរលក (m)';
+
+  @override
+  String get travelingWaveVars => 'y: ទីតាំង, A: អំព្លីទុត, x: ទីតាំង, t: ពេល';
+
+  @override
+  String get standingWaveVars => 'λ_n = 2L / n (សម្រាប់ harmonic ទី n)';
+
+  @override
+  String get dopplerEffectVars => 'f\': ប្រេកង់សង្កេត, v_s: ល្បឿនប្រភេទ';
+
+  @override
+  String get dampedWaveVars => 'γ: មេគុណស្រក';
+
+  @override
+  String get mathDerivationTitle => 'ការស្រាយ គណិត';
+
+  @override
+  String get mathLiveValues => 'តម្លៃពីការធ្វើត្រាប់';
+
+  @override
+  String get mathWaveEquation => '១. សមីការរលក';
+
+  @override
+  String get mathWaveEquationDesc => 'សមីការទូទៅសម្រាប់រលក sinusoidal:';
+
+  @override
+  String get mathStandingCondition => '២. លក្ខខណ្ឌ រលកឈរ';
+
+  @override
+  String get mathStandingConditionDesc =>
+      'សម្រាប់ខ្សែបន្ទាត់បណ្តោយ L, ប្រវែងរលកសម្រាប់ harmonic n គឺ λ = 2L/n ។';
+
+  @override
+  String get mathParticleVelocity => '៣. ល្បឿនភាគល្អិត';
+
+  @override
+  String get mathParticleVelocityDesc => 'អត្រានៃការផ្លាស់ប្តូរទីតាំង (∂y/∂t):';
+
+  @override
+  String get mathWaveParameters => '៤. ប៉ារ៉ាម៉ែត្រ រលក';
+
+  @override
+  String get mathWaveParametersDesc =>
+      'ទំនាក់ទំនងរវាង ល្បឿន ប្រេកង់ និង ប្រវែងរលក:';
+
+  @override
+  String get mathCurrentValues => 'តម្លៃបច្ចុប្បន្ន';
+
+  @override
+  String get mathAmplitudeLabel => 'អំព្លីទុត';
+
+  @override
+  String get mathFrequencyLabel => 'ប្រេកង់';
+
+  @override
+  String get mathSpeedLabel => 'ល្បឿន';
+
+  @override
+  String get mathWavelengthLabel => 'ប្រវែងរលក';
+
+  @override
+  String get mathAngularFreqLabel => 'ប្រេកង់មុំ';
+
+  @override
+  String get mathWaveNumberLabel => 'ចំនួនរលក';
+
+  @override
   String get presetsVacuum => 'សុទ្ទ';
 
   @override

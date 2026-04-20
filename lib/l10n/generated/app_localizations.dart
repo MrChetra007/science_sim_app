@@ -2546,6 +2546,156 @@ abstract class AppLocalizations {
   /// **'Damped Wave'**
   String get dampedWave;
 
+  /// No description provided for @waveSpeedVars.
+  ///
+  /// In en, this message translates to:
+  /// **'v: Velocity (m/s), f: Frequency (Hz), λ: Wavelength (m)'**
+  String get waveSpeedVars;
+
+  /// No description provided for @periodVars.
+  ///
+  /// In en, this message translates to:
+  /// **'T: Period (s), f: Frequency (Hz)'**
+  String get periodVars;
+
+  /// No description provided for @angularFrequencyVars.
+  ///
+  /// In en, this message translates to:
+  /// **'ω: Angular Frequency (rad/s), f: Frequency (Hz)'**
+  String get angularFrequencyVars;
+
+  /// No description provided for @waveNumberVars.
+  ///
+  /// In en, this message translates to:
+  /// **'k: Wave Number (rad/m), λ: Wavelength (m)'**
+  String get waveNumberVars;
+
+  /// No description provided for @travelingWaveVars.
+  ///
+  /// In en, this message translates to:
+  /// **'y: Displacement, A: Amplitude, x: Position, t: Time'**
+  String get travelingWaveVars;
+
+  /// No description provided for @standingWaveVars.
+  ///
+  /// In en, this message translates to:
+  /// **'λ_n = 2L / n (for n-th harmonic)'**
+  String get standingWaveVars;
+
+  /// No description provided for @dopplerEffectVars.
+  ///
+  /// In en, this message translates to:
+  /// **'f\': Observed Frequency, v_s: Source Velocity'**
+  String get dopplerEffectVars;
+
+  /// No description provided for @dampedWaveVars.
+  ///
+  /// In en, this message translates to:
+  /// **'γ: Damping coefficient'**
+  String get dampedWaveVars;
+
+  /// No description provided for @mathDerivationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mathematical Derivations'**
+  String get mathDerivationTitle;
+
+  /// No description provided for @mathLiveValues.
+  ///
+  /// In en, this message translates to:
+  /// **'Live simulation values injected below'**
+  String get mathLiveValues;
+
+  /// No description provided for @mathWaveEquation.
+  ///
+  /// In en, this message translates to:
+  /// **'1. The Wave Equation'**
+  String get mathWaveEquation;
+
+  /// No description provided for @mathWaveEquationDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'General equation for a sinusoidal wave:'**
+  String get mathWaveEquationDesc;
+
+  /// No description provided for @mathStandingCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Standing Wave Condition'**
+  String get mathStandingCondition;
+
+  /// No description provided for @mathStandingConditionDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'For a string of length L, the wavelength for harmonic n is λ = 2L/n.'**
+  String get mathStandingConditionDesc;
+
+  /// No description provided for @mathParticleVelocity.
+  ///
+  /// In en, this message translates to:
+  /// **'3. Particle Velocity'**
+  String get mathParticleVelocity;
+
+  /// No description provided for @mathParticleVelocityDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate of change of displacement (∂y/∂t):'**
+  String get mathParticleVelocityDesc;
+
+  /// No description provided for @mathWaveParameters.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Wave Parameters'**
+  String get mathWaveParameters;
+
+  /// No description provided for @mathWaveParametersDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Relationship between speed, frequency, and wavelength:'**
+  String get mathWaveParametersDesc;
+
+  /// No description provided for @mathCurrentValues.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Values'**
+  String get mathCurrentValues;
+
+  /// No description provided for @mathAmplitudeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Amplitude'**
+  String get mathAmplitudeLabel;
+
+  /// No description provided for @mathFrequencyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequency'**
+  String get mathFrequencyLabel;
+
+  /// No description provided for @mathSpeedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Speed'**
+  String get mathSpeedLabel;
+
+  /// No description provided for @mathWavelengthLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Wavelength'**
+  String get mathWavelengthLabel;
+
+  /// No description provided for @mathAngularFreqLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Angular Freq'**
+  String get mathAngularFreqLabel;
+
+  /// No description provided for @mathWaveNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Wave Number'**
+  String get mathWaveNumberLabel;
+
   /// No description provided for @presetsVacuum.
   ///
   /// In en, this message translates to:

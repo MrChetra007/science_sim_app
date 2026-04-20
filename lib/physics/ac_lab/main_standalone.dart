@@ -14,16 +14,14 @@ import 'widgets/fact_cards.dart';
 import 'screens/oscilloscope_screen.dart';
 import 'screens/transformer_screen.dart';
 import 'screens/reactive_screen.dart';
-import '../../../core/widgets/plan_picker.dart';
 import 'widgets/rewarded_timer_chip.dart';
 import '../../../core/widgets/ad_widgets.dart';
-import '../../../core/services/subscription_service.dart';
 import '../../../core/services/walkthrough_service.dart';
 import 'walkthrough/ac_lab_walkthrough.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   final acProvider = ACProvider();
   await acProvider.loadPrefs();
 
@@ -125,8 +123,14 @@ class _ACLabScreenState extends State<ACLabScreen> {
     final l10n = AppLocalizations.of(context)!;
     Widget content = Scaffold(
       appBar: AppBar(
-        title: Text(l10n.acElectricityLabTitle, 
-          style: TextStyle(letterSpacing: 2, fontWeight: FontWeight.bold, fontSize: 16)),
+        title: Text(
+          l10n.acElectricityLabTitle,
+          style: TextStyle(
+            letterSpacing: 2,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
         backgroundColor: const Color(0xFF0D1117),
         elevation: 0,
         centerTitle: true,
@@ -138,7 +142,9 @@ class _ACLabScreenState extends State<ACLabScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const OscilloscopeScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const OscilloscopeScreen(),
+                ),
               );
             },
           ),
@@ -149,7 +155,9 @@ class _ACLabScreenState extends State<ACLabScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const TransformerScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const TransformerScreen(),
+                ),
               );
             },
           ),
@@ -174,7 +182,12 @@ class _ACLabScreenState extends State<ACLabScreen> {
           ),
           IconButton(
             key: _proKey,
-            icon: Icon(Icons.workspace_premium, color: p.Provider.of<SubscriptionService>(context).isPro ? Colors.amber : Colors.white24),
+            icon: Icon(
+              Icons.workspace_premium,
+              color: p.Provider.of<SubscriptionService>(context).isPro
+                  ? Colors.amber
+                  : Colors.white24,
+            ),
             tooltip: l10n.upgrade,
             onPressed: () => showGlobalPlanDialog(context),
           ),
@@ -185,10 +198,10 @@ class _ACLabScreenState extends State<ACLabScreen> {
           children: [
             Expanded(
               flex: 5,
-              child: GameWidget(key: _gameViewKey, game: _acGame)
-                  .animate()
-                  .fadeIn(delay: 200.ms)
-                  .slideY(begin: 0.1, end: 0),
+              child: GameWidget(
+                key: _gameViewKey,
+                game: _acGame,
+              ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.1, end: 0),
             ),
             const InfoChipRow().animate().fadeIn(delay: 400.ms),
             Expanded(
@@ -197,11 +210,7 @@ class _ACLabScreenState extends State<ACLabScreen> {
                 key: _controlPanelKey,
                 padding: const EdgeInsets.all(12.0),
                 child: const Column(
-                  children: [
-                    ControlPanel(),
-                    SizedBox(height: 12),
-                    FactCards(),
-                  ],
+                  children: [ControlPanel(), SizedBox(height: 12), FactCards()],
                 ).animate().fadeIn(delay: 600.ms).slideY(begin: 0.05, end: 0),
               ),
             ),
@@ -236,14 +245,31 @@ class LearnScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(title: Text(l10n.acTheory)),
-body: ListView(
+      body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Text(l10n.whatIsAc, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.amber)),
+          Text(
+            l10n.whatIsAc,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.amber,
+            ),
+          ),
           const SizedBox(height: 8),
-          Text(l10n.alternatingCurrent, style: const TextStyle(color: Colors.white70)),
+          Text(
+            l10n.alternatingCurrent,
+            style: const TextStyle(color: Colors.white70),
+          ),
           const SizedBox(height: 16),
-          Text(l10n.keyConcepts, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.cyan)),
+          Text(
+            l10n.keyConcepts,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.cyan,
+            ),
+          ),
           const SizedBox(height: 8),
           BulletItem(text: l10n.peakVoltageDesc),
           BulletItem(text: l10n.frequencyDesc),
@@ -264,8 +290,13 @@ class BulletItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('• ', style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold)),
-          Expanded(child: Text(text, style: const TextStyle(color: Colors.white70))),
+          const Text(
+            '• ',
+            style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
+          ),
+          Expanded(
+            child: Text(text, style: const TextStyle(color: Colors.white70)),
+          ),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:math';
+import '../../../l10n/generated/app_localizations.dart';
 import '../providers/wave_provider.dart';
 
 class MathsDerivationSheet extends ConsumerWidget {
@@ -8,6 +9,7 @@ class MathsDerivationSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(waveProvider);
 
     // Live derived values
@@ -43,9 +45,9 @@ class MathsDerivationSheet extends ConsumerWidget {
                   controller: scrollController,
                   padding: const EdgeInsets.all(24),
                   children: [
-                    const Text(
-                      'Mathematical Derivations',
-                      style: TextStyle(
+                    Text(
+                      l10n.mathDerivationTitle,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -53,7 +55,7 @@ class MathsDerivationSheet extends ConsumerWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Live simulation values injected below',
+                      l10n.mathLiveValues,
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.4),
                         fontSize: 12,
@@ -62,37 +64,37 @@ class MathsDerivationSheet extends ConsumerWidget {
                     const SizedBox(height: 24),
 
                     _section(
-                      '1. The Wave Equation',
-                      'General equation for a sinusoidal wave:',
+                      l10n.mathWaveEquation,
+                      l10n.mathWaveEquationDesc,
                       'y(x, t) = ${state.amplitude.toStringAsFixed(2)} sin(${k.toStringAsFixed(2)}x - ${omega.toStringAsFixed(2)}t)',
                       subtitle: 'y(x, t) = A sin(kx - ωt)',
                     ),
 
                     if (state.mode == WaveMode.standing)
                       _section(
-                        '2. Standing Wave Condition',
-                        'For a string of length L, the wavelength for harmonic n is λ = 2L/n.',
+                        l10n.mathStandingCondition,
+                        l10n.mathStandingConditionDesc,
                         'y(x, t) = [2(${state.amplitude.toStringAsFixed(2)}) sin(${k.toStringAsFixed(2)}x)] cos(${omega.toStringAsFixed(2)}t)',
                         subtitle: 'y(x, t) = [2A sin(kx)] cos(ωt)',
                       ),
 
                     _section(
-                      '3. Particle Velocity',
-                      'Rate of change of displacement (∂y/∂t):',
+                      l10n.mathParticleVelocity,
+                      l10n.mathParticleVelocityDesc,
                       'v_y = -${(state.amplitude * omega).toStringAsFixed(2)} cos(${k.toStringAsFixed(2)}x - ${omega.toStringAsFixed(2)}t)',
                       subtitle: 'v_y = -Aω cos(kx - ωt)',
                     ),
 
                     _section(
-                      '4. Wave Parameters',
-                      'Relationship between speed, frequency, and wavelength:',
+                      l10n.mathWaveParameters,
+                      l10n.mathWaveParametersDesc,
                       '${state.waveSpeed.toStringAsFixed(0)} = ${state.frequency.toStringAsFixed(1)} × ${wavelength.toStringAsFixed(2)}',
                       subtitle: 'v = fλ',
                     ),
 
                     const Divider(color: Colors.white12, height: 40),
-                    const Text(
-                      'Current Values',
+                    Text(
+                      l10n.mathCurrentValues,
                       style: TextStyle(
                         color: Color(0xFF00E5FF),
                         fontSize: 18,
@@ -102,27 +104,27 @@ class MathsDerivationSheet extends ConsumerWidget {
                     const SizedBox(height: 12),
                     _variable(
                       'A',
-                      '${state.amplitude.toStringAsFixed(2)} m (Amplitude)',
+                      '${state.amplitude.toStringAsFixed(2)} m (${l10n.mathAmplitudeLabel})',
                     ),
                     _variable(
                       'f',
-                      '${state.frequency.toStringAsFixed(1)} Hz (Frequency)',
+                      '${state.frequency.toStringAsFixed(1)} Hz (${l10n.mathFrequencyLabel})',
                     ),
                     _variable(
                       'v',
-                      '${state.waveSpeed.toStringAsFixed(0)} m/s (Speed)',
+                      '${state.waveSpeed.toStringAsFixed(0)} m/s (${l10n.mathSpeedLabel})',
                     ),
                     _variable(
                       'λ',
-                      '${wavelength.toStringAsFixed(2)} m (Wavelength)',
+                      '${wavelength.toStringAsFixed(2)} m (${l10n.mathWavelengthLabel})',
                     ),
                     _variable(
                       'ω',
-                      '${omega.toStringAsFixed(2)} rad/s (Angular Freq)',
+                      '${omega.toStringAsFixed(2)} rad/s (${l10n.mathAngularFreqLabel})',
                     ),
                     _variable(
                       'k',
-                      '${k.toStringAsFixed(2)} rad/m (Wave Number)',
+                      '${k.toStringAsFixed(2)} rad/m (${l10n.mathWaveNumberLabel})',
                     ),
                     const SizedBox(height: 40),
                   ],

@@ -1286,6 +1286,88 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dampedWave => 'Damped Wave';
 
   @override
+  String get waveSpeedVars =>
+      'v: Velocity (m/s), f: Frequency (Hz), λ: Wavelength (m)';
+
+  @override
+  String get periodVars => 'T: Period (s), f: Frequency (Hz)';
+
+  @override
+  String get angularFrequencyVars =>
+      'ω: Angular Frequency (rad/s), f: Frequency (Hz)';
+
+  @override
+  String get waveNumberVars => 'k: Wave Number (rad/m), λ: Wavelength (m)';
+
+  @override
+  String get travelingWaveVars =>
+      'y: Displacement, A: Amplitude, x: Position, t: Time';
+
+  @override
+  String get standingWaveVars => 'λ_n = 2L / n (for n-th harmonic)';
+
+  @override
+  String get dopplerEffectVars =>
+      'f\': Observed Frequency, v_s: Source Velocity';
+
+  @override
+  String get dampedWaveVars => 'γ: Damping coefficient';
+
+  @override
+  String get mathDerivationTitle => 'Mathematical Derivations';
+
+  @override
+  String get mathLiveValues => 'Live simulation values injected below';
+
+  @override
+  String get mathWaveEquation => '1. The Wave Equation';
+
+  @override
+  String get mathWaveEquationDesc => 'General equation for a sinusoidal wave:';
+
+  @override
+  String get mathStandingCondition => '2. Standing Wave Condition';
+
+  @override
+  String get mathStandingConditionDesc =>
+      'For a string of length L, the wavelength for harmonic n is λ = 2L/n.';
+
+  @override
+  String get mathParticleVelocity => '3. Particle Velocity';
+
+  @override
+  String get mathParticleVelocityDesc =>
+      'Rate of change of displacement (∂y/∂t):';
+
+  @override
+  String get mathWaveParameters => '4. Wave Parameters';
+
+  @override
+  String get mathWaveParametersDesc =>
+      'Relationship between speed, frequency, and wavelength:';
+
+  @override
+  String get mathCurrentValues => 'Current Values';
+
+  @override
+  String get mathAmplitudeLabel => 'Amplitude';
+
+  @override
+  String get mathFrequencyLabel => 'Frequency';
+
+  @override
+  String get mathSpeedLabel => 'Speed';
+
+  @override
+  String get mathWavelengthLabel => 'Wavelength';
+
+  @override
+  String get mathAngularFreqLabel => 'Angular Freq';
+
+  @override
+  String get mathWaveNumberLabel => 'Wave Number';
+
+  @override
   String get presetsVacuum => 'Vacuum';
 
   @override
