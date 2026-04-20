@@ -7,10 +7,7 @@ import '../services/ad_service.dart';
 class GlobalBannerAdWidget extends StatefulWidget {
   final AdSize adSize;
 
-  const GlobalBannerAdWidget({
-    super.key,
-    this.adSize = AdSize.banner,
-  });
+  const GlobalBannerAdWidget({super.key, this.adSize = AdSize.banner});
 
   @override
   State<GlobalBannerAdWidget> createState() => _GlobalBannerAdWidgetState();
@@ -18,39 +15,47 @@ class GlobalBannerAdWidget extends StatefulWidget {
 
 class _GlobalBannerAdWidgetState extends State<GlobalBannerAdWidget> {
   BannerAd? _bannerAd;
+  bool _adLoaded = false;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _loadAd();
+  void initState() {
+    super.initState();
+    // ✅ FIX: Load only once in initState, not in didChangeDependencies.
+    // didChangeDependencies fires every time any inherited widget changes
+    // (e.g. Provider updates), which caused multiple ad instances to be
+    // created and old surfaces to be abandoned (abandonLocked errors).
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _loadAd();
+    });
   }
 
   void _loadAd() {
-    final sub = Provider.of<SubscriptionService>(context, listen: false);
-    if (!sub.showBannerAds) {
-      _bannerAd?.dispose();
-      _bannerAd = null;
-      return;
-    }
+    // Guard: never load more than once
+    if (_adLoaded) return;
 
-    if (_bannerAd != null) return;
+    final sub = Provider.of<SubscriptionService>(context, listen: false);
+    if (!sub.showBannerAds) return;
+
+    _adLoaded = true;
 
     _bannerAd = BannerAd(
       adUnitId: globalAdService.bannerAdUnitId,
       size: widget.adSize,
       request: const AdRequest(),
       listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          if (mounted) setState(() {});
+        },
         onAdFailedToLoad: (ad, error) {
           ad.dispose();
           if (mounted) {
             setState(() {
               _bannerAd = null;
+              // ✅ FIX: Reset flag so a retry is possible if widget is
+              // rebuilt (e.g. user navigates away and comes back), but
+              // we do NOT immediately retry to avoid surface spam.
+              _adLoaded = false;
             });
-          }
-        },
-        onAdLoaded: (ad) {
-          if (mounted) {
-            setState(() {});
           }
         },
       ),
@@ -59,7 +64,10 @@ class _GlobalBannerAdWidgetState extends State<GlobalBannerAdWidget> {
 
   @override
   void dispose() {
+    // ✅ FIX: Always dispose the ad when widget leaves the tree.
+    // This is now reliable because MainDashboard is a StatefulWidget.
     _bannerAd?.dispose();
+    _bannerAd = null;
     super.dispose();
   }
 
