@@ -360,7 +360,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get firstLawFullTitle => 'Newton\'s First Law';
 
   @override
-  String get firstLawFormula => 'ΣF = 0 → a = 0';
+  String get firstLawFormula => 'ΔU = Q - W';
 
   @override
   String get surface => 'Surface';
@@ -1908,4 +1908,84 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get realWorld => 'Real World';
+
+  @override
+  String get thermalEquilibrium => 'Thermal Equilibrium';
+
+  @override
+  String get zerothLawStatement =>
+      'If A is in thermal equilibrium with B, and B with C, then A is in thermal equilibrium with C.';
+
+  @override
+  String get zerothLawFormula => 'T_A = T_B = T_C';
+
+  @override
+  String get zerothLawExplanation =>
+      'This is the basis of temperature measurement. Objects in contact eventually reach the same temperature.';
+
+  @override
+  String get zerothLawRealWorld =>
+      'A thermometer works because it reaches thermal equilibrium with your body — then reads that shared temperature.';
+
+  @override
+  String get firstLawThermo => 'First Law';
+
+  @override
+  String get conservationOfEnergy => 'Conservation of Energy';
+
+  @override
+  String get firstLawStatement =>
+      'Energy cannot be created or destroyed — only converted from one form to another.';
+
+  @override
+  String get firstLawExplanation =>
+      'The internal energy (ΔU) of a system changes by heat added (Q) minus work done by the system (W).';
+
+  @override
+  String get firstLawRealWorld =>
+      'A car engine converts fuel\'s chemical energy → heat → mechanical work. Total energy is conserved.';
+
+  @override
+  String get secondLawThermo => 'Second Law';
+
+  @override
+  String get entropyAlwaysIncreases => 'Entropy Always Increases';
+
+  @override
+  String get secondLawStatement =>
+      'The total entropy of an isolated system always increases over time.';
+
+  @override
+  String secondLawFormula(Object universe) {
+    return 'ΔS_universe ≥ 0';
+  }
+
+  @override
+  String get secondLawExplanation =>
+      'Natural processes go from order to disorder. You can\'t build a perfect engine — some energy is always wasted as heat.';
+
+  @override
+  String get secondLawRealWorld =>
+      'Your room gets messy by itself. Cleaning it (reversing disorder) requires energy input — you can\'t get that for free.';
+
+  @override
+  String get thirdLawThermo => 'Third Law';
+
+  @override
+  String get thirdLawStatement =>
+      'The entropy of a perfect crystal at absolute zero (0 K = -273.15°C) is exactly zero.';
+
+  @override
+  String get thirdLawFormula => 'S → 0 as T → 0 K';
+
+  @override
+  String get thirdLawExplanation =>
+      'At absolute zero, all motion stops and perfect order exists. You can never actually reach absolute zero.';
+
+  @override
+  String get thirdLawRealWorld =>
+      'Scientists cool atoms to within billionths of a degree of absolute zero — but can never fully reach it.';
+
+  @override
+  String get mathematicalFormula => 'Mathematical Formula';
 }

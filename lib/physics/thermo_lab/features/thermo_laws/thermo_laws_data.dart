@@ -1,58 +1,101 @@
+import 'package:flutter/material.dart';
+import '../../../../l10n/generated/app_localizations.dart';
+
 class ThermoLaw {
   final String number;      // "0th", "1st", "2nd", "3rd"
-  final String name;
-  final String statement;
+  final String nameKey;
+  final String statementKey;
   final String formula;
-  final String explanation;
-  final String realWorld;
+  final String explanationKey;
+  final String realWorldKey;
   final String emoji;
 
   const ThermoLaw({
     required this.number,
-    required this.name,
-    required this.statement,
+    required this.nameKey,
+    required this.statementKey,
     required this.formula,
-    required this.explanation,
-    required this.realWorld,
+    required this.explanationKey,
+    required this.realWorldKey,
     required this.emoji,
   });
+
+  String name(BuildContext context) {
+    switch (nameKey) {
+      case 'thermalEquilibrium': return AppLocalizations.of(context)!.thermalEquilibrium;
+      case 'conservationOfEnergy': return AppLocalizations.of(context)!.conservationOfEnergy;
+      case 'entropyAlwaysIncreases': return AppLocalizations.of(context)!.entropyAlwaysIncreases;
+      case 'absoluteZero': return AppLocalizations.of(context)!.absoluteZero;
+      default: return nameKey;
+    }
+  }
+
+  String statement(BuildContext context) {
+    switch (statementKey) {
+      case 'zerothLawStatement': return AppLocalizations.of(context)!.zerothLawStatement;
+      case 'firstLawStatement': return AppLocalizations.of(context)!.firstLawStatement;
+      case 'secondLawStatement': return AppLocalizations.of(context)!.secondLawStatement;
+      case 'thirdLawStatement': return AppLocalizations.of(context)!.thirdLawStatement;
+      default: return statementKey;
+    }
+  }
+
+  String explanation(BuildContext context) {
+    switch (explanationKey) {
+      case 'zerothLawExplanation': return AppLocalizations.of(context)!.zerothLawExplanation;
+      case 'firstLawExplanation': return AppLocalizations.of(context)!.firstLawExplanation;
+      case 'secondLawExplanation': return AppLocalizations.of(context)!.secondLawExplanation;
+      case 'thirdLawExplanation': return AppLocalizations.of(context)!.thirdLawExplanation;
+      default: return explanationKey;
+    }
+  }
+
+  String realWorld(BuildContext context) {
+    switch (realWorldKey) {
+      case 'zerothLawRealWorld': return AppLocalizations.of(context)!.zerothLawRealWorld;
+      case 'firstLawRealWorld': return AppLocalizations.of(context)!.firstLawRealWorld;
+      case 'secondLawRealWorld': return AppLocalizations.of(context)!.secondLawRealWorld;
+      case 'thirdLawRealWorld': return AppLocalizations.of(context)!.thirdLawRealWorld;
+      default: return realWorldKey;
+    }
+  }
 }
 
 const List<ThermoLaw> kThermoLaws = [
   ThermoLaw(
     number: '0th',
     emoji: '🤝',
-    name: 'Thermal Equilibrium',
-    statement: 'If A is in thermal equilibrium with B, and B with C, then A is in thermal equilibrium with C.',
+    nameKey: 'thermalEquilibrium',
+    statementKey: 'zerothLawStatement',
     formula: 'T_A = T_B = T_C',
-    explanation: 'This is the basis of temperature measurement. Objects in contact eventually reach the same temperature.',
-    realWorld: 'A thermometer works because it reaches thermal equilibrium with your body — then reads that shared temperature.',
+    explanationKey: 'zerothLawExplanation',
+    realWorldKey: 'zerothLawRealWorld',
   ),
   ThermoLaw(
     number: '1st',
     emoji: '⚖️',
-    name: 'Conservation of Energy',
-    statement: 'Energy cannot be created or destroyed — only converted from one form to another.',
+    nameKey: 'conservationOfEnergy',
+    statementKey: 'firstLawStatement',
     formula: 'ΔU = Q - W',
-    explanation: 'The internal energy (ΔU) of a system changes by heat added (Q) minus work done by the system (W).',
-    realWorld: 'A car engine converts fuel\'s chemical energy → heat → mechanical work. Total energy is conserved.',
+    explanationKey: 'firstLawExplanation',
+    realWorldKey: 'firstLawRealWorld',
   ),
   ThermoLaw(
     number: '2nd',
     emoji: '🌀',
-    name: 'Entropy Always Increases',
-    statement: 'The total entropy of an isolated system always increases over time.',
+    nameKey: 'entropyAlwaysIncreases',
+    statementKey: 'secondLawStatement',
     formula: 'ΔS_universe ≥ 0',
-    explanation: 'Natural processes go from order to disorder. You can\'t build a perfect engine — some energy is always wasted as heat.',
-    realWorld: 'Your room gets messy by itself. Cleaning it (reversing disorder) requires energy input — you can\'t get that for free.',
+    explanationKey: 'secondLawExplanation',
+    realWorldKey: 'secondLawRealWorld',
   ),
   ThermoLaw(
     number: '3rd',
     emoji: '🧊',
-    name: 'Absolute Zero',
-    statement: 'The entropy of a perfect crystal at absolute zero (0 K = -273.15°C) is exactly zero.',
+    nameKey: 'absoluteZero',
+    statementKey: 'thirdLawStatement',
     formula: 'S → 0 as T → 0 K',
-    explanation: 'At absolute zero, all motion stops and perfect order exists. You can never actually reach absolute zero.',
-    realWorld: 'Scientists cool atoms to within billionths of a degree of absolute zero — but can never fully reach it.',
+    explanationKey: 'thirdLawExplanation',
+    realWorldKey: 'thirdLawRealWorld',
   ),
 ];

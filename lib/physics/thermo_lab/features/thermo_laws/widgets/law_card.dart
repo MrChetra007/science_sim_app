@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../thermo_laws_data.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import 'animated_formula_box.dart';
 
-class LawCard extends StatelessWidget {
+class LawCard extends ConsumerWidget {
   final ThermoLaw law;
   final Color accentColor;
 
@@ -15,7 +17,8 @@ class LawCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       margin: const EdgeInsets.only(bottom: AppSpacing.md),
       decoration: BoxDecoration(
@@ -70,7 +73,7 @@ class LawCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          law.name,
+                          law.name(context),
                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             fontSize: 20,
                           ),
@@ -99,7 +102,7 @@ class LawCard extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      '"${law.statement}"',
+                      '"${law.statement(context)}"',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontStyle: FontStyle.italic,
                         color: AppColors.textPrimary,
@@ -111,7 +114,7 @@ class LawCard extends StatelessWidget {
                   
                   // Formula Section
                   Text(
-                    'Mathematical Formula',
+                    l10n.mathematicalFormula,
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: Colors.grey,
                       fontWeight: FontWeight.bold,
@@ -126,7 +129,7 @@ class LawCard extends StatelessWidget {
                   
                   // Explanation
                   Text(
-                    law.explanation,
+                    law.explanation(context),
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.textSecondary,
                     ),
@@ -141,7 +144,7 @@ class LawCard extends StatelessWidget {
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
-                          law.realWorld,
+                          law.realWorld(context),
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: Colors.grey,
                             fontStyle: FontStyle.italic,

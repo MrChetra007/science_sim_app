@@ -358,7 +358,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get firstLawFullTitle => 'ច្បាប់ទី១របស់ញូតុន';
 
   @override
-  String get firstLawFormula => 'ΣF = 0 → a = 0';
+  String get firstLawFormula => '\$\\Delta U = Q - W\$';
 
   @override
   String get surface => 'ផ្ទៃ';
@@ -1873,4 +1873,84 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get realWorld => 'ពិភពពិត';
+
+  @override
+  String get thermalEquilibrium => 'តុល្យភាពកម្ដៅ';
+
+  @override
+  String get zerothLawStatement =>
+      'ប្រសិនបើវត្ថុ A មានតុល្យភាពកម្ដៅជាមួយ B ហើយ B មានតុល្យភាពជាមួយ C នោះ A ក៏មានតុល្យភាពកម្ដៅជាមួយ C ដែរ។';
+
+  @override
+  String get zerothLawFormula => '\$T_A = T_B = T_C\$';
+
+  @override
+  String get zerothLawExplanation =>
+      'នេះជាមូលដ្ឋានគ្រឹះនៃការវាស់សីតុណ្ហភាព។ វត្ថុដែលដាក់ប៉ះគ្នាទីបំផុតនឹងឈានដល់សីតុណ្ហភាពស្មើគ្នា។';
+
+  @override
+  String get zerothLawRealWorld =>
+      'ទែម៉ូម៉ែត្រដំណើរការដោយសារវាឈានដល់តុល្យភាពកម្ដៅជាមួយរាងកាយរបស់អ្នក រួចទើបវាបង្ហាញសីតុណ្ហភាពនោះ។';
+
+  @override
+  String get firstLawThermo => 'ច្បាប់ទី១';
+
+  @override
+  String get conservationOfEnergy => 'ច្បាប់អភិរក្សថាមពល';
+
+  @override
+  String get firstLawStatement =>
+      'ថាមពលមិនអាចកើតឡើងដោយឯងៗ ឬបាត់បង់ទៅវិញបានទេ វាគ្រាន់តែប្តូរពីទម្រង់មួយទៅទម្រង់មួយទៀតប៉ុណ្ណោះ។';
+
+  @override
+  String get firstLawExplanation =>
+      'ថាមពលក្នុង (\$\\Delta U\$) នៃប្រព័ន្ធមួយ ផ្លាស់ប្តូរតាមបរិមាណកម្ដៅដែលបន្ថែមចូល (Q) ដកនឹងការងារដែលប្រព័ន្ធធ្វើចេញ (W)។';
+
+  @override
+  String get firstLawRealWorld =>
+      'ម៉ាស៊ីនឡានបំលែងថាមពលគីមីនៃប្រេងឥន្ធនៈទៅជាកម្ដៅ និងការងារមេកានិក។ ថាមពលសរុបនៅរក្សាដដែល។';
+
+  @override
+  String get secondLawThermo => 'ច្បាប់ទី២';
+
+  @override
+  String get entropyAlwaysIncreases => 'អេនត្រូពីតែងតែកើនឡើង';
+
+  @override
+  String get secondLawStatement =>
+      'អេនត្រូពីសរុបនៃប្រព័ន្ធដាច់ដោយឡែកមួយ តែងតែកើនឡើងជានិច្ចតាមពេលវេលា។';
+
+  @override
+  String secondLawFormula(Object universe) {
+    return '\$\\Delta S_$universe \\geq 0\$';
+  }
+
+  @override
+  String get secondLawExplanation =>
+      'ដំណើរការធម្មជាតិតែងតែផ្លាស់ប្តូរពីសណ្តាប់ធ្នាប់ទៅជាភាពរញ៉េរញ៉ៃ។ អ្នកមិនអាចបង្កើតម៉ាស៊ីនដ៏ល្អឥតខ្ចោះបានទេ (ថាមពលខ្លះតែងតែបាត់បង់ជាកម្ដៅ)។';
+
+  @override
+  String get secondLawRealWorld =>
+      'បន្ទប់របស់អ្នកតែងតែរញ៉េរញ៉ៃដោយឯងៗ។ ការសម្អាតវា (ត្រឡប់ទៅរកសណ្តាប់ធ្នាប់) ទាមទារឱ្យមានការចំណាយថាមពល អ្នកមិនអាចទទួលបានដោយឥតគិតថ្លៃឡើយ។';
+
+  @override
+  String get thirdLawThermo => 'ច្បាប់ទី៣';
+
+  @override
+  String get thirdLawStatement =>
+      'អេនត្រូពីនៃគ្រីស្តាល់ដ៏ល្អឥតខ្ចោះនៅសូន្យដាច់ខាត (\$0 K = -273.15^\\circ C\$) គឺស្មើនឹងសូន្យ។';
+
+  @override
+  String get thirdLawFormula => '\$S \\to 0\$ នៅពេល \$T \\to 0 K\$';
+
+  @override
+  String get thirdLawExplanation =>
+      'នៅសូន្យដាច់ខាត ចលនាទាំងអស់នឹងឈប់ ហើយសណ្តាប់ធ្នាប់ដ៏ល្អឥតខ្ចោះនឹងកើតមាន។ អ្នកមិនអាចឈានដល់សូន្យដាច់ខាតទាំងស្រុងបានឡើយ។';
+
+  @override
+  String get thirdLawRealWorld =>
+      'អ្នកវិទ្យាសាស្ត្រអាចធ្វើឱ្យអាតូមត្រជាក់ដល់កម្រិតជិតសូន្យដាច់ខាតបំផុត ប៉ុន្តែមិនអាចទៅដល់ចំណុចនោះទាំងស្រុងបានទេ។';
+
+  @override
+  String get mathematicalFormula => 'រូបមន្តគណិតវិទ្យា';
 }

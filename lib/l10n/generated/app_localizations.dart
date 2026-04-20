@@ -791,7 +791,7 @@ abstract class AppLocalizations {
   /// No description provided for @firstLawFormula.
   ///
   /// In en, this message translates to:
-  /// **'ΣF = 0 → a = 0'**
+  /// **'ΔU = Q - W'**
   String get firstLawFormula;
 
   /// No description provided for @surface.
@@ -3727,6 +3727,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Real World'**
   String get realWorld;
+
+  /// No description provided for @thermalEquilibrium.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermal Equilibrium'**
+  String get thermalEquilibrium;
+
+  /// No description provided for @zerothLawStatement.
+  ///
+  /// In en, this message translates to:
+  /// **'If A is in thermal equilibrium with B, and B with C, then A is in thermal equilibrium with C.'**
+  String get zerothLawStatement;
+
+  /// No description provided for @zerothLawFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'T_A = T_B = T_C'**
+  String get zerothLawFormula;
+
+  /// No description provided for @zerothLawExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the basis of temperature measurement. Objects in contact eventually reach the same temperature.'**
+  String get zerothLawExplanation;
+
+  /// No description provided for @zerothLawRealWorld.
+  ///
+  /// In en, this message translates to:
+  /// **'A thermometer works because it reaches thermal equilibrium with your body — then reads that shared temperature.'**
+  String get zerothLawRealWorld;
+
+  /// No description provided for @firstLawThermo.
+  ///
+  /// In en, this message translates to:
+  /// **'First Law'**
+  String get firstLawThermo;
+
+  /// No description provided for @conservationOfEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Conservation of Energy'**
+  String get conservationOfEnergy;
+
+  /// No description provided for @firstLawStatement.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy cannot be created or destroyed — only converted from one form to another.'**
+  String get firstLawStatement;
+
+  /// No description provided for @firstLawExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'The internal energy (ΔU) of a system changes by heat added (Q) minus work done by the system (W).'**
+  String get firstLawExplanation;
+
+  /// No description provided for @firstLawRealWorld.
+  ///
+  /// In en, this message translates to:
+  /// **'A car engine converts fuel\'s chemical energy → heat → mechanical work. Total energy is conserved.'**
+  String get firstLawRealWorld;
+
+  /// No description provided for @secondLawThermo.
+  ///
+  /// In en, this message translates to:
+  /// **'Second Law'**
+  String get secondLawThermo;
+
+  /// No description provided for @entropyAlwaysIncreases.
+  ///
+  /// In en, this message translates to:
+  /// **'Entropy Always Increases'**
+  String get entropyAlwaysIncreases;
+
+  /// No description provided for @secondLawStatement.
+  ///
+  /// In en, this message translates to:
+  /// **'The total entropy of an isolated system always increases over time.'**
+  String get secondLawStatement;
+
+  /// No description provided for @secondLawFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'ΔS_universe ≥ 0'**
+  String secondLawFormula(Object universe);
+
+  /// No description provided for @secondLawExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Natural processes go from order to disorder. You can\'t build a perfect engine — some energy is always wasted as heat.'**
+  String get secondLawExplanation;
+
+  /// No description provided for @secondLawRealWorld.
+  ///
+  /// In en, this message translates to:
+  /// **'Your room gets messy by itself. Cleaning it (reversing disorder) requires energy input — you can\'t get that for free.'**
+  String get secondLawRealWorld;
+
+  /// No description provided for @thirdLawThermo.
+  ///
+  /// In en, this message translates to:
+  /// **'Third Law'**
+  String get thirdLawThermo;
+
+  /// No description provided for @thirdLawStatement.
+  ///
+  /// In en, this message translates to:
+  /// **'The entropy of a perfect crystal at absolute zero (0 K = -273.15°C) is exactly zero.'**
+  String get thirdLawStatement;
+
+  /// No description provided for @thirdLawFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'S → 0 as T → 0 K'**
+  String get thirdLawFormula;
+
+  /// No description provided for @thirdLawExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'At absolute zero, all motion stops and perfect order exists. You can never actually reach absolute zero.'**
+  String get thirdLawExplanation;
+
+  /// No description provided for @thirdLawRealWorld.
+  ///
+  /// In en, this message translates to:
+  /// **'Scientists cool atoms to within billionths of a degree of absolute zero — but can never fully reach it.'**
+  String get thirdLawRealWorld;
+
+  /// No description provided for @mathematicalFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'Mathematical Formula'**
+  String get mathematicalFormula;
 }
 
 class _AppLocalizationsDelegate
