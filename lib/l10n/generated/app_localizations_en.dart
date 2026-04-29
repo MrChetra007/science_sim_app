@@ -2076,6 +2076,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get valence => 'Valence';
 
   @override
+  String get elementCategoryNonmetal => 'Nonmetal';
+
+  @override
+  String get elementCategoryNobleGas => 'Noble gas';
+
+  @override
+  String get elementCategoryAlkaliMetal => 'Alkali metal';
+
+  @override
+  String get elementCategoryAlkalineEarth => 'Alkaline earth metal';
+
+  @override
+  String get elementCategoryMetalloid => 'Metalloid';
+
+  @override
+  String get elementCategoryHalogen => 'Halogen';
+
+  @override
+  String get elementCategoryTransitionMetal => 'Transition metal';
+
+  @override
+  String get elementCategoryPostTransition => 'Post-transition metal';
+
+  @override
   String get orbitalFilling => 'Orbital Filling';
 
   @override
@@ -2101,4 +2125,196 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upgradeToUnlock36 => 'Upgrade to PRO to unlock all 36 elements!';
+
+  @override
+  String get vseprLinear => 'Linear';
+
+  @override
+  String get vseprTrigonalPlanar => 'Trigonal Planar';
+
+  @override
+  String get vseprBent120 => 'Bent (120°)';
+
+  @override
+  String get vseprTetrahedral => 'Tetrahedral';
+
+  @override
+  String get vseprTrigonalPyramidal => 'Trigonal Pyramidal';
+
+  @override
+  String get vseprBent104 => 'Bent (104.5°)';
+
+  @override
+  String get vseprOctahedral => 'Octahedral';
+
+  @override
+  String get factHydrogen =>
+      'Most abundant element in the universe. Forms H₂O with oxygen.';
+
+  @override
+  String get factHelium =>
+      'A completely full first shell makes helium the most stable element.';
+
+  @override
+  String get factLithium =>
+      'The lightest metal, used extensively in rechargeable batteries.';
+
+  @override
+  String get factBeryllium => 'Found in gemstones like emerald and aquamarine.';
+
+  @override
+  String get factBoron =>
+      'Used in pyrotechnics to produce a distinctive green color.';
+
+  @override
+  String get factCarbon =>
+      'Tetravalent carbon is the backbone of all organic chemistry and life.';
+
+  @override
+  String get factNitrogen =>
+      'Makes up about 78% of Earth\'s atmosphere as N₂ gas.';
+
+  @override
+  String get factOxygen =>
+      'Highly electronegative. Two lone pairs give water its bent shape.';
+
+  @override
+  String get factFluorine =>
+      'The most reactive and electronegative of all elements.';
+
+  @override
+  String get factNeon =>
+      'A full octet — neon does not form any chemical bonds naturally.';
+
+  @override
+  String get factSodium =>
+      'Extremely reactive soft metal that must be stored in oil.';
+
+  @override
+  String get factMagnesium =>
+      'Essential for photosynthesis as the central atom of chlorophyll.';
+
+  @override
+  String get factAluminum =>
+      'The most abundant metal in Earth\'s crust, widely used in recycling.';
+
+  @override
+  String get factSilicon =>
+      'The semiconductor heart of modern electronics and computer chips.';
+
+  @override
+  String get factPhosphorus =>
+      'Essential for life, forming the backbone of DNA and ATP.';
+
+  @override
+  String get factSulfur =>
+      'Known since antiquity, often called \'brimstone\' in old texts.';
+
+  @override
+  String get factChlorine =>
+      'One electron short of a full shell — very reactive, forms NaCl with sodium.';
+
+  @override
+  String get factArgon =>
+      'The most common noble gas on Earth, used in incandescent light bulbs.';
+
+  @override
+  String get factPotassium =>
+      'Highly reactive metal found in abundance in bananas and seawater.';
+
+  @override
+  String get factCalcium =>
+      'Essential for biological life, forming the structure of bones and teeth.';
+
+  @override
+  String get factScandium =>
+      'Rare earth element used in high-strength aluminum alloys for aerospace.';
+
+  @override
+  String get factTitanium =>
+      'Known for its high strength-to-weight ratio and corrosion resistance.';
+
+  @override
+  String get factVanadium =>
+      'Adds hardness and thermal stability to steel alloys.';
+
+  @override
+  String get factChromium =>
+      'The main additive in stainless steel, providing its rust resistance.';
+
+  @override
+  String get factManganese =>
+      'Crucial for steel production and used in common alkaline batteries.';
+
+  @override
+  String get factIron =>
+      'The most common element on Earth by mass, forming the planet\'s core.';
+
+  @override
+  String get factCobalt =>
+      'Essential for Vitamin B12 and used in high-performance magnets.';
+
+  @override
+  String get factNickel =>
+      'Resists corrosion and is used in coinage and stainless steel.';
+
+  @override
+  String get factCopper =>
+      'Excellent electrical conductor, essential for modern wiring.';
+
+  @override
+  String get factZinc =>
+      'Used to galvanize steel to prevent rusting and in brass alloys.';
+
+  @override
+  String get factGallium =>
+      'Melts in your hand. Used in semiconductors like Gallium Arsenide.';
+
+  @override
+  String get factGermanium =>
+      'Early semiconductor material used before silicon became dominant.';
+
+  @override
+  String get factArsenic =>
+      'Famous for its toxicity, it is also used in many metal alloys.';
+
+  @override
+  String get factSelenium =>
+      'Photoconductive element used in glass production and nutrition.';
+
+  @override
+  String get factBromine =>
+      'The only non-metallic element that exists as a liquid at room temperature.';
+
+  @override
+  String get factKrypton =>
+      'Used in lighting and photography for a brilliant white light.';
+
+  @override
+  String get vseprLinearDesc =>
+      'Two bonding pairs, zero lone pairs. Atoms are arranged in a straight line for maximum separation.';
+
+  @override
+  String get vseprTrigonalPlanarDesc =>
+      'Three bonds in a flat plane, equally spaced at 120° angles to minimize repulsion.';
+
+  @override
+  String get vseprBent120Desc =>
+      'Two bonds and one lone pair. The lone pair pushes the bonds closer than 120°.';
+
+  @override
+  String get vseprTetrahedralDesc =>
+      'Four bonds pointing to the corners of a regular tetrahedron. Highly symmetrical.';
+
+  @override
+  String get vseprTrigonalPyramidalDesc =>
+      'Three bonds + one lone pair. The lone pair occupies more space, compressing bond angles.';
+
+  @override
+  String get vseprBent104Desc =>
+      'Two bonds + two lone pairs. Two lone pairs provide maximum compression on the bonds.';
+
+  @override
+  String get vseprOctahedralDesc =>
+      'Six bonds pointing to the faces of a regular cube. All bond angles are 90°.';
 }

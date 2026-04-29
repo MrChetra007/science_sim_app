@@ -4028,6 +4028,54 @@ abstract class AppLocalizations {
   /// **'Valence'**
   String get valence;
 
+  /// No description provided for @elementCategoryNonmetal.
+  ///
+  /// In en, this message translates to:
+  /// **'Nonmetal'**
+  String get elementCategoryNonmetal;
+
+  /// No description provided for @elementCategoryNobleGas.
+  ///
+  /// In en, this message translates to:
+  /// **'Noble gas'**
+  String get elementCategoryNobleGas;
+
+  /// No description provided for @elementCategoryAlkaliMetal.
+  ///
+  /// In en, this message translates to:
+  /// **'Alkali metal'**
+  String get elementCategoryAlkaliMetal;
+
+  /// No description provided for @elementCategoryAlkalineEarth.
+  ///
+  /// In en, this message translates to:
+  /// **'Alkaline earth metal'**
+  String get elementCategoryAlkalineEarth;
+
+  /// No description provided for @elementCategoryMetalloid.
+  ///
+  /// In en, this message translates to:
+  /// **'Metalloid'**
+  String get elementCategoryMetalloid;
+
+  /// No description provided for @elementCategoryHalogen.
+  ///
+  /// In en, this message translates to:
+  /// **'Halogen'**
+  String get elementCategoryHalogen;
+
+  /// No description provided for @elementCategoryTransitionMetal.
+  ///
+  /// In en, this message translates to:
+  /// **'Transition metal'**
+  String get elementCategoryTransitionMetal;
+
+  /// No description provided for @elementCategoryPostTransition.
+  ///
+  /// In en, this message translates to:
+  /// **'Post-transition metal'**
+  String get elementCategoryPostTransition;
+
   /// No description provided for @orbitalFilling.
   ///
   /// In en, this message translates to:
@@ -4081,6 +4129,306 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Upgrade to PRO to unlock all 36 elements!'**
   String get upgradeToUnlock36;
+
+  /// No description provided for @vseprLinear.
+  ///
+  /// In en, this message translates to:
+  /// **'Linear'**
+  String get vseprLinear;
+
+  /// No description provided for @vseprTrigonalPlanar.
+  ///
+  /// In en, this message translates to:
+  /// **'Trigonal Planar'**
+  String get vseprTrigonalPlanar;
+
+  /// No description provided for @vseprBent120.
+  ///
+  /// In en, this message translates to:
+  /// **'Bent (120°)'**
+  String get vseprBent120;
+
+  /// No description provided for @vseprTetrahedral.
+  ///
+  /// In en, this message translates to:
+  /// **'Tetrahedral'**
+  String get vseprTetrahedral;
+
+  /// No description provided for @vseprTrigonalPyramidal.
+  ///
+  /// In en, this message translates to:
+  /// **'Trigonal Pyramidal'**
+  String get vseprTrigonalPyramidal;
+
+  /// No description provided for @vseprBent104.
+  ///
+  /// In en, this message translates to:
+  /// **'Bent (104.5°)'**
+  String get vseprBent104;
+
+  /// No description provided for @vseprOctahedral.
+  ///
+  /// In en, this message translates to:
+  /// **'Octahedral'**
+  String get vseprOctahedral;
+
+  /// No description provided for @factHydrogen.
+  ///
+  /// In en, this message translates to:
+  /// **'Most abundant element in the universe. Forms H₂O with oxygen.'**
+  String get factHydrogen;
+
+  /// No description provided for @factHelium.
+  ///
+  /// In en, this message translates to:
+  /// **'A completely full first shell makes helium the most stable element.'**
+  String get factHelium;
+
+  /// No description provided for @factLithium.
+  ///
+  /// In en, this message translates to:
+  /// **'The lightest metal, used extensively in rechargeable batteries.'**
+  String get factLithium;
+
+  /// No description provided for @factBeryllium.
+  ///
+  /// In en, this message translates to:
+  /// **'Found in gemstones like emerald and aquamarine.'**
+  String get factBeryllium;
+
+  /// No description provided for @factBoron.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in pyrotechnics to produce a distinctive green color.'**
+  String get factBoron;
+
+  /// No description provided for @factCarbon.
+  ///
+  /// In en, this message translates to:
+  /// **'Tetravalent carbon is the backbone of all organic chemistry and life.'**
+  String get factCarbon;
+
+  /// No description provided for @factNitrogen.
+  ///
+  /// In en, this message translates to:
+  /// **'Makes up about 78% of Earth\'s atmosphere as N₂ gas.'**
+  String get factNitrogen;
+
+  /// No description provided for @factOxygen.
+  ///
+  /// In en, this message translates to:
+  /// **'Highly electronegative. Two lone pairs give water its bent shape.'**
+  String get factOxygen;
+
+  /// No description provided for @factFluorine.
+  ///
+  /// In en, this message translates to:
+  /// **'The most reactive and electronegative of all elements.'**
+  String get factFluorine;
+
+  /// No description provided for @factNeon.
+  ///
+  /// In en, this message translates to:
+  /// **'A full octet — neon does not form any chemical bonds naturally.'**
+  String get factNeon;
+
+  /// No description provided for @factSodium.
+  ///
+  /// In en, this message translates to:
+  /// **'Extremely reactive soft metal that must be stored in oil.'**
+  String get factSodium;
+
+  /// No description provided for @factMagnesium.
+  ///
+  /// In en, this message translates to:
+  /// **'Essential for photosynthesis as the central atom of chlorophyll.'**
+  String get factMagnesium;
+
+  /// No description provided for @factAluminum.
+  ///
+  /// In en, this message translates to:
+  /// **'The most abundant metal in Earth\'s crust, widely used in recycling.'**
+  String get factAluminum;
+
+  /// No description provided for @factSilicon.
+  ///
+  /// In en, this message translates to:
+  /// **'The semiconductor heart of modern electronics and computer chips.'**
+  String get factSilicon;
+
+  /// No description provided for @factPhosphorus.
+  ///
+  /// In en, this message translates to:
+  /// **'Essential for life, forming the backbone of DNA and ATP.'**
+  String get factPhosphorus;
+
+  /// No description provided for @factSulfur.
+  ///
+  /// In en, this message translates to:
+  /// **'Known since antiquity, often called \'brimstone\' in old texts.'**
+  String get factSulfur;
+
+  /// No description provided for @factChlorine.
+  ///
+  /// In en, this message translates to:
+  /// **'One electron short of a full shell — very reactive, forms NaCl with sodium.'**
+  String get factChlorine;
+
+  /// No description provided for @factArgon.
+  ///
+  /// In en, this message translates to:
+  /// **'The most common noble gas on Earth, used in incandescent light bulbs.'**
+  String get factArgon;
+
+  /// No description provided for @factPotassium.
+  ///
+  /// In en, this message translates to:
+  /// **'Highly reactive metal found in abundance in bananas and seawater.'**
+  String get factPotassium;
+
+  /// No description provided for @factCalcium.
+  ///
+  /// In en, this message translates to:
+  /// **'Essential for biological life, forming the structure of bones and teeth.'**
+  String get factCalcium;
+
+  /// No description provided for @factScandium.
+  ///
+  /// In en, this message translates to:
+  /// **'Rare earth element used in high-strength aluminum alloys for aerospace.'**
+  String get factScandium;
+
+  /// No description provided for @factTitanium.
+  ///
+  /// In en, this message translates to:
+  /// **'Known for its high strength-to-weight ratio and corrosion resistance.'**
+  String get factTitanium;
+
+  /// No description provided for @factVanadium.
+  ///
+  /// In en, this message translates to:
+  /// **'Adds hardness and thermal stability to steel alloys.'**
+  String get factVanadium;
+
+  /// No description provided for @factChromium.
+  ///
+  /// In en, this message translates to:
+  /// **'The main additive in stainless steel, providing its rust resistance.'**
+  String get factChromium;
+
+  /// No description provided for @factManganese.
+  ///
+  /// In en, this message translates to:
+  /// **'Crucial for steel production and used in common alkaline batteries.'**
+  String get factManganese;
+
+  /// No description provided for @factIron.
+  ///
+  /// In en, this message translates to:
+  /// **'The most common element on Earth by mass, forming the planet\'s core.'**
+  String get factIron;
+
+  /// No description provided for @factCobalt.
+  ///
+  /// In en, this message translates to:
+  /// **'Essential for Vitamin B12 and used in high-performance magnets.'**
+  String get factCobalt;
+
+  /// No description provided for @factNickel.
+  ///
+  /// In en, this message translates to:
+  /// **'Resists corrosion and is used in coinage and stainless steel.'**
+  String get factNickel;
+
+  /// No description provided for @factCopper.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent electrical conductor, essential for modern wiring.'**
+  String get factCopper;
+
+  /// No description provided for @factZinc.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to galvanize steel to prevent rusting and in brass alloys.'**
+  String get factZinc;
+
+  /// No description provided for @factGallium.
+  ///
+  /// In en, this message translates to:
+  /// **'Melts in your hand. Used in semiconductors like Gallium Arsenide.'**
+  String get factGallium;
+
+  /// No description provided for @factGermanium.
+  ///
+  /// In en, this message translates to:
+  /// **'Early semiconductor material used before silicon became dominant.'**
+  String get factGermanium;
+
+  /// No description provided for @factArsenic.
+  ///
+  /// In en, this message translates to:
+  /// **'Famous for its toxicity, it is also used in many metal alloys.'**
+  String get factArsenic;
+
+  /// No description provided for @factSelenium.
+  ///
+  /// In en, this message translates to:
+  /// **'Photoconductive element used in glass production and nutrition.'**
+  String get factSelenium;
+
+  /// No description provided for @factBromine.
+  ///
+  /// In en, this message translates to:
+  /// **'The only non-metallic element that exists as a liquid at room temperature.'**
+  String get factBromine;
+
+  /// No description provided for @factKrypton.
+  ///
+  /// In en, this message translates to:
+  /// **'Used in lighting and photography for a brilliant white light.'**
+  String get factKrypton;
+
+  /// No description provided for @vseprLinearDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Two bonding pairs, zero lone pairs. Atoms are arranged in a straight line for maximum separation.'**
+  String get vseprLinearDesc;
+
+  /// No description provided for @vseprTrigonalPlanarDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Three bonds in a flat plane, equally spaced at 120° angles to minimize repulsion.'**
+  String get vseprTrigonalPlanarDesc;
+
+  /// No description provided for @vseprBent120Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Two bonds and one lone pair. The lone pair pushes the bonds closer than 120°.'**
+  String get vseprBent120Desc;
+
+  /// No description provided for @vseprTetrahedralDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Four bonds pointing to the corners of a regular tetrahedron. Highly symmetrical.'**
+  String get vseprTetrahedralDesc;
+
+  /// No description provided for @vseprTrigonalPyramidalDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Three bonds + one lone pair. The lone pair occupies more space, compressing bond angles.'**
+  String get vseprTrigonalPyramidalDesc;
+
+  /// No description provided for @vseprBent104Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Two bonds + two lone pairs. Two lone pairs provide maximum compression on the bonds.'**
+  String get vseprBent104Desc;
+
+  /// No description provided for @vseprOctahedralDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Six bonds pointing to the faces of a regular cube. All bond angles are 90°.'**
+  String get vseprOctahedralDesc;
 }
 
 class _AppLocalizationsDelegate
