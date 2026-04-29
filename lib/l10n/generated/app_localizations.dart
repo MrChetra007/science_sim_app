@@ -3871,6 +3871,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'REMOVE PARTITION'**
   String get removePartition;
+
+  /// No description provided for @atomicLabTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Atomic Lab'**
+  String get atomicLabTitle;
+
+  /// No description provided for @atomicLabSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Interactive Chemistry Simulations'**
+  String get atomicLabSubtitle;
+
+  /// No description provided for @bohrModelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bohr Model'**
+  String get bohrModelTitle;
+
+  /// No description provided for @bohrModelSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Animate electrons orbiting'**
+  String get bohrModelSubtitle;
+
+  /// No description provided for @electronConfigTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Electron Config'**
+  String get electronConfigTitle;
+
+  /// No description provided for @electronConfigSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill orbitals step by step'**
+  String get electronConfigSubtitle;
+
+  /// No description provided for @moleculesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3D Molecules'**
+  String get moleculesTitle;
+
+  /// No description provided for @moleculesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rotate ball-and-stick models'**
+  String get moleculesSubtitle;
+
+  /// No description provided for @vseprTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'VSEPR Shapes'**
+  String get vseprTitle;
+
+  /// No description provided for @vseprSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Geometry from electron pairs'**
+  String get vseprSubtitle;
+
+  /// No description provided for @orbitalViewerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Orbital Viewer'**
+  String get orbitalViewerTitle;
+
+  /// No description provided for @orbitalViewerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore s, p, d probability regions'**
+  String get orbitalViewerSubtitle;
+
+  /// No description provided for @premiumFeature.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Feature'**
+  String get premiumFeature;
+
+  /// No description provided for @upgradeToPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade to Premium to unlock Bohr Model and remove ads!'**
+  String get upgradeToPremium;
+
+  /// No description provided for @maybeLater.
+  ///
+  /// In en, this message translates to:
+  /// **'Maybe Later'**
+  String get maybeLater;
+
+  /// No description provided for @builtForChemistry.
+  ///
+  /// In en, this message translates to:
+  /// **'Built for Chemistry Students'**
+  String get builtForChemistry;
+
+  /// No description provided for @selectElementPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Element (1-36)'**
+  String get selectElementPro;
+
+  /// No description provided for @selectElementFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Element (1-10)'**
+  String get selectElementFree;
+
+  /// No description provided for @selectElement.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Element'**
+  String get selectElement;
+
+  /// No description provided for @angle.
+  ///
+  /// In en, this message translates to:
+  /// **'Angle'**
+  String get angle;
+
+  /// No description provided for @stericNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Steric #'**
+  String get stericNumber;
+
+  /// No description provided for @bonds.
+  ///
+  /// In en, this message translates to:
+  /// **'Bonds'**
+  String get bonds;
+
+  /// No description provided for @lonePairs.
+  ///
+  /// In en, this message translates to:
+  /// **'Lone Pairs'**
+  String get lonePairs;
+
+  /// No description provided for @examples.
+  ///
+  /// In en, this message translates to:
+  /// **'Examples:'**
+  String get examples;
+
+  /// No description provided for @group.
+  ///
+  /// In en, this message translates to:
+  /// **'Group'**
+  String get group;
+
+  /// No description provided for @valence.
+  ///
+  /// In en, this message translates to:
+  /// **'Valence'**
+  String get valence;
+
+  /// No description provided for @orbitalFilling.
+  ///
+  /// In en, this message translates to:
+  /// **'Orbital Filling'**
+  String get orbitalFilling;
+
+  /// No description provided for @hundsRule.
+  ///
+  /// In en, this message translates to:
+  /// **'Hund\'s Rule'**
+  String get hundsRule;
+
+  /// No description provided for @switchElement.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch Element'**
+  String get switchElement;
+
+  /// No description provided for @fullConfiguration.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Configuration'**
+  String get fullConfiguration;
+
+  /// No description provided for @animateElectrons.
+  ///
+  /// In en, this message translates to:
+  /// **'Animate electrons orbiting'**
+  String get animateElectrons;
+
+  /// No description provided for @unlockForPro.
+  ///
+  /// In en, this message translates to:
+  /// **'PRO - Unlock for unlimited access'**
+  String get unlockForPro;
+
+  /// No description provided for @fillOrbitalsStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill orbitals step by step'**
+  String get fillOrbitalsStep;
+
+  /// No description provided for @rotateModels.
+  ///
+  /// In en, this message translates to:
+  /// **'Rotate ball-and-stick models'**
+  String get rotateModels;
+
+  /// No description provided for @upgradeToUnlock36.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade to PRO to unlock all 36 elements!'**
+  String get upgradeToUnlock36;
 }
 
 class _AppLocalizationsDelegate

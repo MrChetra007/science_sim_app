@@ -602,7 +602,7 @@ class _PlanCard extends StatelessWidget {
 
 class _CountdownTimer extends StatefulWidget {
   final DateTime endTime;
-  const _CountdownTimer({super.key, required this.endTime});
+  const _CountdownTimer({required this.endTime});
 
   @override
   State<_CountdownTimer> createState() => _CountdownTimerState();

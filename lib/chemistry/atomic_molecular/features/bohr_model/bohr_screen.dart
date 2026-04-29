@@ -2,6 +2,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart' as p;
+import '../../../../l10n/generated/app_localizations.dart';
 import '../../core/constants/elements_data.dart';
 import '../../core/theme/app_colors.dart';
 import '../../../../core/services/subscription_service.dart';
@@ -33,6 +34,7 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
   Widget build(BuildContext context) {
     final selectedEl = ref.watch(bohrProvider);
     final sub = p.Provider.of<SubscriptionService>(context);
+    final l10n = AppLocalizations.of(context)!;
     
     final isPro = sub.isPro;
     final freeElementsCount = isPro ? kElements.length : 10;
@@ -44,13 +46,13 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isPro ? 'Bohr Model Simulator ⭐' : 'Bohr Model Simulator'),
+        title: Text(isPro ? l10n.bohrModelTitle : l10n.bohrModelTitle),
         actions: [
           if (!isPro)
             IconButton(
               icon: const Icon(Icons.star, color: Colors.amber),
               onPressed: () => showGlobalPlanDialog(context),
-              tooltip: 'Upgrade to Pro',
+              tooltip: l10n.upgradeToPro,
             ),
         ],
       ),
@@ -118,13 +120,13 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        'Upgrade to PRO to unlock all 36 elements!',
+                        l10n.upgradeToUnlock36,
                         style: TextStyle(color: Colors.amber.shade200, fontSize: 12),
                       ),
                     ),
                     TextButton(
                       onPressed: () => showGlobalPlanDialog(context),
-                      child: const Text('UPGRADE', style: TextStyle(fontSize: 12)),
+                      child: Text(l10n.upgrade, style: const TextStyle(fontSize: 12)),
                     ),
                   ],
                 ),
@@ -142,7 +144,7 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    isPro ? 'Select Element (1-36)' : 'Select Element (1-10)',
+                    isPro ? l10n.selectElementPro : l10n.selectElementFree,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.textSecondary,
                       fontWeight: FontWeight.w600,

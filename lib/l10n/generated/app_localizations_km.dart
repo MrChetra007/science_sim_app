@@ -146,7 +146,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get lawsOfThermoSubtitle => 'ច្បាប់ ០, ១, ២, ៣';
 
   @override
-  String get upgradeToPro => 'ដំឡើងទៅ PRO';
+  String get upgradeToPro => 'ដំឡើងទៅ Pro';
 
   @override
   String get proUnlockMessage => 'PRO - ដោះស្រាយសម្រាប់ការប្រើប្រាស់មិនដាច់';
@@ -1123,7 +1123,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get rlcLab => 'មន្ទីរពិសោធន៍ RLC';
 
   @override
-  String get upgrade => 'ដំឡើងកំណែ';
+  String get upgrade => 'ដំឡើង';
 
   @override
   String get peakVoltageVp => 'តង់ស្យុងកំពូល (Vp)';
@@ -1960,4 +1960,110 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get removePartition => 'ដក របាំង';
+
+  @override
+  String get atomicLabTitle => 'មន្ទីរពិសោធន៍អាតូម';
+
+  @override
+  String get atomicLabSubtitle => 'កម្មវិធីត្រាប់តាមគីមី';
+
+  @override
+  String get bohrModelTitle => 'ម៉ូដែលប័រ';
+
+  @override
+  String get bohrModelSubtitle => 'បង្ហាញគន្លងអេឡិចត្រុង';
+
+  @override
+  String get electronConfigTitle => 'ការរៀបអេឡិចត្រុង';
+
+  @override
+  String get electronConfigSubtitle => 'ប្រព័ន្ធអ័រប៊ីតាល់';
+
+  @override
+  String get moleculesTitle => 'ម៉ូលេគុល 3D';
+
+  @override
+  String get moleculesSubtitle => 'បង្វិលម៉ូដែល';
+
+  @override
+  String get vseprTitle => 'រាង VSEPR';
+
+  @override
+  String get vseprSubtitle => 'ធរណីមាត្រម៉ូលេគុល';
+
+  @override
+  String get orbitalViewerTitle => 'ការមើលអ័រប៊ីតាល់';
+
+  @override
+  String get orbitalViewerSubtitle => 'បង្ហាញតំបន់ s, p, d';
+
+  @override
+  String get premiumFeature => 'មុខងារ Premium';
+
+  @override
+  String get upgradeToPremium =>
+      'ដំឡើងទៅ Premium ដើម្បីដោះសោម៉ូដែលប័រ និងលុបចោលការផ្សាយ!';
+
+  @override
+  String get maybeLater => 'ពេលក្រោយ';
+
+  @override
+  String get builtForChemistry => 'សម្រាប់និស្សិតគីមី';
+
+  @override
+  String get selectElementPro => 'ជ្រើសរើសធាតុ (1-36)';
+
+  @override
+  String get selectElementFree => 'ជ្រើសរើសធាតុ (1-10)';
+
+  @override
+  String get selectElement => 'ជ្រើសរើសធាតុ';
+
+  @override
+  String get angle => 'មុំ';
+
+  @override
+  String get stericNumber => 'លេខ Steric';
+
+  @override
+  String get bonds => 'ចំណង';
+
+  @override
+  String get lonePairs => 'គូអេឡិចត្រុងឯកោ';
+
+  @override
+  String get examples => 'ឧទាហរណ៍';
+
+  @override
+  String get group => 'ក្រុម';
+
+  @override
+  String get valence => 'វ៉ាឡង់';
+
+  @override
+  String get orbitalFilling => 'ការបំពេញអ័រប៊ីតាល់';
+
+  @override
+  String get hundsRule => 'ច្បាប់របស់ Hund';
+
+  @override
+  String get switchElement => 'ប្តូរធាតុ';
+
+  @override
+  String get fullConfiguration => 'ការរៀបអេឡិចត្រុងពេញលេញ';
+
+  @override
+  String get animateElectrons => 'ធ្វើឱ្យអេឡិចត្រុងមានចលនា';
+
+  @override
+  String get unlockForPro => 'PRO - ដោះសោសម្រាប់ការប្រើប្រាស់គ្មានដែនកំណត់';
+
+  @override
+  String get fillOrbitalsStep => 'បំពេញអ័រប៊ីតាល់តាមជំហាន';
+
+  @override
+  String get rotateModels => 'បង្វិលម៉ូដែល 3D';
+
+  @override
+  String get upgradeToUnlock36 => 'ដំឡើងទៅ PRO ដើម្បីដោះសោធាតុទាំង 36!';
 }

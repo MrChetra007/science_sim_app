@@ -1995,4 +1995,110 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get removePartition => 'REMOVE PARTITION';
+
+  @override
+  String get atomicLabTitle => 'Atomic Lab';
+
+  @override
+  String get atomicLabSubtitle => 'Interactive Chemistry Simulations';
+
+  @override
+  String get bohrModelTitle => 'Bohr Model';
+
+  @override
+  String get bohrModelSubtitle => 'Animate electrons orbiting';
+
+  @override
+  String get electronConfigTitle => 'Electron Config';
+
+  @override
+  String get electronConfigSubtitle => 'Fill orbitals step by step';
+
+  @override
+  String get moleculesTitle => '3D Molecules';
+
+  @override
+  String get moleculesSubtitle => 'Rotate ball-and-stick models';
+
+  @override
+  String get vseprTitle => 'VSEPR Shapes';
+
+  @override
+  String get vseprSubtitle => 'Geometry from electron pairs';
+
+  @override
+  String get orbitalViewerTitle => 'Orbital Viewer';
+
+  @override
+  String get orbitalViewerSubtitle => 'Explore s, p, d probability regions';
+
+  @override
+  String get premiumFeature => 'Premium Feature';
+
+  @override
+  String get upgradeToPremium =>
+      'Upgrade to Premium to unlock Bohr Model and remove ads!';
+
+  @override
+  String get maybeLater => 'Maybe Later';
+
+  @override
+  String get builtForChemistry => 'Built for Chemistry Students';
+
+  @override
+  String get selectElementPro => 'Select Element (1-36)';
+
+  @override
+  String get selectElementFree => 'Select Element (1-10)';
+
+  @override
+  String get selectElement => 'Select Element';
+
+  @override
+  String get angle => 'Angle';
+
+  @override
+  String get stericNumber => 'Steric #';
+
+  @override
+  String get bonds => 'Bonds';
+
+  @override
+  String get lonePairs => 'Lone Pairs';
+
+  @override
+  String get examples => 'Examples:';
+
+  @override
+  String get group => 'Group';
+
+  @override
+  String get valence => 'Valence';
+
+  @override
+  String get orbitalFilling => 'Orbital Filling';
+
+  @override
+  String get hundsRule => 'Hund\'s Rule';
+
+  @override
+  String get switchElement => 'Switch Element';
+
+  @override
+  String get fullConfiguration => 'Full Configuration';
+
+  @override
+  String get animateElectrons => 'Animate electrons orbiting';
+
+  @override
+  String get unlockForPro => 'PRO - Unlock for unlimited access';
+
+  @override
+  String get fillOrbitalsStep => 'Fill orbitals step by step';
+
+  @override
+  String get rotateModels => 'Rotate ball-and-stick models';
+
+  @override
+  String get upgradeToUnlock36 => 'Upgrade to PRO to unlock all 36 elements!';
 }

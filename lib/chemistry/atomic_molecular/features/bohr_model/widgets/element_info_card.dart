@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../../../core/models/element.dart';
 import '../../../core/theme/app_colors.dart';
 
@@ -9,7 +10,9 @@ class ElementInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
+      width: double.infinity,
       margin: const EdgeInsets.all(AppSpacing.md),
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
@@ -19,17 +22,17 @@ class ElementInfoCard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Row(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 element.name,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              const SizedBox(width: 8),
               Text(
-                'Mass: ${element.atomicMass}',
+                '${l10n.mass}: ${element.atomicMass}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
@@ -49,15 +52,16 @@ class ElementInfoCard extends StatelessWidget {
                   fontStyle: FontStyle.italic,
                   color: AppColors.textSecondary,
                 ),
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 12),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _InfoBadge(label: 'Period', value: element.period),
-              _InfoBadge(label: 'Group', value: element.group),
-              _InfoBadge(label: 'Valence', value: '${element.valenceElectrons}e⁻'),
+              _InfoBadge(label: l10n.period, value: element.period),
+              _InfoBadge(label: l10n.group, value: element.group),
+              _InfoBadge(label: l10n.valence, value: '${element.valenceElectrons}e⁻'),
             ],
           ),
         ],

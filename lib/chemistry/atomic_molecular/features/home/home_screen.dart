@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' as p;
+import '../../../../l10n/generated/app_localizations.dart';
 import '../../core/theme/app_colors.dart';
 import '../../../../core/services/subscription_service.dart';
 import '../../../../core/services/walkthrough_service.dart';
@@ -29,6 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey _orbitalKey = GlobalKey();
   final GlobalKey _proKey = GlobalKey();
 
+  List<GlobalKey> get _moduleKeys => [
+    _bohrKey,
+    _electronConfigKey,
+    _moleculeKey,
+    _vseprKey,
+    _orbitalKey,
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -53,44 +62,46 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final sub = p.Provider.of<SubscriptionService>(context);
-    
-    final modules = [
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+
+    final modules = <_Module>[
       _Module(
         icon: '⚛',
-        title: sub.isPro ? 'Bohr Model' : 'Bohr Model ⭐',
-        subtitle: sub.isPro ? 'Animate electrons orbiting' : 'PRO - Unlock for unlimited access',
+        title: l10n.bohrModelTitle,
+        subtitle: sub.isPro ? l10n.bohrModelSubtitle : l10n.unlockForPro,
         route: '/bohr',
         color: AppColors.orbitalS,
         isLocked: !sub.isPro,
       ),
       _Module(
         icon: '⚡',
-        title: 'Electron Config',
-        subtitle: 'Fill orbitals step by step',
+        title: l10n.electronConfigTitle,
+        subtitle: l10n.fillOrbitalsStep,
         route: '/config',
         color: AppColors.orbitalP,
         isLocked: false,
       ),
       _Module(
         icon: '🔬',
-        title: '3D Molecules',
-        subtitle: 'Rotate ball-and-stick models',
+        title: l10n.moleculesTitle,
+        subtitle: l10n.rotateModels,
         route: '/molecule',
         color: AppColors.orbitalD,
         isLocked: false,
       ),
       _Module(
         icon: '📐',
-        title: 'VSEPR Shapes',
-        subtitle: 'Geometry from electron pairs',
+        title: l10n.vseprTitle,
+        subtitle: l10n.vseprSubtitle,
         route: '/vsepr',
         color: AppColors.catHalogen,
         isLocked: false,
       ),
       _Module(
         icon: '🌀',
-        title: 'Orbital Viewer',
-        subtitle: 'Explore s, p, d probability regions',
+        title: l10n.orbitalViewerTitle,
+        subtitle: l10n.orbitalViewerSubtitle,
         route: '/orbital',
         color: AppColors.catNobleGas,
         isLocked: false,
@@ -100,54 +111,19 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget content = Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.md),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: AppSpacing.lg,
+          ),
           child: Column(
             children: [
+              _buildHeader(theme, l10n),
               const SizedBox(height: AppSpacing.lg),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                   const Text('⚛', style: TextStyle(fontSize: 32)),
-                   const SizedBox(width: 12),
-                   Flexible(
-                     child: Text('Atomic Lab', style: Theme.of(context).textTheme.displayLarge, overflow: TextOverflow.ellipsis),
-                   ),
-                ],
-              ),
-              const SizedBox(height: AppSpacing.xs),
-              Padding(
-                padding: const EdgeInsets.only(left: 44.0),
-                child: Text('Interactive Chemistry Simulations',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textSecondary,
-                      letterSpacing: 0.5,
-                    )),
-              ),
-              const SizedBox(height: AppSpacing.xl),
               Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: AppSpacing.md,
-                    crossAxisSpacing: AppSpacing.md,
-                    childAspectRatio: 0.95,
-                  ),
-                  itemCount: modules.length,
-                  itemBuilder: (context, index) {
-                    final keys = [_bohrKey, _electronConfigKey, _moleculeKey, _vseprKey, _orbitalKey];
-                    return _ModuleCard(module: modules[index], walkthroughKey: keys[index]);
-                  },
-                ),
+                child: _buildGrid(modules),
               ),
               const GlobalBannerAdWidget(),
-              Center(
-                  child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: GestureDetector(
-                        key: _proKey,
-                        onTap: () => showGlobalPlanDialog(context),
-                        child: Text('Built for Chemistry Students', style: TextStyle(fontSize: 10, color: AppColors.textHint, letterSpacing: 1.0)),
-                      )))
+              _buildFooter(l10n),
             ],
           ),
         ),
@@ -169,6 +145,90 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return content;
   }
+
+  Widget _buildHeader(ThemeData theme, AppLocalizations l10n) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(AppSpacing.sm),
+              decoration: BoxDecoration(
+                color: AppColors.orbitalS.withValues(alpha: 0.15),
+                shape: BoxShape.circle,
+              ),
+              child: const Text('⚛', style: TextStyle(fontSize: 28)),
+            ),
+            const SizedBox(width: AppSpacing.md),
+            Flexible(
+              child: Text(
+                l10n.atomicLabTitle,
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textPrimary,
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: AppSpacing.sm),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+          child: Text(
+            l10n.atomicLabSubtitle,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: AppColors.textSecondary,
+              letterSpacing: 0.5,
+            ),
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGrid(List<_Module> modules) {
+    return GridView.builder(
+      padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: AppSpacing.md,
+        crossAxisSpacing: AppSpacing.md,
+        childAspectRatio: 1.1,
+        mainAxisExtent: 140,
+      ),
+      itemCount: modules.length,
+      itemBuilder: (context, index) {
+        return _ModuleCard(
+          module: modules[index],
+          walkthroughKey: _moduleKeys[index],
+        );
+      },
+    );
+  }
+
+  Widget _buildFooter(AppLocalizations l10n) {
+    return Padding(
+      padding: const EdgeInsets.only(top: AppSpacing.sm),
+      child: GestureDetector(
+        key: _proKey,
+        onTap: () => showGlobalPlanDialog(context),
+        child: Text(
+          l10n.builtForChemistry,
+          style: const TextStyle(
+            fontSize: 10,
+            color: AppColors.textHint,
+            letterSpacing: 1.0,
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class _Module {
@@ -179,7 +239,14 @@ class _Module {
   final Color color;
   final bool isLocked;
 
-  _Module({required this.icon, required this.title, required this.subtitle, required this.route, required this.color, required this.isLocked});
+  _Module({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.route,
+    required this.color,
+    required this.isLocked,
+  });
 }
 
 class _ModuleCard extends StatelessWidget {
@@ -190,97 +257,167 @@ class _ModuleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+
     return GestureDetector(
       key: walkthroughKey,
-      onTap: () {
-        if (module.isLocked) {
-          showDialog(
-            context: context,
-            builder: (ctx) => AlertDialog(
-              title: const Text('Premium Feature'),
-              content: const Text('Upgrade to Premium to unlock Bohr Model and remove ads!'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(ctx),
-                  child: const Text('Maybe Later'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(ctx);
-                    showGlobalPlanDialog(context);
-                  },
-                  child: const Text('Upgrade'),
-                ),
-              ],
+      onTap: () => _handleTap(context, l10n),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.bgSurface,
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+          border: Border.all(
+            color: module.isLocked 
+                ? AppColors.borderDefault 
+                : module.color.withValues(alpha: 0.3),
+            width: 1.5,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: module.color.withValues(alpha: 0.08),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
             ),
-          );
-          return;
-        }
-        
-        final screen = switch (module.route) {
-          '/bohr' => const BohrScreen(),
-          '/config' => const ConfigScreen(),
-          '/molecule' => const MoleculeScreen(),
-          '/vsepr' => const VseprScreen(),
-          '/orbital' => const OrbitalScreen(),
-          _ => null,
-        };
-        if (screen != null) {
-          Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
-        }
-      },
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.bgSurface,
-              borderRadius: BorderRadius.circular(AppRadius.lg),
-              border: Border.all(color: AppColors.borderDefault, width: 1.0),
-              boxShadow: [
-                  BoxShadow(
-                      color: module.color.withOpacity(0.1),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                  )
-              ]
-            ),
-            child: Padding(
+          ],
+        ),
+        child: Stack(
+          children: [
+            Padding(
               padding: const EdgeInsets.all(AppSpacing.md),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                     padding: const EdgeInsets.all(10),
-                     decoration: BoxDecoration(
-                         color: module.color.withOpacity(0.12),
-                         shape: BoxShape.circle,
-                     ),
-                     child: Text(module.icon, style: const TextStyle(fontSize: 24)),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(AppSpacing.sm),
+                        decoration: BoxDecoration(
+                          color: module.color.withValues(alpha: 0.12),
+                          borderRadius: BorderRadius.circular(AppRadius.md),
+                        ),
+                        child: Text(
+                          module.icon,
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      const Spacer(),
+                      if (module.isLocked)
+                        _buildLockBadge(),
+                    ],
                   ),
-                  const SizedBox(height: 16),
-                  Text(module.title, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 4),
-                  Text(module.subtitle, style: const TextStyle(fontSize: 11, color: AppColors.textSecondary, height: 1.3)),
+                  const SizedBox(height: AppSpacing.md),
+                  Text(
+                    module.title,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textPrimary,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: AppSpacing.xs),
+                  Text(
+                    module.subtitle,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: AppColors.textSecondary,
+                      height: 1.4,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ],
               ),
             ),
-          ),
-          if (module.isLocked)
-            Positioned(
-              top: 8,
-              right: 8,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(8),
+            Positioned.fill(
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
+                  onTap: module.isLocked 
+                      ? () => _showUpgradeDialog(context, l10n)
+                      : () => _navigateToScreen(context),
                 ),
-                child: const Icon(Icons.lock, size: 14, color: Colors.black),
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLockBadge() {
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: Colors.amber.withValues(alpha: 0.2),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: const Icon(
+        Icons.lock,
+        size: 14,
+        color: Colors.amber,
+      ),
+    );
+  }
+
+  void _handleTap(BuildContext context, AppLocalizations l10n) {
+    if (module.isLocked) {
+      _showUpgradeDialog(context, l10n);
+    } else {
+      _navigateToScreen(context);
+    }
+  }
+
+  void _showUpgradeDialog(BuildContext context, AppLocalizations l10n) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppColors.bgSurface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+        ),
+        title: Text(
+          l10n.premiumFeature,
+          style: const TextStyle(color: AppColors.textPrimary),
+        ),
+        content: Text(
+          l10n.upgradeToPremium,
+          style: const TextStyle(color: AppColors.textSecondary),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(l10n.maybeLater),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.orbitalS,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(ctx);
+              showGlobalPlanDialog(context);
+            },
+            child: Text(l10n.upgrade),
+          ),
         ],
       ),
     );
+  }
+
+  void _navigateToScreen(BuildContext context) {
+    final screen = switch (module.route) {
+      '/bohr' => const BohrScreen(),
+      '/config' => const ConfigScreen(),
+      '/molecule' => const MoleculeScreen(),
+      '/vsepr' => const VseprScreen(),
+      '/orbital' => const OrbitalScreen(),
+      _ => null,
+    };
+    if (screen != null) {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
+    }
   }
 }
