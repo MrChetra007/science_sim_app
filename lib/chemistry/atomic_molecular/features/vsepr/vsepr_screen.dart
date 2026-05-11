@@ -94,7 +94,7 @@ class _ShapeInfoPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final shapeInfo = _getShapeInfo(l10n, shape.name);
+    final shapeInfo = _getShapeInfo(l10n, shape.id);
     
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
@@ -143,16 +143,16 @@ class _ShapeInfoPanel extends StatelessWidget {
     );
   }
 
-  (String, String) _getShapeInfo(AppLocalizations l10n, String name) {
-    switch (name.toLowerCase()) {
-      case 'linear': return (l10n.vseprLinear, l10n.vseprLinearDesc);
-      case 'trigonal planar': return (l10n.vseprTrigonalPlanar, l10n.vseprTrigonalPlanarDesc);
-      case 'bent (120°)': return (l10n.vseprBent120, l10n.vseprBent120Desc);
-      case 'tetrahedral': return (l10n.vseprTetrahedral, l10n.vseprTetrahedralDesc);
-      case 'trigonal pyramidal': return (l10n.vseprTrigonalPyramidal, l10n.vseprTrigonalPyramidalDesc);
-      case 'bent (104.5°)': return (l10n.vseprBent104, l10n.vseprBent104Desc);
-      case 'octahedral': return (l10n.vseprOctahedral, l10n.vseprOctahedralDesc);
-      default: return (name, '');
+  (String, String) _getShapeInfo(AppLocalizations l10n, String id) {
+    switch (id) {
+      case 'linear': return (l10n.vseprNameLinear, l10n.vseprDescLinear);
+      case 'trigonal_planar': return (l10n.vseprNameTrigonalPlanar, l10n.vseprDescTrigonalPlanar);
+      case 'bent_120': return (l10n.vseprNameBent120, l10n.vseprDescBent120);
+      case 'tetrahedral': return (l10n.vseprNameTetrahedral, l10n.vseprDescTetrahedral);
+      case 'trigonal_pyramidal': return (l10n.vseprNameTrigonalPyramidal, l10n.vseprDescTrigonalPyramidal);
+      case 'bent_104': return (l10n.vseprNameBent104, l10n.vseprDescBent104);
+      case 'octahedral': return (l10n.vseprNameOctahedral, l10n.vseprDescOctahedral);
+      default: return (id, '');
     }
   }
 }
@@ -164,8 +164,22 @@ class _ShapeSelector extends StatelessWidget {
 
   const _ShapeSelector({required this.shapes, required this.selected, required this.onSelect});
 
+  String _getLocalizedName(AppLocalizations l10n, String id) {
+    switch (id) {
+      case 'linear': return l10n.vseprNameLinear;
+      case 'trigonal_planar': return l10n.vseprNameTrigonalPlanar;
+      case 'bent_120': return l10n.vseprNameBent120;
+      case 'tetrahedral': return l10n.vseprNameTetrahedral;
+      case 'trigonal_pyramidal': return l10n.vseprNameTrigonalPyramidal;
+      case 'bent_104': return l10n.vseprNameBent104;
+      case 'octahedral': return l10n.vseprNameOctahedral;
+      default: return id;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return SizedBox(
       height: 60,
       child: ListView.builder(
@@ -174,11 +188,12 @@ class _ShapeSelector extends StatelessWidget {
         itemCount: shapes.length,
         itemBuilder: (context, index) {
           final s = shapes[index];
-          final isSelected = s.name == selected.name;
+          final sName = _getLocalizedName(l10n, s.id);
+          final isSelected = s.id == selected.id;
           return Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: ChoiceChip(
-              label: Text(s.name, style: TextStyle(color: isSelected ? Colors.white : AppColors.textSecondary, fontWeight: isSelected ? FontWeight.bold : FontWeight.normal)),
+              label: Text(sName, style: TextStyle(color: isSelected ? Colors.white : AppColors.textSecondary, fontWeight: isSelected ? FontWeight.bold : FontWeight.normal)),
               selected: isSelected,
               onSelected: (val) => onSelect(s),
               selectedColor: AppColors.orbitalS.withValues(alpha: 0.3),

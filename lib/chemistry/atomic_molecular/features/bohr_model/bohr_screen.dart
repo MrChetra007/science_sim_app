@@ -84,14 +84,14 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
                     child: ElevatedButton.icon(
                       onPressed: _game.exciteElectrons,
                       icon: const Icon(Icons.bolt_rounded, size: 20),
-                      label: const Text('Excite outer electrons'),
+                      label: Text(l10n.exciteOuterElectrons),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.orbitalP.withOpacity(0.2),
+                        backgroundColor: AppColors.orbitalP.withValues(alpha: 0.2),
                         foregroundColor: AppColors.orbitalP,
                         elevation: 0,
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         side: BorderSide(
-                          color: AppColors.orbitalP.withOpacity(0.4),
+                          color: AppColors.orbitalP.withValues(alpha: 0.4),
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(AppRadius.md),
@@ -110,9 +110,9 @@ class _BohrScreenState extends ConsumerState<BohrScreen> {
                 margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                 padding: const EdgeInsets.all(AppSpacing.sm),
                 decoration: BoxDecoration(
-                  color: Colors.amber.withOpacity(0.1),
+                  color: Colors.amber.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(AppRadius.md),
-                  border: Border.all(color: Colors.amber.withOpacity(0.3)),
+                  border: Border.all(color: Colors.amber.withValues(alpha: 0.3)),
                 ),
                 child: Row(
                   children: [

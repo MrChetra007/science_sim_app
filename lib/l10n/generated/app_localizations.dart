@@ -4172,6 +4172,12 @@ abstract class AppLocalizations {
   /// **'Octahedral'**
   String get vseprOctahedral;
 
+  /// No description provided for @exciteOuterElectrons.
+  ///
+  /// In en, this message translates to:
+  /// **'Excite outer electrons'**
+  String get exciteOuterElectrons;
+
   /// No description provided for @factHydrogen.
   ///
   /// In en, this message translates to:
@@ -4429,6 +4435,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Six bonds pointing to the faces of a regular cube. All bond angles are 90°.'**
   String get vseprOctahedralDesc;
+
+  /// No description provided for @moleculeNameWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Water'**
+  String get moleculeNameWater;
+
+  /// No description provided for @moleculeDescWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Two O–H bonds with two lone pairs on oxygen give water its bent shape and polarity.'**
+  String get moleculeDescWater;
+
+  /// No description provided for @moleculeNameCarbonDioxide.
+  ///
+  /// In en, this message translates to:
+  /// **'Carbon dioxide'**
+  String get moleculeNameCarbonDioxide;
+
+  /// No description provided for @moleculeDescCarbonDioxide.
+  ///
+  /// In en, this message translates to:
+  /// **'Two double bonds with no lone pairs on carbon. Linear and non-polar despite polar bonds.'**
+  String get moleculeDescCarbonDioxide;
+
+  /// No description provided for @moleculeNameMethane.
+  ///
+  /// In en, this message translates to:
+  /// **'Methane'**
+  String get moleculeNameMethane;
+
+  /// No description provided for @moleculeDescMethane.
+  ///
+  /// In en, this message translates to:
+  /// **'Four identical C–H bonds arranged tetrahedrally. A perfectly symmetrical non-polar molecule.'**
+  String get moleculeDescMethane;
+
+  /// No description provided for @moleculeNameAmmonia.
+  ///
+  /// In en, this message translates to:
+  /// **'Ammonia'**
+  String get moleculeNameAmmonia;
+
+  /// No description provided for @moleculeDescAmmonia.
+  ///
+  /// In en, this message translates to:
+  /// **'Three bonds and one lone pair compresses the bond angle to 107°.'**
+  String get moleculeDescAmmonia;
+
+  /// No description provided for @moleculeNameEthane.
+  ///
+  /// In en, this message translates to:
+  /// **'Ethane'**
+  String get moleculeNameEthane;
+
+  /// No description provided for @moleculeDescEthane.
+  ///
+  /// In en, this message translates to:
+  /// **'A simple alkane with a single carbon-carbon bond.'**
+  String get moleculeDescEthane;
+
+  /// No description provided for @moleculeNameEthanol.
+  ///
+  /// In en, this message translates to:
+  /// **'Ethanol'**
+  String get moleculeNameEthanol;
+
+  /// No description provided for @moleculeDescEthanol.
+  ///
+  /// In en, this message translates to:
+  /// **'The alcohol found in beverages, containing a hydroxyl group.'**
+  String get moleculeDescEthanol;
+
+  /// No description provided for @moleculeNameBenzene.
+  ///
+  /// In en, this message translates to:
+  /// **'Benzene'**
+  String get moleculeNameBenzene;
+
+  /// No description provided for @moleculeDescBenzene.
+  ///
+  /// In en, this message translates to:
+  /// **'A stable aromatic ring with delocalized pi electrons.'**
+  String get moleculeDescBenzene;
+
+  /// No description provided for @moleculeNameAspirin.
+  ///
+  /// In en, this message translates to:
+  /// **'Aspirin'**
+  String get moleculeNameAspirin;
+
+  /// No description provided for @moleculeDescAspirin.
+  ///
+  /// In en, this message translates to:
+  /// **'Acetylsalicylic acid, the common pain reliever.'**
+  String get moleculeDescAspirin;
+
+  /// No description provided for @moleculeViewerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3D Molecule Viewer'**
+  String get moleculeViewerTitle;
+
+  /// No description provided for @vseprNameOctahedral.
+  ///
+  /// In en, this message translates to:
+  /// **'Octahedral'**
+  String get vseprNameOctahedral;
+
+  /// No description provided for @vseprDescLinear.
+  ///
+  /// In en, this message translates to:
+  /// **'Two bonding pairs, zero lone pairs. Atoms are arranged in a straight line for maximum separation.'**
+  String get vseprDescLinear;
+
+  /// No description provided for @vseprDescTrigonalPlanar.
+  ///
+  /// In en, this message translates to:
+  /// **'Three bonds in a flat plane, equally spaced at 120° angles to minimize repulsion.'**
+  String get vseprDescTrigonalPlanar;
+
+  /// No description provided for @vseprDescBent120.
+  ///
+  /// In en, this message translates to:
+  /// **'Two bonds and one lone pair. The lone pair pushes the bonds closer than 120°.'**
+  String get vseprDescBent120;
+
+  /// No description provided for @vseprDescTetrahedral.
+  ///
+  /// In en, this message translates to:
+  /// **'Four bonds pointing to the corners of a regular tetrahedron. Highly symmetrical.'**
+  String get vseprDescTetrahedral;
+
+  /// No description provided for @vseprDescTrigonalPyramidal.
+  ///
+  /// In en, this message translates to:
+  /// **'Three bonds + one lone pair. The lone pair occupies more space, compressing bond angles.'**
+  String get vseprDescTrigonalPyramidal;
+
+  /// No description provided for @vseprDescBent104.
+  ///
+  /// In en, this message translates to:
+  /// **'Two bonds + two lone pairs. Two lone pairs provide maximum compression on the bonds.'**
+  String get vseprDescBent104;
+
+  /// No description provided for @vseprDescOctahedral.
+  ///
+  /// In en, this message translates to:
+  /// **'Six bonds pointing to the faces of a regular cube. All bond angles are 90°.'**
+  String get vseprDescOctahedral;
+
+  /// No description provided for @vseprNameLinear.
+  ///
+  /// In en, this message translates to:
+  /// **'Linear'**
+  String get vseprNameLinear;
+
+  /// No description provided for @vseprNameTrigonalPlanar.
+  ///
+  /// In en, this message translates to:
+  /// **'Trigonal Planar'**
+  String get vseprNameTrigonalPlanar;
+
+  /// No description provided for @vseprNameBent120.
+  ///
+  /// In en, this message translates to:
+  /// **'Bent (120°)'**
+  String get vseprNameBent120;
+
+  /// No description provided for @vseprNameTetrahedral.
+  ///
+  /// In en, this message translates to:
+  /// **'Tetrahedral'**
+  String get vseprNameTetrahedral;
+
+  /// No description provided for @vseprNameTrigonalPyramidal.
+  ///
+  /// In en, this message translates to:
+  /// **'Trigonal Pyramidal'**
+  String get vseprNameTrigonalPyramidal;
+
+  /// No description provided for @vseprNameBent104.
+  ///
+  /// In en, this message translates to:
+  /// **'Bent (104.5°)'**
+  String get vseprNameBent104;
 }
 
 class _AppLocalizationsDelegate

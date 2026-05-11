@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 import '../../core/models/molecule.dart';
 import '../../core/constants/molecules_data.dart';
 import '../../core/theme/app_colors.dart';
@@ -45,9 +46,10 @@ class _MoleculeScreenState extends ConsumerState<MoleculeScreen>
   @override
   Widget build(BuildContext context) {
     final selectedMolecule = ref.watch(moleculeProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('3D Molecule Viewer')),
+      appBar: AppBar(title: Text(l10n.moleculeViewerTitle)),
       body: Column(
         children: [
           // 3D Canvas
@@ -92,8 +94,57 @@ class _MoleculeInfoPanel extends StatelessWidget {
   final Molecule molecule;
   const _MoleculeInfoPanel({required this.molecule});
 
+  String _getLocalizedName(AppLocalizations l10n, String name) {
+    switch (name) {
+      case 'Water':
+        return l10n.moleculeNameWater;
+      case 'Carbon dioxide':
+        return l10n.moleculeNameCarbonDioxide;
+      case 'Methane':
+        return l10n.moleculeNameMethane;
+      case 'Ammonia':
+        return l10n.moleculeNameAmmonia;
+      case 'Ethane':
+        return l10n.moleculeNameEthane;
+      case 'Ethanol':
+        return l10n.moleculeNameEthanol;
+      case 'Benzene':
+        return l10n.moleculeNameBenzene;
+      case 'Aspirin':
+        return l10n.moleculeNameAspirin;
+      default:
+        return name;
+    }
+  }
+
+  String _getLocalizedDesc(AppLocalizations l10n, String name) {
+    switch (name) {
+      case 'Water':
+        return l10n.moleculeDescWater;
+      case 'Carbon dioxide':
+        return l10n.moleculeDescCarbonDioxide;
+      case 'Methane':
+        return l10n.moleculeDescMethane;
+      case 'Ammonia':
+        return l10n.moleculeDescAmmonia;
+      case 'Ethane':
+        return l10n.moleculeDescEthane;
+      case 'Ethanol':
+        return l10n.moleculeDescEthanol;
+      case 'Benzene':
+        return l10n.moleculeDescBenzene;
+      case 'Aspirin':
+        return l10n.moleculeDescAspirin;
+      default:
+        return name;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final localName = _getLocalizedName(l10n, molecule.name);
+    final localDesc = _getLocalizedDesc(l10n, molecule.name);
     return Container(
       margin: const EdgeInsets.symmetric(
         horizontal: AppSpacing.md,
@@ -111,7 +162,7 @@ class _MoleculeInfoPanel extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Flexible(child: Text(molecule.name, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis)),
+              Flexible(child: Text(localName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis)),
               const SizedBox(width: 8),
               _Badge(text: molecule.formula),
             ],
@@ -126,7 +177,7 @@ class _MoleculeInfoPanel extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            molecule.description,
+            localDesc,
             style: Theme.of(
               context,
             ).textTheme.bodySmall?.copyWith(color: AppColors.textSecondary),
@@ -167,7 +218,7 @@ class _MoleculeSelector extends StatelessWidget {
               margin: const EdgeInsets.only(right: 12, top: 8, bottom: 8),
               decoration: BoxDecoration(
                 color: isSelected
-                    ? AppColors.orbitalS.withOpacity(0.15)
+                    ? AppColors.orbitalS.withValues(alpha: 0.15)
                     : AppColors.bgElevated,
                 borderRadius: BorderRadius.circular(AppRadius.md),
                 border: Border.all(

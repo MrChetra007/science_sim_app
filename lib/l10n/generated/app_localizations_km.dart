@@ -2065,7 +2065,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get elementCategoryPostTransition => 'លោហៈក្រោយអន្តរកាល';
 
   @override
-  String get orbitalFilling => 'ការបំពេញអ័រប៊ីតាល់';
+  String get orbitalFilling => 'ការបំពេញអ័រប៊ីតាល់ (វិធានរបស់ Hund)';
 
   @override
   String get hundsRule => 'វិធានរបស់ Hund';
@@ -2111,6 +2111,9 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get vseprOctahedral => 'អុកតាអ៊ែត';
+
+  @override
+  String get exciteOuterElectrons => 'រំញោចអេឡិចត្រុងខាងក្រៅ';
 
   @override
   String get factHydrogen =>
@@ -2256,7 +2259,7 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get vseprLinearDesc =>
-      'មានគូភ្ជាប់ពីរ និងគ្មានគូឯកោ។ អាតូមត្រូវបានរៀបចំជាបន្ទាត់ត្រង់ដើម្បីកាត់បន្ថយការច្រានគ្នា។';
+      'មានចំណងពីរ និងគ្មានគូអេឡិចត្រុងឯកោ។ អាតូមត្រូវបានរៀបចំជាបន្ទាត់ត្រង់ ដើម្បីឱ្យមានគម្លាតឆ្ងាយពីគ្នាអតិបរមា។';
 
   @override
   String get vseprTrigonalPlanarDesc =>
@@ -2264,21 +2267,129 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get vseprBent120Desc =>
-      'មានចំណងពីរ និងគូឯកោមួយ។ គូឯកោរុញចំណងឱ្យមកជិតគ្នាជាង ១២០°។';
+      'មានចំណងពីរ និងគូអេឡិចត្រុងឯកោមួយ។ គូអេឡិចត្រុងឯកោរុញចំណងឱ្យមកជិតគ្នាជាង ១២០°។';
 
   @override
   String get vseprTetrahedralDesc =>
-      'មានចំណងបួនដែលចង្អុលទៅជ្រុងនៃទទ្រាអ៊ែត។ មានភាពស៊ីមេទ្រីខ្ពស់។';
+      'មានចំណងបួនដែលចង្អុលទៅជ្រុងនៃទទ្រាអ៊ែត (Tetrahedron)។ ជាម៉ូលេគុលដែលមានស៊ីមេទ្រីខ្ពស់។';
 
   @override
   String get vseprTrigonalPyramidalDesc =>
-      'មានចំណងបី និងគូឯកោមួយ។ គូឯកោត្រូវការកន្លែងច្រើន ដែលធ្វើឱ្យមុំចំណងរួមតូច។';
+      'មានចំណងបី និងគូអេឡិចត្រុងឯកោមួយ។ គូអេឡិចត្រុងឯកោត្រូវការកន្លែងច្រើន ដែលធ្វើឱ្យមុំចំណងរួមតូច។';
 
   @override
   String get vseprBent104Desc =>
-      'មានចំណងពីរ និងគូឯកោពីរ។ គូឯកោពីរផ្តល់ការសង្កត់អតិបរមាលើចំណង។';
+      'មានចំណងពីរ និងគូអេឡិចត្រុងឯកោពីរ។ គូអេឡិចត្រុងឯកោទាំងពីរផ្តល់ការសង្កត់អតិបរមាលើចំណង។';
 
   @override
   String get vseprOctahedralDesc =>
+      'មានចំណងប្រាំមួយដែលរៀបចំជារាងអុកតាអ៊ែត (Octahedron)។ មុំចំណងទាំងអស់គឺ ៩០°។';
+
+  @override
+  String get moleculeNameWater => 'ទឹក';
+
+  @override
+  String get moleculeDescWater =>
+      'ចំណង O–H ចំនួនពីរ និងគូអេឡិចត្រុងឯកោពីរលើអាតូមអុកស៊ីហ្សែន ធ្វើឱ្យទឹកមានរាងបត់ និងមានប៉ូល។';
+
+  @override
+  String get moleculeNameCarbonDioxide => 'កាបូនឌីអុកស៊ីត';
+
+  @override
+  String get moleculeDescCarbonDioxide =>
+      'ចំណងទ្វេពីរដោយគ្មានគូអេឡិចត្រុងឯកោលើកាបូន។ មានរាងត្រង់ (លីនេអ៊ែរ) និងមិនមានប៉ូល ទោះបីជាវាមានចំណងប៉ូលក៏ដោយ។';
+
+  @override
+  String get moleculeNameMethane => 'មេតាន';
+
+  @override
+  String get moleculeDescMethane =>
+      'ចំណង C–H ដូចគ្នាបួនដែលរៀបចំជាទទ្រាអ៊ែត។ ជាម៉ូលេគុលមិនមានប៉ូលដែលមានស៊ីមេទ្រីល្អឥតខ្ចោះ។';
+
+  @override
+  String get moleculeNameAmmonia => 'អាម៉ូញាក់';
+
+  @override
+  String get moleculeDescAmmonia =>
+      'ចំណងបី និងគូអេឡិចត្រុងឯកោមួយ រុញមុំចំណងឱ្យមកនៅត្រឹម ១០៧°។';
+
+  @override
+  String get moleculeNameEthane => 'អេតាន';
+
+  @override
+  String get moleculeDescEthane =>
+      'អាល់កានសាមញ្ញដែលមានចំណងទោលរវាងកាបូននិងកាបូន។';
+
+  @override
+  String get moleculeNameEthanol => 'អេតាណុល';
+
+  @override
+  String get moleculeDescEthanol =>
+      'ជាតិអាល់កុលដែលឃើញមានក្នុងភេសជ្ជៈ ដែលមានក្រុមអ៊ីដ្រុកស៊ីល។';
+
+  @override
+  String get moleculeNameBenzene => 'បង់ហ្សែន';
+
+  @override
+  String get moleculeDescBenzene =>
+      'វង់អាហ្សូទិកដ៏ស្ថិរភាពដែលមានអេឡិចត្រុង Pi បែកខ្ញែក។';
+
+  @override
+  String get moleculeNameAspirin => 'អាស្ពីរីន';
+
+  @override
+  String get moleculeDescAspirin =>
+      'អាស៊ីតអាសេទីលសាលីស៊ីលីក ដែលជាថ្នាំបំបាត់ការឈឺចាប់ទូទៅ។';
+
+  @override
+  String get moleculeViewerTitle => 'កម្មវិធីមើលម៉ូលេគុល 3D';
+
+  @override
+  String get vseprNameOctahedral => ' អូកតេហេឌ្រែ';
+
+  @override
+  String get vseprDescLinear =>
+      'មានគូភ្ជាប់ពីរ និងគ្មានគូឯកោ។ អាតូមត្រូវបានរៀបចំជាបន្ទាត់ត្រង់ដើម្បីកាត់បន្ថយការច្រានគ្នា។';
+
+  @override
+  String get vseprDescTrigonalPlanar =>
+      'មានចំណងបីក្នុងប្លង់តែមួយ ដែលមានចន្លោះស្មើគ្នានៅមុំ ១២០° ដើម្បីកាត់បន្ថយការច្រានគ្នា។';
+
+  @override
+  String get vseprDescBent120 =>
+      'មានចំណងពីរ និងគូឯកោមួយ។ គូឯកោរុញចំណងឱ្យមកជិតគ្នាជាង ១២០°។';
+
+  @override
+  String get vseprDescTetrahedral =>
+      'មានចំណងបួនដែលចង្អុលទៅជ្រុងនៃទទ្រាអ៊ែត។ មានភាពស៊ីមេទ្រីខ្ពស់។';
+
+  @override
+  String get vseprDescTrigonalPyramidal =>
+      'មានចំណងបី និងគូឯកោមួយ។ គូឯកោត្រូវការកន្លែងច្រើន ដែលធ្វើឱ្យមុំចំណងរួមតូច។';
+
+  @override
+  String get vseprDescBent104 =>
+      'មានចំណងពីរ និងគូឯកោពីរ។ គូឯកោពីរផ្តល់ការសង្កត់អតិបរមាលើចំណង។';
+
+  @override
+  String get vseprDescOctahedral =>
       'មានចំណងប្រាំមួយដែលចង្អុលទៅជ្រុងនៃគូប។ មុំចំណងទាំងអស់គឺ ៩០°។';
+
+  @override
+  String get vseprNameLinear => ' បន្ទាត់ត្រង់';
+
+  @override
+  String get vseprNameTrigonalPlanar => ' ត្រីកូណាល់ ប៉ៈឡេ';
+
+  @override
+  String get vseprNameBent120 => ' Bent (១២០°)';
+
+  @override
+  String get vseprNameTetrahedral => ' តេត្រាហេឌ្រែ';
+
+  @override
+  String get vseprNameTrigonalPyramidal => ' ត្រីកូណាល់ ពីរ៉មីឌែ';
+
+  @override
+  String get vseprNameBent104 => ' Bent (១០៤.៥°)';
 }

@@ -1,45 +1,115 @@
 # Science Lab - Virtual Experiment Suite
 
-An interactive Flutter application featuring Physics and Chemistry simulations for education.
+An interactive Flutter application featuring Physics and Chemistry simulations for education. Freemium model with ads and Pro unlock via in-app purchase.
+
+---
 
 ## Features
 
 - Interactive simulations with real-time physics calculations
-- Step-by-step maths derivations with live values
-- Multiple planets/gravity presets
-- Flame game engine for animations
-- fl_chart for data visualization
-- In-app purchases for Pro unlock
-- Ads integration
+- Step-by-step maths derivations with live substituted values
+- Flame game engine for particle animations and interactive components
+- fl_chart for data visualization (oscilloscope, pH curves, trajectory graphs)
+- Pro unlock (lifetime $4.99 / monthly $0.99) via in-app purchase
+- Google Mobile Ads (banners, interstitials, rewarded ads)
+- Temporary premium access via rewarded ads (watch 2 ads = 10 min)
+- Walkthrough tutorials for every lab
+- Localization: English + Khmer
+- Dark holographic UI with Orbitron font, frosted glass panels, cyan glow
+- Send feedback via EmailJS integration
 
-## Labs
+---
 
-### Physics Labs
-| Lab | Description |
-|-----|-------------|
-| **NewtonLab** | Newton's Laws of Motion - explore inertia, F=ma, and action-reaction with physics simulations |
-| **OhmLab** | Circuit simulation with interactive resistance, voltage controls, and electron particle animations |
-| **Projectile** | Kinematics simulation with multiple projectiles, planets, air resistance, and trajectory graphs |
-| **AC Lab** | Alternating current visualization - oscilloscope, transformer, and RLC reactive circuits |
-| **Wave Lab** | Wave mechanics - transverse, longitudinal, standing waves, interference, and Doppler effect |
-| **Thermo Lab** | Thermodynamics - heat transfer, phase changes, and thermo laws |
+## Physics Labs
 
-### Chemistry Labs
-| Lab | Description |
-|-----|-------------|
-| **pH Lab** | pH scale explorer, acid-base titration, and pH calculations |
-| **Atomic & Molecular** | Bohr model, electron configuration, 3D molecule viewer, VSEPR shapes, and orbital visualization |
-| **Electrochemistry** | Galvanic cells, electrolysis, Nernst equation, and electroplating |
+| Lab | Description | Key Features |
+|-----|-------------|--------------|
+| **NewtonLab** | Newton's Laws of Motion — inertia, F=ma, action-reaction | Physics engine with collision resolver, force arrows, friction models, particle effects, 3 law-specific scenes (Law1, Law2, Law3 with Flame game) |
+| **OhmLab** | Circuit simulation | Interactive resistance/voltage sliders, electron particle animations (Flame), Ohm's law formula triangle, power bar, readout panel, learn screen |
+| **Projectile Motion** | Kinematics simulation | 8 projectiles with real physical properties, 4 planets (Earth, Moon, Mars, Jupiter), air resistance toggle, trajectory graphs, math solver overlay with step-by-step derivations, challenge mode, audio service |
+| **AC Lab** | Alternating Current electricity | Real-time voltage/current sine wave, rotating phasor diagram, animated wire with electrons, glowing bulb, transformer with primary/secondary coils, RLC reactive circuits (impedance, phase angle), oscilloscope with V/Div & T/Div, walkthrough |
+| **Wave Lab** | Wave mechanics | Transverse, longitudinal, standing waves (n=1..6), interference (constructive/destructive), Doppler effect (moving source), live wave equation HUD, oscilloscope panel, vector overlay, formula reference screen, challenge mode, audio tone generator |
+| **Thermo Lab** | Thermodynamics | Gas laws (Boyle, Charles, Gay-Lussac), heat transfer, phase changes, Carnot engine, entropy explorer, thermo laws |
+
+---
+
+## Chemistry Labs
+
+| Lab | Description | Key Features |
+|-----|-------------|--------------|
+| **pH Lab** | pH scale and acid-base chemistry | pH explorer with animated beaker, acid-base titration with Flame game engine, pH curve chart (fl_chart), particle system for liquid animation, quiz mode |
+| **Atomic & Molecular** | Atomic structure and molecules | Bohr model with animated electron shells (excite electrons), electron configuration builder (Hund's rule, orbital filling), 3D molecule viewer (8 molecules), VSEPR geometry renderer (7 shapes), orbital viewer (s, p, d, f animations). 36 elements. GoRouter navigation. |
+| **Electrochemistry** | Electrochemical cells | Galvanic cells, electrolysis with gas readout, Nernst equation calculator with chart, electroplating |
+
+---
+
+## Architecture
+
+```
+lib/
+├── main.dart                          # App entry, service init, MainDashboard
+├── core/
+│   ├── services/
+│   │   ├── ad_service.dart            # Google Mobile Ads (banner, interstitial, rewarded)
+│   │   ├── iap_service.dart           # In-app purchase stream & restore
+│   │   ├── subscription_service.dart  # Plan management (free/monthly/lifetime)
+│   │   ├── walkthrough_service.dart   # Walkthrough persistence
+│   │   ├── feedback_service.dart      # EmailJS feedback
+│   │   └── locale_provider.dart       # English/Khmer locale
+│   ├── widgets/
+│   │   ├── plan_picker.dart           # Subscription dialog
+│   │   ├── ad_widgets.dart            # Banner ad widget
+│   │   ├── feedback_dialog.dart       # Feedback modal
+│   │   └── walkthrough_tooltip.dart   # Overlay tooltip
+│   └── screens/
+│       └── global_onboarding_screen.dart  # First-launch onboarding (4 pages)
+├── physics/
+│   ├── newton_lab/                    # Newton's Laws (Flame game engine)
+│   ├── ohm_lab/                       # Circuit simulation (Flame)
+│   ├── projectile_motion/             # Kinematics (Provider state)
+│   ├── ac_lab/                        # AC electricity (Flame + Provider)
+│   ├── wave_lab/                      # Wave mechanics (Riverpod + CustomPainter)
+│   └── thermo_lab/                    # Thermodynamics
+└── chemistry/
+    ├── acide_base_ph/                 # pH & titration (Flame)
+    ├── atomic_molecular/              # Atoms, molecules, VSEPR (Riverpod + GoRouter)
+    └── electrochemistry/              # Galvanic cells, Nernst
+```
+
+---
 
 ## Tech Stack
 
-- **Framework**: Flutter
-- **State Management**: Riverpod + Provider
-- **Game Engine**: Flame
-- **Charts**: fl_chart
-- **Fonts**: Google Fonts (Orbitron)
-- **Ads**: google_mobile_ads
-- **IAP**: in_app_purchase
+| Layer | Technology |
+|-------|------------|
+| Framework | Flutter 3.x (Dart 3.x SDK) |
+| State Management | Riverpod + Provider |
+| Game Engine | Flame 1.18 |
+| Charts | fl_chart 0.69 |
+| Routing | GoRouter (chemistry labs) |
+| Ads | google_mobile_ads 5.1 |
+| IAP | in_app_purchase 3.2 |
+| Fonts | Google Fonts (Orbitron) |
+| Animations | flutter_animate 4.5 |
+| Audio | audioplayers 6.1 + flame_audio 2.1 |
+| Persistence | shared_preferences |
+| Feedback | emailjs |
+| CI | GitHub (lint + test workflows) |
+
+---
+
+## Monetization
+
+| Plan | Price | Features |
+|------|-------|----------|
+| Free | $0 | All labs basic access, banner ads, some features gated |
+| Monthly | $0.99/mo | Remove ads, unlock Pro features |
+| Lifetime | $4.99 | Remove ads, unlock Pro features, permanent |
+| Trial | 2 rewarded ads | 10 minutes of premium access |
+
+Pro-gated features include: maths derivations, advanced wave modes, oscilloscope, audio tone generator, challenge modes, etc.
+
+---
 
 ## Running
 
@@ -48,27 +118,11 @@ flutter pub get
 flutter run
 ```
 
-## Project Structure
+---
 
-```
-lib/
-├── main.dart
-├── core/                    # Shared services (ads, subscriptions, iap, walkthrough)
-│   ├── services/
-│   └── widgets/
-├── physics/
-│   ├── newton_lab/          # Newton's Laws of Motion
-│   ├── ohm_lab/             # Circuit simulation
-│   ├── projectile_motion/    # Kinematics
-│   ├── ac_lab/              # Alternating current
-│   ├── wave_lab/            # Wave mechanics
-│   └── thermo_lab/          # Thermodynamics
-└── chemistry/
-    ├── acide_base_ph/        # pH scale
-    ├── atomic_molecular/    # Atoms & molecules
-    └── electrochemistry/   # Galvanic cells
-```
+## Project
 
-## Monetization
-
-Freemium model with ads and Pro unlock via in-app purchase.
+- **Name:** Science Lab
+- **Version:** 1.0.0+14
+- **Platforms:** Android, iOS, Web, Windows, Linux, macOS
+- **Repository:** https://github.com/mrchetra007

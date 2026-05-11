@@ -2148,6 +2148,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get vseprOctahedral => 'Octahedral';
 
   @override
+  String get exciteOuterElectrons => 'Excite outer electrons';
+
+  @override
   String get factHydrogen =>
       'Most abundant element in the universe. Forms H₂O with oxygen.';
 
@@ -2317,4 +2320,112 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get vseprOctahedralDesc =>
       'Six bonds pointing to the faces of a regular cube. All bond angles are 90°.';
+
+  @override
+  String get moleculeNameWater => 'Water';
+
+  @override
+  String get moleculeDescWater =>
+      'Two O–H bonds with two lone pairs on oxygen give water its bent shape and polarity.';
+
+  @override
+  String get moleculeNameCarbonDioxide => 'Carbon dioxide';
+
+  @override
+  String get moleculeDescCarbonDioxide =>
+      'Two double bonds with no lone pairs on carbon. Linear and non-polar despite polar bonds.';
+
+  @override
+  String get moleculeNameMethane => 'Methane';
+
+  @override
+  String get moleculeDescMethane =>
+      'Four identical C–H bonds arranged tetrahedrally. A perfectly symmetrical non-polar molecule.';
+
+  @override
+  String get moleculeNameAmmonia => 'Ammonia';
+
+  @override
+  String get moleculeDescAmmonia =>
+      'Three bonds and one lone pair compresses the bond angle to 107°.';
+
+  @override
+  String get moleculeNameEthane => 'Ethane';
+
+  @override
+  String get moleculeDescEthane =>
+      'A simple alkane with a single carbon-carbon bond.';
+
+  @override
+  String get moleculeNameEthanol => 'Ethanol';
+
+  @override
+  String get moleculeDescEthanol =>
+      'The alcohol found in beverages, containing a hydroxyl group.';
+
+  @override
+  String get moleculeNameBenzene => 'Benzene';
+
+  @override
+  String get moleculeDescBenzene =>
+      'A stable aromatic ring with delocalized pi electrons.';
+
+  @override
+  String get moleculeNameAspirin => 'Aspirin';
+
+  @override
+  String get moleculeDescAspirin =>
+      'Acetylsalicylic acid, the common pain reliever.';
+
+  @override
+  String get moleculeViewerTitle => '3D Molecule Viewer';
+
+  @override
+  String get vseprNameOctahedral => 'Octahedral';
+
+  @override
+  String get vseprDescLinear =>
+      'Two bonding pairs, zero lone pairs. Atoms are arranged in a straight line for maximum separation.';
+
+  @override
+  String get vseprDescTrigonalPlanar =>
+      'Three bonds in a flat plane, equally spaced at 120° angles to minimize repulsion.';
+
+  @override
+  String get vseprDescBent120 =>
+      'Two bonds and one lone pair. The lone pair pushes the bonds closer than 120°.';
+
+  @override
+  String get vseprDescTetrahedral =>
+      'Four bonds pointing to the corners of a regular tetrahedron. Highly symmetrical.';
+
+  @override
+  String get vseprDescTrigonalPyramidal =>
+      'Three bonds + one lone pair. The lone pair occupies more space, compressing bond angles.';
+
+  @override
+  String get vseprDescBent104 =>
+      'Two bonds + two lone pairs. Two lone pairs provide maximum compression on the bonds.';
+
+  @override
+  String get vseprDescOctahedral =>
+      'Six bonds pointing to the faces of a regular cube. All bond angles are 90°.';
+
+  @override
+  String get vseprNameLinear => 'Linear';
+
+  @override
+  String get vseprNameTrigonalPlanar => 'Trigonal Planar';
+
+  @override
+  String get vseprNameBent120 => 'Bent (120°)';
+
+  @override
+  String get vseprNameTetrahedral => 'Tetrahedral';
+
+  @override
+  String get vseprNameTrigonalPyramidal => 'Trigonal Pyramidal';
+
+  @override
+  String get vseprNameBent104 => 'Bent (104.5°)';
 }

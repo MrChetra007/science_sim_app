@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 import '../../core/models/element.dart';
 import '../../core/constants/elements_data.dart';
 import '../../core/theme/app_colors.dart';
@@ -13,27 +14,21 @@ class ConfigScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(configProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Electron Configuration')),
+      appBar: AppBar(title: Text(l10n.electronConfigTitle)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(AppSpacing.md),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Element Info Header
             _ElementHeader(element: state.element),
-
             const SizedBox(height: AppSpacing.lg),
-
-            // Notation Card
             _NotationCard(notation: state.notation),
-
             const SizedBox(height: AppSpacing.xl),
-
-            // Orbital Boxes
             Text(
-              'Orbital Filling (Hund\'s Rule)',
+              l10n.orbitalFilling,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: AppColors.textSecondary,
                 fontWeight: FontWeight.bold,
@@ -41,12 +36,9 @@ class ConfigScreen extends ConsumerWidget {
             ),
             const SizedBox(height: AppSpacing.md),
             OrbitalBoxGrid(fills: state.fills),
-
             const SizedBox(height: AppSpacing.xl),
-
-            // Element Selector at the bottom
             Text(
-              'Switch Element',
+              l10n.switchElement,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppColors.textSecondary,
                 fontWeight: FontWeight.w600,
@@ -55,8 +47,7 @@ class ConfigScreen extends ConsumerWidget {
             ElementSelector(
               elements: kElements,
               selected: state.element,
-              onSelect: (el) =>
-                  ref.read(configProvider.notifier).selectElement(el),
+              onSelect: (el) => ref.read(configProvider.notifier).selectElement(el),
             ),
 
             const SizedBox(height: AppSpacing.xl * 2),
@@ -73,6 +64,7 @@ class _ElementHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -81,9 +73,9 @@ class _ElementHeader extends StatelessWidget {
           height: 60,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: AppColors.orbitalP.withOpacity(0.15),
+            color: AppColors.orbitalP.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(AppRadius.md),
-            border: Border.all(color: AppColors.orbitalP.withOpacity(0.4)),
+            border: Border.all(color: AppColors.orbitalP.withValues(alpha: 0.4)),
           ),
           child: Text(
             element.symbol,
@@ -100,10 +92,8 @@ class _ElementHeader extends StatelessWidget {
           children: [
             Text(element.name, style: Theme.of(context).textTheme.titleLarge),
             Text(
-              'Atomic Number: ${element.atomicNumber}',
-              style: Theme.of(
-                context,
-              ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
+              '${l10n.atomicNumber}: ${element.atomicNumber}',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
             ),
           ],
         ),
@@ -118,6 +108,7 @@ class _NotationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.lg),
@@ -127,7 +118,7 @@ class _NotationCard extends StatelessWidget {
         border: Border.all(color: AppColors.borderDefault),
         boxShadow: [
           BoxShadow(
-            color: AppColors.bgDeep.withOpacity(0.5),
+            color: AppColors.bgDeep.withValues(alpha: 0.5),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -135,9 +126,9 @@ class _NotationCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const Text(
-            'Full Configuration',
-            style: TextStyle(
+          Text(
+            l10n.fullConfiguration,
+            style: const TextStyle(
               fontSize: 12,
               color: AppColors.textHint,
               fontWeight: FontWeight.bold,
