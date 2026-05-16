@@ -10,21 +10,20 @@ class VectorArrowComponent extends PositionComponent {
   double force = 0;
   double arrowScale = 50.0;
 
+  VectorArrowComponent() : super(anchor: Anchor.center);
+
   @override
   void render(Canvas canvas) {
     if (!visible) return;
 
-    final cx = position.x;
-    final cy = position.y;
-
     if (velocity.abs() > 0.01) {
-      _drawArrow(canvas, cx, cy, 0, -velocity * arrowScale, const Color(0xFFFFA000), 'v');
+      _drawArrow(canvas, 0, 0, 0, -velocity * arrowScale, const Color(0xFFFFA000), 'v');
     }
     if (acceleration.abs() > 0.01) {
-      _drawArrow(canvas, cx, cy, 0, -acceleration * arrowScale, const Color(0xFF00E5FF), 'a');
+      _drawArrow(canvas, 0, 0, 0, -acceleration * arrowScale, const Color(0xFF00E5FF), 'a');
     }
     if (force.abs() > 0.01) {
-      _drawArrow(canvas, cx, cy, 0, -force * arrowScale, const Color(0xFFFF0000), 'F');
+      _drawArrow(canvas, 0, 0, 0, -force * arrowScale, const Color(0xFFFF0000), 'F');
     }
   }
 
