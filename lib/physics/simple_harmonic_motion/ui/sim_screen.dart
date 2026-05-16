@@ -55,71 +55,61 @@ class _SimScreenState extends ConsumerState<SimScreen> with SingleTickerProvider
         title: Text(state.mode == SimMode.spring ? l10n.shmSpringMode : l10n.shmPendulumMode),
         backgroundColor: Colors.black,
       ),
-      body: Stack(
+      body: Column(
         children: [
-          GameWidget(game: _game),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const InfoPanel(),
-                ControlPanel(
-                  state: state,
-                  onSpringConstant: (v) {
-                    _game.state.springConstant = v;
-                    _game.state.time = 0;
-                    _game.state.posHistory.clear();
-                    _game.state.velHistory.clear();
-                    _game.state.accHistory.clear();
-                  },
-                  onMass: (v) {
-                    _game.state.mass = v;
-                    _game.state.time = 0;
-                    _game.state.posHistory.clear();
-                    _game.state.velHistory.clear();
-                    _game.state.accHistory.clear();
-                  },
-                  onAmplitude: (v) {
-                    _game.state.amplitude = v;
-                    _game.state.time = 0;
-                    _game.state.posHistory.clear();
-                    _game.state.velHistory.clear();
-                    _game.state.accHistory.clear();
-                  },
-                  onPendulumLength: (v) {
-                    _game.state.pendulumLength = v;
-                    _game.state.time = 0;
-                    _game.state.posHistory.clear();
-                    _game.state.velHistory.clear();
-                    _game.state.accHistory.clear();
-                  },
-                  onGravity: (v) {
-                    _game.state.gravity = v;
-                    _game.state.time = 0;
-                    _game.state.posHistory.clear();
-                    _game.state.velHistory.clear();
-                    _game.state.accHistory.clear();
-                  },
-                  onInitialAngle: (v) {
-                    _game.state.initialAngle = v;
-                    _game.state.time = 0;
-                    _game.state.posHistory.clear();
-                    _game.state.velHistory.clear();
-                    _game.state.accHistory.clear();
-                  },
-                  onModeToggle: () {
-                    final newMode = state.mode == SimMode.spring ? SimMode.pendulum : SimMode.spring;
-                    _recreateGame(newMode);
-                  },
-                  onPause: () => _game.togglePause(),
-                  onReset: () => _game.reset(),
-                  onToggleVectors: () => _game.toggleVectors(),
-                ),
-              ],
-            ),
+          Expanded(child: GameWidget(game: _game)),
+          const InfoPanel(),
+          ControlPanel(
+            state: state,
+            onSpringConstant: (v) {
+              _game.state.springConstant = v;
+              _game.state.time = 0;
+              _game.state.posHistory.clear();
+              _game.state.velHistory.clear();
+              _game.state.accHistory.clear();
+            },
+            onMass: (v) {
+              _game.state.mass = v;
+              _game.state.time = 0;
+              _game.state.posHistory.clear();
+              _game.state.velHistory.clear();
+              _game.state.accHistory.clear();
+            },
+            onAmplitude: (v) {
+              _game.state.amplitude = v;
+              _game.state.time = 0;
+              _game.state.posHistory.clear();
+              _game.state.velHistory.clear();
+              _game.state.accHistory.clear();
+            },
+            onPendulumLength: (v) {
+              _game.state.pendulumLength = v;
+              _game.state.time = 0;
+              _game.state.posHistory.clear();
+              _game.state.velHistory.clear();
+              _game.state.accHistory.clear();
+            },
+            onGravity: (v) {
+              _game.state.gravity = v;
+              _game.state.time = 0;
+              _game.state.posHistory.clear();
+              _game.state.velHistory.clear();
+              _game.state.accHistory.clear();
+            },
+            onInitialAngle: (v) {
+              _game.state.initialAngle = v;
+              _game.state.time = 0;
+              _game.state.posHistory.clear();
+              _game.state.velHistory.clear();
+              _game.state.accHistory.clear();
+            },
+            onModeToggle: () {
+              final newMode = state.mode == SimMode.spring ? SimMode.pendulum : SimMode.spring;
+              _recreateGame(newMode);
+            },
+            onPause: () => _game.togglePause(),
+            onReset: () => _game.reset(),
+            onToggleVectors: () => _game.toggleVectors(),
           ),
         ],
       ),

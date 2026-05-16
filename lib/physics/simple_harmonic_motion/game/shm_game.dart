@@ -169,9 +169,9 @@ class SHMGame extends FlameGame {
     final w = gameSize.x;
     final h = gameSize.y;
 
-    final graphPct = 0.32;
-    final energyPct = 0.06;
-    final simPct = 0.40;
+    final graphPct = 0.28;
+    final energyPct = 0.055;
+    final simPct = 0.665;
 
     graph.posHistory = s.posHistory;
     graph.velHistory = s.velHistory;

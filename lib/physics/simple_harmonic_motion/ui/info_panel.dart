@@ -13,15 +13,13 @@ class InfoPanel extends ConsumerWidget {
 
     return Container(
       color: const Color(0xFF1A1A2E),
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           _metricRow(state),
-          const SizedBox(height: 4),
-          _statusText(state, l10n),
-          const SizedBox(height: 4),
-          _formulaBox(state),
+          const SizedBox(height: 2),
+          _compactInfoLine(state, l10n),
         ],
       ),
     );
@@ -50,11 +48,14 @@ class InfoPanel extends ConsumerWidget {
     );
   }
 
-  Widget _statusText(SimState state, AppLocalizations l10n) {
+  Widget _compactInfoLine(SimState state, AppLocalizations l10n) {
+    final formula = state.mode == SimMode.spring
+        ? '\u03C9=\u221A(k/m)=${state.omega.toStringAsFixed(1)}  T=2\u03C0\u221A(m/k)=${state.period.toStringAsFixed(2)}s  F=-kx'
+        : 'T=2\u03C0\u221A(L/g)=${state.period.toStringAsFixed(2)}s  \u03C9=\u221A(g/L)=${state.omega.toStringAsFixed(1)}  \u03B8(t)=\u03B8\u2080cos(\u03C9t)';
+
     final x = state.position;
     final A = state.amplitude;
     String status;
-
     if (A < 0.01) {
       status = l10n.shmStatusAdjustAmplitude;
     } else if (x.abs() < 0.01 * A) {
@@ -66,58 +67,40 @@ class InfoPanel extends ConsumerWidget {
     } else {
       status = l10n.shmStatusMovingToEquilibrium;
     }
-
     if (state.mode == SimMode.pendulum && state.initialAngle > 15) {
       status += '  \u26A0 ${l10n.shmStatusLargeAngle}';
     }
 
-    return Text(
-      status,
-      style: const TextStyle(color: Colors.white54, fontSize: 10),
-      textAlign: TextAlign.center,
-    );
-  }
-
-  Widget _formulaBox(SimState state) {
-    String formula;
-    if (state.mode == SimMode.spring) {
-      final k = state.springConstant;
-      final x = state.position;
-      final m = state.mass;
-      final omega = state.omega;
-      final T = state.period;
-      formula =
-        'F = -kx = -($k)(${x.toStringAsFixed(2)}) = ${(-k * x).toStringAsFixed(2)} N\n'
-        '\u03C9 = \u221A(k/m) = \u221A($k/$m) = ${omega.toStringAsFixed(2)} rad/s\n'
-        'T = 2\u03C0\u221A(m/k) = 2\u03C0\u221A($m/$k) = ${T.toStringAsFixed(2)} s';
-    } else {
-      final L = state.pendulumLength;
-      final g = state.gravity;
-      final omega = state.omega;
-      final T = state.period;
-      final theta0 = state.initialAngle;
-      formula =
-        'T = 2\u03C0\u221A(L/g) = 2\u03C0\u221A($L/$g) = ${T.toStringAsFixed(2)} s\n'
-        '\u03C9 = \u221A(g/L) = \u221A($g/$L) = ${omega.toStringAsFixed(2)} rad/s\n'
-        '\u03B8(t) = ${theta0.toStringAsFixed(0)}\u00B0 \u00D7 cos(${omega.toStringAsFixed(2)}t)';
-    }
-
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(6),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
       decoration: BoxDecoration(
         color: const Color(0xFF0A1F0A),
         borderRadius: BorderRadius.circular(4),
         border: Border.all(color: const Color(0xFF00FF41).withValues(alpha: 0.2)),
       ),
-      child: Text(
-        formula,
-        style: const TextStyle(
-          color: Color(0xFF00FF41),
-          fontFamily: 'monospace',
-          fontSize: 10,
-          height: 1.4,
-        ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              formula,
+              style: const TextStyle(
+                color: Color(0xFF00FF41),
+                fontFamily: 'monospace',
+                fontSize: 9,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Flexible(
+            child: Text(
+              status,
+              style: const TextStyle(color: Colors.white54, fontSize: 9),
+              textAlign: TextAlign.end,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
       ),
     );
   }
