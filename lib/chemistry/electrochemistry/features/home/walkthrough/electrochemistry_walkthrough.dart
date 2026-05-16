@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../../../../../core/services/walkthrough_service.dart';
 import '../../../../../core/widgets/walkthrough_tooltip.dart';
 
@@ -28,46 +29,43 @@ class ElectrochemistryWalkthrough extends StatefulWidget {
 
 class _ElectrochemistryWalkthroughState extends State<ElectrochemistryWalkthrough> {
   int _currentStep = 0;
+  List<_WalkthroughStep> _steps = [];
 
-  final List<_WalkthroughStep> _steps = [
-    _WalkthroughStep(
-      title: "Electrochemistry Lab",
-      description:
-          "Explore electrochemical cells, electrolysis, and electrochemical equations through interactive simulations.",
-      tip: "Electrochemistry is everywhere - from batteries to plating to corrosion!",
-    ),
-    _WalkthroughStep(
-      title: "Galvanic Cell",
-      description:
-          "Build voltaic cells and measure equilibrium potential (E°cell).",
-      tip: "Galvanic cells convert chemical energy to electrical energy!",
-    ),
-    _WalkthroughStep(
-      title: "Electrolysis (Pro)",
-      description:
-          "Apply external voltage to drive non-spontaneous reactions.",
-      tip: "Electrolysis is used in electroplating and metal purification!",
-    ),
-    _WalkthroughStep(
-      title: "Nernst Equation",
-      description:
-          "Explore how concentration and temperature affect cell potential.",
-      tip: "The Nernst equation relates cell potential to concentration!",
-    ),
-    _WalkthroughStep(
-      title: "Electroplating",
-      description:
-          "Calculate mass deposition using Faraday's Law.",
-      tip: "Faraday's Law connects electric charge to the amount of substance deposited!",
-    ),
-    _WalkthroughStep(
-      title: "Pro Features",
-      description:
-          "Unlock Electrolysis and remove ads with premium.",
-      tip: "Tap the stars icon to see subscription options!",
-      isLastStep: true,
-    ),
-  ];
+  List<_WalkthroughStep> _buildSteps(AppLocalizations l10n) {
+    return [
+      _WalkthroughStep(
+        title: l10n.electrochemWalkthroughTitle,
+        description: l10n.electrochemWalkthroughDesc,
+        tip: l10n.electrochemWalkthroughTip,
+      ),
+      _WalkthroughStep(
+        title: l10n.galvanicCell,
+        description: l10n.galvanicCellWalkthroughDesc,
+        tip: l10n.galvanicCellWalkthroughTip,
+      ),
+      _WalkthroughStep(
+        title: l10n.electrolysisWalkthroughTitle,
+        description: l10n.electrolysisWalkthroughDesc,
+        tip: l10n.electrolysisWalkthroughTip,
+      ),
+      _WalkthroughStep(
+        title: l10n.nernstEquationTitle,
+        description: l10n.nernstWalkthroughDesc,
+        tip: l10n.nernstWalkthroughTip,
+      ),
+      _WalkthroughStep(
+        title: l10n.electroplating,
+        description: l10n.electroplatingWalkthroughDesc,
+        tip: l10n.electroplatingWalkthroughTip,
+      ),
+      _WalkthroughStep(
+        title: l10n.proFeaturesWalkthroughTitle,
+        description: l10n.proFeaturesWalkthroughDesc,
+        tip: l10n.proFeaturesWalkthroughTip,
+        isLastStep: true,
+      ),
+    ];
+  }
 
   GlobalKey? _getKeyForStep(int step) {
     switch (step) {
@@ -117,6 +115,8 @@ class _ElectrochemistryWalkthroughState extends State<ElectrochemistryWalkthroug
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    _steps = _buildSteps(l10n);
     final step = _steps[_currentStep];
 
     return Stack(

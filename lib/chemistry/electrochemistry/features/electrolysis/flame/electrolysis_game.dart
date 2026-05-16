@@ -9,6 +9,8 @@ class ElectrolysisGame extends FlameGame {
   ElectrolysisState state;
   final List<BubbleComponent> _bubbles = [];
   double _spawnTimer = 0.0;
+  String anodeLabel = '+ ANODE';
+  String cathodeLabel = '− CATHODE';
 
   ElectrolysisGame({required this.state});
 
@@ -101,8 +103,8 @@ class ElectrolysisGame extends FlameGame {
     canvas.drawRect(Rect.fromLTWH(size.x * 0.72, size.y * 0.45, 20, size.y * 0.4), electrodePaint); // Cathode
 
     // Draw Labels
-    _drawLabel(canvas, '+ ANODE', Vector2(size.x * 0.22, size.y * 0.4), AppColors.accentAmber);
-    _drawLabel(canvas, '− CATHODE', Vector2(size.x * 0.72, size.y * 0.4), AppColors.accentGreen);
+    _drawLabel(canvas, anodeLabel, Vector2(size.x * 0.22, size.y * 0.4), AppColors.accentAmber);
+    _drawLabel(canvas, cathodeLabel, Vector2(size.x * 0.72, size.y * 0.4), AppColors.accentGreen);
   }
 
   void _drawLabel(Canvas canvas, String text, Vector2 pos, Color color) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' as p;
+import '../../../../l10n/generated/app_localizations.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import '../../../../core/services/subscription_service.dart';
@@ -54,34 +55,35 @@ class _HomeScreenState extends State<HomeScreen> {
     final sub = p.Provider.of<SubscriptionService>(context);
     final isPro = sub.isPro;
 
+    final l10n = AppLocalizations.of(context)!;
     final modules = [
       _Module(
-        'Galvanic Cell',
-        'Build voltaic cells, measure equilibrium potential E°cell',
+        l10n.galvanicCell,
+        l10n.galvanicCellDesc,
         '/galvanic',
         Icons.bolt,
         AppColors.accentElectric,
         isLocked: false,
       ),
       _Module(
-        'Electrolysis',
-        isPro ? 'Apply voltage to drive non-spontaneous reactions' : 'PRO - Unlock for unlimited access',
+        l10n.electrolysis,
+        isPro ? l10n.electrolysisDesc : l10n.proUnlockMessage,
         '/electrolysis',
         Icons.electric_bolt,
         AppColors.accentGreen,
         isLocked: !isPro,
       ),
       _Module(
-        'Nernst Equation',
-        'Explore how concentration and temperature affects Ecell',
+        l10n.nernstEquationTitle,
+        l10n.nernstEquationDesc,
         '/nernst',
         Icons.show_chart,
         AppColors.accentPurple,
         isLocked: false,
       ),
       _Module(
-        'Electroplating',
-        'Calculate mass deposition using Faraday\'s Law',
+        l10n.electroplating,
+        l10n.electroplatingDesc,
         '/electroplating',
         Icons.layers,
         AppColors.accentAmber,
@@ -104,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Flexible(
                     child: Text(
-                      'Electrochemistry',
+                      l10n.electrochemHomeTitle,
                       style: Theme.of(context).textTheme.displayLarge?.copyWith(
                         color: AppColors.textPrimary,
                       ),
@@ -123,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: AppSpacing.sm),
               Text(
-                'Interactive Lab Simulations',
+                l10n.electrochemHomeSubtitle,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.textSecondary,
                   letterSpacing: 0.5,
@@ -190,23 +192,26 @@ class _ModuleCard extends StatelessWidget {
         if (module.isLocked) {
           showDialog(
             context: context,
-            builder: (ctx) => AlertDialog(
-              title: const Text('Premium Feature'),
-              content: const Text('Upgrade to Premium to unlock Electrolysis!'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(ctx),
-                  child: const Text('Maybe Later'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(ctx);
-                    showGlobalPlanDialog(context);
-                  },
-                  child: const Text('Upgrade'),
-                ),
-              ],
-            ),
+            builder: (ctx) {
+              final m10n = AppLocalizations.of(context)!;
+              return AlertDialog(
+                title: Text(m10n.premiumFeature),
+                content: Text(m10n.upgradeToUnlockElectrolysis),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(ctx),
+                    child: Text(m10n.maybeLater),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(ctx);
+                      showGlobalPlanDialog(context);
+                    },
+                    child: Text(m10n.upgrade),
+                  ),
+                ],
+              );
+            },
           );
           return;
         }

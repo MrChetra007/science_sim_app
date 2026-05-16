@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flame/game.dart';
 import 'package:provider/provider.dart' as p;
+import '../../../../l10n/generated/app_localizations.dart';
 import 'providers/electrolysis_provider.dart';
 import 'flame/electrolysis_game.dart';
 import 'widgets/gas_readout.dart';
@@ -38,44 +39,47 @@ class _ElectrolysisScreenState extends ConsumerState<ElectrolysisScreen> {
 
     _game.updateState(state);
 
+    final l10n = AppLocalizations.of(context)!;
+    _game.anodeLabel = '+ ${l10n.anode}';
+    _game.cathodeLabel = '− ${l10n.cathode}';
     final freeElectrolytes = isPro ? kElectrolytes : kElectrolytes.sublist(0, 1);
     final canSelectElectrolyte = isPro || state.electrolyte == kElectrolytes.first;
 
     return Scaffold(
       backgroundColor: AppColors.bgDeep,
       appBar: AppBar(
-        title: Text(isPro ? 'Electrolysis Lab ⭐' : 'Electrolysis Lab'),
+        title: Text(isPro ? '${AppLocalizations.of(context)!.electrolysisLab} ⭐' : AppLocalizations.of(context)!.electrolysisLab),
         backgroundColor: AppColors.bgDeep,
         actions: [
           if (!isPro)
             IconButton(
               icon: const Icon(Icons.star, color: Colors.amber),
               onPressed: () => showGlobalPlanDialog(context),
-              tooltip: 'Upgrade to Pro',
+              tooltip: AppLocalizations.of(context)!.upgradeToPro,
             ),
           IconButton(
             icon: const Icon(Icons.help_outline),
-            onPressed: () => ExplanationPanel.show(
-              context,
-              title: 'Electrolysis Lab',
-              sections: [
-                ExplanationSection(
-                  title: 'Non-Spontaneous Reactions',
-                  content:
-                      'Electrolysis uses electrical energy to drive a chemical reaction that would not otherwise occur. It is the opposite of a galvanic cell.',
-                ),
-                ExplanationSection(
-                  title: 'Decomposition of NaCl',
-                  content:
-                      'In aqueous NaCl, chloride ions are oxidized at the anode (forming Cl2 gas) and water is reduced at the cathode (forming H2 gas).',
-                ),
-                ExplanationSection(
-                  title: 'Threshold Voltage',
-                  content:
-                      'Each electrolyte has a specific decomposition voltage (Vmin). If the applied voltage is lower than Vmin, no reaction occurs.',
-                ),
-              ],
-            ),
+            onPressed: () {
+              final l10n = AppLocalizations.of(context)!;
+              ExplanationPanel.show(
+                context,
+                title: l10n.electrolysisLab,
+                sections: [
+                  ExplanationSection(
+                    title: l10n.nonSpontaneousReactions,
+                    content: l10n.electrolysisHowDesc,
+                  ),
+                  ExplanationSection(
+                    title: l10n.decompositionOfNaCl,
+                    content: l10n.decompositionOfNaClDesc,
+                  ),
+                  ExplanationSection(
+                    title: l10n.thresholdVoltageTitle,
+                    content: l10n.thresholdVoltageDesc,
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),
@@ -142,13 +146,13 @@ class _ElectrolysisScreenState extends ConsumerState<ElectrolysisScreen> {
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            'Upgrade to PRO to unlock all electrolytes!',
+                            l10n.upgradeToUnlockElectrolytes,
                             style: TextStyle(color: Colors.amber.shade200, fontSize: 12),
                           ),
                         ),
                         TextButton(
                           onPressed: () => showGlobalPlanDialog(context),
-                          child: const Text('UPGRADE', style: TextStyle(fontSize: 12)),
+                          child: Text(l10n.upgrade, style: const TextStyle(fontSize: 12)),
                         ),
                       ],
                     ),
@@ -164,19 +168,19 @@ class _ElectrolysisScreenState extends ConsumerState<ElectrolysisScreen> {
                       showDialog(
                         context: context,
                         builder: (ctx) => AlertDialog(
-                          title: const Text('Premium Feature'),
-                          content: const Text('Upgrade to Premium to unlock all electrolytes!'),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(ctx),
-                              child: const Text('Maybe Later'),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(ctx);
-                                showGlobalPlanDialog(context);
-                              },
-                              child: const Text('Upgrade'),
+                        title: Text(l10n.premiumFeature),
+                        content: Text(l10n.upgradeToUnlockAllElectrolytes),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(ctx),
+                            child: Text(l10n.maybeLater),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(ctx);
+                              showGlobalPlanDialog(context);
+                            },
+                            child: Text(l10n.upgrade),
                             ),
                           ],
                         ),
@@ -225,9 +229,9 @@ class _VoltageControl extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'EXTERNAL POWER SUPPLY',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.externalPowerSupply,
+                  style: const TextStyle(
                     color: AppColors.textSecondary,
                     fontSize: 10,
                     letterSpacing: 1.0,
@@ -260,7 +264,7 @@ class _VoltageControl extends StatelessWidget {
           activeColor: accentColor,
         ),
         Text(
-          'Minimum voltage required: ${threshold.toStringAsFixed(2)}V',
+          '${AppLocalizations.of(context)!.minimumVoltageRequired}${threshold.toStringAsFixed(2)}V',
           style: TextStyle(color: AppColors.textSecondary, fontSize: 11),
         ),
       ],
@@ -284,9 +288,9 @@ class _ElectrolytePicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'ELECTROLYTE SOLUTION',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.electrolyteSolution,
+          style: const TextStyle(
             color: AppColors.textSecondary,
             fontSize: 10,
             letterSpacing: 1.0,

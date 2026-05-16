@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../providers/electrolysis_state.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
@@ -21,13 +22,13 @@ class GasReadout extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _GasBox(
-            label: 'Anode (${state.electrolyte.anodeProduct})',
+            label: '${AppLocalizations.of(context)!.anode} (${state.electrolyte.anodeProduct})',
             volume: state.anodeGasVolume,
             color: state.electrolyte.anodeGasColor,
           ),
           Container(width: 1, height: 40, color: AppColors.borderDefault),
           _GasBox(
-            label: 'Cathode (${state.electrolyte.cathodeProduct})',
+            label: '${AppLocalizations.of(context)!.cathode} (${state.electrolyte.cathodeProduct})',
             volume: state.cathodeGasVolume,
             color: state.electrolyte.cathodeGasColor,
           ),

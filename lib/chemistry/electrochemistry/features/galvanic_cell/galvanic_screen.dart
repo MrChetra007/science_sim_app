@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 import 'providers/galvanic_provider.dart';
 import 'widgets/cell_canvas_widget.dart';
 import 'widgets/electrode_selector.dart';
@@ -19,34 +20,34 @@ class GalvanicScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.bgDeep,
       appBar: AppBar(
-        title: const Text('Galvanic Cell'),
+        title: Text(AppLocalizations.of(context)!.galvanicCell),
         backgroundColor: AppColors.bgDeep,
         elevation: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline),
-            onPressed: () => ExplanationPanel.show(
-              context,
-              title: 'Galvanic Cell Basics',
-              sections: [
-                ExplanationSection(
-                  title: 'How it Works',
-                  content:
-                      'A galvanic (voltaic) cell converts chemical energy into electrical energy through spontaneous redox reactions. Electrons flow from the Anode to the Cathode.',
-                ),
-                ExplanationSection(
-                  title: 'Electromotive Force',
-                  content:
-                      'The cell potential is calculated by the difference between the reduction potentials of the two electrodes.',
-                  formula: 'E°cell = E°cathode - E°anode',
-                ),
-                ExplanationSection(
-                  title: 'Salt Bridge',
-                  content:
-                      'The salt bridge completes the circuit and maintains electrical neutrality by allowing ions to flow between the two half-cells.',
-                ),
-              ],
-            ),
+            onPressed: () {
+              final l10n = AppLocalizations.of(context)!;
+              ExplanationPanel.show(
+                context,
+                title: l10n.galvanicCellBasics,
+                sections: [
+                  ExplanationSection(
+                    title: l10n.howItWorks,
+                    content: l10n.galvanicCellHowItWorksDesc,
+                  ),
+                  ExplanationSection(
+                    title: l10n.electromotiveForce,
+                    content: l10n.cellPotentialDesc,
+                    formula: 'E°cell = E°cathode - E°anode',
+                  ),
+                  ExplanationSection(
+                    title: l10n.saltBridge,
+                    content: l10n.saltBridgeDesc,
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),
@@ -64,7 +65,7 @@ class GalvanicScreen extends ConsumerWidget {
               children: [
                 Expanded(
                   child: ElectrodeSelector(
-                    label: 'Anode (−)',
+                    label: AppLocalizations.of(context)!.anodeLabel,
                     selected: state.anode,
                     onChanged: (e) {
                       if (e != null) {
@@ -76,7 +77,7 @@ class GalvanicScreen extends ConsumerWidget {
                 const SizedBox(width: AppSpacing.md),
                 Expanded(
                   child: ElectrodeSelector(
-                    label: 'Cathode (+)',
+                    label: AppLocalizations.of(context)!.cathodeLabel,
                     selected: state.cathode,
                     onChanged: (e) {
                       if (e != null) {

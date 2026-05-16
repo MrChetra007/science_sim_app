@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../../../core/constants/electrodes.dart';
 import '../../../core/theme/electrode_colors.dart';
 import '../../../core/theme/app_colors.dart';
@@ -15,6 +16,21 @@ class ElectrodeSelector extends StatelessWidget {
     required this.selected,
     required this.onChanged,
   });
+
+  String _electrodeName(BuildContext context, Electrode e) {
+    final l10n = AppLocalizations.of(context)!;
+    return switch (e.symbol) {
+      'Zn' => l10n.electrodeZinc,
+      'Fe' => l10n.electrodeIron,
+      'Ni' => l10n.electrodeNickel,
+      'Pb' => l10n.electrodeLead,
+      'Cu' => l10n.electrodeCopper,
+      'Ag' => l10n.electrodeSilver,
+      'Au' => l10n.electrodeGold,
+      'Pt' => l10n.electrodePlatinum,
+      _ => e.name,
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +77,7 @@ class ElectrodeSelector extends StatelessWidget {
                       ),
                       const SizedBox(width: AppSpacing.sm),
                       Text(
-                        '${e.symbol} — ${e.name}',
+                        '${e.symbol} — ${_electrodeName(context, e)}',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: AppColors.textPrimary,
                         ),

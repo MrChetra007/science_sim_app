@@ -2225,7 +2225,7 @@ abstract class AppLocalizations {
   /// No description provided for @howItWorks.
   ///
   /// In en, this message translates to:
-  /// **'How it works here?'**
+  /// **'How it Works'**
   String get howItWorks;
 
   /// No description provided for @gotIt.
@@ -4621,6 +4621,516 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Bent (104.5°)'**
   String get vseprNameBent104;
+
+  /// No description provided for @electrochemHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrochemistry'**
+  String get electrochemHomeTitle;
+
+  /// No description provided for @electrochemHomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Interactive Lab Simulations'**
+  String get electrochemHomeSubtitle;
+
+  /// No description provided for @galvanicCellDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Build voltaic cells, measure equilibrium potential E°cell'**
+  String get galvanicCellDesc;
+
+  /// No description provided for @electrolysisDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply voltage to drive non-spontaneous reactions'**
+  String get electrolysisDesc;
+
+  /// No description provided for @nernstEquationDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore how concentration and temperature affects Ecell'**
+  String get nernstEquationDesc;
+
+  /// No description provided for @electroplatingDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate mass deposition using Faraday\'s Law'**
+  String get electroplatingDesc;
+
+  /// No description provided for @upgradeToUnlockElectrolysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade to Premium to unlock Electrolysis!'**
+  String get upgradeToUnlockElectrolysis;
+
+  /// No description provided for @electrochemWalkthroughTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrochemistry Lab'**
+  String get electrochemWalkthroughTitle;
+
+  /// No description provided for @electrochemWalkthroughDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore electrochemical cells, electrolysis, and electrochemical equations through interactive simulations.'**
+  String get electrochemWalkthroughDesc;
+
+  /// No description provided for @electrochemWalkthroughTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrochemistry is everywhere - from batteries to plating to corrosion!'**
+  String get electrochemWalkthroughTip;
+
+  /// No description provided for @galvanicCellWalkthroughDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Build voltaic cells and measure equilibrium potential (E°cell).'**
+  String get galvanicCellWalkthroughDesc;
+
+  /// No description provided for @galvanicCellWalkthroughTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Galvanic cells convert chemical energy to electrical energy!'**
+  String get galvanicCellWalkthroughTip;
+
+  /// No description provided for @electrolysisWalkthroughTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrolysis (Pro)'**
+  String get electrolysisWalkthroughTitle;
+
+  /// No description provided for @electrolysisWalkthroughDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply external voltage to drive non-spontaneous reactions.'**
+  String get electrolysisWalkthroughDesc;
+
+  /// No description provided for @electrolysisWalkthroughTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrolysis is used in electroplating and metal purification!'**
+  String get electrolysisWalkthroughTip;
+
+  /// No description provided for @nernstWalkthroughDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore how concentration and temperature affect cell potential.'**
+  String get nernstWalkthroughDesc;
+
+  /// No description provided for @nernstWalkthroughTip.
+  ///
+  /// In en, this message translates to:
+  /// **'The Nernst equation relates cell potential to concentration!'**
+  String get nernstWalkthroughTip;
+
+  /// No description provided for @electroplatingWalkthroughDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate mass deposition using Faraday\'s Law.'**
+  String get electroplatingWalkthroughDesc;
+
+  /// No description provided for @electroplatingWalkthroughTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Faraday\'s Law connects electric charge to the amount of substance deposited!'**
+  String get electroplatingWalkthroughTip;
+
+  /// No description provided for @proFeaturesWalkthroughTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro Features'**
+  String get proFeaturesWalkthroughTitle;
+
+  /// No description provided for @proFeaturesWalkthroughDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock Electrolysis and remove ads with premium.'**
+  String get proFeaturesWalkthroughDesc;
+
+  /// No description provided for @proFeaturesWalkthroughTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the stars icon to see subscription options!'**
+  String get proFeaturesWalkthroughTip;
+
+  /// No description provided for @galvanicCellBasics.
+  ///
+  /// In en, this message translates to:
+  /// **'Galvanic Cell Basics'**
+  String get galvanicCellBasics;
+
+  /// No description provided for @galvanicCellHowItWorksDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A galvanic (voltaic) cell converts chemical energy into electrical energy through spontaneous redox reactions. Electrons flow from the Anode to the Cathode.'**
+  String get galvanicCellHowItWorksDesc;
+
+  /// No description provided for @electromotiveForce.
+  ///
+  /// In en, this message translates to:
+  /// **'Electromotive Force'**
+  String get electromotiveForce;
+
+  /// No description provided for @cellPotentialDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The cell potential is calculated by the difference between the reduction potentials of the two electrodes.'**
+  String get cellPotentialDesc;
+
+  /// No description provided for @saltBridge.
+  ///
+  /// In en, this message translates to:
+  /// **'Salt Bridge'**
+  String get saltBridge;
+
+  /// No description provided for @saltBridgeDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The salt bridge completes the circuit and maintains electrical neutrality by allowing ions to flow between the two half-cells.'**
+  String get saltBridgeDesc;
+
+  /// No description provided for @anodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Anode (−)'**
+  String get anodeLabel;
+
+  /// No description provided for @cathodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cathode (+)'**
+  String get cathodeLabel;
+
+  /// No description provided for @oxidationAnode.
+  ///
+  /// In en, this message translates to:
+  /// **'Oxidation (Anode)'**
+  String get oxidationAnode;
+
+  /// No description provided for @reductionCathode.
+  ///
+  /// In en, this message translates to:
+  /// **'Reduction (Cathode)'**
+  String get reductionCathode;
+
+  /// No description provided for @cellPotentialLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'E°cell (V)'**
+  String get cellPotentialLabel;
+
+  /// No description provided for @spontaneous.
+  ///
+  /// In en, this message translates to:
+  /// **'SPONTANEOUS'**
+  String get spontaneous;
+
+  /// No description provided for @nonSpontaneous.
+  ///
+  /// In en, this message translates to:
+  /// **'NON-SPONTANEOUS'**
+  String get nonSpontaneous;
+
+  /// No description provided for @nernstEquationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nernst Equation'**
+  String get nernstEquationTitle;
+
+  /// No description provided for @nernstEquationExplorer.
+  ///
+  /// In en, this message translates to:
+  /// **'Nernst Equation Explorer'**
+  String get nernstEquationExplorer;
+
+  /// No description provided for @nonStandardConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Non-Standard Conditions'**
+  String get nonStandardConditions;
+
+  /// No description provided for @nonStandardConditionsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard cell potentials (E°) are measured at 25°C and 1.0M concentration. The Nernst Equation calculates the actual potential under any other conditions.'**
+  String get nonStandardConditionsDesc;
+
+  /// No description provided for @theEquation.
+  ///
+  /// In en, this message translates to:
+  /// **'The Equation'**
+  String get theEquation;
+
+  /// No description provided for @reactionQuotient.
+  ///
+  /// In en, this message translates to:
+  /// **'Reaction Quotient (Q)'**
+  String get reactionQuotient;
+
+  /// No description provided for @reactionQuotientDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Q is the ratio of product concentration to reactant concentration. If [Red] increases, Q increases and the cell potential (E) decreases.'**
+  String get reactionQuotientDesc;
+
+  /// No description provided for @temperatureK.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature (K)'**
+  String get temperatureK;
+
+  /// No description provided for @oxConcentration.
+  ///
+  /// In en, this message translates to:
+  /// **'[Ox] Concentration (M)'**
+  String get oxConcentration;
+
+  /// No description provided for @redConcentration.
+  ///
+  /// In en, this message translates to:
+  /// **'[Red] Concentration (M)'**
+  String get redConcentration;
+
+  /// No description provided for @actualCellPotential.
+  ///
+  /// In en, this message translates to:
+  /// **'ACTUAL CELL POTENTIAL (E)'**
+  String get actualCellPotential;
+
+  /// No description provided for @redOxRatio.
+  ///
+  /// In en, this message translates to:
+  /// **'[Red]/[Ox] Ratio'**
+  String get redOxRatio;
+
+  /// No description provided for @voltageE.
+  ///
+  /// In en, this message translates to:
+  /// **'E (V)'**
+  String get voltageE;
+
+  /// No description provided for @electrolysisLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrolysis Lab'**
+  String get electrolysisLab;
+
+  /// No description provided for @nonSpontaneousReactions.
+  ///
+  /// In en, this message translates to:
+  /// **'Non-Spontaneous Reactions'**
+  String get nonSpontaneousReactions;
+
+  /// No description provided for @electrolysisHowDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrolysis uses electrical energy to drive a chemical reaction that would not otherwise occur. It is the opposite of a galvanic cell.'**
+  String get electrolysisHowDesc;
+
+  /// No description provided for @decompositionOfNaCl.
+  ///
+  /// In en, this message translates to:
+  /// **'Decomposition of NaCl'**
+  String get decompositionOfNaCl;
+
+  /// No description provided for @decompositionOfNaClDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'In aqueous NaCl, chloride ions are oxidized at the anode (forming Cl₂ gas) and water is reduced at the cathode (forming H₂ gas).'**
+  String get decompositionOfNaClDesc;
+
+  /// No description provided for @thresholdVoltageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Threshold Voltage'**
+  String get thresholdVoltageTitle;
+
+  /// No description provided for @thresholdVoltageDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Each electrolyte has a specific decomposition voltage (Vmin). If the applied voltage is lower than Vmin, no reaction occurs.'**
+  String get thresholdVoltageDesc;
+
+  /// No description provided for @upgradeToUnlockElectrolytes.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade to PRO to unlock all electrolytes!'**
+  String get upgradeToUnlockElectrolytes;
+
+  /// No description provided for @upgradeToUnlockAllElectrolytes.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade to Premium to unlock all electrolytes!'**
+  String get upgradeToUnlockAllElectrolytes;
+
+  /// No description provided for @externalPowerSupply.
+  ///
+  /// In en, this message translates to:
+  /// **'EXTERNAL POWER SUPPLY'**
+  String get externalPowerSupply;
+
+  /// No description provided for @minimumVoltageRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum voltage required: '**
+  String get minimumVoltageRequired;
+
+  /// No description provided for @electrolyteSolution.
+  ///
+  /// In en, this message translates to:
+  /// **'ELECTROLYTE SOLUTION'**
+  String get electrolyteSolution;
+
+  /// No description provided for @electroplatingLabTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Electroplating Lab'**
+  String get electroplatingLabTitle;
+
+  /// No description provided for @electroplatingSecrets.
+  ///
+  /// In en, this message translates to:
+  /// **'Electroplating Secrets'**
+  String get electroplatingSecrets;
+
+  /// No description provided for @whatIsElectroplating.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Electroplating?'**
+  String get whatIsElectroplating;
+
+  /// No description provided for @electroplatingProcessDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A process of coating a base metal (like iron or brass) with a layer of a more precious metal (like gold or silver) via an electrolytic reaction.'**
+  String get electroplatingProcessDesc;
+
+  /// No description provided for @faradaysLawTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Faraday\'s Law'**
+  String get faradaysLawTitle;
+
+  /// No description provided for @faradaysLawDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The mass of the metal deposited is directly proportional to the amount of electric charge passed through the solution.'**
+  String get faradaysLawDesc;
+
+  /// No description provided for @molarMassAndValence.
+  ///
+  /// In en, this message translates to:
+  /// **'Molar Mass & Valence'**
+  String get molarMassAndValence;
+
+  /// No description provided for @molarMassAndValenceDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Heavier metals with higher molar masses plate more mass per hour, while higher valence (n) values slow down the process because more electrons are needed per atom.'**
+  String get molarMassAndValenceDesc;
+
+  /// No description provided for @depositedMass.
+  ///
+  /// In en, this message translates to:
+  /// **'DEPOSITED MASS'**
+  String get depositedMass;
+
+  /// No description provided for @elapsedTime.
+  ///
+  /// In en, this message translates to:
+  /// **'ELAPSED TIME'**
+  String get elapsedTime;
+
+  /// No description provided for @dcCurrentSource.
+  ///
+  /// In en, this message translates to:
+  /// **'D.C. CURRENT SOURCE'**
+  String get dcCurrentSource;
+
+  /// No description provided for @platingObjectKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Key'**
+  String get platingObjectKey;
+
+  /// No description provided for @platingObjectSpoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoon'**
+  String get platingObjectSpoon;
+
+  /// No description provided for @platingObjectCoin.
+  ///
+  /// In en, this message translates to:
+  /// **'Coin'**
+  String get platingObjectCoin;
+
+  /// No description provided for @electrodeZinc.
+  ///
+  /// In en, this message translates to:
+  /// **'Zinc'**
+  String get electrodeZinc;
+
+  /// No description provided for @electrodeIron.
+  ///
+  /// In en, this message translates to:
+  /// **'Iron'**
+  String get electrodeIron;
+
+  /// No description provided for @electrodeNickel.
+  ///
+  /// In en, this message translates to:
+  /// **'Nickel'**
+  String get electrodeNickel;
+
+  /// No description provided for @electrodeLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Lead'**
+  String get electrodeLead;
+
+  /// No description provided for @electrodeCopper.
+  ///
+  /// In en, this message translates to:
+  /// **'Copper'**
+  String get electrodeCopper;
+
+  /// No description provided for @electrodeSilver.
+  ///
+  /// In en, this message translates to:
+  /// **'Silver'**
+  String get electrodeSilver;
+
+  /// No description provided for @electrodeGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold'**
+  String get electrodeGold;
+
+  /// No description provided for @electrodePlatinum.
+  ///
+  /// In en, this message translates to:
+  /// **'Platinum'**
+  String get electrodePlatinum;
+
+  /// No description provided for @electrolyteNaCl.
+  ///
+  /// In en, this message translates to:
+  /// **'Aqueous Sodium Chloride'**
+  String get electrolyteNaCl;
+
+  /// No description provided for @electrolyteCuSO4.
+  ///
+  /// In en, this message translates to:
+  /// **'Copper (II) Sulfate'**
+  String get electrolyteCuSO4;
+
+  /// No description provided for @electrolyteWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Water (Dilute H₂SO₄)'**
+  String get electrolyteWater;
 }
 
 class _AppLocalizationsDelegate

@@ -37,7 +37,7 @@ class _ElectrochemAppState extends State<ElectrochemApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Electrochemistry',
+      title: 'Electrochemistry', // standalone title, kept as-is
       theme: buildAppTheme(),
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../providers/nernst_state.dart';
 import '../../../core/theme/app_colors.dart';
 
@@ -42,7 +43,7 @@ class NernstChart extends StatelessWidget {
             rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
             topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
             bottomTitles: AxisTitles(
-              axisNameWidget: const Text('[Red]/[Ox] Ratio', style: TextStyle(color: AppColors.textSecondary, fontSize: 10)),
+              axisNameWidget: Text(AppLocalizations.of(context)!.redOxRatio, style: const TextStyle(color: AppColors.textSecondary, fontSize: 10)),
               sideTitles: SideTitles(
                 showTitles: true,
                 reservedSize: 30,
@@ -54,7 +55,7 @@ class NernstChart extends StatelessWidget {
               ),
             ),
             leftTitles: AxisTitles(
-              axisNameWidget: const Text('E (V)', style: TextStyle(color: AppColors.textSecondary, fontSize: 10)),
+              axisNameWidget: Text(AppLocalizations.of(context)!.voltageE, style: const TextStyle(color: AppColors.textSecondary, fontSize: 10)),
               sideTitles: SideTitles(
                 showTitles: true,
                 reservedSize: 40,

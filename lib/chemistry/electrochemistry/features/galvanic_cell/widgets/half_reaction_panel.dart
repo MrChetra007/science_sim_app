@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../providers/galvanic_state.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
@@ -22,13 +23,13 @@ class HalfReactionPanel extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _ReactionRow(
-              label: 'Oxidation (Anode)',
+              label: AppLocalizations.of(context)!.oxidationAnode,
               reaction: state.anodeReaction,
               color: AppColors.accentAmber,
             ),
             const Divider(color: AppColors.borderDefault, height: AppSpacing.md),
             _ReactionRow(
-              label: 'Reduction (Cathode)',
+              label: AppLocalizations.of(context)!.reductionCathode,
               reaction: state.cathodeReaction,
               color: AppColors.accentGreen,
             ),

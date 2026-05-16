@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 import 'providers/nernst_provider.dart';
 import 'widgets/nernst_chart.dart';
 import 'widgets/equation_display.dart';
@@ -20,33 +21,34 @@ class NernstScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.bgDeep,
       appBar: AppBar(
-        title: const Text('Nernst Equation'),
+        title: Text(AppLocalizations.of(context)!.nernstEquationTitle),
         backgroundColor: AppColors.bgDeep,
         elevation: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline),
-            onPressed: () => ExplanationPanel.show(
-              context,
-              title: 'Nernst Equation Explorer',
-              sections: [
-                ExplanationSection(
-                  title: 'Non-Standard Conditions',
-                  content:
-                      'Standard cell potentials (E°) are measured at 25°C and 1.0M concentration. The Nernst Equation calculates the actual potential under any other conditions.',
-                ),
-                ExplanationSection(
-                  title: 'The Equation',
-                  content: 'E = E° - (RT/nF) * ln(Q)',
-                  formula: 'E = E° - (0.0592/n) * log10(Q) at 25°C',
-                ),
-                ExplanationSection(
-                  title: 'Reaction Quotient (Q)',
-                  content:
-                      'Q is the ratio of product concentration to reactant concentration. If [Red] increases, Q increases and the cell potential (E) decreases.',
-                ),
-              ],
-            ),
+            onPressed: () {
+              final l10n = AppLocalizations.of(context)!;
+              ExplanationPanel.show(
+                context,
+                title: l10n.nernstEquationExplorer,
+                sections: [
+                  ExplanationSection(
+                    title: l10n.nonStandardConditions,
+                    content: l10n.nonStandardConditionsDesc,
+                  ),
+                  ExplanationSection(
+                    title: l10n.theEquation,
+                    content: 'E = E° - (RT/nF) * ln(Q)',
+                    formula: 'E = E° - (0.0592/n) * log10(Q) at 25°C',
+                  ),
+                  ExplanationSection(
+                    title: l10n.reactionQuotient,
+                    content: l10n.reactionQuotientDesc,
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),
@@ -71,7 +73,7 @@ class NernstScreen extends ConsumerWidget {
 
             // 4. Controls
             _SliderSection(
-              title: 'Temperature (K)',
+              title: AppLocalizations.of(context)!.temperatureK,
               value: state.temperatureK,
               min: 273.15,
               max: 373.15,
@@ -81,7 +83,7 @@ class NernstScreen extends ConsumerWidget {
             ),
             const SizedBox(height: AppSpacing.md),
             _SliderSection(
-              title: '[Ox] Concentration (M)',
+              title: AppLocalizations.of(context)!.oxConcentration,
               value: state.concentrationOx,
               min: 0.1,
               max: 2.0,
@@ -90,7 +92,7 @@ class NernstScreen extends ConsumerWidget {
             ),
             const SizedBox(height: AppSpacing.md),
             _SliderSection(
-              title: '[Red] Concentration (M)',
+              title: AppLocalizations.of(context)!.redConcentration,
               value: state.concentrationRed,
               min: 0.1,
               max: 2.0,
@@ -130,9 +132,9 @@ class _ResultBanner extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'ACTUAL CELL POTENTIAL (E)',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.actualCellPotential,
+              style: const TextStyle(
                 color: AppColors.textSecondary,
                 fontSize: 10,
                 letterSpacing: 1.0,

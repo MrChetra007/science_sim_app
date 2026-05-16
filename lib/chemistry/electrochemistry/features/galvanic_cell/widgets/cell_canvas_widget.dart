@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../providers/galvanic_state.dart';
 import '../flame/cell_game.dart';
 import '../../../core/theme/app_colors.dart';
@@ -57,7 +58,7 @@ class _CellCanvasWidgetState extends State<CellCanvasWidget> {
                   borderRadius: BorderRadius.circular(AppRadius.sm),
                 ),
                 child: Text(
-                  widget.state.isSpontaneous ? 'SPONTANEOUS' : 'NON-SPONTANEOUS',
+                  widget.state.isSpontaneous ? AppLocalizations.of(context)!.spontaneous : AppLocalizations.of(context)!.nonSpontaneous,
                   style: TextStyle(
                     color: widget.state.isSpontaneous ? AppColors.accentGreen : AppColors.accentRed,
                     fontSize: 10,

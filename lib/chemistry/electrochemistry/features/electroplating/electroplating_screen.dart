@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flame/game.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 import 'providers/electroplating_provider.dart';
 import 'providers/electroplating_state.dart';
 import 'flame/electroplating_game.dart';
@@ -36,33 +37,33 @@ class _ElectroplatingScreenState extends ConsumerState<ElectroplatingScreen> {
     return Scaffold(
       backgroundColor: AppColors.bgDeep,
       appBar: AppBar(
-        title: const Text('Electroplating Lab'),
+        title: Text(AppLocalizations.of(context)!.electroplatingLabTitle),
         backgroundColor: AppColors.bgDeep,
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline),
-            onPressed: () => ExplanationPanel.show(
-              context,
-              title: 'Electroplating Secrets',
-              sections: [
-                ExplanationSection(
-                  title: 'What is Electroplating?',
-                  content:
-                      'A process of coating a base metal (like iron or brass) with a layer of a more precious metal (like gold or silver) via an electrolytic reaction.',
-                ),
-                ExplanationSection(
-                  title: 'Faraday\'s Law',
-                  content:
-                      'The mass of the metal deposited is directly proportional to the amount of electric charge passed through the solution.',
-                  formula: 'm = (I * t * M) / (n * F)',
-                ),
-                ExplanationSection(
-                  title: 'Molar Mass & Valence',
-                  content:
-                      'Heavier metals with higher molar masses plate more mass per hour, while higher valence (n) values slow down the process because more electrons are needed per atom.',
-                ),
-              ],
-            ),
+            onPressed: () {
+              final l10n = AppLocalizations.of(context)!;
+              ExplanationPanel.show(
+                context,
+                title: l10n.electroplatingSecrets,
+                sections: [
+                  ExplanationSection(
+                    title: l10n.whatIsElectroplating,
+                    content: l10n.electroplatingProcessDesc,
+                  ),
+                  ExplanationSection(
+                    title: l10n.faradaysLawTitle,
+                    content: l10n.faradaysLawDesc,
+                    formula: 'm = (I * t * M) / (n * F)',
+                  ),
+                  ExplanationSection(
+                    title: l10n.molarMassAndValence,
+                    content: l10n.molarMassAndValenceDesc,
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),
@@ -152,12 +153,12 @@ class _MassReadout extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _DataColumn(
-            'DEPOSITED MASS',
+            AppLocalizations.of(context)!.depositedMass,
             '${mass.toStringAsFixed(2)} mg',
             AppColors.accentElectric,
           ),
           _DataColumn(
-            'ELAPSED TIME',
+            AppLocalizations.of(context)!.elapsedTime,
             '${time.toInt()} s',
             AppColors.textSecondary,
           ),
@@ -215,9 +216,9 @@ class _CurrentControl extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'D.C. CURRENT SOURCE',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.dcCurrentSource,
+                  style: const TextStyle(
                     color: AppColors.textSecondary,
                     fontSize: 10,
                     letterSpacing: 1.0,
@@ -261,6 +262,15 @@ class _ObjectSelector extends StatelessWidget {
 
   const _ObjectSelector({required this.selected, required this.onSelected});
 
+  String _objectName(BuildContext context, PlatingObject obj) {
+    final l10n = AppLocalizations.of(context)!;
+    return switch (obj) {
+      PlatingObject.key => l10n.platingObjectKey,
+      PlatingObject.spoon => l10n.platingObjectSpoon,
+      PlatingObject.coin => l10n.platingObjectCoin,
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -269,7 +279,7 @@ class _ObjectSelector extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(right: 8),
           child: ChoiceChip(
-            label: Text(obj.name.toUpperCase()),
+            label: Text(_objectName(context, obj).toUpperCase()),
             selected: isSelected,
             onSelected: (_) => onSelected(obj),
             selectedColor: AppColors.accentPurple,
@@ -285,6 +295,21 @@ class _MetalSelector extends StatelessWidget {
   final ValueChanged<Electrode> onSelected;
 
   const _MetalSelector({required this.selected, required this.onSelected});
+
+  String _electrodeName(BuildContext context, Electrode e) {
+    final l10n = AppLocalizations.of(context)!;
+    return switch (e.symbol) {
+      'Zn' => l10n.electrodeZinc,
+      'Fe' => l10n.electrodeIron,
+      'Ni' => l10n.electrodeNickel,
+      'Pb' => l10n.electrodeLead,
+      'Cu' => l10n.electrodeCopper,
+      'Ag' => l10n.electrodeSilver,
+      'Au' => l10n.electrodeGold,
+      'Pt' => l10n.electrodePlatinum,
+      _ => e.name,
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -306,7 +331,7 @@ class _MetalSelector extends StatelessWidget {
                   : AppColors.bgElevated,
               avatar: CircleAvatar(backgroundColor: color, radius: 8),
               label: Text(
-                m.name,
+                _electrodeName(context, m),
                 style: TextStyle(
                   color: isSelected ? Colors.white : AppColors.textSecondary,
                 ),

@@ -1122,7 +1122,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get whatIsIt => 'What is it?';
 
   @override
-  String get howItWorks => 'How it works here?';
+  String get howItWorks => 'How it Works';
 
   @override
   String get gotIt => 'GOT IT';
@@ -2428,4 +2428,289 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vseprNameBent104 => 'Bent (104.5°)';
+
+  @override
+  String get electrochemHomeTitle => 'Electrochemistry';
+
+  @override
+  String get electrochemHomeSubtitle => 'Interactive Lab Simulations';
+
+  @override
+  String get galvanicCellDesc =>
+      'Build voltaic cells, measure equilibrium potential E°cell';
+
+  @override
+  String get electrolysisDesc =>
+      'Apply voltage to drive non-spontaneous reactions';
+
+  @override
+  String get nernstEquationDesc =>
+      'Explore how concentration and temperature affects Ecell';
+
+  @override
+  String get electroplatingDesc =>
+      'Calculate mass deposition using Faraday\'s Law';
+
+  @override
+  String get upgradeToUnlockElectrolysis =>
+      'Upgrade to Premium to unlock Electrolysis!';
+
+  @override
+  String get electrochemWalkthroughTitle => 'Electrochemistry Lab';
+
+  @override
+  String get electrochemWalkthroughDesc =>
+      'Explore electrochemical cells, electrolysis, and electrochemical equations through interactive simulations.';
+
+  @override
+  String get electrochemWalkthroughTip =>
+      'Electrochemistry is everywhere - from batteries to plating to corrosion!';
+
+  @override
+  String get galvanicCellWalkthroughDesc =>
+      'Build voltaic cells and measure equilibrium potential (E°cell).';
+
+  @override
+  String get galvanicCellWalkthroughTip =>
+      'Galvanic cells convert chemical energy to electrical energy!';
+
+  @override
+  String get electrolysisWalkthroughTitle => 'Electrolysis (Pro)';
+
+  @override
+  String get electrolysisWalkthroughDesc =>
+      'Apply external voltage to drive non-spontaneous reactions.';
+
+  @override
+  String get electrolysisWalkthroughTip =>
+      'Electrolysis is used in electroplating and metal purification!';
+
+  @override
+  String get nernstWalkthroughDesc =>
+      'Explore how concentration and temperature affect cell potential.';
+
+  @override
+  String get nernstWalkthroughTip =>
+      'The Nernst equation relates cell potential to concentration!';
+
+  @override
+  String get electroplatingWalkthroughDesc =>
+      'Calculate mass deposition using Faraday\'s Law.';
+
+  @override
+  String get electroplatingWalkthroughTip =>
+      'Faraday\'s Law connects electric charge to the amount of substance deposited!';
+
+  @override
+  String get proFeaturesWalkthroughTitle => 'Pro Features';
+
+  @override
+  String get proFeaturesWalkthroughDesc =>
+      'Unlock Electrolysis and remove ads with premium.';
+
+  @override
+  String get proFeaturesWalkthroughTip =>
+      'Tap the stars icon to see subscription options!';
+
+  @override
+  String get galvanicCellBasics => 'Galvanic Cell Basics';
+
+  @override
+  String get galvanicCellHowItWorksDesc =>
+      'A galvanic (voltaic) cell converts chemical energy into electrical energy through spontaneous redox reactions. Electrons flow from the Anode to the Cathode.';
+
+  @override
+  String get electromotiveForce => 'Electromotive Force';
+
+  @override
+  String get cellPotentialDesc =>
+      'The cell potential is calculated by the difference between the reduction potentials of the two electrodes.';
+
+  @override
+  String get saltBridge => 'Salt Bridge';
+
+  @override
+  String get saltBridgeDesc =>
+      'The salt bridge completes the circuit and maintains electrical neutrality by allowing ions to flow between the two half-cells.';
+
+  @override
+  String get anodeLabel => 'Anode (−)';
+
+  @override
+  String get cathodeLabel => 'Cathode (+)';
+
+  @override
+  String get oxidationAnode => 'Oxidation (Anode)';
+
+  @override
+  String get reductionCathode => 'Reduction (Cathode)';
+
+  @override
+  String get cellPotentialLabel => 'E°cell (V)';
+
+  @override
+  String get spontaneous => 'SPONTANEOUS';
+
+  @override
+  String get nonSpontaneous => 'NON-SPONTANEOUS';
+
+  @override
+  String get nernstEquationTitle => 'Nernst Equation';
+
+  @override
+  String get nernstEquationExplorer => 'Nernst Equation Explorer';
+
+  @override
+  String get nonStandardConditions => 'Non-Standard Conditions';
+
+  @override
+  String get nonStandardConditionsDesc =>
+      'Standard cell potentials (E°) are measured at 25°C and 1.0M concentration. The Nernst Equation calculates the actual potential under any other conditions.';
+
+  @override
+  String get theEquation => 'The Equation';
+
+  @override
+  String get reactionQuotient => 'Reaction Quotient (Q)';
+
+  @override
+  String get reactionQuotientDesc =>
+      'Q is the ratio of product concentration to reactant concentration. If [Red] increases, Q increases and the cell potential (E) decreases.';
+
+  @override
+  String get temperatureK => 'Temperature (K)';
+
+  @override
+  String get oxConcentration => '[Ox] Concentration (M)';
+
+  @override
+  String get redConcentration => '[Red] Concentration (M)';
+
+  @override
+  String get actualCellPotential => 'ACTUAL CELL POTENTIAL (E)';
+
+  @override
+  String get redOxRatio => '[Red]/[Ox] Ratio';
+
+  @override
+  String get voltageE => 'E (V)';
+
+  @override
+  String get electrolysisLab => 'Electrolysis Lab';
+
+  @override
+  String get nonSpontaneousReactions => 'Non-Spontaneous Reactions';
+
+  @override
+  String get electrolysisHowDesc =>
+      'Electrolysis uses electrical energy to drive a chemical reaction that would not otherwise occur. It is the opposite of a galvanic cell.';
+
+  @override
+  String get decompositionOfNaCl => 'Decomposition of NaCl';
+
+  @override
+  String get decompositionOfNaClDesc =>
+      'In aqueous NaCl, chloride ions are oxidized at the anode (forming Cl₂ gas) and water is reduced at the cathode (forming H₂ gas).';
+
+  @override
+  String get thresholdVoltageTitle => 'Threshold Voltage';
+
+  @override
+  String get thresholdVoltageDesc =>
+      'Each electrolyte has a specific decomposition voltage (Vmin). If the applied voltage is lower than Vmin, no reaction occurs.';
+
+  @override
+  String get upgradeToUnlockElectrolytes =>
+      'Upgrade to PRO to unlock all electrolytes!';
+
+  @override
+  String get upgradeToUnlockAllElectrolytes =>
+      'Upgrade to Premium to unlock all electrolytes!';
+
+  @override
+  String get externalPowerSupply => 'EXTERNAL POWER SUPPLY';
+
+  @override
+  String get minimumVoltageRequired => 'Minimum voltage required: ';
+
+  @override
+  String get electrolyteSolution => 'ELECTROLYTE SOLUTION';
+
+  @override
+  String get electroplatingLabTitle => 'Electroplating Lab';
+
+  @override
+  String get electroplatingSecrets => 'Electroplating Secrets';
+
+  @override
+  String get whatIsElectroplating => 'What is Electroplating?';
+
+  @override
+  String get electroplatingProcessDesc =>
+      'A process of coating a base metal (like iron or brass) with a layer of a more precious metal (like gold or silver) via an electrolytic reaction.';
+
+  @override
+  String get faradaysLawTitle => 'Faraday\'s Law';
+
+  @override
+  String get faradaysLawDesc =>
+      'The mass of the metal deposited is directly proportional to the amount of electric charge passed through the solution.';
+
+  @override
+  String get molarMassAndValence => 'Molar Mass & Valence';
+
+  @override
+  String get molarMassAndValenceDesc =>
+      'Heavier metals with higher molar masses plate more mass per hour, while higher valence (n) values slow down the process because more electrons are needed per atom.';
+
+  @override
+  String get depositedMass => 'DEPOSITED MASS';
+
+  @override
+  String get elapsedTime => 'ELAPSED TIME';
+
+  @override
+  String get dcCurrentSource => 'D.C. CURRENT SOURCE';
+
+  @override
+  String get platingObjectKey => 'Key';
+
+  @override
+  String get platingObjectSpoon => 'Spoon';
+
+  @override
+  String get platingObjectCoin => 'Coin';
+
+  @override
+  String get electrodeZinc => 'Zinc';
+
+  @override
+  String get electrodeIron => 'Iron';
+
+  @override
+  String get electrodeNickel => 'Nickel';
+
+  @override
+  String get electrodeLead => 'Lead';
+
+  @override
+  String get electrodeCopper => 'Copper';
+
+  @override
+  String get electrodeSilver => 'Silver';
+
+  @override
+  String get electrodeGold => 'Gold';
+
+  @override
+  String get electrodePlatinum => 'Platinum';
+
+  @override
+  String get electrolyteNaCl => 'Aqueous Sodium Chloride';
+
+  @override
+  String get electrolyteCuSO4 => 'Copper (II) Sulfate';
+
+  @override
+  String get electrolyteWater => 'Water (Dilute H₂SO₄)';
 }

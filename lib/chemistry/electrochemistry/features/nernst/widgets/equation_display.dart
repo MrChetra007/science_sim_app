@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../l10n/generated/app_localizations.dart';
 import '../providers/nernst_state.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
@@ -20,9 +21,9 @@ class EquationDisplay extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const Text(
-            'Nernst Equation',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)!.nernstEquationTitle,
+            style: const TextStyle(
               color: AppColors.accentPurple,
               fontWeight: FontWeight.bold,
               fontSize: 10,
