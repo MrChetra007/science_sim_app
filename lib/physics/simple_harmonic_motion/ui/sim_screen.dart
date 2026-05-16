@@ -4,6 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../game/shm_game.dart';
 import '../providers/sim_provider.dart';
+import '../../../core/widgets/ad_widgets.dart';
 import '../../../l10n/generated/app_localizations.dart';
 import 'control_panel.dart';
 import 'info_panel.dart';
@@ -111,6 +112,7 @@ class _SimScreenState extends ConsumerState<SimScreen> with SingleTickerProvider
             onReset: () => _game.reset(),
             onToggleVectors: () => _game.toggleVectors(),
           ),
+          SafeArea(child: const GlobalBannerAdWidget()),
         ],
       ),
     );
