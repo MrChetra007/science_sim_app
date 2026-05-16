@@ -2,65 +2,70 @@ import 'dart:ui';
 import 'package:flame/components.dart';
 
 class MassComponent extends PositionComponent {
-  final Paint _fillPaint = Paint()..color = const Color(0xFFFF6F00);
+  static const Color _red = Color(0xFFFF3B30);
+  static const Color _redDark = Color(0xFFCC2F26);
+
+  final Paint _fillPaint = Paint()..color = _red;
   final Paint _glowPaint = Paint()
-    ..color = const Color(0xFFFF6F00).withValues(alpha: 0.3)
+    ..color = _red.withValues(alpha: 0.3)
     ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 12);
-  final Paint _borderPaint = Paint()
-    ..color = const Color(0xFFFF8F00)
-    ..style = PaintingStyle.stroke
-    ..strokeWidth = 2.0;
+  final Paint _shadowPaint = Paint()
+    ..color = const Color(0x40000000)
+    ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4);
 
   double massValue = 0.5;
-  double blockWidth = 80;
-  double blockHeight = 40;
-  double equilibriumY = 0.0;
+  double blockWidth = 50;
+  double blockHeight = 50;
   bool isGrabbed = false;
   double velocity = 0;
   List<Offset> trailDots = [];
 
+  MassComponent() : super(anchor: Anchor.center);
+
   @override
   void render(Canvas canvas) {
-    final cx = position.x;
-    final cy = position.y;
+    final bw = blockWidth;
+    final bh = blockHeight;
     final speed = velocity.abs();
     final glowRadius = 8 + (speed * 30).clamp(0, 24).toDouble();
 
     _glowPaint.maskFilter = MaskFilter.blur(BlurStyle.normal, glowRadius);
-    _glowPaint.color = const Color(0xFFFF6F00).withValues(alpha: (0.15 + speed * 2).clamp(0.15, 0.5).toDouble());
-
-    canvas.drawCircle(Offset(cx, cy), blockWidth / 2, _glowPaint);
+    _glowPaint.color = _red.withValues(alpha: (0.15 + speed * 2).clamp(0.15, 0.5).toDouble());
+    canvas.drawCircle(Offset.zero, bw * 0.6, _glowPaint);
 
     for (final dot in trailDots) {
-      canvas.drawCircle(dot, 2, Paint()..color = const Color(0xFFFF6F00).withValues(alpha: 0.3));
+      canvas.drawCircle(dot - position.toOffset(), 2, Paint()..color = _red.withValues(alpha: 0.3));
     }
 
-    final rrect = RRect.fromRectAndRadius(
-      Rect.fromCenter(
-        center: Offset(cx, cy),
-        width: blockWidth,
-        height: blockHeight,
-      ),
-      const Radius.circular(8),
+    final rect = Rect.fromCenter(center: Offset.zero, width: bw, height: bh);
+    final rrect = RRect.fromRectAndRadius(rect, const Radius.circular(6));
+
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(rect.shift(const Offset(2, 3)), const Radius.circular(6)),
+      _shadowPaint,
     );
 
     canvas.drawRRect(rrect, _fillPaint);
 
-    if (isGrabbed) {
-      canvas.drawRRect(rrect, _borderPaint);
-    }
-
-    final textStyle = TextStyle(
-      color: const Color(0xFFFFFFFF),
-      fontSize: 14,
+    final edgeRect = RRect.fromRectAndRadius(
+      Rect.fromLTWH(bw * 0.15, bh * 0.35, bw * 0.4, bh * 0.4),
+      const Radius.circular(3),
     );
-    final tp = ParagraphBuilder(ParagraphStyle(textAlign: TextAlign.center))
-      ..pushStyle(textStyle)
-      ..addText('${massValue.toStringAsFixed(1)} kg');
-    final paragraph = tp.build()..layout(const ParagraphConstraints(width: 80));
-    canvas.drawParagraph(
-      paragraph,
-      Offset(cx - blockWidth / 2, cy - 8),
+    canvas.drawRRect(edgeRect, Paint()..color = _redDark.withValues(alpha: 0.35));
+
+    final highlightShader = Gradient.linear(
+      Offset(-bw * 0.35, -bh * 0.35),
+      Offset(bw * 0.3, bh * 0.3),
+      [const Color(0x55FFFFFF), const Color(0x00FFFFFF)],
+    );
+    canvas.drawRRect(rrect, Paint()..shader = highlightShader);
+
+    canvas.drawRRect(
+      rrect,
+      Paint()
+        ..color = const Color(0x66FFFFFF)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1.0,
     );
   }
 
