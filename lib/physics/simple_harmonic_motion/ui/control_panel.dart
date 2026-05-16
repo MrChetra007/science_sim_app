@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../providers/sim_provider.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class ControlPanel extends StatelessWidget {
   final SimState state;
@@ -29,15 +30,17 @@ class ControlPanel extends StatelessWidget {
     required this.onToggleVectors,
   });
 
-  static const _planets = {
-    'Moon': 1.6,
-    'Mars': 3.7,
-    'Earth': 9.8,
-    'Jupiter': 24.8,
-  };
+  List<MapEntry<String, double>> _planets(AppLocalizations l10n) => [
+    MapEntry(l10n.shmPlanetMoon, 1.6),
+    MapEntry(l10n.shmPlanetMars, 3.7),
+    MapEntry(l10n.shmPlanetEarth, 9.8),
+    MapEntry(l10n.shmPlanetJupiter, 24.8),
+  ];
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Container(
       color: const Color(0xFF1A1A2E),
       padding: const EdgeInsets.all(12),
@@ -46,25 +49,25 @@ class ControlPanel extends StatelessWidget {
         children: [
           Row(
             children: [
-              _modeButton(context, 'Spring-Mass', SimMode.spring),
+              _modeButton(context, l10n.shmSpringMode, SimMode.spring),
               const SizedBox(width: 8),
-              _modeButton(context, 'Pendulum', SimMode.pendulum),
+              _modeButton(context, l10n.shmPendulumMode, SimMode.pendulum),
               const Spacer(),
-              _iconButton(Icons.pause_rounded, state.isRunning ? 'Pause' : 'Play', onPause),
-              _iconButton(Icons.refresh_rounded, 'Reset', onReset),
-              _iconButton(Icons.arrow_right_alt_rounded, 'Vectors', onToggleVectors),
+              _iconButton(Icons.pause_rounded, state.isRunning ? l10n.pause : l10n.play, onPause),
+              _iconButton(Icons.refresh_rounded, l10n.reset, onReset),
+              _iconButton(Icons.arrow_right_alt_rounded, l10n.shmVectors, onToggleVectors),
             ],
           ),
           const SizedBox(height: 8),
           if (state.mode == SimMode.spring) ...[
-            _slider('Spring Constant (k)', state.springConstant, 5, 50, 'N/m', onSpringConstant),
-            _slider('Mass (m)', state.mass, 0.1, 2.0, 'kg', onMass),
-            _slider('Amplitude (A)', state.amplitude, 0.05, 0.30, 'm', onAmplitude),
+            _slider(l10n.shmSpringConstant, state.springConstant, 5, 50, 'N/m', onSpringConstant),
+            _slider(l10n.shmMassLabel, state.mass, 0.1, 2.0, 'kg', onMass),
+            _slider(l10n.shmAmplitudeLabel, state.amplitude, 0.05, 0.30, 'm', onAmplitude),
           ] else ...[
-            _slider('Length (L)', state.pendulumLength, 0.2, 2.0, 'm', onPendulumLength),
-            _slider('Initial Angle (\u03B8\u2080)', state.initialAngle, 5, 45, '\u00B0', onInitialAngle),
+            _slider(l10n.shmLength, state.pendulumLength, 0.2, 2.0, 'm', onPendulumLength),
+            _slider(l10n.shmInitialAngle, state.initialAngle, 5, 45, '\u00B0', onInitialAngle),
             Row(
-              children: _planets.entries.map((e) {
+              children: _planets(l10n).map((e) {
                 final selected = state.gravity == e.value;
                 return Padding(
                   padding: const EdgeInsets.only(right: 4),

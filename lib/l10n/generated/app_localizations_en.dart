@@ -3018,5 +3018,57 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shmPendulumMode => 'Pendulum';
 
   @override
+  String get shmVectors => 'Vectors';
+
+  @override
+  String get shmSpringConstant => 'Spring Constant (k)';
+
+  @override
+  String get shmMassLabel => 'Mass (m)';
+
+  @override
+  String get shmAmplitudeLabel => 'Amplitude (A)';
+
+  @override
+  String get shmLength => 'Length (L)';
+
+  @override
+  String get shmInitialAngle => 'Initial Angle (θ₀)';
+
+  @override
+  String get shmPlanetMoon => 'Moon';
+
+  @override
+  String get shmPlanetMars => 'Mars';
+
+  @override
+  String get shmPlanetEarth => 'Earth';
+
+  @override
+  String get shmPlanetJupiter => 'Jupiter';
+
+  @override
+  String get shmStatusAdjustAmplitude => 'Adjust amplitude to start';
+
+  @override
+  String get shmStatusAtEquilibrium =>
+      'At equilibrium — maximum speed, zero PE';
+
+  @override
+  String get shmStatusAtMaxDisplacement =>
+      'At maximum displacement — zero speed, maximum PE';
+
+  @override
+  String get shmStatusRestoringForce =>
+      'Restoring force pulling back toward equilibrium';
+
+  @override
+  String get shmStatusMovingToEquilibrium =>
+      'Moving toward equilibrium — KE increasing';
+
+  @override
+  String get shmStatusLargeAngle => 'Large angle — approximation less accurate';
+
+  @override
   String get shmLabTutorial => 'SHM Lab - Simple Harmonic Motion';
 }

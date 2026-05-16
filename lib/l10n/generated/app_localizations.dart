@@ -5660,6 +5660,102 @@ abstract class AppLocalizations {
   /// **'Pendulum'**
   String get shmPendulumMode;
 
+  /// No description provided for @shmVectors.
+  ///
+  /// In en, this message translates to:
+  /// **'Vectors'**
+  String get shmVectors;
+
+  /// No description provided for @shmSpringConstant.
+  ///
+  /// In en, this message translates to:
+  /// **'Spring Constant (k)'**
+  String get shmSpringConstant;
+
+  /// No description provided for @shmMassLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass (m)'**
+  String get shmMassLabel;
+
+  /// No description provided for @shmAmplitudeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Amplitude (A)'**
+  String get shmAmplitudeLabel;
+
+  /// No description provided for @shmLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Length (L)'**
+  String get shmLength;
+
+  /// No description provided for @shmInitialAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Initial Angle (θ₀)'**
+  String get shmInitialAngle;
+
+  /// No description provided for @shmPlanetMoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Moon'**
+  String get shmPlanetMoon;
+
+  /// No description provided for @shmPlanetMars.
+  ///
+  /// In en, this message translates to:
+  /// **'Mars'**
+  String get shmPlanetMars;
+
+  /// No description provided for @shmPlanetEarth.
+  ///
+  /// In en, this message translates to:
+  /// **'Earth'**
+  String get shmPlanetEarth;
+
+  /// No description provided for @shmPlanetJupiter.
+  ///
+  /// In en, this message translates to:
+  /// **'Jupiter'**
+  String get shmPlanetJupiter;
+
+  /// No description provided for @shmStatusAdjustAmplitude.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust amplitude to start'**
+  String get shmStatusAdjustAmplitude;
+
+  /// No description provided for @shmStatusAtEquilibrium.
+  ///
+  /// In en, this message translates to:
+  /// **'At equilibrium — maximum speed, zero PE'**
+  String get shmStatusAtEquilibrium;
+
+  /// No description provided for @shmStatusAtMaxDisplacement.
+  ///
+  /// In en, this message translates to:
+  /// **'At maximum displacement — zero speed, maximum PE'**
+  String get shmStatusAtMaxDisplacement;
+
+  /// No description provided for @shmStatusRestoringForce.
+  ///
+  /// In en, this message translates to:
+  /// **'Restoring force pulling back toward equilibrium'**
+  String get shmStatusRestoringForce;
+
+  /// No description provided for @shmStatusMovingToEquilibrium.
+  ///
+  /// In en, this message translates to:
+  /// **'Moving toward equilibrium — KE increasing'**
+  String get shmStatusMovingToEquilibrium;
+
+  /// No description provided for @shmStatusLargeAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Large angle — approximation less accurate'**
+  String get shmStatusLargeAngle;
+
   /// No description provided for @shmLabTutorial.
   ///
   /// In en, this message translates to:

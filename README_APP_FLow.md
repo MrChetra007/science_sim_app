@@ -156,7 +156,80 @@ Challenge mode, audio tone generator, slow motion, home screen animation, Pro IA
 
 ---
 
-## Getting Started
+---
+
+# 〰️ SHM Lab
+### Simple Harmonic Motion — Interactive Lessons, Quiz & Simulation
+
+> **Learn SHM through structured lessons, test yourself with a quiz, and experiment with a live spring-mass & pendulum simulation.**
+
+## What Is This?
+
+SHM Lab is a self-contained module inside the Science Lab app that teaches Simple Harmonic Motion through three modes:
+- **Lessons** — 4 structured lessons covering what SHM is, period & frequency, energy in SHM, and real-world applications
+- **Quiz** — 5 multiple-choice questions with instant feedback and scoring
+- **Simulation** — Interactive Flame-powered spring-mass and pendulum simulator with real-time graphs, energy bars, and vector overlays
+
+## Features
+
+- 4 progressive lessons with formulas (Hooke's Law, period, energy, velocity)
+- 5-question quiz with pass/fail results
+- Interactive simulation with spring-mass and pendulum modes
+- Real-time position / velocity / acceleration graphs
+- Kinetic & potential energy bars
+- Adjustable mass, spring constant, amplitude, gravity, pendulum length
+- Full Khmer localization
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Flutter 3.x |
+| Simulation Rendering | Flame Engine |
+| State Management | Riverpod |
+| Localization | Flutter l10n (ARB files) |
+| Persistence | shared_preferences |
+
+## Project Structure
+
+```
+lib/physics/simple_harmonic_motion/
+├── app.dart                              # Standalone app entry
+├── main.dart                             # Main entry
+├── lessons/
+│   ├── models/lesson.dart                # Lesson, LessonStep, QuizQuestion models
+│   ├── lesson_data.dart                  # Lesson & quiz content
+│   └── screens/
+│       ├── home_screen.dart              # Module home — lessons + sim + quiz
+│       ├── lesson_screen.dart            # Paged lesson viewer
+│       └── quiz_screen.dart              # Quiz with scoring
+├── game/
+│   ├── shm_game.dart                     # Flame game engine
+│   ├── physics/
+│   │   ├── shm_engine.dart               # Core SHM physics
+│   │   ├── spring_engine.dart            # Spring-mass numerical solver
+│   │   └── pendulum_engine.dart          # Pendulum numerical solver
+│   └── components/
+│       ├── spring_component.dart
+│       ├── mass_component.dart
+│       ├── pendulum_bob_component.dart
+│       ├── pendulum_rod_component.dart
+│       ├── equilibrium_line_component.dart
+│       ├── vector_arrow_component.dart
+│       ├── graph_component.dart
+│       └── energy_bar_component.dart
+├── providers/
+│   └── sim_provider.dart                 # Riverpod state
+└── ui/
+    ├── sim_screen.dart                   # Simulation screen
+    ├── control_panel.dart                # Parameter sliders
+    └── info_panel.dart                   # Live readouts
+```
+
+---
+
+# 〰️ Wave Lab
+### Interactive Wave Physics Simulation — Flutter App
 
 ### Prerequisites
 - Flutter SDK 3.x or higher

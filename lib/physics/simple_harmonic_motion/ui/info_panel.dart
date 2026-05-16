@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/sim_provider.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class InfoPanel extends ConsumerWidget {
   const InfoPanel({super.key});
@@ -8,6 +9,7 @@ class InfoPanel extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(simProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       color: const Color(0xFF1A1A2E),
@@ -17,7 +19,7 @@ class InfoPanel extends ConsumerWidget {
         children: [
           _metricRow(state),
           const SizedBox(height: 4),
-          _statusText(state),
+          _statusText(state, l10n),
           const SizedBox(height: 4),
           _formulaBox(state),
         ],
@@ -48,25 +50,25 @@ class InfoPanel extends ConsumerWidget {
     );
   }
 
-  Widget _statusText(SimState state) {
+  Widget _statusText(SimState state, AppLocalizations l10n) {
     final x = state.position;
     final A = state.amplitude;
     String status;
 
     if (A < 0.01) {
-      status = 'Adjust amplitude to start';
+      status = l10n.shmStatusAdjustAmplitude;
     } else if (x.abs() < 0.01 * A) {
-      status = 'At equilibrium \u2014 maximum speed, zero PE';
+      status = l10n.shmStatusAtEquilibrium;
     } else if ((x / A).abs() > 0.95) {
-      status = 'At maximum displacement \u2014 zero speed, maximum PE';
+      status = l10n.shmStatusAtMaxDisplacement;
     } else if (x > 0) {
-      status = 'Restoring force pulling back toward equilibrium';
+      status = l10n.shmStatusRestoringForce;
     } else {
-      status = 'Moving toward equilibrium \u2014 KE increasing';
+      status = l10n.shmStatusMovingToEquilibrium;
     }
 
     if (state.mode == SimMode.pendulum && state.initialAngle > 15) {
-      status += '  \u26A0 Large angle \u2014 approximation less accurate';
+      status += '  \u26A0 ${l10n.shmStatusLargeAngle}';
     }
 
     return Text(

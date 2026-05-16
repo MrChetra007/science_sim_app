@@ -2983,5 +2983,58 @@ class AppLocalizationsKm extends AppLocalizations {
   String get shmPendulumMode => 'ប៉ោល';
 
   @override
+  String get shmVectors => 'វ៉ិចទ័រ';
+
+  @override
+  String get shmSpringConstant => 'ថេរស្ព្រីង (k)';
+
+  @override
+  String get shmMassLabel => 'ម៉ាស (m)';
+
+  @override
+  String get shmAmplitudeLabel => 'អំព្លីទុត (A)';
+
+  @override
+  String get shmLength => 'ប្រវែង (L)';
+
+  @override
+  String get shmInitialAngle => 'មុំដើម (θ₀)';
+
+  @override
+  String get shmPlanetMoon => 'ព្រះច័ន្ទ';
+
+  @override
+  String get shmPlanetMars => 'ភពអង្គារ';
+
+  @override
+  String get shmPlanetEarth => 'ផែនដី';
+
+  @override
+  String get shmPlanetJupiter => 'ភពព្រហស្បតិ៍';
+
+  @override
+  String get shmStatusAdjustAmplitude => 'សូមកែសម្រួលអំព្លីទុតដើម្បីចាប់ផ្តើម';
+
+  @override
+  String get shmStatusAtEquilibrium =>
+      'នៅត្រង់ទីតាំងលំនឹង — ល្បឿនអតិបរមា, PE សូន្យ';
+
+  @override
+  String get shmStatusAtMaxDisplacement =>
+      'នៅត្រង់ចំណុចលំឃ្លាតអតិបរមា — ល្បឿនសូន្យ, PE អតិបរមា';
+
+  @override
+  String get shmStatusRestoringForce =>
+      'កម្លាំងស្ដារកំពុងទាញត្រឡប់មកទីតាំងលំនឹងវិញ';
+
+  @override
+  String get shmStatusMovingToEquilibrium =>
+      'កំពុងរំកិលឆ្ពោះទៅទីតាំងលំនឹង — KE កំពុងកើនឡើង';
+
+  @override
+  String get shmStatusLargeAngle =>
+      'មុំមានទំហំធំ — ការគណនាប្រហាក់ប្រហែលមានភាពត្រឹមត្រូវទាប';
+
+  @override
   String get shmLabTutorial => 'មន្ទីរពិសោធន៍ SHM - ចលនាទោលសុខដុមសាមញ្ញ';
 }
