@@ -2677,4 +2677,311 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get electrolyteWater => 'ទឹក (លាយ H₂SO₄ រាវ)';
+
+  @override
+  String get shmLab => 'SHM';
+
+  @override
+  String get shmLabSubtitle => 'ចលនាទោលសុខដុមសាមញ្ញ';
+
+  @override
+  String get shmHomeTitle => 'មន្ទីរពិសោធន៍ SHM';
+
+  @override
+  String get shmLessons => 'មេរៀន';
+
+  @override
+  String get shmPractice => 'ការអនុវត្ត';
+
+  @override
+  String get shmQuiz => 'កម្រងសំណួរ';
+
+  @override
+  String get shmQuizSubtitle => 'សាកល្បងចំណេះដឹងរបស់អ្នកអំពី SHM';
+
+  @override
+  String get shmSimulation => 'កម្មវិធីពិសោធន៍';
+
+  @override
+  String get shmSimulationSubtitle => 'ស្ព្រីង-ម៉ាស និងប៉ោលអន្តរកម្ម';
+
+  @override
+  String get shmComplete => 'រួចរាល់';
+
+  @override
+  String get shmNextQuestion => 'សំណួរបន្ទាប់';
+
+  @override
+  String get shmSeeResults => 'មើលលទ្ធផល';
+
+  @override
+  String get shmQuizResults => 'លទ្ធផលកម្រងសំណួរ';
+
+  @override
+  String get shmGreatJob =>
+      'ធ្វើបានល្អណាស់! អ្នកមានការយល់ដឹងច្បាស់លាស់អំពី SHM។';
+
+  @override
+  String get shmKeepPracticing =>
+      'បន្តអនុវត្តបន្ថែមទៀត! ពិនិត្យមើលមេរៀនឡើងវិញ ហើយព្យាយាមម្តងទៀត។';
+
+  @override
+  String get shmRetryQuiz => 'ធ្វើកម្រងសំណួរឡើងវិញ';
+
+  @override
+  String get shmBackToHome => 'ត្រឡប់ទៅទំព័រដើម';
+
+  @override
+  String shmStepOf(String current, String total) {
+    return 'ជំហានទី $current នៃ $total';
+  }
+
+  @override
+  String shmQuestionOf(String current, String total) {
+    return 'សំណួរទី $current នៃ $total';
+  }
+
+  @override
+  String shmScoreLabel(String score) {
+    return 'ពិន្ទុ៖ $score';
+  }
+
+  @override
+  String shmPercentCorrect(String percent) {
+    return 'ត្រឹមត្រូវ $percent%';
+  }
+
+  @override
+  String get shmLesson1Title => 'តើ SHM ជាអ្វី?';
+
+  @override
+  String get shmLesson1Subtitle => 'លំយោលនៅជុំវិញយើង';
+
+  @override
+  String get shmL1S1Title => 'តើអ្វីទៅជាចលនាទោលសុខដុមសាមញ្ញ?';
+
+  @override
+  String get shmL1S1Body =>
+      'ចលនាទោលសុខដុមសាមញ្ញ (Simple Harmonic Motion - SHM) គឺជាទម្រង់នៃចលនាខួប ដែលកម្លាំងម៉ាស៊ីនបង្វិលត្រឡប់ (កម្លាំងស្ដារ) មានសមាមាត្រផ្ទាល់ទៅនឹងបម្រែបម្រួលទីតាំង (ការផ្លាស់ទីលំនៅ) ពីទីតាំងលំនឹង។ ឧបមាដូចជាម៉ាស់នៅលើស្ព្រីង — នៅពេលអ្នកទាញវាហើយលែង វានឹងលោតឡើងចុះ ឬទៅមកជានិច្ច។';
+
+  @override
+  String get shmL1S2Title => 'លក្ខណៈសម្គាល់សំខាន់ៗ';
+
+  @override
+  String get shmL1S2Body =>
+      'SHM មានលក្ខណៈសម្បត្តិគន្លឹះបីយ៉ាង៖ (១) ចលនាកើតឡើងដដែលៗក្នុងចន្លោះពេលទៀងទាត់ (ចលនាខួប) (២) វ៉ិចទ័រសន្ទុះតែងតែចង្អុលឆ្ពោះទៅរកទីតាំងលំនឹងជានិច្ច (៣) ទំហំនៃសន្ទុះមានសមាមាត្រផ្ទាល់ទៅនឹងទំហំនៃការផ្លាស់ទីលំនៅ។';
+
+  @override
+  String get shmL1S3Title => 'កម្លាំងស្ដារ';
+
+  @override
+  String get shmL1S3Body =>
+      'កម្លាំងស្ដារ គឺជាកម្លាំងដែលទាញវត្ថុឱ្យត្រឡប់មករកទីតាំងលំនឹងវិញ។ សម្រាប់ប្រព័ន្ធស្ព្រីង កម្លាំងនេះត្រូវបានកំណត់ដោយច្បាប់ហ៊ូក (Hooke\'s Law)៖';
+
+  @override
+  String get shmL1S3Formula => 'F = -kx';
+
+  @override
+  String get shmL1S4Title => 'អំព្លីទុត និងទីតាំងលំនឹង';
+
+  @override
+  String get shmL1S4Body =>
+      'អំព្លីទុត (A) គឺជាតម្លៃដាច់ខាតនៃការផ្លាស់ទីលំនៅអតិបរមាពីទីតាំងលំនឹង។ ទីតាំងលំនឹងគឺជាចំណុចដែលផលបូកកម្លាំងមានតម្លៃស្មើសូន្យ។ វត្ថុធ្វើលំយោលទៅមកចន្លោះពី +A និង -A។';
+
+  @override
+  String get shmLesson2Title => 'ខួប និងប្រេកង់';
+
+  @override
+  String get shmLesson2Subtitle => 'ការវាស់ពេលវេលានៃលំយោល';
+
+  @override
+  String get shmL2S1Title => 'តើខួបជាអ្វី?';
+
+  @override
+  String get shmL2S1Body =>
+      'ខួប (T) គឺជាថេរវេលាដែលត្រូវការដើម្បីបង្កើតលំយោលពេញបានមួយដង។ ឧទាហរណ៍ ប្រសិនបើខ្សែប៉ោលយោលទៅមកពេញមួយជុំប្រើពេល ២ វិនាទី នោះខួបរបស់វាគឺ T = 2 s។';
+
+  @override
+  String get shmL2S2Title => 'ខួបនៃប្រព័ន្ធស្ព្រីង';
+
+  @override
+  String get shmL2S2Body =>
+      'ខួបនៃប្រព័ន្ធម៉ាស់-ស្ព្រីង គឺអាស្រ័យទៅលើតែម៉ាស (m) នៃអង្គធាតុ និងថេរស្ព្រីង (k) តែប៉ុណ្ណោះ៖';
+
+  @override
+  String get shmL2S2Formula => 'T = 2π √(m/k)';
+
+  @override
+  String get shmL2S3Title => 'តើប្រេកង់ជាអ្វី?';
+
+  @override
+  String get shmL2S3Body =>
+      'ប្រេកង់ (f) គឺជាចំនួនជុំនៃលំយោលក្នុងរយៈពេលមួយវិនាទី។ វាជាតម្លៃច្រាសនៃខួប៖ f = 1/T។ ឯកតារបស់ប្រេកង់គិតជា ហឺត (Hz)។';
+
+  @override
+  String get shmL2S4Title => 'ប្រេកង់មុំ';
+
+  @override
+  String get shmL2S4Body =>
+      'ប្រេកង់មុំ (ω) មានទំនាក់ទំនងទៅនឹងខួប និងប្រេកង់តាមរយៈរូបមន្ត៖';
+
+  @override
+  String get shmL2S4Formula => 'ω = 2πf = 2π/T';
+
+  @override
+  String get shmLesson3Title => 'ថាមពលក្នុង SHM';
+
+  @override
+  String get shmLesson3Subtitle => 'ច្បាប់អភិរក្សថាមពល';
+
+  @override
+  String get shmL3S1Title => 'ទម្រង់ផ្សេងៗនៃថាមពល';
+
+  @override
+  String get shmL3S1Body =>
+      'ក្នុងចលនា SHM ថាមពលប្រែប្រួលជានិច្ចរវាងថាមពលចលនភាព (KE) និងថាមពលសក្ដានុពល (PE)។ នៅត្រង់ទីតាំងលំនឹង ថាមពលចលនភាព (KE) មានតម្លៃអតិបរមា ហើយថាមពលសក្ដានុពល (PE) មានតម្លៃសូន្យ។ នៅត្រង់ចំណុចចុងនៃអំព្លីទុតវិញ KE មានតម្លៃសូន្យ ហើយ PE មានតម្លៃអតិបរមា។';
+
+  @override
+  String get shmL3S2Title => 'ថាមពលមេកានិកសរុប';
+
+  @override
+  String get shmL3S2Body =>
+      'ថាមពលមេកានិកសរុបនៅក្នុង SHM រក្សាតម្លៃថេរជានិច្ច (ដោយមិនគិតពីកម្លាំងកកិត)។ សម្រាប់ប្រព័ន្ធម៉ាស់-ស្ព្រីង៖';
+
+  @override
+  String get shmL3S2Formula => 'E = ½kA²';
+
+  @override
+  String get shmL3S3Title => 'ថាមពលនៅចំណុចណាមួយ';
+
+  @override
+  String get shmL3S3Body =>
+      'នៅត្រង់រាល់បម្រែបម្រួលទីតាំង x ណាមួយពីលំនឹង៖ KE = ½k(A² − x²) និង PE = ½kx²។ ផលបូកថាមពលសរុប KE + PE = ½kA² គឺថេរជានិច្ច។';
+
+  @override
+  String get shmL3S4Title => 'ល្បឿនក្នុង SHM';
+
+  @override
+  String get shmL3S4Body =>
+      'ល្បឿននៃអង្គធាតុដែលកំពុងធ្វើលំយោលនៅត្រង់បម្រែបម្រួលទីតាំង x ណាមួយ កំណត់ដោយរូបមន្ត៖';
+
+  @override
+  String get shmL3S4Formula => 'v = ±ω √(A² − x²)';
+
+  @override
+  String get shmLesson4Title => 'SHM ក្នុងជីវិតពិត';
+
+  @override
+  String get shmLesson4Subtitle => 'បាតុភូត SHM ក្នុងជីវិតប្រចាំថ្ងៃ';
+
+  @override
+  String get shmL4S1Title => 'ខ្សែប៉ោល';
+
+  @override
+  String get shmL4S1Body =>
+      'ប៉ោលសាមញ្ញបង្កើតចលនាប្រហាក់ប្រហែលនឹង SHM បាន លុះត្រាតែវាបង្កើតមុំលំយោលតូច (តូចជាង 15°)។ ខួបរបស់វាអាស្រ័យតែលើប្រវែងខ្សែ (L) និងសន្ទុះទំនាញផែនដី (g) ប៉ុណ្ណោះ៖ T = 2π√(L/g)។ នេះជាមូលហេតុដែលនាឡិកាប៉ោលដំណើរការបានយ៉ាងត្រឹមត្រូវ!';
+
+  @override
+  String get shmL4S2Title => 'រលក និងសំឡេង';
+
+  @override
+  String get shmL4S2Body =>
+      'រលកសំឡេងជារលកបណ្តោយ ដែលម៉ូលេគុលខ្យល់ធ្វើលំយោលទៅមកតាមទម្រង់ SHM។ ឧបករណ៍តន្ត្រី ដូចជាសមកម្រើក (Tuning fork) និងខ្សែហ្គីតាក៏រំញ័រតាមលក្ខណៈ SHM ផងដែរ។';
+
+  @override
+  String get shmL4S3Title => 'រំញ័រម៉ូលេគុល';
+
+  @override
+  String get shmL4S3Body =>
+      'នៅកម្រិតមីក្រូទស្សន៍ អាតូមនៅក្នុងម៉ូលេគុលរំញ័រជុំវិញទីតាំងលំនឹងរបស់វាផ្អែកលើ SHM។ នេះជាមូលហេតុដែលវត្ថុរឹងមានថាមពលកម្ដៅ — ព្រោះអាតូមរបស់វាធ្វើលំយោលឥតឈប់ឈរ។';
+
+  @override
+  String get shmL4S4Title => 'វិស្វកម្ម និងស្ពាន';
+
+  @override
+  String get shmL4S4Body =>
+      'វិស្វករត្រូវតែគិតគូរហ្មត់ចត់ពីឥទ្ធិពល SHM នៅពេលរចនាអគារ និងស្ពាន។ ការបាក់រលំនៃស្ពាន Tacoma Narrows ក្នុងឆ្នាំ 1940 គឺជាឧទាហរណ៍ដ៏ល្បីល្បាញមួយនៃបាតុភូតរ៉េសូណង់ (Resonance) — ដែលកើតឡើងនៅពេលកម្លាំងរំញ័រខាងក្រៅមានប្រេកង់ត្រូវគ្នានឹងប្រេកង់ធម្មជាតិនៃសំណង់។';
+
+  @override
+  String get shmQ1Question =>
+      'តើកម្លាំងស្ដារនៅក្នុងចលនា SHM មានសមាមាត្រផ្ទាល់ទៅនឹងអ្វី?';
+
+  @override
+  String get shmQ1Options =>
+      '[\"ល្បឿន\",\"ការផ្លាស់ទីលំនៅ (បម្រែបម្រួលទីតាំង)\",\"ពេលវេលា\",\"ម៉ាស\"]';
+
+  @override
+  String get shmQ1CorrectIndex => '1';
+
+  @override
+  String get shmQ1Explanation =>
+      'នៅក្នុងចលនា SHM កម្លាំងស្ដារមានសមាមាត្រផ្ទាល់ទៅនឹងការផ្លាស់ទីលំនៅចេញពីទីតាំងលំនឹង (F = -kx)។';
+
+  @override
+  String get shmQ2Question =>
+      'តើខួបនៃប្រព័ន្ធម៉ាស់-ស្ព្រីងដែលមាន m = 4 kg និង k = 100 N/m ស្មើនឹ​ងប៉ុន្មាន? (សន្មតយក π ≈ 3.14)';
+
+  @override
+  String get shmQ2Options => '[\"0.63 s\",\"1.26 s\",\"2.51 s\",\"0.40 s\"]';
+
+  @override
+  String get shmQ2CorrectIndex => '1';
+
+  @override
+  String get shmQ2Explanation =>
+      'គណនាតាមរូបមន្ត T = 2π√(m/k) = 2π√(4/100) = 2π × 0.2 = 1.26 វិនាទី។';
+
+  @override
+  String get shmQ3Question =>
+      'នៅត្រង់ទីតាំងណាមួយនៃចលនា SHM ដែលធ្វើឱ្យថាមពលចលនភាពមានតម្លៃអតិបរមា?';
+
+  @override
+  String get shmQ3Options =>
+      '[\"នៅត្រង់ចំណុចអំព្លីទុត\",\"នៅត្រង់ទីតាំងលំនឹង\",\"នៅត្រង់ចំណុចកណ្តាលនៃគន្លង\",\"ថាមពលចលនភាពរក្សាតម្លៃថេរគ្រប់ចំណុច\"]';
+
+  @override
+  String get shmQ3CorrectIndex => '1';
+
+  @override
+  String get shmQ3Explanation =>
+      'ថាមពលចលនភាពមានតម្លៃអតិបរមានៅត្រង់ទីតាំងលំនឹង ដែលជាកន្លែងអង្គធាតុមានល្បឿនលឿនបំផុត។ នៅត្រង់ចំណុចចុងសងខាង ថាមពលទាំងអស់បំប្លែងទៅជាថាមពលសក្ដានុពលវិញ។';
+
+  @override
+  String get shmQ4Question =>
+      'តើមានអ្វីកើតឡើងចំពោះខួបរបស់ខ្សែប៉ោល ប្រសិនបើប្រវែងខ្សែកើនឡើង 4 ដង?';
+
+  @override
+  String get shmQ4Options =>
+      '[\"ខួបកើនឡើង 2 ដង\",\"ខួបថយចុះពាក់កណ្តាល\",\"ខួបកើនឡើង 4 ដង\",\"ខួបដៅរក្សាតម្លៃនៅដដែល\"]';
+
+  @override
+  String get shmQ4CorrectIndex => '0';
+
+  @override
+  String get shmQ4Explanation =>
+      'ដោយសារតែ T ∝ √L ដូចនេះប្រសិនបើ L កើនឡើង 4 ដង នាំឱ្យ T កើនឡើងតម្លៃ √4 = 2 ដង។';
+
+  @override
+  String get shmQ5Question =>
+      'ថាមពលមេកានិកសរុបនៅក្នុងចលនា SHM មានសមាមាត្រផ្ទាល់ទៅនឹង៖';
+
+  @override
+  String get shmQ5Options =>
+      '[\"អំព្លីទុត\",\"ការេនៃអំព្លីទុត\",\"ម៉ាស\",\"ថេរស្ព្រីង\"]';
+
+  @override
+  String get shmQ5CorrectIndex => '1';
+
+  @override
+  String get shmQ5Explanation =>
+      'តាមរូបមន្តថាមពលសរុប E = ½kA² ដូចនេះវាមានសមាមាត្រផ្ទាល់ទៅនឹងការេនៃអំព្លីទុត (A²)។';
+
+  @override
+  String get shmSpringMode => 'ស្ព្រីង-ម៉ាស';
+
+  @override
+  String get shmPendulumMode => 'ប៉ោល';
+
+  @override
+  String get shmLabTutorial => 'មន្ទីរពិសោធន៍ SHM - ចលនាទោលសុខដុមសាមញ្ញ';
 }

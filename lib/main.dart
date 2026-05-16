@@ -26,6 +26,7 @@ import 'physics/projectile_motion/app.dart' as projectile_app;
 import 'physics/ac_lab/main_standalone.dart' as ac_main;
 import 'physics/ac_lab/providers/ac_provider.dart';
 import 'physics/wave_lab/main_standalone.dart' as wave_main;
+import 'physics/simple_harmonic_motion/lessons/screens/home_screen.dart' as shm_home;
 
 // Import Chemistry Labs
 import 'chemistry/acide_base_ph/main.dart' as ph_main;
@@ -146,6 +147,15 @@ class _ElectrochemWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return rp.ProviderScope(child: electro_home.HomeScreen());
+  }
+}
+
+class _SHMWrapper extends StatelessWidget {
+  const _SHMWrapper();
+
+  @override
+  Widget build(BuildContext context) {
+    return rp.ProviderScope(child: const shm_home.HomeScreen());
   }
 }
 
@@ -578,6 +588,24 @@ class _MainDashboardState extends State<MainDashboard> {
                   }
                 },
               ),
+              _WalkthroughOption(
+                label: 'SHM Lab - Simple Harmonic Motion',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyShmLab,
+                  );
+                  if (context.mounted) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const _SHMWrapper(),
+                      ),
+                    );
+                  }
+                },
+              ),
+
               const SizedBox(height: 16),
               const Text(
                 'CHEMISTRY LABS',
@@ -835,6 +863,26 @@ class PhysicsDashboard extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) =>
                                       const wave_main.HomeScreen(),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
+                            context,
+                            title: l10n.shmLab,
+                            subtitle: l10n.shmLabSubtitle,
+                            icon: Icons.hourglass_bottom,
+                            color: Colors.purpleAccent,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const _SHMWrapper(),
                                 ),
                               );
                             },

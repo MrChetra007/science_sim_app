@@ -5131,6 +5131,540 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Water (Dilute H₂SO₄)'**
   String get electrolyteWater;
+
+  /// No description provided for @shmLab.
+  ///
+  /// In en, this message translates to:
+  /// **'SHM'**
+  String get shmLab;
+
+  /// No description provided for @shmLabSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple Harmonic Motion'**
+  String get shmLabSubtitle;
+
+  /// No description provided for @shmHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SHM Lab'**
+  String get shmHomeTitle;
+
+  /// No description provided for @shmLessons.
+  ///
+  /// In en, this message translates to:
+  /// **'LESSONS'**
+  String get shmLessons;
+
+  /// No description provided for @shmPractice.
+  ///
+  /// In en, this message translates to:
+  /// **'PRACTICE'**
+  String get shmPractice;
+
+  /// No description provided for @shmQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz'**
+  String get shmQuiz;
+
+  /// No description provided for @shmQuizSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test your knowledge of SHM'**
+  String get shmQuizSubtitle;
+
+  /// No description provided for @shmSimulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulation'**
+  String get shmSimulation;
+
+  /// No description provided for @shmSimulationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Interactive spring-mass & pendulum'**
+  String get shmSimulationSubtitle;
+
+  /// No description provided for @shmComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete'**
+  String get shmComplete;
+
+  /// No description provided for @shmNextQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Question'**
+  String get shmNextQuestion;
+
+  /// No description provided for @shmSeeResults.
+  ///
+  /// In en, this message translates to:
+  /// **'See Results'**
+  String get shmSeeResults;
+
+  /// No description provided for @shmQuizResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz Results'**
+  String get shmQuizResults;
+
+  /// No description provided for @shmGreatJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job! You have a solid understanding of SHM.'**
+  String get shmGreatJob;
+
+  /// No description provided for @shmKeepPracticing.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep practicing! Review the lessons and try again.'**
+  String get shmKeepPracticing;
+
+  /// No description provided for @shmRetryQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry Quiz'**
+  String get shmRetryQuiz;
+
+  /// No description provided for @shmBackToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get shmBackToHome;
+
+  /// Step progress indicator
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String shmStepOf(String current, String total);
+
+  /// Question progress indicator
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String shmQuestionOf(String current, String total);
+
+  /// Current score display
+  ///
+  /// In en, this message translates to:
+  /// **'Score: {score}'**
+  String shmScoreLabel(String score);
+
+  /// Percentage correct on quiz results
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% Correct'**
+  String shmPercentCorrect(String percent);
+
+  /// No description provided for @shmLesson1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'What is SHM?'**
+  String get shmLesson1Title;
+
+  /// No description provided for @shmLesson1Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Oscillations Around Us'**
+  String get shmLesson1Subtitle;
+
+  /// No description provided for @shmL1S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Simple Harmonic Motion?'**
+  String get shmL1S1Title;
+
+  /// No description provided for @shmL1S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple Harmonic Motion (SHM) is a type of periodic motion where the restoring force is directly proportional to the displacement from equilibrium. Think of a mass on a spring — when you pull it and let go, it bounces back and forth.'**
+  String get shmL1S1Body;
+
+  /// No description provided for @shmL1S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Key Characteristics'**
+  String get shmL1S2Title;
+
+  /// No description provided for @shmL1S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'SHM has three key properties: (1) The motion repeats at regular intervals (periodic), (2) The acceleration is always directed toward the equilibrium position, (3) The acceleration is proportional to the displacement.'**
+  String get shmL1S2Body;
+
+  /// No description provided for @shmL1S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Restoring Force'**
+  String get shmL1S3Title;
+
+  /// No description provided for @shmL1S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The restoring force is what pulls the object back toward equilibrium. For a spring, this is given by Hooke\'s Law:'**
+  String get shmL1S3Body;
+
+  /// No description provided for @shmL1S3Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'F = -kx'**
+  String get shmL1S3Formula;
+
+  /// No description provided for @shmL1S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Amplitude & Equilibrium'**
+  String get shmL1S4Title;
+
+  /// No description provided for @shmL1S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The amplitude (A) is the maximum displacement from equilibrium. The equilibrium position is where the net force on the object is zero. The object oscillates between +A and -A.'**
+  String get shmL1S4Body;
+
+  /// No description provided for @shmLesson2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Period & Frequency'**
+  String get shmLesson2Title;
+
+  /// No description provided for @shmLesson2Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Timing the Oscillations'**
+  String get shmLesson2Subtitle;
+
+  /// No description provided for @shmL2S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Period?'**
+  String get shmL2S1Title;
+
+  /// No description provided for @shmL2S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The period (T) is the time taken for one complete oscillation. For example, if a pendulum swings back and forth in 2 seconds, its period is 2 s.'**
+  String get shmL2S1Body;
+
+  /// No description provided for @shmL2S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Period of a Spring'**
+  String get shmL2S2Title;
+
+  /// No description provided for @shmL2S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The period of a mass-spring system depends only on the mass (m) and the spring constant (k):'**
+  String get shmL2S2Body;
+
+  /// No description provided for @shmL2S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'T = 2π √(m/k)'**
+  String get shmL2S2Formula;
+
+  /// No description provided for @shmL2S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Frequency?'**
+  String get shmL2S3Title;
+
+  /// No description provided for @shmL2S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequency (f) is the number of oscillations per second. It is the reciprocal of the period: f = 1/T. The unit of frequency is the Hertz (Hz).'**
+  String get shmL2S3Body;
+
+  /// No description provided for @shmL2S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Angular Frequency'**
+  String get shmL2S4Title;
+
+  /// No description provided for @shmL2S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Angular frequency (ω) relates to the period and frequency through:'**
+  String get shmL2S4Body;
+
+  /// No description provided for @shmL2S4Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'ω = 2πf = 2π/T'**
+  String get shmL2S4Formula;
+
+  /// No description provided for @shmLesson3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy in SHM'**
+  String get shmLesson3Title;
+
+  /// No description provided for @shmLesson3Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The Conservation of Energy'**
+  String get shmLesson3Subtitle;
+
+  /// No description provided for @shmL3S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Forms of Energy'**
+  String get shmL3S1Title;
+
+  /// No description provided for @shmL3S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'In SHM, energy constantly transforms between kinetic energy (KE) and potential energy (PE). At equilibrium, KE is maximum and PE is zero. At the amplitude endpoints, KE is zero and PE is maximum.'**
+  String get shmL3S1Body;
+
+  /// No description provided for @shmL3S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Mechanical Energy'**
+  String get shmL3S2Title;
+
+  /// No description provided for @shmL3S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The total mechanical energy in SHM remains constant (ignoring friction). For a spring-mass system:'**
+  String get shmL3S2Body;
+
+  /// No description provided for @shmL3S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'E = ½kA²'**
+  String get shmL3S2Formula;
+
+  /// No description provided for @shmL3S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy at Any Point'**
+  String get shmL3S3Title;
+
+  /// No description provided for @shmL3S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'At any displacement x from equilibrium: KE = ½k(A² − x²) and PE = ½kx². The sum KE + PE = ½kA² is always constant.'**
+  String get shmL3S3Body;
+
+  /// No description provided for @shmL3S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Velocity in SHM'**
+  String get shmL3S4Title;
+
+  /// No description provided for @shmL3S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The velocity of the oscillating object at any displacement x is given by:'**
+  String get shmL3S4Body;
+
+  /// No description provided for @shmL3S4Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'v = ±ω √(A² − x²)'**
+  String get shmL3S4Formula;
+
+  /// No description provided for @shmLesson4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Real-World SHM'**
+  String get shmLesson4Title;
+
+  /// No description provided for @shmLesson4Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SHM in Everyday Life'**
+  String get shmLesson4Subtitle;
+
+  /// No description provided for @shmL4S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Pendulums'**
+  String get shmL4S1Title;
+
+  /// No description provided for @shmL4S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'A simple pendulum approximates SHM for small angles (less than 15°). The period depends only on the length (L) and gravity (g): T = 2π√(L/g). This is why pendulum clocks work!'**
+  String get shmL4S1Body;
+
+  /// No description provided for @shmL4S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Waves & Sound'**
+  String get shmL4S2Title;
+
+  /// No description provided for @shmL4S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound waves are longitudinal waves where air molecules oscillate back and forth in SHM. Musical instruments like tuning forks and guitar strings also vibrate in SHM.'**
+  String get shmL4S2Body;
+
+  /// No description provided for @shmL4S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Molecular Vibrations'**
+  String get shmL4S3Title;
+
+  /// No description provided for @shmL4S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'At the atomic level, atoms in a molecule vibrate about their equilibrium positions in SHM. This is why solids have thermal energy — atoms are constantly oscillating.'**
+  String get shmL4S3Body;
+
+  /// No description provided for @shmL4S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Engineering & Bridges'**
+  String get shmL4S4Title;
+
+  /// No description provided for @shmL4S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Engineers must account for SHM when designing buildings and bridges. The Tacoma Narrows Bridge collapse in 1940 is a famous example of resonance — when an external force matches the natural frequency of a structure.'**
+  String get shmL4S4Body;
+
+  /// No description provided for @shmQ1Question.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the restoring force in SHM proportional to?'**
+  String get shmQ1Question;
+
+  /// No description provided for @shmQ1Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"Velocity\",\"Displacement\",\"Time\",\"Mass\"]'**
+  String get shmQ1Options;
+
+  /// No description provided for @shmQ1CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get shmQ1CorrectIndex;
+
+  /// No description provided for @shmQ1Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'In SHM, the restoring force is directly proportional to the displacement from equilibrium (F = -kx).'**
+  String get shmQ1Explanation;
+
+  /// No description provided for @shmQ2Question.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the period of a mass-spring system with m = 4 kg and k = 100 N/m? (Assume π ≈ 3.14)'**
+  String get shmQ2Question;
+
+  /// No description provided for @shmQ2Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"0.63 s\",\"1.26 s\",\"2.51 s\",\"0.40 s\"]'**
+  String get shmQ2Options;
+
+  /// No description provided for @shmQ2CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get shmQ2CorrectIndex;
+
+  /// No description provided for @shmQ2Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'T = 2π√(m/k) = 2π√(4/100) = 2π × 0.2 = 1.26 seconds.'**
+  String get shmQ2Explanation;
+
+  /// No description provided for @shmQ3Question.
+  ///
+  /// In en, this message translates to:
+  /// **'At which point in SHM is kinetic energy maximum?'**
+  String get shmQ3Question;
+
+  /// No description provided for @shmQ3Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"At the amplitude\",\"At equilibrium\",\"At the midpoint\",\"Kinetic energy is constant\"]'**
+  String get shmQ3Options;
+
+  /// No description provided for @shmQ3CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get shmQ3CorrectIndex;
+
+  /// No description provided for @shmQ3Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Kinetic energy is maximum at the equilibrium position, where velocity is highest. At the endpoints, all energy is potential.'**
+  String get shmQ3Explanation;
+
+  /// No description provided for @shmQ4Question.
+  ///
+  /// In en, this message translates to:
+  /// **'What happens to the period of a pendulum if the length is quadrupled?'**
+  String get shmQ4Question;
+
+  /// No description provided for @shmQ4Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"It doubles\",\"It halves\",\"It quadruples\",\"It stays the same\"]'**
+  String get shmQ4Options;
+
+  /// No description provided for @shmQ4CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'0'**
+  String get shmQ4CorrectIndex;
+
+  /// No description provided for @shmQ4Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'T ∝ √L, so if L increases by 4×, T increases by √4 = 2×.'**
+  String get shmQ4Explanation;
+
+  /// No description provided for @shmQ5Question.
+  ///
+  /// In en, this message translates to:
+  /// **'The total mechanical energy in SHM is proportional to:'**
+  String get shmQ5Question;
+
+  /// No description provided for @shmQ5Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"The amplitude\",\"The square of the amplitude\",\"The mass\",\"The spring constant\"]'**
+  String get shmQ5Options;
+
+  /// No description provided for @shmQ5CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get shmQ5CorrectIndex;
+
+  /// No description provided for @shmQ5Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Total energy E = ½kA², so it is proportional to the square of the amplitude (A²).'**
+  String get shmQ5Explanation;
+
+  /// No description provided for @shmSpringMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Spring-Mass'**
+  String get shmSpringMode;
+
+  /// No description provided for @shmPendulumMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Pendulum'**
+  String get shmPendulumMode;
+
+  /// No description provided for @shmLabTutorial.
+  ///
+  /// In en, this message translates to:
+  /// **'SHM Lab - Simple Harmonic Motion'**
+  String get shmLabTutorial;
 }
 
 class _AppLocalizationsDelegate

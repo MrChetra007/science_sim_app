@@ -2713,4 +2713,310 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get electrolyteWater => 'Water (Dilute H₂SO₄)';
+
+  @override
+  String get shmLab => 'SHM';
+
+  @override
+  String get shmLabSubtitle => 'Simple Harmonic Motion';
+
+  @override
+  String get shmHomeTitle => 'SHM Lab';
+
+  @override
+  String get shmLessons => 'LESSONS';
+
+  @override
+  String get shmPractice => 'PRACTICE';
+
+  @override
+  String get shmQuiz => 'Quiz';
+
+  @override
+  String get shmQuizSubtitle => 'Test your knowledge of SHM';
+
+  @override
+  String get shmSimulation => 'Simulation';
+
+  @override
+  String get shmSimulationSubtitle => 'Interactive spring-mass & pendulum';
+
+  @override
+  String get shmComplete => 'Complete';
+
+  @override
+  String get shmNextQuestion => 'Next Question';
+
+  @override
+  String get shmSeeResults => 'See Results';
+
+  @override
+  String get shmQuizResults => 'Quiz Results';
+
+  @override
+  String get shmGreatJob => 'Great job! You have a solid understanding of SHM.';
+
+  @override
+  String get shmKeepPracticing =>
+      'Keep practicing! Review the lessons and try again.';
+
+  @override
+  String get shmRetryQuiz => 'Retry Quiz';
+
+  @override
+  String get shmBackToHome => 'Back to Home';
+
+  @override
+  String shmStepOf(String current, String total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String shmQuestionOf(String current, String total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String shmScoreLabel(String score) {
+    return 'Score: $score';
+  }
+
+  @override
+  String shmPercentCorrect(String percent) {
+    return '$percent% Correct';
+  }
+
+  @override
+  String get shmLesson1Title => 'What is SHM?';
+
+  @override
+  String get shmLesson1Subtitle => 'Oscillations Around Us';
+
+  @override
+  String get shmL1S1Title => 'What is Simple Harmonic Motion?';
+
+  @override
+  String get shmL1S1Body =>
+      'Simple Harmonic Motion (SHM) is a type of periodic motion where the restoring force is directly proportional to the displacement from equilibrium. Think of a mass on a spring — when you pull it and let go, it bounces back and forth.';
+
+  @override
+  String get shmL1S2Title => 'Key Characteristics';
+
+  @override
+  String get shmL1S2Body =>
+      'SHM has three key properties: (1) The motion repeats at regular intervals (periodic), (2) The acceleration is always directed toward the equilibrium position, (3) The acceleration is proportional to the displacement.';
+
+  @override
+  String get shmL1S3Title => 'Restoring Force';
+
+  @override
+  String get shmL1S3Body =>
+      'The restoring force is what pulls the object back toward equilibrium. For a spring, this is given by Hooke\'s Law:';
+
+  @override
+  String get shmL1S3Formula => 'F = -kx';
+
+  @override
+  String get shmL1S4Title => 'Amplitude & Equilibrium';
+
+  @override
+  String get shmL1S4Body =>
+      'The amplitude (A) is the maximum displacement from equilibrium. The equilibrium position is where the net force on the object is zero. The object oscillates between +A and -A.';
+
+  @override
+  String get shmLesson2Title => 'Period & Frequency';
+
+  @override
+  String get shmLesson2Subtitle => 'Timing the Oscillations';
+
+  @override
+  String get shmL2S1Title => 'What is Period?';
+
+  @override
+  String get shmL2S1Body =>
+      'The period (T) is the time taken for one complete oscillation. For example, if a pendulum swings back and forth in 2 seconds, its period is 2 s.';
+
+  @override
+  String get shmL2S2Title => 'Period of a Spring';
+
+  @override
+  String get shmL2S2Body =>
+      'The period of a mass-spring system depends only on the mass (m) and the spring constant (k):';
+
+  @override
+  String get shmL2S2Formula => 'T = 2π √(m/k)';
+
+  @override
+  String get shmL2S3Title => 'What is Frequency?';
+
+  @override
+  String get shmL2S3Body =>
+      'Frequency (f) is the number of oscillations per second. It is the reciprocal of the period: f = 1/T. The unit of frequency is the Hertz (Hz).';
+
+  @override
+  String get shmL2S4Title => 'Angular Frequency';
+
+  @override
+  String get shmL2S4Body =>
+      'Angular frequency (ω) relates to the period and frequency through:';
+
+  @override
+  String get shmL2S4Formula => 'ω = 2πf = 2π/T';
+
+  @override
+  String get shmLesson3Title => 'Energy in SHM';
+
+  @override
+  String get shmLesson3Subtitle => 'The Conservation of Energy';
+
+  @override
+  String get shmL3S1Title => 'Forms of Energy';
+
+  @override
+  String get shmL3S1Body =>
+      'In SHM, energy constantly transforms between kinetic energy (KE) and potential energy (PE). At equilibrium, KE is maximum and PE is zero. At the amplitude endpoints, KE is zero and PE is maximum.';
+
+  @override
+  String get shmL3S2Title => 'Total Mechanical Energy';
+
+  @override
+  String get shmL3S2Body =>
+      'The total mechanical energy in SHM remains constant (ignoring friction). For a spring-mass system:';
+
+  @override
+  String get shmL3S2Formula => 'E = ½kA²';
+
+  @override
+  String get shmL3S3Title => 'Energy at Any Point';
+
+  @override
+  String get shmL3S3Body =>
+      'At any displacement x from equilibrium: KE = ½k(A² − x²) and PE = ½kx². The sum KE + PE = ½kA² is always constant.';
+
+  @override
+  String get shmL3S4Title => 'Velocity in SHM';
+
+  @override
+  String get shmL3S4Body =>
+      'The velocity of the oscillating object at any displacement x is given by:';
+
+  @override
+  String get shmL3S4Formula => 'v = ±ω √(A² − x²)';
+
+  @override
+  String get shmLesson4Title => 'Real-World SHM';
+
+  @override
+  String get shmLesson4Subtitle => 'SHM in Everyday Life';
+
+  @override
+  String get shmL4S1Title => 'Pendulums';
+
+  @override
+  String get shmL4S1Body =>
+      'A simple pendulum approximates SHM for small angles (less than 15°). The period depends only on the length (L) and gravity (g): T = 2π√(L/g). This is why pendulum clocks work!';
+
+  @override
+  String get shmL4S2Title => 'Waves & Sound';
+
+  @override
+  String get shmL4S2Body =>
+      'Sound waves are longitudinal waves where air molecules oscillate back and forth in SHM. Musical instruments like tuning forks and guitar strings also vibrate in SHM.';
+
+  @override
+  String get shmL4S3Title => 'Molecular Vibrations';
+
+  @override
+  String get shmL4S3Body =>
+      'At the atomic level, atoms in a molecule vibrate about their equilibrium positions in SHM. This is why solids have thermal energy — atoms are constantly oscillating.';
+
+  @override
+  String get shmL4S4Title => 'Engineering & Bridges';
+
+  @override
+  String get shmL4S4Body =>
+      'Engineers must account for SHM when designing buildings and bridges. The Tacoma Narrows Bridge collapse in 1940 is a famous example of resonance — when an external force matches the natural frequency of a structure.';
+
+  @override
+  String get shmQ1Question =>
+      'What is the restoring force in SHM proportional to?';
+
+  @override
+  String get shmQ1Options =>
+      '[\"Velocity\",\"Displacement\",\"Time\",\"Mass\"]';
+
+  @override
+  String get shmQ1CorrectIndex => '1';
+
+  @override
+  String get shmQ1Explanation =>
+      'In SHM, the restoring force is directly proportional to the displacement from equilibrium (F = -kx).';
+
+  @override
+  String get shmQ2Question =>
+      'What is the period of a mass-spring system with m = 4 kg and k = 100 N/m? (Assume π ≈ 3.14)';
+
+  @override
+  String get shmQ2Options => '[\"0.63 s\",\"1.26 s\",\"2.51 s\",\"0.40 s\"]';
+
+  @override
+  String get shmQ2CorrectIndex => '1';
+
+  @override
+  String get shmQ2Explanation =>
+      'T = 2π√(m/k) = 2π√(4/100) = 2π × 0.2 = 1.26 seconds.';
+
+  @override
+  String get shmQ3Question =>
+      'At which point in SHM is kinetic energy maximum?';
+
+  @override
+  String get shmQ3Options =>
+      '[\"At the amplitude\",\"At equilibrium\",\"At the midpoint\",\"Kinetic energy is constant\"]';
+
+  @override
+  String get shmQ3CorrectIndex => '1';
+
+  @override
+  String get shmQ3Explanation =>
+      'Kinetic energy is maximum at the equilibrium position, where velocity is highest. At the endpoints, all energy is potential.';
+
+  @override
+  String get shmQ4Question =>
+      'What happens to the period of a pendulum if the length is quadrupled?';
+
+  @override
+  String get shmQ4Options =>
+      '[\"It doubles\",\"It halves\",\"It quadruples\",\"It stays the same\"]';
+
+  @override
+  String get shmQ4CorrectIndex => '0';
+
+  @override
+  String get shmQ4Explanation =>
+      'T ∝ √L, so if L increases by 4×, T increases by √4 = 2×.';
+
+  @override
+  String get shmQ5Question =>
+      'The total mechanical energy in SHM is proportional to:';
+
+  @override
+  String get shmQ5Options =>
+      '[\"The amplitude\",\"The square of the amplitude\",\"The mass\",\"The spring constant\"]';
+
+  @override
+  String get shmQ5CorrectIndex => '1';
+
+  @override
+  String get shmQ5Explanation =>
+      'Total energy E = ½kA², so it is proportional to the square of the amplitude (A²).';
+
+  @override
+  String get shmSpringMode => 'Spring-Mass';
+
+  @override
+  String get shmPendulumMode => 'Pendulum';
+
+  @override
+  String get shmLabTutorial => 'SHM Lab - Simple Harmonic Motion';
 }
