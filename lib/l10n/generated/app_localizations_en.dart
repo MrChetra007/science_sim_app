@@ -3081,4 +3081,407 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get emInductionLabTutorial =>
       'EM Induction Lab - Electromagnetic Induction';
+
+  @override
+  String get emiAppTitle => 'Electromagnetic Induction';
+
+  @override
+  String get emiHomeTitle => 'Electromagnetic Induction';
+
+  @override
+  String get emiHomeSubtitle => 'Learn. Explore. Understand.';
+
+  @override
+  String get emiLessonLabel => 'Lesson';
+
+  @override
+  String emiSteps(String count) {
+    return '$count steps';
+  }
+
+  @override
+  String get emiQuiz => 'Quiz';
+
+  @override
+  String get emiQuizTitle => 'Test Your Knowledge';
+
+  @override
+  String get emiQuizSubtitle => '5 questions';
+
+  @override
+  String get emiSimLab => 'Simulation Lab';
+
+  @override
+  String get emiSimTitle => 'Open the Interactive Simulator';
+
+  @override
+  String get emiSimSubtitle =>
+      'Drag the magnet, adjust controls, explore freely';
+
+  @override
+  String emiStepOf(String current, String total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String get emiLessonBadge => 'Lesson';
+
+  @override
+  String get emiOpenSim => 'Open Simulation';
+
+  @override
+  String get emiBack => 'Back';
+
+  @override
+  String get emiDone => 'Done';
+
+  @override
+  String get emiNext => 'Next';
+
+  @override
+  String get emiQuizComplete => 'Quiz Complete';
+
+  @override
+  String get emiGreatJob => 'Great Job!';
+
+  @override
+  String get emiKeepLearning => 'Keep Learning!';
+
+  @override
+  String emiScoreCorrect(String score, String total) {
+    return '$score / $total correct';
+  }
+
+  @override
+  String emiPercentPassed(String percent) {
+    return '$percent% — You passed!';
+  }
+
+  @override
+  String emiPercentTryAgain(String percent) {
+    return '$percent% — Try again to pass';
+  }
+
+  @override
+  String get emiRetryQuiz => 'Retry Quiz';
+
+  @override
+  String get emiBackToLessons => 'Back to Lessons';
+
+  @override
+  String emiQuestionOf(String current, String total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String get emiCorrect => 'Correct!';
+
+  @override
+  String get emiIncorrect => 'Incorrect';
+
+  @override
+  String get emiNextQuestion => 'Next Question';
+
+  @override
+  String get emiSeeResults => 'See Results';
+
+  @override
+  String get emiSpeed => 'Speed';
+
+  @override
+  String get emiField => 'Field';
+
+  @override
+  String get emiTurns => 'Turns';
+
+  @override
+  String get emiEmf => 'EMF';
+
+  @override
+  String get emiFlux => 'Flux Φ';
+
+  @override
+  String get emiDFluxDt => 'dΦ/dt';
+
+  @override
+  String get emiDir => 'Dir';
+
+  @override
+  String get emiStatusExtremes => 'At extremes — Velocity = 0, EMF = 0';
+
+  @override
+  String get emiStatusCenter => 'At coil center — Max velocity, Peak EMF';
+
+  @override
+  String get emiStatusEntering =>
+      'Entering coil — Flux increasing, EMF induced';
+
+  @override
+  String get emiStatusExiting =>
+      'Exiting coil — Flux decreasing, EMF reverses (Lenz)';
+
+  @override
+  String get emiFormulaEmf => 'EMF = ';
+
+  @override
+  String get emiFormula => '-N × ΔΦ/Δt';
+
+  @override
+  String get emiFormulaEquals => '= ';
+
+  @override
+  String get emiPeak => 'PEAK';
+
+  @override
+  String get emiZero => 'ZERO';
+
+  @override
+  String get emiReversal => 'REVERSAL';
+
+  @override
+  String emiEmfReadout(String value) {
+    return 'EMF: $value V';
+  }
+
+  @override
+  String emiFluxReadout(String value) {
+    return 'Φ: $value Wb';
+  }
+
+  @override
+  String get emiEmfLegend => 'EMF';
+
+  @override
+  String get emiFluxLegend => 'FLUX';
+
+  @override
+  String get emiL1Title => 'What is Electromagnetic Induction?';
+
+  @override
+  String get emiL1Subtitle =>
+      'Faraday\'s 1831 discovery that changed the world';
+
+  @override
+  String get emiL1S1Title => 'The Discovery';
+
+  @override
+  String get emiL1S1Body =>
+      'In 1831, Michael Faraday discovered that a CHANGING magnetic field creates an electric current in a nearby wire.\n\nBefore Faraday, scientists knew electricity and magnetism were related. He showed exactly how they connect.';
+
+  @override
+  String get emiL1S2Title => 'The Water Pipe Analogy';
+
+  @override
+  String get emiL1S2Body =>
+      'Imagine a pipe full of water. If you push a plunger through, the water moves.\n\nA magnet moving through a coil is like that plunger — it \"pushes\" the electrons in the wire, creating an electric current.\n\nKey insight: the magnet must be MOVING. A stationary magnet does nothing.';
+
+  @override
+  String get emiL1S3Title => 'What You\'ll See';
+
+  @override
+  String get emiL1S3Body =>
+      'When the magnet enters the coil, electrons start flowing.\n\nWhen the magnet is at the center, moving fastest — the current is strongest.\n\nWhen the magnet exits, current flows the opposite direction.\n\nThis alternating current (AC) is what powers your home!';
+
+  @override
+  String get emiL1S4Title => 'Try It Yourself';
+
+  @override
+  String get emiL1S4Body =>
+      'Open the simulation. Watch what happens to the EMF as you move the magnet:\n\n1. Slowly move the magnet through the coil\n2. Watch the green EMF waveform appear\n3. Try different speeds — what changes?';
+
+  @override
+  String get emiL2Title => 'Faraday\'s Law';
+
+  @override
+  String get emiL2Subtitle => 'EMF = -N × ΔΦ/Δt';
+
+  @override
+  String get emiL2S1Title => 'The Formula';
+
+  @override
+  String get emiL2S1Body =>
+      'Faraday\'s Law is the mathematical heart of induction:\n\nEMF = -N × ΔΦ/Δt\n\nLet\'s break down each piece.';
+
+  @override
+  String get emiL2S1Formula => 'EMF = −N × ΔΦ/Δt';
+
+  @override
+  String get emiL2S2Title => 'N — Number of Turns';
+
+  @override
+  String get emiL2S2Body =>
+      'N = number of wire loops (turns) in the coil.\n\nThink of it like fishing nets: more loops = more wires cutting through the magnetic field = more induced EMF.\n\nDoubling N doubles the EMF. This is why real generators use coils with hundreds of turns!';
+
+  @override
+  String get emiL2S3Title => 'ΔΦ — Change in Flux';
+
+  @override
+  String get emiL2S3Body =>
+      'Φ (Phi) = magnetic flux = the amount of magnetic field passing through the coil.\n\nΔΦ = the CHANGE in flux. When the magnet moves closer, flux increases. When it moves away, flux decreases.\n\nBigger magnets or stronger fields = bigger ΔΦ = bigger EMF.';
+
+  @override
+  String get emiL2S4Title => 'Δt — Time Interval';
+
+  @override
+  String get emiL2S4Body =>
+      'Δt = the time over which the flux changes.\n\nFaster motion = smaller Δt = larger EMF.\n\nThis is why pushing the magnet through quickly gives a bigger voltage spike than moving it slowly.';
+
+  @override
+  String get emiL2S5Title => 'Try It Yourself';
+
+  @override
+  String get emiL2S5Body =>
+      'Open the simulation and test each variable:\n\n1. Adjust the \"Turns\" slider — does EMF scale with N?\n2. Adjust \"Field Strength\" — stronger magnet = more flux?\n3. Adjust \"Speed\" — faster motion = bigger EMF?\n\nWatch the formula panel update LIVE with your changes!';
+
+  @override
+  String get emiL3Title => 'Lenz\'s Law';
+
+  @override
+  String get emiL3Subtitle => 'Why the minus sign? The coil fights back';
+
+  @override
+  String get emiL3S1Title => 'The Minus Sign';
+
+  @override
+  String get emiL3S1Body =>
+      'The minus sign in Faraday\'s Law is NOT just a mathematical quirk — it\'s a physical law (Lenz\'s Law).\n\nIt means: the induced current creates a magnetic field that OPPOSES the change that created it.\n\nNature hates change! The coil \"fights back\" against the magnet\'s motion.';
+
+  @override
+  String get emiL3S1Formula => 'EMF = −N × ΔΦ/Δt';
+
+  @override
+  String get emiL3S2Title => 'Approaching Magnet';
+
+  @override
+  String get emiL3S2Body =>
+      'When the magnet\'s NORTH pole approaches from above:\n\n1. Flux through the coil INCREASES\n2. The induced current creates a NORTH pole facing UP\n3. This REPELS the approaching magnet\n\nThe coil says: \"Stop getting closer!\" ↑';
+
+  @override
+  String get emiL3S3Title => 'Retreating Magnet';
+
+  @override
+  String get emiL3S3Body =>
+      'When the magnet moves AWAY:\n\n1. Flux through the coil DECREASES\n2. The induced current creates a SOUTH pole facing UP\n3. This ATTRACTS the retreating magnet\n\nThe coil says: \"Don\'t leave!\" ←';
+
+  @override
+  String get emiL3S4Title => 'Clockwise vs Counter-Clockwise';
+
+  @override
+  String get emiL3S4Body =>
+      'The direction of the induced current tells you what the coil is doing:\n\nRED glow (CW) = coil creating a north pole (repelling the approaching N pole)\nBLUE glow (CCW) = coil creating a south pole (attracting the retreating N pole)\n\nThis is energy conservation in action — you have to DO WORK to move the magnet against this opposing force.';
+
+  @override
+  String get emiL3S5Title => 'Try It Yourself';
+
+  @override
+  String get emiL3S5Body =>
+      'Open the simulation and focus on the coil color:\n\n1. Watch the glow — red when EMF is positive, blue when negative\n2. Can you predict which color appears when the magnet enters vs exits?\n3. Drag the magnet manually and feel the opposition (watch the arrows!)';
+
+  @override
+  String get emiL4Title => 'Real-World Applications';
+
+  @override
+  String get emiL4Subtitle => 'Induction is everywhere around you';
+
+  @override
+  String get emiL4S1Title => 'Electric Generators';
+
+  @override
+  String get emiL4S1Body =>
+      'Every power plant uses electromagnetic induction!\n\nTurbines (steam, water, or wind) spin magnets inside coils of wire, generating the electricity that powers our homes.\n\nThe only difference from our simulation: the magnet ROTATES instead of moving up and down.\n\nOne spinning magnet = a continuous AC waveform!';
+
+  @override
+  String get emiL4S2Title => 'Wireless Charging';
+
+  @override
+  String get emiL4S2Body =>
+      'Your phone\'s wireless charger is a real-world Faraday\'s Law demo!\n\nThe charger contains a coil that creates a rapidly changing magnetic field.\nYour phone contains another coil. The changing field induces a current in it.\n\nThat current charges your battery — no wires needed!\n\nFaraday\'s Law, in your pocket, every day.';
+
+  @override
+  String get emiL4S3Title => 'Induction Cooktops';
+
+  @override
+  String get emiL4S3Body =>
+      'Induction cooktops use changing magnetic fields to heat pans DIRECTLY.\n\nA coil under the glass creates a high-frequency changing field.\nThis induces \"eddy currents\" in the metal pan.\nThe resistance of the pan to these currents creates heat.\n\nNo flame. No glowing element. Just pure induction heating your food!';
+
+  @override
+  String get emiL4S4Title => 'Try It Yourself';
+
+  @override
+  String get emiL4S4Body =>
+      'Open the simulation one final time. Now that you understand the full physics:\n\n1. Can you explain exactly why the EMF peaks at the center?\n2. Why does increasing turns increase the EMF?\n3. What does the minus sign physically mean?\n\nEverything you see in the sim applies directly to real-world technology!';
+
+  @override
+  String get emiQ1Question => 'What did Michael Faraday discover in 1831?';
+
+  @override
+  String get emiQ1Options =>
+      '[\"That electricity flows through copper wires\",\"That a changing magnetic field induces an electric current\",\"That magnets attract iron\",\"That light is an electromagnetic wave\"]';
+
+  @override
+  String get emiQ1CorrectIndex => '1';
+
+  @override
+  String get emiQ1Explanation =>
+      'Faraday discovered electromagnetic induction — a changing magnetic field creates (induces) an electric current in a nearby conductor.';
+
+  @override
+  String get emiQ2Question =>
+      'In Faraday\'s Law, what does the variable N represent?';
+
+  @override
+  String get emiQ2Options =>
+      '[\"The strength of the magnet\",\"The number of turns in the coil\",\"The speed of the magnet\",\"The voltage output\"]';
+
+  @override
+  String get emiQ2CorrectIndex => '1';
+
+  @override
+  String get emiQ2Explanation =>
+      'N is the number of wire loops (turns) in the coil. More turns = more EMF, because more wires intersect the changing magnetic field.';
+
+  @override
+  String get emiQ3Question =>
+      'According to Lenz\'s Law, what does the minus sign in EMF = −N×ΔΦ/Δt mean?';
+
+  @override
+  String get emiQ3Options =>
+      '[\"The EMF is always negative\",\"Energy is lost to heat\",\"The induced current opposes the change in flux\",\"The formula is incomplete\"]';
+
+  @override
+  String get emiQ3CorrectIndex => '2';
+
+  @override
+  String get emiQ3Explanation =>
+      'The minus sign represents Lenz\'s Law: the induced current creates a magnetic field that OPPOSES the change that produced it. The coil \"fights back.\"';
+
+  @override
+  String get emiQ4Question =>
+      'When is the induced EMF maximum in the simulation?';
+
+  @override
+  String get emiQ4Options =>
+      '[\"When the magnet is at the top of its motion\",\"When the magnet is at the bottom of its motion\",\"When the magnet is at the coil center, moving fastest\",\"When the magnet is stationary at any position\"]';
+
+  @override
+  String get emiQ4CorrectIndex => '2';
+
+  @override
+  String get emiQ4Explanation =>
+      'EMF is proportional to ΔΦ/Δt — the RATE of change of flux. At the center, the magnet is moving fastest, so flux changes fastest, giving peak EMF.';
+
+  @override
+  String get emiQ5Question =>
+      'Which of these is NOT an application of electromagnetic induction?';
+
+  @override
+  String get emiQ5Options =>
+      '[\"Electric power generators\",\"Wireless phone charging\",\"A standard flashlight battery\",\"Induction cooktops\"]';
+
+  @override
+  String get emiQ5CorrectIndex => '2';
+
+  @override
+  String get emiQ5Explanation =>
+      'Batteries use chemical reactions to produce electricity, not electromagnetic induction. Generators, wireless chargers, and induction cooktops all use Faraday\'s Law directly.';
 }

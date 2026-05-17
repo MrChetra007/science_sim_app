@@ -1104,5 +1104,169 @@
   },
   "emInductionLab": "EM Induction",
   "emInductionLabSubtitle": "Electromagnetic Induction",
-  "emInductionLabTutorial": "EM Induction Lab - Electromagnetic Induction"
+  "emInductionLabTutorial": "EM Induction Lab - Electromagnetic Induction",
+  "@@emi_lab": {
+    "description": "Electromagnetic Induction Lab strings"
+  },
+  "emiAppTitle": "Electromagnetic Induction",
+  "emiHomeTitle": "Electromagnetic Induction",
+  "emiHomeSubtitle": "Learn. Explore. Understand.",
+  "emiLessonLabel": "Lesson",
+  "emiSteps": "{count} steps",
+  "@emiSteps": {
+    "placeholders": {
+      "count": {"type": "String"}
+    }
+  },
+  "emiQuiz": "Quiz",
+  "emiQuizTitle": "Test Your Knowledge",
+  "emiQuizSubtitle": "5 questions",
+  "emiSimLab": "Simulation Lab",
+  "emiSimTitle": "Open the Interactive Simulator",
+  "emiSimSubtitle": "Drag the magnet, adjust controls, explore freely",
+  "emiStepOf": "Step {current} of {total}",
+  "@emiStepOf": {
+    "placeholders": {
+      "current": {"type": "String"},
+      "total": {"type": "String"}
+    }
+  },
+  "emiLessonBadge": "Lesson",
+  "emiOpenSim": "Open Simulation",
+  "emiBack": "Back",
+  "emiDone": "Done",
+  "emiNext": "Next",
+  "emiQuizComplete": "Quiz Complete",
+  "emiGreatJob": "Great Job!",
+  "emiKeepLearning": "Keep Learning!",
+  "emiScoreCorrect": "{score} / {total} correct",
+  "@emiScoreCorrect": {
+    "placeholders": {
+      "score": {"type": "String"},
+      "total": {"type": "String"}
+    }
+  },
+  "emiPercentPassed": "{percent}% — You passed!",
+  "@emiPercentPassed": {
+    "placeholders": {
+      "percent": {"type": "String"}
+    }
+  },
+  "emiPercentTryAgain": "{percent}% — Try again to pass",
+  "@emiPercentTryAgain": {
+    "placeholders": {
+      "percent": {"type": "String"}
+    }
+  },
+  "emiRetryQuiz": "Retry Quiz",
+  "emiBackToLessons": "Back to Lessons",
+  "emiQuestionOf": "Question {current} of {total}",
+  "@emiQuestionOf": {
+    "placeholders": {
+      "current": {"type": "String"},
+      "total": {"type": "String"}
+    }
+  },
+  "emiCorrect": "Correct!",
+  "emiIncorrect": "Incorrect",
+  "emiNextQuestion": "Next Question",
+  "emiSeeResults": "See Results",
+  "emiSpeed": "Speed",
+  "emiField": "Field",
+  "emiTurns": "Turns",
+  "emiEmf": "EMF",
+  "emiFlux": "Flux Φ",
+  "emiDFluxDt": "dΦ/dt",
+  "emiDir": "Dir",
+  "emiStatusExtremes": "At extremes — Velocity = 0, EMF = 0",
+  "emiStatusCenter": "At coil center — Max velocity, Peak EMF",
+  "emiStatusEntering": "Entering coil — Flux increasing, EMF induced",
+  "emiStatusExiting": "Exiting coil — Flux decreasing, EMF reverses (Lenz)",
+  "emiFormulaEmf": "EMF = ",
+  "emiFormula": "-N × ΔΦ/Δt",
+  "emiFormulaEquals": "= ",
+  "emiPeak": "PEAK",
+  "emiZero": "ZERO",
+  "emiReversal": "REVERSAL",
+  "emiEmfReadout": "EMF: {value} V",
+  "@emiEmfReadout": {
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "emiFluxReadout": "Φ: {value} Wb",
+  "@emiFluxReadout": {
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "emiEmfLegend": "EMF",
+  "emiFluxLegend": "FLUX",
+  "emiL1Title": "What is Electromagnetic Induction?",
+  "emiL1Subtitle": "Faraday's 1831 discovery that changed the world",
+  "emiL1S1Title": "The Discovery",
+  "emiL1S1Body": "In 1831, Michael Faraday discovered that a CHANGING magnetic field creates an electric current in a nearby wire.\n\nBefore Faraday, scientists knew electricity and magnetism were related. He showed exactly how they connect.",
+  "emiL1S2Title": "The Water Pipe Analogy",
+  "emiL1S2Body": "Imagine a pipe full of water. If you push a plunger through, the water moves.\n\nA magnet moving through a coil is like that plunger — it \"pushes\" the electrons in the wire, creating an electric current.\n\nKey insight: the magnet must be MOVING. A stationary magnet does nothing.",
+  "emiL1S3Title": "What You'll See",
+  "emiL1S3Body": "When the magnet enters the coil, electrons start flowing.\n\nWhen the magnet is at the center, moving fastest — the current is strongest.\n\nWhen the magnet exits, current flows the opposite direction.\n\nThis alternating current (AC) is what powers your home!",
+  "emiL1S4Title": "Try It Yourself",
+  "emiL1S4Body": "Open the simulation. Watch what happens to the EMF as you move the magnet:\n\n1. Slowly move the magnet through the coil\n2. Watch the green EMF waveform appear\n3. Try different speeds — what changes?",
+  "emiL2Title": "Faraday's Law",
+  "emiL2Subtitle": "EMF = -N × ΔΦ/Δt",
+  "emiL2S1Title": "The Formula",
+  "emiL2S1Body": "Faraday's Law is the mathematical heart of induction:\n\nEMF = -N × ΔΦ/Δt\n\nLet's break down each piece.",
+  "emiL2S1Formula": "EMF = −N × ΔΦ/Δt",
+  "emiL2S2Title": "N — Number of Turns",
+  "emiL2S2Body": "N = number of wire loops (turns) in the coil.\n\nThink of it like fishing nets: more loops = more wires cutting through the magnetic field = more induced EMF.\n\nDoubling N doubles the EMF. This is why real generators use coils with hundreds of turns!",
+  "emiL2S3Title": "ΔΦ — Change in Flux",
+  "emiL2S3Body": "Φ (Phi) = magnetic flux = the amount of magnetic field passing through the coil.\n\nΔΦ = the CHANGE in flux. When the magnet moves closer, flux increases. When it moves away, flux decreases.\n\nBigger magnets or stronger fields = bigger ΔΦ = bigger EMF.",
+  "emiL2S4Title": "Δt — Time Interval",
+  "emiL2S4Body": "Δt = the time over which the flux changes.\n\nFaster motion = smaller Δt = larger EMF.\n\nThis is why pushing the magnet through quickly gives a bigger voltage spike than moving it slowly.",
+  "emiL2S5Title": "Try It Yourself",
+  "emiL2S5Body": "Open the simulation and test each variable:\n\n1. Adjust the \"Turns\" slider — does EMF scale with N?\n2. Adjust \"Field Strength\" — stronger magnet = more flux?\n3. Adjust \"Speed\" — faster motion = bigger EMF?\n\nWatch the formula panel update LIVE with your changes!",
+  "emiL3Title": "Lenz's Law",
+  "emiL3Subtitle": "Why the minus sign? The coil fights back",
+  "emiL3S1Title": "The Minus Sign",
+  "emiL3S1Body": "The minus sign in Faraday's Law is NOT just a mathematical quirk — it's a physical law (Lenz's Law).\n\nIt means: the induced current creates a magnetic field that OPPOSES the change that created it.\n\nNature hates change! The coil \"fights back\" against the magnet's motion.",
+  "emiL3S1Formula": "EMF = −N × ΔΦ/Δt",
+  "emiL3S2Title": "Approaching Magnet",
+  "emiL3S2Body": "When the magnet's NORTH pole approaches from above:\n\n1. Flux through the coil INCREASES\n2. The induced current creates a NORTH pole facing UP\n3. This REPELS the approaching magnet\n\nThe coil says: \"Stop getting closer!\" ↑",
+  "emiL3S3Title": "Retreating Magnet",
+  "emiL3S3Body": "When the magnet moves AWAY:\n\n1. Flux through the coil DECREASES\n2. The induced current creates a SOUTH pole facing UP\n3. This ATTRACTS the retreating magnet\n\nThe coil says: \"Don't leave!\" ←",
+  "emiL3S4Title": "Clockwise vs Counter-Clockwise",
+  "emiL3S4Body": "The direction of the induced current tells you what the coil is doing:\n\nRED glow (CW) = coil creating a north pole (repelling the approaching N pole)\nBLUE glow (CCW) = coil creating a south pole (attracting the retreating N pole)\n\nThis is energy conservation in action — you have to DO WORK to move the magnet against this opposing force.",
+  "emiL3S5Title": "Try It Yourself",
+  "emiL3S5Body": "Open the simulation and focus on the coil color:\n\n1. Watch the glow — red when EMF is positive, blue when negative\n2. Can you predict which color appears when the magnet enters vs exits?\n3. Drag the magnet manually and feel the opposition (watch the arrows!)",
+  "emiL4Title": "Real-World Applications",
+  "emiL4Subtitle": "Induction is everywhere around you",
+  "emiL4S1Title": "Electric Generators",
+  "emiL4S1Body": "Every power plant uses electromagnetic induction!\n\nTurbines (steam, water, or wind) spin magnets inside coils of wire, generating the electricity that powers our homes.\n\nThe only difference from our simulation: the magnet ROTATES instead of moving up and down.\n\nOne spinning magnet = a continuous AC waveform!",
+  "emiL4S2Title": "Wireless Charging",
+  "emiL4S2Body": "Your phone's wireless charger is a real-world Faraday's Law demo!\n\nThe charger contains a coil that creates a rapidly changing magnetic field.\nYour phone contains another coil. The changing field induces a current in it.\n\nThat current charges your battery — no wires needed!\n\nFaraday's Law, in your pocket, every day.",
+  "emiL4S3Title": "Induction Cooktops",
+  "emiL4S3Body": "Induction cooktops use changing magnetic fields to heat pans DIRECTLY.\n\nA coil under the glass creates a high-frequency changing field.\nThis induces \"eddy currents\" in the metal pan.\nThe resistance of the pan to these currents creates heat.\n\nNo flame. No glowing element. Just pure induction heating your food!",
+  "emiL4S4Title": "Try It Yourself",
+  "emiL4S4Body": "Open the simulation one final time. Now that you understand the full physics:\n\n1. Can you explain exactly why the EMF peaks at the center?\n2. Why does increasing turns increase the EMF?\n3. What does the minus sign physically mean?\n\nEverything you see in the sim applies directly to real-world technology!",
+  "emiQ1Question": "What did Michael Faraday discover in 1831?",
+  "emiQ1Options": "[\"That electricity flows through copper wires\",\"That a changing magnetic field induces an electric current\",\"That magnets attract iron\",\"That light is an electromagnetic wave\"]",
+  "emiQ1CorrectIndex": "1",
+  "emiQ1Explanation": "Faraday discovered electromagnetic induction — a changing magnetic field creates (induces) an electric current in a nearby conductor.",
+  "emiQ2Question": "In Faraday's Law, what does the variable N represent?",
+  "emiQ2Options": "[\"The strength of the magnet\",\"The number of turns in the coil\",\"The speed of the magnet\",\"The voltage output\"]",
+  "emiQ2CorrectIndex": "1",
+  "emiQ2Explanation": "N is the number of wire loops (turns) in the coil. More turns = more EMF, because more wires intersect the changing magnetic field.",
+  "emiQ3Question": "According to Lenz's Law, what does the minus sign in EMF = −N×ΔΦ/Δt mean?",
+  "emiQ3Options": "[\"The EMF is always negative\",\"Energy is lost to heat\",\"The induced current opposes the change in flux\",\"The formula is incomplete\"]",
+  "emiQ3CorrectIndex": "2",
+  "emiQ3Explanation": "The minus sign represents Lenz's Law: the induced current creates a magnetic field that OPPOSES the change that produced it. The coil \"fights back.\"",
+  "emiQ4Question": "When is the induced EMF maximum in the simulation?",
+  "emiQ4Options": "[\"When the magnet is at the top of its motion\",\"When the magnet is at the bottom of its motion\",\"When the magnet is at the coil center, moving fastest\",\"When the magnet is stationary at any position\"]",
+  "emiQ4CorrectIndex": "2",
+  "emiQ4Explanation": "EMF is proportional to ΔΦ/Δt — the RATE of change of flux. At the center, the magnet is moving fastest, so flux changes fastest, giving peak EMF.",
+  "emiQ5Question": "Which of these is NOT an application of electromagnetic induction?",
+  "emiQ5Options": "[\"Electric power generators\",\"Wireless phone charging\",\"A standard flashlight battery\",\"Induction cooktops\"]",
+  "emiQ5CorrectIndex": "2",
+  "emiQ5Explanation": "Batteries use chemical reactions to produce electricity, not electromagnetic induction. Generators, wireless chargers, and induction cooktops all use Faraday's Law directly."
+  
 }

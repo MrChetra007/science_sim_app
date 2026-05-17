@@ -5779,6 +5779,708 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'EM Induction Lab - Electromagnetic Induction'**
   String get emInductionLabTutorial;
+
+  /// No description provided for @emiAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Electromagnetic Induction'**
+  String get emiAppTitle;
+
+  /// No description provided for @emiHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Electromagnetic Induction'**
+  String get emiHomeTitle;
+
+  /// No description provided for @emiHomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn. Explore. Understand.'**
+  String get emiHomeSubtitle;
+
+  /// No description provided for @emiLessonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson'**
+  String get emiLessonLabel;
+
+  /// No description provided for @emiSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} steps'**
+  String emiSteps(String count);
+
+  /// No description provided for @emiQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz'**
+  String get emiQuiz;
+
+  /// No description provided for @emiQuizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test Your Knowledge'**
+  String get emiQuizTitle;
+
+  /// No description provided for @emiQuizSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'5 questions'**
+  String get emiQuizSubtitle;
+
+  /// No description provided for @emiSimLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulation Lab'**
+  String get emiSimLab;
+
+  /// No description provided for @emiSimTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Interactive Simulator'**
+  String get emiSimTitle;
+
+  /// No description provided for @emiSimSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag the magnet, adjust controls, explore freely'**
+  String get emiSimSubtitle;
+
+  /// No description provided for @emiStepOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String emiStepOf(String current, String total);
+
+  /// No description provided for @emiLessonBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson'**
+  String get emiLessonBadge;
+
+  /// No description provided for @emiOpenSim.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Simulation'**
+  String get emiOpenSim;
+
+  /// No description provided for @emiBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get emiBack;
+
+  /// No description provided for @emiDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get emiDone;
+
+  /// No description provided for @emiNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get emiNext;
+
+  /// No description provided for @emiQuizComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz Complete'**
+  String get emiQuizComplete;
+
+  /// No description provided for @emiGreatJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Great Job!'**
+  String get emiGreatJob;
+
+  /// No description provided for @emiKeepLearning.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep Learning!'**
+  String get emiKeepLearning;
+
+  /// No description provided for @emiScoreCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'{score} / {total} correct'**
+  String emiScoreCorrect(String score, String total);
+
+  /// No description provided for @emiPercentPassed.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% — You passed!'**
+  String emiPercentPassed(String percent);
+
+  /// No description provided for @emiPercentTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% — Try again to pass'**
+  String emiPercentTryAgain(String percent);
+
+  /// No description provided for @emiRetryQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry Quiz'**
+  String get emiRetryQuiz;
+
+  /// No description provided for @emiBackToLessons.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Lessons'**
+  String get emiBackToLessons;
+
+  /// No description provided for @emiQuestionOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String emiQuestionOf(String current, String total);
+
+  /// No description provided for @emiCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get emiCorrect;
+
+  /// No description provided for @emiIncorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect'**
+  String get emiIncorrect;
+
+  /// No description provided for @emiNextQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Question'**
+  String get emiNextQuestion;
+
+  /// No description provided for @emiSeeResults.
+  ///
+  /// In en, this message translates to:
+  /// **'See Results'**
+  String get emiSeeResults;
+
+  /// No description provided for @emiSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Speed'**
+  String get emiSpeed;
+
+  /// No description provided for @emiField.
+  ///
+  /// In en, this message translates to:
+  /// **'Field'**
+  String get emiField;
+
+  /// No description provided for @emiTurns.
+  ///
+  /// In en, this message translates to:
+  /// **'Turns'**
+  String get emiTurns;
+
+  /// No description provided for @emiEmf.
+  ///
+  /// In en, this message translates to:
+  /// **'EMF'**
+  String get emiEmf;
+
+  /// No description provided for @emiFlux.
+  ///
+  /// In en, this message translates to:
+  /// **'Flux Φ'**
+  String get emiFlux;
+
+  /// No description provided for @emiDFluxDt.
+  ///
+  /// In en, this message translates to:
+  /// **'dΦ/dt'**
+  String get emiDFluxDt;
+
+  /// No description provided for @emiDir.
+  ///
+  /// In en, this message translates to:
+  /// **'Dir'**
+  String get emiDir;
+
+  /// No description provided for @emiStatusExtremes.
+  ///
+  /// In en, this message translates to:
+  /// **'At extremes — Velocity = 0, EMF = 0'**
+  String get emiStatusExtremes;
+
+  /// No description provided for @emiStatusCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'At coil center — Max velocity, Peak EMF'**
+  String get emiStatusCenter;
+
+  /// No description provided for @emiStatusEntering.
+  ///
+  /// In en, this message translates to:
+  /// **'Entering coil — Flux increasing, EMF induced'**
+  String get emiStatusEntering;
+
+  /// No description provided for @emiStatusExiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Exiting coil — Flux decreasing, EMF reverses (Lenz)'**
+  String get emiStatusExiting;
+
+  /// No description provided for @emiFormulaEmf.
+  ///
+  /// In en, this message translates to:
+  /// **'EMF = '**
+  String get emiFormulaEmf;
+
+  /// No description provided for @emiFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'-N × ΔΦ/Δt'**
+  String get emiFormula;
+
+  /// No description provided for @emiFormulaEquals.
+  ///
+  /// In en, this message translates to:
+  /// **'= '**
+  String get emiFormulaEquals;
+
+  /// No description provided for @emiPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'PEAK'**
+  String get emiPeak;
+
+  /// No description provided for @emiZero.
+  ///
+  /// In en, this message translates to:
+  /// **'ZERO'**
+  String get emiZero;
+
+  /// No description provided for @emiReversal.
+  ///
+  /// In en, this message translates to:
+  /// **'REVERSAL'**
+  String get emiReversal;
+
+  /// No description provided for @emiEmfReadout.
+  ///
+  /// In en, this message translates to:
+  /// **'EMF: {value} V'**
+  String emiEmfReadout(String value);
+
+  /// No description provided for @emiFluxReadout.
+  ///
+  /// In en, this message translates to:
+  /// **'Φ: {value} Wb'**
+  String emiFluxReadout(String value);
+
+  /// No description provided for @emiEmfLegend.
+  ///
+  /// In en, this message translates to:
+  /// **'EMF'**
+  String get emiEmfLegend;
+
+  /// No description provided for @emiFluxLegend.
+  ///
+  /// In en, this message translates to:
+  /// **'FLUX'**
+  String get emiFluxLegend;
+
+  /// No description provided for @emiL1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Electromagnetic Induction?'**
+  String get emiL1Title;
+
+  /// No description provided for @emiL1Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Faraday\'s 1831 discovery that changed the world'**
+  String get emiL1Subtitle;
+
+  /// No description provided for @emiL1S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Discovery'**
+  String get emiL1S1Title;
+
+  /// No description provided for @emiL1S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'In 1831, Michael Faraday discovered that a CHANGING magnetic field creates an electric current in a nearby wire.\n\nBefore Faraday, scientists knew electricity and magnetism were related. He showed exactly how they connect.'**
+  String get emiL1S1Body;
+
+  /// No description provided for @emiL1S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Water Pipe Analogy'**
+  String get emiL1S2Title;
+
+  /// No description provided for @emiL1S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Imagine a pipe full of water. If you push a plunger through, the water moves.\n\nA magnet moving through a coil is like that plunger — it \"pushes\" the electrons in the wire, creating an electric current.\n\nKey insight: the magnet must be MOVING. A stationary magnet does nothing.'**
+  String get emiL1S2Body;
+
+  /// No description provided for @emiL1S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'What You\'ll See'**
+  String get emiL1S3Title;
+
+  /// No description provided for @emiL1S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'When the magnet enters the coil, electrons start flowing.\n\nWhen the magnet is at the center, moving fastest — the current is strongest.\n\nWhen the magnet exits, current flows the opposite direction.\n\nThis alternating current (AC) is what powers your home!'**
+  String get emiL1S3Body;
+
+  /// No description provided for @emiL1S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Try It Yourself'**
+  String get emiL1S4Title;
+
+  /// No description provided for @emiL1S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the simulation. Watch what happens to the EMF as you move the magnet:\n\n1. Slowly move the magnet through the coil\n2. Watch the green EMF waveform appear\n3. Try different speeds — what changes?'**
+  String get emiL1S4Body;
+
+  /// No description provided for @emiL2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Faraday\'s Law'**
+  String get emiL2Title;
+
+  /// No description provided for @emiL2Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'EMF = -N × ΔΦ/Δt'**
+  String get emiL2Subtitle;
+
+  /// No description provided for @emiL2S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Formula'**
+  String get emiL2S1Title;
+
+  /// No description provided for @emiL2S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Faraday\'s Law is the mathematical heart of induction:\n\nEMF = -N × ΔΦ/Δt\n\nLet\'s break down each piece.'**
+  String get emiL2S1Body;
+
+  /// No description provided for @emiL2S1Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'EMF = −N × ΔΦ/Δt'**
+  String get emiL2S1Formula;
+
+  /// No description provided for @emiL2S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'N — Number of Turns'**
+  String get emiL2S2Title;
+
+  /// No description provided for @emiL2S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'N = number of wire loops (turns) in the coil.\n\nThink of it like fishing nets: more loops = more wires cutting through the magnetic field = more induced EMF.\n\nDoubling N doubles the EMF. This is why real generators use coils with hundreds of turns!'**
+  String get emiL2S2Body;
+
+  /// No description provided for @emiL2S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'ΔΦ — Change in Flux'**
+  String get emiL2S3Title;
+
+  /// No description provided for @emiL2S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Φ (Phi) = magnetic flux = the amount of magnetic field passing through the coil.\n\nΔΦ = the CHANGE in flux. When the magnet moves closer, flux increases. When it moves away, flux decreases.\n\nBigger magnets or stronger fields = bigger ΔΦ = bigger EMF.'**
+  String get emiL2S3Body;
+
+  /// No description provided for @emiL2S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Δt — Time Interval'**
+  String get emiL2S4Title;
+
+  /// No description provided for @emiL2S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Δt = the time over which the flux changes.\n\nFaster motion = smaller Δt = larger EMF.\n\nThis is why pushing the magnet through quickly gives a bigger voltage spike than moving it slowly.'**
+  String get emiL2S4Body;
+
+  /// No description provided for @emiL2S5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Try It Yourself'**
+  String get emiL2S5Title;
+
+  /// No description provided for @emiL2S5Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the simulation and test each variable:\n\n1. Adjust the \"Turns\" slider — does EMF scale with N?\n2. Adjust \"Field Strength\" — stronger magnet = more flux?\n3. Adjust \"Speed\" — faster motion = bigger EMF?\n\nWatch the formula panel update LIVE with your changes!'**
+  String get emiL2S5Body;
+
+  /// No description provided for @emiL3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Lenz\'s Law'**
+  String get emiL3Title;
+
+  /// No description provided for @emiL3Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Why the minus sign? The coil fights back'**
+  String get emiL3Subtitle;
+
+  /// No description provided for @emiL3S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Minus Sign'**
+  String get emiL3S1Title;
+
+  /// No description provided for @emiL3S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The minus sign in Faraday\'s Law is NOT just a mathematical quirk — it\'s a physical law (Lenz\'s Law).\n\nIt means: the induced current creates a magnetic field that OPPOSES the change that created it.\n\nNature hates change! The coil \"fights back\" against the magnet\'s motion.'**
+  String get emiL3S1Body;
+
+  /// No description provided for @emiL3S1Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'EMF = −N × ΔΦ/Δt'**
+  String get emiL3S1Formula;
+
+  /// No description provided for @emiL3S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Approaching Magnet'**
+  String get emiL3S2Title;
+
+  /// No description provided for @emiL3S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'When the magnet\'s NORTH pole approaches from above:\n\n1. Flux through the coil INCREASES\n2. The induced current creates a NORTH pole facing UP\n3. This REPELS the approaching magnet\n\nThe coil says: \"Stop getting closer!\" ↑'**
+  String get emiL3S2Body;
+
+  /// No description provided for @emiL3S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Retreating Magnet'**
+  String get emiL3S3Title;
+
+  /// No description provided for @emiL3S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'When the magnet moves AWAY:\n\n1. Flux through the coil DECREASES\n2. The induced current creates a SOUTH pole facing UP\n3. This ATTRACTS the retreating magnet\n\nThe coil says: \"Don\'t leave!\" ←'**
+  String get emiL3S3Body;
+
+  /// No description provided for @emiL3S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Clockwise vs Counter-Clockwise'**
+  String get emiL3S4Title;
+
+  /// No description provided for @emiL3S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The direction of the induced current tells you what the coil is doing:\n\nRED glow (CW) = coil creating a north pole (repelling the approaching N pole)\nBLUE glow (CCW) = coil creating a south pole (attracting the retreating N pole)\n\nThis is energy conservation in action — you have to DO WORK to move the magnet against this opposing force.'**
+  String get emiL3S4Body;
+
+  /// No description provided for @emiL3S5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Try It Yourself'**
+  String get emiL3S5Title;
+
+  /// No description provided for @emiL3S5Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the simulation and focus on the coil color:\n\n1. Watch the glow — red when EMF is positive, blue when negative\n2. Can you predict which color appears when the magnet enters vs exits?\n3. Drag the magnet manually and feel the opposition (watch the arrows!)'**
+  String get emiL3S5Body;
+
+  /// No description provided for @emiL4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Real-World Applications'**
+  String get emiL4Title;
+
+  /// No description provided for @emiL4Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Induction is everywhere around you'**
+  String get emiL4Subtitle;
+
+  /// No description provided for @emiL4S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Electric Generators'**
+  String get emiL4S1Title;
+
+  /// No description provided for @emiL4S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Every power plant uses electromagnetic induction!\n\nTurbines (steam, water, or wind) spin magnets inside coils of wire, generating the electricity that powers our homes.\n\nThe only difference from our simulation: the magnet ROTATES instead of moving up and down.\n\nOne spinning magnet = a continuous AC waveform!'**
+  String get emiL4S1Body;
+
+  /// No description provided for @emiL4S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Wireless Charging'**
+  String get emiL4S2Title;
+
+  /// No description provided for @emiL4S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone\'s wireless charger is a real-world Faraday\'s Law demo!\n\nThe charger contains a coil that creates a rapidly changing magnetic field.\nYour phone contains another coil. The changing field induces a current in it.\n\nThat current charges your battery — no wires needed!\n\nFaraday\'s Law, in your pocket, every day.'**
+  String get emiL4S2Body;
+
+  /// No description provided for @emiL4S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Induction Cooktops'**
+  String get emiL4S3Title;
+
+  /// No description provided for @emiL4S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Induction cooktops use changing magnetic fields to heat pans DIRECTLY.\n\nA coil under the glass creates a high-frequency changing field.\nThis induces \"eddy currents\" in the metal pan.\nThe resistance of the pan to these currents creates heat.\n\nNo flame. No glowing element. Just pure induction heating your food!'**
+  String get emiL4S3Body;
+
+  /// No description provided for @emiL4S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Try It Yourself'**
+  String get emiL4S4Title;
+
+  /// No description provided for @emiL4S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the simulation one final time. Now that you understand the full physics:\n\n1. Can you explain exactly why the EMF peaks at the center?\n2. Why does increasing turns increase the EMF?\n3. What does the minus sign physically mean?\n\nEverything you see in the sim applies directly to real-world technology!'**
+  String get emiL4S4Body;
+
+  /// No description provided for @emiQ1Question.
+  ///
+  /// In en, this message translates to:
+  /// **'What did Michael Faraday discover in 1831?'**
+  String get emiQ1Question;
+
+  /// No description provided for @emiQ1Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"That electricity flows through copper wires\",\"That a changing magnetic field induces an electric current\",\"That magnets attract iron\",\"That light is an electromagnetic wave\"]'**
+  String get emiQ1Options;
+
+  /// No description provided for @emiQ1CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get emiQ1CorrectIndex;
+
+  /// No description provided for @emiQ1Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Faraday discovered electromagnetic induction — a changing magnetic field creates (induces) an electric current in a nearby conductor.'**
+  String get emiQ1Explanation;
+
+  /// No description provided for @emiQ2Question.
+  ///
+  /// In en, this message translates to:
+  /// **'In Faraday\'s Law, what does the variable N represent?'**
+  String get emiQ2Question;
+
+  /// No description provided for @emiQ2Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"The strength of the magnet\",\"The number of turns in the coil\",\"The speed of the magnet\",\"The voltage output\"]'**
+  String get emiQ2Options;
+
+  /// No description provided for @emiQ2CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get emiQ2CorrectIndex;
+
+  /// No description provided for @emiQ2Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'N is the number of wire loops (turns) in the coil. More turns = more EMF, because more wires intersect the changing magnetic field.'**
+  String get emiQ2Explanation;
+
+  /// No description provided for @emiQ3Question.
+  ///
+  /// In en, this message translates to:
+  /// **'According to Lenz\'s Law, what does the minus sign in EMF = −N×ΔΦ/Δt mean?'**
+  String get emiQ3Question;
+
+  /// No description provided for @emiQ3Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"The EMF is always negative\",\"Energy is lost to heat\",\"The induced current opposes the change in flux\",\"The formula is incomplete\"]'**
+  String get emiQ3Options;
+
+  /// No description provided for @emiQ3CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'2'**
+  String get emiQ3CorrectIndex;
+
+  /// No description provided for @emiQ3Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'The minus sign represents Lenz\'s Law: the induced current creates a magnetic field that OPPOSES the change that produced it. The coil \"fights back.\"'**
+  String get emiQ3Explanation;
+
+  /// No description provided for @emiQ4Question.
+  ///
+  /// In en, this message translates to:
+  /// **'When is the induced EMF maximum in the simulation?'**
+  String get emiQ4Question;
+
+  /// No description provided for @emiQ4Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"When the magnet is at the top of its motion\",\"When the magnet is at the bottom of its motion\",\"When the magnet is at the coil center, moving fastest\",\"When the magnet is stationary at any position\"]'**
+  String get emiQ4Options;
+
+  /// No description provided for @emiQ4CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'2'**
+  String get emiQ4CorrectIndex;
+
+  /// No description provided for @emiQ4Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'EMF is proportional to ΔΦ/Δt — the RATE of change of flux. At the center, the magnet is moving fastest, so flux changes fastest, giving peak EMF.'**
+  String get emiQ4Explanation;
+
+  /// No description provided for @emiQ5Question.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of these is NOT an application of electromagnetic induction?'**
+  String get emiQ5Question;
+
+  /// No description provided for @emiQ5Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"Electric power generators\",\"Wireless phone charging\",\"A standard flashlight battery\",\"Induction cooktops\"]'**
+  String get emiQ5Options;
+
+  /// No description provided for @emiQ5CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'2'**
+  String get emiQ5CorrectIndex;
+
+  /// No description provided for @emiQ5Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Batteries use chemical reactions to produce electricity, not electromagnetic induction. Generators, wireless chargers, and induction cooktops all use Faraday\'s Law directly.'**
+  String get emiQ5Explanation;
 }
 
 class _AppLocalizationsDelegate

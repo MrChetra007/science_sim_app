@@ -19,6 +19,14 @@ class OscilloscopeComponent extends PositionComponent {
   final List<_Annotation> _annotations = [];
   double _emfSlope = 0;
 
+  String peakLabel = 'PEAK';
+  String zeroLabel = 'ZERO';
+  String reversalLabel = 'REVERSAL';
+  String emfReadoutFormat = 'EMF: {v} V';
+  String fluxReadoutFormat = '\u03A6: {v} Wb';
+  String emfLegendText = 'EMF';
+  String fluxLegendText = 'FLUX';
+
   OscilloscopeComponent() {
     anchor = Anchor.topLeft;
     position = Vector2.zero();
@@ -217,18 +225,16 @@ class OscilloscopeComponent extends PositionComponent {
       final ann = _annotations[i];
       _annotations[i] = _Annotation(ann.type, ann.x, ann.age + 1);
     }
-
-    _annotations.removeWhere((a) => a.x < 0 || a.x > w || a.age > 80);
   }
 
   String _labelFor(AnnotationType type) {
     switch (type) {
       case AnnotationType.peak:
-        return 'PEAK';
+        return peakLabel;
       case AnnotationType.zeroCrossing:
-        return 'ZERO';
+        return zeroLabel;
       case AnnotationType.reversal:
-        return 'REVERSAL';
+        return reversalLabel;
     }
   }
 
@@ -246,7 +252,7 @@ class OscilloscopeComponent extends PositionComponent {
   void _drawLabels(Canvas canvas, double w, double midY) {
     final emfLabel = TextPainter(
       text: TextSpan(
-        text: 'EMF: ${_currentEmf.toStringAsFixed(2)} V',
+        text: emfReadoutFormat.replaceFirst('{v}', _currentEmf.toStringAsFixed(2)),
         style: const TextStyle(
           color: Color(0xFF00FF41),
           fontSize: 12,
@@ -259,7 +265,7 @@ class OscilloscopeComponent extends PositionComponent {
 
     final fluxLabel = TextPainter(
       text: TextSpan(
-        text: 'Φ: ${_currentFlux.toStringAsFixed(3)} Wb',
+        text: fluxReadoutFormat.replaceFirst('{v}', _currentFlux.toStringAsFixed(3)),
         style: const TextStyle(
           color: Color(0xFF42A5F5),
           fontSize: 12,
@@ -271,9 +277,9 @@ class OscilloscopeComponent extends PositionComponent {
     fluxLabel.paint(canvas, Offset(6, midY + 4));
 
     final emfTag = TextPainter(
-      text: const TextSpan(
-        text: 'EMF',
-        style: TextStyle(
+      text: TextSpan(
+        text: emfLegendText,
+        style: const TextStyle(
           color: Color(0xFF00FF41),
           fontSize: 10,
           fontFamily: 'monospace',
@@ -284,9 +290,9 @@ class OscilloscopeComponent extends PositionComponent {
     emfTag.paint(canvas, Offset(w - emfTag.width - 6, 6));
 
     final fluxTag = TextPainter(
-      text: const TextSpan(
-        text: 'FLUX',
-        style: TextStyle(
+      text: TextSpan(
+        text: fluxLegendText,
+        style: const TextStyle(
           color: Color(0xFF42A5F5),
           fontSize: 10,
           fontFamily: 'monospace',

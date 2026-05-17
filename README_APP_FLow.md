@@ -1,4 +1,5 @@
 # 〰️ Wave Lab
+
 ### Interactive Wave Physics Simulation — Flutter App
 
 > **The only mobile app that shows you the wave equation updating live as you move the sliders — with step-by-step maths explaining every formula.**
@@ -11,23 +12,25 @@ Wave Lab is a wave physics simulation app for iOS and Android, built with Flutte
 
 Think of it as a physics lab in your pocket. Move a slider, watch the wave change, and read exactly why the maths works — in plain English, step by step.
 
-It is the companion app to **Ballista** (Projectile Motion Lab), built on the same holographic UI design system and the same educational philosophy: *don't just show the answer, show the why.*
+It is the companion app to **Ballista** (Projectile Motion Lab), built on the same holographic UI design system and the same educational philosophy: _don't just show the answer, show the why._
 
 ---
 
 ## Features
 
 ### Wave Types
-| Wave | Description |
-|---|---|
-| Transverse | Classic sine wave with adjustable amplitude and frequency |
-| Longitudinal | Compression and rarefaction visualisation |
-| Standing Wave | Nodes and antinodes, harmonic selector n=1 to n=6 |
-| Travelling Wave | Real-time wave propagation animation |
-| Interference | Superposition of two waves — constructive and destructive |
-| Doppler Effect | Moving source animation with frequency shift |
+
+| Wave            | Description                                               |
+| --------------- | --------------------------------------------------------- |
+| Transverse      | Classic sine wave with adjustable amplitude and frequency |
+| Longitudinal    | Compression and rarefaction visualisation                 |
+| Standing Wave   | Nodes and antinodes, harmonic selector n=1 to n=6         |
+| Travelling Wave | Real-time wave propagation animation                      |
+| Interference    | Superposition of two waves — constructive and destructive |
+| Doppler Effect  | Moving source animation with frequency shift              |
 
 ### Physics Parameters You Can Adjust
+
 - **Amplitude (A)** — 0.1 to 5.0 m
 - **Frequency (f)** — 0.1 to 20 Hz
 - **Wavelength (λ)** — derived live from v = fλ
@@ -37,6 +40,7 @@ It is the companion app to **Ballista** (Projectile Motion Lab), built on the sa
 - **Damping** — energy loss over distance toggle
 
 ### Educational Tools
+
 - **Maths Derivation Module** — step-by-step derivation of v = fλ, T = 1/f, standing wave conditions, and the Doppler formula, with your live simulation values substituted into every formula
 - **Live Wave Equation HUD** — shows y(x,t) = A sin(kx − ωt + φ) updating in real time
 - **Oscilloscope Panel** — fl_chart powered waveform graph with time and position axes
@@ -45,12 +49,14 @@ It is the companion app to **Ballista** (Projectile Motion Lab), built on the sa
 - **Comparison / Ghost Mode** — keep the previous wave visible for side-by-side comparison
 
 ### Challenge Mode
+
 - **Target Frequency** — tune a wave to match a target within tolerance
 - **Interference Puzzle** — set two waves to produce a given resultant pattern
 - **Standing Wave Challenge** — find the correct frequency for the n-th harmonic
 - Score system, streak counter, leaderboard
 
 ### Experience
+
 - 60fps animated sine wave home screen
 - Particle field oscillating in wave patterns
 - Audio tone generator — plays the actual frequency you are simulating
@@ -64,44 +70,44 @@ It is the companion app to **Ballista** (Projectile Motion Lab), built on the sa
 
 Wave Lab is free to download. A one-time **Pro unlock ($3.99)** gives you access to the full feature set — no subscription, no ads, restores automatically on all your devices with the same Google Account or Apple ID.
 
-| Feature | Free | Pro |
-|---|:---:|:---:|
-| Transverse Wave | ✓ | ✓ |
-| Longitudinal Wave | ✗ | ✓ |
-| Standing Wave (n=1 only) | ✓ | ✓ |
-| Standing Wave (n=1 to 6) | ✗ | ✓ |
-| Interference Mode | ✗ | ✓ |
-| Doppler Effect | ✗ | ✓ |
-| Wave Media Presets (Air only) | ✓ | ✓ |
-| All Media + Custom Speed | ✗ | ✓ |
-| Damping / Attenuation | ✗ | ✓ |
-| Phase Difference Control | ✗ | ✓ |
-| Maths Derivation Module | ✗ | ✓ |
-| Live Formula HUD | Basic | Full |
-| Oscilloscope Graph Panel | ✗ | ✓ |
-| Vector Overlay | ✗ | ✓ |
-| Comparison / Ghost Mode | ✗ | ✓ |
-| Audio Tone Generator | ✗ | ✓ |
-| Slow Motion Mode | ✗ | ✓ |
-| Challenge Mode | Preview | Full |
-| Formula Reference Screen | ✗ | ✓ |
-| Export Data CSV | ✗ | ✓ |
+| Feature                       |  Free   | Pro  |
+| ----------------------------- | :-----: | :--: |
+| Transverse Wave               |    ✓    |  ✓   |
+| Longitudinal Wave             |    ✗    |  ✓   |
+| Standing Wave (n=1 only)      |    ✓    |  ✓   |
+| Standing Wave (n=1 to 6)      |    ✗    |  ✓   |
+| Interference Mode             |    ✗    |  ✓   |
+| Doppler Effect                |    ✗    |  ✓   |
+| Wave Media Presets (Air only) |    ✓    |  ✓   |
+| All Media + Custom Speed      |    ✗    |  ✓   |
+| Damping / Attenuation         |    ✗    |  ✓   |
+| Phase Difference Control      |    ✗    |  ✓   |
+| Maths Derivation Module       |    ✗    |  ✓   |
+| Live Formula HUD              |  Basic  | Full |
+| Oscilloscope Graph Panel      |    ✗    |  ✓   |
+| Vector Overlay                |    ✗    |  ✓   |
+| Comparison / Ghost Mode       |    ✗    |  ✓   |
+| Audio Tone Generator          |    ✗    |  ✓   |
+| Slow Motion Mode              |    ✗    |  ✓   |
+| Challenge Mode                | Preview | Full |
+| Formula Reference Screen      |    ✗    |  ✓   |
+| Export Data CSV               |    ✗    |  ✓   |
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Flutter 3.x — iOS + Android from one codebase |
-| Wave Rendering | CustomPainter — direct canvas sine wave drawing at 60fps |
-| Game Layer | Flame Engine — Doppler animation and Challenge Mode |
-| State Management | Riverpod — reactive, predictable |
-| Graphs | fl_chart — oscilloscope waveform panel |
-| Audio | flutter_soloud — real frequency tone generation |
-| In-App Purchase | in_app_purchase ^3.2.0 — no backend required |
-| Persistence | shared_preferences — settings and pro unlock status |
-| Maths Engine | Custom Dart WaveSolver class |
+| Layer            | Technology                                               |
+| ---------------- | -------------------------------------------------------- |
+| Framework        | Flutter 3.x — iOS + Android from one codebase            |
+| Wave Rendering   | CustomPainter — direct canvas sine wave drawing at 60fps |
+| Game Layer       | Flame Engine — Doppler animation and Challenge Mode      |
+| State Management | Riverpod — reactive, predictable                         |
+| Graphs           | fl_chart — oscilloscope waveform panel                   |
+| Audio            | flutter_soloud — real frequency tone generation          |
+| In-App Purchase  | in_app_purchase ^3.2.0 — no backend required             |
+| Persistence      | shared_preferences — settings and pro unlock status      |
+| Maths Engine     | Custom Dart WaveSolver class                             |
 
 ---
 
@@ -140,18 +146,23 @@ lib/
 ## Development Phases
 
 ### Phase 1 — Foundation
+
 Project setup, Flutter + Riverpod scaffold, `WaveSolver` Dart class (v=fλ, T=1/f, standing wave equations), basic sine wave `CustomPainter` rendering.
 
 ### Phase 2 — Core Simulation
+
 Transverse and longitudinal wave renderers, live parameter sliders (A, f, λ, v), HUD readouts, live wave equation display y(x,t) = A sin(kx − ωt).
 
 ### Phase 3 — Advanced Waves
+
 Standing wave with harmonic selector, interference superposition renderer, Doppler effect animation, wave media presets (air, water, steel, vacuum).
 
 ### Phase 4 — Education Layer
+
 Maths Derivation Module (mirrors Ballista pattern), oscilloscope fl_chart panel, vector overlay, formula reference screen, comparison ghost mode.
 
 ### Phase 5 — Polish and Ship
+
 Challenge mode, audio tone generator, slow motion, home screen animation, Pro IAP integration ($3.99), App Store and Play Store submission.
 
 ---
@@ -159,6 +170,7 @@ Challenge mode, audio tone generator, slow motion, home screen animation, Pro IA
 ---
 
 # 〰️ SHM Lab
+
 ### Simple Harmonic Motion — Interactive Lessons, Quiz & Simulation
 
 > **Learn SHM through structured lessons, test yourself with a quiz, and experiment with a live spring-mass & pendulum simulation.**
@@ -166,6 +178,7 @@ Challenge mode, audio tone generator, slow motion, home screen animation, Pro IA
 ## What Is This?
 
 SHM Lab is a self-contained module inside the Science Lab app that teaches Simple Harmonic Motion through three modes:
+
 - **Lessons** — 4 structured lessons covering what SHM is, period & frequency, energy in SHM, and real-world applications
 - **Quiz** — 5 multiple-choice questions with instant feedback and scoring
 - **Simulation** — Interactive Flame-powered spring-mass and pendulum simulator with real-time graphs, energy bars, and vector overlays
@@ -182,13 +195,13 @@ SHM Lab is a self-contained module inside the Science Lab app that teaches Simpl
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Flutter 3.x |
-| Simulation Rendering | Flame Engine |
-| State Management | Riverpod |
-| Localization | Flutter l10n (ARB files) |
-| Persistence | shared_preferences |
+| Layer                | Technology               |
+| -------------------- | ------------------------ |
+| Framework            | Flutter 3.x              |
+| Simulation Rendering | Flame Engine             |
+| State Management     | Riverpod                 |
+| Localization         | Flutter l10n (ARB files) |
+| Persistence          | shared_preferences       |
 
 ## Project Structure
 
@@ -229,9 +242,11 @@ lib/physics/simple_harmonic_motion/
 ---
 
 # 〰️ Wave Lab
+
 ### Interactive Wave Physics Simulation — Flutter App
 
 ### Prerequisites
+
 - Flutter SDK 3.x or higher
 - Dart 3.x
 - Android Studio or Xcode
@@ -295,6 +310,7 @@ Amber         #FFD740   Highlights
 ```
 
 Key UI patterns (shared with Ballista):
+
 - `_GlassPanel` — frosted glass card with cyan border glow
 - `_HudTag` — split pill system status indicator
 - `_GridPainter` — full-screen subtle holographic grid
@@ -346,4 +362,4 @@ MIT Licence. See `LICENSE` for details.
 
 ---
 
-*Wave Lab — Physics at your fingertips.*
+_Wave Lab — Physics at your fingertips._

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/sim_provider.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class ControlPanel extends ConsumerWidget {
   const ControlPanel({super.key});
@@ -8,6 +9,7 @@ class ControlPanel extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(simProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
@@ -16,7 +18,7 @@ class ControlPanel extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _SliderRow(
-            label: 'Speed',
+            label: l10n.emiSpeed,
             value: state.speed,
             min: 0.2,
             max: 3.0,
@@ -24,7 +26,7 @@ class ControlPanel extends ConsumerWidget {
             onChanged: (v) => ref.read(simProvider.notifier).setSpeed(v),
           ),
           _SliderRow(
-            label: 'Field',
+            label: l10n.emiField,
             value: state.fieldStrength,
             min: 0.5,
             max: 3.0,
@@ -33,7 +35,7 @@ class ControlPanel extends ConsumerWidget {
                 ref.read(simProvider.notifier).setFieldStrength(v),
           ),
           _SliderRow(
-            label: 'Turns',
+            label: l10n.emiTurns,
             value: state.turns.toDouble(),
             min: 2,
             max: 20,

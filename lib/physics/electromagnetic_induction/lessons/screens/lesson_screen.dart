@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import '../models/lesson.dart';
 import '../../ui/sim_screen.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class LessonScreen extends StatefulWidget {
   final Lesson lesson;
+  final AppLocalizations? l10n;
 
-  const LessonScreen({super.key, required this.lesson});
+  const LessonScreen({super.key, required this.lesson, this.l10n});
 
   @override
   State<LessonScreen> createState() => _LessonScreenState();
@@ -36,6 +38,7 @@ class _LessonScreenState extends State<LessonScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = widget.l10n ?? AppLocalizations.of(context)!;
     final lesson = widget.lesson;
     final totalSteps = lesson.steps.length;
     final isLast = _currentPage == totalSteps - 1;
@@ -51,7 +54,7 @@ class _LessonScreenState extends State<LessonScreen> {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: _ProgressBar(current: _currentPage, total: totalSteps),
+        title: _ProgressBar(current: _currentPage, total: totalSteps, l10n: l10n),
       ),
       body: Column(
         children: [
@@ -67,6 +70,7 @@ class _LessonScreenState extends State<LessonScreen> {
                   stepIndex: index,
                   totalSteps: totalSteps,
                   onOpenSim: _goToSim,
+                  l10n: l10n,
                 );
               },
             ),
@@ -92,6 +96,7 @@ class _LessonScreenState extends State<LessonScreen> {
               }
             },
             onOpenSim: _goToSim,
+            l10n: l10n,
           ),
         ],
       ),
@@ -102,8 +107,9 @@ class _LessonScreenState extends State<LessonScreen> {
 class _ProgressBar extends StatelessWidget {
   final int current;
   final int total;
+  final AppLocalizations l10n;
 
-  const _ProgressBar({required this.current, required this.total});
+  const _ProgressBar({required this.current, required this.total, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +127,7 @@ class _ProgressBar extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          'Step ${current + 1} of $total',
+          l10n.emiStepOf('${current + 1}', '$total'),
           style: const TextStyle(color: Colors.white54, fontSize: 11),
         ),
       ],
@@ -135,6 +141,7 @@ class _StepCard extends StatelessWidget {
   final int stepIndex;
   final int totalSteps;
   final VoidCallback onOpenSim;
+  final AppLocalizations l10n;
 
   const _StepCard({
     required this.lesson,
@@ -142,6 +149,7 @@ class _StepCard extends StatelessWidget {
     required this.stepIndex,
     required this.totalSteps,
     required this.onOpenSim,
+    required this.l10n,
   });
 
   @override
@@ -153,7 +161,7 @@ class _StepCard extends StatelessWidget {
         children: [
           if (stepIndex == 0) ...[
             Text(
-              '${lesson.emoji}  Lesson ${lesson.id}',
+              '${lesson.emoji}  ${l10n.emiLessonBadge} ${lesson.id}',
               style: const TextStyle(
                 color: Color(0xFFD2691E),
                 fontSize: 13,
@@ -184,7 +192,7 @@ class _StepCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    'Lesson ${lesson.id}',
+                    '${l10n.emiLessonBadge} ${lesson.id}',
                     style: const TextStyle(
                       color: Color(0xFFD2691E),
                       fontSize: 11,
@@ -242,9 +250,9 @@ class _StepCard extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: onOpenSim,
                 icon: const Icon(Icons.science, size: 20),
-                label: const Text(
-                  'Open Simulation',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                label: Text(
+                  l10n.emiOpenSim,
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFD2691E),
@@ -269,6 +277,7 @@ class _BottomNav extends StatelessWidget {
   final VoidCallback? onBack;
   final VoidCallback onNext;
   final VoidCallback onOpenSim;
+  final AppLocalizations l10n;
 
   const _BottomNav({
     required this.currentPage,
@@ -277,6 +286,7 @@ class _BottomNav extends StatelessWidget {
     required this.onBack,
     required this.onNext,
     required this.onOpenSim,
+    required this.l10n,
   });
 
   @override
@@ -294,9 +304,9 @@ class _BottomNav extends StatelessWidget {
           if (onBack != null)
             TextButton(
               onPressed: onBack,
-              child: const Text(
-                'Back',
-                style: TextStyle(color: Colors.white54, fontSize: 15),
+              child: Text(
+                l10n.emiBack,
+                style: const TextStyle(color: Colors.white54, fontSize: 15),
               ),
             )
           else
@@ -329,13 +339,13 @@ class _BottomNav extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text('Done'),
+                  child: Text(l10n.emiDone),
                 )
               : TextButton(
                   onPressed: onNext,
-                  child: const Text(
-                    'Next',
-                    style: TextStyle(
+                  child: Text(
+                    l10n.emiNext,
+                    style: const TextStyle(
                       color: Color(0xFFD2691E),
                       fontSize: 15,
                       fontWeight: FontWeight.w600,

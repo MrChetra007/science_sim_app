@@ -5,6 +5,7 @@ import '../game/induction_game.dart';
 import '../providers/sim_provider.dart';
 import 'control_panel.dart';
 import 'info_panel.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class SimScreen extends ConsumerStatefulWidget {
   const SimScreen({super.key});
@@ -65,6 +66,7 @@ class _SimScreenState extends ConsumerState<SimScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     _game ??= InductionGame(
       onTick: _onTick,
       onMagnetDrag: (deltaY) {
@@ -74,6 +76,7 @@ class _SimScreenState extends ConsumerState<SimScreen> {
         final newMagnetY = (magnetWorldY - coilCenterY) / 120;
         ref.read(simProvider.notifier).setManualPosition(newMagnetY);
       },
+      l10n: l10n,
     );
 
     return Scaffold(

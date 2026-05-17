@@ -1,33 +1,45 @@
 import 'package:flutter/material.dart';
 import '../lesson_data.dart';
+import '../models/lesson.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+  final AppLocalizations? l10n;
+
+  const QuizScreen({super.key, this.l10n});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
 class _QuizScreenState extends State<QuizScreen> {
+  late final List<QuizQuestion> _questions;
   int _currentQuestion = 0;
   int _score = 0;
   int? _selectedIndex;
   bool _answered = false;
   bool _finished = false;
 
+  @override
+  void initState() {
+    super.initState();
+    final l10n = widget.l10n ?? AppLocalizations.of(context)!;
+    _questions = getQuizQuestions(l10n);
+  }
+
   void _selectAnswer(int index) {
     if (_answered) return;
     setState(() {
       _selectedIndex = index;
       _answered = true;
-      if (index == quizQuestions[_currentQuestion].correctIndex) {
+      if (index == _questions[_currentQuestion].correctIndex) {
         _score++;
       }
     });
   }
 
   void _next() {
-    if (_currentQuestion < quizQuestions.length - 1) {
+    if (_currentQuestion < _questions.length - 1) {
       setState(() {
         _currentQuestion++;
         _selectedIndex = null;
@@ -39,25 +51,30 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   void _reset() {
+    final l10n = widget.l10n ?? AppLocalizations.of(context)!;
     setState(() {
       _currentQuestion = 0;
       _score = 0;
       _selectedIndex = null;
       _answered = false;
       _finished = false;
+      _questions.clear();
+      _questions.addAll(getQuizQuestions(l10n));
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = widget.l10n ?? AppLocalizations.of(context)!;
+
     if (_finished) {
-      return _buildResults();
+      return _buildResults(l10n);
     }
-    return _buildQuestion();
+    return _buildQuestion(l10n);
   }
 
-  Widget _buildResults() {
-    final pct = (_score / quizQuestions.length * 100).round();
+  Widget _buildResults(AppLocalizations l10n) {
+    final pct = (_score / _questions.length * 100).round();
     final passed = pct >= 60;
 
     return Scaffold(
@@ -66,7 +83,7 @@ class _QuizScreenState extends State<QuizScreen> {
         backgroundColor: const Color(0xFF0D0D1A),
         foregroundColor: Colors.white,
         elevation: 0,
-        title: const Text('Quiz Complete'),
+        title: Text(l10n.emiQuizComplete),
       ),
       body: Center(
         child: Padding(
@@ -80,7 +97,7 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
               const SizedBox(height: 24),
               Text(
-                passed ? 'Great Job!' : 'Keep Learning!',
+                passed ? l10n.emiGreatJob : l10n.emiKeepLearning,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 28,
@@ -89,7 +106,7 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
               const SizedBox(height: 16),
               Text(
-                '$_score / ${quizQuestions.length} correct',
+                l10n.emiScoreCorrect('$_score', '${_questions.length}'),
                 style: TextStyle(
                   color: passed ? const Color(0xFF00FF41) : const Color(0xFFFFCA28),
                   fontSize: 48,
@@ -98,7 +115,9 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                '$pct% — ${passed ? "You passed!" : "Try again to pass"}',
+                passed
+                    ? l10n.emiPercentPassed('$pct')
+                    : l10n.emiPercentTryAgain('$pct'),
                 style: const TextStyle(color: Colors.white54, fontSize: 16),
               ),
               const SizedBox(height: 40),
@@ -108,8 +127,8 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: ElevatedButton.icon(
                   onPressed: _reset,
                   icon: const Icon(Icons.replay),
-                  label: const Text('Retry Quiz',
-                      style: TextStyle(fontSize: 16)),
+                  label: Text(l10n.emiRetryQuiz,
+                      style: const TextStyle(fontSize: 16)),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFD2691E),
                     foregroundColor: Colors.white,
@@ -122,9 +141,9 @@ class _QuizScreenState extends State<QuizScreen> {
               const SizedBox(height: 12),
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text(
-                  'Back to Lessons',
-                  style: TextStyle(color: Colors.white54, fontSize: 15),
+                child: Text(
+                  l10n.emiBackToLessons,
+                  style: const TextStyle(color: Colors.white54, fontSize: 15),
                 ),
               ),
             ],
@@ -134,8 +153,8 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
-  Widget _buildQuestion() {
-    final q = quizQuestions[_currentQuestion];
+  Widget _buildQuestion(AppLocalizations l10n) {
+    final q = _questions[_currentQuestion];
     final isCorrect = _selectedIndex == q.correctIndex;
 
     return Scaffold(
@@ -148,7 +167,7 @@ class _QuizScreenState extends State<QuizScreen> {
           icon: const Icon(Icons.close),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text('Question ${_currentQuestion + 1} of ${quizQuestions.length}'),
+        title: Text(l10n.emiQuestionOf('${_currentQuestion + 1}', '${_questions.length}')),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
@@ -223,7 +242,7 @@ class _QuizScreenState extends State<QuizScreen> {
                               ),
                               const SizedBox(width: 8),
                               Text(
-                                isCorrect ? 'Correct!' : 'Incorrect',
+                                isCorrect ? l10n.emiCorrect : l10n.emiIncorrect,
                                 style: TextStyle(
                                   color: isCorrect
                                       ? const Color(0xFF00FF41)
@@ -272,9 +291,9 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                 ),
                 child: Text(
-                  _currentQuestion < quizQuestions.length - 1
-                      ? 'Next Question'
-                      : 'See Results',
+                  _currentQuestion < _questions.length - 1
+                      ? l10n.emiNextQuestion
+                      : l10n.emiSeeResults,
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
               ),

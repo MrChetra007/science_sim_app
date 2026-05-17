@@ -4,31 +4,35 @@ import '../models/lesson.dart';
 import 'lesson_screen.dart';
 import 'quiz_screen.dart';
 import '../../ui/sim_screen.dart';
+import '../../../../l10n/generated/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final lessons = getLessons(l10n);
+
     return Scaffold(
       backgroundColor: const Color(0xFF0D0D1A),
       appBar: AppBar(
         backgroundColor: const Color(0xFF0D0D1A),
         elevation: 0,
-        title: const Column(
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Electromagnetic Induction',
-              style: TextStyle(
+              l10n.emiHomeTitle,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              'Learn. Explore. Understand.',
-              style: TextStyle(color: Colors.white54, fontSize: 13),
+              l10n.emiHomeSubtitle,
+              style: const TextStyle(color: Colors.white54, fontSize: 13),
             ),
           ],
         ),
@@ -37,12 +41,12 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 100),
         children: [
           ...List.generate(lessons.length, (i) {
-            return _LessonCard(lesson: lessons[i]);
+            return _LessonCard(lesson: lessons[i], l10n: l10n);
           }),
           const SizedBox(height: 16),
-          const _QuizCard(),
+          _QuizCard(l10n: l10n),
           const SizedBox(height: 16),
-          const _SimCard(),
+          _SimCard(l10n: l10n),
         ],
       ),
     );
@@ -51,8 +55,9 @@ class HomeScreen extends StatelessWidget {
 
 class _LessonCard extends StatelessWidget {
   final Lesson lesson;
+  final AppLocalizations l10n;
 
-  const _LessonCard({required this.lesson});
+  const _LessonCard({required this.lesson, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +99,7 @@ class _LessonCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Lesson ${lesson.id}',
+                        '${l10n.emiLessonLabel} ${lesson.id}',
                         style: const TextStyle(
                           color: Color(0xFFD2691E),
                           fontSize: 11,
@@ -112,7 +117,7 @@ class _LessonCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        '${lesson.steps.length} steps',
+                        l10n.emiSteps('${lesson.steps.length}'),
                         style: const TextStyle(color: Colors.white38, fontSize: 12),
                       ),
                     ],
@@ -129,7 +134,9 @@ class _LessonCard extends StatelessWidget {
 }
 
 class _QuizCard extends StatelessWidget {
-  const _QuizCard();
+  final AppLocalizations l10n;
+
+  const _QuizCard({required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +150,7 @@ class _QuizCard extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const QuizScreen()),
+              MaterialPageRoute(builder: (_) => QuizScreen(l10n: l10n)),
             );
           },
           child: Padding(
@@ -161,31 +168,31 @@ class _QuizCard extends StatelessWidget {
                   child: const Text('\u{1F9E9}', style: TextStyle(fontSize: 28)),
                 ),
                 const SizedBox(width: 16),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Quiz',
-                        style: TextStyle(
+                        l10n.emiQuiz,
+                        style: const TextStyle(
                           color: Color(0xFF00FF41),
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(
-                        'Test Your Knowledge',
-                        style: TextStyle(
+                        l10n.emiQuizTitle,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 2),
+                      const SizedBox(height: 2),
                       Text(
-                        '5 questions',
-                        style: TextStyle(color: Colors.white38, fontSize: 12),
+                        l10n.emiQuizSubtitle,
+                        style: const TextStyle(color: Colors.white38, fontSize: 12),
                       ),
                     ],
                   ),
@@ -201,7 +208,9 @@ class _QuizCard extends StatelessWidget {
 }
 
 class _SimCard extends StatelessWidget {
-  const _SimCard();
+  final AppLocalizations l10n;
+
+  const _SimCard({required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -233,31 +242,31 @@ class _SimCard extends StatelessWidget {
                   child: const Icon(Icons.science, color: Color(0xFFFFCA28), size: 28),
                 ),
                 const SizedBox(width: 16),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Simulation Lab',
-                        style: TextStyle(
+                        l10n.emiSimLab,
+                        style: const TextStyle(
                           color: Color(0xFFFFCA28),
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(
-                        'Open the Interactive Simulator',
-                        style: TextStyle(
+                        l10n.emiSimTitle,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 2),
+                      const SizedBox(height: 2),
                       Text(
-                        'Drag the magnet, adjust controls, explore freely',
-                        style: TextStyle(color: Colors.white38, fontSize: 12),
+                        l10n.emiSimSubtitle,
+                        style: const TextStyle(color: Colors.white38, fontSize: 12),
                       ),
                     ],
                   ),

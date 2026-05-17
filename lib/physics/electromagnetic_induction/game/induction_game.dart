@@ -5,9 +5,11 @@ import 'components/coil_component.dart';
 import 'components/oscilloscope_component.dart';
 import 'components/flux_line_component.dart';
 import 'components/current_arrow_component.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class InductionGame extends FlameGame {
   final void Function(double dt) onTick;
+  final AppLocalizations? l10n;
 
   late final MagnetComponent magnet;
   late final CoilComponent coil;
@@ -18,6 +20,7 @@ class InductionGame extends FlameGame {
   InductionGame({
     required this.onTick,
     required void Function(double deltaY) onMagnetDrag,
+    this.l10n,
   }) : _onMagnetDrag = onMagnetDrag;
 
   final void Function(double deltaY) _onMagnetDrag;
@@ -33,6 +36,16 @@ class InductionGame extends FlameGame {
     oscilloscope = OscilloscopeComponent()
       ..position = Vector2(0, 0)
       ..size = Vector2(w, h * 0.3);
+
+    if (l10n != null) {
+      oscilloscope.peakLabel = l10n!.emiPeak;
+      oscilloscope.zeroLabel = l10n!.emiZero;
+      oscilloscope.reversalLabel = l10n!.emiReversal;
+      oscilloscope.emfReadoutFormat = l10n!.emiEmfReadout('{v}');
+      oscilloscope.fluxReadoutFormat = l10n!.emiFluxReadout('{v}');
+      oscilloscope.emfLegendText = l10n!.emiEmfLegend;
+      oscilloscope.fluxLegendText = l10n!.emiFluxLegend;
+    }
 
     fluxLines = FluxLineComponent()
       ..position = Vector2(0, coilCenterY - 80)

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/sim_provider.dart';
+import '../../../l10n/generated/app_localizations.dart';
 
 class InfoPanel extends ConsumerWidget {
   const InfoPanel({super.key});
@@ -8,8 +9,9 @@ class InfoPanel extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(simProvider);
+    final l10n = AppLocalizations.of(context)!;
 
-    final infoText = _getInfoText(state.magnetY);
+    final infoText = _getInfoText(l10n, state.magnetY);
     final dirText = state.emf > 0
         ? 'CCW'
         : (state.emf < 0 ? 'CW' : '—');
@@ -32,27 +34,28 @@ class InfoPanel extends ConsumerWidget {
             dFlux: state.dFlux,
             dt: state.deltaT,
             emf: state.emf,
+            l10n: l10n,
           ),
           const SizedBox(height: 6),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _Metric(
-                label: 'EMF',
+                label: l10n.emiEmf,
                 value: '${state.emf.toStringAsFixed(2)} V',
                 color: const Color(0xFF00FF41),
               ),
               _Metric(
-                label: 'Flux Φ',
+                label: l10n.emiFlux,
                 value: '${state.flux.toStringAsFixed(3)} Wb',
                 color: const Color(0xFF42A5F5),
               ),
               _Metric(
-                label: 'dΦ/dt',
+                label: l10n.emiDFluxDt,
                 value: '${dFluxDt.toStringAsFixed(2)} Wb/s',
                 color: const Color(0xFFCE93D8),
               ),
-              _Metric(label: 'Dir', value: dirText, color: dirColor),
+              _Metric(label: l10n.emiDir, value: dirText, color: dirColor),
             ],
           ),
           const SizedBox(height: 4),
@@ -66,12 +69,12 @@ class InfoPanel extends ConsumerWidget {
     );
   }
 
-  String _getInfoText(double magnetY) {
+  String _getInfoText(AppLocalizations l10n, double magnetY) {
     final absY = magnetY.abs();
-    if (absY > 0.85) return 'At extremes — Velocity = 0, EMF = 0';
-    if (absY < 0.15) return 'At coil center — Max velocity, Peak EMF';
-    if (magnetY < 0) return 'Entering coil — Flux increasing, EMF induced';
-    return 'Exiting coil — Flux decreasing, EMF reverses (Lenz)';
+    if (absY > 0.85) return l10n.emiStatusExtremes;
+    if (absY < 0.15) return l10n.emiStatusCenter;
+    if (magnetY < 0) return l10n.emiStatusEntering;
+    return l10n.emiStatusExiting;
   }
 }
 
@@ -80,12 +83,14 @@ class _FormulaDisplay extends StatelessWidget {
   final double dFlux;
   final double dt;
   final double emf;
+  final AppLocalizations l10n;
 
   const _FormulaDisplay({
     required this.turns,
     required this.dFlux,
     required this.dt,
     required this.emf,
+    required this.l10n,
   });
 
   @override
@@ -104,16 +109,16 @@ class _FormulaDisplay extends StatelessWidget {
       child: Column(
         children: [
           RichText(
-            text: const TextSpan(
-              style: TextStyle(fontSize: 13, fontFamily: 'monospace'),
+            text: TextSpan(
+              style: const TextStyle(fontSize: 13, fontFamily: 'monospace'),
               children: [
                 TextSpan(
-                  text: 'EMF = ',
-                  style: TextStyle(color: Color(0xFF00FF41)),
+                  text: l10n.emiFormulaEmf,
+                  style: const TextStyle(color: Color(0xFF00FF41)),
                 ),
                 TextSpan(
-                  text: '-N × ΔΦ/Δt',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  text: l10n.emiFormula,
+                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -124,7 +129,7 @@ class _FormulaDisplay extends StatelessWidget {
               style: const TextStyle(fontSize: 12, fontFamily: 'monospace'),
               children: [
                 TextSpan(
-                  text: '= ',
+                  text: l10n.emiFormulaEquals,
                   style: TextStyle(color: emf.abs() > 0.01
                       ? const Color(0xFF00FF41)
                       : Colors.grey),
@@ -134,7 +139,7 @@ class _FormulaDisplay extends StatelessWidget {
                   style: const TextStyle(color: Color(0xFFCE93D8)),
                 ),
                 TextSpan(
-                  text: ' = ',
+                  text: ' ${l10n.emiFormulaEquals}',
                   style: TextStyle(color: emf.abs() > 0.01
                       ? const Color(0xFF00FF41)
                       : Colors.grey),
