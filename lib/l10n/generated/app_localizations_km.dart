@@ -3037,4 +3037,14 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get shmLabTutorial => 'មន្ទីរពិសោធន៍ SHM - ចលនាទោលសុខដុមសាមញ្ញ';
+
+  @override
+  String get emInductionLab => 'EM Induction';
+
+  @override
+  String get emInductionLabSubtitle => 'អាំងឌុចស្យុងអេឡិចត្រូម៉ាញ៉េ';
+
+  @override
+  String get emInductionLabTutorial =>
+      'មន្ទីរពិសោធន៍ EM Induction - អាំងឌុចស្យុងអេឡិចត្រូម៉ាញ៉េ';
 }

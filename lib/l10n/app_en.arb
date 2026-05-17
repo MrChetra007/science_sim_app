@@ -1098,5 +1098,11 @@
   "shmStatusRestoringForce": "Restoring force pulling back toward equilibrium",
   "shmStatusMovingToEquilibrium": "Moving toward equilibrium — KE increasing",
   "shmStatusLargeAngle": "Large angle — approximation less accurate",
-  "shmLabTutorial": "SHM Lab - Simple Harmonic Motion"
+  "shmLabTutorial": "SHM Lab - Simple Harmonic Motion",
+  "@@em_induction_lab": {
+    "description": "Electromagnetic Induction strings"
+  },
+  "emInductionLab": "EM Induction",
+  "emInductionLabSubtitle": "Electromagnetic Induction",
+  "emInductionLabTutorial": "EM Induction Lab - Electromagnetic Induction"
 }

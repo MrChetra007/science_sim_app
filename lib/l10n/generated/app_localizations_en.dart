@@ -3071,4 +3071,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shmLabTutorial => 'SHM Lab - Simple Harmonic Motion';
+
+  @override
+  String get emInductionLab => 'EM Induction';
+
+  @override
+  String get emInductionLabSubtitle => 'Electromagnetic Induction';
+
+  @override
+  String get emInductionLabTutorial =>
+      'EM Induction Lab - Electromagnetic Induction';
 }

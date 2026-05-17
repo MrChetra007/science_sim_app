@@ -1,0 +1,45 @@
+enum StepType { info, formula, interactive }
+
+class LessonStep {
+  final String title;
+  final String body;
+  final StepType type;
+  final String? formula;
+
+  const LessonStep({
+    required this.title,
+    required this.body,
+    this.type = StepType.info,
+    this.formula,
+  });
+}
+
+class Lesson {
+  final int id;
+  final String title;
+  final String subtitle;
+  final String emoji;
+  final List<LessonStep> steps;
+
+  const Lesson({
+    required this.id,
+    required this.title,
+    required this.subtitle,
+    required this.emoji,
+    required this.steps,
+  });
+}
+
+class QuizQuestion {
+  final String question;
+  final List<String> options;
+  final int correctIndex;
+  final String explanation;
+
+  const QuizQuestion({
+    required this.question,
+    required this.options,
+    required this.correctIndex,
+    required this.explanation,
+  });
+}

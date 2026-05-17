@@ -27,6 +27,7 @@ import 'physics/ac_lab/main_standalone.dart' as ac_main;
 import 'physics/ac_lab/providers/ac_provider.dart';
 import 'physics/wave_lab/main_standalone.dart' as wave_main;
 import 'physics/simple_harmonic_motion/lessons/screens/home_screen.dart' as shm_home;
+import 'physics/electromagnetic_induction/lessons/screens/home_screen.dart' as em_induction_home;
 
 // Import Chemistry Labs
 import 'chemistry/acide_base_ph/main.dart' as ph_main;
@@ -156,6 +157,15 @@ class _SHMWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return rp.ProviderScope(child: const shm_home.HomeScreen());
+  }
+}
+
+class _EmInductionWrapper extends StatelessWidget {
+  const _EmInductionWrapper();
+
+  @override
+  Widget build(BuildContext context) {
+    return rp.ProviderScope(child: const em_induction_home.HomeScreen());
   }
 }
 
@@ -572,6 +582,23 @@ class _MainDashboardState extends State<MainDashboard> {
                 },
               ),
               _WalkthroughOption(
+                label: 'EM Induction Lab - Electromagnetic Induction',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyEmInduction,
+                  );
+                  if (context.mounted) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const _EmInductionWrapper(),
+                      ),
+                    );
+                  }
+                },
+              ),
+              _WalkthroughOption(
                 label: 'Thermo Lab - Thermodynamics',
                 onTap: () async {
                   Navigator.pop(ctx);
@@ -883,6 +910,27 @@ class PhysicsDashboard extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => const _SHMWrapper(),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
+                            context,
+                            title: l10n.emInductionLab,
+                            subtitle: l10n.emInductionLabSubtitle,
+                            icon: Icons.bolt,
+                            color: Colors.deepOrange,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const _EmInductionWrapper(),
                                 ),
                               );
                             },

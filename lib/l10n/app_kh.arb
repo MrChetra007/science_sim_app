@@ -999,5 +999,11 @@
   "shmStatusRestoringForce": "កម្លាំងស្ដារកំពុងទាញត្រឡប់មកទីតាំងលំនឹងវិញ",
   "shmStatusMovingToEquilibrium": "កំពុងរំកិលឆ្ពោះទៅទីតាំងលំនឹង — KE កំពុងកើនឡើង",
   "shmStatusLargeAngle": "មុំមានទំហំធំ — ការគណនាប្រហាក់ប្រហែលមានភាពត្រឹមត្រូវទាប",
-  "shmLabTutorial": "មន្ទីរពិសោធន៍ SHM - ចលនាទោលសុខដុមសាមញ្ញ"
+  "shmLabTutorial": "មន្ទីរពិសោធន៍ SHM - ចលនាទោលសុខដុមសាមញ្ញ",
+  "@@em_induction_lab": {
+    "description": "អត្ថបទអាំងឌុចស្យុងអេឡិចត្រូម៉ាញ៉េ"
+  },
+  "emInductionLab": "EM Induction",
+  "emInductionLabSubtitle": "អាំងឌុចស្យុងអេឡិចត្រូម៉ាញ៉េ",
+  "emInductionLabTutorial": "មន្ទីរពិសោធន៍ EM Induction - អាំងឌុចស្យុងអេឡិចត្រូម៉ាញ៉េ"
 }

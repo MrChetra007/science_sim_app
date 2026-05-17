@@ -5761,6 +5761,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'SHM Lab - Simple Harmonic Motion'**
   String get shmLabTutorial;
+
+  /// No description provided for @emInductionLab.
+  ///
+  /// In en, this message translates to:
+  /// **'EM Induction'**
+  String get emInductionLab;
+
+  /// No description provided for @emInductionLabSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Electromagnetic Induction'**
+  String get emInductionLabSubtitle;
+
+  /// No description provided for @emInductionLabTutorial.
+  ///
+  /// In en, this message translates to:
+  /// **'EM Induction Lab - Electromagnetic Induction'**
+  String get emInductionLabTutorial;
 }
 
 class _AppLocalizationsDelegate
