@@ -1,6 +1,6 @@
 name: science_lab
 description: "Science Lab - Virtual Experiment Suite"
-version: 1.0.0+14
+version: 1.0.0+15
 
 environment:
   sdk: ^3.10.3
@@ -73,7 +73,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the Material Icons class.
   uses-material-design: true

@@ -5,6 +5,7 @@ import '../game/induction_game.dart';
 import '../providers/sim_provider.dart';
 import 'control_panel.dart';
 import 'info_panel.dart';
+import '../../../core/widgets/ad_widgets.dart';
 import '../../../l10n/generated/app_localizations.dart';
 
 class SimScreen extends ConsumerStatefulWidget {
@@ -96,6 +97,7 @@ class _SimScreenState extends ConsumerState<SimScreen> {
                 ),
                 const ControlPanel(),
                 const InfoPanel(),
+                const SafeArea(child: GlobalBannerAdWidget()),
               ],
             ),
             Positioned(
