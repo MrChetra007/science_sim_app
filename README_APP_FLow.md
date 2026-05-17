@@ -241,6 +241,76 @@ lib/physics/simple_harmonic_motion/
 
 ---
 
+# 🧲 EM Induction Lab
+
+### Electromagnetic Induction — Interactive Lessons, Quiz & Simulation
+
+> **Learn Faraday's Law, Lenz's Law, and electromagnetic induction through structured lessons, a quiz, and an interactive Flame-powered simulation.**
+
+## What Is This?
+
+EM Induction Lab is a self-contained module inside the Science Lab app that teaches electromagnetic induction through three modes:
+
+- **Lessons** — 4 structured lessons covering Faraday's discovery, Faraday's Law, Lenz's Law, and real-world applications (generators, wireless charging, induction cooktops)
+- **Quiz** — 5 multiple-choice questions with instant feedback and scoring
+- **Simulation** — Interactive Flame-powered magnet-and-coil simulator with real-time EMF/flux waveforms, oscilloscope, drag-to-move magnet, and live Faraday's Law formula display
+
+## Features
+
+- 4 progressive lessons with formulas and diagrams
+- 5-question quiz with pass/fail results
+- Interactive simulation with draggable magnet
+- Real-time EMF and flux oscilloscope (annotated peaks, zero-crossings, reversals)
+- Adjustable speed, field strength, and coil turns
+- Live Faraday's Law formula panel with substituted values
+- Auto-oscillation and manual drag modes
+- Direction indicator (CW/CCW) with coil glow
+- Full Khmer localization
+
+## Tech Stack
+
+| Layer                | Technology               |
+| -------------------- | ------------------------ |
+| Framework            | Flutter 3.x              |
+| Simulation Rendering | Flame Engine             |
+| State Management     | Riverpod                 |
+| Localization         | Flutter l10n (ARB files) |
+| Persistence          | shared_preferences       |
+
+## Project Structure
+
+```
+lib/physics/electromagnetic_induction/
+├── app.dart                              # Standalone app entry
+├── main.dart                             # Main entry
+├── lessons/
+│   ├── models/lesson.dart                # Lesson, LessonStep, QuizQuestion models
+│   ├── lesson_data.dart                  # Lesson & quiz content (localized)
+│   └── screens/
+│       ├── home_screen.dart              # Module home — lessons + sim + quiz
+│       ├── lesson_screen.dart            # Paged lesson viewer
+│       └── quiz_screen.dart              # Quiz with scoring
+├── game/
+│   ├── induction_game.dart               # Flame game engine
+│   ├── physics/
+│   │   ├── faraday_engine.dart           # Core Faraday's Law physics
+│   │   └── lenz_calculator.dart          # Lenz's Law direction logic
+│   └── components/
+│       ├── magnet_component.dart
+│       ├── coil_component.dart
+│       ├── oscilloscope_component.dart   # Annotated waveform display
+│       ├── flux_line_component.dart
+│       └── current_arrow_component.dart
+├── providers/
+│   └── sim_provider.dart                 # Riverpod state (auto/manual modes)
+└── ui/
+    ├── sim_screen.dart                   # Simulation screen
+    ├── control_panel.dart                # Speed / Field / Turns sliders
+    └── info_panel.dart                   # EMF / Flux / dΦ/dt / Dir metrics + formula
+```
+
+---
+
 # 〰️ Wave Lab
 
 ### Interactive Wave Physics Simulation — Flutter App

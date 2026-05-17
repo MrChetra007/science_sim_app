@@ -29,6 +29,8 @@ An interactive Flutter application featuring Physics and Chemistry simulations f
 | **Projectile Motion** | Kinematics simulation | 8 projectiles with real physical properties, 4 planets (Earth, Moon, Mars, Jupiter), air resistance toggle, trajectory graphs, math solver overlay with step-by-step derivations, challenge mode, audio service |
 | **AC Lab** | Alternating Current electricity | Real-time voltage/current sine wave, rotating phasor diagram, animated wire with electrons, glowing bulb, transformer with primary/secondary coils, RLC reactive circuits (impedance, phase angle), oscilloscope with V/Div & T/Div, walkthrough |
 | **Wave Lab** | Wave mechanics | Transverse, longitudinal, standing waves (n=1..6), interference (constructive/destructive), Doppler effect (moving source), live wave equation HUD, oscilloscope panel, vector overlay, formula reference screen, challenge mode, audio tone generator |
+| **SHM Lab** | Simple Harmonic Motion | 4 structured lessons, quiz, interactive spring-mass & pendulum simulation (Flame), real-time position/velocity/acceleration graphs, energy bars, vector overlays |
+| **EM Induction Lab** | Electromagnetic Induction | 4 structured lessons (Faraday's Law, Lenz's Law), quiz, interactive magnet-and-coil simulation (Flame), real-time EMF/flux oscilloscope, live formula panel, drag magnet manually |
 | **Thermo Lab** | Thermodynamics | Gas laws (Boyle, Charles, Gay-Lussac), heat transfer, phase changes, Carnot engine, entropy explorer, thermo laws |
 
 ---
@@ -69,6 +71,8 @@ lib/
 │   ├── projectile_motion/             # Kinematics (Provider state)
 │   ├── ac_lab/                        # AC electricity (Flame + Provider)
 │   ├── wave_lab/                      # Wave mechanics (Riverpod + CustomPainter)
+│   ├── simple_harmonic_motion/        # SHM lessons, quiz & simulation (Flame + Riverpod)
+│   ├── electromagnetic_induction/     # EM Induction lessons, quiz & simulation (Flame + Riverpod)
 │   └── thermo_lab/                    # Thermodynamics
 └── chemistry/
     ├── acide_base_ph/                 # pH & titration (Flame)
