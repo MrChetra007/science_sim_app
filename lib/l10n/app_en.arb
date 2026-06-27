@@ -1167,6 +1167,9 @@
       "total": {"type": "String"}
     }
   },
+  "relativityLab": "RELATIVITY",
+  "relativityLabSubtitle": "Special Relativity",
+  "relativityLabTutorial": "Special Relativity Lab - Einstein's Theory",
   "emiCorrect": "Correct!",
   "emiIncorrect": "Incorrect",
   "emiNextQuestion": "Next Question",

@@ -13,6 +13,7 @@ class WalkthroughService {
   static const String _keyElectrochemistry = 'walkthrough_electrochemistry_done';
   static const String _keyShmLab = 'walkthrough_shm_lab_done';
   static const String _keyEmInduction = 'walkthrough_em_induction_done';
+  static const String _keySpecialRelativity = 'walkthrough_special_relativity_done';
 
   static Future<bool> isGlobalOnboardingShown() async {
     final prefs = await SharedPreferences.getInstance();
@@ -53,6 +54,7 @@ class WalkthroughService {
     await prefs.remove(_keyElectrochemistry);
     await prefs.remove(_keyShmLab);
     await prefs.remove(_keyEmInduction);
+    await prefs.remove(_keySpecialRelativity);
   }
 
   static String get labKeys => _keyNewtonLab;
@@ -68,4 +70,5 @@ class WalkthroughService {
   static const String keyElectrochemistry = _keyElectrochemistry;
   static const String keyShmLab = _keyShmLab;
   static const String keyEmInduction = _keyEmInduction;
+  static const String keySpecialRelativity = _keySpecialRelativity;
 }

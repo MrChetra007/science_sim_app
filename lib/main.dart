@@ -28,6 +28,7 @@ import 'physics/ac_lab/providers/ac_provider.dart';
 import 'physics/wave_lab/main_standalone.dart' as wave_main;
 import 'physics/simple_harmonic_motion/lessons/screens/home_screen.dart' as shm_home;
 import 'physics/electromagnetic_induction/lessons/screens/home_screen.dart' as em_induction_home;
+import 'physics/special_relativity/lessons/screens/home_screen.dart' as relativity_home;
 
 // Import Chemistry Labs
 import 'chemistry/acide_base_ph/main.dart' as ph_main;
@@ -166,6 +167,15 @@ class _EmInductionWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return rp.ProviderScope(child: const em_induction_home.HomeScreen());
+  }
+}
+
+class _RelativityWrapper extends StatelessWidget {
+  const _RelativityWrapper();
+
+  @override
+  Widget build(BuildContext context) {
+    return rp.ProviderScope(child: const relativity_home.HomeScreen());
   }
 }
 
@@ -632,6 +642,23 @@ class _MainDashboardState extends State<MainDashboard> {
                   }
                 },
               ),
+              _WalkthroughOption(
+                label: 'Special Relativity Lab',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keySpecialRelativity,
+                  );
+                  if (context.mounted) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const _RelativityWrapper(),
+                      ),
+                    );
+                  }
+                },
+              ),
 
               const SizedBox(height: 16),
               const Text(
@@ -952,6 +979,27 @@ class PhysicsDashboard extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) =>
                                       const thermo_main.ThermoSimApp(),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
+                            context,
+                            title: l10n.relativityLab,
+                            subtitle: l10n.relativityLabSubtitle,
+                            icon: Icons.speed,
+                            color: Colors.tealAccent,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const _RelativityWrapper(),
                                 ),
                               );
                             },

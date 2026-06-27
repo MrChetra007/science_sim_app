@@ -3174,6 +3174,16 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get relativityLab => 'RELATIVITY';
+
+  @override
+  String get relativityLabSubtitle => 'Special Relativity';
+
+  @override
+  String get relativityLabTutorial =>
+      'Special Relativity Lab - Einstein\'s Theory';
+
+  @override
   String get emiCorrect => 'Correct!';
 
   @override

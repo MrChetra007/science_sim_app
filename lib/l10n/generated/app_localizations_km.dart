@@ -3140,6 +3140,16 @@ class AppLocalizationsKm extends AppLocalizations {
   }
 
   @override
+  String get relativityLab => 'ទំនាក់ទំនង';
+
+  @override
+  String get relativityLabSubtitle => 'ទំនាក់ទំនងពិសេស';
+
+  @override
+  String get relativityLabTutorial =>
+      'មន្ទីរពិសោធន៍ទំនាក់ទំនងពិសេស - ទ្រឹស្តីអែងស្តែង';
+
+  @override
   String get emiCorrect => 'ត្រឹមត្រូវ!';
 
   @override

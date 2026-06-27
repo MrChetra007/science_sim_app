@@ -5936,6 +5936,24 @@ abstract class AppLocalizations {
   /// **'Question {current} of {total}'**
   String emiQuestionOf(String current, String total);
 
+  /// No description provided for @relativityLab.
+  ///
+  /// In en, this message translates to:
+  /// **'RELATIVITY'**
+  String get relativityLab;
+
+  /// No description provided for @relativityLabSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Relativity'**
+  String get relativityLabSubtitle;
+
+  /// No description provided for @relativityLabTutorial.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Relativity Lab - Einstein\'s Theory'**
+  String get relativityLabTutorial;
+
   /// No description provided for @emiCorrect.
   ///
   /// In en, this message translates to:
