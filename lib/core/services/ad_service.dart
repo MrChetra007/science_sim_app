@@ -140,6 +140,7 @@ class GlobalAdService {
           onEarnedReward();
         },
       );
+      _rewardedAd = null; // ✅ prevent re-showing this ad on rapid taps
     } else if (canGrantFallbackReward) {
       grantFallbackReward();
       onEarnedReward();
