@@ -15,7 +15,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.sozin.wave"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -32,7 +32,7 @@ android {
         applicationId = "com.sozin.wave"
         minSdk = flutter.minSdkVersion
         
-        targetSdk = 36 
+        targetSdk = 36
         
         versionCode = flutter.versionCode
         versionName = flutter.versionName
