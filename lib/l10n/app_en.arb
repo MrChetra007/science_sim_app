@@ -1167,9 +1167,6 @@
       "total": {"type": "String"}
     }
   },
-  "relativityLab": "RELATIVITY",
-  "relativityLabSubtitle": "Special Relativity",
-  "relativityLabTutorial": "Special Relativity Lab - Einstein's Theory",
   "emiCorrect": "Correct!",
   "emiIncorrect": "Incorrect",
   "emiNextQuestion": "Next Question",
@@ -1270,6 +1267,262 @@
   "emiQ5Question": "Which of these is NOT an application of electromagnetic induction?",
   "emiQ5Options": "[\"Electric power generators\",\"Wireless phone charging\",\"A standard flashlight battery\",\"Induction cooktops\"]",
   "emiQ5CorrectIndex": "2",
-  "emiQ5Explanation": "Batteries use chemical reactions to produce electricity, not electromagnetic induction. Generators, wireless chargers, and induction cooktops all use Faraday's Law directly."
-  
+  "emiQ5Explanation": "Batteries use chemical reactions to produce electricity, not electromagnetic induction. Generators, wireless chargers, and induction cooktops all use Faraday's Law directly.",
+  "@@relativity_lab": {
+    "description": "Special Relativity Lab strings"
+  },
+  "relativityLab": "RELATIVITY",
+  "relativityLabSubtitle": "Special Relativity",
+  "relativityLabTutorial": "Special Relativity Lab - Einstein's Theory",
+  "relHomeTitle": "SPECIAL RELATIVITY",
+  "relHomeSubtitle": "Interactive 2D Flame Physics Lab",
+  "relSelectLesson": "Select a Structured Lesson",
+  "relLessons": "Lessons",
+  "rel5StructuredGuides": "5 Structured Guides",
+  "relQuiz": "Quiz",
+  "relTestYourKnowledge": "Test Your Knowledge",
+  "relTimeDilation": "Time Dilation",
+  "relLightClockTicks": "Light clock ticks",
+  "relLengthContraction": "Length Contraction",
+  "relSpaceshipShrinkage": "Spaceship shrinkage",
+  "relSimultaneity": "Simultaneity",
+  "relTrainLightning": "Train & Lightning",
+  "relEequalsMc2": "E = mc²",
+  "relMassEnergyEquiv": "Mass-Energy Equiv.",
+  "relFormulaReference": "FORMULA REFERENCE",
+  "relOpen2DSimulation": "Open 2D Simulation",
+  "relPrev": "PREV",
+  "relNext": "NEXT",
+  "relFinish": "FINISH",
+  "relQuizTitle": "Relativity Quiz",
+  "relQuestionOf": "Question {current} of {total}",
+  "@relQuestionOf": {
+    "description": "Question progress indicator",
+    "placeholders": {
+      "current": {"type": "String"},
+      "total": {"type": "String"}
+    }
+  },
+  "relScore": "Score: {score}",
+  "@relScore": {
+    "description": "Current score display",
+    "placeholders": {
+      "score": {"type": "String"}
+    }
+  },
+  "relExplanation": "Explanation",
+  "relNextQuestion": "NEXT QUESTION",
+  "relSeeResults": "SEE RESULTS",
+  "relRetryQuiz": "RETRY QUIZ",
+  "relBackToHome": "BACK TO HOME",
+  "relKeepLearning": "Keep learning, space cadet!",
+  "relKeepLearningDetails": "Special relativity is brain-bending. Try reviewing the lesson guides and playing with the animations to build your intuition.",
+  "relEinsteinReincarnated": "Einstein Reincarnated!",
+  "relPerfectScoreDetails": "Perfect score! You have completely mastered Special Relativity and the mechanics of spacetime contraction and time dilation.",
+  "relOutstanding": "Outstanding Relativity Physicist!",
+  "relOutstandingDetails": "Excellent job! You have a very strong grasp of relativistic physics and how observations differ across frames.",
+  "relYourScore": "Your Score: {score} / {total} ({percent}%)",
+  "@relYourScore": {
+    "description": "Quiz score result",
+    "placeholders": {
+      "score": {"type": "String"},
+      "total": {"type": "String"},
+      "percent": {"type": "String"}
+    }
+  },
+  "relVelocityLabel": "Velocity (v): {beta}% c",
+  "@relVelocityLabel": {
+    "description": "Velocity slider label",
+    "placeholders": {
+      "beta": {"type": "String"}
+    }
+  },
+  "relLorentzFactor": "Lorentz Factor (γ): {gamma}",
+  "@relLorentzFactor": {
+    "description": "Lorentz factor display",
+    "placeholders": {
+      "gamma": {"type": "String"}
+    }
+  },
+  "relApproachingC": "Approaching speed of light! γ rises rapidly.",
+  "relTimeDilationLab": "Time Dilation Lab",
+  "relObserverTime": "Observer Time (t')",
+  "relSpaceshipTime": "Spaceship Time (t₀)",
+  "relGamma": "γ (Gamma)",
+  "relRatioTt": "t' / t₀",
+  "relHighBetaCallout": "At v ≈ 87% c, the moving clock ticks at half the rate of the rest clock!",
+  "relTimeDilationFormula": "Time Dilation Formula",
+  "relObserverTimeVal": "Observer Time (t')",
+  "relSpaceshipTimeVal": "Spaceship Time (t₀)",
+  "relLengthContractionLab": "Length Contraction Lab",
+  "relRestLength": "Rest Length (L₀)",
+  "relContracted": "Contracted (L')",
+  "relShrinkage": "Shrinkage",
+  "relLengthContractionFormula": "Length Contraction Formula",
+  "relMeasuredLength": "Measured Length (L')",
+  "relSimultaneityLab": "Relativity of Simultaneity",
+  "relPlatform": "Platform:",
+  "relTrain": "Train:",
+  "relBackA": "Back (A)",
+  "relFrontB": "Front (B)",
+  "relExperimentResult": "EXPERIMENT RESULT",
+  "relPlatformSimultaneous": "Platform: A and B arrived simultaneously (Δt = {diff}s)",
+  "@relPlatformSimultaneous": {
+    "description": "Platform simultaneous arrival result",
+    "placeholders": {
+      "diff": {"type": "String"}
+    }
+  },
+  "relTrainABefore": "Train: A arrived {diff}s before B",
+  "@relTrainABefore": {
+    "description": "Train observer result - A arrived before B",
+    "placeholders": {
+      "diff": {"type": "String"}
+    }
+  },
+  "relTrainBBefore": "Train: B arrived {diff}s before A",
+  "@relTrainBBefore": {
+    "description": "Train observer result - B arrived before A",
+    "placeholders": {
+      "diff": {"type": "String"}
+    }
+  },
+  "relSameEventsDifferent": "→ Same events. Different order. Different observers.",
+  "relSpacetimeInterval": "Spacetime Interval & Arrival Times",
+  "relWhatVariablesMean": "What do these variables mean?",
+  "relSpeed": "Speed:",
+  "relTriggerLightning": "Trigger Lightning",
+  "relAtVZero": "ℹ️ At v ≈ 0, both frames see simultaneous arrival",
+  "relMassEnergyLab": "Mass-Energy Equivalence",
+  "relEnergySplit": "ENERGY SPLIT (RELATIVE SCALE)",
+  "relRestE": "Rest E₀:",
+  "relKineticKE": "Kinetic KE:",
+  "relHighBetaCalloutME": "At this speed, kinetic energy exceeds rest energy!",
+  "relRelativisticEnergy": "Relativistic Energy Equations",
+  "relMassLabel": "Mass (m):",
+  "relProtonMasses": "≈ {count} proton masses",
+  "@relProtonMasses": {
+    "description": "Proton mass count",
+    "placeholders": {
+      "count": {"type": "String"}
+    }
+  },
+  "relTriggerFission": "Trigger Fission",
+  "relLedBulbSeconds": "≈ {value} s of LED bulb power",
+  "@relLedBulbSeconds": {
+    "description": "LED bulb seconds",
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "relLedBulbMinutes": "≈ {value} min of LED bulb power",
+  "@relLedBulbMinutes": {
+    "description": "LED bulb minutes",
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "relLedBulbHours": "≈ {value} h of LED bulb power",
+  "@relLedBulbHours": {
+    "description": "LED bulb hours",
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "relLedBulbDays": "≈ {value} days of LED bulb power",
+  "@relLedBulbDays": {
+    "description": "LED bulb days",
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "relAppTitle": "Special Relativity Physics Lab",
+  "relPause": "Pause",
+  "relResume": "Resume",
+  "relReset": "Reset",
+  "relL1Title": "Einstein's Postulates",
+  "relL1Subtitle": "The foundation of relativity",
+  "relL1S1Title": "The Speed of Light is Constant",
+  "relL1S1Body": "Einstein's first key postulate is that the speed of light in a vacuum ($c \\approx 3 \\times 10^8$ m/s) is the same for all observers, regardless of their motion or the motion of the light source. This means if you shine a flashlight while riding a rocket, an observer on the ground measures the light moving at exactly $c$, not $c + v_rocket$!",
+  "relL1S2Title": "The Principle of Relativity",
+  "relL1S2Body": "The second postulate states that the laws of physics are identical in all inertial (non-accelerating) reference frames. There is no 'absolute rest' frame in the universe. Whether you are floating in deep space or sitting on a train traveling at constant speed, any physics experiment you perform will yield the same results.",
+  "relL1S3Title": "Michelson-Morley Experiment",
+  "relL1S3Body": "Historically, physicists believed space was filled with a substance called the 'aether' through which light waves traveled. The famous Michelson-Morley experiment tried to measure Earth's velocity relative to this aether but failed to find any speed difference. This 'null result' confirmed that the speed of light is indeed constant in all directions and led directly to Einstein's theory of Special Relativity.",
+  "relL1S4Title": "Let's Observe Time Dilation",
+  "relL1S4Body": "Because the speed of light is constant, time itself must bend to keep it that way! Let's explore the Time Dilation simulation to see how a moving clock ticks slower.",
+  "relL2Title": "Time Dilation",
+  "relL2Subtitle": "Moving clocks run slow",
+  "relL2S1Title": "The Light Clock Thought Experiment",
+  "relL2S1Body": "Imagine a clock made of two parallel mirrors where a photon bounces up and down. When the clock is at rest, the photon travels straight up and down. But when the clock moves, the photon must travel a longer, diagonal path to hit the mirrors. Since the speed of light is constant, the longer path means it takes more time to complete one bounce. Thus, the moving clock ticks slower!",
+  "relL2S2Title": "The Formula",
+  "relL2S2Body": "The relationship between proper time ($t_0$, measured by an observer moving with the clock) and dilated time ($t'$, measured by a stationary observer) is given by the Lorentz factor $\\gamma$ (gamma). As speed $v$ approaches $c$, gamma shoots up to infinity, meaning time slows down dramatically for the moving object.",
+  "relL2S2Formula": "t' = γ × t₀\nγ = 1 / √(1 - β²)\nβ = v / c",
+  "relL2S3Title": "Real World Proof: GPS Satellites",
+  "relL2S3Body": "Time dilation is not just a theory; it is a daily engineering challenge! Global Positioning System (GPS) satellites move at high speeds around Earth and experience time dilation. Because they run slightly slower than Earth clocks (and because of gravity, which is General Relativity), their atomic clocks must be corrected by about 7 microseconds per day to keep GPS accurate. Without relativistic adjustments, GPS navigation would fail within hours!",
+  "relL2S4Title": "Explore the Light Clock",
+  "relL2S4Body": "Adjust the velocity slider to see the diagonal path of the photon widen and watch the moving clock hands slow down relative to the rest frame.",
+  "relL3Title": "Length Contraction",
+  "relL3Subtitle": "Space shrinks at high speeds",
+  "relL3S1Title": "Why Space Contracts",
+  "relL3S1Body": "If time dilates (slows down) for a moving object, then to keep the speed of light constant, distances must also change! An observer looking at a fast-moving object will measure its length as contracted (shorter) along its direction of motion. However, the object itself does not feel any squishing; in its own reference frame, its length is perfectly normal.",
+  "relL3S2Title": "The Formula",
+  "relL3S2Body": "The contracted length ($L'$) is equal to the rest length ($L_0$) divided by the Lorentz factor ($\\gamma$). Because $\\gamma \\ge 1$, the measured length $L'$ is always less than or equal to $L_0$. The faster the object moves, the more it shrinks in the direction of travel.",
+  "relL3S2Formula": "L' = L₀ / γ",
+  "relL3S3Title": "Real World Proof: Muon Decay",
+  "relL3S3Body": "Muons are subatomic particles created when cosmic rays strike Earth's upper atmosphere. They have a very short lifespan (2.2 microseconds) and should decay long before hitting the ground. But because they travel near the speed of light, their clocks dilate, letting them live longer from Earth's perspective. From the muon's own perspective, Earth's atmosphere is heavily contracted, meaning the distance they have to travel is short enough for them to make it to the surface!",
+  "relL3S4Title": "See it in Action",
+  "relL3S4Body": "Watch a spaceship shrink as its velocity increases, and compare its rest length reference against the contracted scale.",
+  "relL4Title": "Relativity of Simultaneity",
+  "relL4Subtitle": "No universal 'now'",
+  "relL4S1Title": "The Concept",
+  "relL4S1Body": "If two events happen at the same time in one reference frame, do they happen at the same time in all frames? The surprising answer is: NO! Einstein showed that simultaneity is relative. Events that are simultaneous in one frame are not simultaneous in another frame that is moving relative to the first.",
+  "relL4S2Title": "The Train Thought Experiment",
+  "relL4S2Body": "Imagine a passenger sitting at the center of a moving train, and an observer standing on the station platform. Just as the passenger passes the platform observer, lightning strikes the front and back of the train simultaneously according to the platform observer. The light wavefronts meet exactly at the platform observer. But because the train is moving, the passenger travels *towards* the front strike's light and *away* from the back strike's light, receiving the front flash first. Therefore, the passenger concludes that the front strike happened first!",
+  "relL4S3Title": "No Universal Time",
+  "relL4S3Body": "Since both observers are correct in their own reference frames, there is no absolute timeline for the universe. Events do not have a universal 'before' or 'after' unless they are causally connected (i.e. one could cause the other).",
+  "relL4S4Title": "Trigger the Lightning",
+  "relL4S4Body": "Open the Simultaneity simulation. Tap the trigger button to see how the expansion of light wavefronts reaches the platform and train observers at different points.",
+  "relL5Title": "Mass-Energy Equivalence",
+  "relL5Subtitle": "E = mc² and relativistic energy",
+  "relL5S1Title": "Mass is Condensed Energy",
+  "relL5S1Body": "Einstein's most famous equation, $E = mc^2$, reveals that mass ($m$) and energy ($E$) are actually two forms of the same thing. Mass can be converted into energy, and energy can be converted into mass. Because the speed of light squared ($c^2 \\approx 9 \\times 10^16$) is an enormous number, a tiny amount of mass contains a colossal amount of rest energy.",
+  "relL5S2Title": "The Relativistic Formula",
+  "relL5S2Body": "When an object moves, its total energy ($E$) increases due to its kinetic energy ($KE$). As the velocity approaches $c$, the kinetic energy grows exponentially. Because it takes infinite energy to accelerate a massive object to the speed of light, no object with mass can ever reach or exceed $c$.",
+  "relL5S2Formula": "E₀ = mc² (Rest Energy)\nKE = (γ - 1) × mc² (Kinetic Energy)\nE_total = γ × mc² (Total Energy)",
+  "relL5S3Title": "Nuclear Fission & Fusion",
+  "relL5S3Body": "In nuclear power plants, heavy uranium nuclei split (fission). The combined mass of the resulting fragments is slightly *less* than the mass of the original uranium atom. This missing mass ($m$) is converted directly into thermal and radiation energy ($E$) according to $E = mc^2$, powering entire cities with just a few grams of fuel.",
+  "relL5S4Title": "Split the Nucleus",
+  "relL5S4Body": "Try the Mass-Energy simulation. Trigger a fission reaction to release mass-energy, and adjust the velocity slider to see how relativistic kinetic energy explodes at high velocities.",
+  "relQ1Question": "According to Einstein's postulates, if you travel in a spaceship at 0.5c and turn on a searchlight pointing forward, what is the speed of the light beam as measured by an observer on Earth?",
+  "relQ1Options": "[\"1.5 c\",\"1.0 c\",\"0.5 c\",\"0.75 c\"]",
+  "relQ1CorrectIndex": "1",
+  "relQ1Explanation": "Einstein's first postulate states that the speed of light in a vacuum is always constant ($c$) for all observers, regardless of the relative motion of the source and observer. Thus, the Earth observer will measure exactly $1.0c$.",
+  "relQ2Question": "In the light clock thought experiment, why does the moving clock tick slower for a stationary observer?",
+  "relQ2Options": "[\"The mirrors are compressed by length contraction.\",\"The light travels a longer diagonal path, and since the speed of light is constant, it takes longer.\",\"The speed of light slows down when the clock is in motion.\",\"Mechanical friction in the clock increases with speed.\"]",
+  "relQ2CorrectIndex": "1",
+  "relQ2Explanation": "Because the clock is moving, the photon must travel a longer, diagonal path to bounce between the mirrors. Since the speed of light must remain constant ($c$), this longer distance takes more time, meaning the clock ticks slower from the stationary frame.",
+  "relQ3Question": "At what speed does an object's length contract to exactly half (50%) of its rest length?",
+  "relQ3Options": "[\"0.50 c\",\"0.707 c\",\"0.866 c\",\"0.99 c\"]",
+  "relQ3CorrectIndex": "2",
+  "relQ3Explanation": "Length contraction is given by $L' = L_0 / \\gamma$. For $L'$ to be $0.5 L_0$, we need $\\gamma = 2.0$. Solving $\\gamma = 1 / \\sqrt(1 - \\beta^2) = 2$ gives $\\beta = \\sqrt(3)/2 \\approx 0.866$. Thus, the speed must be $0.866c$.",
+  "relQ4Question": "Which of the following particles serves as direct atmospheric evidence of both time dilation and length contraction?",
+  "relQ4Options": "[\"Electrons\",\"Photons\",\"Muons\",\"Neutrons\"]",
+  "relQ4CorrectIndex": "2",
+  "relQ4Explanation": "Muons created in the upper atmosphere travel near the speed of light. Due to time dilation, they live long enough to reach Earth. From their own frame, length contraction shortens the travel distance, allowing them to reach the ground.",
+  "relQ5Question": "In the train lightning experiment, the platform observer sees both lightning bolts strike simultaneously. What does the train observer see?",
+  "relQ5Options": "[\"Both strikes occur simultaneously.\",\"The front strike (in direction of motion) occurs first.\",\"The back strike occurs first.\",\"No lightning strikes are visible.\"]",
+  "relQ5CorrectIndex": "1",
+  "relQ5Explanation": "As the train observer moves toward the front strike and away from the back strike, they encounter the light wavefront from the front strike first. Since the speed of light is constant, they conclude that the front strike happened first.",
+  "relQ6Question": "Why can't an object with mass reach the speed of light?",
+  "relQ6Options": "[\"It would shrink to zero volume and disappear.\",\"It would run out of fuel.\",\"Its relativistic kinetic energy approaches infinity, requiring infinite work to reach c.\",\"Gravity would pull it back.\"]",
+  "relQ6CorrectIndex": "2",
+  "relQ6Explanation": "Relativistic kinetic energy is $KE = (\\gamma - 1)mc^2$. As $\\beta \\rightarrow 1.0$, $\\gamma \\rightarrow \\infty$, meaning the kinetic energy required to accelerate the object to $c$ becomes infinite.",
+  "relQ7Question": "A nuclear power plant releases energy through fission. Where does this energy come from?",
+  "relQ7Options": "[\"Chemical combustion of atomic bonds.\",\"A small amount of mass is destroyed and converted into energy.\",\"Relativistic compression of the fuel rod.\",\"Absorption of cosmic rays.\"]",
+  "relQ7CorrectIndex": "1",
+  "relQ7Explanation": "In fission, the total mass of the products is slightly less than the initial mass of the nucleus. This mass difference ($m$) is converted directly into energy ($E$) according to $E = mc^2$.",
+  "relQ8Question": "What is the proper time ($t_0$) of an event?",
+  "relQ8Options": "[\"The time measured in a reference frame where the observer is at rest relative to the events.\",\"The time measured on Earth's surface.\",\"The time shown by a clock moving at the speed of light.\",\"Universal cosmological time.\"]",
+  "relQ8CorrectIndex": "0",
+  "relQ8Explanation": "Proper time ($t_0$) is defined as the time interval between two events measured by an observer who is at rest relative to those events (e.g. using a clock that is present at both events)."
 }

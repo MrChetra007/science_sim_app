@@ -4,6 +4,7 @@ import '../../sims/time_dilation/time_dilation_screen.dart';
 import '../../sims/length_contraction/length_contraction_screen.dart';
 import '../../sims/simultaneity/simultaneity_screen.dart';
 import '../../sims/mass_energy/mass_energy_screen.dart';
+import 'package:science_lab/l10n/generated/app_localizations.dart';
 
 class LessonScreen extends StatefulWidget {
   final Lesson lesson;
@@ -182,7 +183,7 @@ class _LessonScreenState extends State<LessonScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "FORMULA REFERENCE",
+                                  AppLocalizations.of(context)!.relFormulaReference,
                                   style: TextStyle(
                                     color: const Color(0xff00ff41).withOpacity(0.6),
                                     fontSize: 11,
@@ -236,8 +237,8 @@ class _LessonScreenState extends State<LessonScreen> {
                                   elevation: 0,
                                 ),
                                 icon: const Icon(Icons.rocket_launch),
-                                label: const Text(
-                                  "Open 2D Simulation",
+                                label: Text(
+                                  AppLocalizations.of(context)!.relOpen2DSimulation,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -279,7 +280,7 @@ class _LessonScreenState extends State<LessonScreen> {
                       children: [
                         if (_currentPage > 0) const Icon(Icons.arrow_back_ios, size: 16),
                         const SizedBox(width: 4),
-                        Text(_currentPage > 0 ? "PREV" : ""),
+                        Text(_currentPage > 0 ? AppLocalizations.of(context)!.relPrev : ""),
                       ],
                     ),
                   ),
@@ -312,7 +313,7 @@ class _LessonScreenState extends State<LessonScreen> {
                       ),
                     ),
                     child: Text(
-                      _currentPage < steps.length - 1 ? "NEXT" : "FINISH",
+                      _currentPage < steps.length - 1 ? AppLocalizations.of(context)!.relNext : AppLocalizations.of(context)!.relFinish,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.0,

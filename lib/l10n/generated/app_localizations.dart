@@ -5936,24 +5936,6 @@ abstract class AppLocalizations {
   /// **'Question {current} of {total}'**
   String emiQuestionOf(String current, String total);
 
-  /// No description provided for @relativityLab.
-  ///
-  /// In en, this message translates to:
-  /// **'RELATIVITY'**
-  String get relativityLab;
-
-  /// No description provided for @relativityLabSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Special Relativity'**
-  String get relativityLabSubtitle;
-
-  /// No description provided for @relativityLabTutorial.
-  ///
-  /// In en, this message translates to:
-  /// **'Special Relativity Lab - Einstein\'s Theory'**
-  String get relativityLabTutorial;
-
   /// No description provided for @emiCorrect.
   ///
   /// In en, this message translates to:
@@ -6499,6 +6481,1044 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Batteries use chemical reactions to produce electricity, not electromagnetic induction. Generators, wireless chargers, and induction cooktops all use Faraday\'s Law directly.'**
   String get emiQ5Explanation;
+
+  /// No description provided for @relativityLab.
+  ///
+  /// In en, this message translates to:
+  /// **'RELATIVITY'**
+  String get relativityLab;
+
+  /// No description provided for @relativityLabSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Relativity'**
+  String get relativityLabSubtitle;
+
+  /// No description provided for @relativityLabTutorial.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Relativity Lab - Einstein\'s Theory'**
+  String get relativityLabTutorial;
+
+  /// No description provided for @relHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SPECIAL RELATIVITY'**
+  String get relHomeTitle;
+
+  /// No description provided for @relHomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Interactive 2D Flame Physics Lab'**
+  String get relHomeSubtitle;
+
+  /// No description provided for @relSelectLesson.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a Structured Lesson'**
+  String get relSelectLesson;
+
+  /// No description provided for @relLessons.
+  ///
+  /// In en, this message translates to:
+  /// **'Lessons'**
+  String get relLessons;
+
+  /// No description provided for @rel5StructuredGuides.
+  ///
+  /// In en, this message translates to:
+  /// **'5 Structured Guides'**
+  String get rel5StructuredGuides;
+
+  /// No description provided for @relQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz'**
+  String get relQuiz;
+
+  /// No description provided for @relTestYourKnowledge.
+  ///
+  /// In en, this message translates to:
+  /// **'Test Your Knowledge'**
+  String get relTestYourKnowledge;
+
+  /// No description provided for @relTimeDilation.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Dilation'**
+  String get relTimeDilation;
+
+  /// No description provided for @relLightClockTicks.
+  ///
+  /// In en, this message translates to:
+  /// **'Light clock ticks'**
+  String get relLightClockTicks;
+
+  /// No description provided for @relLengthContraction.
+  ///
+  /// In en, this message translates to:
+  /// **'Length Contraction'**
+  String get relLengthContraction;
+
+  /// No description provided for @relSpaceshipShrinkage.
+  ///
+  /// In en, this message translates to:
+  /// **'Spaceship shrinkage'**
+  String get relSpaceshipShrinkage;
+
+  /// No description provided for @relSimultaneity.
+  ///
+  /// In en, this message translates to:
+  /// **'Simultaneity'**
+  String get relSimultaneity;
+
+  /// No description provided for @relTrainLightning.
+  ///
+  /// In en, this message translates to:
+  /// **'Train & Lightning'**
+  String get relTrainLightning;
+
+  /// No description provided for @relEequalsMc2.
+  ///
+  /// In en, this message translates to:
+  /// **'E = mc²'**
+  String get relEequalsMc2;
+
+  /// No description provided for @relMassEnergyEquiv.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass-Energy Equiv.'**
+  String get relMassEnergyEquiv;
+
+  /// No description provided for @relFormulaReference.
+  ///
+  /// In en, this message translates to:
+  /// **'FORMULA REFERENCE'**
+  String get relFormulaReference;
+
+  /// No description provided for @relOpen2DSimulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Open 2D Simulation'**
+  String get relOpen2DSimulation;
+
+  /// No description provided for @relPrev.
+  ///
+  /// In en, this message translates to:
+  /// **'PREV'**
+  String get relPrev;
+
+  /// No description provided for @relNext.
+  ///
+  /// In en, this message translates to:
+  /// **'NEXT'**
+  String get relNext;
+
+  /// No description provided for @relFinish.
+  ///
+  /// In en, this message translates to:
+  /// **'FINISH'**
+  String get relFinish;
+
+  /// No description provided for @relQuizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Relativity Quiz'**
+  String get relQuizTitle;
+
+  /// Question progress indicator
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String relQuestionOf(String current, String total);
+
+  /// Current score display
+  ///
+  /// In en, this message translates to:
+  /// **'Score: {score}'**
+  String relScore(String score);
+
+  /// No description provided for @relExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Explanation'**
+  String get relExplanation;
+
+  /// No description provided for @relNextQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'NEXT QUESTION'**
+  String get relNextQuestion;
+
+  /// No description provided for @relSeeResults.
+  ///
+  /// In en, this message translates to:
+  /// **'SEE RESULTS'**
+  String get relSeeResults;
+
+  /// No description provided for @relRetryQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'RETRY QUIZ'**
+  String get relRetryQuiz;
+
+  /// No description provided for @relBackToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'BACK TO HOME'**
+  String get relBackToHome;
+
+  /// No description provided for @relKeepLearning.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep learning, space cadet!'**
+  String get relKeepLearning;
+
+  /// No description provided for @relKeepLearningDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Special relativity is brain-bending. Try reviewing the lesson guides and playing with the animations to build your intuition.'**
+  String get relKeepLearningDetails;
+
+  /// No description provided for @relEinsteinReincarnated.
+  ///
+  /// In en, this message translates to:
+  /// **'Einstein Reincarnated!'**
+  String get relEinsteinReincarnated;
+
+  /// No description provided for @relPerfectScoreDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Perfect score! You have completely mastered Special Relativity and the mechanics of spacetime contraction and time dilation.'**
+  String get relPerfectScoreDetails;
+
+  /// No description provided for @relOutstanding.
+  ///
+  /// In en, this message translates to:
+  /// **'Outstanding Relativity Physicist!'**
+  String get relOutstanding;
+
+  /// No description provided for @relOutstandingDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent job! You have a very strong grasp of relativistic physics and how observations differ across frames.'**
+  String get relOutstandingDetails;
+
+  /// Quiz score result
+  ///
+  /// In en, this message translates to:
+  /// **'Your Score: {score} / {total} ({percent}%)'**
+  String relYourScore(String score, String total, String percent);
+
+  /// Velocity slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Velocity (v): {beta}% c'**
+  String relVelocityLabel(String beta);
+
+  /// Lorentz factor display
+  ///
+  /// In en, this message translates to:
+  /// **'Lorentz Factor (γ): {gamma}'**
+  String relLorentzFactor(String gamma);
+
+  /// No description provided for @relApproachingC.
+  ///
+  /// In en, this message translates to:
+  /// **'Approaching speed of light! γ rises rapidly.'**
+  String get relApproachingC;
+
+  /// No description provided for @relTimeDilationLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Dilation Lab'**
+  String get relTimeDilationLab;
+
+  /// No description provided for @relObserverTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Observer Time (t\')'**
+  String get relObserverTime;
+
+  /// No description provided for @relSpaceshipTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Spaceship Time (t₀)'**
+  String get relSpaceshipTime;
+
+  /// No description provided for @relGamma.
+  ///
+  /// In en, this message translates to:
+  /// **'γ (Gamma)'**
+  String get relGamma;
+
+  /// No description provided for @relRatioTt.
+  ///
+  /// In en, this message translates to:
+  /// **'t\' / t₀'**
+  String get relRatioTt;
+
+  /// No description provided for @relHighBetaCallout.
+  ///
+  /// In en, this message translates to:
+  /// **'At v ≈ 87% c, the moving clock ticks at half the rate of the rest clock!'**
+  String get relHighBetaCallout;
+
+  /// No description provided for @relTimeDilationFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Dilation Formula'**
+  String get relTimeDilationFormula;
+
+  /// No description provided for @relObserverTimeVal.
+  ///
+  /// In en, this message translates to:
+  /// **'Observer Time (t\')'**
+  String get relObserverTimeVal;
+
+  /// No description provided for @relSpaceshipTimeVal.
+  ///
+  /// In en, this message translates to:
+  /// **'Spaceship Time (t₀)'**
+  String get relSpaceshipTimeVal;
+
+  /// No description provided for @relLengthContractionLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Length Contraction Lab'**
+  String get relLengthContractionLab;
+
+  /// No description provided for @relRestLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest Length (L₀)'**
+  String get relRestLength;
+
+  /// No description provided for @relContracted.
+  ///
+  /// In en, this message translates to:
+  /// **'Contracted (L\')'**
+  String get relContracted;
+
+  /// No description provided for @relShrinkage.
+  ///
+  /// In en, this message translates to:
+  /// **'Shrinkage'**
+  String get relShrinkage;
+
+  /// No description provided for @relLengthContractionFormula.
+  ///
+  /// In en, this message translates to:
+  /// **'Length Contraction Formula'**
+  String get relLengthContractionFormula;
+
+  /// No description provided for @relMeasuredLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured Length (L\')'**
+  String get relMeasuredLength;
+
+  /// No description provided for @relSimultaneityLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Relativity of Simultaneity'**
+  String get relSimultaneityLab;
+
+  /// No description provided for @relPlatform.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform:'**
+  String get relPlatform;
+
+  /// No description provided for @relTrain.
+  ///
+  /// In en, this message translates to:
+  /// **'Train:'**
+  String get relTrain;
+
+  /// No description provided for @relBackA.
+  ///
+  /// In en, this message translates to:
+  /// **'Back (A)'**
+  String get relBackA;
+
+  /// No description provided for @relFrontB.
+  ///
+  /// In en, this message translates to:
+  /// **'Front (B)'**
+  String get relFrontB;
+
+  /// No description provided for @relExperimentResult.
+  ///
+  /// In en, this message translates to:
+  /// **'EXPERIMENT RESULT'**
+  String get relExperimentResult;
+
+  /// Platform simultaneous arrival result
+  ///
+  /// In en, this message translates to:
+  /// **'Platform: A and B arrived simultaneously (Δt = {diff}s)'**
+  String relPlatformSimultaneous(String diff);
+
+  /// Train observer result - A arrived before B
+  ///
+  /// In en, this message translates to:
+  /// **'Train: A arrived {diff}s before B'**
+  String relTrainABefore(String diff);
+
+  /// Train observer result - B arrived before A
+  ///
+  /// In en, this message translates to:
+  /// **'Train: B arrived {diff}s before A'**
+  String relTrainBBefore(String diff);
+
+  /// No description provided for @relSameEventsDifferent.
+  ///
+  /// In en, this message translates to:
+  /// **'→ Same events. Different order. Different observers.'**
+  String get relSameEventsDifferent;
+
+  /// No description provided for @relSpacetimeInterval.
+  ///
+  /// In en, this message translates to:
+  /// **'Spacetime Interval & Arrival Times'**
+  String get relSpacetimeInterval;
+
+  /// No description provided for @relWhatVariablesMean.
+  ///
+  /// In en, this message translates to:
+  /// **'What do these variables mean?'**
+  String get relWhatVariablesMean;
+
+  /// No description provided for @relSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Speed:'**
+  String get relSpeed;
+
+  /// No description provided for @relTriggerLightning.
+  ///
+  /// In en, this message translates to:
+  /// **'Trigger Lightning'**
+  String get relTriggerLightning;
+
+  /// No description provided for @relAtVZero.
+  ///
+  /// In en, this message translates to:
+  /// **'ℹ️ At v ≈ 0, both frames see simultaneous arrival'**
+  String get relAtVZero;
+
+  /// No description provided for @relMassEnergyLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass-Energy Equivalence'**
+  String get relMassEnergyLab;
+
+  /// No description provided for @relEnergySplit.
+  ///
+  /// In en, this message translates to:
+  /// **'ENERGY SPLIT (RELATIVE SCALE)'**
+  String get relEnergySplit;
+
+  /// No description provided for @relRestE.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest E₀:'**
+  String get relRestE;
+
+  /// No description provided for @relKineticKE.
+  ///
+  /// In en, this message translates to:
+  /// **'Kinetic KE:'**
+  String get relKineticKE;
+
+  /// No description provided for @relHighBetaCalloutME.
+  ///
+  /// In en, this message translates to:
+  /// **'At this speed, kinetic energy exceeds rest energy!'**
+  String get relHighBetaCalloutME;
+
+  /// No description provided for @relRelativisticEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Relativistic Energy Equations'**
+  String get relRelativisticEnergy;
+
+  /// No description provided for @relMassLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass (m):'**
+  String get relMassLabel;
+
+  /// Proton mass count
+  ///
+  /// In en, this message translates to:
+  /// **'≈ {count} proton masses'**
+  String relProtonMasses(String count);
+
+  /// No description provided for @relTriggerFission.
+  ///
+  /// In en, this message translates to:
+  /// **'Trigger Fission'**
+  String get relTriggerFission;
+
+  /// LED bulb seconds
+  ///
+  /// In en, this message translates to:
+  /// **'≈ {value} s of LED bulb power'**
+  String relLedBulbSeconds(String value);
+
+  /// LED bulb minutes
+  ///
+  /// In en, this message translates to:
+  /// **'≈ {value} min of LED bulb power'**
+  String relLedBulbMinutes(String value);
+
+  /// LED bulb hours
+  ///
+  /// In en, this message translates to:
+  /// **'≈ {value} h of LED bulb power'**
+  String relLedBulbHours(String value);
+
+  /// LED bulb days
+  ///
+  /// In en, this message translates to:
+  /// **'≈ {value} days of LED bulb power'**
+  String relLedBulbDays(String value);
+
+  /// No description provided for @relAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Relativity Physics Lab'**
+  String get relAppTitle;
+
+  /// No description provided for @relPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get relPause;
+
+  /// No description provided for @relResume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get relResume;
+
+  /// No description provided for @relReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get relReset;
+
+  /// No description provided for @relL1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Einstein\'s Postulates'**
+  String get relL1Title;
+
+  /// No description provided for @relL1Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The foundation of relativity'**
+  String get relL1Subtitle;
+
+  /// No description provided for @relL1S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Speed of Light is Constant'**
+  String get relL1S1Title;
+
+  /// No description provided for @relL1S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Einstein\'s first key postulate is that the speed of light in a vacuum (\$c \\approx 3 \\times 10^8\$ m/s) is the same for all observers, regardless of their motion or the motion of the light source. This means if you shine a flashlight while riding a rocket, an observer on the ground measures the light moving at exactly \$c\$, not \$c + v_rocket\$!'**
+  String get relL1S1Body;
+
+  /// No description provided for @relL1S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Principle of Relativity'**
+  String get relL1S2Title;
+
+  /// No description provided for @relL1S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The second postulate states that the laws of physics are identical in all inertial (non-accelerating) reference frames. There is no \'absolute rest\' frame in the universe. Whether you are floating in deep space or sitting on a train traveling at constant speed, any physics experiment you perform will yield the same results.'**
+  String get relL1S2Body;
+
+  /// No description provided for @relL1S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Michelson-Morley Experiment'**
+  String get relL1S3Title;
+
+  /// No description provided for @relL1S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Historically, physicists believed space was filled with a substance called the \'aether\' through which light waves traveled. The famous Michelson-Morley experiment tried to measure Earth\'s velocity relative to this aether but failed to find any speed difference. This \'null result\' confirmed that the speed of light is indeed constant in all directions and led directly to Einstein\'s theory of Special Relativity.'**
+  String get relL1S3Body;
+
+  /// No description provided for @relL1S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s Observe Time Dilation'**
+  String get relL1S4Title;
+
+  /// No description provided for @relL1S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Because the speed of light is constant, time itself must bend to keep it that way! Let\'s explore the Time Dilation simulation to see how a moving clock ticks slower.'**
+  String get relL1S4Body;
+
+  /// No description provided for @relL2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Dilation'**
+  String get relL2Title;
+
+  /// No description provided for @relL2Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Moving clocks run slow'**
+  String get relL2Subtitle;
+
+  /// No description provided for @relL2S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Light Clock Thought Experiment'**
+  String get relL2S1Title;
+
+  /// No description provided for @relL2S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Imagine a clock made of two parallel mirrors where a photon bounces up and down. When the clock is at rest, the photon travels straight up and down. But when the clock moves, the photon must travel a longer, diagonal path to hit the mirrors. Since the speed of light is constant, the longer path means it takes more time to complete one bounce. Thus, the moving clock ticks slower!'**
+  String get relL2S1Body;
+
+  /// No description provided for @relL2S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Formula'**
+  String get relL2S2Title;
+
+  /// No description provided for @relL2S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The relationship between proper time (\$t_0\$, measured by an observer moving with the clock) and dilated time (\$t\'\$, measured by a stationary observer) is given by the Lorentz factor \$\\gamma\$ (gamma). As speed \$v\$ approaches \$c\$, gamma shoots up to infinity, meaning time slows down dramatically for the moving object.'**
+  String get relL2S2Body;
+
+  /// No description provided for @relL2S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'t\' = γ × t₀\nγ = 1 / √(1 - β²)\nβ = v / c'**
+  String get relL2S2Formula;
+
+  /// No description provided for @relL2S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Real World Proof: GPS Satellites'**
+  String get relL2S3Title;
+
+  /// No description provided for @relL2S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Time dilation is not just a theory; it is a daily engineering challenge! Global Positioning System (GPS) satellites move at high speeds around Earth and experience time dilation. Because they run slightly slower than Earth clocks (and because of gravity, which is General Relativity), their atomic clocks must be corrected by about 7 microseconds per day to keep GPS accurate. Without relativistic adjustments, GPS navigation would fail within hours!'**
+  String get relL2S3Body;
+
+  /// No description provided for @relL2S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore the Light Clock'**
+  String get relL2S4Title;
+
+  /// No description provided for @relL2S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust the velocity slider to see the diagonal path of the photon widen and watch the moving clock hands slow down relative to the rest frame.'**
+  String get relL2S4Body;
+
+  /// No description provided for @relL3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Length Contraction'**
+  String get relL3Title;
+
+  /// No description provided for @relL3Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Space shrinks at high speeds'**
+  String get relL3Subtitle;
+
+  /// No description provided for @relL3S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Why Space Contracts'**
+  String get relL3S1Title;
+
+  /// No description provided for @relL3S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'If time dilates (slows down) for a moving object, then to keep the speed of light constant, distances must also change! An observer looking at a fast-moving object will measure its length as contracted (shorter) along its direction of motion. However, the object itself does not feel any squishing; in its own reference frame, its length is perfectly normal.'**
+  String get relL3S1Body;
+
+  /// No description provided for @relL3S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Formula'**
+  String get relL3S2Title;
+
+  /// No description provided for @relL3S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The contracted length (\$L\'\$) is equal to the rest length (\$L_0\$) divided by the Lorentz factor (\$\\gamma\$). Because \$\\gamma \\ge 1\$, the measured length \$L\'\$ is always less than or equal to \$L_0\$. The faster the object moves, the more it shrinks in the direction of travel.'**
+  String get relL3S2Body;
+
+  /// No description provided for @relL3S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'L\' = L₀ / γ'**
+  String get relL3S2Formula;
+
+  /// No description provided for @relL3S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Real World Proof: Muon Decay'**
+  String get relL3S3Title;
+
+  /// No description provided for @relL3S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Muons are subatomic particles created when cosmic rays strike Earth\'s upper atmosphere. They have a very short lifespan (2.2 microseconds) and should decay long before hitting the ground. But because they travel near the speed of light, their clocks dilate, letting them live longer from Earth\'s perspective. From the muon\'s own perspective, Earth\'s atmosphere is heavily contracted, meaning the distance they have to travel is short enough for them to make it to the surface!'**
+  String get relL3S3Body;
+
+  /// No description provided for @relL3S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'See it in Action'**
+  String get relL3S4Title;
+
+  /// No description provided for @relL3S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch a spaceship shrink as its velocity increases, and compare its rest length reference against the contracted scale.'**
+  String get relL3S4Body;
+
+  /// No description provided for @relL4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Relativity of Simultaneity'**
+  String get relL4Title;
+
+  /// No description provided for @relL4Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No universal \'now\''**
+  String get relL4Subtitle;
+
+  /// No description provided for @relL4S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Concept'**
+  String get relL4S1Title;
+
+  /// No description provided for @relL4S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'If two events happen at the same time in one reference frame, do they happen at the same time in all frames? The surprising answer is: NO! Einstein showed that simultaneity is relative. Events that are simultaneous in one frame are not simultaneous in another frame that is moving relative to the first.'**
+  String get relL4S1Body;
+
+  /// No description provided for @relL4S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Train Thought Experiment'**
+  String get relL4S2Title;
+
+  /// No description provided for @relL4S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Imagine a passenger sitting at the center of a moving train, and an observer standing on the station platform. Just as the passenger passes the platform observer, lightning strikes the front and back of the train simultaneously according to the platform observer. The light wavefronts meet exactly at the platform observer. But because the train is moving, the passenger travels *towards* the front strike\'s light and *away* from the back strike\'s light, receiving the front flash first. Therefore, the passenger concludes that the front strike happened first!'**
+  String get relL4S2Body;
+
+  /// No description provided for @relL4S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'No Universal Time'**
+  String get relL4S3Title;
+
+  /// No description provided for @relL4S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Since both observers are correct in their own reference frames, there is no absolute timeline for the universe. Events do not have a universal \'before\' or \'after\' unless they are causally connected (i.e. one could cause the other).'**
+  String get relL4S3Body;
+
+  /// No description provided for @relL4S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Trigger the Lightning'**
+  String get relL4S4Title;
+
+  /// No description provided for @relL4S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Simultaneity simulation. Tap the trigger button to see how the expansion of light wavefronts reaches the platform and train observers at different points.'**
+  String get relL4S4Body;
+
+  /// No description provided for @relL5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass-Energy Equivalence'**
+  String get relL5Title;
+
+  /// No description provided for @relL5Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'E = mc² and relativistic energy'**
+  String get relL5Subtitle;
+
+  /// No description provided for @relL5S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass is Condensed Energy'**
+  String get relL5S1Title;
+
+  /// No description provided for @relL5S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Einstein\'s most famous equation, \$E = mc^2\$, reveals that mass (\$m\$) and energy (\$E\$) are actually two forms of the same thing. Mass can be converted into energy, and energy can be converted into mass. Because the speed of light squared (\$c^2 \\approx 9 \\times 10^16\$) is an enormous number, a tiny amount of mass contains a colossal amount of rest energy.'**
+  String get relL5S1Body;
+
+  /// No description provided for @relL5S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Relativistic Formula'**
+  String get relL5S2Title;
+
+  /// No description provided for @relL5S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'When an object moves, its total energy (\$E\$) increases due to its kinetic energy (\$KE\$). As the velocity approaches \$c\$, the kinetic energy grows exponentially. Because it takes infinite energy to accelerate a massive object to the speed of light, no object with mass can ever reach or exceed \$c\$.'**
+  String get relL5S2Body;
+
+  /// No description provided for @relL5S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'E₀ = mc² (Rest Energy)\nKE = (γ - 1) × mc² (Kinetic Energy)\nE_total = γ × mc² (Total Energy)'**
+  String get relL5S2Formula;
+
+  /// No description provided for @relL5S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Nuclear Fission & Fusion'**
+  String get relL5S3Title;
+
+  /// No description provided for @relL5S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'In nuclear power plants, heavy uranium nuclei split (fission). The combined mass of the resulting fragments is slightly *less* than the mass of the original uranium atom. This missing mass (\$m\$) is converted directly into thermal and radiation energy (\$E\$) according to \$E = mc^2\$, powering entire cities with just a few grams of fuel.'**
+  String get relL5S3Body;
+
+  /// No description provided for @relL5S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Split the Nucleus'**
+  String get relL5S4Title;
+
+  /// No description provided for @relL5S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Try the Mass-Energy simulation. Trigger a fission reaction to release mass-energy, and adjust the velocity slider to see how relativistic kinetic energy explodes at high velocities.'**
+  String get relL5S4Body;
+
+  /// No description provided for @relQ1Question.
+  ///
+  /// In en, this message translates to:
+  /// **'According to Einstein\'s postulates, if you travel in a spaceship at 0.5c and turn on a searchlight pointing forward, what is the speed of the light beam as measured by an observer on Earth?'**
+  String get relQ1Question;
+
+  /// No description provided for @relQ1Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"1.5 c\",\"1.0 c\",\"0.5 c\",\"0.75 c\"]'**
+  String get relQ1Options;
+
+  /// No description provided for @relQ1CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get relQ1CorrectIndex;
+
+  /// No description provided for @relQ1Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Einstein\'s first postulate states that the speed of light in a vacuum is always constant (\$c\$) for all observers, regardless of the relative motion of the source and observer. Thus, the Earth observer will measure exactly \$1.0c\$.'**
+  String get relQ1Explanation;
+
+  /// No description provided for @relQ2Question.
+  ///
+  /// In en, this message translates to:
+  /// **'In the light clock thought experiment, why does the moving clock tick slower for a stationary observer?'**
+  String get relQ2Question;
+
+  /// No description provided for @relQ2Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"The mirrors are compressed by length contraction.\",\"The light travels a longer diagonal path, and since the speed of light is constant, it takes longer.\",\"The speed of light slows down when the clock is in motion.\",\"Mechanical friction in the clock increases with speed.\"]'**
+  String get relQ2Options;
+
+  /// No description provided for @relQ2CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get relQ2CorrectIndex;
+
+  /// No description provided for @relQ2Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Because the clock is moving, the photon must travel a longer, diagonal path to bounce between the mirrors. Since the speed of light must remain constant (\$c\$), this longer distance takes more time, meaning the clock ticks slower from the stationary frame.'**
+  String get relQ2Explanation;
+
+  /// No description provided for @relQ3Question.
+  ///
+  /// In en, this message translates to:
+  /// **'At what speed does an object\'s length contract to exactly half (50%) of its rest length?'**
+  String get relQ3Question;
+
+  /// No description provided for @relQ3Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"0.50 c\",\"0.707 c\",\"0.866 c\",\"0.99 c\"]'**
+  String get relQ3Options;
+
+  /// No description provided for @relQ3CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'2'**
+  String get relQ3CorrectIndex;
+
+  /// No description provided for @relQ3Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Length contraction is given by \$L\' = L_0 / \\gamma\$. For \$L\'\$ to be \$0.5 L_0\$, we need \$\\gamma = 2.0\$. Solving \$\\gamma = 1 / \\sqrt(1 - \\beta^2) = 2\$ gives \$\\beta = \\sqrt(3)/2 \\approx 0.866\$. Thus, the speed must be \$0.866c\$.'**
+  String get relQ3Explanation;
+
+  /// No description provided for @relQ4Question.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of the following particles serves as direct atmospheric evidence of both time dilation and length contraction?'**
+  String get relQ4Question;
+
+  /// No description provided for @relQ4Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"Electrons\",\"Photons\",\"Muons\",\"Neutrons\"]'**
+  String get relQ4Options;
+
+  /// No description provided for @relQ4CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'2'**
+  String get relQ4CorrectIndex;
+
+  /// No description provided for @relQ4Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Muons created in the upper atmosphere travel near the speed of light. Due to time dilation, they live long enough to reach Earth. From their own frame, length contraction shortens the travel distance, allowing them to reach the ground.'**
+  String get relQ4Explanation;
+
+  /// No description provided for @relQ5Question.
+  ///
+  /// In en, this message translates to:
+  /// **'In the train lightning experiment, the platform observer sees both lightning bolts strike simultaneously. What does the train observer see?'**
+  String get relQ5Question;
+
+  /// No description provided for @relQ5Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"Both strikes occur simultaneously.\",\"The front strike (in direction of motion) occurs first.\",\"The back strike occurs first.\",\"No lightning strikes are visible.\"]'**
+  String get relQ5Options;
+
+  /// No description provided for @relQ5CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get relQ5CorrectIndex;
+
+  /// No description provided for @relQ5Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'As the train observer moves toward the front strike and away from the back strike, they encounter the light wavefront from the front strike first. Since the speed of light is constant, they conclude that the front strike happened first.'**
+  String get relQ5Explanation;
+
+  /// No description provided for @relQ6Question.
+  ///
+  /// In en, this message translates to:
+  /// **'Why can\'t an object with mass reach the speed of light?'**
+  String get relQ6Question;
+
+  /// No description provided for @relQ6Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"It would shrink to zero volume and disappear.\",\"It would run out of fuel.\",\"Its relativistic kinetic energy approaches infinity, requiring infinite work to reach c.\",\"Gravity would pull it back.\"]'**
+  String get relQ6Options;
+
+  /// No description provided for @relQ6CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'2'**
+  String get relQ6CorrectIndex;
+
+  /// No description provided for @relQ6Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Relativistic kinetic energy is \$KE = (\\gamma - 1)mc^2\$. As \$\\beta \\rightarrow 1.0\$, \$\\gamma \\rightarrow \\infty\$, meaning the kinetic energy required to accelerate the object to \$c\$ becomes infinite.'**
+  String get relQ6Explanation;
+
+  /// No description provided for @relQ7Question.
+  ///
+  /// In en, this message translates to:
+  /// **'A nuclear power plant releases energy through fission. Where does this energy come from?'**
+  String get relQ7Question;
+
+  /// No description provided for @relQ7Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"Chemical combustion of atomic bonds.\",\"A small amount of mass is destroyed and converted into energy.\",\"Relativistic compression of the fuel rod.\",\"Absorption of cosmic rays.\"]'**
+  String get relQ7Options;
+
+  /// No description provided for @relQ7CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get relQ7CorrectIndex;
+
+  /// No description provided for @relQ7Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'In fission, the total mass of the products is slightly less than the initial mass of the nucleus. This mass difference (\$m\$) is converted directly into energy (\$E\$) according to \$E = mc^2\$.'**
+  String get relQ7Explanation;
+
+  /// No description provided for @relQ8Question.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the proper time (\$t_0\$) of an event?'**
+  String get relQ8Question;
+
+  /// No description provided for @relQ8Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"The time measured in a reference frame where the observer is at rest relative to the events.\",\"The time measured on Earth\'s surface.\",\"The time shown by a clock moving at the speed of light.\",\"Universal cosmological time.\"]'**
+  String get relQ8Options;
+
+  /// No description provided for @relQ8CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'0'**
+  String get relQ8CorrectIndex;
+
+  /// No description provided for @relQ8Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Proper time (\$t_0\$) is defined as the time interval between two events measured by an observer who is at rest relative to those events (e.g. using a clock that is present at both events).'**
+  String get relQ8Explanation;
 }
 
 class _AppLocalizationsDelegate

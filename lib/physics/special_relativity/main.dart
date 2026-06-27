@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:science_lab/l10n/generated/app_localizations.dart';
 import 'lessons/screens/home_screen.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class RelativityApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Special Relativity Physics Lab',
+      title: AppLocalizations.of(context)!.relAppTitle,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,

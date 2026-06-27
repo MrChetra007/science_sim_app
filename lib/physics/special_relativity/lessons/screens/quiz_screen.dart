@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../lesson_data.dart';
 import '../models/lesson.dart';
+import 'package:science_lab/l10n/generated/app_localizations.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -10,11 +11,18 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
+  late final List<QuizQuestion> _questions;
   int _currentQuestionIndex = 0;
   int? _selectedAnswerIndex;
   bool _answerSubmitted = false;
   int _score = 0;
   bool _quizFinished = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _questions = buildQuizQuestions(AppLocalizations.of(context)!);
+  }
 
   void _submitAnswer(int index) {
     if (_answerSubmitted) return;
@@ -22,7 +30,7 @@ class _QuizScreenState extends State<QuizScreen> {
     setState(() {
       _selectedAnswerIndex = index;
       _answerSubmitted = true;
-      if (index == quizQuestions[_currentQuestionIndex].correctIndex) {
+      if (index == _questions[_currentQuestionIndex].correctIndex) {
         _score++;
       }
     });
@@ -30,7 +38,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void _nextQuestion() {
     setState(() {
-      if (_currentQuestionIndex < quizQuestions.length - 1) {
+      if (_currentQuestionIndex < _questions.length - 1) {
         _currentQuestionIndex++;
         _selectedAnswerIndex = null;
         _answerSubmitted = false;
@@ -61,8 +69,8 @@ class _QuizScreenState extends State<QuizScreen> {
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white70),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          "Relativity Quiz",
+        title: Text(
+          AppLocalizations.of(context)!.relQuizTitle,
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -84,8 +92,8 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Widget _buildQuizView() {
-    final question = quizQuestions[_currentQuestionIndex];
-    final progress = (_currentQuestionIndex + 1) / quizQuestions.length;
+    final question = _questions[_currentQuestionIndex];
+    final progress = (_currentQuestionIndex + 1) / _questions.length;
 
     return Column(
       key: ValueKey<int>(_currentQuestionIndex),
@@ -96,11 +104,11 @@ class _QuizScreenState extends State<QuizScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Question ${_currentQuestionIndex + 1} of ${quizQuestions.length}',
+              AppLocalizations.of(context)!.relQuestionOf((_currentQuestionIndex + 1).toString(), _questions.length.toString()),
               style: const TextStyle(color: Colors.white60, fontSize: 13, fontWeight: FontWeight.w500),
             ),
             Text(
-              'Score: $_score',
+              AppLocalizations.of(context)!.relScore(_score.toString()),
               style: const TextStyle(color: Color(0xff4fc3f7), fontSize: 13, fontWeight: FontWeight.bold),
             ),
           ],
@@ -220,8 +228,8 @@ class _QuizScreenState extends State<QuizScreen> {
                               size: 18,
                             ),
                             const SizedBox(width: 8),
-                            const Text(
-                              "Explanation",
+                            Text(
+                              AppLocalizations.of(context)!.relExplanation,
                               style: TextStyle(
                                 color: Color(0xff4fc3f7),
                                 fontWeight: FontWeight.bold,
@@ -263,7 +271,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
               ),
               child: Text(
-                _currentQuestionIndex < quizQuestions.length - 1 ? "NEXT QUESTION" : "SEE RESULTS",
+                _currentQuestionIndex < _questions.length - 1 ? AppLocalizations.of(context)!.relNextQuestion : AppLocalizations.of(context)!.relSeeResults,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
@@ -277,20 +285,20 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Widget _buildResultsView() {
-    final percent = (_score / quizQuestions.length) * 100;
-    String feedback = "Keep learning, space cadet!";
-    String details = "Special relativity is brain-bending. Try reviewing the lesson guides and playing with the animations to build your intuition.";
+    final percent = (_score / _questions.length) * 100;
+    String feedback = AppLocalizations.of(context)!.relKeepLearning;
+    String details = AppLocalizations.of(context)!.relKeepLearningDetails;
     IconData icon = Icons.psychology;
     Color color = const Color(0xffff9800);
 
     if (percent == 100) {
-      feedback = "Einstein Reincarnated!";
-      details = "Perfect score! You have completely mastered Special Relativity and the mechanics of spacetime contraction and time dilation.";
+      feedback = AppLocalizations.of(context)!.relEinsteinReincarnated;
+      details = AppLocalizations.of(context)!.relPerfectScoreDetails;
       icon = Icons.workspace_premium;
       color = const Color(0xff00ff41);
     } else if (percent >= 75) {
-      feedback = "Outstanding Relativity Physicist!";
-      details = "Excellent job! You have a very strong grasp of relativistic physics and how observations differ across frames.";
+      feedback = AppLocalizations.of(context)!.relOutstanding;
+      details = AppLocalizations.of(context)!.relOutstandingDetails;
       icon = Icons.star;
       color = const Color(0xff4fc3f7);
     }
@@ -312,7 +320,7 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
         const SizedBox(height: 12),
         Text(
-          "Your Score: $_score / ${quizQuestions.length} (${percent.toStringAsFixed(0)}%)",
+          AppLocalizations.of(context)!.relYourScore(_score.toString(), _questions.length.toString(), percent.toStringAsFixed(0)),
           textAlign: TextAlign.center,
           style: TextStyle(
             color: color,
@@ -349,8 +357,8 @@ class _QuizScreenState extends State<QuizScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text(
-                  "RETRY QUIZ",
+                child: Text(
+                  AppLocalizations.of(context)!.relRetryQuiz,
                   style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.0),
                 ),
               ),
@@ -367,8 +375,8 @@ class _QuizScreenState extends State<QuizScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text(
-                  "BACK TO HOME",
+                child: Text(
+                  AppLocalizations.of(context)!.relBackToHome,
                   style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.0),
                 ),
               ),

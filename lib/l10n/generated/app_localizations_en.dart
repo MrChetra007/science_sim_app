@@ -3174,16 +3174,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get relativityLab => 'RELATIVITY';
-
-  @override
-  String get relativityLabSubtitle => 'Special Relativity';
-
-  @override
-  String get relativityLabTutorial =>
-      'Special Relativity Lab - Einstein\'s Theory';
-
-  @override
   String get emiCorrect => 'Correct!';
 
   @override
@@ -3494,4 +3484,598 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get emiQ5Explanation =>
       'Batteries use chemical reactions to produce electricity, not electromagnetic induction. Generators, wireless chargers, and induction cooktops all use Faraday\'s Law directly.';
+
+  @override
+  String get relativityLab => 'RELATIVITY';
+
+  @override
+  String get relativityLabSubtitle => 'Special Relativity';
+
+  @override
+  String get relativityLabTutorial =>
+      'Special Relativity Lab - Einstein\'s Theory';
+
+  @override
+  String get relHomeTitle => 'SPECIAL RELATIVITY';
+
+  @override
+  String get relHomeSubtitle => 'Interactive 2D Flame Physics Lab';
+
+  @override
+  String get relSelectLesson => 'Select a Structured Lesson';
+
+  @override
+  String get relLessons => 'Lessons';
+
+  @override
+  String get rel5StructuredGuides => '5 Structured Guides';
+
+  @override
+  String get relQuiz => 'Quiz';
+
+  @override
+  String get relTestYourKnowledge => 'Test Your Knowledge';
+
+  @override
+  String get relTimeDilation => 'Time Dilation';
+
+  @override
+  String get relLightClockTicks => 'Light clock ticks';
+
+  @override
+  String get relLengthContraction => 'Length Contraction';
+
+  @override
+  String get relSpaceshipShrinkage => 'Spaceship shrinkage';
+
+  @override
+  String get relSimultaneity => 'Simultaneity';
+
+  @override
+  String get relTrainLightning => 'Train & Lightning';
+
+  @override
+  String get relEequalsMc2 => 'E = mc²';
+
+  @override
+  String get relMassEnergyEquiv => 'Mass-Energy Equiv.';
+
+  @override
+  String get relFormulaReference => 'FORMULA REFERENCE';
+
+  @override
+  String get relOpen2DSimulation => 'Open 2D Simulation';
+
+  @override
+  String get relPrev => 'PREV';
+
+  @override
+  String get relNext => 'NEXT';
+
+  @override
+  String get relFinish => 'FINISH';
+
+  @override
+  String get relQuizTitle => 'Relativity Quiz';
+
+  @override
+  String relQuestionOf(String current, String total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String relScore(String score) {
+    return 'Score: $score';
+  }
+
+  @override
+  String get relExplanation => 'Explanation';
+
+  @override
+  String get relNextQuestion => 'NEXT QUESTION';
+
+  @override
+  String get relSeeResults => 'SEE RESULTS';
+
+  @override
+  String get relRetryQuiz => 'RETRY QUIZ';
+
+  @override
+  String get relBackToHome => 'BACK TO HOME';
+
+  @override
+  String get relKeepLearning => 'Keep learning, space cadet!';
+
+  @override
+  String get relKeepLearningDetails =>
+      'Special relativity is brain-bending. Try reviewing the lesson guides and playing with the animations to build your intuition.';
+
+  @override
+  String get relEinsteinReincarnated => 'Einstein Reincarnated!';
+
+  @override
+  String get relPerfectScoreDetails =>
+      'Perfect score! You have completely mastered Special Relativity and the mechanics of spacetime contraction and time dilation.';
+
+  @override
+  String get relOutstanding => 'Outstanding Relativity Physicist!';
+
+  @override
+  String get relOutstandingDetails =>
+      'Excellent job! You have a very strong grasp of relativistic physics and how observations differ across frames.';
+
+  @override
+  String relYourScore(String score, String total, String percent) {
+    return 'Your Score: $score / $total ($percent%)';
+  }
+
+  @override
+  String relVelocityLabel(String beta) {
+    return 'Velocity (v): $beta% c';
+  }
+
+  @override
+  String relLorentzFactor(String gamma) {
+    return 'Lorentz Factor (γ): $gamma';
+  }
+
+  @override
+  String get relApproachingC => 'Approaching speed of light! γ rises rapidly.';
+
+  @override
+  String get relTimeDilationLab => 'Time Dilation Lab';
+
+  @override
+  String get relObserverTime => 'Observer Time (t\')';
+
+  @override
+  String get relSpaceshipTime => 'Spaceship Time (t₀)';
+
+  @override
+  String get relGamma => 'γ (Gamma)';
+
+  @override
+  String get relRatioTt => 't\' / t₀';
+
+  @override
+  String get relHighBetaCallout =>
+      'At v ≈ 87% c, the moving clock ticks at half the rate of the rest clock!';
+
+  @override
+  String get relTimeDilationFormula => 'Time Dilation Formula';
+
+  @override
+  String get relObserverTimeVal => 'Observer Time (t\')';
+
+  @override
+  String get relSpaceshipTimeVal => 'Spaceship Time (t₀)';
+
+  @override
+  String get relLengthContractionLab => 'Length Contraction Lab';
+
+  @override
+  String get relRestLength => 'Rest Length (L₀)';
+
+  @override
+  String get relContracted => 'Contracted (L\')';
+
+  @override
+  String get relShrinkage => 'Shrinkage';
+
+  @override
+  String get relLengthContractionFormula => 'Length Contraction Formula';
+
+  @override
+  String get relMeasuredLength => 'Measured Length (L\')';
+
+  @override
+  String get relSimultaneityLab => 'Relativity of Simultaneity';
+
+  @override
+  String get relPlatform => 'Platform:';
+
+  @override
+  String get relTrain => 'Train:';
+
+  @override
+  String get relBackA => 'Back (A)';
+
+  @override
+  String get relFrontB => 'Front (B)';
+
+  @override
+  String get relExperimentResult => 'EXPERIMENT RESULT';
+
+  @override
+  String relPlatformSimultaneous(String diff) {
+    return 'Platform: A and B arrived simultaneously (Δt = ${diff}s)';
+  }
+
+  @override
+  String relTrainABefore(String diff) {
+    return 'Train: A arrived ${diff}s before B';
+  }
+
+  @override
+  String relTrainBBefore(String diff) {
+    return 'Train: B arrived ${diff}s before A';
+  }
+
+  @override
+  String get relSameEventsDifferent =>
+      '→ Same events. Different order. Different observers.';
+
+  @override
+  String get relSpacetimeInterval => 'Spacetime Interval & Arrival Times';
+
+  @override
+  String get relWhatVariablesMean => 'What do these variables mean?';
+
+  @override
+  String get relSpeed => 'Speed:';
+
+  @override
+  String get relTriggerLightning => 'Trigger Lightning';
+
+  @override
+  String get relAtVZero => 'ℹ️ At v ≈ 0, both frames see simultaneous arrival';
+
+  @override
+  String get relMassEnergyLab => 'Mass-Energy Equivalence';
+
+  @override
+  String get relEnergySplit => 'ENERGY SPLIT (RELATIVE SCALE)';
+
+  @override
+  String get relRestE => 'Rest E₀:';
+
+  @override
+  String get relKineticKE => 'Kinetic KE:';
+
+  @override
+  String get relHighBetaCalloutME =>
+      'At this speed, kinetic energy exceeds rest energy!';
+
+  @override
+  String get relRelativisticEnergy => 'Relativistic Energy Equations';
+
+  @override
+  String get relMassLabel => 'Mass (m):';
+
+  @override
+  String relProtonMasses(String count) {
+    return '≈ $count proton masses';
+  }
+
+  @override
+  String get relTriggerFission => 'Trigger Fission';
+
+  @override
+  String relLedBulbSeconds(String value) {
+    return '≈ $value s of LED bulb power';
+  }
+
+  @override
+  String relLedBulbMinutes(String value) {
+    return '≈ $value min of LED bulb power';
+  }
+
+  @override
+  String relLedBulbHours(String value) {
+    return '≈ $value h of LED bulb power';
+  }
+
+  @override
+  String relLedBulbDays(String value) {
+    return '≈ $value days of LED bulb power';
+  }
+
+  @override
+  String get relAppTitle => 'Special Relativity Physics Lab';
+
+  @override
+  String get relPause => 'Pause';
+
+  @override
+  String get relResume => 'Resume';
+
+  @override
+  String get relReset => 'Reset';
+
+  @override
+  String get relL1Title => 'Einstein\'s Postulates';
+
+  @override
+  String get relL1Subtitle => 'The foundation of relativity';
+
+  @override
+  String get relL1S1Title => 'The Speed of Light is Constant';
+
+  @override
+  String get relL1S1Body =>
+      'Einstein\'s first key postulate is that the speed of light in a vacuum (\$c \\approx 3 \\times 10^8\$ m/s) is the same for all observers, regardless of their motion or the motion of the light source. This means if you shine a flashlight while riding a rocket, an observer on the ground measures the light moving at exactly \$c\$, not \$c + v_rocket\$!';
+
+  @override
+  String get relL1S2Title => 'The Principle of Relativity';
+
+  @override
+  String get relL1S2Body =>
+      'The second postulate states that the laws of physics are identical in all inertial (non-accelerating) reference frames. There is no \'absolute rest\' frame in the universe. Whether you are floating in deep space or sitting on a train traveling at constant speed, any physics experiment you perform will yield the same results.';
+
+  @override
+  String get relL1S3Title => 'Michelson-Morley Experiment';
+
+  @override
+  String get relL1S3Body =>
+      'Historically, physicists believed space was filled with a substance called the \'aether\' through which light waves traveled. The famous Michelson-Morley experiment tried to measure Earth\'s velocity relative to this aether but failed to find any speed difference. This \'null result\' confirmed that the speed of light is indeed constant in all directions and led directly to Einstein\'s theory of Special Relativity.';
+
+  @override
+  String get relL1S4Title => 'Let\'s Observe Time Dilation';
+
+  @override
+  String get relL1S4Body =>
+      'Because the speed of light is constant, time itself must bend to keep it that way! Let\'s explore the Time Dilation simulation to see how a moving clock ticks slower.';
+
+  @override
+  String get relL2Title => 'Time Dilation';
+
+  @override
+  String get relL2Subtitle => 'Moving clocks run slow';
+
+  @override
+  String get relL2S1Title => 'The Light Clock Thought Experiment';
+
+  @override
+  String get relL2S1Body =>
+      'Imagine a clock made of two parallel mirrors where a photon bounces up and down. When the clock is at rest, the photon travels straight up and down. But when the clock moves, the photon must travel a longer, diagonal path to hit the mirrors. Since the speed of light is constant, the longer path means it takes more time to complete one bounce. Thus, the moving clock ticks slower!';
+
+  @override
+  String get relL2S2Title => 'The Formula';
+
+  @override
+  String get relL2S2Body =>
+      'The relationship between proper time (\$t_0\$, measured by an observer moving with the clock) and dilated time (\$t\'\$, measured by a stationary observer) is given by the Lorentz factor \$\\gamma\$ (gamma). As speed \$v\$ approaches \$c\$, gamma shoots up to infinity, meaning time slows down dramatically for the moving object.';
+
+  @override
+  String get relL2S2Formula => 't\' = γ × t₀\nγ = 1 / √(1 - β²)\nβ = v / c';
+
+  @override
+  String get relL2S3Title => 'Real World Proof: GPS Satellites';
+
+  @override
+  String get relL2S3Body =>
+      'Time dilation is not just a theory; it is a daily engineering challenge! Global Positioning System (GPS) satellites move at high speeds around Earth and experience time dilation. Because they run slightly slower than Earth clocks (and because of gravity, which is General Relativity), their atomic clocks must be corrected by about 7 microseconds per day to keep GPS accurate. Without relativistic adjustments, GPS navigation would fail within hours!';
+
+  @override
+  String get relL2S4Title => 'Explore the Light Clock';
+
+  @override
+  String get relL2S4Body =>
+      'Adjust the velocity slider to see the diagonal path of the photon widen and watch the moving clock hands slow down relative to the rest frame.';
+
+  @override
+  String get relL3Title => 'Length Contraction';
+
+  @override
+  String get relL3Subtitle => 'Space shrinks at high speeds';
+
+  @override
+  String get relL3S1Title => 'Why Space Contracts';
+
+  @override
+  String get relL3S1Body =>
+      'If time dilates (slows down) for a moving object, then to keep the speed of light constant, distances must also change! An observer looking at a fast-moving object will measure its length as contracted (shorter) along its direction of motion. However, the object itself does not feel any squishing; in its own reference frame, its length is perfectly normal.';
+
+  @override
+  String get relL3S2Title => 'The Formula';
+
+  @override
+  String get relL3S2Body =>
+      'The contracted length (\$L\'\$) is equal to the rest length (\$L_0\$) divided by the Lorentz factor (\$\\gamma\$). Because \$\\gamma \\ge 1\$, the measured length \$L\'\$ is always less than or equal to \$L_0\$. The faster the object moves, the more it shrinks in the direction of travel.';
+
+  @override
+  String get relL3S2Formula => 'L\' = L₀ / γ';
+
+  @override
+  String get relL3S3Title => 'Real World Proof: Muon Decay';
+
+  @override
+  String get relL3S3Body =>
+      'Muons are subatomic particles created when cosmic rays strike Earth\'s upper atmosphere. They have a very short lifespan (2.2 microseconds) and should decay long before hitting the ground. But because they travel near the speed of light, their clocks dilate, letting them live longer from Earth\'s perspective. From the muon\'s own perspective, Earth\'s atmosphere is heavily contracted, meaning the distance they have to travel is short enough for them to make it to the surface!';
+
+  @override
+  String get relL3S4Title => 'See it in Action';
+
+  @override
+  String get relL3S4Body =>
+      'Watch a spaceship shrink as its velocity increases, and compare its rest length reference against the contracted scale.';
+
+  @override
+  String get relL4Title => 'Relativity of Simultaneity';
+
+  @override
+  String get relL4Subtitle => 'No universal \'now\'';
+
+  @override
+  String get relL4S1Title => 'The Concept';
+
+  @override
+  String get relL4S1Body =>
+      'If two events happen at the same time in one reference frame, do they happen at the same time in all frames? The surprising answer is: NO! Einstein showed that simultaneity is relative. Events that are simultaneous in one frame are not simultaneous in another frame that is moving relative to the first.';
+
+  @override
+  String get relL4S2Title => 'The Train Thought Experiment';
+
+  @override
+  String get relL4S2Body =>
+      'Imagine a passenger sitting at the center of a moving train, and an observer standing on the station platform. Just as the passenger passes the platform observer, lightning strikes the front and back of the train simultaneously according to the platform observer. The light wavefronts meet exactly at the platform observer. But because the train is moving, the passenger travels *towards* the front strike\'s light and *away* from the back strike\'s light, receiving the front flash first. Therefore, the passenger concludes that the front strike happened first!';
+
+  @override
+  String get relL4S3Title => 'No Universal Time';
+
+  @override
+  String get relL4S3Body =>
+      'Since both observers are correct in their own reference frames, there is no absolute timeline for the universe. Events do not have a universal \'before\' or \'after\' unless they are causally connected (i.e. one could cause the other).';
+
+  @override
+  String get relL4S4Title => 'Trigger the Lightning';
+
+  @override
+  String get relL4S4Body =>
+      'Open the Simultaneity simulation. Tap the trigger button to see how the expansion of light wavefronts reaches the platform and train observers at different points.';
+
+  @override
+  String get relL5Title => 'Mass-Energy Equivalence';
+
+  @override
+  String get relL5Subtitle => 'E = mc² and relativistic energy';
+
+  @override
+  String get relL5S1Title => 'Mass is Condensed Energy';
+
+  @override
+  String get relL5S1Body =>
+      'Einstein\'s most famous equation, \$E = mc^2\$, reveals that mass (\$m\$) and energy (\$E\$) are actually two forms of the same thing. Mass can be converted into energy, and energy can be converted into mass. Because the speed of light squared (\$c^2 \\approx 9 \\times 10^16\$) is an enormous number, a tiny amount of mass contains a colossal amount of rest energy.';
+
+  @override
+  String get relL5S2Title => 'The Relativistic Formula';
+
+  @override
+  String get relL5S2Body =>
+      'When an object moves, its total energy (\$E\$) increases due to its kinetic energy (\$KE\$). As the velocity approaches \$c\$, the kinetic energy grows exponentially. Because it takes infinite energy to accelerate a massive object to the speed of light, no object with mass can ever reach or exceed \$c\$.';
+
+  @override
+  String get relL5S2Formula =>
+      'E₀ = mc² (Rest Energy)\nKE = (γ - 1) × mc² (Kinetic Energy)\nE_total = γ × mc² (Total Energy)';
+
+  @override
+  String get relL5S3Title => 'Nuclear Fission & Fusion';
+
+  @override
+  String get relL5S3Body =>
+      'In nuclear power plants, heavy uranium nuclei split (fission). The combined mass of the resulting fragments is slightly *less* than the mass of the original uranium atom. This missing mass (\$m\$) is converted directly into thermal and radiation energy (\$E\$) according to \$E = mc^2\$, powering entire cities with just a few grams of fuel.';
+
+  @override
+  String get relL5S4Title => 'Split the Nucleus';
+
+  @override
+  String get relL5S4Body =>
+      'Try the Mass-Energy simulation. Trigger a fission reaction to release mass-energy, and adjust the velocity slider to see how relativistic kinetic energy explodes at high velocities.';
+
+  @override
+  String get relQ1Question =>
+      'According to Einstein\'s postulates, if you travel in a spaceship at 0.5c and turn on a searchlight pointing forward, what is the speed of the light beam as measured by an observer on Earth?';
+
+  @override
+  String get relQ1Options => '[\"1.5 c\",\"1.0 c\",\"0.5 c\",\"0.75 c\"]';
+
+  @override
+  String get relQ1CorrectIndex => '1';
+
+  @override
+  String get relQ1Explanation =>
+      'Einstein\'s first postulate states that the speed of light in a vacuum is always constant (\$c\$) for all observers, regardless of the relative motion of the source and observer. Thus, the Earth observer will measure exactly \$1.0c\$.';
+
+  @override
+  String get relQ2Question =>
+      'In the light clock thought experiment, why does the moving clock tick slower for a stationary observer?';
+
+  @override
+  String get relQ2Options =>
+      '[\"The mirrors are compressed by length contraction.\",\"The light travels a longer diagonal path, and since the speed of light is constant, it takes longer.\",\"The speed of light slows down when the clock is in motion.\",\"Mechanical friction in the clock increases with speed.\"]';
+
+  @override
+  String get relQ2CorrectIndex => '1';
+
+  @override
+  String get relQ2Explanation =>
+      'Because the clock is moving, the photon must travel a longer, diagonal path to bounce between the mirrors. Since the speed of light must remain constant (\$c\$), this longer distance takes more time, meaning the clock ticks slower from the stationary frame.';
+
+  @override
+  String get relQ3Question =>
+      'At what speed does an object\'s length contract to exactly half (50%) of its rest length?';
+
+  @override
+  String get relQ3Options => '[\"0.50 c\",\"0.707 c\",\"0.866 c\",\"0.99 c\"]';
+
+  @override
+  String get relQ3CorrectIndex => '2';
+
+  @override
+  String get relQ3Explanation =>
+      'Length contraction is given by \$L\' = L_0 / \\gamma\$. For \$L\'\$ to be \$0.5 L_0\$, we need \$\\gamma = 2.0\$. Solving \$\\gamma = 1 / \\sqrt(1 - \\beta^2) = 2\$ gives \$\\beta = \\sqrt(3)/2 \\approx 0.866\$. Thus, the speed must be \$0.866c\$.';
+
+  @override
+  String get relQ4Question =>
+      'Which of the following particles serves as direct atmospheric evidence of both time dilation and length contraction?';
+
+  @override
+  String get relQ4Options =>
+      '[\"Electrons\",\"Photons\",\"Muons\",\"Neutrons\"]';
+
+  @override
+  String get relQ4CorrectIndex => '2';
+
+  @override
+  String get relQ4Explanation =>
+      'Muons created in the upper atmosphere travel near the speed of light. Due to time dilation, they live long enough to reach Earth. From their own frame, length contraction shortens the travel distance, allowing them to reach the ground.';
+
+  @override
+  String get relQ5Question =>
+      'In the train lightning experiment, the platform observer sees both lightning bolts strike simultaneously. What does the train observer see?';
+
+  @override
+  String get relQ5Options =>
+      '[\"Both strikes occur simultaneously.\",\"The front strike (in direction of motion) occurs first.\",\"The back strike occurs first.\",\"No lightning strikes are visible.\"]';
+
+  @override
+  String get relQ5CorrectIndex => '1';
+
+  @override
+  String get relQ5Explanation =>
+      'As the train observer moves toward the front strike and away from the back strike, they encounter the light wavefront from the front strike first. Since the speed of light is constant, they conclude that the front strike happened first.';
+
+  @override
+  String get relQ6Question =>
+      'Why can\'t an object with mass reach the speed of light?';
+
+  @override
+  String get relQ6Options =>
+      '[\"It would shrink to zero volume and disappear.\",\"It would run out of fuel.\",\"Its relativistic kinetic energy approaches infinity, requiring infinite work to reach c.\",\"Gravity would pull it back.\"]';
+
+  @override
+  String get relQ6CorrectIndex => '2';
+
+  @override
+  String get relQ6Explanation =>
+      'Relativistic kinetic energy is \$KE = (\\gamma - 1)mc^2\$. As \$\\beta \\rightarrow 1.0\$, \$\\gamma \\rightarrow \\infty\$, meaning the kinetic energy required to accelerate the object to \$c\$ becomes infinite.';
+
+  @override
+  String get relQ7Question =>
+      'A nuclear power plant releases energy through fission. Where does this energy come from?';
+
+  @override
+  String get relQ7Options =>
+      '[\"Chemical combustion of atomic bonds.\",\"A small amount of mass is destroyed and converted into energy.\",\"Relativistic compression of the fuel rod.\",\"Absorption of cosmic rays.\"]';
+
+  @override
+  String get relQ7CorrectIndex => '1';
+
+  @override
+  String get relQ7Explanation =>
+      'In fission, the total mass of the products is slightly less than the initial mass of the nucleus. This mass difference (\$m\$) is converted directly into energy (\$E\$) according to \$E = mc^2\$.';
+
+  @override
+  String get relQ8Question => 'What is the proper time (\$t_0\$) of an event?';
+
+  @override
+  String get relQ8Options =>
+      '[\"The time measured in a reference frame where the observer is at rest relative to the events.\",\"The time measured on Earth\'s surface.\",\"The time shown by a clock moving at the speed of light.\",\"Universal cosmological time.\"]';
+
+  @override
+  String get relQ8CorrectIndex => '0';
+
+  @override
+  String get relQ8Explanation =>
+      'Proper time (\$t_0\$) is defined as the time interval between two events measured by an observer who is at rest relative to those events (e.g. using a clock that is present at both events).';
 }

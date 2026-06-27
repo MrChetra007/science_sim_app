@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:science_lab/l10n/generated/app_localizations.dart';
 import '../../core/physics/lorentz_engine.dart';
 
 class VelocitySlider extends StatelessWidget {
@@ -35,7 +36,7 @@ class VelocitySlider extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Velocity (v): ${(beta * 100).toStringAsFixed(1)}% c',
+                AppLocalizations.of(context)!.relVelocityLabel((beta * 100).toStringAsFixed(1)),
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -43,7 +44,7 @@ class VelocitySlider extends StatelessWidget {
                 ),
               ),
               Text(
-                'Lorentz Factor (γ): ${gammaValue.toStringAsFixed(3)}',
+                AppLocalizations.of(context)!.relLorentzFactor(gammaValue.toStringAsFixed(3)),
                 style: const TextStyle(
                   color: Color(0xff00ff41),
                   fontWeight: FontWeight.bold,
@@ -89,7 +90,7 @@ class VelocitySlider extends StatelessWidget {
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    'Approaching speed of light! γ rises rapidly.',
+                    AppLocalizations.of(context)!.relApproachingC,
                     style: TextStyle(
                       color: const Color(0xffff9800),
                       fontSize: 12,

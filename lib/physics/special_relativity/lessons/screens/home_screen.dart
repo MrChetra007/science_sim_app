@@ -9,6 +9,7 @@ import '../../sims/length_contraction/length_contraction_screen.dart';
 import '../../sims/simultaneity/simultaneity_screen.dart';
 import '../../sims/mass_energy/mass_energy_screen.dart';
 import '../../../../core/widgets/ad_widgets.dart';
+import 'package:science_lab/l10n/generated/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -21,6 +22,7 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
+        final lessons = buildLessons(AppLocalizations.of(context)!);
         return SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
@@ -28,8 +30,8 @@ class HomeScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text(
-                  "Select a Structured Lesson",
+                Text(
+                  AppLocalizations.of(context)!.relSelectLesson,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -123,9 +125,9 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         const SizedBox(height: 20),
                         // Header
-                        const Center(
+                        Center(
                           child: Text(
-                            "SPECIAL RELATIVITY",
+                            AppLocalizations.of(context)!.relHomeTitle,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 26,
@@ -137,7 +139,7 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(height: 4),
                         Center(
                           child: Text(
-                            "Interactive 2D Flame Physics Lab",
+                            AppLocalizations.of(context)!.relHomeSubtitle,
                             style: TextStyle(
                               color: const Color(0xff4fc3f7).withOpacity(0.8),
                               fontSize: 13,
@@ -157,8 +159,8 @@ class HomeScreen extends StatelessWidget {
                             childAspectRatio: 1.1,
                             children: [
                               _buildMenuCard(
-                                title: "Time Dilation",
-                                subtitle: "Light clock ticks",
+                                title: AppLocalizations.of(context)!.relTimeDilation,
+                                subtitle: AppLocalizations.of(context)!.relLightClockTicks,
                                 icon: Icons.timer,
                                 color: const Color(0xff4fc3f7),
                                 onTap: () => Navigator.push(
@@ -169,8 +171,8 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               _buildMenuCard(
-                                title: "Length Contraction",
-                                subtitle: "Spaceship shrinkage",
+                                title: AppLocalizations.of(context)!.relLengthContraction,
+                                subtitle: AppLocalizations.of(context)!.relSpaceshipShrinkage,
                                 icon: Icons.compress,
                                 color: const Color(0xff00ff41),
                                 onTap: () => Navigator.push(
@@ -181,8 +183,8 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               _buildMenuCard(
-                                title: "Simultaneity",
-                                subtitle: "Train & Lightning",
+                                title: AppLocalizations.of(context)!.relSimultaneity,
+                                subtitle: AppLocalizations.of(context)!.relTrainLightning,
                                 icon: Icons.flash_on,
                                 color: const Color(0xffffd700),
                                 onTap: () => Navigator.push(
@@ -193,8 +195,8 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               _buildMenuCard(
-                                title: "E = mc²",
-                                subtitle: "Mass-Energy Equiv.",
+                                title: AppLocalizations.of(context)!.relEequalsMc2,
+                                subtitle: AppLocalizations.of(context)!.relMassEnergyEquiv,
                                 icon: Icons.blur_on,
                                 color: const Color(0xffff9800),
                                 onTap: () => Navigator.push(
@@ -213,8 +215,8 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               child: _buildActionCard(
-                                title: "Lessons",
-                                subtitle: "5 Structured Guides",
+                                title: AppLocalizations.of(context)!.relLessons,
+                                subtitle: AppLocalizations.of(context)!.rel5StructuredGuides,
                                 icon: Icons.menu_book,
                                 color: const Color(0xff4fc3f7),
                                 onTap: () => _openLessonList(context),
@@ -223,8 +225,8 @@ class HomeScreen extends StatelessWidget {
                             const SizedBox(width: 16),
                             Expanded(
                               child: _buildActionCard(
-                                title: "Quiz",
-                                subtitle: "Test Your Knowledge",
+                                title: AppLocalizations.of(context)!.relQuiz,
+                                subtitle: AppLocalizations.of(context)!.relTestYourKnowledge,
                                 icon: Icons.quiz,
                                 color: const Color(0xffffffd700),
                                 onTap: () => Navigator.push(

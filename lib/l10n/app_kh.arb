@@ -1068,9 +1068,6 @@
       "total": {"type": "String"}
     }
   },
-  "relativityLab": "ទំនាក់ទំនង",
-  "relativityLabSubtitle": "ទំនាក់ទំនងពិសេស",
-  "relativityLabTutorial": "មន្ទីរពិសោធន៍ទំនាក់ទំនងពិសេស - ទ្រឹស្តីអែងស្តែង",
   "emiCorrect": "ត្រឹមត្រូវ!",
   "emiIncorrect": "មិនត្រឹមត្រូវទេ",
   "emiNextQuestion": "សំណួរបន្ទាប់",
@@ -1171,6 +1168,262 @@
   "emiQ5Question": "តើឧបករណ៍មួយណាខាងក្រោមនេះ ដែលមិនមែនជាកម្មវិធីអនុវត្តនៃបាតុភូតអាំងឌុចស្យុងអេឡិចត្រូម៉ាញ៉េ?",
   "emiQ5Options": "[\"ម៉ាស៊ីនបង្កើតថាមពលអគ្គិសនី (Generators)\",\"ប្រព័ន្ធសាកថ្មទូរស័ព្ទដៃឥតខ្សែ\",\"ដុំថ្មពិលប្រើប្រាស់ធម្មតា\",\"ចង្ក្រានចម្អិនអាហារអាំងឌុចស្យុង\"]",
   "emiQ5CorrectIndex": "2",
-  "emiQ5Explanation": "ថ្មពិលបង្កើតថាមពលអគ្គិសនីឡើងដោយសារតែប្រតិកម្មគីមីរវាងធាតុគីមីខាងក្នុង មិនមែនកើតឡើងពីបាតុភូតអាំងឌុចស្យុងអេឡិចត្រូម៉ាញ៉េនោះទេ។ ចំណែកឯម៉ាស៊ីនភ្លើង ដុំសាកឥតខ្សែ និងចង្ក្រានអាំងឌុចស្យុង សុទ្ធតែដំណើរការដោយផ្អែកលើច្បាប់ហ្វារ៉ាដេយផ្ទាល់។"
-
+  "emiQ5Explanation": "ថ្មពិលបង្កើតថាមពលអគ្គិសនីឡើងដោយសារតែប្រតិកម្មគីមីរវាងធាតុគីមីខាងក្នុង មិនមែនកើតឡើងពីបាតុភូតអាំងឌុចស្យុងអេឡិចត្រូម៉ាញ៉េនោះទេ។ ចំណែកឯម៉ាស៊ីនភ្លើង ដុំសាកឥតខ្សែ និងចង្ក្រានអាំងឌុចស្យុង សុទ្ធតែដំណើរការដោយផ្អែកលើច្បាប់ហ្វារ៉ាដេយផ្ទាល់។",
+  "@@relativity_lab": {
+    "description": "អត្ថបទមន្ទីរពិសោធន៍ទំនាក់ទំនងពិសេស"
+  },
+  "relativityLab": "ទំនាក់ទំនង",
+  "relativityLabSubtitle": "ទំនាក់ទំនងពិសេស",
+  "relativityLabTutorial": "មន្ទីរពិសោធន៍ទំនាក់ទំនងពិសេស - ទ្រឹស្តីអែងស្តែង",
+  "relHomeTitle": "TODO: translate",
+  "relHomeSubtitle": "TODO: translate",
+  "relSelectLesson": "TODO: translate",
+  "relLessons": "TODO: translate",
+  "rel5StructuredGuides": "TODO: translate",
+  "relQuiz": "TODO: translate",
+  "relTestYourKnowledge": "TODO: translate",
+  "relTimeDilation": "TODO: translate",
+  "relLightClockTicks": "TODO: translate",
+  "relLengthContraction": "TODO: translate",
+  "relSpaceshipShrinkage": "TODO: translate",
+  "relSimultaneity": "TODO: translate",
+  "relTrainLightning": "TODO: translate",
+  "relEequalsMc2": "TODO: translate",
+  "relMassEnergyEquiv": "TODO: translate",
+  "relFormulaReference": "TODO: translate",
+  "relOpen2DSimulation": "TODO: translate",
+  "relPrev": "TODO: translate",
+  "relNext": "TODO: translate",
+  "relFinish": "TODO: translate",
+  "relQuizTitle": "TODO: translate",
+  "relQuestionOf": "TODO: translate",
+  "@relQuestionOf": {
+    "description": "Question progress indicator",
+    "placeholders": {
+      "current": {"type": "String"},
+      "total": {"type": "String"}
+    }
+  },
+  "relScore": "TODO: translate",
+  "@relScore": {
+    "description": "Current score display",
+    "placeholders": {
+      "score": {"type": "String"}
+    }
+  },
+  "relExplanation": "TODO: translate",
+  "relNextQuestion": "TODO: translate",
+  "relSeeResults": "TODO: translate",
+  "relRetryQuiz": "TODO: translate",
+  "relBackToHome": "TODO: translate",
+  "relKeepLearning": "TODO: translate",
+  "relKeepLearningDetails": "TODO: translate",
+  "relEinsteinReincarnated": "TODO: translate",
+  "relPerfectScoreDetails": "TODO: translate",
+  "relOutstanding": "TODO: translate",
+  "relOutstandingDetails": "TODO: translate",
+  "relYourScore": "TODO: translate",
+  "@relYourScore": {
+    "description": "Quiz score result",
+    "placeholders": {
+      "score": {"type": "String"},
+      "total": {"type": "String"},
+      "percent": {"type": "String"}
+    }
+  },
+  "relVelocityLabel": "TODO: translate",
+  "@relVelocityLabel": {
+    "description": "Velocity slider label",
+    "placeholders": {
+      "beta": {"type": "String"}
+    }
+  },
+  "relLorentzFactor": "TODO: translate",
+  "@relLorentzFactor": {
+    "description": "Lorentz factor display",
+    "placeholders": {
+      "gamma": {"type": "String"}
+    }
+  },
+  "relApproachingC": "TODO: translate",
+  "relTimeDilationLab": "TODO: translate",
+  "relObserverTime": "TODO: translate",
+  "relSpaceshipTime": "TODO: translate",
+  "relGamma": "TODO: translate",
+  "relRatioTt": "TODO: translate",
+  "relHighBetaCallout": "TODO: translate",
+  "relTimeDilationFormula": "TODO: translate",
+  "relObserverTimeVal": "TODO: translate",
+  "relSpaceshipTimeVal": "TODO: translate",
+  "relLengthContractionLab": "TODO: translate",
+  "relRestLength": "TODO: translate",
+  "relContracted": "TODO: translate",
+  "relShrinkage": "TODO: translate",
+  "relLengthContractionFormula": "TODO: translate",
+  "relMeasuredLength": "TODO: translate",
+  "relSimultaneityLab": "TODO: translate",
+  "relPlatform": "TODO: translate",
+  "relTrain": "TODO: translate",
+  "relBackA": "TODO: translate",
+  "relFrontB": "TODO: translate",
+  "relExperimentResult": "TODO: translate",
+  "relPlatformSimultaneous": "TODO: translate",
+  "@relPlatformSimultaneous": {
+    "description": "Platform simultaneous arrival result",
+    "placeholders": {
+      "diff": {"type": "String"}
+    }
+  },
+  "relTrainABefore": "TODO: translate",
+  "@relTrainABefore": {
+    "description": "Train observer result - A arrived before B",
+    "placeholders": {
+      "diff": {"type": "String"}
+    }
+  },
+  "relTrainBBefore": "TODO: translate",
+  "@relTrainBBefore": {
+    "description": "Train observer result - B arrived before A",
+    "placeholders": {
+      "diff": {"type": "String"}
+    }
+  },
+  "relSameEventsDifferent": "TODO: translate",
+  "relSpacetimeInterval": "TODO: translate",
+  "relWhatVariablesMean": "TODO: translate",
+  "relSpeed": "TODO: translate",
+  "relTriggerLightning": "TODO: translate",
+  "relAtVZero": "TODO: translate",
+  "relMassEnergyLab": "TODO: translate",
+  "relEnergySplit": "TODO: translate",
+  "relRestE": "TODO: translate",
+  "relKineticKE": "TODO: translate",
+  "relHighBetaCalloutME": "TODO: translate",
+  "relRelativisticEnergy": "TODO: translate",
+  "relMassLabel": "TODO: translate",
+  "relProtonMasses": "TODO: translate",
+  "@relProtonMasses": {
+    "description": "Proton mass count",
+    "placeholders": {
+      "count": {"type": "String"}
+    }
+  },
+  "relTriggerFission": "TODO: translate",
+  "relLedBulbSeconds": "TODO: translate",
+  "@relLedBulbSeconds": {
+    "description": "LED bulb seconds",
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "relLedBulbMinutes": "TODO: translate",
+  "@relLedBulbMinutes": {
+    "description": "LED bulb minutes",
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "relLedBulbHours": "TODO: translate",
+  "@relLedBulbHours": {
+    "description": "LED bulb hours",
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "relLedBulbDays": "TODO: translate",
+  "@relLedBulbDays": {
+    "description": "LED bulb days",
+    "placeholders": {
+      "value": {"type": "String"}
+    }
+  },
+  "relAppTitle": "TODO: translate",
+  "relPause": "TODO: translate",
+  "relResume": "TODO: translate",
+  "relReset": "TODO: translate",
+  "relL1Title": "TODO: translate",
+  "relL1Subtitle": "TODO: translate",
+  "relL1S1Title": "TODO: translate",
+  "relL1S1Body": "TODO: translate",
+  "relL1S2Title": "TODO: translate",
+  "relL1S2Body": "TODO: translate",
+  "relL1S3Title": "TODO: translate",
+  "relL1S3Body": "TODO: translate",
+  "relL1S4Title": "TODO: translate",
+  "relL1S4Body": "TODO: translate",
+  "relL2Title": "TODO: translate",
+  "relL2Subtitle": "TODO: translate",
+  "relL2S1Title": "TODO: translate",
+  "relL2S1Body": "TODO: translate",
+  "relL2S2Title": "TODO: translate",
+  "relL2S2Body": "TODO: translate",
+  "relL2S2Formula": "TODO: translate",
+  "relL2S3Title": "TODO: translate",
+  "relL2S3Body": "TODO: translate",
+  "relL2S4Title": "TODO: translate",
+  "relL2S4Body": "TODO: translate",
+  "relL3Title": "TODO: translate",
+  "relL3Subtitle": "TODO: translate",
+  "relL3S1Title": "TODO: translate",
+  "relL3S1Body": "TODO: translate",
+  "relL3S2Title": "TODO: translate",
+  "relL3S2Body": "TODO: translate",
+  "relL3S2Formula": "TODO: translate",
+  "relL3S3Title": "TODO: translate",
+  "relL3S3Body": "TODO: translate",
+  "relL3S4Title": "TODO: translate",
+  "relL3S4Body": "TODO: translate",
+  "relL4Title": "TODO: translate",
+  "relL4Subtitle": "TODO: translate",
+  "relL4S1Title": "TODO: translate",
+  "relL4S1Body": "TODO: translate",
+  "relL4S2Title": "TODO: translate",
+  "relL4S2Body": "TODO: translate",
+  "relL4S3Title": "TODO: translate",
+  "relL4S3Body": "TODO: translate",
+  "relL4S4Title": "TODO: translate",
+  "relL4S4Body": "TODO: translate",
+  "relL5Title": "TODO: translate",
+  "relL5Subtitle": "TODO: translate",
+  "relL5S1Title": "TODO: translate",
+  "relL5S1Body": "TODO: translate",
+  "relL5S2Title": "TODO: translate",
+  "relL5S2Body": "TODO: translate",
+  "relL5S2Formula": "TODO: translate",
+  "relL5S3Title": "TODO: translate",
+  "relL5S3Body": "TODO: translate",
+  "relL5S4Title": "TODO: translate",
+  "relL5S4Body": "TODO: translate",
+  "relQ1Question": "TODO: translate",
+  "relQ1Options": "TODO: translate",
+  "relQ1CorrectIndex": "TODO: translate",
+  "relQ1Explanation": "TODO: translate",
+  "relQ2Question": "TODO: translate",
+  "relQ2Options": "TODO: translate",
+  "relQ2CorrectIndex": "TODO: translate",
+  "relQ2Explanation": "TODO: translate",
+  "relQ3Question": "TODO: translate",
+  "relQ3Options": "TODO: translate",
+  "relQ3CorrectIndex": "TODO: translate",
+  "relQ3Explanation": "TODO: translate",
+  "relQ4Question": "TODO: translate",
+  "relQ4Options": "TODO: translate",
+  "relQ4CorrectIndex": "TODO: translate",
+  "relQ4Explanation": "TODO: translate",
+  "relQ5Question": "TODO: translate",
+  "relQ5Options": "TODO: translate",
+  "relQ5CorrectIndex": "TODO: translate",
+  "relQ5Explanation": "TODO: translate",
+  "relQ6Question": "TODO: translate",
+  "relQ6Options": "TODO: translate",
+  "relQ6CorrectIndex": "TODO: translate",
+  "relQ6Explanation": "TODO: translate",
+  "relQ7Question": "TODO: translate",
+  "relQ7Options": "TODO: translate",
+  "relQ7CorrectIndex": "TODO: translate",
+  "relQ7Explanation": "TODO: translate",
+  "relQ8Question": "TODO: translate",
+  "relQ8Options": "TODO: translate",
+  "relQ8CorrectIndex": "TODO: translate",
+  "relQ8Explanation": "TODO: translate"
 }

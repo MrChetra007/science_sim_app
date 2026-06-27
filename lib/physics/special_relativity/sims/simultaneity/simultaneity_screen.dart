@@ -6,6 +6,7 @@ import 'simultaneity_game.dart';
 import 'simultaneity_provider.dart';
 import '../../ui/widgets/velocity_slider.dart';
 import '../../ui/widgets/formula_card.dart';
+import 'package:science_lab/l10n/generated/app_localizations.dart';
 
 class SimultaneityScreen extends ConsumerStatefulWidget {
   const SimultaneityScreen({super.key});
@@ -54,8 +55,8 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white70),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          "Relativity of Simultaneity",
+        title: Text(
+          AppLocalizations.of(context)!.relSimultaneityLab,
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -82,9 +83,9 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                 children: [
                   Row(
                     children: [
-                      const Text(
-                        "Platform:",
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.relPlatform,
+                        style: const TextStyle(
                           color: Color(0xff4fc3f7),
                           fontWeight: FontWeight.bold,
                           fontSize: 13,
@@ -97,7 +98,7 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                           children: [
                             Flexible(
                               child: _buildEventBadge(
-                                label: "Back (A)",
+                                label: AppLocalizations.of(context)!.relBackA,
                                 time: state.platformTimeA,
                                 color: const Color(0xffffd700),
                               ),
@@ -105,7 +106,7 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                             const SizedBox(width: 6),
                             Flexible(
                               child: _buildEventBadge(
-                                label: "Front (B)",
+                                label: AppLocalizations.of(context)!.relFrontB,
                                 time: state.platformTimeB,
                                 color: const Color(0xff00ff41),
                               ),
@@ -118,9 +119,9 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Text(
-                        "Train:",
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.relTrain,
+                        style: const TextStyle(
                           color: Color(0xffffffd700),
                           fontWeight: FontWeight.bold,
                           fontSize: 13,
@@ -133,7 +134,7 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                           children: [
                             Flexible(
                               child: _buildEventBadge(
-                                label: "Back (A)",
+                                label: AppLocalizations.of(context)!.relBackA,
                                 time: state.trainTimeA,
                                 color: const Color(0xffffd700),
                               ),
@@ -141,7 +142,7 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                             const SizedBox(width: 6),
                             Flexible(
                               child: _buildEventBadge(
-                                label: "Front (B)",
+                                label: AppLocalizations.of(context)!.relFrontB,
                                 time: state.trainTimeB,
                                 color: const Color(0xff00ff41),
                               ),
@@ -185,9 +186,9 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Text(
-                              "EXPERIMENT RESULT",
-                              style: TextStyle(
+                            Text(
+                              AppLocalizations.of(context)!.relExperimentResult,
+                              style: const TextStyle(
                                 color: Color(0xff4fc3f7),
                                 fontFamily: 'monospace',
                                 fontSize: 12,
@@ -196,7 +197,7 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              "Platform: A and B arrived simultaneously (Δt = ${(state.platformTimeA! - state.platformTimeB!).abs().toStringAsFixed(3)}s)",
+                              AppLocalizations.of(context)!.relPlatformSimultaneous((state.platformTimeA! - state.platformTimeB!).abs().toStringAsFixed(3)),
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'monospace',
@@ -204,11 +205,11 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                               ),
                             ),
                             const SizedBox(height: 4),
-                            Builder(builder: (context) {
+                            Builder(builder: (ctx) {
                               final diff = (state.trainTimeA! - state.trainTimeB!).abs().toStringAsFixed(3);
                               final text = state.trainTimeA! < state.trainTimeB!
-                                  ? "Train: A arrived ${diff}s before B"
-                                  : "Train: B arrived ${diff}s before A";
+                                  ? AppLocalizations.of(ctx)!.relTrainABefore(diff)
+                                  : AppLocalizations.of(ctx)!.relTrainBBefore(diff);
                               return Text(
                                 text,
                                 style: const TextStyle(
@@ -219,8 +220,8 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                               );
                             }),
                             const SizedBox(height: 4),
-                            const Text(
-                              "→ Same events. Different order. Different observers.",
+                            Text(
+                              AppLocalizations.of(context)!.relSameEventsDifferent,
                               style: TextStyle(
                                 color: Color(0xff00ff41),
                                 fontFamily: 'monospace',
@@ -241,7 +242,7 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: FormulaCard(
-                formulaTitle: "Spacetime Interval & Arrival Times",
+                formulaTitle: AppLocalizations.of(context)!.relSpacetimeInterval,
                 latexFormula: "Δt' = γ(Δt - vΔx/c²)",
                 variables: {
                   "Platform Delay (Δt)": "0.000 s (Simultaneous ✓)",
@@ -264,7 +265,7 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                       size: 16,
                     ),
                     label: Text(
-                      "What do these variables mean?",
+                      AppLocalizations.of(context)!.relWhatVariablesMean,
                       style: const TextStyle(
                         color: Colors.white60,
                         fontSize: 11,
@@ -318,9 +319,9 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Row(
                 children: [
-                  const Text(
-                    "Speed:",
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.relSpeed,
+                    style: const TextStyle(
                       color: Colors.white60,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -370,8 +371,8 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                             color: Colors.white.withOpacity(0.15),
                           ),
                         ),
-                        child: const Text(
-                          "ℹ️ At v ≈ 0, both frames see simultaneous arrival",
+                        child: Text(
+                          AppLocalizations.of(context)!.relAtVZero,
                           style: TextStyle(
                             color: Colors.white70,
                             fontSize: 11,
@@ -399,9 +400,9 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                       ),
                     ),
                     icon: const Icon(Icons.flash_on),
-                    label: const Text(
-                      "Trigger Lightning",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    label: Text(
+                      AppLocalizations.of(context)!.relTriggerLightning,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     onPressed: state.strikeTriggered
                         ? null
@@ -424,7 +425,7 @@ class _SimultaneityScreenState extends ConsumerState<SimultaneityScreen> {
                       ),
                     ),
                     icon: const Icon(Icons.refresh),
-                    label: const Text("Reset"),
+                    label: Text(AppLocalizations.of(context)!.relReset),
                     onPressed: () {
                       ref.read(simultaneityProvider.notifier).reset();
                     },

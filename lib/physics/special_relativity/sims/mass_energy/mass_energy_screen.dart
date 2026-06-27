@@ -6,6 +6,7 @@ import 'mass_energy_provider.dart';
 import '../../ui/widgets/velocity_slider.dart';
 import '../../ui/widgets/formula_card.dart';
 import '../../ui/widgets/metric_chip.dart';
+import 'package:science_lab/l10n/generated/app_localizations.dart';
 
 class MassEnergyScreen extends ConsumerStatefulWidget {
   const MassEnergyScreen({super.key});
@@ -58,8 +59,8 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white70),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          "Mass-Energy Equivalence",
+        title: Text(
+          AppLocalizations.of(context)!.relMassEnergyLab,
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -92,9 +93,9 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text(
-                      "ENERGY SPLIT (RELATIVE SCALE)",
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.relEnergySplit,
+                      style: const TextStyle(
                         color: Colors.white60,
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -105,11 +106,11 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
                     // Rest Energy Bar
                     Row(
                       children: [
-                        const SizedBox(
+                        SizedBox(
                           width: 80,
                           child: Text(
-                            "Rest E₀:",
-                            style: TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.w500),
+                            AppLocalizations.of(context)!.relRestE,
+                            style: const TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.w500),
                           ),
                         ),
                         Expanded(
@@ -160,11 +161,11 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
                     // Kinetic Energy Bar
                     Row(
                       children: [
-                        const SizedBox(
+                        SizedBox(
                           width: 80,
                           child: Text(
-                            "Kinetic KE:",
-                            style: TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.w500),
+                            AppLocalizations.of(context)!.relKineticKE,
+                            style: const TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.w500),
                           ),
                         ),
                         Expanded(
@@ -240,14 +241,14 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
                           color: const Color(0xffff9800),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Row(
+                        child: Row(
                           children: [
                             Icon(Icons.bolt, color: Colors.black87, size: 16),
                             SizedBox(width: 8),
                             Expanded(
                               child: Text(
-                                "At this speed, kinetic energy exceeds rest energy!",
-                                style: TextStyle(
+                                AppLocalizations.of(context)!.relHighBetaCalloutME,
+                                style: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
@@ -267,7 +268,7 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: FormulaCard(
-                formulaTitle: "Relativistic Energy Equations",
+                formulaTitle: AppLocalizations.of(context)!.relRelativisticEnergy,
                 latexFormula: "E_total = γ × mc² = E₀ + KE",
                 variables: {
                   "Total Energy (E)": "${(state.totalEnergy / 1e-11).toStringAsFixed(4)} × 10⁻¹¹ J",
@@ -294,9 +295,9 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
                   children: [
                     Row(
                       children: [
-                        const Text(
-                          "Mass (m):",
-                          style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
+                        Text(
+                          AppLocalizations.of(context)!.relMassLabel,
+                          style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
                         ),
                         Expanded(
                           child: Slider(
@@ -327,7 +328,7 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 8),
                       child: Text(
-                        "≈ ${(state.massKg / 1.6726).toStringAsFixed(1)} proton masses",
+                        AppLocalizations.of(context)!.relProtonMasses((state.massKg / 1.6726).toStringAsFixed(1)),
                         style: const TextStyle(
                           color: Colors.grey,
                           fontSize: 12,
@@ -368,9 +369,9 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
                       ),
                     ),
                     icon: const Icon(Icons.bolt),
-                    label: const Text(
-                      "Trigger Fission",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    label: Text(
+                      AppLocalizations.of(context)!.relTriggerFission,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     onPressed: state.reactionTriggered
                         ? null
@@ -390,7 +391,7 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
                       ),
                     ),
                     icon: const Icon(Icons.refresh),
-                    label: const Text("Reset"),
+                    label: Text(AppLocalizations.of(context)!.relReset),
                     onPressed: () {
                       ref.read(massEnergyProvider.notifier).reset();
                     },
@@ -408,13 +409,13 @@ class _MassEnergyScreenState extends ConsumerState<MassEnergyScreen> {
     const ledWatt = 10.0;
     final seconds = energyJ / ledWatt;
     if (energyJ < 1e-10) {
-      return "≈ ${seconds.toStringAsFixed(1)} s of LED bulb power";
+      return AppLocalizations.of(context)!.relLedBulbSeconds(seconds.toStringAsFixed(1));
     } else if (energyJ < 1e-8) {
-      return "≈ ${(seconds / 60).toStringAsFixed(1)} min of LED bulb power";
+      return AppLocalizations.of(context)!.relLedBulbMinutes((seconds / 60).toStringAsFixed(1));
     } else if (energyJ < 1e-5) {
-      return "≈ ${(seconds / 3600).toStringAsFixed(1)} h of LED bulb power";
+      return AppLocalizations.of(context)!.relLedBulbHours((seconds / 3600).toStringAsFixed(1));
     } else {
-      return "≈ ${(seconds / 86400).toStringAsFixed(1)} days of LED bulb power";
+      return AppLocalizations.of(context)!.relLedBulbDays((seconds / 86400).toStringAsFixed(1));
     }
   }
 }

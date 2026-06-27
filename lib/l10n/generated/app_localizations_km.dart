@@ -3140,16 +3140,6 @@ class AppLocalizationsKm extends AppLocalizations {
   }
 
   @override
-  String get relativityLab => 'ទំនាក់ទំនង';
-
-  @override
-  String get relativityLabSubtitle => 'ទំនាក់ទំនងពិសេស';
-
-  @override
-  String get relativityLabTutorial =>
-      'មន្ទីរពិសោធន៍ទំនាក់ទំនងពិសេស - ទ្រឹស្តីអែងស្តែង';
-
-  @override
   String get emiCorrect => 'ត្រឹមត្រូវ!';
 
   @override
@@ -3463,4 +3453,550 @@ class AppLocalizationsKm extends AppLocalizations {
   @override
   String get emiQ5Explanation =>
       'ថ្មពិលបង្កើតថាមពលអគ្គិសនីឡើងដោយសារតែប្រតិកម្មគីមីរវាងធាតុគីមីខាងក្នុង មិនមែនកើតឡើងពីបាតុភូតអាំងឌុចស្យុងអេឡិចត្រូម៉ាញ៉េនោះទេ។ ចំណែកឯម៉ាស៊ីនភ្លើង ដុំសាកឥតខ្សែ និងចង្ក្រានអាំងឌុចស្យុង សុទ្ធតែដំណើរការដោយផ្អែកលើច្បាប់ហ្វារ៉ាដេយផ្ទាល់។';
+
+  @override
+  String get relativityLab => 'ទំនាក់ទំនង';
+
+  @override
+  String get relativityLabSubtitle => 'ទំនាក់ទំនងពិសេស';
+
+  @override
+  String get relativityLabTutorial =>
+      'មន្ទីរពិសោធន៍ទំនាក់ទំនងពិសេស - ទ្រឹស្តីអែងស្តែង';
+
+  @override
+  String get relHomeTitle => 'TODO: translate';
+
+  @override
+  String get relHomeSubtitle => 'TODO: translate';
+
+  @override
+  String get relSelectLesson => 'TODO: translate';
+
+  @override
+  String get relLessons => 'TODO: translate';
+
+  @override
+  String get rel5StructuredGuides => 'TODO: translate';
+
+  @override
+  String get relQuiz => 'TODO: translate';
+
+  @override
+  String get relTestYourKnowledge => 'TODO: translate';
+
+  @override
+  String get relTimeDilation => 'TODO: translate';
+
+  @override
+  String get relLightClockTicks => 'TODO: translate';
+
+  @override
+  String get relLengthContraction => 'TODO: translate';
+
+  @override
+  String get relSpaceshipShrinkage => 'TODO: translate';
+
+  @override
+  String get relSimultaneity => 'TODO: translate';
+
+  @override
+  String get relTrainLightning => 'TODO: translate';
+
+  @override
+  String get relEequalsMc2 => 'TODO: translate';
+
+  @override
+  String get relMassEnergyEquiv => 'TODO: translate';
+
+  @override
+  String get relFormulaReference => 'TODO: translate';
+
+  @override
+  String get relOpen2DSimulation => 'TODO: translate';
+
+  @override
+  String get relPrev => 'TODO: translate';
+
+  @override
+  String get relNext => 'TODO: translate';
+
+  @override
+  String get relFinish => 'TODO: translate';
+
+  @override
+  String get relQuizTitle => 'TODO: translate';
+
+  @override
+  String relQuestionOf(String current, String total) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String relScore(String score) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String get relExplanation => 'TODO: translate';
+
+  @override
+  String get relNextQuestion => 'TODO: translate';
+
+  @override
+  String get relSeeResults => 'TODO: translate';
+
+  @override
+  String get relRetryQuiz => 'TODO: translate';
+
+  @override
+  String get relBackToHome => 'TODO: translate';
+
+  @override
+  String get relKeepLearning => 'TODO: translate';
+
+  @override
+  String get relKeepLearningDetails => 'TODO: translate';
+
+  @override
+  String get relEinsteinReincarnated => 'TODO: translate';
+
+  @override
+  String get relPerfectScoreDetails => 'TODO: translate';
+
+  @override
+  String get relOutstanding => 'TODO: translate';
+
+  @override
+  String get relOutstandingDetails => 'TODO: translate';
+
+  @override
+  String relYourScore(String score, String total, String percent) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String relVelocityLabel(String beta) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String relLorentzFactor(String gamma) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String get relApproachingC => 'TODO: translate';
+
+  @override
+  String get relTimeDilationLab => 'TODO: translate';
+
+  @override
+  String get relObserverTime => 'TODO: translate';
+
+  @override
+  String get relSpaceshipTime => 'TODO: translate';
+
+  @override
+  String get relGamma => 'TODO: translate';
+
+  @override
+  String get relRatioTt => 'TODO: translate';
+
+  @override
+  String get relHighBetaCallout => 'TODO: translate';
+
+  @override
+  String get relTimeDilationFormula => 'TODO: translate';
+
+  @override
+  String get relObserverTimeVal => 'TODO: translate';
+
+  @override
+  String get relSpaceshipTimeVal => 'TODO: translate';
+
+  @override
+  String get relLengthContractionLab => 'TODO: translate';
+
+  @override
+  String get relRestLength => 'TODO: translate';
+
+  @override
+  String get relContracted => 'TODO: translate';
+
+  @override
+  String get relShrinkage => 'TODO: translate';
+
+  @override
+  String get relLengthContractionFormula => 'TODO: translate';
+
+  @override
+  String get relMeasuredLength => 'TODO: translate';
+
+  @override
+  String get relSimultaneityLab => 'TODO: translate';
+
+  @override
+  String get relPlatform => 'TODO: translate';
+
+  @override
+  String get relTrain => 'TODO: translate';
+
+  @override
+  String get relBackA => 'TODO: translate';
+
+  @override
+  String get relFrontB => 'TODO: translate';
+
+  @override
+  String get relExperimentResult => 'TODO: translate';
+
+  @override
+  String relPlatformSimultaneous(String diff) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String relTrainABefore(String diff) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String relTrainBBefore(String diff) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String get relSameEventsDifferent => 'TODO: translate';
+
+  @override
+  String get relSpacetimeInterval => 'TODO: translate';
+
+  @override
+  String get relWhatVariablesMean => 'TODO: translate';
+
+  @override
+  String get relSpeed => 'TODO: translate';
+
+  @override
+  String get relTriggerLightning => 'TODO: translate';
+
+  @override
+  String get relAtVZero => 'TODO: translate';
+
+  @override
+  String get relMassEnergyLab => 'TODO: translate';
+
+  @override
+  String get relEnergySplit => 'TODO: translate';
+
+  @override
+  String get relRestE => 'TODO: translate';
+
+  @override
+  String get relKineticKE => 'TODO: translate';
+
+  @override
+  String get relHighBetaCalloutME => 'TODO: translate';
+
+  @override
+  String get relRelativisticEnergy => 'TODO: translate';
+
+  @override
+  String get relMassLabel => 'TODO: translate';
+
+  @override
+  String relProtonMasses(String count) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String get relTriggerFission => 'TODO: translate';
+
+  @override
+  String relLedBulbSeconds(String value) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String relLedBulbMinutes(String value) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String relLedBulbHours(String value) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String relLedBulbDays(String value) {
+    return 'TODO: translate';
+  }
+
+  @override
+  String get relAppTitle => 'TODO: translate';
+
+  @override
+  String get relPause => 'TODO: translate';
+
+  @override
+  String get relResume => 'TODO: translate';
+
+  @override
+  String get relReset => 'TODO: translate';
+
+  @override
+  String get relL1Title => 'TODO: translate';
+
+  @override
+  String get relL1Subtitle => 'TODO: translate';
+
+  @override
+  String get relL1S1Title => 'TODO: translate';
+
+  @override
+  String get relL1S1Body => 'TODO: translate';
+
+  @override
+  String get relL1S2Title => 'TODO: translate';
+
+  @override
+  String get relL1S2Body => 'TODO: translate';
+
+  @override
+  String get relL1S3Title => 'TODO: translate';
+
+  @override
+  String get relL1S3Body => 'TODO: translate';
+
+  @override
+  String get relL1S4Title => 'TODO: translate';
+
+  @override
+  String get relL1S4Body => 'TODO: translate';
+
+  @override
+  String get relL2Title => 'TODO: translate';
+
+  @override
+  String get relL2Subtitle => 'TODO: translate';
+
+  @override
+  String get relL2S1Title => 'TODO: translate';
+
+  @override
+  String get relL2S1Body => 'TODO: translate';
+
+  @override
+  String get relL2S2Title => 'TODO: translate';
+
+  @override
+  String get relL2S2Body => 'TODO: translate';
+
+  @override
+  String get relL2S2Formula => 'TODO: translate';
+
+  @override
+  String get relL2S3Title => 'TODO: translate';
+
+  @override
+  String get relL2S3Body => 'TODO: translate';
+
+  @override
+  String get relL2S4Title => 'TODO: translate';
+
+  @override
+  String get relL2S4Body => 'TODO: translate';
+
+  @override
+  String get relL3Title => 'TODO: translate';
+
+  @override
+  String get relL3Subtitle => 'TODO: translate';
+
+  @override
+  String get relL3S1Title => 'TODO: translate';
+
+  @override
+  String get relL3S1Body => 'TODO: translate';
+
+  @override
+  String get relL3S2Title => 'TODO: translate';
+
+  @override
+  String get relL3S2Body => 'TODO: translate';
+
+  @override
+  String get relL3S2Formula => 'TODO: translate';
+
+  @override
+  String get relL3S3Title => 'TODO: translate';
+
+  @override
+  String get relL3S3Body => 'TODO: translate';
+
+  @override
+  String get relL3S4Title => 'TODO: translate';
+
+  @override
+  String get relL3S4Body => 'TODO: translate';
+
+  @override
+  String get relL4Title => 'TODO: translate';
+
+  @override
+  String get relL4Subtitle => 'TODO: translate';
+
+  @override
+  String get relL4S1Title => 'TODO: translate';
+
+  @override
+  String get relL4S1Body => 'TODO: translate';
+
+  @override
+  String get relL4S2Title => 'TODO: translate';
+
+  @override
+  String get relL4S2Body => 'TODO: translate';
+
+  @override
+  String get relL4S3Title => 'TODO: translate';
+
+  @override
+  String get relL4S3Body => 'TODO: translate';
+
+  @override
+  String get relL4S4Title => 'TODO: translate';
+
+  @override
+  String get relL4S4Body => 'TODO: translate';
+
+  @override
+  String get relL5Title => 'TODO: translate';
+
+  @override
+  String get relL5Subtitle => 'TODO: translate';
+
+  @override
+  String get relL5S1Title => 'TODO: translate';
+
+  @override
+  String get relL5S1Body => 'TODO: translate';
+
+  @override
+  String get relL5S2Title => 'TODO: translate';
+
+  @override
+  String get relL5S2Body => 'TODO: translate';
+
+  @override
+  String get relL5S2Formula => 'TODO: translate';
+
+  @override
+  String get relL5S3Title => 'TODO: translate';
+
+  @override
+  String get relL5S3Body => 'TODO: translate';
+
+  @override
+  String get relL5S4Title => 'TODO: translate';
+
+  @override
+  String get relL5S4Body => 'TODO: translate';
+
+  @override
+  String get relQ1Question => 'TODO: translate';
+
+  @override
+  String get relQ1Options => 'TODO: translate';
+
+  @override
+  String get relQ1CorrectIndex => 'TODO: translate';
+
+  @override
+  String get relQ1Explanation => 'TODO: translate';
+
+  @override
+  String get relQ2Question => 'TODO: translate';
+
+  @override
+  String get relQ2Options => 'TODO: translate';
+
+  @override
+  String get relQ2CorrectIndex => 'TODO: translate';
+
+  @override
+  String get relQ2Explanation => 'TODO: translate';
+
+  @override
+  String get relQ3Question => 'TODO: translate';
+
+  @override
+  String get relQ3Options => 'TODO: translate';
+
+  @override
+  String get relQ3CorrectIndex => 'TODO: translate';
+
+  @override
+  String get relQ3Explanation => 'TODO: translate';
+
+  @override
+  String get relQ4Question => 'TODO: translate';
+
+  @override
+  String get relQ4Options => 'TODO: translate';
+
+  @override
+  String get relQ4CorrectIndex => 'TODO: translate';
+
+  @override
+  String get relQ4Explanation => 'TODO: translate';
+
+  @override
+  String get relQ5Question => 'TODO: translate';
+
+  @override
+  String get relQ5Options => 'TODO: translate';
+
+  @override
+  String get relQ5CorrectIndex => 'TODO: translate';
+
+  @override
+  String get relQ5Explanation => 'TODO: translate';
+
+  @override
+  String get relQ6Question => 'TODO: translate';
+
+  @override
+  String get relQ6Options => 'TODO: translate';
+
+  @override
+  String get relQ6CorrectIndex => 'TODO: translate';
+
+  @override
+  String get relQ6Explanation => 'TODO: translate';
+
+  @override
+  String get relQ7Question => 'TODO: translate';
+
+  @override
+  String get relQ7Options => 'TODO: translate';
+
+  @override
+  String get relQ7CorrectIndex => 'TODO: translate';
+
+  @override
+  String get relQ7Explanation => 'TODO: translate';
+
+  @override
+  String get relQ8Question => 'TODO: translate';
+
+  @override
+  String get relQ8Options => 'TODO: translate';
+
+  @override
+  String get relQ8CorrectIndex => 'TODO: translate';
+
+  @override
+  String get relQ8Explanation => 'TODO: translate';
 }

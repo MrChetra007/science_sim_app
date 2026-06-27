@@ -7,6 +7,7 @@ import 'time_dilation_provider.dart';
 import '../../ui/widgets/velocity_slider.dart';
 import '../../ui/widgets/formula_card.dart';
 import '../../ui/widgets/metric_chip.dart';
+import 'package:science_lab/l10n/generated/app_localizations.dart';
 
 class TimeDilationScreen extends ConsumerStatefulWidget {
   const TimeDilationScreen({super.key});
@@ -54,8 +55,8 @@ class _TimeDilationScreenState extends ConsumerState<TimeDilationScreen> {
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white70),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          "Time Dilation Lab",
+        title: Text(
+          AppLocalizations.of(context)!.relTimeDilationLab,
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -90,9 +91,9 @@ class _TimeDilationScreenState extends ConsumerState<TimeDilationScreen> {
                         ),
                       ),
                       const SizedBox(height: 6),
-                      const Text(
-                        "Observer Time (t')",
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.relObserverTime,
+                        style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 11,
                           fontWeight: FontWeight.bold,
@@ -118,9 +119,9 @@ class _TimeDilationScreenState extends ConsumerState<TimeDilationScreen> {
                         ),
                       ),
                       const SizedBox(height: 6),
-                      const Text(
-                        "Spaceship Time (t₀)",
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.relSpaceshipTime,
+                        style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 11,
                           fontWeight: FontWeight.bold,
@@ -147,7 +148,7 @@ class _TimeDilationScreenState extends ConsumerState<TimeDilationScreen> {
               child: Row(
                 children: [
                   Flexible(child: MetricChip(
-                    label: "γ (Gamma)",
+                    label: AppLocalizations.of(context)!.relGamma,
                     value: state.gamma.toStringAsFixed(3),
                   )),
                   const SizedBox(width: 8),
@@ -157,7 +158,7 @@ class _TimeDilationScreenState extends ConsumerState<TimeDilationScreen> {
                   )),
                   const SizedBox(width: 8),
                   Flexible(child: MetricChip(
-                    label: "t' / t₀",
+                    label: AppLocalizations.of(context)!.relRatioTt,
                     value: state.gamma.toStringAsFixed(2),
                   )),
                 ],
@@ -179,14 +180,14 @@ class _TimeDilationScreenState extends ConsumerState<TimeDilationScreen> {
                           color: const Color(0xffff9800),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Row(
+                        child: Row(
                           children: [
                             Icon(Icons.bolt, color: Colors.black87, size: 16),
                             SizedBox(width: 8),
                             Expanded(
                               child: Text(
-                                "At v ≈ 87% c, the moving clock ticks at half the rate of the rest clock!",
-                                style: TextStyle(
+                                AppLocalizations.of(context)!.relHighBetaCallout,
+                                style: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
@@ -206,12 +207,12 @@ class _TimeDilationScreenState extends ConsumerState<TimeDilationScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: FormulaCard(
-                formulaTitle: "Time Dilation Formula",
+                formulaTitle: AppLocalizations.of(context)!.relTimeDilationFormula,
                 latexFormula: "t' = γ × t₀",
                 variables: {
-                  "Observer Time (t')": "${state.dilatedTime.toStringAsFixed(3)} s",
+                  AppLocalizations.of(context)!.relObserverTimeVal: "${state.dilatedTime.toStringAsFixed(3)} s",
                   "Lorentz Factor (γ)": state.gamma.toStringAsFixed(4),
-                  "Spaceship Time (t₀)": "${state.properTime.toStringAsFixed(3)} s",
+                  AppLocalizations.of(context)!.relSpaceshipTimeVal: "${state.properTime.toStringAsFixed(3)} s",
                 },
               ),
             ),
@@ -242,7 +243,7 @@ class _TimeDilationScreenState extends ConsumerState<TimeDilationScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     ),
                     icon: Icon(state.isRunning ? Icons.pause : Icons.play_arrow),
-                    label: Text(state.isRunning ? "Pause" : "Resume"),
+                    label: Text(state.isRunning ? AppLocalizations.of(context)!.relPause : AppLocalizations.of(context)!.relResume),
                     onPressed: () {
                       ref.read(timeDilationProvider.notifier).togglePause();
                     },
@@ -256,7 +257,7 @@ class _TimeDilationScreenState extends ConsumerState<TimeDilationScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     ),
                     icon: const Icon(Icons.refresh),
-                    label: const Text("Reset"),
+                    label: Text(AppLocalizations.of(context)!.relReset),
                     onPressed: () {
                       ref.read(timeDilationProvider.notifier).reset();
                     },
