@@ -161,7 +161,7 @@ class _PlanPickerViewState extends State<_PlanPickerView> {
 
   @override
   Widget build(BuildContext context) {
-    final sub = Provider.of<SubscriptionService>(context, listen: false);
+    // final sub = Provider.of<SubscriptionService>(context, listen: false); // unused after FREE card commented out
     
     return Container(
       constraints: const BoxConstraints(maxWidth: 400),
@@ -186,37 +186,100 @@ class _PlanPickerViewState extends State<_PlanPickerView> {
               ),
             ),
             const SizedBox(height: 8),
-            
-            // FREE Plan Card
-            _PlanCard(
-              borderColor: const Color(0xFF1E2D3D),
-              backgroundColor: const Color(0xFF131921),
-              iconData: Icons.biotech,
-              iconBgColor: const Color(0xFF1F2B3E),
-              iconColor: const Color(0xFF90A4BE),
-              titleText: 'FREE',
-              titleColor: const Color(0xFF8699B3),
-              priceMain: '\$0',
-              priceSub: 'forever',
-              priceMainColor: const Color(0xFF67778F),
-              badge: null,
-              bullets: const [
-                'AC Electricity Lab – fully unlocked',
-                'Watch ads to try any lab for 10 min',
-                '4 labs locked',
-                'Ads shown',
-              ],
-              bulletsColor: const Color(0xFF4C758F),
-              buttonText: 'CONTINUE FREE',
-              buttonBgColor: const Color(0xFF1A2639),
-              buttonTextColor: const Color(0xFF6C81A0),
-              onTapButton: () {
-                sub.setPlan(SubscriptionPlan.free);
-                Navigator.pop(context);
+
+            // 10 MIN PREMIUM Card
+            Consumer<SubscriptionService>(
+              builder: (context, subService, child) {
+                final isTempPro = subService.temporaryPremiumEndTime != null && DateTime.now().isBefore(subService.temporaryPremiumEndTime!);
+                final progressText = '${subService.rewardedAdsWatched}/2';
+                
+                return _PlanCard(
+                  borderColor: const Color(0xFF2E8B57),
+                  backgroundColor: const Color(0xFF0F2618),
+                  iconData: Icons.timer,
+                  iconBgColor: const Color(0xFF1B4029),
+                  iconColor: const Color(0xFF4CAF50),
+                  titleText: '10 MIN TRIAL',
+                  titleColor: const Color(0xFF66BB6A),
+                  priceMain: isTempPro ? 'ACTIVE' : 'Free',
+                  priceSub: 'watch 2 ads',
+                  customPriceSub: isTempPro ? _CountdownTimer(endTime: subService.temporaryPremiumEndTime!) : null,
+                  priceMainColor: isTempPro ? const Color(0xFF4CAF50) : const Color(0xFFB0BEC5),
+                  badge: isTempPro
+                      ? Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF4CAF50),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Text(
+                            'TRIAL ACTIVE',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        )
+                      : null,
+                  bullets: [
+                    'Watch 2 short ads (${subService.rewardedAdsWatched}/2 done)',
+                    'Unlocks all 5 labs for 10 minutes',
+                    'Note: Ads still shown during trial',
+                  ],
+                  bulletsColor: const Color(0xFF81C784),
+                  buttonText: isTempPro ? 'ENJOY LABS' : '▶ WATCH AD ($progressText)',
+                  buttonBgColor: isTempPro ? const Color(0xFF1B4029) : const Color(0xFF2E8B57),
+                  buttonTextColor: Colors.white,
+                  onTapButton: () {
+                    if (isTempPro) {
+                      Navigator.pop(context);
+                      return;
+                    }
+                    globalAdService.showRewardedAd(
+                      onEarnedReward: () {
+                         subService.watchingRewardedAdSuccess();
+                      },
+                      onClosed: () {},
+                    );
+                  },
+                );
               },
             ),
 
             const SizedBox(height: 16),
+
+            // FREE Plan Card (commented out per user request)
+            // _PlanCard(
+            //   borderColor: const Color(0xFF1E2D3D),
+            //   backgroundColor: const Color(0xFF131921),
+            //   iconData: Icons.biotech,
+            //   iconBgColor: const Color(0xFF1F2B3E),
+            //   iconColor: const Color(0xFF90A4BE),
+            //   titleText: 'FREE',
+            //   titleColor: const Color(0xFF8699B3),
+            //   priceMain: '\$0',
+            //   priceSub: 'forever',
+            //   priceMainColor: const Color(0xFF67778F),
+            //   badge: null,
+            //   bullets: const [
+            //     'AC Electricity Lab – fully unlocked',
+            //     'Watch ads to try any lab for 10 min',
+            //     '4 labs locked',
+            //     'Ads shown',
+            //   ],
+            //   bulletsColor: const Color(0xFF4C758F),
+            //   buttonText: 'CONTINUE FREE',
+            //   buttonBgColor: const Color(0xFF1A2639),
+            //   buttonTextColor: const Color(0xFF6C81A0),
+            //   onTapButton: () {
+            //     sub.setPlan(SubscriptionPlan.free);
+            //     Navigator.pop(context);
+            //   },
+            // ),
+
+            // const SizedBox(height: 16),
 
             // MONTHLY Plan Card
             _PlanCard(
@@ -295,67 +358,6 @@ class _PlanPickerViewState extends State<_PlanPickerView> {
               onTapButton: () async {
                 final iap = IAPService();
                 await iap.buyLifetime();
-              },
-            ),
-            const SizedBox(height: 16),
-            // 10 MIN PREMIUM Card
-            Consumer<SubscriptionService>(
-              builder: (context, subService, child) {
-                final isTempPro = subService.temporaryPremiumEndTime != null && DateTime.now().isBefore(subService.temporaryPremiumEndTime!);
-                final progressText = '${subService.rewardedAdsWatched}/2';
-                
-                return _PlanCard(
-                  borderColor: const Color(0xFF2E8B57),
-                  backgroundColor: const Color(0xFF0F2618),
-                  iconData: Icons.timer,
-                  iconBgColor: const Color(0xFF1B4029),
-                  iconColor: const Color(0xFF4CAF50),
-                  titleText: '10 MIN TRIAL',
-                  titleColor: const Color(0xFF66BB6A),
-                  priceMain: isTempPro ? 'ACTIVE' : 'Free',
-                  priceSub: 'watch 2 ads',
-                  customPriceSub: isTempPro ? _CountdownTimer(endTime: subService.temporaryPremiumEndTime!) : null,
-                  priceMainColor: isTempPro ? const Color(0xFF4CAF50) : const Color(0xFFB0BEC5),
-                  badge: isTempPro
-                      ? Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF4CAF50),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Text(
-                            'TRIAL ACTIVE',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 10,
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                        )
-                      : null,
-                  bullets: [
-                    'Watch 2 short ads (${subService.rewardedAdsWatched}/2 done)',
-                    'Unlocks all 5 labs for 10 minutes',
-                    'Note: Ads still shown during trial',
-                  ],
-                  bulletsColor: const Color(0xFF81C784),
-                  buttonText: isTempPro ? 'ENJOY LABS' : '▶ WATCH AD ($progressText)',
-                  buttonBgColor: isTempPro ? const Color(0xFF1B4029) : const Color(0xFF2E8B57),
-                  buttonTextColor: Colors.white,
-                  onTapButton: () {
-                    if (isTempPro) {
-                      Navigator.pop(context);
-                      return;
-                    }
-                    globalAdService.showRewardedAd(
-                      onEarnedReward: () {
-                         subService.watchingRewardedAdSuccess();
-                      },
-                      onClosed: () {},
-                    );
-                  },
-                );
               },
             ),
             const SizedBox(height: 16),
