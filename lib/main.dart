@@ -645,6 +645,12 @@ class _MainDashboardState extends State<MainDashboard> {
               _WalkthroughOption(
                 label: 'Special Relativity Lab',
                 onTap: () async {
+                  final sub = p.Provider.of<SubscriptionService>(ctx, listen: false);
+                  if (!sub.isPro) {
+                    Navigator.pop(ctx);
+                    showGlobalPlanDialog(context);
+                    return;
+                  }
                   Navigator.pop(ctx);
                   await WalkthroughService.resetLabWalkthrough(
                     WalkthroughService.keySpecialRelativity,
@@ -995,13 +1001,18 @@ class PhysicsDashboard extends StatelessWidget {
                             icon: Icons.speed,
                             color: Colors.tealAccent,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const _RelativityWrapper(),
-                                ),
-                              );
+                              final sub = p.Provider.of<SubscriptionService>(context, listen: false);
+                              if (sub.isPro) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const _RelativityWrapper(),
+                                  ),
+                                );
+                              } else {
+                                showGlobalPlanDialog(context);
+                              }
                             },
                           );
                         },
