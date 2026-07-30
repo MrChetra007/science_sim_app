@@ -29,7 +29,7 @@ dependencies:
 
   # Ads & Monetization
   google_mobile_ads: ^5.1.0
-  in_app_purchase: ^3.2.0
+  in_app_purchase: ^3.3.0
 
   # Utilities
   google_fonts: ^6.2.1
