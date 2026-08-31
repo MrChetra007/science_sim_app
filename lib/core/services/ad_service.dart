@@ -100,12 +100,14 @@ class GlobalAdService {
         onAdLoaded: (ad) {
           _rewardedAd = ad;
           _rewardedAdFailedToLoad = false;
+          debugPrint('[RewardedAd] loaded: ${ad.adUnitId}');
           onReady?.call();
         },
         onAdFailedToLoad: (error) {
           _rewardedAd = null;
           _rewardedAdFailedToLoad = true;
           _lastRewardedAdFailure = DateTime.now();
+          debugPrint('[RewardedAd] FAILED to load: ${error.message}');
         },
       ),
     );
@@ -128,7 +130,11 @@ class GlobalAdService {
     required Function onEarnedReward,
     required Function onClosed,
   }) {
+    debugPrint('[RewardedAd] showRewardedAd() called, _rewardedAd != null? '
+        '${_rewardedAd != null}, isPro=${_subscription.isPro}');
+
     if (_subscription.isPro) {
+      debugPrint('[RewardedAd] user is Pro — skipping rewarded ad');
       onClosed();
       return;
     }
@@ -136,11 +142,22 @@ class GlobalAdService {
     if (_rewardedAd != null) {
       // Guard against re-entrancy: if a rewarded ad is already on screen,
       // don't try to show another one.
-      if (_rewardedAdShowing) return;
+      if (_rewardedAdShowing) {
+        debugPrint('[RewardedAd] already showing an ad — ignoring duplicate tap');
+        return;
+      }
 
       _rewardedAdShowing = true;
+      debugPrint('[RewardedAd] calling show()...');
       _rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
+        onAdShowedFullScreenContent: (ad) {
+          debugPrint('[RewardedAd] full-screen content was shown');
+        },
+        onAdImpression: (ad) {
+          debugPrint('[RewardedAd] impression recorded');
+        },
         onAdDismissedFullScreenContent: (ad) {
+          debugPrint('[RewardedAd] dismissed');
           ad.dispose();
           _rewardedAd = null;
           _rewardedAdShowing = false;
@@ -148,8 +165,7 @@ class GlobalAdService {
           loadRewardedAd();
         },
         onAdFailedToShowFullScreenContent: (ad, error) {
-          // Log — this is the signal that show() itself failed.
-          debugPrint('RewardedAd failed to show: ${error.message}');
+          debugPrint('[RewardedAd] FAILED to show: ${error.message}');
           ad.dispose();
           _rewardedAd = null;
           _rewardedAdShowing = false;
@@ -160,15 +176,19 @@ class GlobalAdService {
 
       _rewardedAd!.show(
         onUserEarnedReward: (ad, reward) {
+          debugPrint('[RewardedAd] reward earned: ${reward.amount} '
+              '${reward.type}');
           onEarnedReward();
         },
       );
       _rewardedAd = null; // ✅ prevent re-showing this ad on rapid taps
     } else if (canGrantFallbackReward) {
+      debugPrint('[RewardedAd] granting fallback reward (load failed >30min ago)');
       grantFallbackReward();
       onEarnedReward();
       onClosed();
     } else {
+      debugPrint('[RewardedAd] no ad loaded — loading one, will show when ready');
       // No ad loaded yet — load one and show it as soon as it's ready,
       // instead of silently dropping the request.
       loadRewardedAd(

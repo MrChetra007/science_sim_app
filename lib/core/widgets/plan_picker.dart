@@ -237,11 +237,29 @@ class _PlanPickerViewState extends State<_PlanPickerView> {
                       Navigator.pop(context);
                       return;
                     }
+                    final messenger = ScaffoldMessenger.of(context);
+                    messenger.hideCurrentSnackBar();
+                    messenger.showSnackBar(
+                      const SnackBar(
+                        content: Text('Loading your ad… please wait a moment'),
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
                     globalAdService.showRewardedAd(
                       onEarnedReward: () {
-                         subService.watchingRewardedAdSuccess();
+                        debugPrint('[RewardedAd] reward earned in plan picker');
+                        subService.watchingRewardedAdSuccess();
+                        messenger.hideCurrentSnackBar();
+                        messenger.showSnackBar(
+                          const SnackBar(
+                            content: Text('✅ Reward earned! Thanks for watching.'),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
                       },
-                      onClosed: () {},
+                      onClosed: () {
+                        debugPrint('[RewardedAd] ad flow closed in plan picker');
+                      },
                     );
                   },
                 );

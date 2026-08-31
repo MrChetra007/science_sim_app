@@ -1,6 +1,6 @@
 name: science_lab
 description: "Science Lab - Virtual Experiment Suite"
-version: 1.0.0+17
+version: 1.0.1+18
 
 environment:
   sdk: ^3.10.3
