@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'subscription_service.dart';
 
@@ -42,9 +43,11 @@ class GlobalAdService {
     // device/emulator. This caused surface abandonLocked errors and
     // destabilized the Dynamite module → SIG 9 crash.
     //
-    // Ads are now loaded lazily:
-    //   - Interstitial: call loadInterstitialAd() before you intend to show it
-    //   - Rewarded: call loadRewardedAd() before you intend to show it
+    // Interstitial is still loaded lazily (call loadInterstitialAd() before
+    // you intend to show it). The rewarded ad, however, is preloaded here so
+    // the "WATCH AD" button in the plan picker can always show immediately on
+    // the first tap instead of silently loading-and-dropping.
+    loadRewardedAd();
   }
 
   // ✅ Call this manually before a screen where you plan to show an interstitial
@@ -79,11 +82,16 @@ class GlobalAdService {
 
   bool _rewardedAdFailedToLoad = false;
   DateTime? _lastRewardedAdFailure;
+  bool _rewardedAdShowing = false;
 
-  // ✅ Call this manually before a screen where you plan to show a rewarded ad
-  void loadRewardedAd() {
+  // ✅ Call this to load a rewarded ad. Optionally pass [onReady] which fires
+  // once the ad has loaded (used to chain a show() right after a lazy load).
+  void loadRewardedAd({void Function()? onReady}) {
     if (_subscription.isPro) return;
-    if (_rewardedAd != null) return; // already loaded, don't double-load
+    if (_rewardedAd != null) {
+      onReady?.call(); // already loaded, signal immediately
+      return;
+    }
 
     RewardedAd.load(
       adUnitId: rewardedAdUnitId,
@@ -92,6 +100,7 @@ class GlobalAdService {
         onAdLoaded: (ad) {
           _rewardedAd = ad;
           _rewardedAdFailedToLoad = false;
+          onReady?.call();
         },
         onAdFailedToLoad: (error) {
           _rewardedAd = null;
@@ -119,19 +128,33 @@ class GlobalAdService {
     required Function onEarnedReward,
     required Function onClosed,
   }) {
+    if (_subscription.isPro) {
+      onClosed();
+      return;
+    }
+
     if (_rewardedAd != null) {
+      // Guard against re-entrancy: if a rewarded ad is already on screen,
+      // don't try to show another one.
+      if (_rewardedAdShowing) return;
+
+      _rewardedAdShowing = true;
       _rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
         onAdDismissedFullScreenContent: (ad) {
           ad.dispose();
           _rewardedAd = null;
-          loadRewardedAd();
+          _rewardedAdShowing = false;
           onClosed();
+          loadRewardedAd();
         },
         onAdFailedToShowFullScreenContent: (ad, error) {
+          // Log — this is the signal that show() itself failed.
+          debugPrint('RewardedAd failed to show: ${error.message}');
           ad.dispose();
           _rewardedAd = null;
-          loadRewardedAd();
+          _rewardedAdShowing = false;
           onClosed();
+          loadRewardedAd();
         },
       );
 
@@ -146,8 +169,14 @@ class GlobalAdService {
       onEarnedReward();
       onClosed();
     } else {
-      loadRewardedAd();
-      onClosed();
+      // No ad loaded yet — load one and show it as soon as it's ready,
+      // instead of silently dropping the request.
+      loadRewardedAd(
+        onReady: () {
+          if (_rewardedAdShowing) return;
+          showRewardedAd(onEarnedReward: onEarnedReward, onClosed: onClosed);
+        },
+      );
     }
   }
 
