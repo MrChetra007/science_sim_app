@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flame/cache.dart';
 
+import '../../../../l10n/generated/app_localizations.dart';
+
 class SpriteAssets {
   static const String candle =
       'assets/images/Lit_candle_on_white_background_20260915104321-removebg-preview.png';
@@ -22,12 +24,12 @@ class SpriteAssets {
 enum ObjectSprite { arrow, candle, pencil, pen, book }
 
 extension ObjectSpriteInfo on ObjectSprite {
-  String get label => switch (this) {
-        ObjectSprite.arrow => 'Arrow',
-        ObjectSprite.candle => 'Candle',
-        ObjectSprite.pencil => 'Pencil',
-        ObjectSprite.pen => 'Pen',
-        ObjectSprite.book => 'Book',
+  String label(AppLocalizations l10n) => switch (this) {
+        ObjectSprite.arrow => l10n.opticSpriteArrow,
+        ObjectSprite.candle => l10n.opticSpriteCandle,
+        ObjectSprite.pencil => l10n.opticSpritePencil,
+        ObjectSprite.pen => l10n.opticSpritePen,
+        ObjectSprite.book => l10n.opticSpriteBook,
       };
 
   String? get asset => switch (this) {

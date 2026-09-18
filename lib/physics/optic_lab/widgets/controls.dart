@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../l10n/generated/app_localizations.dart';
 import '../games/sprites.dart';
 import '../theme.dart';
 
@@ -184,11 +185,12 @@ class SpritePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Object',
-            style: TextStyle(
+        Text(l10n.opticObjectLabel,
+            style: const TextStyle(
                 color: AppColors.dim, fontSize: 12.5, fontFamily: 'monospace')),
         const SizedBox(height: 8),
         Wrap(
@@ -219,7 +221,7 @@ class SpritePicker extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      s.label,
+                      s.label(l10n),
                       style: TextStyle(
                         fontSize: 10.5,
                         fontWeight: FontWeight.w600,

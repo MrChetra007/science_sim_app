@@ -1,12 +1,14 @@
+import '../../../../l10n/generated/app_localizations.dart';
+
 enum OpticsMode { plane, curved, refraction, lens, dispersion }
 
 extension OpticsModeInfo on OpticsMode {
-  String get title => switch (this) {
-        OpticsMode.plane => 'Plane Mirror',
-        OpticsMode.curved => 'Curved Mirrors',
-        OpticsMode.refraction => 'Refraction & TIR',
-        OpticsMode.lens => 'Thin Lenses',
-        OpticsMode.dispersion => 'Prism Dispersion',
+  String title(AppLocalizations l10n) => switch (this) {
+        OpticsMode.plane => l10n.opticModePlaneTitle,
+        OpticsMode.curved => l10n.opticModeCurvedTitle,
+        OpticsMode.refraction => l10n.opticModeRefractionTitle,
+        OpticsMode.lens => l10n.opticModeLensTitle,
+        OpticsMode.dispersion => l10n.opticModeDispersionTitle,
       };
 
   String get emoji => switch (this) {
@@ -17,19 +19,19 @@ extension OpticsModeInfo on OpticsMode {
         OpticsMode.dispersion => '🌈',
       };
 
-  String get subtitle => switch (this) {
-        OpticsMode.plane => 'Law of reflection',
-        OpticsMode.curved => 'Concave & convex, ray tracing',
-        OpticsMode.refraction => "Snell's law & total internal reflection",
-        OpticsMode.lens => 'Convex & concave lens diagrams',
-        OpticsMode.dispersion => 'White light into a spectrum',
+  String subtitle(AppLocalizations l10n) => switch (this) {
+        OpticsMode.plane => l10n.opticModePlaneSubtitle,
+        OpticsMode.curved => l10n.opticModeCurvedSubtitle,
+        OpticsMode.refraction => l10n.opticModeRefractionSubtitle,
+        OpticsMode.lens => l10n.opticModeLensSubtitle,
+        OpticsMode.dispersion => l10n.opticModeDispersionSubtitle,
       };
 
-  String get tip => switch (this) {
-        OpticsMode.plane => '💡 Drag the object on the canvas',
-        OpticsMode.curved => '💡 Drag the yellow arrow tip',
-        OpticsMode.lens => '💡 Drag the yellow arrow tip',
-        OpticsMode.refraction => '💡 Drag the laser left/right',
-        OpticsMode.dispersion => '💡 Adjust prism parameters below',
+  String tip(AppLocalizations l10n) => switch (this) {
+        OpticsMode.plane => l10n.opticModePlaneTip,
+        OpticsMode.curved => l10n.opticModeCurvedTip,
+        OpticsMode.lens => l10n.opticModeLensTip,
+        OpticsMode.refraction => l10n.opticModeRefractionTip,
+        OpticsMode.dispersion => l10n.opticModeDispersionTip,
       };
 }

@@ -6,6 +6,8 @@ import 'painters.dart';
 import 'sprites.dart';
 
 class PlaneMirrorGame extends BaseOpticsGame {
+  PlaneMirrorGame({required super.l10n});
+
   double sourceX = 180;
   double sourceY = 180;
   double mirrorAngle = 90; // degrees
@@ -159,7 +161,7 @@ class PlaneMirrorGame extends BaseOpticsGame {
       drawImageRect(canvas, objImg,
           Rect.fromCenter(center: Offset(sx, sy), width: objW, height: objH));
       canvas.drawCircle(Offset(sx, sy), 5, Paint()..color = const Color(0xFFFFFFFF));
-      paintText(canvas, 'Object (Drag)', sx - 38, sy - objH / 2 - 6,
+      paintText(canvas, l10n.opticObjectDrag, sx - 38, sy - objH / 2 - 6,
           const Color(0xFFFACC15),
           size: 12);
 
@@ -175,7 +177,7 @@ class PlaneMirrorGame extends BaseOpticsGame {
               center: Offset.zero, width: imgW, height: imgH),
           alpha: 0.55);
       canvas.restore();
-      paintText(canvas, "Virtual Image S'", imageX + 12, imageY + 4,
+      paintText(canvas, l10n.opticVirtualImageLabel, imageX + 12, imageY + 4,
           const Color(0xFFCBD5E1),
           size: 11);
     } else {
@@ -183,7 +185,7 @@ class PlaneMirrorGame extends BaseOpticsGame {
           Paint()..color = const Color(0x66A855F7));
       canvas.drawCircle(Offset(imageX, imageY), 8,
           Paint()..color = const Color(0xFFA855F7)..style = PaintingStyle.stroke);
-      paintText(canvas, "Virtual Source S'", imageX + 12, imageY + 4,
+      paintText(canvas, l10n.opticVirtualSourceLabel, imageX + 12, imageY + 4,
           const Color(0xFFCBD5E1),
           size: 11);
 
@@ -191,7 +193,7 @@ class PlaneMirrorGame extends BaseOpticsGame {
       canvas.drawCircle(Offset(sx, sy), 8,
           Paint()..color = const Color(0xFFFFFFFF)..style = PaintingStyle.stroke
             ..strokeWidth = 2);
-      paintText(canvas, 'Light Source (Drag)', sx - 45, sy - 14,
+      paintText(canvas, l10n.opticLightSourceDrag, sx - 45, sy - 14,
           const Color(0xFFCBD5E1),
           size: 11);
     }
@@ -212,8 +214,8 @@ class PlaneMirrorGame extends BaseOpticsGame {
 
   @override
   List<(String, String)> get readoutRows => [
-        ('Angle of Incidence (θi)', '${thetaI.toStringAsFixed(1)}°'),
-        ('Angle of Reflection (θr)', '${thetaR.toStringAsFixed(1)}°'),
-        ('Law', 'θi = θr'),
+        (l10n.opticAngleIncidenceRow, '${thetaI.toStringAsFixed(1)}°'),
+        (l10n.opticAngleReflectionRow, '${thetaR.toStringAsFixed(1)}°'),
+        (l10n.opticLawRow, 'θi = θr'),
       ];
 }

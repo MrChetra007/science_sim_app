@@ -6,22 +6,26 @@ import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 
+import '../../../../l10n/generated/app_localizations.dart';
 import 'sprites.dart';
 
 /// Shared base for all simulation games. Provides canvas helpers, sprite
 /// loading and a UI refresh hook so the bottom-sheet readouts stay in sync.
 abstract class BaseOpticsGame extends FlameGame {
+  BaseOpticsGame({required this.l10n}) {
+    // Private per-game image cache: a game's dispose() must not clear the
+    // global cache and dispose sprites that other games still draw.
+    images = Images();
+  }
+
+  /// Localized strings used for canvas labels and readout rows.
+  final AppLocalizations l10n;
+
   /// Short headline shown in the floating badge over the canvas.
   String get headline;
 
   /// Readout table shown in the bottom sheet.
   List<(String, String)> get readoutRows;
-
-  BaseOpticsGame() {
-    // Private per-game image cache: a game's dispose() must not clear the
-    // global cache and dispose sprites that other games still draw.
-    images = Images();
-  }
 
   late final SpriteLoader sprites = SpriteLoader(images);
   VoidCallback? onUiChanged;

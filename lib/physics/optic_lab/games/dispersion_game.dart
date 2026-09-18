@@ -5,6 +5,8 @@ import 'base_optics_game.dart';
 import 'painters.dart';
 
 class DispersionGame extends BaseOpticsGame {
+  DispersionGame({required super.l10n});
+
   double apexAngle = 60; // degrees
   double beamYOffset = -10;
   double baseN = 1.54;
@@ -79,7 +81,7 @@ class DispersionGame extends BaseOpticsGame {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 5;
     canvas.drawLine(Offset(beamStartX, beamY), Offset(hit1X, hit1Y), beamPaint);
-    paintText(canvas, 'White Light Beam', beamStartX + 10, beamY - 10,
+    paintText(canvas, l10n.opticWhiteLightBeam, beamStartX + 10, beamY - 10,
         const Color(0xFFFFFFFF),
         size: 12, bold: true);
 
@@ -130,7 +132,7 @@ class DispersionGame extends BaseOpticsGame {
       ..strokeWidth = 5;
     canvas.drawLine(Offset(gw - 40, cy - 140), Offset(gw - 40, cy + 140),
         screenPaint);
-    paintText(canvas, 'Screen', gw - 55, cy - 150, const Color(0xFF94A3B8),
+    paintText(canvas, l10n.opticScreenLabel, gw - 55, cy - 150, const Color(0xFF94A3B8),
         size: 11);
 
     redN = baseN - 0.015;
@@ -139,13 +141,13 @@ class DispersionGame extends BaseOpticsGame {
   }
 
   @override
-  String get headline => 'Violet bends most · Red bends least';
+  String get headline => l10n.opticDispersionHeadline;
 
   @override
   List<(String, String)> get readoutRows => [
-        ('Red (700 nm)', 'n ≈ ${redN.toStringAsFixed(3)}'),
-        ('Green (530 nm)', 'n ≈ ${greenN.toStringAsFixed(3)}'),
-        ('Violet (400 nm)', 'n ≈ ${violetN.toStringAsFixed(3)}'),
-        ('Dispersion', 'Violet bends most; Red bends least'),
+        (l10n.opticRedBand, 'n ≈ ${redN.toStringAsFixed(3)}'),
+        (l10n.opticGreenBand, 'n ≈ ${greenN.toStringAsFixed(3)}'),
+        (l10n.opticVioletBand, 'n ≈ ${violetN.toStringAsFixed(3)}'),
+        (l10n.opticDispersionRow, l10n.opticDispersionSummary),
       ];
 }

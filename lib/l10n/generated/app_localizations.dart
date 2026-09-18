@@ -8119,6 +8119,588 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Violet has the shortest wavelength and the highest refractive index in glass, so it bends the most. Red bends the least.'**
   String get opticQ5Explanation;
+
+  /// Mode chooser heading
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a lab'**
+  String get opticChooseLab;
+
+  /// App bar title first part (text color)
+  ///
+  /// In en, this message translates to:
+  /// **'Optics'**
+  String get opticAppBarName;
+
+  /// App bar title second part (accent color)
+  ///
+  /// In en, this message translates to:
+  /// **'Lab'**
+  String get opticAppBarSuffix;
+
+  /// Open a simulation mode
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get opticOpenMode;
+
+  /// Reset button tooltip
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get opticResetTooltip;
+
+  /// Game load/mount error text
+  ///
+  /// In en, this message translates to:
+  /// **'Simulation failed to start'**
+  String get opticSimulationFailed;
+
+  /// Simulation controls section header
+  ///
+  /// In en, this message translates to:
+  /// **'Controls'**
+  String get opticControls;
+
+  /// Readout card header
+  ///
+  /// In en, this message translates to:
+  /// **'Live Readout'**
+  String get opticLiveReadout;
+
+  /// Ray construction legend entry
+  ///
+  /// In en, this message translates to:
+  /// **'Ray 1'**
+  String get opticRayLegendRay1;
+
+  /// Ray 1 description
+  ///
+  /// In en, this message translates to:
+  /// **'Parallel to axis'**
+  String get opticRayLegendRay1Desc;
+
+  /// Ray construction legend entry
+  ///
+  /// In en, this message translates to:
+  /// **'Ray 2'**
+  String get opticRayLegendRay2;
+
+  /// Ray 2 description
+  ///
+  /// In en, this message translates to:
+  /// **'Focal point / optical centre'**
+  String get opticRayLegendRay2Desc;
+
+  /// Ray construction legend entry
+  ///
+  /// In en, this message translates to:
+  /// **'Ray 3'**
+  String get opticRayLegendRay3;
+
+  /// Ray 3 description
+  ///
+  /// In en, this message translates to:
+  /// **'Through curvature / focus'**
+  String get opticRayLegendRay3Desc;
+
+  /// Virtual ray legend entry
+  ///
+  /// In en, this message translates to:
+  /// **'Virtual'**
+  String get opticRayLegendVirtual;
+
+  /// Virtual ray description
+  ///
+  /// In en, this message translates to:
+  /// **'Dashed projections'**
+  String get opticRayLegendVirtualDesc;
+
+  /// Sprite picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Arrow'**
+  String get opticSpriteArrow;
+
+  /// Sprite picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Candle'**
+  String get opticSpriteCandle;
+
+  /// Sprite picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Pencil'**
+  String get opticSpritePencil;
+
+  /// Sprite picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Pen'**
+  String get opticSpritePen;
+
+  /// Sprite picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get opticSpriteBook;
+
+  /// Sprite picker section label
+  ///
+  /// In en, this message translates to:
+  /// **'Object'**
+  String get opticObjectLabel;
+
+  /// Mirror/lens type toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Concave'**
+  String get opticConcave;
+
+  /// Mirror/lens type toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Convex'**
+  String get opticConvex;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Mirror Angle (°)'**
+  String get opticMirrorAngle;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Light Source Angle (°)'**
+  String get opticLightSourceAngle;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Focal Length (|f| px)'**
+  String get opticFocalLengthAbs;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Object Distance (do px)'**
+  String get opticObjectDistance;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Object Height (ho px)'**
+  String get opticObjectHeight;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Medium 1 Index (n₁)'**
+  String get opticMedium1Index;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Medium 2 Index (n₂)'**
+  String get opticMedium2Index;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Incident Angle (θ₁)'**
+  String get opticIncidentAngleTheta;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Prism Apex Angle (α)'**
+  String get opticPrismApexAngle;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Beam Height (Y px)'**
+  String get opticBeamHeight;
+
+  /// Slider label
+  ///
+  /// In en, this message translates to:
+  /// **'Base Refractive Index (nd)'**
+  String get opticBaseIndex;
+
+  /// Mode card title
+  ///
+  /// In en, this message translates to:
+  /// **'Plane Mirror'**
+  String get opticModePlaneTitle;
+
+  /// Mode card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Law of reflection'**
+  String get opticModePlaneSubtitle;
+
+  /// Canvas hint
+  ///
+  /// In en, this message translates to:
+  /// **'💡 Drag the object on the canvas'**
+  String get opticModePlaneTip;
+
+  /// Mode card title
+  ///
+  /// In en, this message translates to:
+  /// **'Curved Mirrors'**
+  String get opticModeCurvedTitle;
+
+  /// Mode card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Concave & convex, ray tracing'**
+  String get opticModeCurvedSubtitle;
+
+  /// Canvas hint
+  ///
+  /// In en, this message translates to:
+  /// **'💡 Drag the yellow arrow tip'**
+  String get opticModeCurvedTip;
+
+  /// Mode card title
+  ///
+  /// In en, this message translates to:
+  /// **'Refraction & TIR'**
+  String get opticModeRefractionTitle;
+
+  /// Mode card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Snell\'s law & total internal reflection'**
+  String get opticModeRefractionSubtitle;
+
+  /// Canvas hint
+  ///
+  /// In en, this message translates to:
+  /// **'💡 Drag the laser left/right'**
+  String get opticModeRefractionTip;
+
+  /// Mode card title
+  ///
+  /// In en, this message translates to:
+  /// **'Thin Lenses'**
+  String get opticModeLensTitle;
+
+  /// Mode card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Convex & concave lens diagrams'**
+  String get opticModeLensSubtitle;
+
+  /// Canvas hint
+  ///
+  /// In en, this message translates to:
+  /// **'💡 Drag the yellow arrow tip'**
+  String get opticModeLensTip;
+
+  /// Mode card title
+  ///
+  /// In en, this message translates to:
+  /// **'Prism Dispersion'**
+  String get opticModeDispersionTitle;
+
+  /// Mode card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'White light into a spectrum'**
+  String get opticModeDispersionSubtitle;
+
+  /// Canvas hint
+  ///
+  /// In en, this message translates to:
+  /// **'💡 Adjust prism parameters below'**
+  String get opticModeDispersionTip;
+
+  /// Plane mirror canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'Object (Drag)'**
+  String get opticObjectDrag;
+
+  /// Plane mirror canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'Virtual Image S\''**
+  String get opticVirtualImageLabel;
+
+  /// Plane mirror canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'Virtual Source S\''**
+  String get opticVirtualSourceLabel;
+
+  /// Plane mirror canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'Light Source (Drag)'**
+  String get opticLightSourceDrag;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Angle of Incidence (θi)'**
+  String get opticAngleIncidenceRow;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Angle of Reflection (θr)'**
+  String get opticAngleReflectionRow;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Law'**
+  String get opticLawRow;
+
+  /// Curved mirror canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'Object (Drag tip)'**
+  String get opticObjectDragTip;
+
+  /// Image arrow label
+  ///
+  /// In en, this message translates to:
+  /// **'Virtual Image'**
+  String get opticVirtualImageShort;
+
+  /// Image arrow label
+  ///
+  /// In en, this message translates to:
+  /// **'Real Image'**
+  String get opticRealImageShort;
+
+  /// Image nature when at infinity
+  ///
+  /// In en, this message translates to:
+  /// **'At Infinity (No image formed)'**
+  String get opticAtInfinityNoImage;
+
+  /// Image nature when at infinity (lens)
+  ///
+  /// In en, this message translates to:
+  /// **'Rays parallel (No image)'**
+  String get opticRaysParallelNoImage;
+
+  /// Image characteristic
+  ///
+  /// In en, this message translates to:
+  /// **'Real'**
+  String get opticImageReal;
+
+  /// Image characteristic
+  ///
+  /// In en, this message translates to:
+  /// **'Virtual'**
+  String get opticImageVirtual;
+
+  /// Image characteristic
+  ///
+  /// In en, this message translates to:
+  /// **'Upright'**
+  String get opticImageUpright;
+
+  /// Image characteristic
+  ///
+  /// In en, this message translates to:
+  /// **'Inverted'**
+  String get opticImageInverted;
+
+  /// Image characteristic
+  ///
+  /// In en, this message translates to:
+  /// **'Magnified'**
+  String get opticImageMagnified;
+
+  /// Image characteristic
+  ///
+  /// In en, this message translates to:
+  /// **'Diminished'**
+  String get opticImageDiminished;
+
+  /// Image characteristic
+  ///
+  /// In en, this message translates to:
+  /// **'Same size'**
+  String get opticImageSameSize;
+
+  /// Comma-separated image nature
+  ///
+  /// In en, this message translates to:
+  /// **'{type}, {orient}, {size}'**
+  String opticImageNatureFormat(String type, String orient, String size);
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Focal Length (f)'**
+  String get opticFocalLengthRow;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Image Distance (di)'**
+  String get opticImageDistanceRow;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Magnification (m)'**
+  String get opticMagnificationRow;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Image Nature'**
+  String get opticImageNatureRow;
+
+  /// Image distance at infinity (mirror)
+  ///
+  /// In en, this message translates to:
+  /// **'∞ (Parallel)'**
+  String get opticInfinityParallel;
+
+  /// Image distance at infinity (lens)
+  ///
+  /// In en, this message translates to:
+  /// **'∞ (At Infinity)'**
+  String get opticInfinityAtInfinity;
+
+  /// Refraction interface canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'Medium 1 (n₁ = {index})'**
+  String opticMedium1Canvas(String index);
+
+  /// Refraction interface canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'Medium 2 (n₂ = {index})'**
+  String opticMedium2Canvas(String index);
+
+  /// Laser emitter canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'LASER'**
+  String get opticLaserLabel;
+
+  /// Canvas drag hint
+  ///
+  /// In en, this message translates to:
+  /// **'Drag'**
+  String get opticDragHint;
+
+  /// Reflected ray canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'Reflected (θᵣ = {angle}°)'**
+  String opticReflectedThetaR(String angle);
+
+  /// TIR canvas banner
+  ///
+  /// In en, this message translates to:
+  /// **'⚡ Total Internal Reflection (θ₁ > θc)'**
+  String get opticTirCanvas;
+
+  /// Simulation headline for TIR
+  ///
+  /// In en, this message translates to:
+  /// **'⚡ TOTAL INTERNAL REFLECTION'**
+  String get opticTirHeadline;
+
+  /// Simulation headline when not TIR
+  ///
+  /// In en, this message translates to:
+  /// **'Normal Refraction'**
+  String get opticNormalRefraction;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Refracted Angle (θ₂)'**
+  String get opticRefractedAngleRow;
+
+  /// Refracted angle under TIR
+  ///
+  /// In en, this message translates to:
+  /// **'None (TIR)'**
+  String get opticNoneTir;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Critical Angle (θc)'**
+  String get opticCriticalAngleRow;
+
+  /// Critical angle unavailable
+  ///
+  /// In en, this message translates to:
+  /// **'None (n₁ ≤ n₂)'**
+  String get opticNoneLeN2;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get opticStatusRow;
+
+  /// Dispersion canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'White Light Beam'**
+  String get opticWhiteLightBeam;
+
+  /// Dispersion canvas label
+  ///
+  /// In en, this message translates to:
+  /// **'Screen'**
+  String get opticScreenLabel;
+
+  /// Simulation headline
+  ///
+  /// In en, this message translates to:
+  /// **'Violet bends most · Red bends least'**
+  String get opticDispersionHeadline;
+
+  /// Spectrum readout label
+  ///
+  /// In en, this message translates to:
+  /// **'Red (700 nm)'**
+  String get opticRedBand;
+
+  /// Spectrum readout label
+  ///
+  /// In en, this message translates to:
+  /// **'Green (530 nm)'**
+  String get opticGreenBand;
+
+  /// Spectrum readout label
+  ///
+  /// In en, this message translates to:
+  /// **'Violet (400 nm)'**
+  String get opticVioletBand;
+
+  /// Readout row label
+  ///
+  /// In en, this message translates to:
+  /// **'Dispersion'**
+  String get opticDispersionRow;
+
+  /// Dispersion readout summary
+  ///
+  /// In en, this message translates to:
+  /// **'Violet bends most; Red bends least'**
+  String get opticDispersionSummary;
 }
 
 class _AppLocalizationsDelegate

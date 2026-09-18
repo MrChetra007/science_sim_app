@@ -7,6 +7,8 @@ import 'sprites.dart';
 enum LensType { convex, concave }
 
 class ThinLensGame extends BaseOpticsGame {
+  ThinLensGame({required super.l10n});
+
   LensType type = LensType.convex;
   double focalLength = 75;
   double objectDistance = 180;
@@ -130,10 +132,10 @@ class ThinLensGame extends BaseOpticsGame {
     final objImg = objectImage(sprite);
     if (objImg != null) {
       drawSpriteObject(canvas, objImg, objX, axisY, objTipY,
-          label: 'Object (Drag)');
+          label: l10n.opticObjectDrag);
     } else {
       drawObjectArrow(canvas, objX, axisY, objTipY, const Color(0xFFFACC15),
-          'Object (Drag)');
+          l10n.opticObjectDrag);
     }
 
     if (!atInfinity) {
@@ -218,22 +220,23 @@ class ThinLensGame extends BaseOpticsGame {
             isVirtual: isVirtual);
       } else {
         drawImageArrow(canvas, imgX, axisY, imgTipY, imgColor,
-            isVirtual ? 'Virtual Image' : 'Real Image',
+            isVirtual ? l10n.opticVirtualImageShort : l10n.opticRealImageShort,
             isDashed: isVirtual);
       }
     }
 
     if (atInfinity) {
-      natureText = 'Rays parallel (No image)';
+      natureText = l10n.opticRaysParallelNoImage;
     } else {
-      final vStr = di > 0 ? 'Real' : 'Virtual';
-      final oStr = magnification > 0 ? 'Upright' : 'Inverted';
+      final vStr = di > 0 ? l10n.opticImageReal : l10n.opticImageVirtual;
+      final oStr =
+          magnification > 0 ? l10n.opticImageUpright : l10n.opticImageInverted;
       final sStr = magnification.abs() > 1.02
-          ? 'Magnified'
+          ? l10n.opticImageMagnified
           : magnification.abs() < 0.98
-              ? 'Diminished'
-              : 'Same size';
-      natureText = '$vStr, $oStr, $sStr';
+              ? l10n.opticImageDiminished
+              : l10n.opticImageSameSize;
+      natureText = l10n.opticImageNatureFormat(vStr, oStr, sStr);
     }
   }
 
@@ -242,11 +245,11 @@ class ThinLensGame extends BaseOpticsGame {
 
   @override
   List<(String, String)> get readoutRows => [
-        ('Focal Length (f)',
+        (l10n.opticFocalLengthRow,
             '${type == LensType.convex ? '+' : '-'}${focalLength.toStringAsFixed(0)} px'),
-        ('Image Distance (di)',
-            atInfinity ? '∞ (At Infinity)' : '${di.toStringAsFixed(1)} px'),
-        ('Magnification (m)', atInfinity ? '—' : magnification.toStringAsFixed(2)),
-        ('Image Nature', natureText),
+        (l10n.opticImageDistanceRow,
+            atInfinity ? l10n.opticInfinityAtInfinity : '${di.toStringAsFixed(1)} px'),
+        (l10n.opticMagnificationRow, atInfinity ? '—' : magnification.toStringAsFixed(2)),
+        (l10n.opticImageNatureRow, natureText),
       ];
 }

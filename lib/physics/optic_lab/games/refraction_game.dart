@@ -5,6 +5,8 @@ import 'base_optics_game.dart';
 import 'painters.dart';
 
 class RefractionGame extends BaseOpticsGame {
+  RefractionGame({required super.l10n});
+
   double n1 = 1.0;
   double n2 = 1.52;
   double theta1 = 45; // degrees
@@ -63,10 +65,10 @@ class RefractionGame extends BaseOpticsGame {
           ..color = const Color(0xFF38BDF8)
           ..strokeWidth = 2);
 
-    paintText(canvas, 'Medium 1 (n₁ = ${n1.toStringAsFixed(3)})', 24, 34,
+    paintText(canvas, l10n.opticMedium1Canvas(n1.toStringAsFixed(3)), 24, 34,
         const Color(0xFF94A3B8),
         size: 13, bold: true);
-    paintText(canvas, 'Medium 2 (n₂ = ${n2.toStringAsFixed(3)})', 24, cy + 34,
+    paintText(canvas, l10n.opticMedium2Canvas(n2.toStringAsFixed(3)), 24, cy + 34,
         const Color(0xFF94A3B8),
         size: 13, bold: true);
 
@@ -93,9 +95,9 @@ class RefractionGame extends BaseOpticsGame {
     // Laser emitter box
     canvas.drawRect(Rect.fromLTWH(incX - 12, incY - 8, 24, 16),
         Paint()..color = const Color(0xFFEAB308));
-    paintText(canvas, 'LASER', incX - 15, incY + 4, const Color(0xFF000000),
+    paintText(canvas, l10n.opticLaserLabel, incX - 15, incY + 4, const Color(0xFF000000),
         size: 9);
-    paintText(canvas, 'Drag', incX - 10, incY + 18, const Color(0xFF94A3B8),
+    paintText(canvas, l10n.opticDragHint, incX - 10, incY + 18, const Color(0xFF94A3B8),
         size: 9);
 
     drawAngleArc(
@@ -120,7 +122,8 @@ class RefractionGame extends BaseOpticsGame {
     );
     drawArrow(canvas, cx, cy, refX, refY, refColor,
         arrowSize: 10, width: isTir ? 3.5 : 2);
-    paintText(canvas, 'Reflected (θᵣ = ${theta1.toStringAsFixed(1)}°)',
+    paintText(canvas,
+        l10n.opticReflectedThetaR(theta1.toStringAsFixed(1)),
         refX - 40, refY - 12, refColor,
         size: 11);
 
@@ -135,22 +138,23 @@ class RefractionGame extends BaseOpticsGame {
       drawAngleArc(canvas, cx, cy, math.pi / 2 - t2, math.pi / 2, 50,
           'θ₂=${t2Deg.toStringAsFixed(1)}°', const Color(0xFF38BDF8));
     } else {
-      paintText(canvas, '⚡ Total Internal Reflection (θ₁ > θc)', cx + 30,
+      paintText(canvas, l10n.opticTirCanvas, cx + 30,
           cy - 40, const Color(0xFFF87171),
           size: 14, bold: true);
     }
   }
 
   @override
-  String get headline => isTir ? '⚡ TOTAL INTERNAL REFLECTION' : 'Normal Refraction';
+  String get headline => isTir ? l10n.opticTirHeadline : l10n.opticNormalRefraction;
 
   @override
   List<(String, String)> get readoutRows => [
-        ('Incident Angle (θ₁)', '${theta1.toStringAsFixed(1)}°'),
-        ('Refracted Angle (θ₂)',
-            isTir ? 'None (TIR)' : '${theta2.toStringAsFixed(1)}°'),
-        ('Critical Angle (θc)',
-            n1 > n2 ? '${criticalAngle.toStringAsFixed(1)}°' : 'None (n₁ ≤ n₂)'),
-        ('Status', isTir ? '⚡ TOTAL INTERNAL REFLECTION' : 'Normal Refraction'),
+        (l10n.opticIncidentAngleTheta, '${theta1.toStringAsFixed(1)}°'),
+        (l10n.opticRefractedAngleRow,
+            isTir ? l10n.opticNoneTir : '${theta2.toStringAsFixed(1)}°'),
+        (l10n.opticCriticalAngleRow,
+            n1 > n2 ? '${criticalAngle.toStringAsFixed(1)}°' : l10n.opticNoneLeN2),
+        (l10n.opticStatusRow,
+            isTir ? l10n.opticTirHeadline : l10n.opticNormalRefraction),
       ];
 }

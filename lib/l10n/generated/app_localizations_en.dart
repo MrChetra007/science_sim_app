@@ -4421,4 +4421,304 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get opticQ5Explanation =>
       'Violet has the shortest wavelength and the highest refractive index in glass, so it bends the most. Red bends the least.';
+
+  @override
+  String get opticChooseLab => 'Choose a lab';
+
+  @override
+  String get opticAppBarName => 'Optics';
+
+  @override
+  String get opticAppBarSuffix => 'Lab';
+
+  @override
+  String get opticOpenMode => 'Open';
+
+  @override
+  String get opticResetTooltip => 'Reset';
+
+  @override
+  String get opticSimulationFailed => 'Simulation failed to start';
+
+  @override
+  String get opticControls => 'Controls';
+
+  @override
+  String get opticLiveReadout => 'Live Readout';
+
+  @override
+  String get opticRayLegendRay1 => 'Ray 1';
+
+  @override
+  String get opticRayLegendRay1Desc => 'Parallel to axis';
+
+  @override
+  String get opticRayLegendRay2 => 'Ray 2';
+
+  @override
+  String get opticRayLegendRay2Desc => 'Focal point / optical centre';
+
+  @override
+  String get opticRayLegendRay3 => 'Ray 3';
+
+  @override
+  String get opticRayLegendRay3Desc => 'Through curvature / focus';
+
+  @override
+  String get opticRayLegendVirtual => 'Virtual';
+
+  @override
+  String get opticRayLegendVirtualDesc => 'Dashed projections';
+
+  @override
+  String get opticSpriteArrow => 'Arrow';
+
+  @override
+  String get opticSpriteCandle => 'Candle';
+
+  @override
+  String get opticSpritePencil => 'Pencil';
+
+  @override
+  String get opticSpritePen => 'Pen';
+
+  @override
+  String get opticSpriteBook => 'Book';
+
+  @override
+  String get opticObjectLabel => 'Object';
+
+  @override
+  String get opticConcave => 'Concave';
+
+  @override
+  String get opticConvex => 'Convex';
+
+  @override
+  String get opticMirrorAngle => 'Mirror Angle (°)';
+
+  @override
+  String get opticLightSourceAngle => 'Light Source Angle (°)';
+
+  @override
+  String get opticFocalLengthAbs => 'Focal Length (|f| px)';
+
+  @override
+  String get opticObjectDistance => 'Object Distance (do px)';
+
+  @override
+  String get opticObjectHeight => 'Object Height (ho px)';
+
+  @override
+  String get opticMedium1Index => 'Medium 1 Index (n₁)';
+
+  @override
+  String get opticMedium2Index => 'Medium 2 Index (n₂)';
+
+  @override
+  String get opticIncidentAngleTheta => 'Incident Angle (θ₁)';
+
+  @override
+  String get opticPrismApexAngle => 'Prism Apex Angle (α)';
+
+  @override
+  String get opticBeamHeight => 'Beam Height (Y px)';
+
+  @override
+  String get opticBaseIndex => 'Base Refractive Index (nd)';
+
+  @override
+  String get opticModePlaneTitle => 'Plane Mirror';
+
+  @override
+  String get opticModePlaneSubtitle => 'Law of reflection';
+
+  @override
+  String get opticModePlaneTip => '💡 Drag the object on the canvas';
+
+  @override
+  String get opticModeCurvedTitle => 'Curved Mirrors';
+
+  @override
+  String get opticModeCurvedSubtitle => 'Concave & convex, ray tracing';
+
+  @override
+  String get opticModeCurvedTip => '💡 Drag the yellow arrow tip';
+
+  @override
+  String get opticModeRefractionTitle => 'Refraction & TIR';
+
+  @override
+  String get opticModeRefractionSubtitle =>
+      'Snell\'s law & total internal reflection';
+
+  @override
+  String get opticModeRefractionTip => '💡 Drag the laser left/right';
+
+  @override
+  String get opticModeLensTitle => 'Thin Lenses';
+
+  @override
+  String get opticModeLensSubtitle => 'Convex & concave lens diagrams';
+
+  @override
+  String get opticModeLensTip => '💡 Drag the yellow arrow tip';
+
+  @override
+  String get opticModeDispersionTitle => 'Prism Dispersion';
+
+  @override
+  String get opticModeDispersionSubtitle => 'White light into a spectrum';
+
+  @override
+  String get opticModeDispersionTip => '💡 Adjust prism parameters below';
+
+  @override
+  String get opticObjectDrag => 'Object (Drag)';
+
+  @override
+  String get opticVirtualImageLabel => 'Virtual Image S\'';
+
+  @override
+  String get opticVirtualSourceLabel => 'Virtual Source S\'';
+
+  @override
+  String get opticLightSourceDrag => 'Light Source (Drag)';
+
+  @override
+  String get opticAngleIncidenceRow => 'Angle of Incidence (θi)';
+
+  @override
+  String get opticAngleReflectionRow => 'Angle of Reflection (θr)';
+
+  @override
+  String get opticLawRow => 'Law';
+
+  @override
+  String get opticObjectDragTip => 'Object (Drag tip)';
+
+  @override
+  String get opticVirtualImageShort => 'Virtual Image';
+
+  @override
+  String get opticRealImageShort => 'Real Image';
+
+  @override
+  String get opticAtInfinityNoImage => 'At Infinity (No image formed)';
+
+  @override
+  String get opticRaysParallelNoImage => 'Rays parallel (No image)';
+
+  @override
+  String get opticImageReal => 'Real';
+
+  @override
+  String get opticImageVirtual => 'Virtual';
+
+  @override
+  String get opticImageUpright => 'Upright';
+
+  @override
+  String get opticImageInverted => 'Inverted';
+
+  @override
+  String get opticImageMagnified => 'Magnified';
+
+  @override
+  String get opticImageDiminished => 'Diminished';
+
+  @override
+  String get opticImageSameSize => 'Same size';
+
+  @override
+  String opticImageNatureFormat(String type, String orient, String size) {
+    return '$type, $orient, $size';
+  }
+
+  @override
+  String get opticFocalLengthRow => 'Focal Length (f)';
+
+  @override
+  String get opticImageDistanceRow => 'Image Distance (di)';
+
+  @override
+  String get opticMagnificationRow => 'Magnification (m)';
+
+  @override
+  String get opticImageNatureRow => 'Image Nature';
+
+  @override
+  String get opticInfinityParallel => '∞ (Parallel)';
+
+  @override
+  String get opticInfinityAtInfinity => '∞ (At Infinity)';
+
+  @override
+  String opticMedium1Canvas(String index) {
+    return 'Medium 1 (n₁ = $index)';
+  }
+
+  @override
+  String opticMedium2Canvas(String index) {
+    return 'Medium 2 (n₂ = $index)';
+  }
+
+  @override
+  String get opticLaserLabel => 'LASER';
+
+  @override
+  String get opticDragHint => 'Drag';
+
+  @override
+  String opticReflectedThetaR(String angle) {
+    return 'Reflected (θᵣ = $angle°)';
+  }
+
+  @override
+  String get opticTirCanvas => '⚡ Total Internal Reflection (θ₁ > θc)';
+
+  @override
+  String get opticTirHeadline => '⚡ TOTAL INTERNAL REFLECTION';
+
+  @override
+  String get opticNormalRefraction => 'Normal Refraction';
+
+  @override
+  String get opticRefractedAngleRow => 'Refracted Angle (θ₂)';
+
+  @override
+  String get opticNoneTir => 'None (TIR)';
+
+  @override
+  String get opticCriticalAngleRow => 'Critical Angle (θc)';
+
+  @override
+  String get opticNoneLeN2 => 'None (n₁ ≤ n₂)';
+
+  @override
+  String get opticStatusRow => 'Status';
+
+  @override
+  String get opticWhiteLightBeam => 'White Light Beam';
+
+  @override
+  String get opticScreenLabel => 'Screen';
+
+  @override
+  String get opticDispersionHeadline => 'Violet bends most · Red bends least';
+
+  @override
+  String get opticRedBand => 'Red (700 nm)';
+
+  @override
+  String get opticGreenBand => 'Green (530 nm)';
+
+  @override
+  String get opticVioletBand => 'Violet (400 nm)';
+
+  @override
+  String get opticDispersionRow => 'Dispersion';
+
+  @override
+  String get opticDispersionSummary => 'Violet bends most; Red bends least';
 }

@@ -2,6 +2,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/widgets/ad_widgets.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import '../games/base_optics_game.dart';
 import '../games/curved_mirror_game.dart';
 import '../games/dispersion_game.dart';
@@ -32,13 +33,16 @@ class _SimulationScreenState extends State<SimulationScreen> {
     _game.onUiChanged = () => _revision.value++;
   }
 
-  BaseOpticsGame _createGame(OpticsMode mode) => switch (mode) {
-        OpticsMode.plane => PlaneMirrorGame(),
-        OpticsMode.curved => CurvedMirrorGame(),
-        OpticsMode.refraction => RefractionGame(),
-        OpticsMode.lens => ThinLensGame(),
-        OpticsMode.dispersion => DispersionGame(),
-      };
+  BaseOpticsGame _createGame(OpticsMode mode) {
+    final l10n = AppLocalizations.of(context)!;
+    return switch (mode) {
+      OpticsMode.plane => PlaneMirrorGame(l10n: l10n),
+      OpticsMode.curved => CurvedMirrorGame(l10n: l10n),
+      OpticsMode.refraction => RefractionGame(l10n: l10n),
+      OpticsMode.lens => ThinLensGame(l10n: l10n),
+      OpticsMode.dispersion => DispersionGame(l10n: l10n),
+    };
+  }
 
   void _reset() {
     final old = _game;
@@ -74,6 +78,7 @@ class _SimulationScreenState extends State<SimulationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.bg,
       appBar: AppBar(
@@ -82,14 +87,14 @@ class _SimulationScreenState extends State<SimulationScreen> {
           children: [
             Text(widget.mode.emoji, style: const TextStyle(fontSize: 18)),
             const SizedBox(width: 8),
-            Text(widget.mode.title,
+            Text(widget.mode.title(l10n),
                 style: const TextStyle(
                     fontSize: 16, fontWeight: FontWeight.w700)),
           ],
         ),
         actions: [
           IconButton(
-            tooltip: 'Reset',
+            tooltip: l10n.opticResetTooltip,
             icon: const Icon(Icons.refresh, color: AppColors.dim),
             onPressed: _reset,
           ),
@@ -114,7 +119,7 @@ class _SimulationScreenState extends State<SimulationScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(24),
                     child: Text(
-                      'Simulation failed to start',
+                      l10n.opticSimulationFailed,
                       style: const TextStyle(color: AppColors.danger),
                     ),
                   ),
@@ -153,7 +158,7 @@ class _SimulationScreenState extends State<SimulationScreen> {
             right: 12,
             bottom: 16,
             child: Text(
-              widget.mode.tip,
+              widget.mode.tip(l10n),
               style: const TextStyle(color: AppColors.dim, fontSize: 11),
             ),
           ),
@@ -195,17 +200,18 @@ child: Container(
                         ListenableBuilder(
                           listenable: _revision,
                           builder: (context, _) => ReadoutCard(
-                              title: 'Live Readout', rows: _game.readoutRows),
+                              title: l10n.opticLiveReadout,
+                              rows: _game.readoutRows),
                         ),
                         const SizedBox(height: 16),
                         _buildControls(),
                         const SizedBox(height: 16),
-                        const ReadoutCard(
+                        ReadoutCard(
                           rows: [
-                            ('Ray 1', 'Parallel to axis'),
-                            ('Ray 2', 'Focal point / optical centre'),
-                            ('Ray 3', 'Through curvature / focus'),
-                            ('Virtual', 'Dashed projections'),
+                            (l10n.opticRayLegendRay1, l10n.opticRayLegendRay1Desc),
+                            (l10n.opticRayLegendRay2, l10n.opticRayLegendRay2Desc),
+                            (l10n.opticRayLegendRay3, l10n.opticRayLegendRay3Desc),
+                            (l10n.opticRayLegendVirtual, l10n.opticRayLegendVirtualDesc),
                           ],
                         ),
                       ],
@@ -229,15 +235,16 @@ class _PlaneControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionTitle('Controls'),
+        SectionTitle(l10n.opticControls),
         const SizedBox(height: 12),
         SpritePicker(selected: game.sprite, onChanged: game.setSprite),
         const SizedBox(height: 16),
         ValueSlider(
-          label: 'Mirror Angle (°)',
+          label: l10n.opticMirrorAngle,
           value: game.mirrorAngle,
           min: 0,
           max: 180,
@@ -245,7 +252,7 @@ class _PlaneControls extends StatelessWidget {
           onChanged: game.setMirrorAngle,
         ),
         ValueSlider(
-          label: 'Light Source Angle (°)',
+          label: l10n.opticLightSourceAngle,
           value: game.incidentAngle,
           min: -85,
           max: 85,
@@ -264,13 +271,14 @@ class _CurvedMirrorControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionTitle('Controls'),
+        SectionTitle(l10n.opticControls),
         const SizedBox(height: 12),
         ToggleGroup(
-          options: const ['Concave', 'Convex'],
+          options: [l10n.opticConcave, l10n.opticConvex],
           selected: game.type == MirrorType.concave ? 0 : 1,
           onChanged: (i) => game.setType(
               i == 0 ? MirrorType.concave : MirrorType.convex),
@@ -279,7 +287,7 @@ class _CurvedMirrorControls extends StatelessWidget {
         SpritePicker(selected: game.sprite, onChanged: game.setSprite),
         const SizedBox(height: 16),
         ValueSlider(
-          label: 'Focal Length (|f| px)',
+          label: l10n.opticFocalLengthAbs,
           value: game.focalLength,
           min: 60,
           max: 220,
@@ -287,7 +295,7 @@ class _CurvedMirrorControls extends StatelessWidget {
           onChanged: game.setFocalLength,
         ),
         ValueSlider(
-          label: 'Object Distance (do px)',
+          label: l10n.opticObjectDistance,
           value: game.objectDistance,
           min: 40,
           max: 420,
@@ -295,7 +303,7 @@ class _CurvedMirrorControls extends StatelessWidget {
           onChanged: game.setObjectDistance,
         ),
         ValueSlider(
-          label: 'Object Height (ho px)',
+          label: l10n.opticObjectHeight,
           value: game.objectHeight,
           min: 30,
           max: 110,
@@ -314,13 +322,14 @@ class _RefractionControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionTitle('Controls'),
+        SectionTitle(l10n.opticControls),
         const SizedBox(height: 12),
         ValueSlider(
-          label: 'Medium 1 Index (n₁)',
+          label: l10n.opticMedium1Index,
           value: game.n1,
           min: 1.0,
           max: 2.6,
@@ -329,7 +338,7 @@ class _RefractionControls extends StatelessWidget {
           onChanged: game.setN1,
         ),
         ValueSlider(
-          label: 'Medium 2 Index (n₂)',
+          label: l10n.opticMedium2Index,
           value: game.n2,
           min: 1.0,
           max: 2.6,
@@ -338,7 +347,7 @@ class _RefractionControls extends StatelessWidget {
           onChanged: game.setN2,
         ),
         ValueSlider(
-          label: 'Incident Angle (θ₁)',
+          label: l10n.opticIncidentAngleTheta,
           value: game.theta1,
           min: 0,
           max: 89,
@@ -357,13 +366,14 @@ class _LensControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionTitle('Controls'),
+        SectionTitle(l10n.opticControls),
         const SizedBox(height: 12),
         ToggleGroup(
-          options: const ['Convex', 'Concave'],
+          options: [l10n.opticConvex, l10n.opticConcave],
           selected: game.type == LensType.convex ? 0 : 1,
           onChanged: (i) =>
               game.setType(i == 0 ? LensType.convex : LensType.concave),
@@ -372,7 +382,7 @@ class _LensControls extends StatelessWidget {
         SpritePicker(selected: game.sprite, onChanged: game.setSprite),
         const SizedBox(height: 16),
         ValueSlider(
-          label: 'Focal Length (|f| px)',
+          label: l10n.opticFocalLengthAbs,
           value: game.focalLength,
           min: 60,
           max: 220,
@@ -380,7 +390,7 @@ class _LensControls extends StatelessWidget {
           onChanged: game.setFocalLength,
         ),
         ValueSlider(
-          label: 'Object Distance (do px)',
+          label: l10n.opticObjectDistance,
           value: game.objectDistance,
           min: 40,
           max: 420,
@@ -388,7 +398,7 @@ class _LensControls extends StatelessWidget {
           onChanged: game.setObjectDistance,
         ),
         ValueSlider(
-          label: 'Object Height (ho px)',
+          label: l10n.opticObjectHeight,
           value: game.objectHeight,
           min: 30,
           max: 110,
@@ -407,13 +417,14 @@ class _DispersionControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionTitle('Controls'),
+        SectionTitle(l10n.opticControls),
         const SizedBox(height: 12),
         ValueSlider(
-          label: 'Prism Apex Angle (α)',
+          label: l10n.opticPrismApexAngle,
           value: game.apexAngle,
           min: 40,
           max: 75,
@@ -421,7 +432,7 @@ class _DispersionControls extends StatelessWidget {
           onChanged: game.setApexAngle,
         ),
         ValueSlider(
-          label: 'Beam Height (Y px)',
+          label: l10n.opticBeamHeight,
           value: game.beamYOffset,
           min: -90,
           max: 70,
@@ -429,7 +440,7 @@ class _DispersionControls extends StatelessWidget {
           onChanged: game.setBeamYOffset,
         ),
         ValueSlider(
-          label: 'Base Refractive Index (nd)',
+          label: l10n.opticBaseIndex,
           value: game.baseN,
           min: 1.45,
           max: 1.85,

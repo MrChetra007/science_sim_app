@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/widgets/ad_widgets.dart';
+import '../../../l10n/generated/app_localizations.dart';
 import '../models/optics_mode.dart';
 import '../theme.dart';
 import 'simulation_screen.dart';
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 20,
@@ -20,13 +22,13 @@ class HomeScreen extends StatelessWidget {
             Text.rich(
               TextSpan(
                 children: [
-                  const TextSpan(
-                    text: 'Optics',
-                    style: TextStyle(
+                  TextSpan(
+                    text: l10n.opticAppBarName,
+                    style: const TextStyle(
                         color: AppColors.text, fontWeight: FontWeight.w700),
                   ),
                   TextSpan(
-                    text: 'Lab',
+                    text: l10n.opticAppBarSuffix,
                     style: TextStyle(
                         color: AppColors.accent, fontWeight: FontWeight.w700),
                   ),
@@ -44,11 +46,11 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 8),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Text(
-                  'Choose a lab',
-                  style: TextStyle(
+                  l10n.opticChooseLab,
+                  style: const TextStyle(
                     color: AppColors.dim,
                     fontSize: 14,
                   ),
@@ -66,8 +68,8 @@ class HomeScreen extends StatelessWidget {
                     childAspectRatio: 0.92,
                   ),
                   itemCount: OpticsMode.values.length,
-                  itemBuilder: (context, i) =>
-                      _ModeCard(mode: OpticsMode.values[i]),
+                  itemBuilder: (context, i) => _ModeCard(
+                      mode: OpticsMode.values[i], l10n: l10n),
                 ),
               ),
               const SafeArea(child: GlobalBannerAdWidget()),
@@ -80,9 +82,10 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _ModeCard extends StatelessWidget {
-  const _ModeCard({required this.mode});
+  const _ModeCard({required this.mode, required this.l10n});
 
   final OpticsMode mode;
+  final AppLocalizations l10n;
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +123,7 @@ class _ModeCard extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                mode.title,
+                mode.title(l10n),
                 style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
@@ -129,7 +132,7 @@ class _ModeCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                mode.subtitle,
+                mode.subtitle(l10n),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
@@ -139,15 +142,15 @@ class _ModeCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              const Row(
+              Row(
                 children: [
                   Text(
-                    'Open',
-                    style: TextStyle(color: AppColors.accent, fontSize: 12),
+                    l10n.opticOpenMode,
+                    style: const TextStyle(color: AppColors.accent, fontSize: 12),
                   ),
-                  Icon(Icons.arrow_forward,
+                  const Icon(Icons.arrow_forward,
                       size: 14, color: AppColors.accent),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
             ],

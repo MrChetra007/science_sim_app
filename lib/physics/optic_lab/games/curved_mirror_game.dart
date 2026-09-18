@@ -8,6 +8,8 @@ import 'sprites.dart';
 enum MirrorType { concave, convex }
 
 class CurvedMirrorGame extends BaseOpticsGame {
+  CurvedMirrorGame({required super.l10n});
+
   MirrorType type = MirrorType.concave;
   double focalLength = 100;
   double objectDistance = 210;
@@ -141,10 +143,10 @@ class CurvedMirrorGame extends BaseOpticsGame {
     final objImg = objectImage(sprite);
     if (objImg != null) {
       drawSpriteObject(canvas, objImg, objX, axisY, objTipY,
-          label: 'Object (Drag tip)');
+          label: l10n.opticObjectDragTip);
     } else {
       drawObjectArrow(canvas, objX, axisY, objTipY, const Color(0xFFFACC15),
-          'Object (Drag tip)');
+          l10n.opticObjectDragTip);
     }
 
     if (!atInfinity) {
@@ -238,22 +240,23 @@ class CurvedMirrorGame extends BaseOpticsGame {
             isVirtual: isVirtual, flipX: true);
       } else {
         drawImageArrow(canvas, imgX, axisY, imgTipY, imgColor,
-            isVirtual ? 'Virtual Image' : 'Real Image',
+            isVirtual ? l10n.opticVirtualImageShort : l10n.opticRealImageShort,
             isDashed: isVirtual);
       }
     }
 
     if (atInfinity) {
-      natureText = 'At Infinity (No image formed)';
+      natureText = l10n.opticAtInfinityNoImage;
     } else {
-      final typeStr = di > 0 ? 'Real' : 'Virtual';
-      final orientStr = magnification > 0 ? 'Upright' : 'Inverted';
+      final typeStr = di > 0 ? l10n.opticImageReal : l10n.opticImageVirtual;
+      final orientStr =
+          magnification > 0 ? l10n.opticImageUpright : l10n.opticImageInverted;
       final sizeStr = magnification.abs() > 1.02
-          ? 'Magnified'
+          ? l10n.opticImageMagnified
           : magnification.abs() < 0.98
-              ? 'Diminished'
-              : 'Same size';
-      natureText = '$typeStr, $orientStr, $sizeStr';
+              ? l10n.opticImageDiminished
+              : l10n.opticImageSameSize;
+      natureText = l10n.opticImageNatureFormat(typeStr, orientStr, sizeStr);
     }
   }
 
@@ -262,11 +265,11 @@ class CurvedMirrorGame extends BaseOpticsGame {
 
   @override
   List<(String, String)> get readoutRows => [
-        ('Focal Length (f)',
+        (l10n.opticFocalLengthRow,
             '${type == MirrorType.concave ? '+' : '-'}${focalLength.toStringAsFixed(0)} px'),
-        ('Image Distance (di)',
-            atInfinity ? '∞ (Parallel)' : '${di.toStringAsFixed(1)} px'),
-        ('Magnification (m)', atInfinity ? '—' : magnification.toStringAsFixed(2)),
-        ('Image Nature', natureText),
+        (l10n.opticImageDistanceRow,
+            atInfinity ? l10n.opticInfinityParallel : '${di.toStringAsFixed(1)} px'),
+        (l10n.opticMagnificationRow, atInfinity ? '—' : magnification.toStringAsFixed(2)),
+        (l10n.opticImageNatureRow, natureText),
       ];
 }
