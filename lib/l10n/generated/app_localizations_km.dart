@@ -4053,279 +4053,279 @@ class AppLocalizationsKm extends AppLocalizations {
       'ពេលវេលាផ្ទាល់ (\$t_0\$) ត្រូវបានកំណត់ថាជាចន្លោះពេលរវាងព្រឹត្តិការណ៍ពីរដែលវាស់ដោយអ្នកសង្កេតការណ៍ដែលស្ថិតនៅនឹងថ្កល់ធៀបនឹងព្រឹត្តិការណ៍ទាំងនោះ (ឧទាហរណ៍៖ ការប្រើប្រាស់នាឡិកាមួយដែលវត្តមាននៅចំកន្លែងកើតឡើងនៃព្រឹត្តិការណ៍ទាំងពីរ)។';
 
   @override
-  String get opticLab => 'OPTICS';
+  String get opticLab => 'អុបទិក';
 
   @override
-  String get opticLabSubtitle => 'Geometric Optics';
+  String get opticLabSubtitle => 'អុបទិកធរណីមាត្រ';
 
   @override
-  String get opticLabTutorial => 'Optics Lab - Light & Lenses';
+  String get opticLabTutorial => 'មន្ទីរពិសោធន៍អុបទិក - ពន្លឺ និងកែវថត';
 
   @override
-  String get opticHomeTitle => 'OPTICS LAB';
+  String get opticHomeTitle => 'មន្ទីរពិសោធន៍អុបទិក';
 
   @override
-  String get opticLessons => 'LESSONS';
+  String get opticLessons => 'មេរៀន';
 
   @override
-  String get opticPractice => 'PRACTICE';
+  String get opticPractice => 'ការអនុវត្ត';
 
   @override
-  String get opticQuiz => 'Quiz';
+  String get opticQuiz => 'សំណួរសាកល្បង';
 
   @override
-  String get opticQuizSubtitle => 'Test your knowledge of optics';
+  String get opticQuizSubtitle => 'សាកល្បងចំណេះដឹងរបស់អ្នកអំពីអុបទិក';
 
   @override
-  String get opticSimulation => 'Simulation';
+  String get opticSimulation => 'ការក្លែងធ្វើ';
 
   @override
-  String get opticSimulationSubtitle => 'Interactive ray-tracing labs';
+  String get opticSimulationSubtitle =>
+      'មន្ទីរពិសោធន៍តាមដានដំណើររស្មីអន្តរកម្ម';
 
   @override
-  String get opticComplete => 'Complete';
+  String get opticComplete => 'បញ្ចប់';
 
   @override
-  String get opticNextQuestion => 'Next Question';
+  String get opticNextQuestion => 'សំណួរបន្ទាប់';
 
   @override
-  String get opticSeeResults => 'See Results';
+  String get opticSeeResults => 'មើលលទ្ធផល';
 
   @override
-  String get opticQuizResults => 'Quiz Results';
+  String get opticQuizResults => 'លទ្ធផលសំណួរសាកល្បង';
 
   @override
-  String get opticGreatJob =>
-      'Great job! You have a solid understanding of optics.';
+  String get opticGreatJob => 'ល្អណាស់! អ្នកយល់ដឹងអំពីអុបទិកបានយ៉ាងល្អ។';
 
   @override
   String get opticKeepPracticing =>
-      'Keep practicing! Review the lessons and try again.';
+      'សូមបន្តអនុវត្ត! ពិនិត្យមើលមេរៀនឡើងវិញ ហើយសាកល្បងម្តងទៀត។';
 
   @override
-  String get opticRetryQuiz => 'Retry Quiz';
+  String get opticRetryQuiz => 'សាកល្បងសំណួរម្តងទៀត';
 
   @override
-  String get opticBackToHome => 'Back to Home';
+  String get opticBackToHome => 'ត្រឡប់ទៅទំព័រដើម';
 
   @override
   String opticStepOf(String current, String total) {
-    return 'Step $current of $total';
+    return 'ជំហាន $current ក្នុងចំណោម $total';
   }
 
   @override
   String opticQuestionOf(String current, String total) {
-    return 'Question $current of $total';
+    return 'សំណួរ $current ក្នុងចំណោម $total';
   }
 
   @override
   String opticScoreLabel(String score) {
-    return 'Score: $score';
+    return 'ពិន្ទុ៖ $score';
   }
 
   @override
   String opticPercentCorrect(String percent) {
-    return '$percent% Correct';
+    return 'ត្រឹមត្រូវ $percent%';
   }
 
   @override
-  String get opticL1Title => 'Reflection & Plane Mirrors';
+  String get opticL1Title => 'ការឆ្លុះ និងកញ្ចក់រាប';
 
   @override
-  String get opticL1Subtitle => 'The law of reflection';
+  String get opticL1Subtitle => 'ច្បាប់នៃការឆ្លុះ';
 
   @override
-  String get opticL1S1Title => 'What is Reflection?';
+  String get opticL1S1Title => 'តើការឆ្លុះគឺជាអ្វី?';
 
   @override
   String get opticL1S1Body =>
-      'Reflection is when light bounces off a surface. When a ray of light strikes a plane mirror, it leaves the mirror at the same angle it arrived. The incident ray, the reflected ray and the normal all lie in the same plane.';
+      'ការឆ្លុះគឺជាបាតុភូតដែលពន្លឺប៉ះត្រឡប់ពីផ្ទៃមួយ។ នៅពេលកាំរស្មីពន្លឺប៉ះកញ្ចក់រាប វាចាកចេញពីកញ្ចក់តាមមុំដូចគ្នានឹងមុំដែលវាចូលមក។ កាំរស្មីចូល កាំរស្មីឆ្លុះ និងបន្ទាត់កែង ស្ថិតនៅក្នុងប្លង់តែមួយ។';
 
   @override
-  String get opticL1S2Title => 'The Law of Reflection';
+  String get opticL1S2Title => 'ច្បាប់នៃការឆ្លុះ';
 
   @override
   String get opticL1S2Body =>
-      'The angle of incidence (θi) is the angle between the incident ray and the normal line (perpendicular to the surface). The law of reflection states that this equals the angle of reflection (θr):';
+      'មុំចូល (θi) គឺជាមុំរវាងកាំរស្មីចូល និងបន្ទាត់កែង (កែងនឹងផ្ទៃ)។ ច្បាប់នៃការឆ្លុះចែងថា មុំនេះស្មើនឹងមុំឆ្លុះ (θr)៖';
 
   @override
   String get opticL1S2Formula => 'θi = θr';
 
   @override
-  String get opticL1S3Title => 'Virtual Images';
+  String get opticL1S3Title => 'រូបភាពនិម្មិត';
 
   @override
   String get opticL1S3Body =>
-      'A plane mirror always forms a virtual image. The image appears to be behind the mirror, it is upright, the same size as the object, and laterally inverted (left and right are swapped).';
+      'កញ្ចក់រាបតែងតែបង្កើតរូបភាពនិម្មិត។ រូបភាពមើលទៅដូចជាស្ថិតនៅខាងក្រោយកញ្ចក់ វាមានទិសត្រង់ មានទំហំដូចវត្ថុ ហើយបញ្ច្រាសឆ្វេងស្តាំ។';
 
   @override
-  String get opticL1S4Title => 'Explore the Simulation';
+  String get opticL1S4Title => 'ស្វែងយល់អំពីការក្លែងធ្វើ';
 
   @override
   String get opticL1S4Body =>
-      'Open the Plane Mirror lab. Drag the object or light source on the canvas, and tilt the mirror to see θi and θr stay equal in the live readout.';
+      'បើកមន្ទីរពិសោធន៍កញ្ចក់រាប។ អូសវត្ថុ ឬប្រភពពន្លឺលើផ្ទាំងគំនូរ ហើយបង្វិលកញ្ចក់ ដើម្បីមើលថា θi និង θr នៅតែស្មើគ្នាក្នុងការបង្ហាញផ្ទាល់។';
 
   @override
-  String get opticL2Title => 'Curved Mirrors';
+  String get opticL2Title => 'កញ្ចក់កោង';
 
   @override
-  String get opticL2Subtitle => 'Concave & convex mirror equations';
+  String get opticL2Subtitle => 'សមីការកញ្ចក់ប្រហោង និងកញ្ចក់ប៉ោង';
 
   @override
-  String get opticL2S1Title => 'Concave & Convex Mirrors';
+  String get opticL2S1Title => 'កញ្ចក់ប្រហោង និងកញ្ចក់ប៉ោង';
 
   @override
   String get opticL2S1Body =>
-      'A concave mirror curves inward like a cave and converges light rays. A convex mirror curves outward and diverges light rays, giving a wider field of view. Both are used everywhere from car side mirrors to telescopes.';
+      'កញ្ចក់ប្រហោងកោងចូលដូចរូងភ្នំ ហើយប្រមូលកាំរស្មីពន្លឺ។ កញ្ចក់ប៉ោងកោងចេញក្រៅ ហើយបំបែកកាំរស្មីពន្លឺ ធ្វើឱ្យមានទិដ្ឋភាពធំទូលាយជាងមុន។ កញ្ចក់ទាំងពីរប្រភេទត្រូវបានប្រើគ្រប់ទីកន្លែង ចាប់ពីកញ្ចក់ចំហៀងរថយន្តរហូតដល់កែវយឹត។';
 
   @override
-  String get opticL2S2Title => 'Focal Length';
+  String get opticL2S2Title => 'ប្រវែងប្រសព្វ';
 
   @override
   String get opticL2S2Body =>
-      'A curved mirror has a centre of curvature (C) and a focal point (F). Parallel rays meeting the mirror all reflect through F. The focal length (f) is half the radius of curvature (R):';
+      'កញ្ចក់កោងមានមជ្ឈមណ្ឌលកំណោង (C) និងចំណុចប្រសព្វ (F)។ កាំរស្មីស្របគ្នាដែលប៉ះកញ្ចក់ នឹងឆ្លុះឆ្លងកាត់ F។ ប្រវែងប្រសព្វ (f) ស្មើនឹងពាក់កណ្តាលកាំកំណោង (R)៖';
 
   @override
   String get opticL2S2Formula => 'f = R / 2';
 
   @override
-  String get opticL2S3Title => 'Mirror Equation';
+  String get opticL2S3Title => 'សមីការកញ្ចក់';
 
   @override
   String get opticL2S3Body =>
-      'The mirror equation links the object distance (do), image distance (di) and focal length (f). The magnification (m) tells whether the image is enlarged or reduced, and the sign of m tells if it is upright or inverted:';
+      'សមីការកញ្ចក់ភ្ជាប់ចម្ងាយវត្ថុ (do) ចម្ងាយរូបភាព (di) និងប្រវែងប្រសព្វ (f)។ ការពង្រីក (m) បង្ហាញថារូបភាពត្រូវបានពង្រីក ឬបង្រួម ហើយសញ្ញារបស់ m បង្ហាញថារូបភាពមានទិសត្រង់ ឬបញ្ច្រាស៖';
 
   @override
   String get opticL2S3Formula => '1/f = 1/do + 1/di\nm = -di/do';
 
   @override
-  String get opticL2S4Title => 'Real & Virtual Images';
+  String get opticL2S4Title => 'រូបភាពពិត និងរូបភាពនិម្មិត';
 
   @override
   String get opticL2S4Body =>
-      'Concave mirrors can form real, inverted images when the object is beyond the focal point, or virtual, upright magnified images when the object is inside the focal point. Convex mirrors always form virtual, upright, diminished images.';
+      'កញ្ចក់ប្រហោងអាចបង្កើតរូបភាពពិតដែលបញ្ច្រាស នៅពេលវត្ថុស្ថិតនៅឆ្ងាយជាងចំណុចប្រសព្វ ឬបង្កើតរូបភាពនិម្មិត ត្រង់ និងពង្រីក នៅពេលវត្ថុស្ថិតនៅខាងក្នុងចំណុចប្រសព្វ។ កញ្ចក់ប៉ោងតែងតែបង្កើតរូបភាពនិម្មិត ត្រង់ និងតូចជាងវត្ថុ។';
 
   @override
-  String get opticL3Title => 'Refraction & Snell\'s Law';
+  String get opticL3Title => 'ចំណាំងបែរ និងច្បាប់ Snell';
 
   @override
-  String get opticL3Subtitle => 'Bending of light between media';
+  String get opticL3Subtitle => 'ការបត់របស់ពន្លឺរវាងមជ្ឈដ្ឋាន';
 
   @override
-  String get opticL3S1Title => 'Why Light Bends';
+  String get opticL3S1Title => 'ហេតុអ្វីបានជាពន្លឺបត់?';
 
   @override
   String get opticL3S1Body =>
-      'When light passes from one transparent medium to another, its speed changes, which makes it change direction. This bending of light is called refraction.';
+      'នៅពេលពន្លឺឆ្លងពីមជ្ឈដ្ឋានថ្លាមួយទៅមជ្ឈដ្ឋានថ្លាមួយទៀត ល្បឿនរបស់វាប្រែប្រួល ដែលធ្វើឱ្យទិសដៅរបស់វាប្រែប្រួលផងដែរ។ ការបត់របស់ពន្លឺនេះហៅថា ចំណាំងបែរ។';
 
   @override
-  String get opticL3S2Title => 'Snell\'s Law';
+  String get opticL3S2Title => 'ច្បាប់ Snell';
 
   @override
   String get opticL3S2Body =>
-      'Snell\'s law relates the angles θ₁ and θ₂ to the refractive indices n₁ and n₂ of the two media. Light bends toward the normal when entering a denser medium (higher n):';
+      'ច្បាប់ Snell បង្ហាញទំនាក់ទំនងរវាងមុំ θ₁ និង θ₂ ជាមួយសន្ទស្សន៍ចំណាំងបែរ n₁ និង n₂ នៃមជ្ឈដ្ឋានទាំងពីរ។ ពន្លឺបត់ទៅរកបន្ទាត់កែង នៅពេលចូលទៅក្នុងមជ្ឈដ្ឋានដែលមានដង់ស៊ីតេខ្ពស់ជាង (n ខ្ពស់ជាង)៖';
 
   @override
   String get opticL3S2Formula => 'n₁ sin θ₁ = n₂ sin θ₂';
 
   @override
-  String get opticL3S3Title => 'Critical Angle & TIR';
+  String get opticL3S3Title => 'មុំកំណត់ និង TIR';
 
   @override
   String get opticL3S3Body =>
-      'When light travels from a denser to a rarer medium, there is a critical angle (θc). Beyond it, no light escapes and all of it is reflected back inside - this is total internal reflection (TIR), used in fiber optics:';
+      'នៅពេលពន្លឺធ្វើដំណើរពីមជ្ឈដ្ឋានដង់ស៊ីតេខ្ពស់ទៅមជ្ឈដ្ឋានដង់ស៊ីតេទាប មានមុំកំណត់មួយ (θc)។ លើសពីមុំនេះ គ្មានពន្លឺអាចចេញបានទេ ហើយពន្លឺទាំងអស់ត្រូវបានឆ្លុះត្រឡប់នៅខាងក្នុង — នេះហៅថា ការឆ្លុះពេញលេញខាងក្នុង (TIR) ដែលត្រូវបានប្រើក្នុងសរសៃអុបទិក៖';
 
   @override
   String get opticL3S3Formula => 'sin θc = n₂ / n₁  (n₁ > n₂)';
 
   @override
-  String get opticL3S4Title => 'Explore the Simulation';
+  String get opticL3S4Title => 'ស្វែងយល់អំពីការក្លែងធ្វើ';
 
   @override
   String get opticL3S4Body =>
-      'Open the Refraction lab. Drag the laser, adjust n₁ and n₂, and angle θ₁ past the critical angle to trigger total internal reflection.';
+      'បើកមន្ទីរពិសោធន៍ចំណាំងបែរ។ អូសឡាស៊ែរ កែតម្រូវ n₁ និង n₂ ហើយបង្កើនមុំ θ₁ ឱ្យលើសមុំកំណត់ ដើម្បីបង្កើតការឆ្លុះពេញលេញខាងក្នុង។';
 
   @override
-  String get opticL4Title => 'Thin Lenses';
+  String get opticL4Title => 'កែវថតស្តើង';
 
   @override
-  String get opticL4Subtitle => 'Convex & concave lens diagrams';
+  String get opticL4Subtitle => 'គំនូសតាងកែវថតប៉ោង និងប្រហោង';
 
   @override
-  String get opticL4S1Title => 'Converging & Diverging';
+  String get opticL4S1Title => 'កែវប្រមូល និងកែវបំបែក';
 
   @override
   String get opticL4S1Body =>
-      'A convex (converging) lens is thicker in the middle and brings parallel rays to a focus. A concave (diverging) lens is thinner in the middle and spreads parallel rays outward as if they came from a focus.';
+      'កែវប៉ោង (កែវប្រមូល) មានកម្រាស់ច្រើននៅកណ្តាល ហើយនាំកាំរស្មីស្របគ្នាទៅកាន់ចំណុចប្រសព្វ។ កែវប្រហោង (កែវបំបែក) ស្តើងនៅកណ្តាល ហើយបំបែកកាំរស្មីស្របគ្នាចេញក្រៅ ដូចជាកាំរស្មីទាំងនោះចេញមកពីចំណុចប្រសព្វមួយ។';
 
   @override
-  String get opticL4S2Title => 'Lens Equation';
+  String get opticL4S2Title => 'សមីការកែវថត';
 
   @override
   String get opticL4S2Body =>
-      'The thin-lens equation has the same form as the mirror equation. For a converging lens, an object beyond the focal point produces a real, inverted image, while an object inside the focal point produces a virtual, upright image:';
+      'សមីការកែវថតស្តើងមានទម្រង់ដូចគ្នានឹងសមីការកញ្ចក់។ សម្រាប់កែវប្រមូល វត្ថុដែលស្ថិតនៅក្រៅចំណុចប្រសព្វ បង្កើតរូបភាពពិតដែលបញ្ច្រាស ខណៈវត្ថុដែលស្ថិតនៅខាងក្នុងចំណុចប្រសព្វ បង្កើតរូបភាពនិម្មិតដែលត្រង់៖';
 
   @override
   String get opticL4S2Formula => '1/f = 1/do + 1/di\nm = -di/do';
 
   @override
-  String get opticL4S3Title => 'Lens Power';
+  String get opticL4S3Title => 'អានុភាពកែវថត';
 
   @override
   String get opticL4S3Body =>
-      'Opticians describe lenses by their power (P) in dioptres (D). Power is the reciprocal of the focal length in metres. A converging lens has positive power and a diverging lens negative power:';
+      'អ្នកជំនាញអុបទិកពិពណ៌នាកែវថតតាមអានុភាពរបស់វា (P) ជាឯកតាឌីអុបទ័រ (D)។ អានុភាពគឺជាតម្លៃច្រាសនៃប្រវែងប្រសព្វដែលគិតជាម៉ែត្រ។ កែវប្រមូលមានអានុភាពវិជ្ជមាន ហើយកែវបំបែកមានអានុភាពអវិជ្ជមាន៖';
 
   @override
   String get opticL4S3Formula => 'P = 1 / f';
 
   @override
-  String get opticL4S4Title => 'Explore the Simulation';
+  String get opticL4S4Title => 'ស្វែងយល់អំពីការក្លែងធ្វើ';
 
   @override
   String get opticL4S4Body =>
-      'Open the Thin Lenses lab. Switch between convex and concave, drag the object arrow, and watch how the image distance and nature update live.';
+      'បើកមន្ទីរពិសោធន៍កែវថតស្តើង។ ប្តូររវាងកែវប៉ោង និងកែវប្រហោង អូសព្រួញវត្ថុ ហើយមើលការផ្លាស់ប្តូរចម្ងាយ និងលក្ខណៈរូបភាពតាមពេលវេលាជាក់ស្តែង។';
 
   @override
-  String get opticL5Title => 'Prism Dispersion';
+  String get opticL5Title => 'ការបំបែកពណ៌ដោយព្រីស';
 
   @override
-  String get opticL5Subtitle => 'White light into a spectrum';
+  String get opticL5Subtitle => 'បំបែកពន្លឺសទៅជាវិសាលគម';
 
   @override
-  String get opticL5S1Title => 'White Light & Prisms';
+  String get opticL5S1Title => 'ពន្លឺស និងព្រីស';
 
   @override
   String get opticL5S1Body =>
-      'White light is a mixture of all colours of the visible spectrum. When it passes through a glass prism, each colour is refracted by a slightly different amount, so the white light spreads into a rainbow.';
+      'ពន្លឺសគឺជាល្បាយនៃពណ៌ទាំងអស់ក្នុងវិសាលគមដែលអាចមើលឃើញ។ នៅពេលវាឆ្លងកាត់ព្រីសកញ្ចក់ ពណ៌នីមួយៗត្រូវបានចំណាំងបែក្នុងកម្រិតខុសគ្នាបន្តិច ដូច្នេះពន្លឺសបានបែកចេញជាឥន្ទធនូ។';
 
   @override
-  String get opticL5S2Title => 'Why Violet Bends Most';
+  String get opticL5S2Title => 'ហេតុអ្វីបានជាពណ៌ស្វាយបត់ច្រើនជាងគេ?';
 
   @override
   String get opticL5S2Body =>
-      'The refractive index of glass depends on the wavelength of light. Violet has the shortest wavelength and is slowed (and bent) the most, while red has the longest wavelength and bends the least:';
+      'សន្ទស្សន៍ចំណាំងបែររបស់កញ្ចក់អាស្រ័យលើប្រវែងរលករបស់ពន្លឺ។ ពណ៌ស្វាយមានប្រវែងរលកខ្លីបំផុត ដូច្នេះវាត្រូវបានបន្ថយល្បឿន និងបត់ច្រើនជាងគេ ខណៈពណ៌ក្រហមមានប្រវែងរលកវែងបំផុត ហើយបត់តិចជាងគេ៖';
 
   @override
   String get opticL5S2Formula =>
       'n_red < n_orange < n_yellow < n_green < n_blue < n_violet';
 
   @override
-  String get opticL5S3Title => 'Dispersion in Nature';
+  String get opticL5S3Title => 'ការបំបែកពណ៌ក្នុងធម្មជាតិ';
 
   @override
   String get opticL5S3Body =>
-      'Rainbows are created when sunlight refracts and reflects inside raindrops, dispersing into a spectrum. Dispersion also explains chromatic aberration in lenses.';
+      'ឥន្ទធនូកើតឡើងនៅពេលពន្លឺព្រះអាទិត្យចំណាំងបែរ និងឆ្លុះនៅខាងក្នុងដំណក់ទឹកភ្លៀង ហើយបំបែកជាវិសាលគម។ ការបំបែកពណ៌ក៏ពន្យល់អំពីភាពមិនប្រក្រតីនៃពណ៌ក្នុងកែវថតផងដែរ។';
 
   @override
-  String get opticL5S4Title => 'Explore the Simulation';
+  String get opticL5S4Title => 'ស្វែងយល់អំពីការក្លែងធ្វើ';
 
   @override
   String get opticL5S4Body =>
-      'Open the Prism Dispersion lab. Adjust the prism apex angle and beam height to see how wide the spectrum spreads on the screen.';
+      'បើកមន្ទីរពិសោធន៍ការបំបែកពណ៌ដោយព្រីស។ កែតម្រូវមុំកំពូលព្រីស និងកម្ពស់ធ្នឹម ដើម្បីមើលថាវិសាលគមបែកទូលាយប៉ុណ្ណានៅលើអេក្រង់។';
 
   @override
   String get opticQ1Question =>
-      'A ray strikes a plane mirror with an angle of incidence of 30°. What is the angle of reflection?';
+      'កាំរស្មីមួយប៉ះកញ្ចក់រាបដោយមានមុំចូល 30°។ តើមុំឆ្លុះមានតម្លៃប៉ុន្មាន?';
 
   @override
   String get opticQ1Options => '[\"15°\",\"30°\",\"60°\",\"90°\"]';
@@ -4335,26 +4335,26 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get opticQ1Explanation =>
-      'The law of reflection states θi = θr, so the angle of reflection equals the angle of incidence: 30°.';
+      'ច្បាប់នៃការឆ្លុះចែងថា θi = θr ដូច្នេះមុំឆ្លុះស្មើនឹងមុំចូល៖ 30°។';
 
   @override
   String get opticQ2Question =>
-      'A concave mirror forms a real image. What does this mean?';
+      'កញ្ចក់ប្រហោងបង្កើតរូបភាពពិត។ តើនេះមានន័យដូចម្តេច?';
 
   @override
   String get opticQ2Options =>
-      '[\"The image is always bigger than the object\",\"The reflected rays actually meet and can be projected on a screen\",\"The image is upright and virtual\",\"No image is formed\"]';
+      '[\"រូបភាពតែងតែធំជាងវត្ថុ\",\"កាំរស្មីឆ្លុះជួបគ្នាពិតប្រាកដ ហើយអាចបញ្ចាំងលើអេក្រង់បាន\",\"រូបភាពត្រង់ និងជារូបភាពនិម្មិត\",\"គ្មានរូបភាពត្រូវបានបង្កើតទេ\"]';
 
   @override
   String get opticQ2CorrectIndex => '1';
 
   @override
   String get opticQ2Explanation =>
-      'A real image forms where reflected rays actually converge, so it can be projected onto a screen. It is usually inverted.';
+      'រូបភាពពិតកើតឡើងនៅកន្លែងដែលកាំរស្មីឆ្លុះប្រមូលផ្តុំគ្នាពិតប្រាកដ ដូច្នេះវាអាចបញ្ចាំងលើអេក្រង់បាន។ ជាទូទៅ វាមានទិសបញ្ច្រាស។';
 
   @override
   String get opticQ3Question =>
-      'Light goes from air (n₁ = 1.0) into glass (n₂ = 1.5) at an incident angle of 30° (sin 30° = 0.5). What is the refracted angle?';
+      'ពន្លឺធ្វើដំណើរពីខ្យល់ (n₁ = 1.0) ចូលទៅក្នុងកញ្ចក់ (n₂ = 1.5) ដោយមានមុំចូល 30° (sin 30° = 0.5)។ តើមុំចំណាំងបែរមានតម្លៃប៉ុន្មាន?';
 
   @override
   String get opticQ3Options => '[\"30°\",\"45°\",\"19.5°\",\"12°\"]';
@@ -4364,34 +4364,34 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get opticQ3Explanation =>
-      'Using Snell\'s law: 1.0 × sin 30° = 1.5 × sin θ₂, so sin θ₂ = 0.5/1.5 = 0.333, giving θ₂ ≈ 19.5°. The ray bends toward the normal.';
+      'តាមច្បាប់ Snell៖ 1.0 × sin 30° = 1.5 × sin θ₂ ដូច្នេះ sin θ₂ = 0.5/1.5 = 0.333 ហើយទទួលបាន θ₂ ≈ 19.5°។ កាំរស្មីបត់ទៅរកបន្ទាត់កែង។';
 
   @override
   String get opticQ4Question =>
-      'Total internal reflection is only possible when:';
+      'ការឆ្លុះពេញលេញខាងក្នុងអាចកើតឡើងបានតែក្នុងករណី៖';
 
   @override
   String get opticQ4Options =>
-      '[\"Light travels from a rarer to a denser medium\",\"The angle of incidence is less than the critical angle\",\"Light travels from a denser to a rarer medium at an angle greater than the critical angle\",\"The two media have equal refractive indices\"]';
+      '[\"ពន្លឺធ្វើដំណើរពីមជ្ឈដ្ឋានកម្រទៅមជ្ឈដ្ឋានដង់ស៊ីតេខ្ពស់\",\"មុំចូលតូចជាងមុំកំណត់\",\"ពន្លឺធ្វើដំណើរពីមជ្ឈដ្ឋានដង់ស៊ីតេខ្ពស់ទៅមជ្ឈដ្ឋានកម្រដោយមានមុំធំជាងមុំកំណត់\",\"មជ្ឈដ្ឋានទាំងពីរមានសន្ទស្សន៍ចំណាំងបែរស្មើគ្នា\"]';
 
   @override
   String get opticQ4CorrectIndex => '2';
 
   @override
   String get opticQ4Explanation =>
-      'TIR happens when light tries to leave a denser medium into a rarer one at an angle beyond the critical angle, so all light reflects back inside.';
+      'TIR កើតឡើងនៅពេលពន្លឺព្យាយាមចាកចេញពីមជ្ឈដ្ឋានដង់ស៊ីតេខ្ពស់ទៅមជ្ឈដ្ឋានកម្រដោយមានមុំលើសមុំកំណត់ ដូច្នេះពន្លឺទាំងអស់ឆ្លុះត្រឡប់នៅខាងក្នុង។';
 
   @override
   String get opticQ5Question =>
-      'When white light passes through a prism, which colour is refracted the most?';
+      'នៅពេលពន្លឺសឆ្លងកាត់ព្រីស តើពណ៌ណាចំណាំងបែរច្រើនជាងគេ?';
 
   @override
-  String get opticQ5Options => '[\"Red\",\"Green\",\"Yellow\",\"Violet\"]';
+  String get opticQ5Options => '[\"ក្រហម\",\"បៃតង\",\"លឿង\",\"ស្វាយ\"]';
 
   @override
   String get opticQ5CorrectIndex => '3';
 
   @override
   String get opticQ5Explanation =>
-      'Violet has the shortest wavelength and the highest refractive index in glass, so it bends the most. Red bends the least.';
+      'ពណ៌ស្វាយមានប្រវែងរលកខ្លីបំផុត និងមានសន្ទស្សន៍ចំណាំងបែរខ្ពស់បំផុតក្នុងកញ្ចក់ ដូច្នេះវាបត់ច្រើនជាងគេ។ ពណ៌ក្រហមបត់តិចជាងគេ។';
 }
