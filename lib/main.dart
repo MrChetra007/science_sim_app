@@ -42,7 +42,7 @@ import 'chemistry/electrochemistry/features/home/home_screen.dart'
 // ---- DEV TESTING FLAG ----
 // Set to true to force Pro (all labs unlocked, ads removed) locally.
 // REMEMBER to set back to false before publishing.
-const bool allowPro = true;
+const bool allowPro = false;
 
 class _WalkthroughOption extends StatelessWidget {
   final String label;
