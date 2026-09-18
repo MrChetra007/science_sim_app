@@ -25,12 +25,30 @@ class SimulationScreen extends StatefulWidget {
 class _SimulationScreenState extends State<SimulationScreen> {
   late BaseOpticsGame _game;
   final ValueNotifier<int> _revision = ValueNotifier<int>(0);
+  Locale? _gameLocale;
 
   @override
   void initState() {
     super.initState();
-    _game = _createGame(widget.mode);
-    _game.onUiChanged = () => _revision.value++;
+    // Game creation must wait until didChangeDependencies: AppLocalizations
+    // is an inherited widget and is not yet available during initState.
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Create the game on first build and recreate only if the locale
+    // actually changes.
+    final locale = Localizations.localeOf(context);
+    if (_gameLocale != locale) {
+      final old = _gameLocale == null ? null : _game;
+      _gameLocale = locale;
+      _game = _createGame(widget.mode);
+      _game.onUiChanged = () => _revision.value++;
+      if (old != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => old.dispose());
+      }
+    }
   }
 
   BaseOpticsGame _createGame(OpticsMode mode) {

@@ -4396,212 +4396,213 @@ class AppLocalizationsKm extends AppLocalizations {
       'ពណ៌ស្វាយមានប្រវែងរលកខ្លីបំផុត និងមានសន្ទស្សន៍ចំណាំងបែរខ្ពស់បំផុតក្នុងកញ្ចក់ ដូច្នេះវាបត់ច្រើនជាងគេ។ ពណ៌ក្រហមបត់តិចជាងគេ។';
 
   @override
-  String get opticChooseLab => 'Choose a lab';
+  String get opticChooseLab => 'ជ្រើសរើសមន្ទីរពិសោធន៍';
 
   @override
-  String get opticAppBarName => 'Optics';
+  String get opticAppBarName => 'អុបទិក';
 
   @override
-  String get opticAppBarSuffix => 'Lab';
+  String get opticAppBarSuffix => 'មន្ទីរពិសោធន៍';
 
   @override
-  String get opticOpenMode => 'Open';
+  String get opticOpenMode => 'បើក';
 
   @override
-  String get opticResetTooltip => 'Reset';
+  String get opticResetTooltip => 'កំណត់ឡើងវិញ';
 
   @override
-  String get opticSimulationFailed => 'Simulation failed to start';
+  String get opticSimulationFailed => 'ការក្លែងធ្វើមិនអាចចាប់ផ្តើមបានទេ';
 
   @override
-  String get opticControls => 'Controls';
+  String get opticControls => 'ការគ្រប់គ្រង';
 
   @override
-  String get opticLiveReadout => 'Live Readout';
+  String get opticLiveReadout => 'ការបង្ហាញផ្ទាល់';
 
   @override
-  String get opticRayLegendRay1 => 'Ray 1';
+  String get opticRayLegendRay1 => 'កាំរស្មី ១';
 
   @override
-  String get opticRayLegendRay1Desc => 'Parallel to axis';
+  String get opticRayLegendRay1Desc => 'ស្របនឹងអ័ក្ស';
 
   @override
-  String get opticRayLegendRay2 => 'Ray 2';
+  String get opticRayLegendRay2 => 'កាំរស្មី ២';
 
   @override
-  String get opticRayLegendRay2Desc => 'Focal point / optical centre';
+  String get opticRayLegendRay2Desc => 'ចំណុចប្រសព្វ / មជ្ឈមណ្ឌលអុបទិក';
 
   @override
-  String get opticRayLegendRay3 => 'Ray 3';
+  String get opticRayLegendRay3 => 'កាំរស្មី ៣';
 
   @override
-  String get opticRayLegendRay3Desc => 'Through curvature / focus';
+  String get opticRayLegendRay3Desc => 'ឆ្លងកាត់កំណោង / ចំណុចប្រសព្វ';
 
   @override
-  String get opticRayLegendVirtual => 'Virtual';
+  String get opticRayLegendVirtual => 'និម្មិត';
 
   @override
-  String get opticRayLegendVirtualDesc => 'Dashed projections';
+  String get opticRayLegendVirtualDesc => 'ការព្យាករណ៍ជាបន្ទាត់ដាច់ៗ';
 
   @override
-  String get opticSpriteArrow => 'Arrow';
+  String get opticSpriteArrow => 'ព្រួញ';
 
   @override
-  String get opticSpriteCandle => 'Candle';
+  String get opticSpriteCandle => 'ទៀន';
 
   @override
-  String get opticSpritePencil => 'Pencil';
+  String get opticSpritePencil => 'ខ្មៅដៃ';
 
   @override
-  String get opticSpritePen => 'Pen';
+  String get opticSpritePen => 'ប៊ិច';
 
   @override
-  String get opticSpriteBook => 'Book';
+  String get opticSpriteBook => 'សៀវភៅ';
 
   @override
-  String get opticObjectLabel => 'Object';
+  String get opticObjectLabel => 'វត្ថុ';
 
   @override
-  String get opticConcave => 'Concave';
+  String get opticConcave => 'ប្រហោង';
 
   @override
-  String get opticConvex => 'Convex';
+  String get opticConvex => 'ប៉ោង';
 
   @override
-  String get opticMirrorAngle => 'Mirror Angle (°)';
+  String get opticMirrorAngle => 'មុំកញ្ចក់ (°)';
 
   @override
-  String get opticLightSourceAngle => 'Light Source Angle (°)';
+  String get opticLightSourceAngle => 'មុំប្រភពពន្លឺ (°)';
 
   @override
-  String get opticFocalLengthAbs => 'Focal Length (|f| px)';
+  String get opticFocalLengthAbs => 'ប្រវែងប្រសព្វ (|f| px)';
 
   @override
-  String get opticObjectDistance => 'Object Distance (do px)';
+  String get opticObjectDistance => 'ចម្ងាយវត្ថុ (do px)';
 
   @override
-  String get opticObjectHeight => 'Object Height (ho px)';
+  String get opticObjectHeight => 'កម្ពស់វត្ថុ (ho px)';
 
   @override
-  String get opticMedium1Index => 'Medium 1 Index (n₁)';
+  String get opticMedium1Index => 'សន្ទស្សន៍មជ្ឈដ្ឋាន ១ (n₁)';
 
   @override
-  String get opticMedium2Index => 'Medium 2 Index (n₂)';
+  String get opticMedium2Index => 'សន្ទស្សន៍មជ្ឈដ្ឋាន ២ (n₂)';
 
   @override
-  String get opticIncidentAngleTheta => 'Incident Angle (θ₁)';
+  String get opticIncidentAngleTheta => 'មុំចូល (θ₁)';
 
   @override
-  String get opticPrismApexAngle => 'Prism Apex Angle (α)';
+  String get opticPrismApexAngle => 'មុំកំពូលព្រីស (α)';
 
   @override
-  String get opticBeamHeight => 'Beam Height (Y px)';
+  String get opticBeamHeight => 'កម្ពស់ធ្នឹម (Y px)';
 
   @override
-  String get opticBaseIndex => 'Base Refractive Index (nd)';
+  String get opticBaseIndex => 'សន្ទស្សន៍ចំណាំងបែរមូលដ្ឋាន (nd)';
 
   @override
-  String get opticModePlaneTitle => 'Plane Mirror';
+  String get opticModePlaneTitle => 'កញ្ចក់រាប';
 
   @override
-  String get opticModePlaneSubtitle => 'Law of reflection';
+  String get opticModePlaneSubtitle => 'ច្បាប់នៃការឆ្លុះ';
 
   @override
-  String get opticModePlaneTip => '💡 Drag the object on the canvas';
+  String get opticModePlaneTip => '💡 អូសវត្ថុនៅលើផ្ទាំងគំនូរ';
 
   @override
-  String get opticModeCurvedTitle => 'Curved Mirrors';
+  String get opticModeCurvedTitle => 'កញ្ចក់កោង';
 
   @override
-  String get opticModeCurvedSubtitle => 'Concave & convex, ray tracing';
+  String get opticModeCurvedSubtitle =>
+      'កញ្ចក់ប្រហោង និងប៉ោង ការតាមដានកាំរស្មី';
 
   @override
-  String get opticModeCurvedTip => '💡 Drag the yellow arrow tip';
+  String get opticModeCurvedTip => '💡 អូសចុងព្រួញពណ៌លឿង';
 
   @override
-  String get opticModeRefractionTitle => 'Refraction & TIR';
+  String get opticModeRefractionTitle => 'ចំណាំងបែរ និង TIR';
 
   @override
   String get opticModeRefractionSubtitle =>
-      'Snell\'s law & total internal reflection';
+      'ច្បាប់ Snell និងការឆ្លុះពេញលេញខាងក្នុង';
 
   @override
-  String get opticModeRefractionTip => '💡 Drag the laser left/right';
+  String get opticModeRefractionTip => '💡 អូសឡាស៊ែរទៅឆ្វេង ឬស្តាំ';
 
   @override
-  String get opticModeLensTitle => 'Thin Lenses';
+  String get opticModeLensTitle => 'កែវថតស្តើង';
 
   @override
-  String get opticModeLensSubtitle => 'Convex & concave lens diagrams';
+  String get opticModeLensSubtitle => 'គំនូសតាងកែវថតប៉ោង និងប្រហោង';
 
   @override
-  String get opticModeLensTip => '💡 Drag the yellow arrow tip';
+  String get opticModeLensTip => '💡 អូសចុងព្រួញពណ៌លឿង';
 
   @override
-  String get opticModeDispersionTitle => 'Prism Dispersion';
+  String get opticModeDispersionTitle => 'ការបំបែកពណ៌ដោយព្រីស';
 
   @override
-  String get opticModeDispersionSubtitle => 'White light into a spectrum';
+  String get opticModeDispersionSubtitle => 'បំបែកពន្លឺសទៅជាវិសាលគម';
 
   @override
-  String get opticModeDispersionTip => '💡 Adjust prism parameters below';
+  String get opticModeDispersionTip => '💡 កែតម្រូវប៉ារ៉ាម៉ែត្រព្រីសខាងក្រោម';
 
   @override
-  String get opticObjectDrag => 'Object (Drag)';
+  String get opticObjectDrag => 'វត្ថុ (អូស)';
 
   @override
-  String get opticVirtualImageLabel => 'Virtual Image S\'';
+  String get opticVirtualImageLabel => 'រូបភាពនិម្មិត S\'';
 
   @override
-  String get opticVirtualSourceLabel => 'Virtual Source S\'';
+  String get opticVirtualSourceLabel => 'ប្រភពនិម្មិត S\'';
 
   @override
-  String get opticLightSourceDrag => 'Light Source (Drag)';
+  String get opticLightSourceDrag => 'ប្រភពពន្លឺ (អូស)';
 
   @override
-  String get opticAngleIncidenceRow => 'Angle of Incidence (θi)';
+  String get opticAngleIncidenceRow => 'មុំចូល (θi)';
 
   @override
-  String get opticAngleReflectionRow => 'Angle of Reflection (θr)';
+  String get opticAngleReflectionRow => 'មុំឆ្លុះ (θr)';
 
   @override
-  String get opticLawRow => 'Law';
+  String get opticLawRow => 'ច្បាប់';
 
   @override
-  String get opticObjectDragTip => 'Object (Drag tip)';
+  String get opticObjectDragTip => 'វត្ថុ (អូសចុង)';
 
   @override
-  String get opticVirtualImageShort => 'Virtual Image';
+  String get opticVirtualImageShort => 'រូបភាពនិម្មិត';
 
   @override
-  String get opticRealImageShort => 'Real Image';
+  String get opticRealImageShort => 'រូបភាពពិត';
 
   @override
-  String get opticAtInfinityNoImage => 'At Infinity (No image formed)';
+  String get opticAtInfinityNoImage => 'នៅអនន្ត (មិនបង្កើតរូបភាព)';
 
   @override
-  String get opticRaysParallelNoImage => 'Rays parallel (No image)';
+  String get opticRaysParallelNoImage => 'កាំរស្មីស្របគ្នា (គ្មានរូបភាព)';
 
   @override
-  String get opticImageReal => 'Real';
+  String get opticImageReal => 'ពិត';
 
   @override
-  String get opticImageVirtual => 'Virtual';
+  String get opticImageVirtual => 'និម្មិត';
 
   @override
-  String get opticImageUpright => 'Upright';
+  String get opticImageUpright => 'ត្រង់';
 
   @override
-  String get opticImageInverted => 'Inverted';
+  String get opticImageInverted => 'បញ្ច្រាស';
 
   @override
-  String get opticImageMagnified => 'Magnified';
+  String get opticImageMagnified => 'ពង្រីក';
 
   @override
-  String get opticImageDiminished => 'Diminished';
+  String get opticImageDiminished => 'បង្រួម';
 
   @override
-  String get opticImageSameSize => 'Same size';
+  String get opticImageSameSize => 'ទំហំដូចគ្នា';
 
   @override
   String opticImageNatureFormat(String type, String orient, String size) {
@@ -4609,89 +4610,91 @@ class AppLocalizationsKm extends AppLocalizations {
   }
 
   @override
-  String get opticFocalLengthRow => 'Focal Length (f)';
+  String get opticFocalLengthRow => 'ប្រវែងប្រសព្វ (f)';
 
   @override
-  String get opticImageDistanceRow => 'Image Distance (di)';
+  String get opticImageDistanceRow => 'ចម្ងាយរូបភាព (di)';
 
   @override
-  String get opticMagnificationRow => 'Magnification (m)';
+  String get opticMagnificationRow => 'ការពង្រីក (m)';
 
   @override
-  String get opticImageNatureRow => 'Image Nature';
+  String get opticImageNatureRow => 'លក្ខណៈរូបភាព';
 
   @override
-  String get opticInfinityParallel => '∞ (Parallel)';
+  String get opticInfinityParallel => '∞ (ស្របគ្នា)';
 
   @override
-  String get opticInfinityAtInfinity => '∞ (At Infinity)';
+  String get opticInfinityAtInfinity => '∞ (នៅអនន្ត)';
 
   @override
   String opticMedium1Canvas(String index) {
-    return 'Medium 1 (n₁ = $index)';
+    return 'មជ្ឈដ្ឋាន ១ (n₁ = $index)';
   }
 
   @override
   String opticMedium2Canvas(String index) {
-    return 'Medium 2 (n₂ = $index)';
+    return 'មជ្ឈដ្ឋាន ២ (n₂ = $index)';
   }
 
   @override
-  String get opticLaserLabel => 'LASER';
+  String get opticLaserLabel => 'ឡាស៊ែរ';
 
   @override
-  String get opticDragHint => 'Drag';
+  String get opticDragHint => 'អូស';
 
   @override
   String opticReflectedThetaR(String angle) {
-    return 'Reflected (θᵣ = $angle°)';
+    return 'បានឆ្លុះ (θᵣ = $angle°)';
   }
 
   @override
-  String get opticTirCanvas => '⚡ Total Internal Reflection (θ₁ > θc)';
+  String get opticTirCanvas => '⚡ ការឆ្លុះពេញលេញខាងក្នុង (θ₁ > θc)';
 
   @override
-  String get opticTirHeadline => '⚡ TOTAL INTERNAL REFLECTION';
+  String get opticTirHeadline => '⚡ ការឆ្លុះពេញលេញខាងក្នុង';
 
   @override
-  String get opticNormalRefraction => 'Normal Refraction';
+  String get opticNormalRefraction => 'ចំណាំងបែរធម្មតា';
 
   @override
-  String get opticRefractedAngleRow => 'Refracted Angle (θ₂)';
+  String get opticRefractedAngleRow => 'មុំចំណាំងបែរ (θ₂)';
 
   @override
-  String get opticNoneTir => 'None (TIR)';
+  String get opticNoneTir => 'គ្មាន (TIR)';
 
   @override
-  String get opticCriticalAngleRow => 'Critical Angle (θc)';
+  String get opticCriticalAngleRow => 'មុំកំណត់ (θc)';
 
   @override
-  String get opticNoneLeN2 => 'None (n₁ ≤ n₂)';
+  String get opticNoneLeN2 => 'គ្មាន (n₁ ≤ n₂)';
 
   @override
-  String get opticStatusRow => 'Status';
+  String get opticStatusRow => 'ស្ថានភាព';
 
   @override
-  String get opticWhiteLightBeam => 'White Light Beam';
+  String get opticWhiteLightBeam => 'ធ្នឹមពន្លឺស';
 
   @override
-  String get opticScreenLabel => 'Screen';
+  String get opticScreenLabel => 'អេក្រង់';
 
   @override
-  String get opticDispersionHeadline => 'Violet bends most · Red bends least';
+  String get opticDispersionHeadline =>
+      'ពណ៌ស្វាយបត់ច្រើនជាងគេ · ពណ៌ក្រហមបត់តិចជាងគេ';
 
   @override
-  String get opticRedBand => 'Red (700 nm)';
+  String get opticRedBand => 'ក្រហម (700 nm)';
 
   @override
-  String get opticGreenBand => 'Green (530 nm)';
+  String get opticGreenBand => 'បៃតង (530 nm)';
 
   @override
-  String get opticVioletBand => 'Violet (400 nm)';
+  String get opticVioletBand => 'ស្វាយ (400 nm)';
 
   @override
-  String get opticDispersionRow => 'Dispersion';
+  String get opticDispersionRow => 'ការបំបែកពណ៌';
 
   @override
-  String get opticDispersionSummary => 'Violet bends most; Red bends least';
+  String get opticDispersionSummary =>
+      'ពណ៌ស្វាយបត់ច្រើនជាងគេ; ពណ៌ក្រហមបត់តិចជាងគេ';
 }
