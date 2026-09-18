@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/widgets/ad_widgets.dart';
 import '../models/optics_mode.dart';
 import '../theme.dart';
 import 'simulation_screen.dart';
@@ -69,6 +70,7 @@ class HomeScreen extends StatelessWidget {
                       _ModeCard(mode: OpticsMode.values[i]),
                 ),
               ),
+              const SafeArea(child: GlobalBannerAdWidget()),
             ],
           ),
         ),

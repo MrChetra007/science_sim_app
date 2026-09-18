@@ -1,6 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/widgets/ad_widgets.dart';
 import '../games/base_optics_game.dart';
 import '../games/curved_mirror_game.dart';
 import '../games/dispersion_game.dart';
@@ -167,46 +168,53 @@ class _SimulationScreenState extends State<SimulationScreen> {
           return ClipRRect(
             borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(18)),
-            child: Container(
-              decoration: const BoxDecoration(
-                color: AppColors.surface,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-                border: Border(top: BorderSide(color: AppColors.border)),
-              ),
-              child: ListView(
-              controller: scrollController,
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-              children: [
-                Center(
-                  child: Container(
-                    width: 40,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: AppColors.border,
-                      borderRadius: BorderRadius.circular(2),
+child: Container(
+                decoration: const BoxDecoration(
+                  color: AppColors.surface,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
+                  border: Border(top: BorderSide(color: AppColors.border)),
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListView(
+                      controller: scrollController,
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+                      children: [
+                        Center(
+                          child: Container(
+                            width: 40,
+                            height: 4,
+                            decoration: BoxDecoration(
+                              color: AppColors.border,
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        ListenableBuilder(
+                          listenable: _revision,
+                          builder: (context, _) => ReadoutCard(
+                              title: 'Live Readout', rows: _game.readoutRows),
+                        ),
+                        const SizedBox(height: 16),
+                        _buildControls(),
+                        const SizedBox(height: 16),
+                        const ReadoutCard(
+                          rows: [
+                            ('Ray 1', 'Parallel to axis'),
+                            ('Ray 2', 'Focal point / optical centre'),
+                            ('Ray 3', 'Through curvature / focus'),
+                            ('Virtual', 'Dashed projections'),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                ListenableBuilder(
-                  listenable: _revision,
-                  builder: (context, _) =>
-                      ReadoutCard(title: 'Live Readout', rows: _game.readoutRows),
-                ),
-                const SizedBox(height: 16),
-                _buildControls(),
-                const SizedBox(height: 16),
-                const ReadoutCard(
-                  rows: [
-                    ('Ray 1', 'Parallel to axis'),
-                    ('Ray 2', 'Focal point / optical centre'),
-                    ('Ray 3', 'Through curvature / focus'),
-                    ('Virtual', 'Dashed projections'),
+                    ),
+                    const SafeArea(child: GlobalBannerAdWidget()),
                   ],
                 ),
-              ],
-            ),
-            ),
+              ),
           );
         },
       ),

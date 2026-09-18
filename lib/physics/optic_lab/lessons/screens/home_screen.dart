@@ -4,6 +4,7 @@ import '../lesson_data.dart';
 import 'lesson_screen.dart';
 import 'quiz_screen.dart';
 import '../../screens/home_screen.dart' as mode_chooser;
+import '../../../../core/widgets/ad_widgets.dart';
 import '../../../../l10n/generated/app_localizations.dart';
 import '../../theme.dart';
 
@@ -56,6 +57,8 @@ class HomeScreen extends StatelessWidget {
             _simCard(context, l10n),
             const SizedBox(height: 12),
             _quizCard(context, l10n),
+            const SizedBox(height: 16),
+            const SafeArea(child: GlobalBannerAdWidget()),
           ],
         ),
       ),
