@@ -39,6 +39,11 @@ import 'chemistry/atomic_molecular/features/home/home_screen.dart'
 import 'chemistry/electrochemistry/features/home/home_screen.dart'
     as electro_home;
 
+// ---- DEV TESTING FLAG ----
+// Set to true to force Pro (all labs unlocked, ads removed) locally.
+// REMEMBER to set back to false before publishing.
+const bool allowPro = true;
+
 class _WalkthroughOption extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
@@ -81,6 +86,8 @@ void main() async {
       systemNavigationBarDividerColor: Colors.transparent,
     ),
   );
+
+  SubscriptionService.allowProForTesting = allowPro;
 
   final subscriptionService = SubscriptionService();
   await subscriptionService.init();

@@ -18,6 +18,10 @@ class SubscriptionService extends ChangeNotifier {
   factory SubscriptionService() => _instance;
   SubscriptionService._internal();
 
+  /// Dev override: when true, the service reports Pro regardless of plan.
+  /// Set from main.dart (`allowPro`) during local testing.
+  static bool allowProForTesting = false;
+
   SubscriptionPlan _currentPlan = SubscriptionPlan.free;
   SubscriptionPlan get currentPlan => _currentPlan;
 
@@ -28,6 +32,7 @@ class SubscriptionService extends ChangeNotifier {
   int get rewardedAdsWatched => _rewardedAdsWatched;
 
   bool get isPro {
+    if (allowProForTesting) return true;
     if (_currentPlan == SubscriptionPlan.monthly || _currentPlan == SubscriptionPlan.lifetime) return true;
     if (_temporaryPremiumEndTime != null && DateTime.now().isBefore(_temporaryPremiumEndTime!)) {
       return true;
@@ -35,10 +40,10 @@ class SubscriptionService extends ChangeNotifier {
     return false;
   }
 
-  bool get isPremium => _currentPlan == SubscriptionPlan.monthly || _currentPlan == SubscriptionPlan.lifetime;
-  bool get isLifetime => _currentPlan == SubscriptionPlan.lifetime;
+  bool get isPremium => allowProForTesting || _currentPlan == SubscriptionPlan.monthly || _currentPlan == SubscriptionPlan.lifetime;
+  bool get isLifetime => allowProForTesting || _currentPlan == SubscriptionPlan.lifetime;
   bool get isTrial => _temporaryPremiumEndTime != null && DateTime.now().isBefore(_temporaryPremiumEndTime!);
-  bool get isAdsRemoved => isPremium;
+  bool get isAdsRemoved => allowProForTesting || isPremium;
 
   Future<void> init() async {
     final prefs = await SharedPreferences.getInstance();
