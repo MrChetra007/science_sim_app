@@ -108,28 +108,7 @@ class _ModeCard extends StatelessWidget {
 
   void _handleTap(BuildContext context) {
     if (_locked) {
-      showDialog(
-        context: context,
-        builder: (ctx) {
-          return AlertDialog(
-            title: Text(l10n.premiumFeature),
-            content: Text(l10n.upgradeToUnlockOptics),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(ctx),
-                child: Text(l10n.maybeLater),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(ctx);
-                  showGlobalPlanDialog(context);
-                },
-                child: Text(l10n.upgrade),
-              ),
-            ],
-          );
-        },
-      );
+      showGlobalPlanDialog(context);
       return;
     }
     Navigator.of(context).push(

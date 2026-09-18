@@ -3950,12 +3950,6 @@ abstract class AppLocalizations {
   /// **'Premium Feature'**
   String get premiumFeature;
 
-  /// No description provided for @upgradeToUnlockOptics.
-  ///
-  /// In en, this message translates to:
-  /// **'Upgrade to Premium to unlock Plane Mirror, Curved Mirrors and Thin Lenses!'**
-  String get upgradeToUnlockOptics;
-
   /// No description provided for @upgradeToPremium.
   ///
   /// In en, this message translates to:

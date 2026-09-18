@@ -2036,10 +2036,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get premiumFeature => 'Premium Feature';
 
   @override
-  String get upgradeToUnlockOptics =>
-      'Upgrade to Premium to unlock Plane Mirror, Curved Mirrors and Thin Lenses!';
-
-  @override
   String get upgradeToPremium =>
       'Upgrade to Premium to unlock Bohr Model and remove ads!';
 
