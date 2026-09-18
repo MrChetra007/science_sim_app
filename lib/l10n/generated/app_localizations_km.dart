@@ -2001,6 +2001,10 @@ class AppLocalizationsKm extends AppLocalizations {
   String get premiumFeature => 'មុខងារ Premium';
 
   @override
+  String get upgradeToUnlockOptics =>
+      'Upgrade to Premium to unlock Plane Mirror, Curved Mirrors and Thin Lenses!';
+
+  @override
   String get upgradeToPremium =>
       'ដំឡើងទៅ Premium ដើម្បីដោះសោម៉ូដែលប័រ និងលុបចោលការផ្សាយ!';
 

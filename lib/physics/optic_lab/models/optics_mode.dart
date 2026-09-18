@@ -3,6 +3,17 @@ import '../../../../l10n/generated/app_localizations.dart';
 enum OpticsMode { plane, curved, refraction, lens, dispersion }
 
 extension OpticsModeInfo on OpticsMode {
+  /// Modes gated behind the Scientific Pro subscription.
+  /// Plane Mirror, Curved Mirrors and Thin Lenses are Pro features;
+  /// Refraction & Prism Dispersion remain free.
+  bool get isPro => switch (this) {
+        OpticsMode.plane => true,
+        OpticsMode.curved => true,
+        OpticsMode.refraction => false,
+        OpticsMode.lens => true,
+        OpticsMode.dispersion => false,
+      };
+
   String title(AppLocalizations l10n) => switch (this) {
         OpticsMode.plane => l10n.opticModePlaneTitle,
         OpticsMode.curved => l10n.opticModeCurvedTitle,
