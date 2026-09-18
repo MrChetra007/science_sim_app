@@ -7519,6 +7519,606 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Proper time (\$t_0\$) is defined as the time interval between two events measured by an observer who is at rest relative to those events (e.g. using a clock that is present at both events).'**
   String get relQ8Explanation;
+
+  /// No description provided for @opticLab.
+  ///
+  /// In en, this message translates to:
+  /// **'OPTICS'**
+  String get opticLab;
+
+  /// No description provided for @opticLabSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Geometric Optics'**
+  String get opticLabSubtitle;
+
+  /// No description provided for @opticLabTutorial.
+  ///
+  /// In en, this message translates to:
+  /// **'Optics Lab - Light & Lenses'**
+  String get opticLabTutorial;
+
+  /// No description provided for @opticHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'OPTICS LAB'**
+  String get opticHomeTitle;
+
+  /// No description provided for @opticLessons.
+  ///
+  /// In en, this message translates to:
+  /// **'LESSONS'**
+  String get opticLessons;
+
+  /// No description provided for @opticPractice.
+  ///
+  /// In en, this message translates to:
+  /// **'PRACTICE'**
+  String get opticPractice;
+
+  /// No description provided for @opticQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz'**
+  String get opticQuiz;
+
+  /// No description provided for @opticQuizSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test your knowledge of optics'**
+  String get opticQuizSubtitle;
+
+  /// No description provided for @opticSimulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulation'**
+  String get opticSimulation;
+
+  /// No description provided for @opticSimulationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Interactive ray-tracing labs'**
+  String get opticSimulationSubtitle;
+
+  /// No description provided for @opticComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete'**
+  String get opticComplete;
+
+  /// No description provided for @opticNextQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Question'**
+  String get opticNextQuestion;
+
+  /// No description provided for @opticSeeResults.
+  ///
+  /// In en, this message translates to:
+  /// **'See Results'**
+  String get opticSeeResults;
+
+  /// No description provided for @opticQuizResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz Results'**
+  String get opticQuizResults;
+
+  /// No description provided for @opticGreatJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job! You have a solid understanding of optics.'**
+  String get opticGreatJob;
+
+  /// No description provided for @opticKeepPracticing.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep practicing! Review the lessons and try again.'**
+  String get opticKeepPracticing;
+
+  /// No description provided for @opticRetryQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry Quiz'**
+  String get opticRetryQuiz;
+
+  /// No description provided for @opticBackToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get opticBackToHome;
+
+  /// Lesson step progress indicator
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String opticStepOf(String current, String total);
+
+  /// Quiz question progress indicator
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String opticQuestionOf(String current, String total);
+
+  /// Current quiz score display
+  ///
+  /// In en, this message translates to:
+  /// **'Score: {score}'**
+  String opticScoreLabel(String score);
+
+  /// Quiz percentage correct display
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% Correct'**
+  String opticPercentCorrect(String percent);
+
+  /// No description provided for @opticL1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Reflection & Plane Mirrors'**
+  String get opticL1Title;
+
+  /// No description provided for @opticL1Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The law of reflection'**
+  String get opticL1Subtitle;
+
+  /// No description provided for @opticL1S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Reflection?'**
+  String get opticL1S1Title;
+
+  /// No description provided for @opticL1S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Reflection is when light bounces off a surface. When a ray of light strikes a plane mirror, it leaves the mirror at the same angle it arrived. The incident ray, the reflected ray and the normal all lie in the same plane.'**
+  String get opticL1S1Body;
+
+  /// No description provided for @opticL1S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'The Law of Reflection'**
+  String get opticL1S2Title;
+
+  /// No description provided for @opticL1S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The angle of incidence (θi) is the angle between the incident ray and the normal line (perpendicular to the surface). The law of reflection states that this equals the angle of reflection (θr):'**
+  String get opticL1S2Body;
+
+  /// No description provided for @opticL1S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'θi = θr'**
+  String get opticL1S2Formula;
+
+  /// No description provided for @opticL1S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Virtual Images'**
+  String get opticL1S3Title;
+
+  /// No description provided for @opticL1S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'A plane mirror always forms a virtual image. The image appears to be behind the mirror, it is upright, the same size as the object, and laterally inverted (left and right are swapped).'**
+  String get opticL1S3Body;
+
+  /// No description provided for @opticL1S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore the Simulation'**
+  String get opticL1S4Title;
+
+  /// No description provided for @opticL1S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Plane Mirror lab. Drag the object or light source on the canvas, and tilt the mirror to see θi and θr stay equal in the live readout.'**
+  String get opticL1S4Body;
+
+  /// No description provided for @opticL2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Curved Mirrors'**
+  String get opticL2Title;
+
+  /// No description provided for @opticL2Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Concave & convex mirror equations'**
+  String get opticL2Subtitle;
+
+  /// No description provided for @opticL2S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Concave & Convex Mirrors'**
+  String get opticL2S1Title;
+
+  /// No description provided for @opticL2S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'A concave mirror curves inward like a cave and converges light rays. A convex mirror curves outward and diverges light rays, giving a wider field of view. Both are used everywhere from car side mirrors to telescopes.'**
+  String get opticL2S1Body;
+
+  /// No description provided for @opticL2S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Focal Length'**
+  String get opticL2S2Title;
+
+  /// No description provided for @opticL2S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'A curved mirror has a centre of curvature (C) and a focal point (F). Parallel rays meeting the mirror all reflect through F. The focal length (f) is half the radius of curvature (R):'**
+  String get opticL2S2Body;
+
+  /// No description provided for @opticL2S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'f = R / 2'**
+  String get opticL2S2Formula;
+
+  /// No description provided for @opticL2S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Mirror Equation'**
+  String get opticL2S3Title;
+
+  /// No description provided for @opticL2S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The mirror equation links the object distance (do), image distance (di) and focal length (f). The magnification (m) tells whether the image is enlarged or reduced, and the sign of m tells if it is upright or inverted:'**
+  String get opticL2S3Body;
+
+  /// No description provided for @opticL2S3Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'1/f = 1/do + 1/di\nm = -di/do'**
+  String get opticL2S3Formula;
+
+  /// No description provided for @opticL2S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Real & Virtual Images'**
+  String get opticL2S4Title;
+
+  /// No description provided for @opticL2S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Concave mirrors can form real, inverted images when the object is beyond the focal point, or virtual, upright magnified images when the object is inside the focal point. Convex mirrors always form virtual, upright, diminished images.'**
+  String get opticL2S4Body;
+
+  /// No description provided for @opticL3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Refraction & Snell\'s Law'**
+  String get opticL3Title;
+
+  /// No description provided for @opticL3Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bending of light between media'**
+  String get opticL3Subtitle;
+
+  /// No description provided for @opticL3S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Why Light Bends'**
+  String get opticL3S1Title;
+
+  /// No description provided for @opticL3S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'When light passes from one transparent medium to another, its speed changes, which makes it change direction. This bending of light is called refraction.'**
+  String get opticL3S1Body;
+
+  /// No description provided for @opticL3S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Snell\'s Law'**
+  String get opticL3S2Title;
+
+  /// No description provided for @opticL3S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Snell\'s law relates the angles θ₁ and θ₂ to the refractive indices n₁ and n₂ of the two media. Light bends toward the normal when entering a denser medium (higher n):'**
+  String get opticL3S2Body;
+
+  /// No description provided for @opticL3S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'n₁ sin θ₁ = n₂ sin θ₂'**
+  String get opticL3S2Formula;
+
+  /// No description provided for @opticL3S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Critical Angle & TIR'**
+  String get opticL3S3Title;
+
+  /// No description provided for @opticL3S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'When light travels from a denser to a rarer medium, there is a critical angle (θc). Beyond it, no light escapes and all of it is reflected back inside - this is total internal reflection (TIR), used in fiber optics:'**
+  String get opticL3S3Body;
+
+  /// No description provided for @opticL3S3Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'sin θc = n₂ / n₁  (n₁ > n₂)'**
+  String get opticL3S3Formula;
+
+  /// No description provided for @opticL3S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore the Simulation'**
+  String get opticL3S4Title;
+
+  /// No description provided for @opticL3S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Refraction lab. Drag the laser, adjust n₁ and n₂, and angle θ₁ past the critical angle to trigger total internal reflection.'**
+  String get opticL3S4Body;
+
+  /// No description provided for @opticL4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Thin Lenses'**
+  String get opticL4Title;
+
+  /// No description provided for @opticL4Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Convex & concave lens diagrams'**
+  String get opticL4Subtitle;
+
+  /// No description provided for @opticL4S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Converging & Diverging'**
+  String get opticL4S1Title;
+
+  /// No description provided for @opticL4S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'A convex (converging) lens is thicker in the middle and brings parallel rays to a focus. A concave (diverging) lens is thinner in the middle and spreads parallel rays outward as if they came from a focus.'**
+  String get opticL4S1Body;
+
+  /// No description provided for @opticL4S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Lens Equation'**
+  String get opticL4S2Title;
+
+  /// No description provided for @opticL4S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The thin-lens equation has the same form as the mirror equation. For a converging lens, an object beyond the focal point produces a real, inverted image, while an object inside the focal point produces a virtual, upright image:'**
+  String get opticL4S2Body;
+
+  /// No description provided for @opticL4S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'1/f = 1/do + 1/di\nm = -di/do'**
+  String get opticL4S2Formula;
+
+  /// No description provided for @opticL4S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Lens Power'**
+  String get opticL4S3Title;
+
+  /// No description provided for @opticL4S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Opticians describe lenses by their power (P) in dioptres (D). Power is the reciprocal of the focal length in metres. A converging lens has positive power and a diverging lens negative power:'**
+  String get opticL4S3Body;
+
+  /// No description provided for @opticL4S3Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'P = 1 / f'**
+  String get opticL4S3Formula;
+
+  /// No description provided for @opticL4S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore the Simulation'**
+  String get opticL4S4Title;
+
+  /// No description provided for @opticL4S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Thin Lenses lab. Switch between convex and concave, drag the object arrow, and watch how the image distance and nature update live.'**
+  String get opticL4S4Body;
+
+  /// No description provided for @opticL5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Prism Dispersion'**
+  String get opticL5Title;
+
+  /// No description provided for @opticL5Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'White light into a spectrum'**
+  String get opticL5Subtitle;
+
+  /// No description provided for @opticL5S1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'White Light & Prisms'**
+  String get opticL5S1Title;
+
+  /// No description provided for @opticL5S1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'White light is a mixture of all colours of the visible spectrum. When it passes through a glass prism, each colour is refracted by a slightly different amount, so the white light spreads into a rainbow.'**
+  String get opticL5S1Body;
+
+  /// No description provided for @opticL5S2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Why Violet Bends Most'**
+  String get opticL5S2Title;
+
+  /// No description provided for @opticL5S2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'The refractive index of glass depends on the wavelength of light. Violet has the shortest wavelength and is slowed (and bent) the most, while red has the longest wavelength and bends the least:'**
+  String get opticL5S2Body;
+
+  /// No description provided for @opticL5S2Formula.
+  ///
+  /// In en, this message translates to:
+  /// **'n_red < n_orange < n_yellow < n_green < n_blue < n_violet'**
+  String get opticL5S2Formula;
+
+  /// No description provided for @opticL5S3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Dispersion in Nature'**
+  String get opticL5S3Title;
+
+  /// No description provided for @opticL5S3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Rainbows are created when sunlight refracts and reflects inside raindrops, dispersing into a spectrum. Dispersion also explains chromatic aberration in lenses.'**
+  String get opticL5S3Body;
+
+  /// No description provided for @opticL5S4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore the Simulation'**
+  String get opticL5S4Title;
+
+  /// No description provided for @opticL5S4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Prism Dispersion lab. Adjust the prism apex angle and beam height to see how wide the spectrum spreads on the screen.'**
+  String get opticL5S4Body;
+
+  /// No description provided for @opticQ1Question.
+  ///
+  /// In en, this message translates to:
+  /// **'A ray strikes a plane mirror with an angle of incidence of 30°. What is the angle of reflection?'**
+  String get opticQ1Question;
+
+  /// No description provided for @opticQ1Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"15°\",\"30°\",\"60°\",\"90°\"]'**
+  String get opticQ1Options;
+
+  /// No description provided for @opticQ1CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get opticQ1CorrectIndex;
+
+  /// No description provided for @opticQ1Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'The law of reflection states θi = θr, so the angle of reflection equals the angle of incidence: 30°.'**
+  String get opticQ1Explanation;
+
+  /// No description provided for @opticQ2Question.
+  ///
+  /// In en, this message translates to:
+  /// **'A concave mirror forms a real image. What does this mean?'**
+  String get opticQ2Question;
+
+  /// No description provided for @opticQ2Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"The image is always bigger than the object\",\"The reflected rays actually meet and can be projected on a screen\",\"The image is upright and virtual\",\"No image is formed\"]'**
+  String get opticQ2Options;
+
+  /// No description provided for @opticQ2CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'1'**
+  String get opticQ2CorrectIndex;
+
+  /// No description provided for @opticQ2Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'A real image forms where reflected rays actually converge, so it can be projected onto a screen. It is usually inverted.'**
+  String get opticQ2Explanation;
+
+  /// No description provided for @opticQ3Question.
+  ///
+  /// In en, this message translates to:
+  /// **'Light goes from air (n₁ = 1.0) into glass (n₂ = 1.5) at an incident angle of 30° (sin 30° = 0.5). What is the refracted angle?'**
+  String get opticQ3Question;
+
+  /// No description provided for @opticQ3Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"30°\",\"45°\",\"19.5°\",\"12°\"]'**
+  String get opticQ3Options;
+
+  /// No description provided for @opticQ3CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'2'**
+  String get opticQ3CorrectIndex;
+
+  /// No description provided for @opticQ3Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Using Snell\'s law: 1.0 × sin 30° = 1.5 × sin θ₂, so sin θ₂ = 0.5/1.5 = 0.333, giving θ₂ ≈ 19.5°. The ray bends toward the normal.'**
+  String get opticQ3Explanation;
+
+  /// No description provided for @opticQ4Question.
+  ///
+  /// In en, this message translates to:
+  /// **'Total internal reflection is only possible when:'**
+  String get opticQ4Question;
+
+  /// No description provided for @opticQ4Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"Light travels from a rarer to a denser medium\",\"The angle of incidence is less than the critical angle\",\"Light travels from a denser to a rarer medium at an angle greater than the critical angle\",\"The two media have equal refractive indices\"]'**
+  String get opticQ4Options;
+
+  /// No description provided for @opticQ4CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'2'**
+  String get opticQ4CorrectIndex;
+
+  /// No description provided for @opticQ4Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'TIR happens when light tries to leave a denser medium into a rarer one at an angle beyond the critical angle, so all light reflects back inside.'**
+  String get opticQ4Explanation;
+
+  /// No description provided for @opticQ5Question.
+  ///
+  /// In en, this message translates to:
+  /// **'When white light passes through a prism, which colour is refracted the most?'**
+  String get opticQ5Question;
+
+  /// No description provided for @opticQ5Options.
+  ///
+  /// In en, this message translates to:
+  /// **'[\"Red\",\"Green\",\"Yellow\",\"Violet\"]'**
+  String get opticQ5Options;
+
+  /// No description provided for @opticQ5CorrectIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'3'**
+  String get opticQ5CorrectIndex;
+
+  /// No description provided for @opticQ5Explanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Violet has the shortest wavelength and the highest refractive index in glass, so it bends the most. Red bends the least.'**
+  String get opticQ5Explanation;
 }
 
 class _AppLocalizationsDelegate

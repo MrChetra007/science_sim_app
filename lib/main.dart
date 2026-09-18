@@ -30,6 +30,7 @@ import 'physics/wave_lab/main_standalone.dart' as wave_main;
 import 'physics/simple_harmonic_motion/lessons/screens/home_screen.dart' as shm_home;
 import 'physics/electromagnetic_induction/lessons/screens/home_screen.dart' as em_induction_home;
 import 'physics/special_relativity/lessons/screens/home_screen.dart' as relativity_home;
+import 'physics/optic_lab/lessons/screens/home_screen.dart' as optic_home;
 
 // Import Chemistry Labs
 import 'chemistry/acide_base_ph/main.dart' as ph_main;
@@ -187,6 +188,15 @@ class _RelativityWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return rp.ProviderScope(child: const relativity_home.HomeScreen());
+  }
+}
+
+class _OpticWrapper extends StatelessWidget {
+  const _OpticWrapper();
+
+  @override
+  Widget build(BuildContext context) {
+    return rp.ProviderScope(child: const optic_home.HomeScreen());
   }
 }
 
@@ -676,6 +686,23 @@ class _MainDashboardState extends State<MainDashboard> {
                   }
                 },
               ),
+              _WalkthroughOption(
+                label: 'Optics Lab',
+                onTap: () async {
+                  Navigator.pop(ctx);
+                  await WalkthroughService.resetLabWalkthrough(
+                    WalkthroughService.keyOpticLab,
+                  );
+                  if (context.mounted) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const _OpticWrapper(),
+                      ),
+                    );
+                  }
+                },
+              ),
 
               const SizedBox(height: 16),
               const Text(
@@ -996,6 +1023,27 @@ class PhysicsDashboard extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) =>
                                       const thermo_main.ThermoSimApp(),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      Builder(
+                        builder: (context) {
+                          final l10n = AppLocalizations.of(context)!;
+                          return _buildLabCard(
+                            context,
+                            title: l10n.opticLab,
+                            subtitle: l10n.opticLabSubtitle,
+                            icon: Icons.light_mode,
+                            color: Colors.pinkAccent,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const _OpticWrapper(),
                                 ),
                               );
                             },

@@ -4078,4 +4078,347 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get relQ8Explanation =>
       'Proper time (\$t_0\$) is defined as the time interval between two events measured by an observer who is at rest relative to those events (e.g. using a clock that is present at both events).';
+
+  @override
+  String get opticLab => 'OPTICS';
+
+  @override
+  String get opticLabSubtitle => 'Geometric Optics';
+
+  @override
+  String get opticLabTutorial => 'Optics Lab - Light & Lenses';
+
+  @override
+  String get opticHomeTitle => 'OPTICS LAB';
+
+  @override
+  String get opticLessons => 'LESSONS';
+
+  @override
+  String get opticPractice => 'PRACTICE';
+
+  @override
+  String get opticQuiz => 'Quiz';
+
+  @override
+  String get opticQuizSubtitle => 'Test your knowledge of optics';
+
+  @override
+  String get opticSimulation => 'Simulation';
+
+  @override
+  String get opticSimulationSubtitle => 'Interactive ray-tracing labs';
+
+  @override
+  String get opticComplete => 'Complete';
+
+  @override
+  String get opticNextQuestion => 'Next Question';
+
+  @override
+  String get opticSeeResults => 'See Results';
+
+  @override
+  String get opticQuizResults => 'Quiz Results';
+
+  @override
+  String get opticGreatJob =>
+      'Great job! You have a solid understanding of optics.';
+
+  @override
+  String get opticKeepPracticing =>
+      'Keep practicing! Review the lessons and try again.';
+
+  @override
+  String get opticRetryQuiz => 'Retry Quiz';
+
+  @override
+  String get opticBackToHome => 'Back to Home';
+
+  @override
+  String opticStepOf(String current, String total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String opticQuestionOf(String current, String total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String opticScoreLabel(String score) {
+    return 'Score: $score';
+  }
+
+  @override
+  String opticPercentCorrect(String percent) {
+    return '$percent% Correct';
+  }
+
+  @override
+  String get opticL1Title => 'Reflection & Plane Mirrors';
+
+  @override
+  String get opticL1Subtitle => 'The law of reflection';
+
+  @override
+  String get opticL1S1Title => 'What is Reflection?';
+
+  @override
+  String get opticL1S1Body =>
+      'Reflection is when light bounces off a surface. When a ray of light strikes a plane mirror, it leaves the mirror at the same angle it arrived. The incident ray, the reflected ray and the normal all lie in the same plane.';
+
+  @override
+  String get opticL1S2Title => 'The Law of Reflection';
+
+  @override
+  String get opticL1S2Body =>
+      'The angle of incidence (θi) is the angle between the incident ray and the normal line (perpendicular to the surface). The law of reflection states that this equals the angle of reflection (θr):';
+
+  @override
+  String get opticL1S2Formula => 'θi = θr';
+
+  @override
+  String get opticL1S3Title => 'Virtual Images';
+
+  @override
+  String get opticL1S3Body =>
+      'A plane mirror always forms a virtual image. The image appears to be behind the mirror, it is upright, the same size as the object, and laterally inverted (left and right are swapped).';
+
+  @override
+  String get opticL1S4Title => 'Explore the Simulation';
+
+  @override
+  String get opticL1S4Body =>
+      'Open the Plane Mirror lab. Drag the object or light source on the canvas, and tilt the mirror to see θi and θr stay equal in the live readout.';
+
+  @override
+  String get opticL2Title => 'Curved Mirrors';
+
+  @override
+  String get opticL2Subtitle => 'Concave & convex mirror equations';
+
+  @override
+  String get opticL2S1Title => 'Concave & Convex Mirrors';
+
+  @override
+  String get opticL2S1Body =>
+      'A concave mirror curves inward like a cave and converges light rays. A convex mirror curves outward and diverges light rays, giving a wider field of view. Both are used everywhere from car side mirrors to telescopes.';
+
+  @override
+  String get opticL2S2Title => 'Focal Length';
+
+  @override
+  String get opticL2S2Body =>
+      'A curved mirror has a centre of curvature (C) and a focal point (F). Parallel rays meeting the mirror all reflect through F. The focal length (f) is half the radius of curvature (R):';
+
+  @override
+  String get opticL2S2Formula => 'f = R / 2';
+
+  @override
+  String get opticL2S3Title => 'Mirror Equation';
+
+  @override
+  String get opticL2S3Body =>
+      'The mirror equation links the object distance (do), image distance (di) and focal length (f). The magnification (m) tells whether the image is enlarged or reduced, and the sign of m tells if it is upright or inverted:';
+
+  @override
+  String get opticL2S3Formula => '1/f = 1/do + 1/di\nm = -di/do';
+
+  @override
+  String get opticL2S4Title => 'Real & Virtual Images';
+
+  @override
+  String get opticL2S4Body =>
+      'Concave mirrors can form real, inverted images when the object is beyond the focal point, or virtual, upright magnified images when the object is inside the focal point. Convex mirrors always form virtual, upright, diminished images.';
+
+  @override
+  String get opticL3Title => 'Refraction & Snell\'s Law';
+
+  @override
+  String get opticL3Subtitle => 'Bending of light between media';
+
+  @override
+  String get opticL3S1Title => 'Why Light Bends';
+
+  @override
+  String get opticL3S1Body =>
+      'When light passes from one transparent medium to another, its speed changes, which makes it change direction. This bending of light is called refraction.';
+
+  @override
+  String get opticL3S2Title => 'Snell\'s Law';
+
+  @override
+  String get opticL3S2Body =>
+      'Snell\'s law relates the angles θ₁ and θ₂ to the refractive indices n₁ and n₂ of the two media. Light bends toward the normal when entering a denser medium (higher n):';
+
+  @override
+  String get opticL3S2Formula => 'n₁ sin θ₁ = n₂ sin θ₂';
+
+  @override
+  String get opticL3S3Title => 'Critical Angle & TIR';
+
+  @override
+  String get opticL3S3Body =>
+      'When light travels from a denser to a rarer medium, there is a critical angle (θc). Beyond it, no light escapes and all of it is reflected back inside - this is total internal reflection (TIR), used in fiber optics:';
+
+  @override
+  String get opticL3S3Formula => 'sin θc = n₂ / n₁  (n₁ > n₂)';
+
+  @override
+  String get opticL3S4Title => 'Explore the Simulation';
+
+  @override
+  String get opticL3S4Body =>
+      'Open the Refraction lab. Drag the laser, adjust n₁ and n₂, and angle θ₁ past the critical angle to trigger total internal reflection.';
+
+  @override
+  String get opticL4Title => 'Thin Lenses';
+
+  @override
+  String get opticL4Subtitle => 'Convex & concave lens diagrams';
+
+  @override
+  String get opticL4S1Title => 'Converging & Diverging';
+
+  @override
+  String get opticL4S1Body =>
+      'A convex (converging) lens is thicker in the middle and brings parallel rays to a focus. A concave (diverging) lens is thinner in the middle and spreads parallel rays outward as if they came from a focus.';
+
+  @override
+  String get opticL4S2Title => 'Lens Equation';
+
+  @override
+  String get opticL4S2Body =>
+      'The thin-lens equation has the same form as the mirror equation. For a converging lens, an object beyond the focal point produces a real, inverted image, while an object inside the focal point produces a virtual, upright image:';
+
+  @override
+  String get opticL4S2Formula => '1/f = 1/do + 1/di\nm = -di/do';
+
+  @override
+  String get opticL4S3Title => 'Lens Power';
+
+  @override
+  String get opticL4S3Body =>
+      'Opticians describe lenses by their power (P) in dioptres (D). Power is the reciprocal of the focal length in metres. A converging lens has positive power and a diverging lens negative power:';
+
+  @override
+  String get opticL4S3Formula => 'P = 1 / f';
+
+  @override
+  String get opticL4S4Title => 'Explore the Simulation';
+
+  @override
+  String get opticL4S4Body =>
+      'Open the Thin Lenses lab. Switch between convex and concave, drag the object arrow, and watch how the image distance and nature update live.';
+
+  @override
+  String get opticL5Title => 'Prism Dispersion';
+
+  @override
+  String get opticL5Subtitle => 'White light into a spectrum';
+
+  @override
+  String get opticL5S1Title => 'White Light & Prisms';
+
+  @override
+  String get opticL5S1Body =>
+      'White light is a mixture of all colours of the visible spectrum. When it passes through a glass prism, each colour is refracted by a slightly different amount, so the white light spreads into a rainbow.';
+
+  @override
+  String get opticL5S2Title => 'Why Violet Bends Most';
+
+  @override
+  String get opticL5S2Body =>
+      'The refractive index of glass depends on the wavelength of light. Violet has the shortest wavelength and is slowed (and bent) the most, while red has the longest wavelength and bends the least:';
+
+  @override
+  String get opticL5S2Formula =>
+      'n_red < n_orange < n_yellow < n_green < n_blue < n_violet';
+
+  @override
+  String get opticL5S3Title => 'Dispersion in Nature';
+
+  @override
+  String get opticL5S3Body =>
+      'Rainbows are created when sunlight refracts and reflects inside raindrops, dispersing into a spectrum. Dispersion also explains chromatic aberration in lenses.';
+
+  @override
+  String get opticL5S4Title => 'Explore the Simulation';
+
+  @override
+  String get opticL5S4Body =>
+      'Open the Prism Dispersion lab. Adjust the prism apex angle and beam height to see how wide the spectrum spreads on the screen.';
+
+  @override
+  String get opticQ1Question =>
+      'A ray strikes a plane mirror with an angle of incidence of 30°. What is the angle of reflection?';
+
+  @override
+  String get opticQ1Options => '[\"15°\",\"30°\",\"60°\",\"90°\"]';
+
+  @override
+  String get opticQ1CorrectIndex => '1';
+
+  @override
+  String get opticQ1Explanation =>
+      'The law of reflection states θi = θr, so the angle of reflection equals the angle of incidence: 30°.';
+
+  @override
+  String get opticQ2Question =>
+      'A concave mirror forms a real image. What does this mean?';
+
+  @override
+  String get opticQ2Options =>
+      '[\"The image is always bigger than the object\",\"The reflected rays actually meet and can be projected on a screen\",\"The image is upright and virtual\",\"No image is formed\"]';
+
+  @override
+  String get opticQ2CorrectIndex => '1';
+
+  @override
+  String get opticQ2Explanation =>
+      'A real image forms where reflected rays actually converge, so it can be projected onto a screen. It is usually inverted.';
+
+  @override
+  String get opticQ3Question =>
+      'Light goes from air (n₁ = 1.0) into glass (n₂ = 1.5) at an incident angle of 30° (sin 30° = 0.5). What is the refracted angle?';
+
+  @override
+  String get opticQ3Options => '[\"30°\",\"45°\",\"19.5°\",\"12°\"]';
+
+  @override
+  String get opticQ3CorrectIndex => '2';
+
+  @override
+  String get opticQ3Explanation =>
+      'Using Snell\'s law: 1.0 × sin 30° = 1.5 × sin θ₂, so sin θ₂ = 0.5/1.5 = 0.333, giving θ₂ ≈ 19.5°. The ray bends toward the normal.';
+
+  @override
+  String get opticQ4Question =>
+      'Total internal reflection is only possible when:';
+
+  @override
+  String get opticQ4Options =>
+      '[\"Light travels from a rarer to a denser medium\",\"The angle of incidence is less than the critical angle\",\"Light travels from a denser to a rarer medium at an angle greater than the critical angle\",\"The two media have equal refractive indices\"]';
+
+  @override
+  String get opticQ4CorrectIndex => '2';
+
+  @override
+  String get opticQ4Explanation =>
+      'TIR happens when light tries to leave a denser medium into a rarer one at an angle beyond the critical angle, so all light reflects back inside.';
+
+  @override
+  String get opticQ5Question =>
+      'When white light passes through a prism, which colour is refracted the most?';
+
+  @override
+  String get opticQ5Options => '[\"Red\",\"Green\",\"Yellow\",\"Violet\"]';
+
+  @override
+  String get opticQ5CorrectIndex => '3';
+
+  @override
+  String get opticQ5Explanation =>
+      'Violet has the shortest wavelength and the highest refractive index in glass, so it bends the most. Red bends the least.';
 }
